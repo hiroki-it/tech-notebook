@@ -36558,7 +36558,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -36600,7 +36600,6 @@
 <h4 id="_4">▼ 関数とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>クラスは、状態を使用して振る舞う。</p>
 <p>振る舞いの処理を関数またはメソッドという。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -36620,7 +36619,6 @@
 <p>クラスは、状態を持つ。</p>
 <p>この状態はプロパティとも呼ばれる。</p>
 <p>本ノートでは、状態であることを意識するために、プロパティという言葉を使用しないものとする。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -36640,7 +36638,6 @@
 <h4 id="public_1">▼ <code>public</code> とは<a class="headerlink" href="#public_1" title="Permanent link">&para;</a></h4>
 <p>どのオブジェクトでも呼び出せる。</p>
 <h4 id="_7">▼ オブジェクト指向の場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -36660,7 +36657,6 @@
 </code></pre></div>
 <h4 id="_8">▼ 関数型の場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>オブジェクトのすべてのデータが <code>public</code> であるなら、オブジェクト指向における隠蔽のメリットは、特にないかもしれない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">{</span>
@@ -36681,7 +36677,6 @@
 </blockquote>
 <h4 id="_9">▼ オブジェクト指向の場合<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>親クラス次第ではあるが、処理で <code>$state</code> の中身を隠蔽できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span> <span class="k">extends</span> <span class="nx">ParentFoo</span>
@@ -36700,7 +36695,6 @@
 </code></pre></div>
 <h4 id="_10">▼ 関数型の場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>処理で、<code>$state</code> の中身を隠蔽できないため、危険である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">{</span>
@@ -36718,7 +36712,6 @@
 <h4 id="_11">▼ オブジェクト指向の場合<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>処理で、<code>$state</code> の中身を隠蔽できる。</p>
 <p>カプセル化を参照。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -36744,7 +36737,6 @@
 </code></pre></div>
 <h4 id="_12">▼ 関数型の場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>処理で、<code>$state</code> の中身を隠蔽できないため、危険である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">function</span> <span class="nf">foo</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$state</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">{</span>
@@ -36764,7 +36756,6 @@
 <p>別ファイルでの関数の呼び出しにはインスタンス化が必要である。</p>
 <p>しかし、static 修飾子をつけることにより、インスタンス化しなくともコールできる。</p>
 <p>状態は使用せず (静的) 、引数の値のみを使用して処理を実行する関数に対して使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -36798,7 +36789,6 @@
 <h3 id="_16">値を取得するアクセサ関数の実装<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="getter">▼ Getter<a class="headerlink" href="#getter" title="Permanent link">&para;</a></h4>
 <p>Getter では、状態を取得するのみではなく、何かしらの処理を加えたうえで取得すること。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">ABC</span> <span class="p">{</span>
@@ -36820,7 +36810,6 @@
 <h3 id="_17">値を設定するアクセサ関数の実装<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="setter">▼ Setter<a class="headerlink" href="#setter" title="Permanent link">&para;</a></h4>
 <p>『ミュータブル』なオブジェクトを実現できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Test01</span> <span class="p">{</span>
@@ -36837,7 +36826,6 @@
 <h4 id="__construct">▼ マジック関数の <code>__construct()</code> 関数<a class="headerlink" href="#__construct" title="Permanent link">&para;</a></h4>
 <p>マジック関数の <code>__construct()</code> 関数を持たせることにより、このデータを持っていなければならないとい制約を明示できる。</p>
 <p>Setter を持たせずに、<code>__construct()</code> 関数のみを持たせれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Test02</span> <span class="p">{</span>
@@ -36892,7 +36880,6 @@
 <h4 id="__get">▼ <code>__get()</code> 関数<a class="headerlink" href="#__get" title="Permanent link">&para;</a></h4>
 <p>定義されていないデータや、アクセス権のない状態を取得しようとしたとき、代わりに呼び出される。</p>
 <p>関数は定義しているが、データは定義していないような状況で使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
@@ -36933,7 +36920,6 @@
 <li><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html">【IT技術の知見】ドメイン駆動設計＠アーキテクチャ - 俺の技術ノート</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">Foo</span>
 <span class="p">{</span>
@@ -36965,7 +36951,6 @@
 <p>インスタンス化時に自動的に呼び出される関数。</p>
 <p>インスタンス化時に実行したい処理を記述できる。</p>
 <p>Setter を持たせずに、<code>__construct()</code> 関数のみで値を設定すれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Test02</span>
@@ -37135,7 +37120,6 @@
 <p><strong>＊例＊</strong></p>
 <p>ある関数 <code>f</code> の定義のなかに <code>f</code> 自身を呼び出している箇所がある。</p>
 <p><img alt="再帰的" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再帰的.png" /></p>
-<p><strong>＊実装例＊</strong></p>
 <p>以下のリンクも参考にせよ。</p>
 <blockquote>
 <ul>
@@ -37160,7 +37144,6 @@
 <p>ソートを繰り返し実行する。</p>
 </dd>
 </dl>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37227,7 +37210,6 @@
 <p><br></p>
 <h3 id="_26">値を返す前の途中終了<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <h4 id="return">▼ <code>return;</code><a class="headerlink" href="#return" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37245,7 +37227,6 @@
 <span class="c1">// 処理は続く。</span>
 </code></pre></div>
 <h4 id="exit">▼ <code>exit;</code><a class="headerlink" href="#exit" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37269,7 +37250,6 @@
 <h4 id="yield">▼ <code>yield</code><a class="headerlink" href="#yield" title="Permanent link">&para;</a></h4>
 <p>関数がコールされた場所に値を返却した後、そこで終了せず、<code>yield</code> の次の処理が続く。</p>
 <p>返却値は、<code>Generator</code> 型である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37324,7 +37304,6 @@
 <h4 id="_28">▼ イベント名と関数の紐付け<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
 <p>名前としてイベント名を定義し、これに関数を紐付ける。</p>
 <p>特定のイベント名が渡されたとき、それに対応づけられた関数をコールする。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>フレームワークの <code>EventDispatcher</code> クラスが簡単である。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -37339,7 +37318,6 @@
 <p>大サイズのデータを集計するは、その処理に時間がかかる。</p>
 <p>そこで、そのような関数では、一度コールされて集計した後、データに返却値を保持しておく。</p>
 <p>そして、再びコールされたときには、返却値をデータから取り出す。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">ResultCacher</span>
@@ -37399,7 +37377,6 @@
 <h2 id="02-03">02-03. クロージャー (無名関数)<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="_30">クロージャー (無名関数) の定義、変数格納後のコール<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <h4 id="use">▼ <code>use()</code> 関数のみに引数を渡す場合<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Item</span>
@@ -37422,7 +37399,6 @@
 <span class="c1">// オプションA</span>
 </code></pre></div>
 <h4 id="function-use">▼ <code>function()</code> 関数と <code>use()</code> 関数に引数を渡す場合<a class="headerlink" href="#function-use" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">class</span> <span class="nc">Item</span>
 <span class="p">{</span>
@@ -37445,7 +37421,6 @@
 <span class="c1">// オプションABC</span>
 </code></pre></div>
 <h4 id="_31">▼ データの値として、無名関数を格納しておく裏技<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Item</span>
@@ -37480,7 +37455,6 @@
 <h3 id="_32">クロージャー (無名関数) の定義と即コール<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <p>定義したその場でコールされる無名関数を『即時関数』と呼ぶ。</p>
 <p>無名関数をコールしたいときは、<code>call_user_func()</code> 関数を使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Item</span>
@@ -37509,7 +37483,6 @@
 <h3 id="_33">高階関数とクロージャー (無名関数) の組み合わせ<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
 <p>関数を引数として受け取ったり、関数自体を返したりする関数を『高階関数』と呼ぶ。</p>
 <h4 id="_34">▼ 無名関数を使用しない場合<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 第一引数のみの場合</span>
@@ -37572,7 +37545,6 @@
 <span class="c1">// 第一引数の出力に成功しました。</span>
 </code></pre></div>
 <h4 id="_35">▼ 無名関数を使用する場合<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37601,7 +37573,6 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_36">高階関数を使いこなす！<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37704,7 +37675,6 @@
 <p>自動的に値が格納されている定数。</p>
 <h4 id="__dir__">▼ <code>__DIR__</code><a class="headerlink" href="#__dir__" title="Permanent link">&para;</a></h4>
 <p>この定数がコールされたファイルの配置ディレクトリパスは、ルートディレクトリ基準で格納されている。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>以下の実装を持つファイルを、<code>/var/www/foo</code> ディレクトリ下に配置しておき、<code>/vendor/autoload.php</code> ファイルと結合してパスを通す。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -37713,7 +37683,6 @@
 </code></pre></div>
 <h4 id="__function__">▼ <code>__FUNCTION__</code><a class="headerlink" href="#__function__" title="Permanent link">&para;</a></h4>
 <p>この定数には、コールされた関数名が格納されている。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37736,7 +37705,6 @@
 </code></pre></div>
 <h4 id="__method__">▼ <code>__METHOD__</code><a class="headerlink" href="#__method__" title="Permanent link">&para;</a></h4>
 <p>この定数がコールされたクラス名と関数名が、<code>{クラス名}::{関数名}</code> の形式で格納されている。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Foo</span>
@@ -37759,7 +37727,6 @@
 <p>※Paiza で検証済み。</p>
 <h4 id="_43">▼ シングルクオーテーションによる変数展開<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
 <p>シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
@@ -37769,7 +37736,6 @@
 </code></pre></div>
 <h4 id="_44">▼ シングルクオーテーションと波括弧による変数展開<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
 <p>シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$fruit</span> <span class="o">=</span> <span class="s2">"リンゴ"</span><span class="p">;</span>
@@ -37806,7 +37772,6 @@
 <span class="nv">$value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="o">&amp;</span><span class="nv">$value</span><span class="p">;</span> <span class="c1">// 値の入れ物を参照先として代入</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>変数の <code>$b</code> には、<code>$a</code> の参照によって 10 が格納される。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -37824,7 +37789,6 @@
 <span class="nv">$value</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$value</span><span class="p">;</span> <span class="c1">// 1をコピーして代入</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>変数の <code>$b</code> には、<code>$a</code> の１行目の格納によって 2 が格納される。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -37871,7 +37835,6 @@
 <h3 id="_52">ファイルシステム関数<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h3>
 <h4 id="file_put_contents">▼ file_put_contents<a class="headerlink" href="#file_put_contents" title="Permanent link">&para;</a></h4>
 <p>ファイルに文字列を出力する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$array</span> <span class="o">=</span> <span class="p">[];</span>
@@ -37893,7 +37856,6 @@
 <p><br></p>
 <h3 id="preg_match"><code>preg_match()</code> 関数<a class="headerlink" href="#preg_match" title="Permanent link">&para;</a></h3>
 <h4 id="_55">▼ 数字<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>『<code>0</code> から <code>9</code> のいずれか』の数字を意味する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -37905,7 +37867,6 @@
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// true</span>
 </code></pre></div>
 <h4 id="_56">▼ アルファベット<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>『<code>a</code> から <code>z</code> のいずれか』または『A から Z のいずれか』のアルファベットを意味する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -37923,7 +37884,6 @@
 <li><a href="https://www-creators.com/archives/3102">正規表現：エスケープが必要な文字一覧 | WWWクリエイターズ</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>『<code>?</code>』『<code>.</code>』『<code>*</code>』『<code>$</code>』のいずれかのメタ文字を意味する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -37941,7 +37901,6 @@
 <li><a href="https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1">正規表現とワイルドカード、そして記号の意味 #Linux - Qiita</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$var</span> <span class="o">=</span> <span class="s2">"FooBarBaz"</span><span class="p">;</span>
@@ -37977,7 +37936,6 @@
 <span class="nb">var_dump</span><span class="p">(</span><span class="nv">$result</span><span class="p">);</span> <span class="c1">// 1</span>
 </code></pre></div>
 <h4 id="_60">▼ オプションとしてのパターン演算子<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$var</span> <span class="o">=</span> <span class="s2">"jpeg"</span><span class="p">;</span>

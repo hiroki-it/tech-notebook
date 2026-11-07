@@ -35092,7 +35092,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -35442,7 +35442,6 @@ README.md
 <h4 id="_15">▼ キャッシュを削除する<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>Unix ユーティリティをインストールするとキャッシュが残る。</p>
 <p>キャッシュが使用されることはないため、削除してしまう。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
 
 <span class="k">RUN</span><span class="w"> </span>dnf<span class="w"> </span>upgrade<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
@@ -35536,7 +35535,6 @@ README.md
 <li><a href="https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible">https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>以下は CentOS をベースイメージに使っており、よくない例である。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
@@ -35565,7 +35563,6 @@ README.md
 <span class="c"># DockerHubのComposerイメージからバイナリファイルを取得</span>
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>composer:&lt;バージョン&gt;<span class="w"> </span>/usr/bin/composer<span class="w"> </span>/usr/bin/composer
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>以下は CentOS をベースイメージに使っており、よくない例である。</p>
 <div class="highlight"><pre><span></span><code><span class="c"># CentOSイメージを、コンテナにインストール</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">centos:8</span>
@@ -35657,7 +35654,6 @@ EOF
 </dd>
 </dl>
 <h4 id="_24">▼ コンパイル済バイナリファイルを再利用する場合<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c"># 中間イメージ</span>
 <span class="k">FROM</span><span class="w"> </span><span class="s">golang:1.7.3</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
 <span class="k">WORKDIR</span><span class="w"> </span><span class="s">/go/src/github.com/alexellis/href-counter/</span>
@@ -35674,7 +35670,6 @@ EOF
 <span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>builder<span class="w"> </span>/go/src/github.com/alexellis/href-counter/app<span class="w"> </span>.
 <span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">"./app"</span><span class="p">]</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">maven:3.5.0-jdk-8-alpine</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">builder</span>
 <span class="k">COPY</span><span class="w"> </span>./pom.xml<span class="w"> </span>pom.xml
 <span class="k">COPY</span><span class="w"> </span>./src<span class="w"> </span>src/
@@ -35693,7 +35688,6 @@ EOF
 </blockquote>
 <h4 id="_25">▼ 実行環境別にステージを分ける場合<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>実行環境別にステージを分けることにより、その環境に必要なファイルのみが含まれるようにする。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c">#===================</span>
 <span class="c"># Global ARG</span>
 <span class="c">#===================</span>

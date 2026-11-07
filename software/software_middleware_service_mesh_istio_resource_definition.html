@@ -38576,7 +38576,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -38712,7 +38712,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="provider">▼ provider とは<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h4>
 <p>認可フェーズの委譲先の ID プロバイダーを設定する。</p>
 <p>事前に、ConfigMap の <code>.mesh.extensionProviders</code> キーに ID プロバイダーを登録しておく必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ここでは、OAuth2 Proxy を ID プロバイダーとして使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
@@ -38759,7 +38758,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>送信元 Pod に紐づく ServiceAccount が送信元の場合、認可を実施する。</p>
 <p>Istio はクライアント証明書に ID (例：SPIFFE ID) を設定しており、この ID が <code>principals</code> 値と一致するかを検証する。</p>
 <p>Kubernetes では送信元 Pod の名前を知る方法がない (IP アドレスは可能) なので、制御しやすくなる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38800,7 +38798,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="jwt">▼ 正しい JWT を許可する<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h4>
 <p>リクエストヘッダーにある JWT トークンの発行元 ID プロバイダーが適切な場合、認可を実施するように設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38814,7 +38811,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">          </span><span class="c1"># JWT トークンがある場合にのみ許可する</span>
 <span class="w">          </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"&lt;JWTトークンの発行元IDプロバイダーの識別子</span><span class="nv"> </span><span class="s">(issuer)&gt;"</span><span class="p p-Indicator">]</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AuthorizationPolicy</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38922,7 +38918,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
 <p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
 <p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38945,7 +38940,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
 <p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
 <p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38957,7 +38951,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="spechost">.spec.host<a class="headerlink" href="#spechost" title="Permanent link">&para;</a></h3>
 <p>トラフィックポリシーの適用対象とする宛先 Service または ServiceEntry のホスト名を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38970,7 +38963,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule">Istio / Destination Rule</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -38992,7 +38984,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>ルーティング先の Pod の <code>.metadata.labels</code> キーを設定する。</p>
 <p><code>.spec.subsets[*].name</code> キーの値は、VirtualService で設定した <code>.spec.http[*].route[*].destination.subset</code> キーに合わせる必要がある。</p>
 <p><img alt="istio_virtual-service_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png" /></p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>subset</code> が <code>v1</code> に対するインバウンド通信では、<code>version</code> キーの値が <code>v1</code> である Pod にルーティングする。</p>
 <p><code>v2</code> も同様である。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39023,7 +39014,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>1</code> とする場合は HTTP KeepAlive を無効にし、リクエストごとに接続を閉じる。</p>
 <p>HTTP/2 の場合は、1 つの TCP 接続上で複数のストリームを使用し、複数のリクエスト／レスポンスを並行して送受信できる。</p>
 <p>istio-proxy は HTTP/2 ストリームを個別に数える。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39054,7 +39044,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttphttp1maxpendingrequests">▼ connectionPool.http.http1MaxPendingRequests<a class="headerlink" href="#connectionpoolhttphttp1maxpendingrequests" title="Permanent link">&para;</a></h4>
 <p>キューに入れられる HTTP リクエストの最大数を設定する。</p>
 <p>キューを超える HTTP リクエストに対しては、<code>503</code> レスポンスを返信する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39074,7 +39063,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttphttp2maxrequests">▼ connectionPool.http.http2MaxRequests<a class="headerlink" href="#connectionpoolhttphttp2maxrequests" title="Permanent link">&para;</a></h4>
 <p>同時処理できる HTTP/1.1 と HTTP/2 の最大リクエスト数である。</p>
 <p>これを超過した場合、そのリクエストに対しては <code>503</code> ステータスになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39093,7 +39081,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttpidletimeout">▼ connectionPool.http.idleTimeout<a class="headerlink" href="#connectionpoolhttpidletimeout" title="Permanent link">&para;</a></h4>
 <p>HTTP リクエストでアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。</p>
 <p>不要な接続を早期に切断できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39112,7 +39099,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="connectionpoolhttpmaxconcurrentstreams">▼ connectionPool.http.maxConcurrentStreams<a class="headerlink" href="#connectionpoolhttpmaxconcurrentstreams" title="Permanent link">&para;</a></h4>
 <p>同時に実行できる gRPC ストリーミング処理の最大数である。</p>
 <p>双方向ストリーミング RPC は同時ストリーミングであり、サーバーストリーミング RPC やクライアントストリーミング RPC も、非同期的に実行すれば同時ストリーミングになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39130,7 +39116,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="connectionpooltcpconnecttimeout">▼ connectionPool.tcp.connectTimeout<a class="headerlink" href="#connectionpooltcpconnecttimeout" title="Permanent link">&para;</a></h4>
 <p>接続タイムアウト時間を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39145,7 +39130,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>確立中の TCP 接続でアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。</p>
 <p>不要な接続を早期に切断できる。</p>
 <p>VirtualService の <code>.spec.http.timeout</code> キーとは異なり、DestinationRule のアイドルタイムアウトは TCP 接続中に無通信状態を許可する時間である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39158,7 +39142,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="connectionpooltcptcpkeepalive">▼ connectionPool.tcp.tcpKeepalive<a class="headerlink" href="#connectionpooltcptcpkeepalive" title="Permanent link">&para;</a></h4>
 <p>宛先との間で TCP KeepAlive を実施する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39179,7 +39162,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="connectionpooltcpmaxconnections">▼ connectionPool.tcp.maxConnections<a class="headerlink" href="#connectionpooltcpmaxconnections" title="Permanent link">&para;</a></h4>
 <p>同時に確立できる TCP 接続の最大数を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39201,7 +39183,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>初回は <code>baseEjectionTime</code> の期間だけ除外する。</p>
 <p>復帰後に再び除外条件を満たした場合、除外期間は <code>baseEjectionTime</code> と除外回数の積になる。</p>
 <p>外れ値検出の判定間隔は、<code>interval</code> キーで設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
 <p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39227,7 +39208,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>サーキットブレイカーを開始する外れ値 (Gateway 系ステータスの <code>502</code>、<code>503</code>、<code>504</code>) の閾値を設定する。</p>
 <p>似た設定として、<code>500</code> 系ステータスの閾値を設定する <code>consecutive5xxErrors</code> キーがあるが、併用できる。</p>
 <p>外れ値検出の判定間隔は、<code>interval</code> キーで設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
 <p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39252,7 +39232,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>サーキットブレイカーを開始する外れ値 (<code>500</code> 系ステータス) の閾値を設定する。</p>
 <p>似た設定として、Gateway 系ステータスの連続回数の閾値を設定する <code>consecutiveGatewayErrors</code> キーがあるが、併用できる。</p>
 <p>外れ値検出の判定間隔は、<code>interval</code> キーで設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>500</code> 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
 <p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39275,7 +39254,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="outlierdetectioninterval">▼ outlierDetection.interval<a class="headerlink" href="#outlierdetectioninterval" title="Permanent link">&para;</a></h4>
 <p>サーキットブレイカーの外れ値の計測間隔を設定する。</p>
 <p>指定した間隔で、連続エラー数が閾値に達した宛先を判定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>500</code> 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。</p>
 <p>初回は、異常な Pod を 30 秒間排除する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39298,7 +39276,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="outlierdetectionmaxejectionpercent">▼ outlierDetection.maxEjectionPercent<a class="headerlink" href="#outlierdetectionmaxejectionpercent" title="Permanent link">&para;</a></h4>
 <p>Pod 全体のうちで排除できる Pod の最大割合 (%) を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>すべての Pod を排除する。</p>
 <p>代わりに istio-proxy から返却された <code>503</code> ステータス (response_flag は <code>UH</code>) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39320,7 +39297,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="outlierdetectionminhealthpercent">▼ outlierDetection.minHealthPercent<a class="headerlink" href="#outlierdetectionminhealthpercent" title="Permanent link">&para;</a></h4>
 <p>宛先サブセットの正常率が指定値を下回った場合に、外れ値検出を無効化するための最低正常率を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39340,7 +39316,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="loadbalancer">▼ loadBalancer<a class="headerlink" href="#loadbalancer" title="Permanent link">&para;</a></h4>
 <p>Pod へのルーティング時に使用する負荷分散方式を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>複数のゾーンの Pod に対して、ラウンドロビンでルーティングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -39357,7 +39332,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings">Istio / Destination Rule</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>指定したゾーンの Pod に対して、指定した重みづけでルーティングする。</p>
 <p>リージョン名やゾーン名は、Pod の <code>topology.kubernetes.io/region</code> キーや <code>topology.kubernetes.io/zone</code> キーの値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -39381,7 +39355,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/">Istio / Locality Load Balancing</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>複数のゾーンの Pod に対して、最小リクエスト数でルーティングする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
@@ -39395,7 +39368,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="portlevelsettingsloadbalancer">▼ portLevelSettings.loadBalancer<a class="headerlink" href="#portlevelsettingsloadbalancer" title="Permanent link">&para;</a></h4>
 <p>Service の待ち受けポート番号ごとに、負荷分散方式を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39413,7 +39385,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="portlevelsettingsport">▼ portLevelSettings.port<a class="headerlink" href="#portlevelsettingsport" title="Permanent link">&para;</a></h4>
 <p>トラフィックポリシーの適用対象とする Service の待ち受けポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39432,7 +39403,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="tlsmode">▼ tls.mode<a class="headerlink" href="#tlsmode" title="Permanent link">&para;</a></h4>
 <p>DestinationRule と宛先 (特にサービスメッシュ外にある対象) の間の暗号化方式を設定する。</p>
 <p>Gateway にも似た設定があるが、あちらは送信元と Gateway の間の暗号化方式を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DestinationRule</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39543,7 +39513,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="04-envoyfilter">04. EnvoyFilter<a class="headerlink" href="#04-envoyfilter" title="Permanent link">&para;</a></h2>
 <h3 id="specconfigpatchesapplyto">.spec.configPatches.applyTo<a class="headerlink" href="#specconfigpatchesapplyto" title="Permanent link">&para;</a></h3>
 <p>パッチの適用対象とする Envoy の処理 (例：LISTENER、CLUSTER、HTTP_FILTER) を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ネットワークフィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -39558,7 +39527,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo">Istio / Envoy Filter</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>HTTP フィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -39573,7 +39541,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo">Istio / Envoy Filter</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>リスナーフィルターの設定値を変更する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -39595,7 +39562,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>条件に合致する設定値があった場合、<code>.spec.configPatches.patch</code> キーで設定した内容に変更する。</p>
 <h4 id="cluster">▼ cluster<a class="headerlink" href="#cluster" title="Permanent link">&para;</a></h4>
 <p>指定したクラスターが存在する場合、フィルターの設定値を変更する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39608,7 +39574,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="listener">▼ listener<a class="headerlink" href="#listener" title="Permanent link">&para;</a></h4>
 <p>指定したリスナーが存在する場合、フィルターの設定値を変更する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39628,7 +39593,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="context">▼ context<a class="headerlink" href="#context" title="Permanent link">&para;</a></h4>
 <p>指定したワークロードタイプ (例：istio-ingressgateway 内の istio-proxy、istio-proxy コンテナの istio-proxy) の場合、フィルターの設定値を変更する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39682,7 +39646,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><code>.spec.configPatches.match</code> キーに設定した設定値があった場合、フィルターの設定値の変更内容を設定する。</p>
 <h4 id="operation">▼ operation<a class="headerlink" href="#operation" title="Permanent link">&para;</a></h4>
 <p>フィルターの設定値の変更方法を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39697,7 +39660,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">Istio / Envoy Filter</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p><code>.spec.configPatches.match</code> キーに合致したフィルターの直前に挿入する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -39713,7 +39675,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">Istio / Envoy Filter</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>フィルターの一番最初に挿入する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
@@ -39729,7 +39690,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation">Istio / Envoy Filter</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39746,7 +39706,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="value">▼ value<a class="headerlink" href="#value" title="Permanent link">&para;</a></h4>
 <p>既存のフィルターに適用したいフィルターを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -39770,7 +39729,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specpriority">.spec.priority<a class="headerlink" href="#specpriority" title="Permanent link">&para;</a></h3>
 <p>複数の EnvoyFilter が同じコンポーネントに適用される場合、パッチの適用順を設定する。</p>
 <p>数字の昇順に適用し、同じ値の場合は作成時刻、完全修飾リソース名の順で決まる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EnvoyFilter</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40123,7 +40081,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="istio-proxy">istio-proxy の定義<a class="headerlink" href="#istio-proxy" title="Permanent link">&para;</a></h3>
 <p>Deployment や Pod で istio-proxy を定義することにより設定を変更できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40174,7 +40131,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Istio Ingress Gateway/EgressGateway に付与された <code>.metadata.labels</code> キーを設定する。</p>
 <p>デフォルトでは、Istio Ingress Gateway には <code>istio</code> ラベルがあり、値は <code>ingressgateway</code> である。</p>
 <p>また、Istio Egress Gateway には <code>istio</code> ラベルがあり、値は <code>egressgateway</code> である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40199,7 +40155,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specserversport">.spec.servers.port<a class="headerlink" href="#specserversport" title="Permanent link">&para;</a></h3>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
 <p>Istio Ingress Gateway/EgressGateway の Pod で待ち受けるポート名を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40219,7 +40174,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Ingress Nginx Controller であれば、Nginx Controller Pod で待ち受けるコンテナポート番号に相当する。</p>
 <p>IngressGateway の内部的な Service のタイプで NodePort Service を選んだ場合、Node の宛先ポート番号に合わせる。</p>
 <p>一方で、LoadBalancer Service を選んだ場合、LoadBalancer がルーティングできる宛先ポート番号とする。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40251,7 +40205,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li>Redis</li>
 <li>MySQL</li>
 </ul>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40278,7 +40231,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="targetport">▼ targetPort<a class="headerlink" href="#targetport" title="Permanent link">&para;</a></h4>
 <p>Istio Ingress Gateway/EgressGateway の Pod の宛先ポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40298,7 +40250,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Gateway でフィルタリングするインバウンド通信の <code>Host</code> ヘッダー名を設定する。</p>
 <p>Istio Ingress Gateway では、複数のマイクロサービスで API を公開している場合、ワイルドカード (<code>*</code>) を使用してすべてのドメインを許可することになる。</p>
 <p>また、Istio Egress Gateway でも任意の API への接続を許可するために、同様にワイルドカード (<code>*</code>) を使用することになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40320,7 +40271,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p><br></p>
 <h3 id="specserverstlscacertificates">.spec.servers.tls.caCertificates<a class="headerlink" href="#specserverstlscacertificates" title="Permanent link">&para;</a></h3>
 <p><code>.spec.servers.tls.mode</code> キーで相互 TLS 認証を設定している場合、クライアント証明書のペアになる CA 証明書が必要である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40340,7 +40290,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>CA を含むサーバー証明書を保持する Secret を設定する。</p>
 <p>サーバー証明書のファイルを指定する場合は、<code>.spec.servers[*].tls.serverCertificate</code> キーを設定する。</p>
 <p>Secret を更新した場合、Pod を再起動せずに、Pod に Secret を再マウントできる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40367,7 +40316,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="simple">▼ SIMPLE<a class="headerlink" href="#simple" title="Permanent link">&para;</a></h4>
 <p>送信元と Gateway の通信間で通常の HTTPS を実施する。</p>
 <p>クライアント証明書は不要にである。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40379,7 +40327,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="mutual">▼ MUTUAL<a class="headerlink" href="#mutual" title="Permanent link">&para;</a></h4>
 <p>送信元と Gateway の間で、Istio の作成していない証明書による相互 TLS 認証を実施する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40392,7 +40339,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="istio_mutual">▼ ISTIO_MUTUAL<a class="headerlink" href="#istio_mutual" title="Permanent link">&para;</a></h4>
 <p>送信元と Gateway の間で、Istio の作成した証明書による相互 TLS 認証を実施する。</p>
 <p>istio-proxy と Istio Egress Gateway の間で相互 TLS 認証を実施する場合、これを使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40407,7 +40353,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>つまり、Gateway の宛先にサーバー証明書を設定する必要がある。</p>
 <p><code>PASSTHROUGH</code> 以外のモードでは、Gateway で SSL を検証し、場合にとっては SSL 終端となる。</p>
 <p>注意点として、Gateway は受信した HTTPS を TCP プロトコルとして処理するため、<code>L7</code> ヘッダーにある HTTP ヘッダーやパスを使用してトラフィックを制御できない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40426,7 +40371,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <p><br></p>
 <h3 id="specserverstlsprivatekey">.spec.servers.tls.privateKey<a class="headerlink" href="#specserverstlsprivatekey" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40446,7 +40390,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>サーバー証明書のファイルを設定する。</p>
 <p><code>.spec.servers.tls.mode</code> キーで相互 TLS 認証を設定している場合、クライアント証明書のペアになるサーバー証明書が必要である。</p>
 <p>サーバー証明書を保持する Secret を指定する場合は、<code>.spec.servers[*].tls.credentialName</code> キーを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Gateway</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40465,7 +40408,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h2 id="06-peerauthentication">06. PeerAuthentication<a class="headerlink" href="#06-peerauthentication" title="Permanent link">&para;</a></h2>
 <h3 id="specselector_2">.spec.selector<a class="headerlink" href="#specselector_2" title="Permanent link">&para;</a></h3>
 <p>指定した Namespace の特定の Pod で相互 TLS 認証を有効化する</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeerAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40519,7 +40461,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
   </tbody>
 </table>
 
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">security.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PeerAuthentication</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40835,7 +40776,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="hosts">▼ hosts とは<a class="headerlink" href="#hosts" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のドメイン名を設定する。</p>
 <p>部分的にワイルドカード (<code>*</code>) を使用できるが、すべてのドメインを許可 (ワイルドカードのみ) できない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40893,7 +40833,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="specports">.spec.ports<a class="headerlink" href="#specports" title="Permanent link">&para;</a></h3>
 <h4 id="ports">▼ ports とは<a class="headerlink" href="#ports" title="Permanent link">&para;</a></h4>
 <p>コンフィグストレージに登録する宛先のポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40924,7 +40863,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="dns">▼ DNS<a class="headerlink" href="#dns" title="Permanent link">&para;</a></h4>
 <p>DNS サーバーから返信された IP アドレスを許可する。</p>
 <p>サービスメッシュ外のパブリックなドメインに接続する場合は、必須である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -40941,7 +40879,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Istio Egress Gateway は値に注意が必要である。</p>
 <p>ServiceEntry に対するリクエストの宛先 IP アドレスは Istio Egress Gateway に書き換えられている。</p>
 <p>そのため、DNS 解決を <code>NONE</code> にすると、Istio Egress Gateway は ServiceEntry を見つけられず、自分自身でループしてしまう。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceEntry</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41165,7 +41102,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
 <p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
 <p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41184,7 +41120,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>通信元が同じ Namespace にある場合、<code>.</code> で同じ Namespace 内だけに公開できる。</p>
 <p>異なる Namespace の通信元で設定を使用する場合、<code>*</code> で全 Namespace に公開する。</p>
 <p>Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41202,7 +41137,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>VirtualService の設定値を適用する <code>Host</code> ヘッダー値を設定する。</p>
 <p>ワイルドカード (<code>*</code>) を使用してすべてのドメインを許可してもよいが、特定のマイクロサービスへのリクエストのみを扱うため、宛先マイクロサービスのホスト名に限定するとよい。</p>
 <p>なお、<code>.spec.gateways</code> キーで <code>mesh</code> (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：<code>.spec.hosts</code> キーを設定しない、特定の Host ヘッダー値を設定するなど)</p>
-<p><strong>＊実装例＊</strong></p>
 <p>すべての Host ヘッダー値で VirtualService を適用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41228,7 +41162,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Gateway 名とその Namespace を設定する。</p>
 <p>VirtualService と Gateway が同じ Namespace に所属する場合は、Namespace を省略できる (<code>.spec.export</code> キーとは関係ない) 。</p>
 <p>ただ、Namespace は省略しないほうがわかりやすい。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41246,7 +41179,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>VirtualService を、Istio Ingress Gateway/EgressGateway に紐づける場合 (サービスメッシュ内外の通信) は <code>&lt;Gateway名&gt;</code> とする。</p>
 <p>VirtualService と Gateway が同じ Namespace に所属する場合は、Namespace を省略できる (<code>.spec.export</code> キーとは関係ない) 。</p>
 <p>ただ、Namespace は省略しないほうがわかりやすい。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41390,7 +41322,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="mesh">▼ mesh<a class="headerlink" href="#mesh" title="Permanent link">&para;</a></h4>
 <p>VirtualService を、Pod 間通信で使用する場合は <code>mesh</code> (デフォルト値) とする。</p>
 <p>Host ヘッダーに <code>*</code> (ワイルドカード) を使用できず、特定の Host ヘッダーのみを許可する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41426,7 +41357,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="spechttpfault">.spec.http.fault<a class="headerlink" href="#spechttpfault" title="Permanent link">&para;</a></h3>
 <h4 id="fault">▼ fault とは<a class="headerlink" href="#fault" title="Permanent link">&para;</a></h4>
 <p>発生させるフォールトインジェクションを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>503</code> ステータスのエラーを <code>100</code>%の確率で発生させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41447,7 +41377,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://speakerdeck.com/nutslove/istioru-men?slide=19">Istio入門 - Speaker Deck</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p><code>10</code> 秒のレスポンスの遅延を <code>100</code>%の確率で発生させる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41474,7 +41403,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>受信した通信のうち、ルールを適用するもののメッセージ構造を設定する。</p>
 <h4 id="_16">▼ &lt;ヘッダー名&gt;<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>ヘッダー名で合致条件を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>受信した通信のうち、<code>x-foo</code> ヘッダーに <code>bar</code> が割り当てられたものだけにルールを適用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41487,7 +41415,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <span class="w">            </span><span class="nt">x-foo</span><span class="p">:</span>
 <span class="w">              </span><span class="nt">exact</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bar</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>ユーザーエージェントで振り分ける。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41564,7 +41491,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="uri">▼ uri<a class="headerlink" href="#uri" title="Permanent link">&para;</a></h4>
 <p>リクエストの URI で合致条件を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>受信した通信のうち、URL の接頭辞が <code>/foo</code> のものだけにルールを適用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
@@ -41586,7 +41512,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="retries">▼ retries とは<a class="headerlink" href="#retries" title="Permanent link">&para;</a></h4>
 <p>リトライ条件を設定する。</p>
 <p>なお、TCP 接続には <code>spec.tcp[*].retries</code> キーのような同様の設定は存在しない。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>Gateway 系ステータス (<code>502</code>、<code>503</code>、<code>504</code>) の場合、<code>attempts</code> の数だけリトライする。</p>
 <p>各リトライで処理の結果が返却されるまでの処理タイムアウト時間を <code>perTryTimeout</code> で設定する。</p>
 <p>リクエストの処理タイムアウト時間を <code>timeout</code> で、リトライ 1 回あたりの処理タイムアウト時間を <code>retries.perTryTimeout</code> で設定する。</p>
@@ -41644,7 +41569,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="attempt">▼ attempt<a class="headerlink" href="#attempt" title="Permanent link">&para;</a></h4>
 <p>istio-proxy のリバースプロキシに失敗した場合の最大リトライ回数を設定する。</p>
 <p>Service へのルーティングの失敗ではないことに注意する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41657,7 +41581,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="retryon">▼ retryOn<a class="headerlink" href="#retryon" title="Permanent link">&para;</a></h4>
 <p>リトライ失敗の理由を設定する。</p>
 <p>istio-proxy は、レスポンスの <code>x-envoy-retry-on</code> ヘッダーに割り当てるため、その値を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>デフォルトでは、リトライの条件は <code>connect-failure,refused-stream,unavailable</code> である。</p>
 <p><code>EXCLUDE_UNSAFE_503_FROM_DEFAULT_RETRY</code> 変数を <code>true</code> にすると、元はデフォルト値であった <code>503</code> を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
@@ -41680,7 +41603,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h3 id="spechttproute">.spec.http.route<a class="headerlink" href="#spechttproute" title="Permanent link">&para;</a></h3>
 <h4 id="destinationhost">▼ destination.host<a class="headerlink" href="#destinationhost" title="Permanent link">&para;</a></h4>
 <p>受信した通信で宛先の Service のドメイン名 (あるいは Service 名) を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -41701,7 +41623,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </blockquote>
 <h4 id="destinationport">▼ destination.port<a class="headerlink" href="#destinationport" title="Permanent link">&para;</a></h4>
 <p>受信する通信でルーティング先のポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41728,7 +41649,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>VirtualService を起点とした Pod のカナリアリリースで使用する。</p>
 <p>紐付けたい DestinationRule のサブセット名と同じ名前を設定する。</p>
 <p>DestinationRule で受信した通信を、DestinationRule のサブセットに紐づく Pod へルーティングする。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41765,7 +41685,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>Service の重み付けルーティングの割合を設定する。</p>
 <p><code>.spec.http[*].route[*].destination.subset</code> キーの値は、DestinationRule で設定した <code>.spec.subsets[*].name</code> キーに合わせる必要がある。</p>
 <p>重み付けの偏りの割合によって、カナリアリリースや B/G デプロイメントを実現できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41846,7 +41765,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </ul>
 </blockquote>
 <h4 id="match_2">▼ match<a class="headerlink" href="#match_2" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41858,7 +41776,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="routedestinationhost">▼ route.destination.host<a class="headerlink" href="#routedestinationhost" title="Permanent link">&para;</a></h4>
 <p><code>.spec.http</code> キーと同じ機能である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41877,7 +41794,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="routedestinationport">▼ route.destination.port<a class="headerlink" href="#routedestinationport" title="Permanent link">&para;</a></h4>
 <p><code>.spec.http</code> キーと同じ機能である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -41898,7 +41814,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 </code></pre></div>
 <h4 id="routedestinationsubset">▼ route.destination.subset<a class="headerlink" href="#routedestinationsubset" title="Permanent link">&para;</a></h4>
 <p><code>.spec.http</code> キーと同じ機能である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VirtualService</span>
 <span class="nt">metadata</span><span class="p">:</span>

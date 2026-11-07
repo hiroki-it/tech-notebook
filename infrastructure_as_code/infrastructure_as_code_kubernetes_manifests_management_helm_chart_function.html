@@ -35922,7 +35922,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -36358,7 +36358,6 @@
 <h4 id="_13">▼ ドルとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>出力時に、<code>yaml</code> ファイルのルートを明示的に出力する。</p>
 <p>アクションのなかで、<code>yaml</code> ファイルのルートへリクエストしたい場合に役立つ。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>range()</code> 関数を使用すると、<code>yaml</code> ファイルへのアクセスのルートが変わってしまう。</p>
 <p>ルートを明示することにより、<code>range()</code> 関数内でも <code>yaml</code> ファイルの正しいルートにリクエストを送信できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># マニフェスト全体を range 関数で囲う場合は、区切り記号 (---) を入れる</span>
@@ -36391,7 +36390,6 @@
 </blockquote>
 <h4 id="_14">▼ マップ型を扱う場合<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>マップ型を入力値として使用できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>もし、以下のような平文ファイルがあるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># plane.yaml ファイル</span>
 <span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
@@ -36419,7 +36417,6 @@
 <li><a href="https://helm-playground.com/cheatsheet.html#loops">Helm template syntax cheat sheet</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>マップ型の一番上層のキー名を反復的に取得する場合に役立つ。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">config</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">foo</span><span class="p">:</span>
@@ -36505,7 +36502,6 @@
 <h3 id="fromyaml">fromYaml<a class="headerlink" href="#fromyaml" title="Permanent link">&para;</a></h3>
 <h4 id="fromyaml_1">▼ fromYaml とは<a class="headerlink" href="#fromyaml_1" title="Permanent link">&para;</a></h4>
 <p>string 型を map 型に変換する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>もし、以下のような平文ファイルあるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># plane.yaml ファイル</span>
 <span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">FOO</span>
@@ -36649,7 +36645,6 @@
 <h4 id="b64enc_1">▼ b64enc とは<a class="headerlink" href="#b64enc_1" title="Permanent link">&para;</a></h4>
 <p><code>base64</code> 方式でエンコードする。</p>
 <p>Secret の <code>.data</code> キーでは、他の Kubernetes リソースへの出力時に自動的に <code>base64</code> 方式でデコードするようになっており、相性がよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># values ファイル</span>
 <span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hiroki-it</span>
 <span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pass</span>
@@ -36663,7 +36658,6 @@
 <span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.username | b64enc</span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.password | b64enc</span><span class="p p-Indicator">}}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>リポジトリの資格情報を管理する Secret を繰り返し作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{{</span><span class="nv">- range .Values.github.repositories</span><span class="w"> </span><span class="p p-Indicator">}}</span>
 <span class="p p-Indicator">{{</span><span class="nv">- /*</span>
@@ -36749,7 +36743,6 @@
 <p>これらの Kubernetes リソースの PodTemplate の <code>.metadata.annotations</code> キーにて、テンプレートの出力を <code>sha256sum</code> に入力する。</p>
 <p>これにより、Secret と ConfigMap を変更した場合に、ハッシュ値が変更される。</p>
 <p>そのため、PodTemplate が変更されたことになり、Pod も再作成できるようになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -36787,7 +36780,6 @@
 <h3 id="-"><code>-</code> (ハイフン)<a class="headerlink" href="#-" title="Permanent link">&para;</a></h3>
 <h4 id="-_1">▼ <code>{{-</code><a class="headerlink" href="#-_1" title="Permanent link">&para;</a></h4>
 <p><code>{{-</code> であると、テンプレートの出力時にこれより前のインデントを削除する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
 
 <span class="w">  </span><span class="p p-Indicator">{{</span><span class="nv">- define "foo-template"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
@@ -36824,7 +36816,6 @@
 <h4 id="indent_1">▼ indent とは<a class="headerlink" href="#indent_1" title="Permanent link">&para;</a></h4>
 <p>改行せずに、そのままスペースを挿入したうえで、内容を出力する。</p>
 <p><code>nindent()</code> 関数とは、改行しない点で異なる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
 
 <span class="p p-Indicator">{{</span><span class="nv">- define "foo-template"</span><span class="w"> </span><span class="p p-Indicator">}}</span>
@@ -36854,7 +36845,6 @@
 <h4 id="nindent_1">▼ nindent とは<a class="headerlink" href="#nindent_1" title="Permanent link">&para;</a></h4>
 <p>改行しつつ、スペースを挿入したうえで、内容を出力する。</p>
 <p><code>indent()</code> 関数とは、改行する点で異なる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="err">*</span><span class="w"> </span><span class="nv">tplファイル *</span><span class="p p-Indicator">}</span>
 
 <span class="p p-Indicator">{{</span><span class="nv">- define "foo-template"</span><span class="w"> </span><span class="p p-Indicator">}}</span>

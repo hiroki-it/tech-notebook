@@ -35394,7 +35394,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月1日 23:20:14 JST">2026-11-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -36016,6 +36016,35 @@
 </ul>
 </blockquote>
 <p>書籍モデルの実装例は次のとおりである。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// カタログコンテキストの書籍モデル</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 書籍の一意の識別子</span>
+<span class="w">    </span><span class="nx">Isbn</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 書籍のタイトル</span>
+<span class="w">    </span><span class="nx">Title</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 書籍の著者</span>
+<span class="w">    </span><span class="nx">Author</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 書籍の説明</span>
+<span class="w">    </span><span class="nx">Description</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 書籍の販売価格</span>
+<span class="w">    </span><span class="nx">Price</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">isbn</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">author</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">description</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">price</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Isbn</span><span class="p">:</span><span class="w">        </span><span class="nx">isbn</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Title</span><span class="p">:</span><span class="w">       </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Author</span><span class="p">:</span><span class="w">      </span><span class="nx">author</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Description</span><span class="p">:</span><span class="w"> </span><span class="nx">description</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Price</span><span class="p">:</span><span class="w">       </span><span class="nx">price</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cm">/** カタログコンテキストの書籍モデル */</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -36032,6 +36061,65 @@
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="sd">/** カタログコンテキストの書籍モデル */</span>
+<span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="sd">/** 書籍の一意の識別子 */</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$isbn</span><span class="p">,</span>
+        <span class="sd">/** 書籍のタイトル */</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="sd">/** 書籍の著者 */</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$author</span><span class="p">,</span>
+        <span class="sd">/** 書籍の説明 */</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$description</span><span class="p">,</span>
+        <span class="sd">/** 書籍の販売価格 */</span>
+        <span class="k">public</span> <span class="nx">int</span> <span class="nv">$price</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">BookStatus</span><span class="w"> </span><span class="kt">string</span>
+
+<span class="kd">const</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="nx">InStock</span><span class="w">    </span><span class="nx">BookStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"IN_STOCK"</span>
+<span class="w">    </span><span class="nx">OutOfStock</span><span class="w"> </span><span class="nx">BookStatus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"OUT_OF_STOCK"</span>
+<span class="p">)</span>
+
+<span class="c1">// 在庫コンテキストの書籍モデル</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 書籍の一意の識別子</span>
+<span class="w">    </span><span class="nx">Isbn</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 書籍のタイトル</span>
+<span class="w">    </span><span class="nx">Title</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 書籍の在庫数</span>
+<span class="w">    </span><span class="nx">QuantityAvailable</span><span class="w"> </span><span class="kt">int</span>
+<span class="w">    </span><span class="c1">// 保管場所</span>
+<span class="w">    </span><span class="nx">Location</span><span class="w"> </span><span class="kt">string</span>
+<span class="w">    </span><span class="c1">// 書籍の在庫ステータス</span>
+<span class="w">    </span><span class="nx">Status</span><span class="w"> </span><span class="nx">BookStatus</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBook</span><span class="p">(</span><span class="nx">isbn</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">quantityAvailable</span><span class="w"> </span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="nx">location</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">status</span><span class="w"> </span><span class="nx">BookStatus</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Book</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">Isbn</span><span class="p">:</span><span class="w">              </span><span class="nx">isbn</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Title</span><span class="p">:</span><span class="w">             </span><span class="nx">title</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">QuantityAvailable</span><span class="p">:</span><span class="w"> </span><span class="nx">quantityAvailable</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Location</span><span class="p">:</span><span class="w">          </span><span class="nx">location</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">Status</span><span class="p">:</span><span class="w">            </span><span class="nx">status</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="cm">/** 在庫コンテキストの書籍モデル */</span>
 <span class="kd">class</span><span class="w"> </span><span class="nx">Book</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span>
@@ -36048,6 +36136,35 @@
 <span class="w">  </span><span class="p">)</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">enum</span> <span class="nx">BookStatus</span><span class="o">:</span> <span class="nx">string</span>
+<span class="p">{</span>
+    <span class="k">case</span> <span class="nx">InStock</span> <span class="o">=</span> <span class="s2">"IN_STOCK"</span><span class="p">;</span>
+    <span class="k">case</span> <span class="nx">OutOfStock</span> <span class="o">=</span> <span class="s2">"OUT_OF_STOCK"</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="sd">/** 在庫コンテキストの書籍モデル */</span>
+<span class="k">class</span> <span class="nc">Book</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="sd">/** 書籍の一意の識別子 */</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$isbn</span><span class="p">,</span>
+        <span class="sd">/** 書籍のタイトル */</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span>
+        <span class="sd">/** 書籍の在庫数 */</span>
+        <span class="k">public</span> <span class="nx">int</span> <span class="nv">$quantityAvailable</span><span class="p">,</span>
+        <span class="sd">/** 保管場所 */</span>
+        <span class="k">public</span> <span class="nx">string</span> <span class="nv">$location</span><span class="p">,</span>
+        <span class="sd">/** 書籍の在庫ステータス */</span>
+        <span class="k">public</span> <span class="nx">BookStatus</span> <span class="nv">$status</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="_24">▼ 例：完全個室ジムを運営するハコジム<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <p>完全個室ジムを運営するハコジムの例。</p>
 <p>個室ジムドメインのコアドメインとサブドメインに基づく境界づけられたコンテキスト。</p>

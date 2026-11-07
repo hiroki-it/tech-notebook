@@ -36758,7 +36758,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:23:00 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -36824,7 +36824,6 @@
 <p>go のプログラムが起動したときに、各パッケージの <code>init()</code> 関数が実行された後、<code>main()</code> 関数が実行される。</p>
 <p><code>main()</code> 関数をビルド対象に指定すると、これを開始点として読み込まれるファイルが枝分かれ状にビルドされていく。</p>
 <p>ステータス『0』でプロセスを終了する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -36922,7 +36921,6 @@ runtime.main:<span class="w"> </span>undefined:<span class="w"> </span>main.main
 <li><a href="https://www.educative.io/answers/what-is-the-difference-between-a-method-and-a-function">What is the difference between a method and a function?</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
@@ -37030,7 +37028,6 @@ module example.com/foo
 <p>名前のない関数のこと。</p>
 <h4 id="_10">▼ 即時関数とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>定義したその場でコールされる無名関数のこと。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>main 関数で即時関数を実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37044,7 +37041,6 @@ module example.com/foo
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">result</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>即時関数に引数を設定できる。</p>
 <p>その場合、仮引数と引数の両方を設定する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -37076,7 +37072,6 @@ module example.com/foo
 <p>データ型や型リテラルなどを関数のレシーバとして渡すことによって、それに関数を紐付けられる。</p>
 <p>紐付け後、関数はメソッドとも呼ばれるようになる。</p>
 <p>関数名とフィールド名に同じ名前は使用できない。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>integer 型を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37097,7 +37092,6 @@ module example.com/foo
 <span class="w">    </span><span class="nx">log</span><span class="p">.</span><span class="nx">Printf</span><span class="p">(</span><span class="s">"%v"</span><span class="p">,</span><span class="w"> </span><span class="nx">age</span><span class="p">.</span><span class="nx">PrintAge</span><span class="p">())</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>構造体を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37133,7 +37127,6 @@ module example.com/foo
 <p>紐付け後、関数はメソッドとも呼ばれるようになる。</p>
 <p>レシーバとして渡された引数を関数内でコピーしてから使用する。</p>
 <p>値レシーバによって紐付けられると、その関数は構造体の状態を変えられなくなるため、構造体をイミュータブルにしたい場合は、値レシーバを使用するとよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>構造体を値レシーバとして渡し、構造体に関数を紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37175,7 +37168,6 @@ module example.com/foo
 <p>ポインタレシーバによって紐付けられると、その関数は構造体の状態を変えられるようになるため、構造体をミュータブルにしたい場合は、ポインタレシーバを使用するとよい。</p>
 <p>構造体を初期化する処理を持つコンストラクタ関数のみをポインタレシーバとし、他の関数をすべて値レシーバとすると、最低限にミュータブルなプログラムを実装できる。</p>
 <p>また、構造体はポインタ型として扱ったほうがメモリを節約できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"log"</span>
@@ -37210,7 +37202,6 @@ module example.com/foo
 <h4 id="defer_2">▼ 複数の defer 関数<a class="headerlink" href="#defer_2" title="Permanent link">&para;</a></h4>
 <p>defer は複数の関数で宣言できる。</p>
 <p>複数宣言した場合、後に宣言されたものから実行される。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
@@ -37256,7 +37247,6 @@ module example.com/foo
 <p><code>recover()</code> 関数を実行すると、panic になったその処理のみを終了し、他の並行処理を実行し続けられる。</p>
 <p>即時関数を <code>defer()</code> 関数化している。</p>
 <p>処理の最後にランタイムエラーが発生したとき、これを <code>recover()</code> 関数で吸収できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37422,7 +37412,6 @@ module example.com/foo
 <p>可変個引数関数にて、使用側で設定したパラメーターと関数内部で設定したパラメーターを <code>append()</code> 関数でマージする。</p>
 <p>両方のパラメーターは slice 型であるため、<code>append()</code> 関数でマージできる。</p>
 <p>パラメーターと <code>append()</code> 関数の返り値の両方の slice を、アンパック (<code>...</code>) する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37464,7 +37453,6 @@ module example.com/foo
 <span class="w">    </span><span class="p">})</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">middleware</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37509,7 +37497,6 @@ module example.com/foo
 <p><br></p>
 <h3 id="_21">返却値<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ 複数の返却値<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37536,7 +37523,6 @@ module example.com/foo
 </code></pre></div>
 <h4 id="_23">▼ 返却値の破棄<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>関数から複数の値が返却されるとき、使用しない値をアンダースコアに代入することにより、これを破棄できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37554,7 +37540,6 @@ module example.com/foo
 </code></pre></div>
 <h4 id="_24">▼ 関数の返却<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
 <p>引数型と返却型を指定して、関数を返却できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>http.Handler</code> を引数型、<code>http.Handler</code> を返却型、として設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">FooMiddleware</span><span class="p">()</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="p">)</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">Handler</span><span class="w"> </span><span class="p">{</span>
 
@@ -37663,7 +37648,6 @@ module example.com/foo
 <li>追加した関数を並行的にコールする関数</li>
 </ul>
 <p>を用意する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37771,7 +37755,6 @@ module example.com/foo
 <li><a href="https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622">https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37821,7 +37804,6 @@ module example.com/foo
 <h2 id="02">02. 変数<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_27">定義 (宣言+代入)<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <h4 id="_28">▼ 明示的な定義<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 1個の変数を定義 (宣言と代入が同時でない)</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">number</span><span class="w"> </span><span class="kt">int</span>
 <span class="nx">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span>
@@ -37834,7 +37816,6 @@ module example.com/foo
 <span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">bar</span><span class="p">,</span><span class="w"> </span><span class="nx">baz</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span>
 </code></pre></div>
 <h4 id="_29">▼ 暗黙的な定義 (型推論)<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// データ型が自動的に認識される</span>
 <span class="nx">w</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="mi">1</span>
 <span class="nx">x</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="kc">true</span>
@@ -37869,7 +37850,6 @@ module example.com/foo
 <h4 id="_30">▼ 再宣言<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
 <p>基本的には、同じスコープ内で既存の変数を再宣言できない。</p>
 <p>ただし、複数の変数を宣言するときは注意する。いずれかに新しい変数の宣言が含まれていれば、既存の変数を宣言したとしても代入のみが実行される。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -37891,7 +37871,6 @@ module example.com/foo
 <h4 id="_32">▼ グローバル変数<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
 <p>関数の外部で定義した変数のこと。</p>
 <p>スコープとして、宣言されたパッケージ外部でも使用できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>グローバル変数を宣言し、関数内で値を代入する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
@@ -37929,7 +37908,6 @@ module example.com/foo
 <h4 id="_33">▼ ローカル変数<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
 <p>関数の内部で定義した変数のこと。</p>
 <p>スコープとして、宣言されたパッケージ内部でしか使用できない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38071,7 +38049,6 @@ module example.com/foo
 <h3 id="_37">変数、定数<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <h4 id="_38">▼ パッケージ内外から参照可能<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>変数名または定数名の頭文字を大文字すると、パッケージ内外でこれをコールできるようになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
 <span class="c1">// 定数を定義する。</span>
@@ -38091,7 +38068,6 @@ module example.com/foo
 </code></pre></div>
 <h4 id="_39">▼ パッケージ内のみ参照可能<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
 <p>変数名または定数名の頭文字を小文字すると、パッケージ外でこれをコールできなくなる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
 <span class="c1">// 定数を定義する。</span>
@@ -38113,7 +38089,6 @@ module example.com/foo
 <h3 id="_40">関数<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h3>
 <h4 id="_41">▼ パッケージ内外から参照可能<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <p>関数名の頭文字を大文字すると、パッケージ内外でこれをコールできるようになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">foo</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">Foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38128,7 +38103,6 @@ module example.com/foo
 </code></pre></div>
 <h4 id="_42">▼ パッケージ内のみ参照可能<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
 <p>関数名の頭文字を小文字すると、パッケージ外でこれをコールできなくなる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
@@ -38300,7 +38274,6 @@ module example.com/foo
 <h3 id="_44">単一処理<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
 <h4 id="_45">▼ 単一処理とは<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
 <p>特定の処理のみを実行する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
@@ -38769,7 +38742,6 @@ module example.com/foo
 <span class="w">    </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>os パッケージの <code>Open()</code> 関数から <code>error</code> インターフェースが返却される。</p>
 <p><code>error</code> インターフェースは <code>Error()</code> 関数を自動的に実行し、標準エラー出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
@@ -38796,7 +38768,6 @@ module example.com/foo
 <p>errors パッケージの <code>New()</code> 関数にエラーを設定する。</p>
 <p>これにより、ユーザー定義のエラーを保持する <code>error</code> インターフェースを定義できる。</p>
 <p><code>error</code> インターフェースは <code>Error()</code> 関数を自動的に実行する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38832,7 +38803,6 @@ module example.com/foo
 <p>事前に定義したフォーマットを元にエラーを設定する。</p>
 <p>これにより、ユーザー定義のエラーを保持する <code>error</code> インターフェースを定義できる。</p>
 <p><code>error</code> インターフェースは <code>Error()</code> 関数を自動的に実行する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38857,7 +38827,6 @@ module example.com/foo
 <p>構造体に <code>Error()</code> 関数を定義すると、この構造体に <code>error</code> インターフェースが自動的に委譲される。</p>
 <p>これにより、ユーザー定義のエラーを保持する <code>error</code> インターフェースを定義できる。</p>
 <p><code>error</code> インターフェースは <code>Error()</code> 関数を自動的に実行する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>
@@ -38900,7 +38869,6 @@ module example.com/foo
 <p>標準の errors パッケージには、エラーにスタックトレース情報が含まれていない。</p>
 <p>xerrors パッケージによって作成される <code>error</code> インターフェースには、返却された行数がスタックトレースとして含まれている。</p>
 <h4 id="new_1">▼ <code>New()</code> 関数によるトレース付与<a class="headerlink" href="#new_1" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nx">main</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="p">(</span>

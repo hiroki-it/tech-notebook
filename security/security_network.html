@@ -35058,7 +35058,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -35464,7 +35464,6 @@ public
 <p>リクエストの <code>Origin</code> ヘッダーとレスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーの値を同じにする必要がある。</p>
 <p>リクエストの <code>Origin</code> ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
 <p>レスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーは、リクエストの <code>Origin</code> ヘッダーと同じ値あるいはワイルドカード (<code>*</code>) とする必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <dl>
 <dt><code>(1)</code></dt>
 <dd>
@@ -35555,7 +35554,6 @@ public
 </ul>
 </blockquote>
 <h4 id="domain_2">▼ Domain 属性の仕組み<a class="headerlink" href="#domain_2" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>Domain 属性に <code>example.com</code> が割り当てられていたとする。</p>
 <p>最初にドットがついているドメイン (<code>.example.com</code>) でも、同じ値として認識される。</p>
 <p>この場合、<code>example.com</code> に加えて、サブドメイン名 (<code>foo.example.com</code>) に対しても、<code>Cookie</code> ヘッダーを持つリクエストを送信できる。</p>
@@ -35677,7 +35675,6 @@ public
 <p><code>L7</code> に対するサイバー攻撃 (例：Dos 攻撃、DDos 攻撃など) を防御する。</p>
 <p><br></p>
 <h3 id="post">POST リクエストのリクエスト制限<a class="headerlink" href="#post" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <p><code>php.ini</code> ファイルにて、一度に受信できる POST リクエストの上限値を設定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="na">max_input_vars</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">1000</span>
 </code></pre></div>

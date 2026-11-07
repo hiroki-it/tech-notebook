@@ -36772,7 +36772,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -38274,7 +38274,6 @@
 <p>コンテナイメージのキャッシュは、kubelet によるガベージコレクションまたは Node の再作成で削除される。</p>
 <p>KubeletConfiguration の <code>--image-gc-high-threshold</code> オプションで、キャッシュ削除の閾値とするディスク使用率を設定する。</p>
 <p><code>--image-gc-low-threshold</code> オプションで、解放しようとするディスク使用率を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ディスク使用率が <code>70</code>%を超過した場合、ディスク使用率 <code>50</code>%分を解放する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -38312,7 +38311,6 @@
 <p>また <code>--shutdown-grace-period-critical-pods</code> オプション (<code>shutdownGracePeriodCriticalPods</code>) で、特に重要な Pod の終了のために待機する時間を設定する。</p>
 <p><code>InhibitDelayMaxSec</code> には、<code>--shutdown-grace-period</code> オプションと同じ秒数 (単位は不要) を設定する。</p>
 <p>注意点として、この時間が長すぎると、ワーカーNode の停止の全体時間が長くなるため、結果的にローリングアップグレードで Node の所要時間も長くなってしまう。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ワーカーNode の停止を <code>6</code> 分だけ待機し、その後に停止を始める。</p>
 <p><code>6</code> 分のうち後半 <code>2</code> 分を、重要な Pod の停止に割り当てる。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>

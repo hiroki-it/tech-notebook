@@ -35734,7 +35734,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -35813,7 +35813,6 @@
 <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span>
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">(</span><span class="nv">$name</span><span class="p">);</span> <span class="c1">// 集約の関係</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">App\Domain\Car\Entity\Tire1</span><span class="p">;</span>
@@ -35859,7 +35858,6 @@
 <h4 id="composition_1">▼ Composition とは<a class="headerlink" href="#composition_1" title="Permanent link">&para;</a></h4>
 <p>保持される側のクラスのインスタンスが、保持する側のクラスのインスタンスによって作成されるとき、クラス間が『Composition』の関係にある。</p>
 <h4 id="_3">▼ 例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p><img alt="composition_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png" /></p>
 <p>User クラスは UserName クラスを状態として保持する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
@@ -35886,7 +35884,6 @@
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>Car クラスは Lock クラスを状態として保持する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -35921,7 +35918,6 @@
 <h3 id="generalization">Generalization (汎化)<a class="headerlink" href="#generalization" title="Permanent link">&para;</a></h3>
 <h4 id="override">▼ 汎化における Override<a class="headerlink" href="#override" title="Permanent link">&para;</a></h4>
 <p>汎化のとき、子クラスで関数の処理内容を再び実装すると、処理内容は上書きされる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 親クラス</span>
@@ -36016,7 +36012,6 @@
 <p>⇒ デメリット：<code>1</code> 個の修正が、全部署の社員の処理に影響を与えてしまう。</p>
 <p>抽象オブジェクトと抽象関数を使用すると、<code>2</code> 個のメリットを生かしつつ、デメリットを解決可能。</p>
 <p><img alt="抽象クラスと抽象関数-2" src="https://user-images.githubusercontent.com/42175286/59590387-e8adcd80-9126-11e9-87b3-7659468af2f6.PNG" /></p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
@@ -36096,7 +36091,6 @@
 <p>つまり、抽象クラスに関数の型のみ定義した場合と同じである。</p>
 <p>多重継承できる。</p>
 <p><img alt="子インターフェースの多重継承_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/子インターフェースの多重継承_2.png" /></p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">interface</span> <span class="nx">Animal</span>
@@ -36204,7 +36198,6 @@
 <h4 id="_7">▼ クラスチェーンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>クラスからデータや関数をコールしたとき、そのクラスにこれらが存在しなければ、継承元まで参照しにいく仕組みを『クラスチェーン』という。</p>
 <p>類似するものとして、JavaScript のプロトタイプチェーンがある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 継承元クラス</span>
@@ -36241,7 +36234,6 @@
 </code></pre></div>
 <p><br></p>
 <h3 id="_8">継承元の関数を参照<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">abstract</span> <span class="k">class</span> <span class="nc">Foo</span>
@@ -36271,7 +36263,6 @@
 <p>Trait を使用するときは、クラス内で Trait を use 宣言する。</p>
 <p>Trait 自体は不完全なクラスであり、インスタンス化できない。</p>
 <p>また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">trait</span> <span class="nx">FooTrait</span>
@@ -36298,7 +36289,6 @@
 <h4 id="trait_2">▼ マジック関数を禁止する Trait<a class="headerlink" href="#trait_2" title="Permanent link">&para;</a></h4>
 <p>マジック関数を使用すると、処理が多くなるため、性能が悪くなる。</p>
 <p>そこで、各クラスで trait を使用して、マジック関数をコールしたときに、開発者向けにエラーが発生させる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>マジックゲッター関数とマジックセッター関数がコールされることを禁止する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36425,7 +36415,6 @@
 </blockquote>
 <h4 id="_15">▼ 外部ファイルのクラスから関数をコール<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>クラスの <code>namespace</code> を <code>use</code> 文で指定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 名前空間を定義。</span>
@@ -36459,7 +36448,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_16">▼ 外部ファイルのクラスから定数をコール<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">Domain\Foo</span><span class="p">;</span>
@@ -36496,7 +36484,6 @@
 </ul>
 </blockquote>
 <h4 id="_17">▼ 例<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p><img alt="dependency_example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dependency_example.png" /></p>
 <p>User は UserName を引数として使用する。</p>
 <p>User は UserName に依存している。</p>
@@ -36531,7 +36518,6 @@
 <p>コンストラクタインジェクションのみが、<code>construct()</code> 関数 によって、インスタンス作成のために依存関係の要件を強制できる。</p>
 <p>また、セッターを完全になくした場合、インスタンス作成後にオブジェクトの状態を変更できなくなる。</p>
 <p>そのため、ビジネス上ありえないオブジェクトを作成できなくなり、インジェクションのなかで、ソフトウェアの安全性の観点でもっとも優れている。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>依存先の Supplier クラスを、<code>construct()</code> 関数の引数として、Client クラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36540,7 +36526,6 @@
 <span class="c1">// 依存されるSupplierクラスをClientクラス</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>依存先の UserName クラスを、<code>construct()</code> 関数の引数として、User クラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36566,7 +36551,6 @@
 <h4 id="_19">▼ セッターインジェクションとは<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>関数の特に、セッターの引数として、サプライヤー側のインスタンスを注入する。</p>
 <p>サプライヤー側を状態として保持させ、Aggregation の関係性を作られる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>依存先の Supplier クラスを、セッターの引数として、Client クラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36576,7 +36560,6 @@
 <span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
 <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setSupplier</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>依存先の UserName クラスを、セッターの引数として、User クラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36603,7 +36586,6 @@
 <h4 id="_20">▼ 関数インジェクションとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>上記 2 つ以外の関数の引数として、サプライヤー側のインスタンスを注入する。</p>
 <p>サプライヤー側を状態として保持せず、読み込んで関数を使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>依存先の UserName クラスを、関数の引数として、User クラスに注入する。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36632,7 +36614,6 @@
 <h4 id="di-container-service-container_1">▼ DI Container (依存オブジェクト注入コンテナ) 、Service Container とは<a class="headerlink" href="#di-container-service-container_1" title="Permanent link">&para;</a></h4>
 <p>依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。</p>
 <p>あらかじめクラスを登録 (バインド) しておき、必要なときにインスタンスを作成 (リゾルブ) してくれる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>Pimple パッケージを使用した場合</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36674,7 +36655,6 @@
 <h4 id="service-locator">▼ Service Locator パターン<a class="headerlink" href="#service-locator" title="Permanent link">&para;</a></h4>
 <p>Service Locater パターンはアンチパターンである。</p>
 <p>インスタンスへのコンテナ渡しのファイルを実装せず、コンテナ自体を注入していまう誤った実装方法。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">class</span> <span class="nc">Sample</span>
@@ -36766,7 +36746,6 @@
 <h4 id="_25">▼ データ結合とは<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
 <p>もっとも理想的な結合。</p>
 <p>スカラ型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡すような関係。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ModuleA と ModuleB は、データ結合の関係にある。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36789,7 +36768,6 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>デザインパターンの Factory クラスでは、スカラ型データの値に応じて、インスタンスを作り分ける。</p>
 <p>Factory クラスのインスタンスと、これをコールするほかインスタンス は、データ結合の関係にある。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
@@ -36816,7 +36794,6 @@
 </code></pre></div>
 <h4 id="_26">▼ スタンプ結合とは<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
 <p>object 型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡す関係。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ModuleA と ModuleB は、スタンプ結合の関係にある。</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 

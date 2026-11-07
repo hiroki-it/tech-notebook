@@ -35622,7 +35622,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -35659,7 +35659,6 @@
 <h2 id="01-version">01. version<a class="headerlink" href="#01-version" title="Permanent link">&para;</a></h2>
 <h3 id="version">version とは<a class="headerlink" href="#version" title="Permanent link">&para;</a></h3>
 <p>CircleCI のバージョンを宣言。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 </code></pre></div>
 <p><br></p>
@@ -35745,7 +35744,6 @@
 <h4 id="string">▼ string 型<a class="headerlink" href="#string" title="Permanent link">&para;</a></h4>
 <p>引数として、任意の文字列を渡したいときに使用する。</p>
 <p><code>workflows</code> にて、値を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
@@ -35780,7 +35778,6 @@
 <p>多くの場合、引数が True の場合のみ、特定の <code>steps</code> キーを実行したいときに使用する。</p>
 <p><code>job</code> で定義した後、<code>workflows</code> にて値を設定する。</p>
 <p><code>workflows</code> にて、値を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -35814,7 +35811,6 @@
 <h4 id="enum">▼ enum 型<a class="headerlink" href="#enum" title="Permanent link">&para;</a></h4>
 <p>引数として、特定の文字列や整数のみを渡したいときに使用する。</p>
 <p><code>workflows</code> にて、値を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36010,7 +36006,6 @@
 <p>ただし、ボリュームマウントを使用できなくなるので注意する。</p>
 <p>また、Dockerfile の COPY コマンドが動作しなくなる。</p>
 <p><img alt="machine_executor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png" /></p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36040,7 +36035,6 @@
 <h4 id="machine">▼ machine タイプとは<a class="headerlink" href="#machine" title="Permanent link">&para;</a></h4>
 <p>Linux サーバーを実行環境として設定する。</p>
 <p><img alt="machine_executor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine_executor.png" /></p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36083,7 +36077,6 @@
 <h4 id="whenunless">▼ when、unless<a class="headerlink" href="#whenunless" title="Permanent link">&para;</a></h4>
 <p>if 文を定義する。</p>
 <p><code>when</code> キーでは条件が true の場合、また <code>unless</code> キーでは false の場合に実行する <code>steps</code> キーを定義する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36127,7 +36120,6 @@
 <li><a href="https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5">https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>Composer を使用してパッケージをインストールするとき、前回の結果を再利用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -36150,7 +36142,6 @@
 <span class="w">          </span><span class="nt">paths</span><span class="p">:</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./vendor</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>yarn を使用してパッケージをインストールするとき、前回の結果を再利用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -36182,7 +36173,6 @@
 <span class="w">            </span><span class="no">yarn test</span>
 </code></pre></div>
 <p>ただし、この能力は commands で共通化すると可読性がよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
@@ -36216,7 +36206,6 @@
 <h4 id="persist_to_workspaceattach_workspace">▼ persist_to_workspace、attach_workspace<a class="headerlink" href="#persist_to_workspaceattach_workspace" title="Permanent link">&para;</a></h4>
 <p><img alt="workflow_workspace_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/workflow_workspace_cache.png" /></p>
 <p>CircleCI では、job ごとに異なる仮想環境を作成するため、他の <code>jobs</code> キーで使用された一時ファイルを再利用したい場合、これを使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36239,7 +36228,6 @@
 <span class="w">        </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/tmp/workspace</span>
 </code></pre></div>
 <p>すべてのディレクトリを保持するような場合がほとんどと思われるため、カレントディレクトリ配下 (<code>.</code>) を指定するのがよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36260,7 +36248,6 @@
 <p>設定を部品化し、異なる <code>jobs</code> キーで <code>steps</code> キーとして繰り返し利用できる。</p>
 <p><br></p>
 <h3 id="_8">部品化と再利用<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">commands</span><span class="p">:</span>
@@ -36291,7 +36278,6 @@
 <p>実行環境に関する設定を部品化し、異なる <code>jobs</code> キーで繰り返し利用できる。</p>
 <p><br></p>
 <h3 id="_9">部品化と再利用<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">executors</span><span class="p">:</span>
@@ -36315,7 +36301,6 @@
 <h2 id="06-workflow">06. workflow<a class="headerlink" href="#06-workflow" title="Permanent link">&para;</a></h2>
 <h3 id="workflow_1">workflow の粒度<a class="headerlink" href="#workflow_1" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ ブランチ別<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">feature</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
@@ -36371,7 +36356,6 @@
 <h4 id="pre-stepspost-steps">▼ pre-steps、post-steps<a class="headerlink" href="#pre-stepspost-steps" title="Permanent link">&para;</a></h4>
 <p>事前に <code>jobs</code> キーへ定義する必要はない。</p>
 <p><code>workspace</code> キーで、コールされる <code>jobs</code> キーの引数として設定することで、その <code>jobs</code> キー内の最初と最後に、<code>steps</code> キーを追加できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36402,7 +36386,6 @@
 <span class="w">                  </span><span class="no">echo "upload artifact to s3"</span>
 </code></pre></div>
 <p>Orbs を使用する場合は、オプションに引数を渡す前に定義する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">jobs</span><span class="p">:</span>
@@ -36447,7 +36430,6 @@
   </tbody>
 </table>
 
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">workflows</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 <span class="w">  </span><span class="nt">build</span><span class="p">:</span>
@@ -36613,7 +36595,6 @@
 <li><a href="https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A">https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36664,7 +36645,6 @@
 </blockquote>
 <h4 id="_14">▼ シェルスクリプトによる設定<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>環境変数に値を設定する処理をシェルスクリプトに切り分け、環境変数を使用する前にこれを読み込む。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -36696,7 +36676,6 @@
 <p>ヒアドキュメントを使用して、環境変数を設定できるシェルスクリプトを作成し、これを読み込む。</p>
 <p>ヒアドキュメントでは、各行で echo が実行される。</p>
 <p>そのため、echo の実装が不要であることに注意する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; "export_envs.sh"</span>
 <span class="s">#!/bin/bash</span>
 <span class="s">set -xeuo pipefail</span>
@@ -36775,7 +36754,6 @@
 <li><a href="https://github.com/docker/compose/issues/374#issuecomment-126312313">Is there a way to delay container startup to support dependant services with a longer startup time · Issue #374 · docker/compose · GitHub</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>Laravel コンテナと MySQL コンテナの場合を示す。</p>
 <p>コンテナ内に対してコマンドを実行するときのディレクトリは、Dockerfile の <code>WORKDIR</code> によって決まるので注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
@@ -36863,7 +36841,6 @@
 <p><img alt="DockerLayerCache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DockerLayerCache.png" /></p>
 <h4 id="_16">▼ 使用例<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>machine タイプで使用する場合、machine キーの下で <code>docker_layer_caching</code> を使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">orbs</span><span class="p">:</span>
@@ -36894,7 +36871,6 @@
 <span class="w">            </span><span class="no">docker-compose up --build -d</span>
 </code></pre></div>
 <p>docker タイプで使用する場合、docker キーの下で <code>docker_layer_caching</code> を使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>

@@ -35466,7 +35466,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -35637,7 +35637,6 @@
 <p><br></p>
 <h3 id="location">location ブロック<a class="headerlink" href="#location" title="Permanent link">&para;</a></h3>
 <p>特定のパスのインバウンド通信に関する処理を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>各設定の優先順位に沿った以下の順番で実装したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 1. ドキュメントルートを指定したインバウンド通信の場合</span>
 <span class="k">location</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
@@ -35717,7 +35716,6 @@
 <p><br></p>
 <h3 id="server">server ブロック<a class="headerlink" href="#server" title="Permanent link">&para;</a></h3>
 <p>特定のルーティング先に関する処理を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># 80番ポートで受信</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w">      </span><span class="mi">80</span><span class="p">;</span>
@@ -35746,7 +35744,6 @@
 <h3 id="_3">ディレクティブ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="default_type">▼ default_type<a class="headerlink" href="#default_type" title="Permanent link">&para;</a></h4>
 <p><code>Content-Type</code> ヘッダー値が <code>mime.types</code> ファイルにない MIME type であった場合、適用する MIME type を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>任意の MIME type (指定なし) のインバウンド通信を処理する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">default_type</span><span class="w"> </span><span class="s">application/octet-stream</span>
 </code></pre></div>
@@ -35757,7 +35754,6 @@
 </blockquote>
 <h4 id="listen">▼ listen<a class="headerlink" href="#listen" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信を待ち受けるポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>インバウンド通信を <code>80</code> 番ポートで受信する。</p>
 <div class="highlight"><pre><span></span><code><span class="k">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span>
 </code></pre></div>
@@ -35773,7 +35769,6 @@
 <p>クライアントへのレスポンス時に、ファイル送信のために Linux の sendfile システムコールを使用するか否かを設定する。</p>
 <p>ファイル返信処理を OS 内で実行するため、処理が速くなる。</p>
 <p>使用しない場合、Nginx がレスポンス時に自身でファイル返信処理を実行する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">sendfile</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -35800,7 +35795,6 @@
 </blockquote>
 <h4 id="ssl">▼ ssl<a class="headerlink" href="#ssl" title="Permanent link">&para;</a></h4>
 <p>HTTPS プロトコルを受信する場合、SSL/TLS プロトコルを有効化する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -35810,23 +35804,19 @@
 </blockquote>
 <h4 id="ssl_certificate">▼ ssl_certificate<a class="headerlink" href="#ssl_certificate" title="Permanent link">&para;</a></h4>
 <p>HTTPS プロトコルを受信する場合、サーバー証明書のパスを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.crt</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="ssl_certificate_key">▼ ssl_certificate_key<a class="headerlink" href="#ssl_certificate_key" title="Permanent link">&para;</a></h4>
 <p>HTTPS プロトコルを受信する場合、サーバー証明書と対になる秘密鍵へのパスを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl_certificate_key</span><span class="w"> </span><span class="s">/etc/nginx/ssl/server.key</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="ssl_client_certificate">▼ ssl_client_certificate<a class="headerlink" href="#ssl_client_certificate" title="Permanent link">&para;</a></h4>
 <p>HTTPS プロトコルを受信する場合、クライアント証明書のパスを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">ssl_client_certificate</span><span class="w"> </span><span class="s">/etc/nginx/ssl/client.crt</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="tcp_nopush">▼ tcp_nopush<a class="headerlink" href="#tcp_nopush" title="Permanent link">&para;</a></h4>
 <p>上述の Linux の <code>sendfile</code> システムコールを使用する場合に適用できる。</p>
 <p>クライアントへのレスポンス時、ヘッダーとファイルを <code>1</code> 個のパケットにまとめて返信するか否かを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">tcp_nopush</span><span class="w"> </span><span class="no">on</span><span class="p">;</span>
 </code></pre></div>
 <h4 id="try_files">▼ try_files<a class="headerlink" href="#try_files" title="Permanent link">&para;</a></h4>
@@ -35845,7 +35835,6 @@
 <span class="w">    </span><span class="kn">try_files</span><span class="w"> </span><span class="s">file</span><span class="w"> </span><span class="s">...</span><span class="w"> </span><span class="p">=</span><span class="s">code</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1"># 1. 『/foo.html』のパスで、ファイルをレスポンス</span>
 <span class="w">    </span><span class="c1"># 2. 『/foo.html/』のパスで、ファイルをレスポンス</span>
@@ -35872,7 +35861,6 @@
 <p>Web サーバーのみヘルスチェックを受信する。</p>
 <p>ヘルスチェック用の <code>server</code> ブロックで、<code>gif</code> ファイルを含むレスポンスを返信するように <code>location</code> ブロックを定義する。</p>
 <p>Nginx でアクセスログを出力する必要はないため、<code>location</code> ブロックでは <code>access_log</code> を無効化する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w">      </span><span class="s">default_server</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
@@ -35890,7 +35878,6 @@
 <p>Web サーバーとアプリケーションの両方でヘルスチェックを受信する。</p>
 <p>アプリケーション側に <code>200</code> ステータスを含むレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の <code>server</code> ブロックで Web サーバーにルーティングするように <code>location</code> ブロックを定義する。</p>
 <p>Nginx でアクセスログを出力する必要はないため、<code>location</code> ブロックでは <code>access_log</code> を無効化する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="w">      </span><span class="s">default_server</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="s">[::]:80</span><span class="w"> </span><span class="s">default_server</span><span class="p">;</span>
@@ -35908,7 +35895,6 @@
 <h3 id="_6">ディレクティブ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="index">▼ index<a class="headerlink" href="#index" title="Permanent link">&para;</a></h4>
 <p>リクエストの URL がトレイリングスラッシュで終了するすべての場合、指定されたファイルを URL の末尾に追加する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">index</span><span class="w"> </span><span class="s">index.php</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -35921,7 +35907,6 @@
 <h3 id="_7">ディレクティブ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="add_header">▼ add_header<a class="headerlink" href="#add_header" title="Permanent link">&para;</a></h4>
 <p>レスポンス時に付与するレスポンスヘッダーを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Referrer-Policyヘッダーに値を設定する</span>
 <span class="k">add_header</span><span class="w"> </span><span class="s">Referrer-Policy</span><span class="w"> </span><span class="s">"no-referrer-when-downgrade"</span><span class="p">;</span>
 </code></pre></div>
@@ -35938,7 +35923,6 @@
 <p>デフォルトでは、加重ラウンドロビン方式を基に通信をルーティングする。</p>
 <p>注意点は、このままでは宛先がスケーリングしたときに IP アドレスを動的に取得できないことである。</p>
 <p>そのため、<code>resolver</code> ディレクティブ、<code>upstream</code> ディレクティブ、UNIX ドメインソケットを使用する必要がある。(ちょっと複雑すぎる...)</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">upstream</span><span class="w"> </span><span class="s">foo_servers</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
 <span class="w">    </span><span class="kn">server</span><span class="w"> </span><span class="n">192.168.0.2</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
@@ -35957,7 +35941,6 @@
 <h3 id="_9">ディレクティブ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="fastcgi_params">▼ fastcgi_params<a class="headerlink" href="#fastcgi_params" title="Permanent link">&para;</a></h4>
 <p>FastCGI プロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">fastcgi_param</span><span class="w"> </span><span class="s">SCRIPT_FILENAME</span><span class="w"> </span><span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -35967,7 +35950,6 @@
 </blockquote>
 <h4 id="fastcgi_pass">▼ fastcgi_pass<a class="headerlink" href="#fastcgi_pass" title="Permanent link">&para;</a></h4>
 <p>FastCGI プロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">fastcgi_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
 </code></pre></div>
 <blockquote>
@@ -36002,7 +35984,6 @@
 <h4 id="grpc_pass">▼ grpc_pass<a class="headerlink" href="#grpc_pass" title="Permanent link">&para;</a></h4>
 <p>gRPC による HTTP リクエストの宛先を設定する。</p>
 <p>HTTP/2 (例：gRPC、GraphQL など) を有効化する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">grpc_pass</span><span class="w"> </span><span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">80</span><span class="p">;</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">server</span><span class="w"> </span><span class="p">{</span>
@@ -36027,7 +36008,6 @@
 <h3 id="_12">ディレクティブ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="proxy_pass">▼ proxy_pass<a class="headerlink" href="#proxy_pass" title="Permanent link">&para;</a></h4>
 <p>HTTP プロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">proxy_pass</span><span class="w"> </span><span class="s">http://127.0.0.1:80</span><span class="p">;</span>
 </code></pre></div>
 <p>受信したリクエストの情報をそのまま使って送信する場合、変数を使用する。</p>

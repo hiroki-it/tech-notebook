@@ -33971,7 +33971,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 18:43:34 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -34014,6 +34014,30 @@
 <h3 id="_3">例外の種類<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="badrequesterror">▼ BadRequestError<a class="headerlink" href="#badrequesterror" title="Permanent link">&para;</a></h4>
 <p>リクエスト形式が不正である。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Go</label><label for="__tabbed_1_2">TypeScript</label><label for="__tabbed_1_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">BadRequestError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w">       </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">statusCode</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewBadRequestError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">BadRequestError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">BadRequestError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"BadRequestError"</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ステータスコード</span>
+<span class="w">        </span><span class="nx">statusCode</span><span class="p">:</span><span class="w"> </span><span class="mi">400</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">BadRequestError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"リクエスト形式が不正です"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">BadRequestError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -34031,8 +34055,52 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">BadRequestError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"BadRequestError"</span><span class="p">;</span>
+
+    <span class="c1">// ステータスコード</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$statusCode</span> <span class="o">=</span> <span class="mi">400</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"リクエスト形式が不正です"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="unauthorizederror">▼ UnauthorizedError<a class="headerlink" href="#unauthorizederror" title="Permanent link">&para;</a></h4>
 <p>認証されていない。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Go</label><label for="__tabbed_2_2">TypeScript</label><label for="__tabbed_2_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UnauthorizedError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w">       </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">statusCode</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUnauthorizedError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">UnauthorizedError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UnauthorizedError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"UnauthorizedError"</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ステータスコード</span>
+<span class="w">        </span><span class="nx">statusCode</span><span class="p">:</span><span class="w"> </span><span class="mi">401</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">UnauthorizedError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"認証されていません"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UnauthorizedError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -34050,8 +34118,52 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UnauthorizedError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"UnauthorizedError"</span><span class="p">;</span>
+
+    <span class="c1">// ステータスコード</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$statusCode</span> <span class="o">=</span> <span class="mi">401</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"認証されていません"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="forbiddenerror">▼ ForbiddenError<a class="headerlink" href="#forbiddenerror" title="Permanent link">&para;</a></h4>
 <p>認可されていない。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Go</label><label for="__tabbed_3_2">TypeScript</label><label for="__tabbed_3_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">ForbiddenError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w">       </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">statusCode</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewForbiddenError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">ForbiddenError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">ForbiddenError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"ForbiddenError"</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ステータスコード</span>
+<span class="w">        </span><span class="nx">statusCode</span><span class="p">:</span><span class="w"> </span><span class="mi">403</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">ForbiddenError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"認可されていません"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ForbiddenError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_statusCode</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -34069,14 +34181,126 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ForbiddenError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"ForbiddenError"</span><span class="p">;</span>
+
+    <span class="c1">// ステータスコード</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$statusCode</span> <span class="o">=</span> <span class="mi">403</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"認可されていません"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h3 id="_4">ハンドリング<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<p>ユースケース層の処理を <code>try-catch</code> で囲い、スローされたユースケース例外をエラーレスポンスにして返信する。</p>
+<p>ユースケース層の処理から返された例外を捕捉し、エラーレスポンスにして返信する。</p>
 <p><br></p>
 <h3 id="_5">クライアント別の例外<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>ドメイン例外やユースケース例外は何が起きたかだけを表し、どのクライアントから呼ばれたかやレスポンスの形式を知らない。</p>
 <p>インターフェース層で、それぞれの例外を UI クライアント向けと API クライアント向けのエラーレスポンスに分けて詰め替える。</p>
 <p>API クライアント向けのエラーレスポンスには、クライアントが処理を分岐できるように、変わらない <code>code</code> を持たせる。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// ドメイン層：ドメインルールに違反した場合、ドメイン例外を返却する</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">FooName</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooName</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">FooName</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">utf8</span><span class="p">.</span><span class="nx">RuneCountInString</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">NewFooNameLengthExceededError</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooName</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span><span class="w"> </span><span class="nx">value</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// ユースケース層：ユースケースの処理に失敗した場合、ユースケース例外を返却する</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChangeFooName</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="kt">string</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">foo</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">FindById</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">NewFooNotFoundError</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">fooName</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewFooName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">foo</span><span class="p">.</span><span class="nx">ChangeName</span><span class="p">(</span><span class="nx">fooName</span><span class="p">)</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// インターフェース層：UIクライアント向けのエラーレスポンス</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">UiNotFoundErrorResponse</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNotFoundError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="s">"application/json"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"error"</span><span class="p">:</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span><span class="s">"title"</span><span class="p">:</span><span class="w"> </span><span class="s">"404 Not Found"</span><span class="p">,</span><span class="w"> </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">()},</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="c1">// インターフェース層：APIクライアント向けのエラーレスポンス</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ApiNotFoundErrorResponse</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNotFoundError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="s">"application/json"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusNotFound</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"title"</span><span class="p">:</span><span class="w">   </span><span class="s">"404 Not Found"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span>
+<span class="w">        </span><span class="s">"code"</span><span class="p">:</span><span class="w">    </span><span class="s">"NOT_FOUND"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">ApiBadRequestErrorResponse</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNameLengthExceededError</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">Header</span><span class="p">().</span><span class="nx">Set</span><span class="p">(</span><span class="s">"Content-Type"</span><span class="p">,</span><span class="w"> </span><span class="s">"application/json"</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
+<span class="w">    </span><span class="nx">json</span><span class="p">.</span><span class="nx">NewEncoder</span><span class="p">(</span><span class="nx">w</span><span class="p">).</span><span class="nx">Encode</span><span class="p">(</span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">string</span><span class="p">{</span>
+<span class="w">        </span><span class="s">"title"</span><span class="p">:</span><span class="w">   </span><span class="s">"400 Bad Request"</span><span class="p">,</span>
+<span class="w">        </span><span class="s">"message"</span><span class="p">:</span><span class="w"> </span><span class="nx">err</span><span class="p">.</span><span class="nx">Error</span><span class="p">(),</span>
+<span class="w">        </span><span class="s">"code"</span><span class="p">:</span><span class="w">    </span><span class="s">"BAD_REQUEST"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="c1">// インターフェース層：APIクライアント向けのコントローラー</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">ChangeFooNameHandler</span><span class="p">(</span><span class="nx">w</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span><span class="w"> </span><span class="nx">r</span><span class="w"> </span><span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">ChangeFooName</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">Context</span><span class="p">(),</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">PathValue</span><span class="p">(</span><span class="s">"id"</span><span class="p">),</span><span class="w"> </span><span class="nx">r</span><span class="p">.</span><span class="nx">FormValue</span><span class="p">(</span><span class="s">"name"</span><span class="p">))</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">notFoundErr</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNotFoundError</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">As</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">notFoundErr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ApiNotFoundErrorResponse</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">notFoundErr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">lengthExceededErr</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNameLengthExceededError</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">As</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">lengthExceededErr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">ApiBadRequestErrorResponse</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="nx">lengthExceededErr</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">http</span><span class="p">.</span><span class="nx">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span><span class="w"> </span><span class="s">"Internal Server Error"</span><span class="p">,</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusInternalServerError</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nx">w</span><span class="p">.</span><span class="nx">WriteHeader</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// ドメイン層：ドメインルールに違反した場合、ドメイン例外をスローする</span>
 <span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooName</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34150,12 +34374,132 @@
 <span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// ドメイン層：ドメインルールに違反した場合、ドメイン例外をスローする</span>
+<span class="k">class</span> <span class="nc">FooName</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">mb_strlen</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooNameLengthExceededError</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// ユースケース層：ユースケースの処理に失敗した場合、ユースケース例外をスローする</span>
+<span class="k">class</span> <span class="nc">FooUsecase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">changeFooName</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nv">$foo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">findById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$foo</span> <span class="o">===</span> <span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooNotFoundError</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="nv">$foo</span><span class="o">-&gt;</span><span class="na">changeName</span><span class="p">(</span><span class="k">new</span> <span class="nx">FooName</span><span class="p">(</span><span class="nv">$name</span><span class="p">));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// インターフェース層：UIクライアント向けのエラーレスポンス</span>
+<span class="k">class</span> <span class="nc">UiNotFoundErrorResponse</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">FooNotFoundError</span> <span class="nv">$error</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Content-Type: application/json"</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span>
+            <span class="s2">"error"</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">"title"</span> <span class="o">=&gt;</span> <span class="s2">"404 Not Found"</span><span class="p">,</span> <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">error</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()],</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// インターフェース層：APIクライアント向けのエラーレスポンス</span>
+<span class="k">class</span> <span class="nc">ApiNotFoundErrorResponse</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">FooNotFoundError</span> <span class="nv">$error</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">404</span><span class="p">);</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Content-Type: application/json"</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span>
+            <span class="s2">"title"</span> <span class="o">=&gt;</span> <span class="s2">"404 Not Found"</span><span class="p">,</span>
+            <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">error</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+            <span class="s2">"code"</span> <span class="o">=&gt;</span> <span class="s2">"NOT_FOUND"</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">class</span> <span class="nc">ApiBadRequestErrorResponse</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">FooNameLengthExceededError</span> <span class="nv">$error</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">send</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">400</span><span class="p">);</span>
+        <span class="nb">header</span><span class="p">(</span><span class="s2">"Content-Type: application/json"</span><span class="p">);</span>
+        <span class="k">echo</span> <span class="nb">json_encode</span><span class="p">([</span>
+            <span class="s2">"title"</span> <span class="o">=&gt;</span> <span class="s2">"400 Bad Request"</span><span class="p">,</span>
+            <span class="s2">"message"</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">error</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">(),</span>
+            <span class="s2">"code"</span> <span class="o">=&gt;</span> <span class="s2">"BAD_REQUEST"</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// インターフェース層：APIクライアント向けのコントローラー</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$fooUsecase</span><span class="o">-&gt;</span><span class="na">changeFooName</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$name</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">FooNotFoundError</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="k">new</span> <span class="nx">ApiNotFoundErrorResponse</span><span class="p">(</span><span class="nv">$error</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">FooNameLengthExceededError</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">(</span><span class="k">new</span> <span class="nx">ApiBadRequestErrorResponse</span><span class="p">(</span><span class="nv">$error</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h2 id="03">03. ユースケース層<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">例外の種類<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>ユースケースの処理に失敗した例外である。</p>
 <h4 id="foonotfounderror">▼ FooNotFoundError<a class="headerlink" href="#foonotfounderror" title="Permanent link">&para;</a></h4>
 <p>Foo ドメインオブジェクトが存在しない。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">FooNotFoundError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooNotFoundError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNotFoundError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooNotFoundError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"FooNotFoundError"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNotFoundError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Fooドメインオブジェクトが存在しません"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooNotFoundError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
@@ -34170,6 +34514,23 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooNotFoundError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"FooNotFoundError"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"Fooドメインオブジェクトが存在しません"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="fooalreadyexistserror">▼ FooAlreadyExistsError<a class="headerlink" href="#fooalreadyexistserror" title="Permanent link">&para;</a></h4>
 <p>Foo ドメインオブジェクトが重複する。</p>
 <h4 id="fooquotaexceedederror">▼ FooQuotaExceededError<a class="headerlink" href="#fooquotaexceedederror" title="Permanent link">&para;</a></h4>
@@ -34178,6 +34539,27 @@
 <p>更新系ユースケースが失敗した。</p>
 <h4 id="fooregisterfailederror">▼ FooRegisterFailedError<a class="headerlink" href="#fooregisterfailederror" title="Permanent link">&para;</a></h4>
 <p>登録系ユースケースが失敗した。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">FooRegisterFailedError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooRegisterFailedError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">FooRegisterFailedError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooRegisterFailedError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"FooRegisterFailedError"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">FooRegisterFailedError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Fooドメインオブジェクトの登録に失敗しました"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooRegisterFailedError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
@@ -34192,6 +34574,23 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooRegisterFailedError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"FooRegisterFailedError"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"Fooドメインオブジェクトの登録に失敗しました"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="foogetdraftfailederror">▼ FooGetDraftFailedError<a class="headerlink" href="#foogetdraftfailederror" title="Permanent link">&para;</a></h4>
 <p>下書き系ユースケースが失敗した。</p>
 <h4 id="foogetfailederror">▼ FooGetFailedError<a class="headerlink" href="#foogetfailederror" title="Permanent link">&para;</a></h4>
@@ -34200,11 +34599,39 @@
 <p>削除系ユースケースが失敗した。</p>
 <p><br></p>
 <h3 id="_7">ハンドリング<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p>ユースケース層で囲ったトランザクションの処理を <code>try-catch</code> で囲い、スローされたインフラストラクチャ例外をドメイン例外にして返却する。</p>
+<p>トランザクションの処理から返されたインフラストラクチャ例外を捕捉し、ユースケース例外に詰め替えて返却する。</p>
 <p><br></p>
 <h3 id="_8">ユースケース別の例外<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>ユースケースの処理に失敗した例外は、登録系・更新系・閲覧系・削除系といったユースケースの種類ごとに分ける。</p>
 <p>どのユースケースで失敗したかが例外名からわかるため、インターフェース層でエラーメッセージやログを出し分けやすくなる。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Go</label><label for="__tabbed_7_2">TypeScript</label><label for="__tabbed_7_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="c1">// 登録系ユースケース</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">RegisterFoo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">fooName</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewFooName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">NewFoo</span><span class="p">(</span><span class="nx">fooName</span><span class="p">));</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">NewFooRegisterFailedError</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+
+<span class="c1">// 削除系ユースケース</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">DeleteFoo</span><span class="p">(</span><span class="nx">ctx</span><span class="w"> </span><span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Delete</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">id</span><span class="p">);</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">NewFooDeleteFailedError</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="c1">// 登録系ユースケース</span>
 <span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">registerFoo</span><span class="p">({</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="p">}</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
@@ -34223,12 +34650,68 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooUsecase</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">FooRepository</span> <span class="nv">$fooRepository</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 登録系ユースケース</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerFoo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="k">new</span> <span class="nx">Foo</span><span class="p">(</span><span class="k">new</span> <span class="nx">FooName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooRegisterFailedError</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 削除系ユースケース</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">deleteFoo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Exception</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooDeleteFailedError</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h2 id="04">04. ドメイン層<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_9">例外の種類<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>ドメインルールに違反した例外である。</p>
 <h4 id="foonamelengthexceedederror">▼ FooNameLengthExceededError<a class="headerlink" href="#foonamelengthexceedederror" title="Permanent link">&para;</a></h4>
 <p>Foo 名が許可された最大文字数を超えている。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">FooNameLengthExceededError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w">      </span><span class="kt">string</span>
+<span class="w">    </span><span class="nx">maxLength</span><span class="w"> </span><span class="kt">int</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooNameLengthExceededError</span><span class="p">(</span><span class="nx">fooName</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNameLengthExceededError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooNameLengthExceededError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"FooNameLengthExceededError"</span><span class="p">,</span>
+<span class="w">        </span><span class="c1">// ドメインルール</span>
+<span class="w">        </span><span class="nx">maxLength</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNameLengthExceededError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nx">Sprintf</span><span class="p">(</span><span class="s">"Foo名は%d文字以内にしてください"</span><span class="p">,</span><span class="w"> </span><span class="nx">e</span><span class="p">.</span><span class="nx">maxLength</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooNameLengthExceededError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_maxLength</span><span class="o">:</span><span class="w"> </span><span class="kt">number</span><span class="p">;</span>
@@ -34246,8 +34729,49 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooNameLengthExceededError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"FooNameLengthExceededError"</span><span class="p">;</span>
+
+    <span class="c1">// ドメインルール</span>
+    <span class="k">private</span> <span class="nx">int</span> <span class="nv">$maxLength</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$fooName</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"Foo名は</span><span class="si">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">maxLength</span><span class="si">}</span><span class="s2">文字以内にしてください"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="foonamerequirederror">▼ FooNameRequiredError<a class="headerlink" href="#foonamerequirederror" title="Permanent link">&para;</a></h4>
 <p>Foo 名が空である。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:3"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><input id="__tabbed_9_3" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Go</label><label for="__tabbed_9_2">TypeScript</label><label for="__tabbed_9_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">FooNameRequiredError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooNameRequiredError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNameRequiredError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooNameRequiredError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"FooNameRequiredError"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">FooNameRequiredError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Foo名は必須です"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooNameRequiredError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
@@ -34262,13 +34786,53 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooNameRequiredError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"FooNameRequiredError"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"Foo名は必須です"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h3 id="_10">ハンドリング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>ドメイン層では <code>try-catch</code> が不要である。</p>
+<p>ドメイン層では例外を捕捉せず、そのまま上位層に返却する。</p>
 <p><br></p>
 <h3 id="_11">ドメインルール別の例外<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>ドメイン例外は、違反したドメインルールごとに分ける。</p>
 <p><code>FooNameInvalidError</code> のように 1 つにまとめると、どのドメインルールに違反したのかが例外名からわからなくなる。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:3"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><input id="__tabbed_10_3" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Go</label><label for="__tabbed_10_2">TypeScript</label><label for="__tabbed_10_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">FooName</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewFooName</span><span class="p">(</span><span class="nx">value</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">FooName</span><span class="p">,</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// 必須のドメインルール</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">value</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">""</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">NewFooNameRequiredError</span><span class="p">()</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 最大文字数のドメインルール</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">utf8</span><span class="p">.</span><span class="nx">RuneCountInString</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="p">,</span><span class="w"> </span><span class="nx">NewFooNameLengthExceededError</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">FooName</span><span class="p">{</span><span class="nx">value</span><span class="p">:</span><span class="w"> </span><span class="nx">value</span><span class="p">},</span><span class="w"> </span><span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">FooName</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kr">constructor</span><span class="p">(</span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">value</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 必須のドメインルール</span>
@@ -34283,12 +34847,54 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FooName</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">readonly</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// 必須のドメインルール</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$value</span> <span class="o">===</span> <span class="s2">""</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooNameRequiredError</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="c1">// 最大文字数のドメインルール</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nb">mb_strlen</span><span class="p">(</span><span class="nv">$value</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">20</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooNameLengthExceededError</span><span class="p">(</span><span class="nv">$value</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 <h2 id="05">05. インフラストラクチャ層<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <h3 id="_12">例外の種類<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>データベースに関する例外である。</p>
 <h4 id="uniqueconstrainterror">▼ UniqueConstraintError<a class="headerlink" href="#uniqueconstrainterror" title="Permanent link">&para;</a></h4>
 <p>プライマリーキー制約に違反した。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Go</label><label for="__tabbed_11_2">TypeScript</label><label for="__tabbed_11_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">UniqueConstraintError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewUniqueConstraintError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">UniqueConstraintError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">UniqueConstraintError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"UniqueConstraintError"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">UniqueConstraintError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"プライマリーキー制約に違反しました"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">UniqueConstraintError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
@@ -34303,10 +34909,48 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">UniqueConstraintError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"UniqueConstraintError"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"プライマリーキー制約に違反しました"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="foreignkeyconstrainterror">▼ ForeignKeyConstraintError<a class="headerlink" href="#foreignkeyconstrainterror" title="Permanent link">&para;</a></h4>
 <p>外部キー制約に違反した。</p>
 <h4 id="databaseconnectionerror">▼ DatabaseConnectionError<a class="headerlink" href="#databaseconnectionerror" title="Permanent link">&para;</a></h4>
 <p>DB 接続に失敗した。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Go</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kd">type</span><span class="w"> </span><span class="nx">DatabaseConnectionError</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">NewDatabaseConnectionError</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">DatabaseConnectionError</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">DatabaseConnectionError</span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// エラー名</span>
+<span class="w">        </span><span class="nx">name</span><span class="p">:</span><span class="w"> </span><span class="s">"DatabaseConnectionError"</span><span class="p">,</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">DatabaseConnectionError</span><span class="p">)</span><span class="w"> </span><span class="nx">Error</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// エラーメッセージ</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"DB接続に失敗しました"</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">DatabaseConnectionError</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="ne">Error</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">_name</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">;</span>
 
@@ -34321,15 +34965,56 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">DatabaseConnectionError</span> <span class="k">extends</span> <span class="nx">Exception</span>
+<span class="p">{</span>
+    <span class="c1">// エラー名</span>
+    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$name</span> <span class="o">=</span> <span class="s2">"DatabaseConnectionError"</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// エラーメッセージ</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s2">"DB接続に失敗しました"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <h4 id="querytimeouterror">▼ QueryTimeoutError<a class="headerlink" href="#querytimeouterror" title="Permanent link">&para;</a></h4>
 <p>クエリがタイムアウトした。</p>
 <p><br></p>
 <h3 id="_13">ハンドリング<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>トランザクションの処理を <code>try-catch</code> で囲い、スローされたインフラストラクチャ例外をドメイン例外にして返却する。</p>
+<p>トランザクションの処理から返された例外を捕捉し、インフラストラクチャ例外にして返却する。</p>
 <p><br></p>
 <h3 id="_14">障害の種類別の例外<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <p>インフラストラクチャ例外は、制約違反や接続失敗といった障害の種類ごとに分ける。</p>
 <p>障害の種類によって、ユースケース層での対応（ユースケース例外への詰め替え、再試行など）が変わるためである。</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="13:3"><input checked="checked" id="__tabbed_13_1" name="__tabbed_13" type="radio" /><input id="__tabbed_13_2" name="__tabbed_13" type="radio" /><input id="__tabbed_13_3" name="__tabbed_13" type="radio" /><div class="tabbed-labels"><label for="__tabbed_13_1">Go</label><label for="__tabbed_13_2">TypeScript</label><label for="__tabbed_13_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span>
+
+<span class="c1">// 制約違反の場合、重複を表すユースケース例外に詰め替える</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">uniqueConstraintErr</span><span class="w"> </span><span class="o">*</span><span class="nx">UniqueConstraintError</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">As</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">uniqueConstraintErr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">NewFooAlreadyExistsError</span><span class="p">()</span>
+<span class="p">}</span>
+
+<span class="c1">// 一時的な障害の場合、再試行する</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">connectionErr</span><span class="w"> </span><span class="o">*</span><span class="nx">DatabaseConnectionError</span>
+<span class="kd">var</span><span class="w"> </span><span class="nx">timeoutErr</span><span class="w"> </span><span class="o">*</span><span class="nx">QueryTimeoutError</span>
+<span class="k">if</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">As</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">connectionErr</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nx">As</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">timeoutErr</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">retry</span><span class="p">(</span><span class="kd">func</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">Save</span><span class="p">(</span><span class="nx">ctx</span><span class="p">,</span><span class="w"> </span><span class="nx">foo</span><span class="p">)</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="p">}</span>
+
+<span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="k">try</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">fooRepository</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">foo</span><span class="p">);</span>
 <span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -34349,6 +35034,21 @@
 <span class="w">  </span><span class="k">throw</span><span class="w"> </span><span class="nx">error</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$foo</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">UniqueConstraintError</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 制約違反の場合、重複を表すユースケース例外に詰め替える</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">FooAlreadyExistsError</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">DatabaseConnectionError</span> <span class="o">|</span> <span class="nx">QueryTimeoutError</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 一時的な障害の場合、再試行する</span>
+    <span class="nx">retry</span><span class="p">(</span><span class="nx">fn</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">fooRepository</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$foo</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
 <p><br></p>
 
   

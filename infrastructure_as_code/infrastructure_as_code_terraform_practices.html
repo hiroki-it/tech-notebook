@@ -36248,7 +36248,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -36543,7 +36543,6 @@
 <li><a href="https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables">https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、VPC を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
@@ -36592,7 +36591,6 @@
 <h4 id="_17">▼ リソースに種類がある場合<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>リソース名で、リソースタイプを繰り返さないようにする。</p>
 <p>もし種類がある場合、リソース名でその種類を表す。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、VPC を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Resource VPC ルートテーブル</span>
@@ -36624,7 +36622,6 @@
 <p>リソースタイプに、<code>1</code> 個のリソースしか種類が存在しない場合、<code>this</code> で命名する。</p>
 <p><code>this</code> と命名された resource で、後から種類が増える場合は、既存の <code>this</code> は後からリファクタリングするとして、新規リソースには種類名を名付ける。</p>
 <p>ただし、リファクタリングすることが大変なため、非推奨である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Resource Internet Gateway</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36641,7 +36638,6 @@
 <li>接頭辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code> とする。</li>
 <li>接尾辞は、クラウドプロバイダーのリソース名とする。</li>
 </ul>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、CloudWatch を示す。</p>
 <ul>
 <li>接尾辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code></li>
@@ -36656,7 +36652,6 @@
 </code></pre></div>
 <p>Lambda では Lambda 関数が稼働する。</p>
 <p>接尾辞に function とつけることは冗長と判断したため、関数名のみで命名する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、Lambda をしめす。</p>
 <ul>
 <li>接尾辞は、 <code>&lt;実行環境&gt;-&lt;サービス名&gt;</code></li>
@@ -36673,14 +36668,12 @@
 <h3 id="output"><code>output</code> ブロック<a class="headerlink" href="#output" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ リソースに種類がある場合<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>『<code>&lt;リソース名&gt;_&lt;リソースタイプ&gt;_&lt;attribute名&gt;</code>』で命名する。可読性の観点から、リソース一括ではなく、具体的な attribute を出力する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、CloudWatch を示す。</p>
 <p>リソース名は <code>ecs_container_nginx</code>、リソースタイプは <code>aws_cloudwatch_log_group</code>、attribute は <code>name</code> オプションである。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">output</span><span class="w"> </span><span class="nv">"ecs_container_nginx_cloudwatch_log_group_name"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_cloudwatch_log_group.ecs_container_nginx.name</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、IAM Role を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output IAM Role</span>
@@ -36699,7 +36692,6 @@
 </code></pre></div>
 <h4 id="_21">▼ リソースに種類がない場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>リソース名が <code>this</code> である場合、<code>output</code> ブロック名ではこれを省略してもよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、ALB を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Output ALB</span>
@@ -36715,7 +36707,6 @@
 <h4 id="_22">▼ 冗長な場合 (アンチパターン)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>ルール通りに命名すると、一部のクラウドプロバイダーのリソースで冗長な名前になってしまうことがある。</p>
 <p>この場合は、省略を許容する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ルール通りに名付けると、『<code>laravel_ecr_repository_repository_url</code>』という <code>output</code> ブロック名になってしまう。</p>
 <p>repository が 2 回繰り返されることになるため、<code>1</code> 個省略している。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -36791,7 +36782,6 @@
 <p>その後、各リソースの設定を、行間を空けずに記述する (順番のルールはなし) 。</p>
 <p>最後に共通の設定として、<code>tags</code>、<code>depends_on</code>、<code>lifecycle</code> の順で配置する。</p>
 <p>ただし実際、これらのすべての設定が必要なリソースはない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># EXAMPLE</span>
 <span class="c1"># ---------------------------------------------</span>

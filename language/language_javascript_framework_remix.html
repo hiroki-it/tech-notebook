@@ -35768,7 +35768,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -35936,7 +35936,6 @@
 <p>各エンドポイントごとに定義できる。</p>
 <p>DB にクエリを送信し、データを取得できる。</p>
 <p>認証処理がある場合、ローダーの前に実行する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/node"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/react"</span><span class="p">;</span>
 
@@ -35971,7 +35970,6 @@
 <p>ローダー内で <code>console.log()</code> 関数を実行すると、バックエンドの実行ログとして出力され、ブラウザのコンソールには出力されない。</p>
 <h4 id="useloaderdata">▼ useLoaderData<a class="headerlink" href="#useloaderdata" title="Permanent link">&para;</a></h4>
 <p>ローダーで取得したデータを出力できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">json</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/node"</span><span class="p">;</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">useLoaderData</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/react"</span><span class="p">;</span>
 
@@ -36472,7 +36470,6 @@
 <span class="l l-Scalar l-Scalar-Plain">│</span>
 <span class="l l-Scalar l-Scalar-Plain">└── root.tsx</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// &lt;ルート以降のパス&gt;._index.tsx</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Foo</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 返却するHTML要素</span>
@@ -36504,7 +36501,6 @@
 <li><a href="https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%88dynamic-segments%EF%BC%89">ドキュメントを読んだのでRemixのRouting(v2)を整理する</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1">// posts.$postId.tsxファイル</span>
 <span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Post</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="p">(</span>
@@ -36529,7 +36525,6 @@
 <h4 id="_tsx">▼ 子の <code>_&lt;ルート以降のパス&gt;.tsx</code><a class="headerlink" href="#_tsx" title="Permanent link">&para;</a></h4>
 <p>子のファイル名にプレフィクスとして <code>_</code> (パスレスルート) をつける。</p>
 <p>これにより、親からレイアウトを引き継ぎつつ、パスは引き継がない。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>_home.auth.tsx</code> ファイルは、親の <code>home.tsx</code> ファイルのレイアウトを引き継いでいる。</p>
 <p>しかし、<code>/home/auth</code> パスではなく、<code>/auth</code> パスになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                       </span><span class="c1">#  URL パス                   引き継ぐレイアウト</span>
@@ -36552,7 +36547,6 @@
 </blockquote>
 <h4 id="_tsx_1">▼ 親の <code>_&lt;ルート以降のパス&gt;.tsx</code> (親がパスレスルート)<a class="headerlink" href="#_tsx_1" title="Permanent link">&para;</a></h4>
 <p>親のファイル名にプレフィクスとして <code>_</code> (パスレスルート) をつける。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>_auth.&lt;任意の名前&gt;.tsx</code> ファイルは、親の <code>_auth.tsx</code> ファイルのレイアウトを引き継いでいる。</p>
 <p>しかし、すべてのファイルの URL に <code>auth</code> が含まれない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">app/</span><span class="w">                               </span><span class="c1"># URL パス</span>
@@ -36672,7 +36666,6 @@
 <p><code>action</code> 値を省略した場合、フォームの入力データは他に送信されず、その remix コンポーネント内のみで処理される。</p>
 <p><code>action</code> 値を <code>/foos?index</code> パスとした場合、<code>routes/foos/index.jsx</code> ファイルにデータを送信する。</p>
 <p>一方で、<code>action</code> 値を <code>/foos</code> パスとした場合、<code>routes/foos.jsx</code> ファイルにデータを送信する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ここでは <code>action</code> 値を省略している。</p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Form</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/react"</span><span class="p">;</span>
 
@@ -36697,7 +36690,6 @@
 <p>URL を書き換える。</p>
 <p>ページネーション処理に使える。</p>
 <p>Link コンポーネントが URL クエリストリングのページ値を書き換えると、Remix のローダーがそれを検知し、新しい URL クエリストリングで再リクエストを送信することで別のページが表示される。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="nx">Link</span><span class="p">,</span><span class="w"> </span><span class="nx">useSearchParams</span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"@remix-run/react"</span><span class="p">;</span>
 
 <span class="kr">type</span><span class="w"> </span><span class="nx">PageLinkProps</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>

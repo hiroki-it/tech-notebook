@@ -35458,7 +35458,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -35507,7 +35507,6 @@
 <p><br></p>
 <h3 id="resource_2"><code>resource</code> ブロックの実装方法<a class="headerlink" href="#resource_2" title="Permanent link">&para;</a></h3>
 <h4 id="aws">▼ AWS の場合<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS ALB</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -35525,7 +35524,6 @@
 <p><br></p>
 <h3 id="data_1"><code>data</code> ブロックの実装方法<a class="headerlink" href="#data_1" title="Permanent link">&para;</a></h3>
 <h4 id="aws_1">▼ AWS の場合<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、Amazon ECS タスク定義名を指定して、AWS から</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Data ECS task definition</span>
@@ -35534,7 +35532,6 @@
 <span class="w">  </span><span class="na">task_definition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"prd-foo-ecs-task-definition"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>AMI を検索したうえで、AWS から特定の AMI を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Data AMI</span>
@@ -35601,7 +35598,6 @@
 <span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
 <span class="nn">...</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>ルートモジュール内で <code>output</code> ブロックを使用したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ルートモジュール</span>
 
@@ -35664,7 +35660,6 @@
 <span class="l l-Scalar l-Scalar-Plain">│   │   ├── variables.tf</span>
 <span class="nn">...</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>ローカルモジュール内で <code>output</code> ブロックを使用したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># @ローカルモジュール</span>
 
@@ -35745,7 +35740,6 @@
 <p><code>resource</code> ブロックの作成に <code>count</code> 引数を使用した場合、その <code>resource</code> ブロックは list 型として扱われる。</p>
 <p>そのため、<code>output</code> ブロックではキー名を指定して出力できる。</p>
 <p>補足として、<code>for_each</code> 引数で作成した <code>resource</code> ブロックはアスタリスクでインデックス名を指定できないため、注意。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、VPC のサブネットを示す。</p>
 <p>ここでは、パブリックサブネット、application サブネット、datastore サブネットを <code>count</code> 引数で作成したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -35847,7 +35841,6 @@
 <h3 id="_7">オプション<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ データ型<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>単一値、list 型、map 型を定義できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>AZ、サブネットの CIDR ブロック、RDS のパラメーターグループ値などは map 型として保持しておくとよい。</p>
 <p>また、IP アドレスのセット、ユーザーエージェントなどは list 型として保持しておくとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -35918,7 +35911,6 @@
 <p>変数のデフォルト値を定義できる。</p>
 <p>有効な値を設定してしまうと可読性が悪くなる。</p>
 <p>そのため、無効値 (例：boolean 型であれば <code>false</code>、string 型であれば空文字、list 型であれば空配列など) を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>module</code> ブロックや <code>resource</code> ブロック内で、<code>count</code> 引数を使用して条件分岐を定義した場合に、そのフラグ値となる boolean 値をデフォルト値として定義するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">"enable_provision"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"enable provision"</span>
@@ -35940,7 +35932,6 @@
 <p>例として、ALB target group を示す。</p>
 <p>ALB Target group と ALB の <code>resource</code> ブロックを適切な順番で作成できないため、ECS の作成時にエラーが起こる。</p>
 <p>ALB の後に ALB target group を作成する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># AWS ALB target group</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36066,7 +36057,6 @@
 <h4 id="count_2">▼ <code>count</code> 引数とは<a class="headerlink" href="#count_2" title="Permanent link">&para;</a></h4>
 <p>指定した数だけ、<code>resource</code> ブロックの作成を繰り返す。</p>
 <p><code>count.index</code> オプションでインデックス数を展開する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Resource EC2</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36214,7 +36204,6 @@
 <h4 id="for_each_1">▼ <code>for_each</code> 引数とは<a class="headerlink" href="#for_each_1" title="Permanent link">&para;</a></h4>
 <p>あらかじめ <code>for_each</code> 引数に格納した map 型の <code>key</code> の数だけ、<code>resource</code> ブロックを繰り返し実行する。</p>
 <p>繰り返し処理を実行するときに、<code>count</code> 引数とは違い、要素名を指定して出力できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、subnet を繰り返し作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables Global</span>
@@ -36248,7 +36237,6 @@
 <p>冗長化された AZ で共通のルートテーブルを作成する場合、そこで、<code>for_each</code> 引数を使用すると、少ない実装で作成できる。</p>
 <p><code>for_each</code> 引数で作成された <code>resource</code> ブロックは <code>terraform apply</code> コマンド実行中に map 構造として扱われ、<code>resource</code> ブロック名の下層にキー名で <code>resource</code> ブロックが並ぶ構造になっている。</p>
 <p>これを参照するために、『<code>&lt;resourceタイプ&gt;.&lt;resourceブロック名&gt;[each.key].&lt;attribute&gt;</code>』とする。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付く AWS NAT Gateway の設定が冗長化された AZ で共通の場合、<code>for_each</code> 引数で作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables Global</span>
@@ -36342,7 +36330,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="map-output">▼ map 型で <code>output</code> ブロック<a class="headerlink" href="#map-output" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables Global</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -36399,7 +36386,6 @@
 </ul>
 </blockquote>
 <h4 id="map">▼ map 型の場合<a class="headerlink" href="#map" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>map 型のキー名と値の両方を設定値として使用する。</p>
 <p>例として、RDS パラメーターグループの <code>parameter</code> ブロックを、map 型通常変数を使用して繰り返し作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -36439,7 +36425,6 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>map 型の値を設定値として使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nb">security_group_ingress_ec2_ssh</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">cidr_blocks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*.*.*.*"</span>
@@ -36472,7 +36457,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="list">▼ list 型の場合<a class="headerlink" href="#list" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、WAF の正規表現パターンセットの <code>regular_expression</code> ブロックを、list 型通常変数を使用して繰り返し作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Variables WAF</span>
@@ -36510,7 +36494,6 @@
 <p>通常、Terraform は <code>resource</code> ブロックを削除してから作成する。</p>
 <p>しかし、他のリソースと依存関係が存在する場合、先に削除すると、他のリソースに影響が出てしまう。</p>
 <p>これに対処するため、先に新しい <code>resource</code> ブロックを作成し、紐付けし直してから削除する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、AWS Certificate Manager のサーバー証明書を示す。</p>
 <p>AWS Certificate Manager のサーバー証明書は、ALB や CloudFront に紐付いている。新しい証明書に紐付け直した後、既存のものを削除する必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -36526,7 +36509,6 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、RDS のクラスターパラメーターグループとサブネットグループを示す。</p>
 <p>RDS のアップグレード時、パラメーターグループは再作成する必要がある。</p>
 <p>このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。</p>
@@ -36552,7 +36534,6 @@
 
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、Redis のパラメーターグループとサブネットグループを示す。</p>
 <p>RDS のアップグレード時、パラメーターグループは再作成する必要がある。</p>
 <p>このときに既存のパラメーターグループと同名だと衝突してしまうため、パラメーターグループの名前やリソース名にはファミリー名をつけるといよい。</p>
@@ -36582,7 +36563,6 @@
 <p>実インフラのみで発生した <code>resource</code> ブロックの作成・更新・削除を無視し、<code>tfstate</code> ファイルへ反映しないようにする。</p>
 <p>これにより、<code>ignore_changes</code> 引数を定義したタイミング以降、実インフラと <code>tfstate</code> ファイルに差分があっても、<code>tfstate</code> ファイルの値が更新されなくなる。</p>
 <p>ただし、リソースによっては <code>ignore_changes</code> 引数を使えないものがある (例：SSM パラメーターストア) 。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、ECS を示す。</p>
 <p>ECS では、AWS AutoScaling によって Amazon ECS タスク数が増加する。</p>
 <p>そのため、これらを無視する必要がある。</p>
@@ -36601,7 +36581,6 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、Redis を示す。</p>
 <p>Redis では、AWS AutoScaling によってプライマリー数とレプリカ数が増減する。</p>
 <p>そのため、これらを無視する必要がある。</p>
@@ -36620,7 +36599,6 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>使用例はすくないが、補足として <code>resource</code> ブロック全体を無視する場合は <code>all</code> 値を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_foo"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 
@@ -36684,7 +36662,6 @@
 <h4 id="templatefile_1">▼ <code>templatefile()</code> 関数とは<a class="headerlink" href="#templatefile_1" title="Permanent link">&para;</a></h4>
 <p>第一引数でポリシーが定義されたファイルを読み出し、第二引数でファイルに変数を渡す。</p>
 <p>ファイルの拡張子は tpl とするのがよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>例として、Amazon S3 を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon S3 bucket policy</span>
@@ -36759,7 +36736,6 @@
 <h3 id="containerdefinitions">containerDefinitions の設定<a class="headerlink" href="#containerdefinitions" title="Permanent link">&para;</a></h3>
 <h4 id="containerdefinitions_1">▼ containerDefinitions とは<a class="headerlink" href="#containerdefinitions_1" title="Permanent link">&para;</a></h4>
 <p>Amazon ECS タスク定義のうち、コンテナを定義する部分のこと。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"ipcMode"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">null</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">"executionRoleArn"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"&lt;ecsTaskExecutionRoleのARN&gt;"</span><span class="p p-Indicator">,</span>
@@ -36775,7 +36751,6 @@
 <p>バージョンタグにハッシュ値が割り当てられているとき、Terraform ではタイムライン上で最新のタグ名を取得する方法がないため、<code>secrets</code> キーでは、パラメーターストアの値を参照できる。</p>
 <p>ログ分割の目印を設定する <code>awslogs-datetime-format</code> キーでは、タイムスタンプを表す <code>\\[%Y-%m-%d %H:%M:%S\\]</code> を設定するとよい。</p>
 <p>これにより、同じ時間に発生したログを 1 つのログとしてまとめられるため、スタックトレースが見やすくなる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">[</span>
 <span class="w">  </span><span class="p p-Indicator">{</span>
 <span class="w">    </span><span class="c1"># コンテナ名</span>

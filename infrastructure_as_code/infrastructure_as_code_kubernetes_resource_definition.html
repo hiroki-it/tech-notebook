@@ -44258,7 +44258,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -45056,7 +45056,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <li><a href="https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates">Pods | Kubernetes</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46006,7 +46005,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="readwritemany">▼ ReadWriteMany<a class="headerlink" href="#readwritemany" title="Permanent link">&para;</a></h4>
 <p>ボリュームに対して、複数の Node から読み出し/書き込み可能にする。</p>
 <p>Node 間で DB を共有したい場合に使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46018,7 +46016,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="readonlymany">▼ ReadOnlyMany<a class="headerlink" href="#readonlymany" title="Permanent link">&para;</a></h4>
 <p>ボリュームに対して、複数の Node から読み出しでき、また単一の Node のみから書き込み可能にする。</p>
 <p>Node 間で読み出し処理のみ DB を共有したい場合に使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46030,7 +46027,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="readwriteonce">▼ ReadWriteOnce<a class="headerlink" href="#readwriteonce" title="Permanent link">&para;</a></h4>
 <p>ボリュームに対して、単一の Node からのみ読み出し/書き込み可能にする。</p>
 <p>もし Node に Pod のインスタンスが複数ある場合、<code>ReadWriteOnce</code> であっても複数の Pod から読み込み/書き込みがある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46048,7 +46044,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="speccapacity">.spec.capacity<a class="headerlink" href="#speccapacity" title="Permanent link">&para;</a></h3>
 <h4 id="capacity">▼ capacity とは<a class="headerlink" href="#capacity" title="Permanent link">&para;</a></h4>
 <p>ストレージの最大サイズを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46124,7 +46119,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><br></p>
 <h3 id="specmountoptions">.spec.mountOptions<a class="headerlink" href="#specmountoptions" title="Permanent link">&para;</a></h3>
 <h4 id="mountoptions">▼ mountOptions とは<a class="headerlink" href="#mountoptions" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46144,7 +46138,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>ホスト上であらかじめ NFS サーバーを起動しておく。</p>
 <p>NFS サーバーのストレージ上にボリュームを作成する。</p>
 <p>Node 内の Pod を、ホスト上の NFS サーバーにマウントする。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46199,7 +46192,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
   </tbody>
 </table>
 
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46238,7 +46230,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="delete">▼ Delete<a class="headerlink" href="#delete" title="Permanent link">&para;</a></h4>
 <p>PersistentVolume を指定する PersistentVolumeClaim が削除された場合、PersistentVolume も自動的に削除する。</p>
 <p>クラウドプロバイダーの PersistentVolume の動的プロビジョニングのために使用することが多い。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46254,7 +46245,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h4 id="recycle">▼ Recycle (非推奨)<a class="headerlink" href="#recycle" title="Permanent link">&para;</a></h4>
 <p>PersistentVolume を指定する PersistentVolumeClaim が削除された場合、PersistentVolume 内のデータのみを削除し、PersistentVolume 自体は削除しない。</p>
 <p>将来的に廃止予定のため、非推奨。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46271,7 +46261,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>PersistentVolume を指定する PersistentVolumeClaim が削除されたとしても、PersistentVolume は削除しない。</p>
 <p>割り当てから解除された PersistentVolume は Released ステータスになる。</p>
 <p>一度、Released ステータスになると、他の PersistentVolumeClaim からは指定できなくなる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46323,7 +46312,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
   </tbody>
 </table>
 
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolume</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46343,7 +46331,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h3 id="specaccessmodes_1">.spec.accessModes<a class="headerlink" href="#specaccessmodes_1" title="Permanent link">&para;</a></h3>
 <h4 id="accessmodes_1">▼ accessModes とは<a class="headerlink" href="#accessmodes_1" title="Permanent link">&para;</a></h4>
 <p>要求対象の PersistentVolume の accessMode を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46358,7 +46345,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>要求する仮想ハードウェアの Kubernetes リソースを設定する。</p>
 <h4 id="requests">▼ requests<a class="headerlink" href="#requests" title="Permanent link">&para;</a></h4>
 <p>要求対象の PersistentVolume の requests を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46374,7 +46360,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>要求対象の PersistentVolume のストレージクラス名を設定する。</p>
 <p>これを設定しない場合は、ストレージクラス名が <code>standard</code> の PersistentVolume を要求する。</p>
 <p>注意点として、もし異なる StorageClassName に変更したい場合は、PersistentVolume を作成し直す必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PersistentVolumeClaim</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46660,7 +46645,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="nameimage">▼ name、image<a class="headerlink" href="#nameimage" title="Permanent link">&para;</a></h4>
 <p>Pod を構成するコンテナの名前、ベースイメージを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46691,7 +46675,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </blockquote>
 <h4 id="env">▼ env<a class="headerlink" href="#env" title="Permanent link">&para;</a></h4>
 <p>環境変数を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>status.podIP</code> から自身の IP アドレスを取得し、<code>MY_POD_IP</code> という名前で設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46712,7 +46695,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 </code></pre></div>
 <h4 id="envfrom">▼ envFrom<a class="headerlink" href="#envfrom" title="Permanent link">&para;</a></h4>
 <p><code>.spec.volumes.secret</code> キー (ファイルをコンテナに設定する) とは異なり、Secret や ConfigMap からコンテナに環境変数を出力する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46778,7 +46760,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
   </tbody>
 </table>
 
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46882,7 +46863,6 @@ Allocatable:
   </tbody>
 </table>
 
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46929,7 +46909,6 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <li><a href="https://github.com/kubernetes/kubernetes/issues/48749">MountPath inside container should be an absolute path · Issue #48749 · kubernetes/kubernetes · GitHub</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -46954,7 +46933,6 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <li><a href="https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume">https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>Secret の名前を指定できる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -46975,7 +46953,6 @@ foo-pod<span class="w">   </span>istio-proxy<span class="w">   </span>5m<span cl
 <span class="w">      </span><span class="nt">secret</span><span class="p">:</span>
 <span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app-secret</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -47678,7 +47655,6 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h4 id="hostname">▼ hostname とは<a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h4>
 <p>Pod のホスト名を設定する。</p>
 <p>また、<code>.spec.hostname</code> キーが設定されていないときは、<code>.metadata.name</code> がホスト名として使用される。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48048,7 +48024,6 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <h4 id="serviceaccountname">▼ serviceAccountName とは<a class="headerlink" href="#serviceaccountname" title="Permanent link">&para;</a></h4>
 <p>Pod に ServiceAccount を紐付ける。</p>
 <p>Pod のプロセスに認証済みの ID が付与され、Kubernetes と通信できるようになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48134,7 +48109,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="noschedule">▼ NoSchedule<a class="headerlink" href="#noschedule" title="Permanent link">&para;</a></h4>
 <p>指定した条件に合致する Node にはスケジューリングさせない。</p>
 <p>なお、実行中の Pod が違反していた場合でも、再スケジューリングさせない。</p>
-<p><strong>＊実装例＊</strong></p>
 <p><code>kube-system</code> で管理したいような重要な Pod に <code>CriticalAddonsOnly</code> キーの Tolerations を設定する。</p>
 <p>合わせて Node の Taint にも <code>CriticalAddonsOnly</code> キーを設定することで、Taint に耐性のある Pod (<code>CriticalAddonsOnly</code> キー) しか、この Node にスケジューリングできなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -48157,7 +48131,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://news.mynavi.jp/techplus/article/k8ssecurity-6/2">ゼロからはじめる実践 Kubernetes セキュリティ(6) Kubernetes クラスタの保護 | TECH+（テックプラス）</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">group</span><span class="o">=</span>monitoring:NoSchedule
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -48185,7 +48158,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="noexecute">▼ NoExecute<a class="headerlink" href="#noexecute" title="Permanent link">&para;</a></h4>
 <p>指定した条件に合致する Node にはスケジューリングさせない。</p>
 <p>なお、実行中の Pod が違反していた場合、再スケジューリングさせる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </span>node<span class="w"> </span>foo-node<span class="w"> </span><span class="nv">group</span><span class="o">=</span>monitoring:NoExecute
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -48223,7 +48195,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="maxskew">▼ maxSkew<a class="headerlink" href="#maxskew" title="Permanent link">&para;</a></h4>
 <p><code>.spec.topologySpreadConstraints[*].topologyKey</code> キーで指定した分散の単位の間で、Pod の個数差を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>AZ が <code>2</code> 個あるとすると、各 AZ 間の Pod の個数差を <code>1</code> 個にする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -48245,7 +48216,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="topologykey">▼ topologyKey<a class="headerlink" href="#topologykey" title="Permanent link">&para;</a></h4>
 <p>Pod の分散の単位を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>AZ を分散の単位に設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -48266,7 +48236,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="whenunsatisfiable">▼ whenUnsatisfiable<a class="headerlink" href="#whenunsatisfiable" title="Permanent link">&para;</a></h4>
 <p>分散の条件に合致する Node がない場合の振る舞いを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>分散の条件に合致する Node がない場合、この Pod をスケジューリングさせない。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -48286,7 +48255,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="labelselector">▼ labelSelector<a class="headerlink" href="#labelselector" title="Permanent link">&para;</a></h4>
 <p>分散させる Pod の条件を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48311,7 +48279,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="configmap_1">▼ configMap<a class="headerlink" href="#configmap_1" title="Permanent link">&para;</a></h4>
 <p>ConfigMap の <code>.data</code> キー配下のキーをファイルとしてマウントする。</p>
 <p>Secret をマウントする場合は、<code>.spec.volumes.secret</code> キーで設定することに注意する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ConfigMap の持つキー (ここでは <code>fluent-bit.conf</code> キー) をコンテナにファイルとしてマウントする</p>
 <p>そのため、コンテナには <code>fluent-bit.conf</code> ファイルが配置されることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -48360,7 +48327,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="emptydir">▼ emptyDir<a class="headerlink" href="#emptydir" title="Permanent link">&para;</a></h4>
 <p>Volume の一種である EmptyDir Volume を作成する。</p>
 <p>『Pod』が削除されると、この EmptyDir Volume も同時に削除される。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>オンディスクストレージを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
@@ -48383,7 +48349,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <li><a href="https://qiita.com/umkyungil/items/218be95f7a1f8d881415">Kubernetes基礎(6)：Volume-emptyDir, hostPath, PV/PVC #kubernetes - Qiita</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>インメモリストレージを設定する。</p>
 <p>注意点として、Pod が使用できる上限メモリサイズを設定しない場合、Pod はスケジューリングされた Node のメモリ領域を最大限に使ってしまう。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -48414,7 +48379,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>PersistentVolume の一種である HostPath Volume とは区別すること。</p>
 <p>『Node』が削除されると、この HostPath Volume も同時に削除される。</p>
 <p>HostPath Volume 自体は本番環境で非推奨である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48456,7 +48420,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </code></pre></div>
 <h4 id="projected">▼ projected<a class="headerlink" href="#projected" title="Permanent link">&para;</a></h4>
 <p>複数のソース (Secret、downwardAPI、ConfigMap、ServiceAccount の Token) を同じ Volume 上のディレクトリに配置する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48485,7 +48448,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="persistentvolumeclaim_1">▼ persistentVolumeClaim<a class="headerlink" href="#persistentvolumeclaim_1" title="Permanent link">&para;</a></h4>
 <p>PersistentVolume を使用する場合、PersistentVolumeClaim を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -48538,7 +48500,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>Secret の <code>.data</code> キー配下のキーをファイルとしてマウントする。</p>
 <p><code>.spec.containers[*].envFrom</code> キー (環境変数をコンテナに出力する) とは異なり、Secret からファイルを設定する。</p>
 <p>ConfigMap をマウントする場合は、<code>.spec.volumes.configMap</code> キーで設定することに注意する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>Secret が持つ資格情報ファイル (ここでは <code>credentials.json</code> キー) をコンテナにファイルとしてマウントする</p>
 <p>そのため、コンテナには資格情報ファイルが配置されることになる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
@@ -49151,7 +49112,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </code></pre></div>
 <h4 id="protocol">▼ protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h4>
 <p>受信する通信のプロトコルを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49181,7 +49141,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </code></pre></div>
 <h4 id="port">▼ port<a class="headerlink" href="#port" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信を待ち受けるポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49202,7 +49161,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>受信した通信を Pod へフォワーディングするとき、いずれのポート番号を指定するか否かを設定する。</p>
 <p>Pod 内で最初にインバウンド通信を受信するコンテナの <code>containerPort</code> の番号に合わせる。</p>
 <p>デフォルトでは、<code>.spec.ports.port</code> キーと同じ値になる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49231,7 +49189,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="loadbalancersourceranges">▼ loadBalancerSourceRanges とは<a class="headerlink" href="#loadbalancersourceranges" title="Permanent link">&para;</a></h4>
 <p>LoadBalancer Service のみで設定できる。</p>
 <p>プロビジョニングされる <code>L4</code> ロードバランサーのインバウンド通信で許可する CIDR を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49257,7 +49214,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specselector_2">.spec.selector<a class="headerlink" href="#specselector_2" title="Permanent link">&para;</a></h3>
 <h4 id="selector_1">▼ selector とは<a class="headerlink" href="#selector_1" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信のフォワーディング先とする Pod の <code>.metadata.labels</code> キー名と値を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49284,7 +49240,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="clientip">▼ ClientIP<a class="headerlink" href="#clientip" title="Permanent link">&para;</a></h4>
 <p>同じセッション内であれば、特定のクライアントからのリクエストを Service 配下の同じ Pod にルーティングし続けられる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49301,7 +49256,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 </blockquote>
 <h4 id="none">▼ None<a class="headerlink" href="#none" title="Permanent link">&para;</a></h4>
 <p>sessionAffinity を無効化する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49319,7 +49273,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="sessionaffinityconfig">▼ sessionAffinityConfig とは<a class="headerlink" href="#sessionaffinityconfig" title="Permanent link">&para;</a></h4>
 <p><code>.spec.sessionAffinity</code> キーを使用している場合に、セッションのタイムアウト時間を設定する。</p>
 <p>タイムアウト時間を過ぎると、Node 上に保管したセッション ID を削除する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Service</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -49574,7 +49527,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h3 id="specservicename">.spec.serviceName<a class="headerlink" href="#specservicename" title="Permanent link">&para;</a></h3>
 <h4 id="servicename">▼ serviceName とは<a class="headerlink" href="#servicename" title="Permanent link">&para;</a></h4>
 <p>StatefulSet によって管理される Pod にルーティングする Service を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -49617,7 +49569,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <h4 id="template_1">▼ template とは<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h4>
 <p>StatefulSet で維持管理する Pod を設定する。</p>
 <p>設定項目は Pod と同じである。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">spec</span><span class="p">:</span>
@@ -49670,7 +49621,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span>taint<span class="w"> </
 <p>PersistentVolumeClaim を作成する。</p>
 <p>設定の項目は <code>kind: PersistentVolumeClaim</code> の場合と同じである。</p>
 <p>StatefulSet が削除されても、これは削除されない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">StatefulSet</span>
 <span class="nt">spec</span><span class="p">:</span>

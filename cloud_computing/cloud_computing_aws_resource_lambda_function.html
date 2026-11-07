@@ -34748,7 +34748,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -34797,7 +34797,6 @@
 <p>ハンドラ関数の初期名は <code>handler()</code> 関数であるが別名でもよい。</p>
 <p><code>return</code> または <code>throw</code> を使用して、AWS Lambda のコール元にレスポンスを返信する。</p>
 <p>レスポンスとして、Promise オブジェクトを送信もできる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>JavaScript の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="nx">exports</span><span class="p">.</span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
@@ -34844,7 +34843,6 @@
 </ul>
 </blockquote>
 <p>(※『Non』が翻訳をおかしくしているため、英語版を推奨)</p>
-<p><strong>＊実装例＊</strong></p>
 <p>JavaScript の場合を示す。</p>
 <p>レスポンスを返信するには、<code>done()</code> 関数、<code>succeed()</code> 関数、<code>callback()</code> 関数が必要である。</p>
 <p>また、処理を終える場合は <code>return</code> で返却する必要がある。</p>
@@ -35208,7 +35206,6 @@
 <p><br></p>
 <h2 id="03-02">03-02. 関数例<a class="headerlink" href="#03-02" title="Permanent link">&para;</a></h2>
 <h3 id="aws-amplify-amazon-eventbridge-aws-lambda-slack-api_1">AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API<a class="headerlink" href="#aws-amplify-amazon-eventbridge-aws-lambda-slack-api_1" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <p>AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを AWS Lambda にフォワーディングする。AWS Lambda では、メッセージを構成し、Slack-API に送信する。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">"use strict"</span><span class="p">;</span>
 
@@ -35422,7 +35419,6 @@
 </blockquote>
 <p><br></p>
 <h3 id="amazon-api-gateway-aws-lambda-amazon-s3">Amazon API Gateway ➡️ AWS Lambda ➡️ Amazon S3<a class="headerlink" href="#amazon-api-gateway-aws-lambda-amazon-s3" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <p>Amazon API Gateway でリクエストを受信し、それに応じて特定のデータを Amazon S3 に保管する。</p>
 <p>AWS Lambda が Amazon S3 に対してアクションを実行できるように、事前に、AWS 管理ポリシーの『<code>LambdaExecute</code>』が紐付けられたロールを AWS Lambda に紐付けしておく必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="s2">"use strict"</span><span class="p">;</span>
@@ -35475,7 +35471,6 @@
 <p><br></p>
 <h3 id="amazon-cloudfront-aws-lambdaedge-amazon-s3">Amazon CloudFront ➡️ AWS Lambda@Edge ➡️ Amazon S3<a class="headerlink" href="#amazon-cloudfront-aws-lambdaedge-amazon-s3" title="Permanent link">&para;</a></h3>
 <p><img alt="lambda-edge_dynamic-origin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png" /></p>
-<p><strong>＊実装例＊</strong></p>
 <p>event オブジェクトの <code>domainName</code> と <code>host.value</code> に代入されたバケットのドメイン名によって、フォワーディング先のバケットが決まる。</p>
 <p>そのため、この値を切り替えれば動的オリジンを実現できる。</p>
 <p>注意点として、各バケットには同じオリジンアクセスアイデンティティを設定する必要がある。</p>

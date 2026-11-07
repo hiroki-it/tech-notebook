@@ -34712,7 +34712,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -34773,7 +34773,6 @@
 <p>Dockerfile に直接的に実装することとの使い分けとして、Dockerfile の実装は簡単に変更できないが、<code>docker-compose.yml</code> ファイルにおける定義は変更しやすい。</p>
 <p>そのため、使用者に変更してほしくない変数は Dockerfile に実装し、変更しても問題ない変数はこのオプションを使用する。</p>
 <p>他に、マルチステージビルドを使用しており、すべてのステージで共通した変数を展開したい場合、このオプションを使用すると展開する変数を共通化できる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
@@ -34783,14 +34782,12 @@
 
 <span class="k">ENV</span><span class="w"> </span><span class="nv">PARAM</span><span class="o">=</span><span class="si">${</span><span class="nv">PARAM</span><span class="si">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ここに実装例</span>
 </code></pre></div>
 <p><br></p>
 <h3 id="build"><code>build</code><a class="headerlink" href="#build" title="Permanent link">&para;</a></h3>
 <h4 id="context">▼ <code>context</code><a class="headerlink" href="#context" title="Permanent link">&para;</a></h4>
 <p>指定した Dockerfile のあるディレクトリをカレントディレクトリとして、docker デーモンに送信するディレクトリを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
@@ -34798,7 +34795,6 @@
 </code></pre></div>
 <h4 id="dockerfile">▼ <code>dockerfile</code><a class="headerlink" href="#dockerfile" title="Permanent link">&para;</a></h4>
 <p>Dockerfile までのパスを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
@@ -34808,7 +34804,6 @@
 <p>ビルドするステージ名を設定する。</p>
 <p>マルチステージビルドのときに使用する。</p>
 <p>ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
@@ -34818,7 +34813,6 @@
 <h3 id="command"><code>command</code><a class="headerlink" href="#command" title="Permanent link">&para;</a></h3>
 <p>コンテナの起動時、最初に実行するコマンドを設定する。</p>
 <p>Dockerfile を必要とせず、ベンダーが提供するイメージをそのまま使用するような場合に役立つ。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>mysql イメージを使用してコンテナを作成するときに、最初に文字コードを設定するコマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">db</span><span class="p">:</span>
@@ -34830,7 +34824,6 @@
 <p>コンテナ名を命名する。</p>
 <p>サービス名とは異なり、コンテナ名は他のプロジェクトと重複しないようにする必要があるため、接頭辞にプロジェクト名をつけるとよい。</p>
 <p>また、接尾辞をベンダー名とするとよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo</span>
@@ -34838,7 +34831,6 @@
 <p><br></p>
 <h3 id="depends_on"><code>depends_on</code><a class="headerlink" href="#depends_on" title="Permanent link">&para;</a></h3>
 <p>サービスを起動する順番を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>DB サービスの起動後に、該当するコンテナを起動する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
@@ -34850,7 +34842,6 @@
 <p>コンテナで展開する環境変数を定義する。</p>
 <p>Dockerfile 内での環境変数とは異なり、マルチステージビルドの全ステージで使用できる。</p>
 <p>dotenv 系パッケージを使用しなくてもよくなる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>mysql イメージを使用した場合、DB の環境変数の設定が必要である。</p>
 <p>DB の環境変数は、バックエンドコンテナでも必要なため、<code>environment</code> キーに直接的に環境変数を設定せずに、<code>env</code> ファイルに定義した環境変数を <code>environment</code> キーで参照するとよい。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
@@ -34962,11 +34953,9 @@ ff02::2<span class="w"> </span>ip6-allrouters
 </blockquote>
 <p><br></p>
 <h3 id="hostname"><code>hostname</code><a class="headerlink" href="#hostname" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <p>コンテナに割り当てられるプライベート IP アドレスへ、指定したホスト名をマッピングする。</p>
 <p>マッピングは、<code>/etc/hosts</code> ファイルに書き込まれる。</p>
 <p>もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">hostname</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">web</span>
@@ -34986,7 +34975,6 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <h3 id="image"><code>image</code><a class="headerlink" href="#image" title="Permanent link">&para;</a></h3>
 <p>イメージに名前をつける。</p>
 <p>デフォルトでは、『<code>プロジェクト名_サービス名</code>』となる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo:&lt;バージョンタグ&gt;</span>
@@ -35013,7 +35001,6 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <h4 id="fluentd">▼ <code>fluentd</code><a class="headerlink" href="#fluentd" title="Permanent link">&para;</a></h4>
 <p>コンテナで作成されたログを Fluentd コンテナにフォワーディングする。</p>
 <p>ログのフォワーディング元よりも先に起動する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">logging</span><span class="p">:</span>
@@ -35040,7 +35027,6 @@ ff02::2<span class="w"> </span>ip6-allrouters
 <p><img alt="dockerエンジン内の仮想ネットワーク" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Dockerエンジン内の仮想ネットワーク.jpg" /></p>
 <p>コンテナを接続するうち/外ネットワークのエイリアスを設定する。</p>
 <p>ネットワーク名ではなく、エイリアスを指定することに注意する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">networks</span><span class="p">:</span>
 <span class="w">  </span><span class="c1"># 内/外ネットワークのエイリアスを設定する。</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-network</span>
@@ -35125,7 +35111,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <p><br></p>
 <h3 id="platform"><code>platform</code><a class="headerlink" href="#platform" title="Permanent link">&para;</a></h3>
 <p>コンテナの CPU アーキテクチャ (例：Intel、AMD、ARM) を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">platform</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">linux/amd64</span>
@@ -35134,7 +35119,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <h3 id="ports"><code>ports</code><a class="headerlink" href="#ports" title="Permanent link">&para;</a></h3>
 <p>ホストとコンテナの間のポートフォワーディングを設定する。</p>
 <p>コンテナのみポート番号を指定した場合、ホスト側のポート番号はランダムになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">web</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
@@ -35149,7 +35133,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <p><br></p>
 <h3 id="stdin_open"><code>stdin_open</code><a class="headerlink" href="#stdin_open" title="Permanent link">&para;</a></h3>
 <p><code>docker compose</code> コマンドの裏側では、<code>docker run</code> コマンドが実行される。<code>i</code> オプションを有効化するか否かを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">stdin_open</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
@@ -35158,7 +35141,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <h3 id="tty"><code>tty</code><a class="headerlink" href="#tty" title="Permanent link">&para;</a></h3>
 <p><code>docker compose</code> コマンドの裏側では、<code>docker run</code> コマンドが実行される。<code>t</code> オプションを有効化するか否かを設定する。</p>
 <p>疑似ターミナルを割り当てることで、<code>exit</code> の後もバックグラウンドでコンテナを起動させ続けられる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">tty</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
@@ -35168,7 +35150,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <p><code>docker compose</code> コマンドの裏側では、<code>docker run</code> コマンドが実行される。<code>u</code> オプションを有効化するか否かを設定する。</p>
 <p>コンテナの実行ユーザーのユーザーID とグループ ID を設定する。</p>
 <p>Root 以外で実行するために使用する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">"${UID}:${GID}"</span>
@@ -35177,7 +35158,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <h3 id="volumes"><code>volumes</code> (バインドマウント)<a class="headerlink" href="#volumes" title="Permanent link">&para;</a></h3>
 <p>最上層と <code>service</code> 内で、異なるボリューム名を記述した場合、バインドマウントを定義する。</p>
 <p>ホスト側の <code>/Users</code> ディレクトリをコンテナ側にマウントする。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
@@ -35192,7 +35172,6 @@ $<span class="w"> </span>docker<span class="w"> </span>network<span class="w"> <
 <li><a href="https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c">Docker上のMySQLのデータをVolumeでホストのディレクトリにマウントすると権限周りで面倒なことになる #docker-compose - Qiita</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>MySQL コンテナの datadir ディレクトリ (<code>/var/lib/mysql</code>) に、docker エリアのボリュームをマウントする。</p>
 <p>datadir ディレクトリについては、以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -35229,7 +35208,6 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <p><br></p>
 <h3 id="_2">変数展開<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>環境変数を <code>docker-compose.yml</code> ファイルに展開する。変数の展開にあたり、<code>docker-compose.yml</code> ファイルと同じ階層にある <code>.env</code> ファイルが自動的に読み込まれる。この展開に <code>env_file</code> オプションを使用できない。そのため、例えば <code>.env</code> ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">app</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">build</span><span class="p">:</span>
@@ -35302,7 +35280,6 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <p><img alt="docker-compose_external" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-compose_external.png" /></p>
 <p>異なる <code>docker-compose.yml</code> ファイルから相互に通信できるネットワークを作成する。</p>
 <p>作成されるネットワーク名は、<code>&lt;プロジェクト名&gt;_&lt;ネットワーク名&gt;</code> になる。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>フロントエンド領域とバックエンド領域が異なる <code>docker-compose.yml</code> ファイルで管理されている。</p>
 <p>フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。</p>
 <p>(1) ネットワークを作成する。</p>
@@ -35361,7 +35338,6 @@ NETWORK<span class="w"> </span>ID<span class="w">       </span>NAME<span class="
 <h3 id="volume">Volume プラグイン<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
 <h4 id="nfs">▼ NFS ストレージ<a class="headerlink" href="#nfs" title="Permanent link">&para;</a></h4>
 <p>NFS プラグインを使用することで、永続データを <code>/var/lib/docker/volumes</code> ディレクトリではなく、NFS ストレージに保管する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>以下に docker-compose を使用した場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.9"</span>
 
@@ -35395,7 +35371,6 @@ DRIVER<span class="w">    </span>VOLUME<span class="w"> </span>NAME
 <li><a href="https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93">https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>mysql コンテナに、PHPUnit の実行時のみ使用する DB を追加する。以下のような、<code>docker-compose.yml</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">"3.9"</span>
 

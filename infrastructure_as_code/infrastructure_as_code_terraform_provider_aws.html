@@ -36822,7 +36822,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -36868,7 +36868,6 @@
 <h2 id="aws-certificate-manager">AWS Certificate Manager<a class="headerlink" href="#aws-certificate-manager" title="Permanent link">&para;</a></h2>
 <h3 id="resource">resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ サーバー証明書のリクエスト<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>E メール検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
@@ -36889,7 +36888,6 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>DNS 検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
@@ -36911,7 +36909,6 @@
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_3">▼ 検証の実行<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>E メール検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
@@ -36921,7 +36918,6 @@
 <span class="w">  </span><span class="na">certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_acm_certificate.www_an1.arn</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>DNS 検証の場合を示す。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For www domain</span>
@@ -36978,7 +36974,6 @@
 <p><br></p>
 <h3 id="data">data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ まとめ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>AMI を検索したうえで、AWS から特定の AMI を取得する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For bastion</span>
@@ -37029,7 +37024,6 @@
 <p><br></p>
 <h2 id="amazon-api-gateway">Amazon API Gateway<a class="headerlink" href="#amazon-api-gateway" title="Permanent link">&para;</a></h2>
 <h3 id="resource_2">resource<a class="headerlink" href="#resource_2" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># RESTful-API</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37097,7 +37091,6 @@
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html">API Gateway Amazon Resource Name (ARN) reference - Amazon API Gateway</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>WAF に API Gateway を紐付けるために、ステージの ARN が必要である。</p>
 <p>これは自力で作る。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -37121,7 +37114,6 @@
 <p><br></p>
 <h2 id="amazon-cloudfront">Amazon CloudFront<a class="headerlink" href="#amazon-cloudfront" title="Permanent link">&para;</a></h2>
 <h3 id="resource_4">resource<a class="headerlink" href="#resource_4" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_cloudfront_distribution"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="na">price_class</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"PriceClass_200"</span>
@@ -37160,7 +37152,6 @@
 <p>固有の設定で、AWS に対応するものはない。</p>
 <h4 id="origin">origin ブロック<a class="headerlink" href="#origin" title="Permanent link">&para;</a></h4>
 <p>Origins 画面に設定するオリジンを定義する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_cloudfront_distribution"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
@@ -37203,7 +37194,6 @@
 </code></pre></div>
 <h4 id="ordered_cache_behavior">ordered_cache_behavior ブロック<a class="headerlink" href="#ordered_cache_behavior" title="Permanent link">&para;</a></h4>
 <p>Behavior 画面で設定するオリジンにルーティングするパスを定義する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_cloudfront_distribution"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="p">...</span>
@@ -37234,7 +37224,6 @@
 </code></pre></div>
 <h4 id="default_cache_behavior">default_cache_behavior<a class="headerlink" href="#default_cache_behavior" title="Permanent link">&para;</a></h4>
 <p>Behavior 画面で設定するオリジンにルーティングする標準パスを定義する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_cloudfront_distribution"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="nb">default_cache_behavior</span><span class="w"> </span><span class="p">{</span>
@@ -37298,7 +37287,6 @@
 <p><br></p>
 <h2 id="amazon-ecs">Amazon ECS<a class="headerlink" href="#amazon-ecs" title="Permanent link">&para;</a></h2>
 <h3 id="resource_6">resource<a class="headerlink" href="#resource_6" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># ECS Service</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37388,7 +37376,6 @@
 <p><br></p>
 <h2 id="amazon-ec2">Amazon EC2<a class="headerlink" href="#amazon-ec2" title="Permanent link">&para;</a></h2>
 <h3 id="resource_7">resource<a class="headerlink" href="#resource_7" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For bastion</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37531,7 +37518,6 @@
 <h4 id="_10">▼ カスタマー管理ポリシーを持つロール<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>事前に、tpl 形式のカスタマー管理ポリシーを定義しておく。</p>
 <p>作成済みの IAM ロールに、<code>aws_iam_policy</code> リソースを使用して、AWS 管理ポリシーを IAM ユーザーに紐付ける。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ローカルマシンから AWS CLI コマンドを実行する必要がある場合、コマンドを特定の送信元 IP アドレスを特定のものに限定する。</p>
 <p>事前に、list 型で IP アドレスを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
@@ -37579,7 +37565,6 @@
 </code></pre></div>
 <h4 id="aws_1">▼ AWS 管理ポリシー<a class="headerlink" href="#aws_1" title="Permanent link">&para;</a></h4>
 <p>IAM ユーザーに AWS 管理ポリシーを紐付ける。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For IAM User</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37595,7 +37580,6 @@
 <p>コンソール画面でロールを作成する場合は意識しないが、特定の <code>resource</code> ブロックにロールを紐付けるためには、ロールに信頼ポリシーを組み込む必要がある。</p>
 <p>事前に、tpl 形式の信頼ポリシーを定義しておく。</p>
 <p><code>aws_iam_role</code> リソースを使用して、IAM ロールを作成すると同時に、これに信頼ポリシーを紐付ける。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>事前に、ECS タスクのための信頼ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
@@ -37634,7 +37618,6 @@
 <span class="w">  </span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>事前に、Lambda@Edge のための信頼ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
@@ -37667,7 +37650,6 @@
 <h4 id="_12">▼ インラインポリシーを持つロール<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>事前に、tpl 形式のインラインポリシーを定義しておく。</p>
 <p><code>aws_iam_role_policy</code> リソースを使用して、インラインポリシーを作成すると同時に、これにインラインポリシーを紐付ける。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>事前に、ECS タスクに必要最低限の権限を与えるインラインポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
@@ -37692,7 +37674,6 @@
 <p>事前に、tpl 形式の AWS 管理ポリシーを定義しておく。</p>
 <p><code>aws_iam_role_policy_attachment</code> リソースを使用して、実インフラにある AWS 管理ポリシーを作成済みの IAM ロールに紐付ける。</p>
 <p>ポリシーの ARN は、AWS のコンソール画面を確認する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For ECS Task Execution</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37705,7 +37686,6 @@
 <p>事前に、tpl 形式のインラインポリシーを定義しておく。</p>
 <p><code>aws_iam_role_policy</code> リソースを使用して、カスタマー管理ポリシーを作成する。</p>
 <p><code>aws_iam_role_policy_attachment</code> リソースを使用して、カスタマー管理ポリシーを作成済みの IAM ロールに紐付ける。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>事前に、ECS タスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
@@ -37741,7 +37721,6 @@
 <p>サービスリンクロールは、AWS リソースの作成時に自動的に作成され、紐付けられる。</p>
 <p>そのため、Terraform の管理外である。</p>
 <p><code>aws_iam_service_linked_role</code> リソースを使用して、手動で作成できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>サービス名を指定して、ApplicationAutoScaling のサービスリンクロールを作成する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># IAM Role For ECS Service</span>
@@ -37777,7 +37756,6 @@
 <p><br></p>
 <h2 id="aws_3">AWS リスナーとターゲットグループ<a class="headerlink" href="#aws_3" title="Permanent link">&para;</a></h2>
 <h3 id="resource_11">resource<a class="headerlink" href="#resource_11" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># NLB target group</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -37840,7 +37818,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p><br></p>
 <h2 id="amazon-aurora">Amazon Aurora の場合<a class="headerlink" href="#amazon-aurora" title="Permanent link">&para;</a></h2>
 <h3 id="resource_12">resource<a class="headerlink" href="#resource_12" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># RDS Cluster</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -38167,7 +38144,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p><br></p>
 <h2 id="amazon-route-53">Amazon Route 53<a class="headerlink" href="#amazon-route-53" title="Permanent link">&para;</a></h2>
 <h3 id="resource_14">resource<a class="headerlink" href="#resource_14" title="Permanent link">&para;</a></h3>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For foo domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -38187,7 +38163,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># For foo domain</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -38219,7 +38194,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>定義したバケットポリシーは、<code>aws_s3_bucket_policy</code> リソースでロールに紐付けできる。</p>
 <h4 id="alb">▼ ALB アクセスログ<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h4>
 <p>ALB がバケットにログを書き込めるように、『ELB のサービスアカウント ID』を許可する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -38256,7 +38230,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </code></pre></div>
 <h4 id="nlb">▼ NLB アクセスログ<a class="headerlink" href="#nlb" title="Permanent link">&para;</a></h4>
 <p>ALB がバケットにログを書き込めるように、『<code>delivery.logs.amazonaws.com</code>』からのリクエストを許可する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># ---------------------------------------------</span>
 <span class="c1"># Amazon S3 bucket policy</span>
 <span class="c1"># ---------------------------------------------</span>
@@ -38597,7 +38570,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <h2 id="aws-waf">AWS WAF<a class="headerlink" href="#aws-waf" title="Permanent link">&para;</a></h2>
 <h3 id="resource_18">resource<a class="headerlink" href="#resource_18" title="Permanent link">&para;</a></h3>
 <h4 id="rule">▼ rule ブロック<a class="headerlink" href="#rule" title="Permanent link">&para;</a></h4>
-<p><strong>＊実装例＊</strong></p>
 <p>API Gateway 用の WAF に、特定のユーザーエージェントを拒否するルールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_wafv2_web_acl"</span><span class="w"> </span><span class="nv">"api_gateway"</span><span class="w"> </span><span class="p">{</span>
 
@@ -38650,7 +38622,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>API Gateway 用の WAF に、特定のグローバル IP アドレスを拒否するルールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_wafv2_web_acl"</span><span class="w"> </span><span class="nv">"api_gateway"</span><span class="w"> </span><span class="p">{</span>
 
@@ -38692,7 +38663,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>API Gateway 用の WAF に、SQL インジェクションを拒否するマネージドルールを設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_wafv2_web_acl"</span><span class="w"> </span><span class="nv">"api_gateway"</span><span class="w"> </span><span class="p">{</span>
 
@@ -38734,7 +38704,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>特定のパスのみ AWSManagedRulesSQLiRuleSet の対象から除外する。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_wafv2_web_acl"</span><span class="w"> </span><span class="nv">"api_gateway"</span><span class="w"> </span><span class="p">{</span>
 
@@ -38799,7 +38768,6 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>ALB 用の WAF に、API キーまたは Bearer トークンを OR 条件ルールを設定する。</p>
 <p>あくまで例としてで、本来であれば、異なるルールとしたほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_wafv2_web_acl"</span><span class="w"> </span><span class="nv">"api_gateway"</span><span class="w"> </span><span class="p">{</span>

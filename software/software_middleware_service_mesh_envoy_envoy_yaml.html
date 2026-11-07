@@ -36000,7 +36000,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月21日 19:27:44 JST">2026-10-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -36098,7 +36098,6 @@
 <h3 id="access_log_path">access_log_path<a class="headerlink" href="#access_log_path" title="Permanent link">&para;</a></h3>
 <h4 id="access_log_path_1">▼ access_log_path とは<a class="headerlink" href="#access_log_path_1" title="Permanent link">&para;</a></h4>
 <p>Envoy のアクセスログの出力先を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">admin</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">access_log_path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/null</span>
 </code></pre></div>
@@ -36110,7 +36109,6 @@
 <h3 id="socket_address">socket_address<a class="headerlink" href="#socket_address" title="Permanent link">&para;</a></h3>
 <h4 id="protocol">▼ protocol<a class="headerlink" href="#protocol" title="Permanent link">&para;</a></h4>
 <p>管理ダッシュボードで受信する通信のプロトコルを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">admin</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">socket_address</span><span class="p">:</span>
@@ -36119,7 +36117,6 @@
 <h4 id="address_1">▼ address<a class="headerlink" href="#address_1" title="Permanent link">&para;</a></h4>
 <p>受信したパケットのうちで、宛先 IP アドレスでフィルタリング可能にする。</p>
 <p>『<code>0.0.0.0</code>』とすると、任意の宛先 IP アドレスを指定するパケットをフィルタリングできるようになる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">admin</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">socket_address</span><span class="p">:</span>
@@ -36127,7 +36124,6 @@
 </code></pre></div>
 <h4 id="port_value">▼ port_value<a class="headerlink" href="#port_value" title="Permanent link">&para;</a></h4>
 <p>管理ダッシュボードでインバウンド通信を待ち受けるポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">admin</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">address</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">socket_address</span><span class="p">:</span>
@@ -36157,7 +36153,6 @@
 <h3 id="address_2">address<a class="headerlink" href="#address_2" title="Permanent link">&para;</a></h3>
 <h4 id="protocol_1">▼ protocol<a class="headerlink" href="#protocol_1" title="Permanent link">&para;</a></h4>
 <p>受信する通信のプロトコルを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span>
@@ -36166,7 +36161,6 @@
 </code></pre></div>
 <h4 id="address_3">▼ address<a class="headerlink" href="#address_3" title="Permanent link">&para;</a></h4>
 <p>通信を待ち受ける IP アドレスを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span>
@@ -36175,7 +36169,6 @@
 </code></pre></div>
 <h4 id="port_value_1">▼ port_value<a class="headerlink" href="#port_value_1" title="Permanent link">&para;</a></h4>
 <p>通信を待ち受けるポート番号を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">address</span><span class="p">:</span>
@@ -36186,7 +36179,6 @@
 <h3 id="filter_chainsfilters">filter_chains.filters<a class="headerlink" href="#filter_chainsfilters" title="Permanent link">&para;</a></h3>
 <h4 id="name">▼ name<a class="headerlink" href="#name" title="Permanent link">&para;</a></h4>
 <p>使用するフィルターを設定する</p>
-<p><strong>＊実装例＊</strong></p>
 <p>ネットワークフィルターである <code>network.http_connection_manager</code> を指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -36201,7 +36193,6 @@
 </blockquote>
 <h4 id="typed_configaccess_log">▼ typed_config.access_log<a class="headerlink" href="#typed_configaccess_log" title="Permanent link">&para;</a></h4>
 <p>Envoy のアクセスログの出力方法を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>標準出力に出力する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
@@ -36233,7 +36224,6 @@
 </blockquote>
 <h4 id="typed_configstat_prefix">▼ typed_config.stat_prefix<a class="headerlink" href="#typed_configstat_prefix" title="Permanent link">&para;</a></h4>
 <p>統計ダッシュボードのメトリクスの接頭辞を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
@@ -36264,7 +36254,6 @@
 <p><code>network.tcp_proxy</code> はネットワークフィルターであり、Envoy を直接使用する場合は自前で設定する。</p>
 <p>Envoy が <code>L4</code> プロトコルを処理できるようになる。</p>
 <p><code>network.http_connection_manager</code> とは異なり、ルートではなくクラスターに処理を繋ぐ。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
@@ -36286,7 +36275,6 @@
 <p><code>network.http_connection_manager</code> はネットワークフィルターであり、Envoy を直接使用する場合は自前で設定する。</p>
 <p>Envoy が <code>L7</code> プロトコルを処理できるようになる。</p>
 <p><code>network.tcp_proxy</code> とは異なり、ルートに処理を繋ぐ。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
@@ -36377,7 +36365,6 @@
 <p>Envoy が、複数のドメインを仮想的に持ち、<code>Host</code> ヘッダー値で合致した条件に応じて分岐できる。</p>
 <p>特に <code>domains</code> キーには、受信する通信の <code>Host</code> ヘッダー値を設定する。</p>
 <p>補足として <code>Host</code> ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
@@ -36418,7 +36405,6 @@
 </blockquote>
 <h4 id="virtual_hostsroutesroutemax_stream_duration">▼ <code>virtual_hosts.routes.route.max_stream_duration</code><a class="headerlink" href="#virtual_hostsroutesroutemax_stream_duration" title="Permanent link">&para;</a></h4>
 <p><code>max_stream_duration</code> は <code>max_grpc_timeout</code> の移行先として追加された設定である。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">filter_chains</span><span class="p">:</span>
@@ -36561,7 +36547,6 @@
 <h3 id="name_1">name<a class="headerlink" href="#name_1" title="Permanent link">&para;</a></h3>
 <h4 id="name_2">▼ name とは<a class="headerlink" href="#name_2" title="Permanent link">&para;</a></h4>
 <p>インバウンド通信を受信するリスナーの名前を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">listeners</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_listener</span>
@@ -36587,7 +36572,6 @@
 <p>ルーティング先の同時接続の上限数を設定する。</p>
 <p>制限を超過した場合、宛先への通信を遮断し、HTTP リクエストでは <code>503</code> レスポンスを返信する (サーキットブレイカー) 。</p>
 <p>直近の成功時の処理結果などを返すには、通信元でフォールバックを実装する必要がある。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">circuit_breakers</span><span class="p">:</span>
@@ -36610,7 +36594,6 @@
 <h3 id="connect_timeout">connect_timeout<a class="headerlink" href="#connect_timeout" title="Permanent link">&para;</a></h3>
 <h4 id="connect_timeout_1">▼ connect_timeout とは<a class="headerlink" href="#connect_timeout_1" title="Permanent link">&para;</a></h4>
 <p>宛先との TCP 接続を確立するまでのタイムアウト時間を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">connect_timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10s</span>
@@ -36619,7 +36602,6 @@
 <h3 id="dns_lookup_family">dns_lookup_family<a class="headerlink" href="#dns_lookup_family" title="Permanent link">&para;</a></h3>
 <h4 id="dns_lookup_family_1">▼ dns_lookup_family とは<a class="headerlink" href="#dns_lookup_family_1" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">dns_lookup_family</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v4_only</span>
@@ -36628,7 +36610,6 @@
 <h3 id="lb_policy">lb_policy<a class="headerlink" href="#lb_policy" title="Permanent link">&para;</a></h3>
 <h4 id="lb_policy_1">▼ lb_policy とは<a class="headerlink" href="#lb_policy_1" title="Permanent link">&para;</a></h4>
 <p>ルーティングのアルゴリズムを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">lb_policy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">round_robin</span>
@@ -36642,7 +36623,6 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router">Router (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">load_assignment</span><span class="p">:</span>
@@ -36661,7 +36641,6 @@
 </code></pre></div>
 <h4 id="cluster_name">▼ cluster_name<a class="headerlink" href="#cluster_name" title="Permanent link">&para;</a></h4>
 <p>ルーティング先のグループの名前を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">load_assignment</span><span class="p">:</span>
@@ -36671,7 +36650,6 @@
 <h3 id="name_3">name<a class="headerlink" href="#name_3" title="Permanent link">&para;</a></h3>
 <h4 id="name_4">▼ name とは<a class="headerlink" href="#name_4" title="Permanent link">&para;</a></h4>
 <p>ルーティング先のグループの名前を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo_cluster</span>
@@ -36680,7 +36658,6 @@
 <h3 id="transport_socket">transport_socket<a class="headerlink" href="#transport_socket" title="Permanent link">&para;</a></h3>
 <h4 id="name_5">▼ name<a class="headerlink" href="#name_5" title="Permanent link">&para;</a></h4>
 <p>ルーティング時に使用するソケット名を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">transport_socket</span><span class="p">:</span>
@@ -36688,7 +36665,6 @@
 </code></pre></div>
 <h4 id="typed_config">▼ typed_config<a class="headerlink" href="#typed_config" title="Permanent link">&para;</a></h4>
 <p>HTTPS リクエストを送受信する場合に、証明書を設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>サービスメッシュツールを使用せずに、<code>envoy</code> コンテナを直接的に稼働させるとする。</p>
 <p>また、静的な値を設定したとする。</p>
 <blockquote>
@@ -36751,7 +36727,6 @@
 <span class="w">        </span><span class="nt">verify_certificate_hash</span><span class="p">:</span>
 <span class="w">          </span><span class="l l-Scalar l-Scalar-Plain">E0:F3:C8:CE:5E:2E:A3:05:F0:70:1F:F5:12:E3:6E:2E:97:92:82:84:A2:28:BC:F7:73:32:D3:39:30:A1:B6:FD</span>
 </code></pre></div>
-<p><strong>＊実装例＊</strong></p>
 <p>サービスメッシュツールを使用せずに、<code>envoy</code> コンテナを直接的に稼働させるとする。また、コントロールプレーンの SDS-API から取得した動的な値を設定したとする。</p>
 <blockquote>
 <ul>
@@ -36768,7 +36743,6 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types">Service discovery — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">static_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">clusters</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">logical_dns</span>
@@ -36846,7 +36820,6 @@
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc">gRPC services (proto) — envoy 1.40.0-dev-e07c88 documentation</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>サービスメッシュツールを使用せずに、<code>envoy</code> コンテナを直接的に稼働させるとする。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ads_config</span><span class="p">:</span>
@@ -36903,7 +36876,6 @@
 <li><a href="https://i-beam.org/2019/03/13/envoy-xds-server/">Envoy ProxyのためのEDSサーバーを作る | Folioscope</a></li>
 </ul>
 </blockquote>
-<p><strong>＊実装例＊</strong></p>
 <p>Istio を使用して、<code>envoy</code> コンテナを稼働させるとする。</p>
 <p>Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamicResources</span><span class="p">:</span>
@@ -36933,14 +36905,12 @@
 </code></pre></div>
 <h4 id="set_node_on_first_message_only">▼ set_node_on_first_message_only<a class="headerlink" href="#set_node_on_first_message_only" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ads_config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">set_node_on_first_message_only</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="transport_api_version">▼ transport_api_version<a class="headerlink" href="#transport_api_version" title="Permanent link">&para;</a></h4>
 <p>記入中...</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">ads_config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">transport_api_version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">V3</span>
@@ -36951,7 +36921,6 @@
 <p>CDS-API について設定する。</p>
 <h4 id="path">▼ path<a class="headerlink" href="#path" title="Permanent link">&para;</a></h4>
 <p><code>cds.yaml</code> ファイル (CDS-API から取得した動的な宛先情報が設定されたファイル) を読み込む。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">cds_config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/envoy/cds.yaml</span>
@@ -36962,7 +36931,6 @@
 <p>LDS-API について設定する。</p>
 <h4 id="path_1">▼ path<a class="headerlink" href="#path_1" title="Permanent link">&para;</a></h4>
 <p><code>lds.yaml</code> ファイル (LDS-API から取得した動的な宛先情報が設定されたファイル) を読み込む。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">dynamic_resources</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">lds_config</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/envoy/lds.yaml</span>

@@ -34428,7 +34428,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 19:04:05 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
   </span>
 
     
@@ -34467,7 +34467,6 @@
 <p>指定した Namespace に所属する Pod 内へ、istio-proxy を自動的にインジェクションするか否かを設定する。</p>
 <p><code>.metadata.labels.istio.io/rev</code> キーとはコンフリクトを発生させるため、どちらかしか使えない (<code>.metadata.labels.istio-injection</code> キーの値が <code>disabled</code> の場合は共存できる) 。</p>
 <p><code>.metadata.labels.istio-injection</code> キーを使用する場合、Istio のアップグレードがインプレース方式になる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34503,7 +34502,6 @@
 <p>IstoOperator の <code>.spec.revision</code> キーと同じである。</p>
 <p><code>.metadata.labels.istio-injection</code> キーとはコンフリクトを発生させるため、どちらかしか使えない (<code>.metadata.labels.istio-injection</code> キーの値が <code>disabled</code> の場合は共存できる) 。</p>
 <p><code>.metadata.labels.istio.io/rev</code> キーを使用する場合、Istio のアップグレードがカナリア方式になる。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Namespace</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34686,7 +34684,6 @@
 <p><code>.meshConfig.defaultConfig</code> キーにデフォルト値を設定しておき、ProxyConfig で Namespace やマイクロサービス Pod ごとに上書きするのがよい。</p>
 <h4 id="configpath">▼ configPath<a class="headerlink" href="#configpath" title="Permanent link">&para;</a></h4>
 <p>デフォルトでは、<code>/etc/istio/proxy</code> ディレクトリ配下に最終的な設定値ファイルを作成する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34739,7 +34736,6 @@
 <p>執筆時点 (2023/10/31) ですでに廃止されている。</p>
 <p>istio-proxy 上の Envoy の親プロセスを終了するまでに待機する時間を設定する。</p>
 <p>Pod の <code>.metadata.annotations.proxy.istio.io/config.terminationDrainDuration</code> キーよりも、最低 <code>5</code> 秒以上長くするとよい。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34769,7 +34765,6 @@
 <p>istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処理を実施する。</p>
 <p>この接続のドレイン処理時間を設定する。</p>
 <p>似た設定の <code>drainDuration</code> は、Envoy のリスナーやフィルターチェーンを変更した際に、ドレイン処理が終わるまで待機する時間である。</p>
-<p><strong>＊実装例＊</strong></p>
 <p>Envoy プロセスの接続のドレイン処理 <code>5</code> 秒間に実施する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
@@ -34813,7 +34808,6 @@
 <p><br></p>
 <h3 id="sidecaristioioinject">sidecar.istio.io/inject<a class="headerlink" href="#sidecaristioioinject" title="Permanent link">&para;</a></h3>
 <p>特定の Pod (例：DB) にサイドカーを注入するか否かを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34835,7 +34829,6 @@
 <p><br></p>
 <h3 id="sidecaristioioproxycpu">sidecar.istio.io/proxyCPU<a class="headerlink" href="#sidecaristioioproxycpu" title="Permanent link">&para;</a></h3>
 <p>istio-proxy で使用する CPU サイズを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34857,7 +34850,6 @@
 <p><br></p>
 <h3 id="sidecaristioioproxyimage">sidecar.istio.io/proxyImage<a class="headerlink" href="#sidecaristioioproxyimage" title="Permanent link">&para;</a></h3>
 <p>istio-proxy の作成に使用するコンテナイメージを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -34879,7 +34871,6 @@
 <p><br></p>
 <h3 id="sidecaristioioproxymemory">sidecar.istio.io/proxyMemory<a class="headerlink" href="#sidecaristioioproxymemory" title="Permanent link">&para;</a></h3>
 <p>istio-proxy で使用するメモリサイズを設定する。</p>
-<p><strong>＊実装例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span><span class="w"> </span><span class="c1"># もしくは Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
