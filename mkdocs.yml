@@ -235,6 +235,12 @@ nav:
                   - OpenAPI: software/software_application_api_restful_api_specification_openapi.md
           - ■ RPC-API:
               - gRPC: software/software_application_api_rpc_api_grpc.md
+              - ■ API仕様書:
+                  - ■ Protocol Buffer:
+                      - Protocol Buffer: software/software_application_api_rpc_api_specification_protocol_buffer.md
+                      - コマンド: software/software_application_api_rpc_api_specification_protocol_buffer_command.md
+                      - ■ Protocol Bufferコンパイラー:
+                          - Goプラグイン: software/software_application_api_rpc_api_specification_protocol_buffer_compiler_go.md
               - ■ クライアントパッケージ:
                   - Go: software/software_application_api_rpc_api_grpc_client_package_go.md
                   - クライアントツール: software/software_application_api_rpc_api_grpc_client_package_tools.md
@@ -397,11 +403,6 @@ nav:
               - JSONクエリ: language/language_data_description_language_json_query.md
           - ■ YAML:
               - YAML: language/language_data_description_language_yaml.md
-          - ■ Protocol Buffer:
-              - Protocol Buffer: language/language_data_description_language_protocol_buffer.md
-              - コマンド: language/language_data_description_language_protocol_buffer_command.md
-              - ■ Protocol Bufferコンパイラー:
-                  - Goプラグイン: language/language_data_description_language_protocol_buffer_compiler_go.md
       - ■ Go:
           - Go: language/language_go.md
           - 設定: language/language_go_conf.md

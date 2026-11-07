@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Protocol Buffer＠データ記述型言語
-description: Protocol Buffer＠データ記述型言語の知見を記録しています。
+title: 【IT技術の知見】Protocol Buffer＠API仕様書
+description: Protocol Buffer＠API仕様書の知見を記録しています。
 ---
 
-# Protocol Buffer＠データ記述型言語
+# Protocol Buffer＠RPC-API
 
 ## はじめに
 
@@ -14,6 +14,8 @@ description: Protocol Buffer＠データ記述型言語の知見を記録して�
 ## 01. Protocol Buffer とは
 
 異なる言語間やサーバー間で変換できるデータ記述型言語である。
+
+RPC-API (例：gRPC) の仕様を実装により説明するためのインターフェース定義言語でもある。`.proto` ファイルに実装する。
 
 > - https://docs.wantedly.dev/fields/the-system/apis
 

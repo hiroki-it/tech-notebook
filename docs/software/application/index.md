@@ -117,6 +117,12 @@ hide:
 - #### <u>RPC-API</u>
 
   > - ##### [︎gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc.html)
+  > - ##### <u>API 仕様書</u>
+  >   > - ##### <u>Protocol Buffer</u>
+  >   >   > - ##### [Protocol Buffer](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer.html)
+  >   >   > - ##### [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer_command.html)
+  >   >   > - ##### <u>Protocol Buffer コンパイラー</u>
+  >   >   >   > - ##### [Go プラグイン](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer_compiler_go.html)
   > - ##### <u>クライアントパッケージ</u>
   >   > - ##### [Go](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_go.html)
   >   > - ##### [クライアントツール](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_tools.html)
