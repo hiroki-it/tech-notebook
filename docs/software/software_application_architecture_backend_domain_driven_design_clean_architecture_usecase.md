@@ -87,7 +87,53 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 ### インターラクターの粒度
 
+#### ▼ ルートエンティティ単位
+
 操作するルートエンティティの単位でインターラクターを実装する。
+
+#### ▼ ルートエンティティ単位かつクライアント別
+
+同じ操作でも、UI クライアントと API クライアントで入力や出力、呼び出し元の認証方法が異なる場合は、クライアントごとにインターラクターを分ける。
+
+インターラクターの中でクライアントの種類による分岐が不要になり、一方の変更がもう一方に影響しなくなる。
+
+両方に共通するルールはドメイン層に置き、インターラクター同士の重複は処理の組み立てだけに留める。
+
+```typescript
+// UIクライアント向けのインターラクター
+export class UiFooInteractor {
+  constructor(private readonly fooRepository: FooRepository) {}
+
+  // ログイン中のユーザーを所有者として登録する
+  async registerFoo({ userId, name }: { userId: string; name: string }) {
+    const foo = Foo.create({ ownerId: userId, name: new FooName(name) });
+
+    await this.fooRepository.save(foo);
+
+    return foo;
+  }
+}
+
+// APIクライアント向けのインターラクター
+export class ApiFooInteractor {
+  constructor(private readonly fooRepository: FooRepository) {}
+
+  // APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す
+  async registerFoo({
+    apiTokenOwnerId,
+    name,
+  }: {
+    apiTokenOwnerId: string;
+    name: string;
+  }) {
+    const foo = Foo.create({ ownerId: apiTokenOwnerId, name: new FooName(name) });
+
+    await this.fooRepository.save(foo);
+
+    return FooApiResponseModel.from(foo);
+  }
+}
+```
 
 <br>
 

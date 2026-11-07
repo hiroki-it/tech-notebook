@@ -203,6 +203,32 @@ description: Goのテストツール＠アプリケーションのホワイト�
 
 これにより、モックに差し替えられる。
 
+#### ▼ 依存を引数で受け取る関数
+
+関数の中で依存（DB 接続など）を作成すると、テスト時にモックへ差し替えられない。
+
+そのため、依存を作成する処理と依存を使用する処理を分け、依存を使用する処理ではインターフェースを引数で受け取る。
+
+```go
+// 依存を作成する処理
+func RunCleanFoo(ctx context.Context) error {
+	db, err := NewConnection()
+	if err != nil {
+		return err
+	}
+	return cleanFoo(ctx, NewFooRepository(db), NewBarRepository(db))
+}
+
+// 依存を使用する処理
+// インターフェースを引数で受け取るため、テスト時はモックに差し替えられる
+func cleanFoo(ctx context.Context, fooRepository FooRepository, barRepository BarRepository) error {
+	if err := fooRepository.DeleteSoftDeleted(ctx); err != nil {
+		return err
+	}
+	return barRepository.DeleteSoftDeleted(ctx)
+}
+```
+
 <br>
 
 ### テストケース構成
@@ -718,6 +744,83 @@ func TestWriter_ShouldReturnSuccess_WhenFileWriteSucceeds(t *testing.T) {
             // 実際値が期待値どおりであることを検証する
             if string(content) != tt.expected.content {
                 t.Errorf("should return %s, got %s", tt.expected.content, string(content))
+            }
+        })
+    }
+}
+```
+
+#### ▼ 外部のデータベース（`sqlmock`）
+
+外部のデータベースへのクエリをテストする場合、`sqlmock` で仮の DB 接続を作成し、実行される SQL が期待値どおりであることを検証する。
+
+```go
+package test
+
+import (
+    "context"
+    "regexp"
+    "testing"
+
+    "github.com/DATA-DOG/go-sqlmock"
+    "gorm.io/driver/mysql"
+    "gorm.io/gorm"
+)
+
+// 正常系
+func TestFooRepository_ShouldDeleteSoftDeletedFoos_WhenDeleteSucceeds(t *testing.T) {
+    // 期待値
+    type Expected struct {
+        query string
+    }
+
+    // テストケース
+    testCases := []struct {
+        // テストケース名
+        name string
+        // 期待値
+        expected Expected
+    }{
+        {
+            name: "削除に成功した場合、deletedAtがNULLでないFooを削除するはず",
+            expected: Expected{
+                query: "DELETE FROM `Foo` WHERE deletedAt IS NOT NULL",
+            },
+        },
+    }
+
+    for _, tt := range testCases {
+        t.Run(tt.name, func(t *testing.T) {
+            // 実際のデータベースを起動せずに、実行されるSQLを検証するため、仮のDB接続を作成する
+            sqlDB, mock, err := sqlmock.New()
+            if err != nil {
+                t.Fatalf("should return no error, got %v", err)
+            }
+            defer sqlDB.Close()
+
+            db, err := gorm.Open(mysql.New(mysql.Config{
+                Conn:                      sqlDB,
+                SkipInitializeWithVersion: true,
+            }), &gorm.Config{})
+            if err != nil {
+                t.Fatalf("should return no error, got %v", err)
+            }
+
+            mock.ExpectBegin()
+            mock.ExpectExec(regexp.QuoteMeta(tt.expected.query)).
+                WillReturnResult(sqlmock.NewResult(0, 1))
+            mock.ExpectCommit()
+
+            err = NewFooRepository(db).DeleteSoftDeleted(context.Background())
+
+            // エラーが返却された場合、想定外の挙動なのでテストを失敗させる
+            if err != nil {
+                t.Fatalf("should return no error, got %v", err)
+            }
+
+            // 実行されたSQLが期待値どおりであることを検証する
+            if err := mock.ExpectationsWereMet(); err != nil {
+                t.Errorf("should execute expected query, got %v", err)
             }
         })
     }
