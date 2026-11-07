@@ -34028,7 +34028,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34102,33 +34102,25 @@ $<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>
 <h2 id="03">03. ロードテスト (負荷テスト)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_8">実行<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>以下の手順で、JMeter を使用したロードテストを実施する。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>URL のアクセスランキングを元に、リクエストを送信するための URL リストを <code>csv</code> ファイルで作成する。Google を参考にしたが、ALB アクセスログを参考にしたほうが、より正確かもしれない。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>JMeter の GUI 版にて、シナリオ (<code>jmx</code> ファイル) を作成する。スループットコントローラーで URL リスト (<code>csv</code> ファイル) を JMeter のビルトイン関数で読み込むようにする。</p>
 <p>csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば<code>10000</code>個といった高負荷であると、ローカルマシンがフリーズするため注意すること。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://jmeter.apache.org/usermanual/functions.html#__Random">Apache JMeter - User's Manual: Functions and Variables</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>AWS リソースのスペック、VPN など、ロードテストの周辺準備が整っていることを確認する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>JMeter の CUI 版のバイナリファイルに、<code>jmx</code> ファイルをドラッグ＆ドロップし、テストを実施する。</p>
 <p>または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>jmeter<span class="w"> </span>-n<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-t<span class="w"> </span>&lt;JMXファイルへのパス&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-l<span class="w"> </span>&lt;Resultファイルへのパス&gt;<span class="w"> </span><span class="se">\</span>
@@ -34139,16 +34131,14 @@ $<span class="w"> </span>tar<span class="w"> </span>xvzf<span class="w"> </span>
 <div class="highlight"><pre><span></span><code><span class="c1"># コマンドの結果</span>
 Don<span class="err">'</span>t<span class="w"> </span>use<span class="w"> </span>GUI<span class="w"> </span>mode<span class="w"> </span><span class="k">for</span><span class="w"> </span>load<span class="w"> </span>testing<span class="w"> </span>!,<span class="w"> </span>only<span class="w"> </span><span class="k">for</span><span class="w"> </span>Test<span class="w"> </span>creation<span class="w"> </span>and<span class="w"> </span>Test<span class="w"> </span>debugging.For<span class="w"> </span>load<span class="w"> </span>testing,<span class="w"> </span>use<span class="w"> </span>CLI<span class="w"> </span>Mode<span class="w"> </span><span class="o">(</span>was<span class="w"> </span>NON<span class="w"> </span>GUI<span class="o">)</span>:
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>テストを開始後に、結果 (<code>jtl</code> ファイル) とログ (<code>log</code> ファイル) が作成され、テストが終了するまで追記されていく。</p>
-</dd>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>テストを修正して新しく実行したい場合、<code>jmx</code> ファイル、<code>jtl</code> ファイル、log ファイルをコピーして、バックアップしておく。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h3 id="_9">結果の評価<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <dl>

@@ -35506,7 +35506,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -36405,7 +36405,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <h4 id="relabelings">▼ relabelings<a class="headerlink" href="#relabelings" title="Permanent link">&para;</a></h4>
 <p>作成したメトリクスのラベルやその値を変換する。</p>
 <p>ServiceMonitor では、Kubernetes SD configurations のメタラベルのうちで、<code>service</code>/<code>pod</code>/<code>endpoints</code> のラベルを変換できる。</p>
-<p><strong>＊例＊</strong></p>
 <p>Node Exporter が作成したメトリクスでは、<code>instance</code> ラベルが <code>*.*.*.*:&lt;ポート番号&gt;</code> になっている。</p>
 <p>これだとわかりにくいため、Pod の <code>__meta_kubernetes_pod_node_name</code> ラベルの値 (Node のホスト名) に変換する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
@@ -36554,7 +36553,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <li><a href="https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md">https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p>Node Exporter の Pod からメトリクスの元になるデータポイントを収集する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">monitoring.coreos.com/v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceMonitor</span>

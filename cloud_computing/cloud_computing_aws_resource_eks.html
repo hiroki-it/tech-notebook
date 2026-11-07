@@ -36772,7 +36772,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -36973,38 +36973,28 @@
 <p><br></p>
 <h3 id="amazon-eks-cluster">Amazon EKS Cluster の資格情報の追加<a class="headerlink" href="#amazon-eks-cluster" title="Permanent link">&para;</a></h3>
 <p><code>kubectl</code> コマンドで Amazon EKS Cluster を操作するためには、<code>kubeconfig</code> ファイルへ Cluster の資格情報を登録する必要がある。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>AWS CLI に資格情報を設定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>configure
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Amazon EKS Cluster の名前を指定して、<code>kubeconfig</code> ファイルに Cluster の資格情報を登録する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span>--name<span class="w"> </span>foo-eks-cluster
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>kubectl</code> コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;ClusterのARN&gt;
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>kubectl</code> コマンドの接続を確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html">Get started with Amazon EKS – AWS Management Console and AWS CLI - Amazon EKS</a></li>
@@ -37081,28 +37071,22 @@
 <p><img alt="eks_auth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png" /></p>
 <p>ConfigMap を経由して Kubernetes の RBAC と連携することにより、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。</p>
 <p>新しいアクセスエントリーよりもセットアップが難しい。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>あらかじめ、kube-apiserver クライアント (<code>kubectl</code> クライアント、Kubernetes リソース) に紐づく AWS IAM ユーザーを作成しておく。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>AWS IAM ユーザーが kube-apiserver の URL にリクエストを送信する。</p>
 <p>kube-apiserverは、aws-iam-authenticator-serverにWebhookリクエストを送信する。</p>
 <p>admission-controllersアドオンのWebhookではないことに注意する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>コントロールプレーン Node 上の aws-iam-authenticator-server は、IAM API を使用して AWS IAM ユーザーを認証する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>もし認証に成功していた場合、aws-iam-authenticator-server は、ConfigMap (aws-auth) を確認する。</p>
 <p>このConfigMapには、そのAWS IAMユーザーに紐づくUserAccount／ServiceAccount／Group／RoleBinding／ClusterRoleBindingが定義されている。</p>
 <p>この時、Kubernetes Cluster外部のkube-apiserverクライアント (例：開発者、GitOps CDツール、監視ツールなど) の場合はUserAccount、Kubernetesリソースの場合はServiceAccountを取得する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ConfigMap</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37122,18 +37106,16 @@
 <span class="w">        </span><span class="no">- system:bootstrappers</span>
 <span class="w">        </span><span class="no">- system:nodes</span>
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>aws-iam-authenticator-server は、UserAccount／ServiceAccount／Group、RoleBinding や ClusterRoleBinding の情報を含むレスポンスを kube-apiserver に返信する。</p>
-</dd>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>あとは、Kubernetes 標準の認可の仕組みである。</p>
 <p>kube-apiserverは、UserAccount／ServiceAccount／Groupに紐づくRoleやClusterRoleを、RoleBindingやClusterRoleBindingを経由して取得する。</p>
 <p>AWS IAMユーザーは、Kubernetesリソースを操作できる。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/containers/kubernetes-rbac-and-iam-integration-in-amazon-eks-using-a-java-based-kubernetes-operator/">Kubernetes RBAC and IAM Integration in Amazon EKS using a Java-based Kubernetes Operator | Containers</a></li>
@@ -37385,13 +37367,10 @@
 <p>Amazon EKS を SSO の ID プロバイダーとして使用することで、IAM の認証フェーズを Amazon EKS に委譲する。</p>
 <h4 id="_14">▼ セットアップ<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>ここでは、SSO の種類で OIDC を選ぶとする。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>SSO の ID プロバイダーのタイプは、OIDC とする。</p>
 <p>『Amazon EKS ClusterのOIDCプロバイダーURL』『OIDCプロバイダーのサーバー証明書を署名する中間認証局 (例：CertificateManagerなど) のサムプリント』『IDプロバイダーによるトークンの発行対象 (<code>sts.amazonaws.com</code>) 』を使用して、OIDCプロバイダーを作成する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="kr">data</span><span class="w"> </span><span class="nc">"tls_certificate"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.foo_eks.cluster_oidc_issuer_url</span>
 <span class="p">}</span>
@@ -37458,12 +37437,9 @@
 <li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_create_oidc_verify-thumbprint.html">Obtain the thumbprint for an OpenID Connect identity provider - AWS Identity and Access Management</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>IRSA で使用する AWS IAM ロールの信頼されたエンティティに、Amazon EKS Cluster の OIDC プロバイダーURL やユーザー名 (<code>system:serviceaccount:&lt;Namespac名&gt;:&lt;ServiceAccount名&gt;</code>) を設定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span>
 <span class="w">      </span><span class="p p-Indicator">{</span>
 <span class="w">        </span><span class="s">"Sid"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">""</span><span class="p p-Indicator">,</span>
@@ -37485,14 +37461,11 @@
 <span class="w">      </span><span class="p p-Indicator">},</span>
 <span class="w">    </span><span class="p p-Indicator">]}</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>ServiceAccount の <code>.metadata.annotations.eks.amazonaws.com/role-arn</code> キーで AWS IAM ロールの ARN を設定する。</p>
 <p>これにより、Amazon EKSで認証済みのServiceAccountにAWS IAMロールを紐付けられるようになる。</p>
 <p><code>automountServiceAccountToken</code>キーが有効化されていることを確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37502,12 +37475,9 @@
 <span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;信頼されたエンティティで指定したユーザー名にあるNamespace名&gt;</span>
 <span class="nt">automountServiceAccountToken</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>Pod で、ServiceAccount 名を設定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
 <span class="nt">metadata</span><span class="p">:</span>
@@ -37517,6 +37487,8 @@
 <span class="w">  </span><span class="nt">serviceAccountName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">foo-sa</span>
 <span class="w">  </span><span class="nt">containers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
+</li>
+</ol>
 <p>もし <code>.metadata.annotations.eks.amazonaws.com/role-arn</code> キーを使用しない場合、Kubernetes リソースから AWS リソースへのアクセスがあったときは、Amazon EC2 ワーカーNode や Fargate ワーカーNode の AWS IAM ロールが使用される。</p>
 <p>IRSA が登場するまでは、Amazon EKS 上でのワーカーNode (例：Amazon EC2、Fargate) にしか AWS IAM ロールを紐付けることができず、Kubernetes リソースに AWS IAM ロールを直接的に紐付けることはできなかった。</p>
 <p>ServiceAccount のトークンは、コンテナにファイルとしてマウントされている。</p>
@@ -37543,12 +37515,9 @@
 <p><br></p>
 <h3 id="_15">デバッグ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="_16">▼ ダッシュボード<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Amazon EKS Cluster の名前を指定して、<code>kubeconfig</code> ファイルに Cluster の資格情報を登録する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--region<span class="w"> </span>ap-northeast-1<span class="w"> </span>--name<span class="w"> </span>foo-eks-cluster
 </code></pre></div>
 <blockquote>
@@ -37556,12 +37525,9 @@
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started-console.html">Get started with Amazon EKS – AWS Management Console and AWS CLI - Amazon EKS</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>kubectl</code> コマンドの向き先を、Amazon EKS Cluster の kube-apiserver に変更する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;ClusterのARN&gt;
 </code></pre></div>
 <blockquote>
@@ -37569,12 +37535,9 @@
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard">https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#deploy-dashboard</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>マニフェストを使用して、ダッシュボードの Kubernetes リソースを Amazon EKS にデプロイする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/dashboard/v2.0.5/aio/deploy/recommended.yaml
 </code></pre></div>
 <blockquote>
@@ -37582,38 +37545,28 @@
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account">https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html#eks-admin-service-account</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>ダッシュボードに安全に接続するために、ServiceAccount を Amazon EKS にデプロイする</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>service-account.yml
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>トークン文字列を取得する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>describe<span class="w"> </span>secret<span class="w"> </span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>eks-admin<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">'{print $1}'</span><span class="k">)</span>
 </code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>ローカルマシンから Amazon EKS にポートフォワーディングを実行する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>proxy
 </code></pre></div>
-<dl>
-<dt><code>(7)</code></dt>
-<dd>
+</li>
+<li>
 <p>ダッシュボードに接続する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET http://127.0.0.1:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#!/login HTTP/1.1</span>
 </code></pre></div>
+</li>
+</ol>
 <h4 id="node-amazon-ec2fargate">▼ ワーカーNode (例：Amazon EC2、Fargate) への接続<a class="headerlink" href="#node-amazon-ec2fargate" title="Permanent link">&para;</a></h4>
 <p>AWS SSM Session Manager を使用して、ワーカーNode (例：Amazon EC2、Fargate) に接続できる。</p>
 <p><br></p>
@@ -38523,13 +38476,10 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/fargate-logging.html">Start AWS Fargate logging for your cluster - Amazon EKS</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ログフォワーディングコンテナのための Namespace を作成する。</p>
 <p>名前は、必ず<code>aws-observability</code>とする。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/">https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/</a></li>
@@ -38542,14 +38492,11 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">aws-observability</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">enabled</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>aws-observability</code> 内で <code>aws-logging</code> という名前の ConfigMap を作成する。</p>
 <p>これにより、ログフォワーディングコンテナとしてFluentBitコンテナが作成され、PodからAmazon CloudWatch Logsにログを送信できるようになる。</p>
 <p>名前は、必ず<code>aws-logging</code>とする。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/">https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/</a></li>
@@ -38572,15 +38519,14 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <span class="w">        </span><span class="no">log_stream_prefix from-fluent-bit-</span>
 <span class="w">        </span><span class="no">auto_create_group true</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>Fargate ワーカーNode に Amazon ECR や CloudWatch への認可スコープを持つポッド実行ロールを付与しておく。</p>
 <p>これにより、KubernetesリソースにAWSへの認可スコープが付与され、ServiceAccountやSecretを作成せずとも、PodがAmazon ECRからコンテナイメージをプルできる様になる。</p>
 <p>一方で、Pod内のコンテナには認可スコープが付与されない。</p>
 <p>そのため、Podが作成された後に必要な認可スコープ (例：コンテナがRDSにリクエストを送信する認可スコープなど) には、ServiceAccountとAWS IAMロールの紐付けが必要である。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://nishipy.com/archives/1122">EKSで、別AWSアカウントのECRリポジトリのDockerイメージをpullする方法 | Nishipy Notes</a></li>
@@ -38686,34 +38632,28 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <h4 id="_38">▼ データプレーンの場合<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p>Amazon EKS Cluster のアップグレード時、以下の仕組みでデータプレーンのワーカーNode をローリングアップグレードする。</p>
 <p>また、Node グループに紐づく AWS Auto Scaling グループの AZ リバランシングの仕組みによって、既存のワーカーNode と同じ AZ でワーカーNode を再作成する。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Node グループ単位でローリングアップグレードできるように、Amazon EKS Cluster のワーカーNode 数の設定 (Node 希望数、Node 最大数) を自動的に増加させる。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>旧ワーカーNode を残して、新しい AWS AMI を使用したワーカーNode を作成する。</p>
 <p>旧ワーカーNodeが稼働しているAZで新ワーカーNodeを作成する。</p>
 <p>旧ワーカーNodeを残せるのは、あらかじめAmazon EKS ClusterのワーカーNode数の設定 (Node希望数、Node最大数) を増加させているためである。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>各 AZ で新ワーカーNode を正しく作成できることを検証する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>AZ リバランシングが成功すれば、旧ワーカーNode で Drain が開始され、Pod のスケジューリングが無効化される。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>新ワーカーNode 上で Pod をスケジューリングさせ直し、旧ワーカーNode を削除する。</p>
-</dd>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>最終的に、アップグレード前のワーカーNode 数 (Node 希望数) に戻る。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/managed-node-update-behavior.html">Understand each phase of node updates - Amazon EKS</a></li>
@@ -38725,21 +38665,18 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <h3 id="_39">手順<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
 <h4 id="_40">▼ インプレース<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
 <p>Amazon EKS Cluster はおおよそ以下の方法でインプレースアップグレードする。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>コントロールプレーン Node をアップグレードする。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>ワーカーNode をアップグレードする。</p>
 <p>コントロールプレーン上のkube-apiserverのバージョンに応じた新しいAWS AMIを使用して、ワーカーNodeを再作成する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://inside.dmm.com/entry/2022/08/26/eks_is_hard">https://inside.dmm.com/entry/2022/08/26/eks_is_hard</a></li>
@@ -38747,33 +38684,27 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 </blockquote>
 <h4 id="_41">▼ ブルー/グリーン<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <p>Amazon EKS Cluster はおおよそ以下の方法でブルー/グリーンアップグレードする。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>新しいバージョン Amazon EKS クラスターを構築する。またマイクロサービスなどをデプロイする。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>このままだと、新旧の EKS クラスターでバッチサービスの実行が衝突する。</p>
 <p>そこで、<code>kubectl patch cronjobs foo-batch -p '{"spec" : {"suspend" : true }}'</code>を実行し、旧EKSクラスターのバッチサービスを止める。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>新しい Amazon EKS クラスターの Ingress Controller や Ingress Gateway の Pod に対して、ポートフォワーディングを実行し、アプリケーションを動作確認する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>既存の AWS ALB ターゲットグループにグリーン環境の Amazon EKS クラスターの Node を登録する。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>既存の AWS ALB ターゲットグループからブルー環境の Amazon EKS クラスターの Node を解除する。</p>
-</dd>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>ワーカーNode 上の Amazon EKS アドオン (例：AWS CoreDNS、AWS kube-proxy、Amazon VPC CNI など) をアップグレードする。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 
   

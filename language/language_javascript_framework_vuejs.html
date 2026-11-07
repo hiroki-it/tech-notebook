@@ -34856,7 +34856,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34894,45 +34894,38 @@
 </ul>
 </blockquote>
 <h4 id="mvvm_2">▼ MVVM アーキテクチャにおける各層の責務<a class="headerlink" href="#mvvm_2" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>View (<code>foo.html</code>、<code>/foo.twig</code>、<code>foo-component.vue</code> の <code>template</code> タグ部分)</p>
 <p>ViewModelから渡されたデータを出力するだけ。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>ViewModel (<code>index.js</code>、<code>foo-component.vue</code> の <code>script</code> タグ部分)</p>
 <p>プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。</p>
 <p>scriptタグによって、JavaScriptが組み込まれている。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>Model (<code>store.js</code> または <code>foo.js</code>)</p>
 <p>ビジネスロジックや、ajax関数によるデータ送受信を記述する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <h4 id="vue-mvvm">▼ Vue を使用した MVVM アーキテクチャ、双方向データバインディング<a class="headerlink" href="#vue-mvvm" title="Permanent link">&para;</a></h4>
 <p>Vue は、アプリケーションの設計に MVVM アーキテクチャを使用することを前提として、双方向データバインディングを実現できるような機能を提供する。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>View では、<code>foo.html</code>、<code>/foo.twig</code>、<code>foo-component.vue</code> の <code>template</code> タグ部分)</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>ViewModel では、<code>index.js</code>、<code>foo-component.vue</code> の <code>script</code> タグ部分</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>Model では、Vuex (<code>store.js</code>)や JavaScript からなるモデル (<code>foo.js</code>) を配置する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。</p>
-</dd>
-</dl>
 <p><img alt="Vueコンポーネントツリーにおけるコンポーネント間の通信" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png" /></p>
+</li>
+</ol>
 <h3 id="_2">親子コンポーネント間のデータ渡し<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="props-down-events-up">▼ 親子コンポーネント間のデータ渡しの仕組み (Props Down, Events Up)<a class="headerlink" href="#props-down-events-up" title="Permanent link">&para;</a></h4>
 <p>まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。</p>
@@ -35194,16 +35187,12 @@
 <span class="w">  </span><span class="p">},</span>
 <span class="p">});</span>
 </code></pre></div>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>『検索ボタンを押す』という <code>submit</code> イベントの発火によって、<code>form</code> タグでイベントに紐付けられているイベントハンドラ関数 (<code>search()</code> 関数) がコールされる。
-<code>(2)</code></p>
-</dd>
-<dd>
+<ol>
+<li>
+<p>『検索ボタンを押す』という <code>submit</code> イベントの発火によって、<code>form</code> タグでイベントに紐付けられているイベントハンドラ関数 (<code>search()</code> 関数) がコールされる。</p>
+</li>
+<li>
 <p>イベントハンドラ関数内の <code>emit()</code> 関数が、親コンポーネントの <code>search</code> イベントを発火させる。これに紐付くイベントハンドラ関数 (<code>result()</code> 関数) がコールされる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">template</span><span class="p">&gt;</span>
   <span class="cm">&lt;!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる --&gt;</span>
   <span class="p">&lt;</span><span class="nt">form</span> <span class="na">v-on:submit</span><span class="err">.</span><span class="na">prevent</span><span class="o">=</span><span class="s">"search()"</span><span class="p">&gt;</span>
@@ -35225,6 +35214,8 @@
 <span class="w">  </span><span class="p">});</span>
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
+</li>
+</ol>
 <h4 id="v-onclick">▼ <code>v-on:click="&lt;イベントハンドラ関数&gt;"</code><a class="headerlink" href="#v-onclick" title="Permanent link">&para;</a></h4>
 <p>View でクリックイベントが起きた時点で発火し、ViewModel でバインディングされたイベントハンドラ関数をコールする。</p>
 <h4 id="v-onchange">▼ <code>v-on:change="&lt;イベントハンドラ関数&gt;"</code><a class="headerlink" href="#v-onchange" title="Permanent link">&para;</a></h4>

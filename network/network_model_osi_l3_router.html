@@ -34384,7 +34384,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34556,68 +34556,52 @@
 <li><a href="https://rainbow-engine.com/dnat-snat-difference/">DNATとSNATの違いやそれぞれの特徴について – Rainbow Engine</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p>NAT ルーターは、プライベートネットワークに入るとき、パケットのヘッダー情報における『宛先』のグローバル IP アドレスをプライベート IP アドレスに変換する。</p>
 <h4 id="snat-source-nat">▼ SNAT 処理：Source NAT<a class="headerlink" href="#snat-source-nat" title="Permanent link">&para;</a></h4>
 <p><img alt="プライベートからグローバルへのnat変換" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プライベートからグローバルへのnat変換.png" /></p>
 <p>NAT 処理のうち送信元 IP アドレスを変換すること (<code>プライベートIPアドレス</code> ➡️ <code>グローバルIPアドレス</code>、<code>プライベートIPアドレス</code> ➡️ <code>プライベートIPアドレス</code>) 。</p>
 <p>NAT ルーター自体を複数のプライベートネットワークで共有することがある。</p>
-<p><strong>＊例＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>NAT ルーターは、プライベートネットワークから出るとき、パケットのヘッダー情報における『送信元』のプライベート IP アドレスをグローバル IP アドレスに変換する。</p>
 <p>例えば、GoogleでWebページを見ながら、Gmailアプリケーションを稼働している場合、リクエストにおけるパケット情報として…</p>
-</dd>
-</dl>
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:center">送信元プライベート IP アドレス</th>
-      <th style="text-align:center">SNAT 処理による変換</th>
-      <th style="text-align:center">送信元グローバル IP アドレス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:center"><code>192.168.1.1</code></td>
-      <td style="text-align:center">⇄</td>
-      <td style="text-align:center"><code>200.1.1.1</code></td>
-    </tr>
-  </tbody>
-</table>
-
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+<p><table>
+    <thead>
+  <tr>
+    <th style="text-align:center">送信元プライベート IP アドレス</th>
+    <th style="text-align:center">SNAT 処理による変換</th>
+    <th style="text-align:center">送信元グローバル IP アドレス</th>
+  </tr>
+    </thead>
+    <tbody>
+  <tr>
+    <td style="text-align:center"><code>192.168.1.1</code></td>
+    <td style="text-align:center">⇄</td>
+    <td style="text-align:center"><code>200.1.1.1</code></td>
+  </tr>
+    </tbody>
+  </table></p>
+</li>
+<li>
 <p>『送信元プライベート IP アドレス』『宛先グローバル IP アドレス』『メールサーバーで POP3 プロトコルを受信する <code>110</code> 番ポート』を指定して、メールサーバーにリクエストを送信する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:110</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>『送信元プライベート IP アドレス』『宛先グローバル IP アドレス』『Web サーバーで HTTP リクエストを受信する <code>80</code> 番ポート』を指定して、Web サーバーにリクエストを送信する。</p>
 <p>ただし、<code>80</code>番ポートは省略可能。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:80</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>『送信元プライベート IP アドレス』『宛先グローバル IP アドレス』『DNS サーバーで TCP スリーウェイハンドシェイクを受信する <code>53</code> 番ポート』を指定して、DNS サーバーにリクエストを送信する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com:53</span>
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>これらの『送信元プライベート IP アドレス』が、NAT ルーターで、グローバル IP アドレスに変換される。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://rainbow-engine.com/dnat-snat-difference/">DNATとSNATの違いやそれぞれの特徴について – Rainbow Engine</a></li>
@@ -34692,7 +34676,6 @@
 <h4 id="dnat">▼ DNAT 処理の場合<a class="headerlink" href="#dnat" title="Permanent link">&para;</a></h4>
 <p>プライベートネットワークから出るとき、パケットのヘッダー情報にある『送信元』のプライベート IP アドレスをグローバル IP アドレスに変換する。</p>
 <p>ただし、異なるプライベート IP アドレスが同じグローバル IP に変換されてしまうため、これを識別するために、ポート番号を複数の異なるポート番号に変換し、グローバル IP アドレスに付け加える。</p>
-<p><strong>＊例＊</strong></p>
 <table>
   <thead>
     <tr>
@@ -34761,7 +34744,6 @@
 <li><a href="https://christina04.hatenablog.com/entry/iptables-outline">iptablesの仕組みを図解 - Carpe Diem</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/sysconfig/iptables
 
 ...

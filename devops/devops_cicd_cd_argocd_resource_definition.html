@@ -35856,7 +35856,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -35999,47 +35999,37 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <h2 id="01-02">01-02. ダッシュボード<a class="headerlink" href="#01-02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">ネットワークに公開しない場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="kubectl">▼ <code>kubectl</code> コマンドを使用して<a class="headerlink" href="#kubectl" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>既存の Service を LoadBalancer Service に変更する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>patch<span class="w"> </span>service<span class="w"> </span>argocd-server<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-p<span class="w"> </span><span class="s1">'{"spec": {"type": "LoadBalancer"}}'</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Kubernetes 上の ArgoCD ダッシュボードのパスワードを取得する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>argocd-initial-admin-secret<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-n<span class="w"> </span>foo<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s2">"{.data.password}"</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>443</code> 番ポートにルーティングできる <code>L7</code> ロードバランサーを作成する。</p>
 <p>この時、IngressとIngress Controllerを作成するか、<code>kubectl port-forward</code>コマンドなど実行することで、ダッシュボードにリクエストを送信する。</p>
 <p><code>minikube tunnel</code>コマンドでは、ポート番号を指定できないことに注意する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Serviceの情報を使用してPodを指定し、ダッシュボードにリクエストを送信できるようにする。</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/argocd-server<span class="w"> </span>-n<span class="w"> </span>argocd<span class="w"> </span><span class="m">8080</span>:443
 
 <span class="c1"># ホストポートを介してPodのポートにリクエストを送信する。</span>
 $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080
 </code></pre></div>
+</li>
+</ol>
 <h4 id="argocd_1">▼ <code>argocd</code> コマンドを使用して<a class="headerlink" href="#argocd_1" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>argocd</code> コマンドをインストールする。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://argo-cd.readthedocs.io/en/stable/cli_installation/">Installation - Argo CD - Declarative GitOps CD for Kubernetes</a></li>
@@ -36049,16 +36039,15 @@ $<span class="w"> </span>curl<span class="w"> </span>http://127.0.0.1:8080
 
 $<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/argocd
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>ArgoCD にログインする。ユーザー名とパスワードを要求されるため、これらを入力する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>argocd<span class="w"> </span>login<span class="w"> </span>&lt;ArgoCDのドメイン名&gt;<span class="w"> </span>--username<span class="w"> </span>admin<span class="w"> </span>--password<span class="w"> </span>&lt;前の手順で取得した文字列&gt;
 
 <span class="s1">'admin:login'</span><span class="w"> </span>logged<span class="w"> </span><span class="k">in</span><span class="w"> </span>successfully
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="_7">ネットワークに公開する場合<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="_8">▼ 共通の手順<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>

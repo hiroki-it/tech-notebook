@@ -34836,7 +34836,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -35295,12 +35295,9 @@ kubelet<span class="o">[</span><span class="m">405976</span><span class="o">]</s
 <h2 id="06-containerd">06. コンテナランタイム (Containerd)<a class="headerlink" href="#06-containerd" title="Permanent link">&para;</a></h2>
 <h3 id="_13">セットアップ<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="containerd">▼ Containerd のインストールの事前作業<a class="headerlink" href="#containerd" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>/etc/modules-load.d/containerd.conf</code> ファイルに、カーネルモジュールを設定する。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0">コンテナランタイム | Kubernetes</a></li>
@@ -35309,21 +35306,15 @@ kubelet<span class="o">[</span><span class="m">405976</span><span class="o">]</s
 <div class="highlight"><pre><span></span><code>overlay
 br_netfilter
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>カーネルモジュールを読み込む。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>modprobe<span class="w"> </span>overlay
 $<span class="w"> </span>modprobe<span class="w"> </span>br_netfilter
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>/etc/sysctl.d/99-kubernetes-cri.conf</code> ファイルに、カーネルオプションを設定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>net.bridge.bridge-nf-call-iptables<span class="o">=</span><span class="m">1</span>
 net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
 net.bridge.bridge-nf-call-ip6tables<span class="o">=</span><span class="m">1</span>
@@ -35333,21 +35324,17 @@ net.bridge.bridge-nf-call-ip6tables<span class="o">=</span><span class="m">1</sp
 <li><a href="https://www.memotansu.jp/kubernetes/3790/#toc2">Kubernetesのインストール方法の解説 （Ubuntu20.04.3＋containerd＋flannel） | めもたんす</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>カーネルに設定を反映する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sysctl<span class="w"> </span>--system
 </code></pre></div>
+</li>
+</ol>
 <h4 id="containerd_1">▼ Containerd のインストール<a class="headerlink" href="#containerd_1" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>要件のパッケージをインストールする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>apt-transport-https<span class="w"> </span><span class="se">\</span>
@@ -35355,45 +35342,35 @@ net.bridge.bridge-nf-call-ip6tables<span class="o">=</span><span class="m">1</sp
 <span class="w">    </span>curl<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>software-properties-common
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Docker 公式の提供する GPG キーを追加する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span><span class="p">|</span><span class="w"> </span>apt-key<span class="w"> </span>add<span class="w"> </span>-
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>リポジトリを追加する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>add-apt-repository<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span><span class="s2">"deb [arch=amd64] https://download.docker.com/linux/ubuntu \</span>
 <span class="s2">    </span><span class="k">$(</span>lsb_release<span class="w"> </span>-cs<span class="k">)</span><span class="s2"> \</span>
 <span class="s2">    stable"</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>Containerd をインストールする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>containerd.io
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">コンテナランタイム | Kubernetes</a></li>
 </ul>
 </blockquote>
 <h4 id="containerd_2">▼ Containerd の設定ファイルの準備<a class="headerlink" href="#containerd_2" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>設定ファイルとして、<code>/etc/containerd/config.toml</code> ファイルを作成する。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">コンテナランタイム | Kubernetes</a></li>
@@ -35402,14 +35379,13 @@ net.bridge.bridge-nf-call-ip6tables<span class="o">=</span><span class="m">1</sp
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/containerd
 $<span class="w"> </span>containerd<span class="w"> </span>config<span class="w"> </span>default<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/containerd/config.toml
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Containerd に設定を反映する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>containerd
 </code></pre></div>
+</li>
+</ol>
 <h4 id="kubelet-containerd">▼ kubelet による Containerd の指定<a class="headerlink" href="#kubelet-containerd" title="Permanent link">&para;</a></h4>
 <p>kubelet の起動時に、<code>--container-runtime</code> オプションと <code>--container-runtime-endpoint</code> オプションを使用する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubelet<span class="w"> </span><span class="se">\</span>

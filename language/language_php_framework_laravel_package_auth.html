@@ -35226,7 +35226,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -35907,12 +35907,9 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><br></p>
 <h3 id="password-grant">Password Grant<a class="headerlink" href="#password-grant" title="Permanent link">&para;</a></h3>
 <h4 id="_22">▼ バックエンド側の実装<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>guards</code> キーにて、認証方式を設定する。ここでは、<code>api</code> を設定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -35927,12 +35924,9 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="c1">// ...</span>
 <span class="p">];</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>OAuth (認証フェーズ + 認可フェーズ) を実行するために、<code>auth.php</code> ファイルで、<code>driver</code> キーに passport ドライバを設定する。また、<code>provider</code> キーで、<code>users</code> を設定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -35955,15 +35949,12 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="c1">// ...</span>
 <span class="p">];</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>auth.php</code> ファイルにて、<code>driver</code> キーに eloquent ドライバを設定する。</p>
 <p>また、<code>model</code>キーで資格情報テーブルに対応するEloquentのEloquentモデルを設定する。</p>
 <p>ここでは、Userクラスを設定する。Laravelでは、Eloquentモデルに対応するテーブル名はクラス名の複数形になるため、usersテーブルに資格情報が格納されることになる。</p>
 <p>もしDBファサードのクエリビルダーを使用したい場合は、<code>database</code>ドライバを設定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">return</span> <span class="p">[</span>
@@ -35986,23 +35977,17 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="c1">// ...</span>
 <span class="p">];</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>User へのルーティング時に、<code>middleware()</code> 関数による認証ガードを実行する。</p>
 <p>これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nx">Route</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">"user"</span><span class="p">,</span> <span class="s2">"UserController@index"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">middleware</span><span class="p">(</span><span class="s2">"auth:api"</span><span class="p">);</span>
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>認証ガードを行った Eloquent モデルに対して、HasAPIToken、Notifiable の Trait をコールする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">namespace</span> <span class="nx">App\Domain\DTO</span><span class="p">;</span>
@@ -36018,14 +36003,11 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="c1">// ...</span>
 <span class="p">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>Passport の <code>routes()</code> 関数をコールする。</p>
 <p>これにより、Passportの認証フェーズに関わる全てのルーティング (<code>/oauth/xxx</code>) が有効になる。</p>
 <p>また、リフレッシュトークンを含むアクセストークンを発行できるようになる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">Laravel\Passport\Passport</span><span class="p">;</span>
@@ -36042,25 +36024,21 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(7)</code></dt>
-<dd>
+</li>
+<li>
 <p>暗号キーとユーザーを作成する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:keys
 
 $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--password
 </code></pre></div>
+</li>
+</ol>
 <h4 id="_23">▼ クライアントアプリ側の実装<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>『認証』のために、アクセストークンのリクエストを送信する。</p>
 <p>ユーザー側のアプリケーションは、<code>/oauth/authorize</code>へリクエストを送信する必要がある。</p>
 <p>ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$http</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">GuzzleHttp\Client</span><span class="p">;</span>
@@ -36076,21 +36054,15 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="p">],</span>
 <span class="p">]);</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>アクセストークンを含む JSON 型データを受信する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span><span class="s">"token_type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Bearer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"expires_in"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">31536000</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"access_token"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"*****"</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングへリクエストを送信する。</p>
 <p>レスポンスのメッセージボディからデータを取得する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">(</span><span class="s2">"GET"</span><span class="p">,</span> <span class="s2">"/api/user"</span><span class="p">,</span> <span class="p">[</span>
@@ -36102,6 +36074,8 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 
 <span class="k">return</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
 </code></pre></div>
+</li>
+</ol>
 <h4 id="api">▼ API ガード用のテーブル<a class="headerlink" href="#api" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -36137,23 +36111,17 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <p><br></p>
 <h3 id="_24">パーソナルアクセストークン<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <h4 id="_25">▼ バックエンド側の実装<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>暗号キーとユーザーを作成する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:keys
 
 $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </span>passport:client<span class="w"> </span>--personal
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>作成したユーザーに、クライアント ID を付与する。</p>
 <p>IDプロバイダーでクライアントIDを事前に発行しておく。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="k">use</span> <span class="nx">Illuminate\Foundation\Support\Providers\AuthServiceProvider</span> <span class="k">as</span> <span class="nx">ServiceProvider</span><span class="p">;</span>
@@ -36174,12 +36142,9 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>Laravel にクライアント ID を含むリクエストを送信すると、Laravel はアクセストークンをレスポンスする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
@@ -36190,6 +36155,8 @@ $<span class="w"> </span>php<span class="w"> </span>artisan<span class="w"> </sp
 <span class="c1">// スコープ付きのアクセストークンを作成する</span>
 <span class="nv">$token</span> <span class="o">=</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">createToken</span><span class="p">(</span><span class="s2">"&lt;任意のアクセストークン文字列&gt;"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"place-orders"</span><span class="p">])</span><span class="o">-&gt;</span><span class="na">accessToken</span><span class="p">;</span>
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://readouble.com/laravel/8.x/ja/passport.html#personal-access-tokens">8.x Laravel Passport Laravel</a></li>

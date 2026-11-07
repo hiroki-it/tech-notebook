@@ -34624,7 +34624,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34835,7 +34835,6 @@
 <span class="k">done</span>
 </code></pre></div>
 <h4 id="cron">▼ Cron によるコマンドの自動実行<a class="headerlink" href="#cron" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>10 秒ごとに、コマンドを自動実行する。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
 
@@ -34854,36 +34853,30 @@
 <p>カーネルは、受け取ったリクエストをルーティングやコントローラーアクションに渡し、その結果をレスポンスとして返すアプリケーションの中心である。</p>
 <p><img alt="図2-9-ver2" src="https://user-images.githubusercontent.com/42175286/57711074-08c21b00-76a9-11e9-959e-b3777f70d2c6.png" /></p>
 <h4 id="_2">▼ カーネルに必要なオブジェクト<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>Request オブジェクト。グローバル変数から収集した情報や HTTP リクエストのヘッダー情報やコンテンツ情報を保持
-<code>(2)</code></p>
-</dd>
-<dd>
-<p>カーネルオブジェクトの <code>handle()</code> 関数。送られてきた URL を基にしたコントローラー/アクションに対するルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング
-<code>(3)</code></p>
-</dd>
-<dd>
+<ol>
+<li>
+<p>Request オブジェクト。グローバル変数から収集した情報や HTTP リクエストのヘッダー情報やコンテンツ情報を保持</p>
+</li>
+<li>
+<p>カーネルオブジェクトの <code>handle()</code> 関数。送られてきた URL を基にしたコントローラー/アクションに対するルートの特定、特定されたコントローラー/アクションの実行、テンプレートのレンダリング</p>
+</li>
+<li>
 <p>Response オブジェクト。HTTP レスポンスのヘッダー情報やコンテンツ情報などの情報を保持。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <h4 id="_3">▼ オブジェクトから取り出された関数<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>カーネルが、クライアントからの HTTP リクエストをリクエストオブジェクトとして受け取る。
-<code>(2)</code></p>
-</dd>
-<dd>
-<p>カーネルが、送られてきた URL とルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートが URL を作成。
-<code>(3)</code></p>
-</dd>
-<dd>
+<ol>
+<li>
+<p>カーネルが、クライアントからの HTTP リクエストをリクエストオブジェクトとして受け取る。</p>
+</li>
+<li>
+<p>カーネルが、送られてきた URL とルート定義を基に、リクエストに対応するコントローラーアクションを探し、実行させる。その後、テンプレートが URL を作成。</p>
+</li>
+<li>
 <p>カーネルが、その結果をレスポンスオブジェクトとしてクライアントに返す。
 このカーネルを、特別に『HTTP カーネル』と呼ぶ。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><strong>【app.php の実装例】</strong></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
@@ -34945,12 +34938,9 @@
 <p><br></p>
 <h3 id="requestresponse">Request、Response<a class="headerlink" href="#requestresponse" title="Permanent link">&para;</a></h3>
 <h4 id="json">▼ リクエストからのデータ取得、JSON 型データを含むレスポンス<a class="headerlink" href="#json" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>Ajax によるリクエストの場合、JSON 型データをレスポンスし、かつページレンダリング。</p>
-</dd>
-</dl>
+<ol>
+<li>Ajax によるリクエストの場合、JSON 型データをレスポンスし、かつページレンダリング。</li>
+</ol>
 <p>(2) Ajax によるリクエストでない場合、ページレンダリングのみ</p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 

@@ -35734,7 +35734,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:10:37 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35961,40 +35961,32 @@
 <h4 id="_4">▼ 抽象クラス<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>ビジネスロジックとして使用する。</p>
 <p>多重継承できない。</p>
-<p><strong>＊例＊</strong></p>
 <p>以下の条件の社員オブジェクトを実装したいとする。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>午前９時に出社</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>営業部・開発部・総務部があり、それぞれが異なる仕事を担当する</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>午後６時に退社</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p>このとき、『働く関数』は部署ごとに異なってしまうが、どう実装したらよいのか…</p>
 <p><img alt="抽象クラスと抽象関数-1" src="https://user-images.githubusercontent.com/42175286/59590447-12ff8b00-9127-11e9-802e-126279fcb0b1.PNG" /></p>
 <p>これを解決するために、例えば、次の 2 つの実装方法が考えられる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>営業部社員オブジェクト、開発部社員オブジェクト、総務部社員オブジェクトを別々に実装</p>
-</dd>
-</dl>
 <p>⇒ メリット：同じ部署のほかのオブジェクトに影響を与えられる。</p>
 <p>⇒ デメリット：各社員オブジェクトで共通の処理を個別に実装しなければならない。</p>
 <p>共通の処理が同じコードで書かれる保証がない。</p>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>1</code> 個の社員オブジェクトのなかで、働く関数に部署ごとで変化する引数を設定</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p>⇒ メリット：全部署の社員を <code>1</code> 個のオブジェクトで呼び出せる。</p>
 <p>⇒ デメリット：<code>1</code> 個の修正が、全部署の社員の処理に影響を与えてしまう。</p>
 <p>抽象オブジェクトと抽象関数を使用すると、<code>2</code> 個のメリットを生かしつつ、デメリットを解決可能。</p>
@@ -36060,7 +36052,6 @@
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>プリウスと各世代プリウスが、抽象クラスと子クラスの関係にある。</p>
 <p><img alt="抽象クラス" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/抽象クラス.png" /></p>
 <p><br></p>
@@ -36068,9 +36059,7 @@
 <h4 id="realization_1">▼ Realization とは<a class="headerlink" href="#realization_1" title="Permanent link">&para;</a></h4>
 <p>実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</p>
 <p>これによって、必ず実装クラスを正常に働かせられる。</p>
-<p><strong>＊例＊</strong></p>
 <p>オープンソースのパッケージは、ユーザーが実装クラスを自身で追加実装することも考慮して、Realization を使用している。</p>
-<p><strong>＊例＊</strong></p>
 <p>各車は、モーター機能を必ず持っていなければ、正常に働けない。</p>
 <p>そこで、モータ機能に最低限必要な関数の実装を強制する。</p>
 <p><img alt="インターフェースとは" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースとは.png" /></p>
@@ -36166,19 +36155,16 @@
   </tbody>
 </table>
 
-<p><strong>＊例＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>種々の車クラスに共通する処理を持つ抽象クラスとして、Car クラスを作成。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>各車は、エンジン機能を必ず持っていなければ、正常に働けない。</p>
 <p>そこで、抽象関数によって、エンジン機能に最低限必要な関数の実装を強制する。</p>
-</dd>
-</dl>
 <p><img alt="インターフェースと抽象クラスの使い分け" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースと抽象クラスの使い分け.png" /></p>
+</li>
+</ol>
 <p><br></p>
 <h2 id="02-02">02-02. 継承<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_6">継承によるクラスチェーン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
@@ -36694,25 +36680,21 @@
 </blockquote>
 <p><img alt="DIPに基づく設計の場合" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づく設計の場合.png" /></p>
 <h4 id="dip_5">▼ DIP に基づくドメイン駆動設計の場合<a class="headerlink" href="#dip_5" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Repository クラスにインターフェースと実装クラスを用意する。これにより、原則２を満たす。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Repository のインターフェース (抽象クラス) を、より上位のドメイン層に配置する。また、Repository の実装クラスを、より下位のインフラストラクチャ層に配置する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>両方のクラスに対して、バインディング (紐付け) を行い、インターフェース (抽象クラス) をコールしたときに、実際には実装クラスがコールされるようにする。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>2 と 3 により、インフラストラクチャ層とユースケース層の両方は、ドメイン層のインターフェース (抽象クラス) に依存する。これは原則 1 を満たす。</p>
-</dd>
-</dl>
 <p><img alt="ドメイン駆動設計_逆転依存性の原則" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_依存性逆転の原則.jpg" /></p>
+</li>
+</ol>
 <p><br></p>
 <h3 id="dip_6">DIP のメリット<a class="headerlink" href="#dip_6" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ 実装リポジトリの差し替えが簡単<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>

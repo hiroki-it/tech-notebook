@@ -35970,7 +35970,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -36059,11 +36059,9 @@
 <p>加えて <code>2</code>bit シフトすると『10 倍』</p>
 <p>左に <code>3</code>bit シフトすると『8 倍』</p>
 <h4 id="_12">▼ 正の数の場合<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>00011100</p>
 <p><img alt="正の論理左シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正の論理左シフト.jpg" /></p>
 <h4 id="_13">▼ 負の数の場合<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>11100100</p>
 <p><img alt="負の論理左シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/負の論理左シフト.png" /></p>
 <p><br></p>
@@ -36074,11 +36072,9 @@
 <p>右に <code>2</code>bit シフトすると『1/4』</p>
 <p>右に <code>3</code>bit シフトすると『1/8』</p>
 <h4 id="_15">▼ 正の数の場合<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>00011100</p>
 <p><img alt="正の論理右シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正の論理右シフト.jpg" /></p>
 <h4 id="_16">▼ 負の数の場合 (計算はできない)<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>11100100</p>
 <p>負の数で論理右シフトを実行する場合、間違った計算が行われてしまう。</p>
 <p>こういう場合、算術シフトが使用される。</p>
@@ -36094,11 +36090,9 @@
 <p>加えて <code>2</code>bit シフトすると『10 倍』</p>
 <p>左に <code>3</code>bit シフトすると『8 倍』</p>
 <h4 id="_18">▼ 正の数の場合<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>00011100</p>
 <p><img alt="正の算術左シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正の算術左シフト.png" /></p>
 <h4 id="_19">▼ 負の数の場合<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>00011100</p>
 <p><img alt="負の算術左シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/負の算術左シフト.png" /></p>
 <p><br></p>
@@ -36109,7 +36103,6 @@
 <p>右に <code>2</code>bit シフトすると『1/4』</p>
 <p>右に <code>3</code>bit シフトすると『1/8』</p>
 <h4 id="_21">▼ 正の数の場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>00011100</p>
 <p><img alt="正の算術右シフト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正の算術右シフト.png" /></p>
 <h4 id="_22">▼ 負の数の場合<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
@@ -36119,26 +36112,22 @@
 <h2 id="01-04">01-04. 機械語命令の実行手順<a class="headerlink" href="#01-04" title="Permanent link">&para;</a></h2>
 <h3 id="_23">実行手順<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
 <p><img alt="機械語命令の実行手順" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/機械語命令の実行手順.JPG" /></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>16 進数が 2 進数に変換され、記号へ値が割り当てられる。 (ビット分割)</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>記号の値を基に、実効アドレスの計算方法が選択され、実行される。 (実効アドレスの計算)</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>実効アドレスを基に、機械語命令が実行され、値がレジスタやメモリに書き留められる。 (機械語命令のトレース)</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h3 id="1"><code>(1)</code><a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
 <dl>
 <dd>ビット分割</dd>
 </dl>
-<p><strong>＊例＊</strong></p>
 <p>命令：20B3h</p>
 <h4 id="16-2">▼ 16 進数の 2 進数への変換<a class="headerlink" href="#16-2" title="Permanent link">&para;</a></h4>
 <p>命令の <code>20B3h</code> を 2 進数の <code>0010 0000 1011 0011</code> に変換すると、左から区切った bit の並びが命令の種類やレジスタの番号を表す。</p>
@@ -36171,42 +36160,28 @@
 <h3 id="_27">逆ポーランド表記法 (後置表記法)<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <p>演算子 (例：<code>+</code>、<code>-</code>、<code>×</code>、<code>÷</code> など) を被演算子 (数値や変数、また計算の結果) の後ろに書くことにより、数式を表す方法。</p>
 <p>補足として、人間が使用している表記方法は、『中置記法』という。</p>
-<p><strong>＊例＊</strong></p>
 <p><code>Y = ( A + B ) × ( C － ( D ÷ E ) )</code></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>括弧は先に計算するので塊と見なす。</p>
-</dd>
-</dl>
 <p><code>( A + B )</code> ⇒ <code>AB+</code></p>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>括弧は先に計算するので塊と見なす。</p>
-</dd>
-</dl>
 <p><code>( D ÷ E )</code> ⇒ <code>DE ÷</code></p>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>括弧は先に計算するので塊と見なす。</p>
-</dd>
-</dl>
 <p><code>( AB + ) × ( C - DE ÷ )</code> ⇒ <code>(AB +) (CDE÷-) ×</code></p>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>括弧を外しても、塊はそのまま。</p>
-</dd>
-</dl>
 <p><code>(AB+) (CDE÷-) ×</code> ⇒ <code>AB+CDE÷－×</code></p>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>左辺と右辺をそれぞれ塊と見なす。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p>Y = <code>AB+CDE÷-×</code> ⇒ <code>YAB+CDE÷-×=</code></p>
 <p><br></p>
 <h2 id="01-06-cpu">01-06. CPU における小数の処理方法<a class="headerlink" href="#01-06-cpu" title="Permanent link">&para;</a></h2>
@@ -36234,7 +36209,6 @@
 <p><img alt="p067-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p067-1.png" /></p>
 <p><br></p>
 <h3 id="_33">桁溢れ誤差<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
-<p><strong>＊例＊</strong></p>
 <p>初代ドラクエ</p>
 <p>初代ドラゴンクエストにおける経験値の上限は『<code>65535</code>』だった。</p>
 <p>これは、経験値が 16bit (2 Byte) で表されており、桁溢れが起きることを防ぐために <code>65535</code> 以上は計算しないようになっていた。</p>
@@ -36285,64 +36259,53 @@
 <h3 id="16-10">16 進数 ➔ 10 進数<a class="headerlink" href="#16-10" title="Permanent link">&para;</a></h3>
 <h4 id="_38">▼ 整数<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong>『CA125』</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>『<code>(16^0 × 5) + (16^1 × 2) + (16^2 × 1) + (16^3 × A) + (16^4 × C)</code>』というように、下の位から、順に 16^N をかけていく。 (A と C は、10 進数に変換して『10』と『12』)</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>(1×5) + (16×2) + (256×1) + (4096×10) + (65536×12) = 827685</code></p>
-</dd>
-</dl>
+</li>
+</ol>
 <h4 id="_39">▼ 小数<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h4>
 <p><br></p>
 <h3 id="2-10">2 進数 ➔ 10 進数<a class="headerlink" href="#2-10" title="Permanent link">&para;</a></h3>
 <h4 id="_40">▼ 整数<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
 <p>『<code>1101101</code>』</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
-<p>『<code>(2^0 × 1) + (2^1 × 0) + (2^2 × 1) + (2^3 × 1) + (2^4 × 0) + (2^5 × 1) + (2^6 × 1)</code>』というように、下の位から、順に 2^N をかけていく。</p>
-</dd>
-</dl>
+<ol>
+<li>『<code>(2^0 × 1) + (2^1 × 0) + (2^2 × 1) + (2^3 × 1) + (2^4 × 0) + (2^5 × 1) + (2^6 × 1)</code>』というように、下の位から、順に 2^N をかけていく。</li>
+</ol>
 <h4 id="_41">▼ 小数<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
 <p><br></p>
 <h2 id="02-02-10-n-n">02-02. 10 進数 ➔ N 進数 (N で割り続ける)<a class="headerlink" href="#02-02-10-n-n" title="Permanent link">&para;</a></h2>
 <h3 id="10-16">10 進数 ➔ 16 進数<a class="headerlink" href="#10-16" title="Permanent link">&para;</a></h3>
 <h4 id="_42">▼ 整数<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong>『27』</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>27</code> を <code>16</code> で割り続ける。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>16 進数で 10～15 は、A～F で表記されるため、<code>11</code> を B で表記。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>余りを並べ、答えは『1B』</p>
-</dd>
-</dl>
 <p><img alt="10進数の整数から16進数への変換" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/10進数の整数から16進数への変換.gif" /></p>
+</li>
+</ol>
 <h4 id="_43">▼ 小数<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong>『0.1015625』</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>『<code>0.1015625</code>』に <code>16</code> をかけ、整数部分を取り出す。 (<code>0.1015625 × 16 = 1.625</code>。『<code>1</code>』を取り出し、16 進数に変換して『<code>1</code>』)</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>計算結果の小数部分に 16 を加えてかける。小数部分が 0 になるまで、これを繰り返す。 (<code>0.625 × 16 = 10.0</code> より、『<code>10</code>』を取り出し、16 進数に変換して『A』)</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>小数部分が 0 になったため、取り出した数を順に並べ、答えは『0.1A』</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h3 id="10-2">10 進数 ➔ 2 進数<a class="headerlink" href="#10-2" title="Permanent link">&para;</a></h3>
 <h4 id="_44">▼ 整数<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h4>
@@ -36355,62 +36318,46 @@
 <h3 id="16-2_1">16 進数 ➔ 2 進数<a class="headerlink" href="#16-2_1" title="Permanent link">&para;</a></h3>
 <h4 id="_46">▼ 整数<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
 <p><strong>＊例＊</strong>『<code>20B3</code>』</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>2、0、B、3 を 10 進数に変換して、『<code>(16^0 × 3) + (16^1 × 11)  + (16^2 × 0) + (16^3 × 2) = 8371</code>』</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>10 と 15 を 2 進数に変換して、『<code>0010</code>』、『<code>0000</code>』、『<code>1011</code>』、『<code>0011</code>』</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>よって、AF は 10 進法に変換して『<code>0010000010110011</code>』</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h2 id="02-04-x-10-y-10">02-04. X 進数 ➔ 10 進数 ➔ Y 進数 ➔ 10 進数<a class="headerlink" href="#02-04-x-10-y-10" title="Permanent link">&para;</a></h2>
 <h3 id="16-2_2">16 進数 ➔ 2 進数<a class="headerlink" href="#16-2_2" title="Permanent link">&para;</a></h3>
 <h4 id="_47">▼ 小数<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p><code>2A.4C</code></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>整数部分の <code>2A</code> を 10 進数に変換して、</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>42 を 2 進数に変換して、『<code>101010</code>』。また、余り計算のとき、余り１を <code>2^N</code> に直しておく。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>整数の場合、下位の桁から、『<code>(2^0 × 0) + (2^1 × 1) + (2^2 × 0) + (2^3 × 1) + (2^4 × 0) + (2^5 × 1) + (2^6 × 0) + (2^7 × 0) + (2^8 × 0)</code>』</p>
-</dd>
-</dl>
 <p>=『<code>2^5+2^3+2^1</code>』</p>
-<div class="highlight"><pre><span></span><code>(※16進数からの変換の場合、101010は、00101010として扱うことに注意)
-</code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+<p>(※16進数からの変換の場合、101010は、00101010として扱うことに注意)</p>
+</li>
+<li>
 <p>76 を 2 進数に変換して、『1001100』。また、余り計算のとき、余り１を 2^N に直しておく。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>小数部分の場合、上位の桁から、『<code>(2^－1 × 0) + (2^－2 × 1) + (2^－3 × 0) + (2^－4 × 0) + (2^－5 × 1) + (2^－6 × 1)  + (2^－7 × 0) + (2^－8 × 0)</code>』</p>
-</dd>
-</dl>
 <p>=『<code>2^-2+2^－5+2^-6</code>』</p>
-<div class="highlight"><pre><span></span><code>(※16進数からの変換の場合、1001100は、01001100として扱うことに注意)
-</code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
+<p>(※16進数からの変換の場合、1001100は、01001100として扱うことに注意)</p>
+</li>
+<li>
 <p>したがって、『<code>2^5+2^3+2^1+2^-2+2^-5+2^-6</code>』</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h2 id="03">03. 論理回路<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_48">論理式<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h3>

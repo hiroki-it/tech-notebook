@@ -35058,7 +35058,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35182,7 +35182,6 @@
   </tbody>
 </table>
 
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>/etc/sysconfig/iptables
 
 ...
@@ -35214,7 +35213,6 @@ COMMIT
 <li><a href="https://knowledge.sakura.ad.jp/22269/">Firewalld編～サーバーへ不要な通信はさせない～ – Linuxセキュリティ入門(2) | さくらのナレッジ</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p>アクセスが許可されているポート番号を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>firewall-cmd<span class="w"> </span>--list-all
 
@@ -35253,7 +35251,6 @@ public
 <li><a href="https://pc-karuma.net/windows-10-firewall-open-port/">Windows 10 - ファイアウォールの特定ポート番号の通信を許可する方法 - PC設定のカルマ</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p><br></p>
 <h3 id="_7">ゲートウェイ型ネットワークファイアウォール (プロキシサーバー型)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>パケットペイロードに基づいて、パケットを許可する必要があるか否かを決める。</p>
@@ -35373,13 +35370,10 @@ public
 <span class="c1"># 自前ヘッダー</span>
 <span class="nt">X-CSRF-TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;トークン&gt;</span>
 </code></pre></div>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ブラウザではレスポンスヘッダーからワンタイムトークンを取り出し、認証フォームの input タグの hidden 属性に割り当てる。</p>
 <p>他に、metaタグにトークンを割り当てることもある。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"POST"</span> <span class="na">action</span><span class="o">=</span><span class="s">"http://example.com/bar-form.php"</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"hidden"</span> <span class="na">name</span><span class="o">=</span><span class="s">"csrftoken"</span> <span class="na">value</span><span class="o">=</span><span class="s">"&lt;csrfトークン&gt;"</span> <span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">"text"</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="p">/&gt;</span>
@@ -35391,13 +35385,10 @@ public
   <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">"csrftoken"</span> <span class="na">content</span><span class="o">=</span><span class="s">"&lt;ヘッダーから取り出したトークン&gt;"</span> <span class="p">/&gt;</span>
 <span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>認証のための POST リクエスト時に、リクエストボディや自前ヘッダーにアクセストークンを割り当て、リクエストを送信する。</p>
 <p>どちらを使用するかは、バックエンド側の仕様によって異なる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/bar-form.php</span>
 <span class="nn">---</span>
 <span class="c1"># 自前ヘッダー</span>
@@ -35406,14 +35397,13 @@ public
 <span class="c1"># ボディ</span>
 <span class="p p-Indicator">{</span><span class="nv">_token=&lt;トークン&gt;</span><span class="p p-Indicator">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバー側では、POST リクエストによって送信されたトークンとワンタイムトークンを比較し、認証する。</p>
 <p>以降、POSTリクエストの場合はそのワンタイムトークンを使い回し、GETリクエストの場合は使用しない。</p>
 <p>トークンが変更されていれば、誤った入力フォームからのリクエストとして判定し、<code>401</code>ステータスを返却する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/Nsystem/questions/1bd6d30748957e1b6700">[Q&amp;A] CSRFトークンをGETで送信するのは危険ですか？ - Qiita</a></li>
@@ -35459,14 +35449,11 @@ public
 <p>リクエストの <code>Origin</code> ヘッダーとレスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーの値を同じにする必要がある。</p>
 <p>リクエストの <code>Origin</code> ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。</p>
 <p>レスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーは、リクエストの <code>Origin</code> ヘッダーと同じ値あるいはワイルドカード (<code>*</code>) とする必要がある。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>リクエストの <code>Origin</code> ヘッダーに送信元オリジンを設定する。</p>
 <p>加えて、<code>Cookie</code>ヘッダーを持つリクエストを送信したい場合は、JavaScriptの実装で<code>withCredentials</code>オプションに<code>true</code>を割り当てる。</p>
 <p>JavaScriptのパッケージによってオプション名が異なるため注意する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/bar</span>
 <span class="nn">---</span>
 <span class="c1"># 送信元オリジン</span>
@@ -35497,15 +35484,12 @@ public
 <li><a href="https://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34#%E3%82%B7%E3%83%B3%E3%83%97%E3%83%AB%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%81%AE%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%81%BF%E3%82%92%E8%A8%B1%E5%8F%AF%E3%81%97%E3%81%9F%E3%81%84%E5%A0%B4%E5%90%88">CORSまとめ #JavaScript - Qiita</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>必須の設定として、レスポンスの <code>Access-Control-Allow-Origin</code> ヘッダーに、許可された送信元オリジンやワイルドカード (<code>*</code>) を割り当てて返信する。</p>
 <p><code>Cookie</code>ヘッダーを持つリクエストを許可する場合、同じくレスポンスの<code>Access-Control-Allow-Credentials</code>ヘッダーに<code>true</code>を割り当てる。</p>
 <p>その他、許可するHTTPメソッドやHTTPヘッダーも定義できるが、必須ではない。</p>
 <p>例えば、許可されていないHTTPメソッドを使用して、異なるオリジンにリクエストを送信すると、<code>405</code>ステータスでエラーレスポンスが返信される。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="c1"># 許可された送信元オリジン</span>
@@ -35517,6 +35501,8 @@ public
 <span class="c1"># その他、許可する HTTP ヘッダー</span>
 <span class="nt">Access-Control-Allow-Headers</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Content-Type</span>
 </code></pre></div>
+</li>
+</ol>
 <p>補足として、<code>Cookie</code> ヘッダーを持つリクエストを許可しない場合に限り、すべてのオリジンやヘッダーを許可できる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>

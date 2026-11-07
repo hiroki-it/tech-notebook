@@ -34506,7 +34506,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34696,40 +34696,33 @@ Address:<span class="w">  </span><span class="m">10</span>.105.157.184
 </ul>
 </blockquote>
 <h4 id="pod-service_1">▼ Pod 外から Service に対する正引き名前解決<a class="headerlink" href="#pod-service_1" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Nginx の Pod にルーティングする Service が稼働しているとする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service
 
 NAME<span class="w">            </span>TYPE<span class="w">        </span>CLUSTER-IP<span class="w">      </span>EXTERNAL-IP<span class="w">   </span>PORT<span class="o">(</span>S<span class="o">)</span><span class="w">    </span>AGE
 nginx-service<span class="w">   </span>ClusterIP<span class="w">   </span><span class="m">10</span>.101.67.107<span class="w">   </span>&lt;none&gt;<span class="w">        </span><span class="m">8080</span>/TCP<span class="w">   </span>3h34m
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>CoreDNS の Pod が稼働しているとする。</p>
 <p>ここで、CoreDNSのPodのIPアドレス (ここでは<code>10.244.0.2</code>) を確認しておく。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-o<span class="w"> </span>wide<span class="w"> </span>-l<span class="w"> </span>k8s-app<span class="o">=</span>kube-dns<span class="w"> </span>-n<span class="w"> </span>kube-system
 
 NAME<span class="w">            </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE<span class="w">     </span>IP<span class="w">           </span>NODE<span class="w">       </span>NOMINATED<span class="w"> </span>NODE<span class="w">   </span>READINESS<span class="w"> </span>GATES
 coredns-*****<span class="w">   </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>3h53m<span class="w">   </span><span class="m">10</span>.244.0.2<span class="w">   </span>minikube<span class="w">   </span>&lt;none&gt;<span class="w">           </span>&lt;none&gt;
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>ここで、Node 内に接続する。Service の完全修飾ドメイン名 (ここでは <code>nginx-service.default.svc.cluster.local</code>) を CoreDNS に正引きする。すると、Service の IP アドレスを取得できる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Node内に接続する。</span>
 $<span class="w"> </span>dig<span class="w"> </span>nginx-service.default.svc.cluster.local<span class="w"> </span>+short<span class="w"> </span>@10.244.0.2
 
 <span class="m">10</span>.101.67.107
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/tayusa/articles/c705cd65b6ee74">KubernetesのServiceの挙動を確認する</a></li>
@@ -34738,31 +34731,24 @@ $<span class="w"> </span>dig<span class="w"> </span>nginx-service.default.svc.cl
 <p><br></p>
 <h3 id="_6">疎通確認<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 事前確認<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Service がルーティング先のポート番号を確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>service<span class="w"> </span>&lt;Service名&gt;<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>targetPort:
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Service がルーティング先の Pod にて、コンテナが待ち受けるポート番号を確認する。注意点として、<code>.spec.containers[*].ports</code> キーは単なる仕様であり、記載されていなくとも、コンテナのポートが公開されている可能性がある。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 先にmetadata.labelキーから、Serviceのルーティング先のPodを確認する</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>-l<span class="w"> </span>&lt;名前&gt;<span class="o">=</span>&lt;値&gt;<span class="w"> </span>-o<span class="w"> </span>wide
 
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>&lt;Pod名&gt;<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>containerPort:
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>両方のポート番号が一致しているかを確認する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <h4 id="service_2">▼ Service を経由したアウトバウンド通信の送信<a class="headerlink" href="#service_2" title="Permanent link">&para;</a></h4>
 <p>Service を介して、宛先の Pod に HTTPS リクエストを送信する。</p>
 <p>完全修飾ドメイン名または IP アドレスを指定できる。</p>

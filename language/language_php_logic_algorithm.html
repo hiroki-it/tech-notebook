@@ -34128,7 +34128,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34163,24 +34163,18 @@
 <p><br></p>
 <h3 id="_2">基本選択法 (選択ソート)<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <h4 id="_3">▼ 最小選択法<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>比較基準値を決める。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>最初の数値を比較基準値とし、<code>n</code> 個のなかからもっとも小さい数字を探し、それと入れ替える。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>次に、残りの <code>n-1</code> 個のなかからもっとも小さい数字を探し、それを 2 番目の数字と入れ替える。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>この処理を <code>n-1</code> 回繰り返す。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">function</span> <span class="nf">minSelectSort</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
@@ -34227,6 +34221,8 @@
 <span class="c1">// 昇順に並び替えられている。</span>
 <span class="c1">// 2, 7, 8, 10, 12, 13, 16</span>
 </code></pre></div>
+</li>
+</ol>
 <p><strong>＊アルゴリズム解説＊</strong></p>
 <p>データ中の最小値を求め、次にそれを除いた部分のなかから最小値を求める。</p>
 <p>この操作を繰り返していく。</p>
@@ -34239,24 +34235,18 @@
 <p><img alt="選択ソート4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/選択ソート4.gif" /></p>
 <p><br></p>
 <h3 id="_4">クイックソート<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>適当な値を基準値 (Pivot) とする (※できれば中央値が望ましい)</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Pivot より小さい数を前方、大きい数を後方に分割する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>二分割された各々のデータを、それぞれ並び替える。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>ソートを繰り返し実行する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">function</span> <span class="nf">quickSort</span><span class="p">(</span><span class="k">array</span> <span class="nv">$array</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
 <span class="p">{</span>
@@ -34311,6 +34301,8 @@
 <span class="c1">// 昇順に並び替えられている。</span>
 <span class="c1">// 1, 2, 3, 4, 5, 6, 7, 8</span>
 </code></pre></div>
+</li>
+</ol>
 <p><strong>＊アルゴリズム解説＊</strong></p>
 <p>適当な値を基準値 (Pivot) とし、それより小さな値のグループと大きな値のグループに分割する。</p>
 <p>同様にして、両グループのなかで Pivot を選択し、<code>2</code> 個のグループに分割する。</p>
@@ -34514,17 +34506,15 @@
 <h2 id="04">04. 誤り検出と訂正のアルゴリズム<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="check-digit-check">Check Digit Check<a class="headerlink" href="#check-digit-check" title="Permanent link">&para;</a></h3>
 <p>バーコードやクレジットカードなどの読み取りチェックで使われている誤り検出方法。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Check Digit を算出する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>算出された Check Digit が正しいかを検証する。</p>
-</dd>
-</dl>
 <p><img alt="チェックディジット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/チェックディジット.gif" /></p>
+</li>
+</ol>
 <p><br></p>
 <h3 id="parity-check">Parity Check<a class="headerlink" href="#parity-check" title="Permanent link">&para;</a></h3>
 <p><br></p>

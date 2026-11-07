@@ -35048,7 +35048,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:10:37 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35088,7 +35088,6 @@
 <li><a href="https://minikube.sigs.k8s.io/docs/commands/addons/">addons | minikube</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p>開発環境専用の Ingress Controller として、Nginx Ingress Controller を有効化するか否かを設定する。</p>
 <p>本番環境では、同じく Nginx Ingress Controller や、クラウドプロバイダーのロードバランサーなどを使用する。</p>
 <blockquote>
@@ -35163,7 +35162,6 @@ foo-ingress<span class="w">   </span>nginx<span class="w">   </span>*<span class
 <p><code>minikube</code> コマンドに関するパラメーターを操作する。</p>
 <h4 id="set">▼ set<a class="headerlink" href="#set" title="Permanent link">&para;</a></h4>
 <p><code>kubectl</code> コマンド実行時のデフォルト値を設定する。</p>
-<p><strong>＊例＊</strong></p>
 <p>デフォルトのドライバーを設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>config<span class="w"> </span><span class="nb">set</span><span class="w"> </span>driver<span class="w"> </span>virtualbox
 </code></pre></div>
@@ -35186,7 +35184,6 @@ foo-ingress<span class="w">   </span>nginx<span class="w">   </span>*<span class
 <h3 id="dashboard">dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h3>
 <h4 id="dashboard_1">▼ dashboard とは<a class="headerlink" href="#dashboard_1" title="Permanent link">&para;</a></h4>
 <p>Kubernetes のダッシュボードを開発環境に作成する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>dashboard
 
 🤔<span class="w">  </span>Verifying<span class="w"> </span>dashboard<span class="w"> </span>health<span class="w"> </span>...
@@ -35210,7 +35207,6 @@ foo-ingress<span class="w">   </span>nginx<span class="w">   </span>*<span class
 <h4 id="docker-env_1">▼ docker-env とは<a class="headerlink" href="#docker-env_1" title="Permanent link">&para;</a></h4>
 <p>ホストで <code>docker</code> コマンドを実行したときに、ホスト側の docker デーモンでなく、ゲスト仮想環境内の Node の docker デーモンにリクエストを送信できるように環境変数を設定する。</p>
 <p>バージョンタグ名が <code>latest</code> であると、仮想環境外に対してイメージをプルしてしまうことに注意する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>docker-env
 
 <span class="nb">export</span><span class="w"> </span><span class="nv">DOCKER_TLS_VERIFY</span><span class="o">=</span><span class="s2">"1"</span>
@@ -35521,7 +35517,6 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 </blockquote>
 <h4 id="-2">▼ <code>--</code> (ハイフン 2 つ)<a class="headerlink" href="#-2" title="Permanent link">&para;</a></h4>
 <p>Node に SSH 公開鍵認証で接続し、任意のコマンドを実行する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>ssh<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>-la
 
 total<span class="w"> </span><span class="m">4</span>
@@ -35534,7 +35529,6 @@ drwx------<span class="w"> </span><span class="m">2</span><span class="w"> </spa
 <h3 id="start">start<a class="headerlink" href="#start" title="Permanent link">&para;</a></h3>
 <h4 id="start_1">▼ start とは<a class="headerlink" href="#start_1" title="Permanent link">&para;</a></h4>
 <p>ゲスト仮想環境を作成し、仮想環境内に Node を作成する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start
 
 😄<span class="w">  </span>minikube<span class="w"> </span>v1.24.0<span class="w"> </span>on<span class="w"> </span>Darwin<span class="w"> </span><span class="m">11</span>.3.1
@@ -35623,7 +35617,6 @@ Swap:<span class="w">          </span><span class="m">1023</span><span class="w"
 <p>metrics-server を入れて、<code>kubectl top node</code> コマンドを実行してもよいが、Minikube クラスター全体であれば <code>minikube ssh</code> コマンドで Minikube クラスターに入って確認したほうがよい。</p>
 <h4 id="-docker-env">▼ --docker-env<a class="headerlink" href="#-docker-env" title="Permanent link">&para;</a></h4>
 <p>別に <code>docker-env</code> コマンドを実行しつつ、<code>start</code> コマンドを実行する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--docker-env
 </code></pre></div>
 <h4 id="-ha">▼ --ha<a class="headerlink" href="#-ha" title="Permanent link">&para;</a></h4>
@@ -35650,7 +35643,6 @@ foo-m03<span class="w">   </span>Ready<span class="w">    </span>control-plane<s
 <p>ゲスト仮想環境のドライバーを指定し、<code>start</code> コマンドを実行する。</p>
 <p>ホストごとに標準の仮想環境が異なり、MacOS は Docker ドライバーがデフォルトである。</p>
 <p>ドライバーの使用前に、これをインストールしておく必要があることに注意する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 事前にVirtualBoxのダウンロードが必要。</span>
 $<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--driver<span class="o">=</span>virtualbox
 </code></pre></div>
@@ -35679,18 +35671,15 @@ $<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> <
 </blockquote>
 <h4 id="-mount-mount-string">▼ --mount、--mount--string<a class="headerlink" href="#-mount-mount-string" title="Permanent link">&para;</a></h4>
 <p>ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、<code>start</code> コマンドを実行する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--mount<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--mount-string<span class="o">=</span><span class="s2">"/Users/hiroki.hasegawa/projects/foo:/data"</span>
 </code></pre></div>
 <h4 id="-nodes">▼ --nodes<a class="headerlink" href="#-nodes" title="Permanent link">&para;</a></h4>
 <p>作成する Node 数を指定し、<code>start</code> コマンドを実行する。</p>
 <p>マルチ Node の Kubernetes Cluster を作成できる。</p>
 <p>Minikube は、同じ CPU とメモリを持つ Node を冗長化するため、<code>--nodes</code> オプションで Node を増やすだけ、Pod のリソースに余裕がでる。</p>
-<p><strong>＊例＊</strong></p>
 <p>CPU4 コアとメモリ 7168GB を持った Node が 3 台作られる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--nodes<span class="w"> </span><span class="m">3</span><span class="w"> </span>--cpu<span class="w"> </span><span class="m">4</span><span class="w"> </span>--memory<span class="w"> </span><span class="m">7168</span>
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>start<span class="w"> </span>--nodes<span class="w"> </span><span class="m">3</span>
 
 <span class="c1"># Nodeを確認する。</span>
@@ -35776,7 +35765,6 @@ foo-m06<span class="w">   </span>Ready<span class="w">    </span>worker<span cla
 <p>LoadBalancer を一時的に作成し、LoadBalancer Service に自動的に紐付ける。</p>
 <p>紐付けられた LoadBalancer Service には『External Endpoints (<code>http://127.0.0.1:80</code>) 』が割り当てられ、ここから LoadBalancer Service にリクエストを送信できるようになる。</p>
 <p>Node 外から Pod へ通信できるようになる。<code>minikube ssh</code> コマンドで Node に接続しつつ、公開された Service へリクエストを送信できる。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>minikube<span class="w"> </span>tunnel
 
 ✅<span class="w">  </span>Tunnel<span class="w"> </span>successfully<span class="w"> </span>started

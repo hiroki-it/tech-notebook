@@ -35756,7 +35756,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35999,12 +35999,9 @@ Date:<span class="w">   </span>Sat<span class="w"> </span>Sep<span class="w"> </
 <li><a href="https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0">https://gist.github.com/g-empr/fc793caf3a0a18c31d8c708787bdf5f0</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>ssh-keygen</code> コマンドで、秘密鍵と公開鍵のセットを作成する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 鍵を保管するディレクトリに移動</span>
 $<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/.ssh/github
 
@@ -36016,28 +36013,24 @@ Enter<span class="w"> </span>file<span class="w"> </span><span class="k">in</spa
 Enter<span class="w"> </span>passphrase<span class="w"> </span><span class="o">(</span>empty<span class="w"> </span><span class="k">for</span><span class="w"> </span>no<span class="w"> </span>passphrase<span class="o">)</span>:
 Enter<span class="w"> </span>same<span class="w"> </span>passphrase<span class="w"> </span>again:
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>このうち、公開鍵をクリップボードにコピーする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Mac</span>
 $<span class="w"> </span>pbcopy<span class="w"> </span>&lt;<span class="w"> </span>~/.ssh/github/&lt;鍵名&gt;.pub
 
 <span class="c1"># Windows</span>
 $<span class="w"> </span>clip<span class="w"> </span>&lt;<span class="w"> </span>~/.ssh/github/&lt;鍵名&gt;.pub
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>コピーした公開鍵を、GitHub アカウント設定画面の SSH の項目 ( <a href="https://github.com/settings/ssh">https://github.com/settings/ssh</a> ) にペーストする。<code>ssh</code> コマンドで接続を確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-T<span class="w"> </span>&lt;接続名&gt;
 
 Hi<span class="w"> </span>hiroki.hasegawa!<span class="w"> </span>You<span class="err">'</span>ve<span class="w"> </span>successfully<span class="w"> </span>authenticated,<span class="w"> </span>but<span class="w"> </span>GitHub<span class="w"> </span>does<span class="w"> </span>not<span class="w"> </span>provide<span class="w"> </span>shell<span class="w"> </span>access.
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <p><br></p>
 <h2 id="ignore">ignore<a class="headerlink" href="#ignore" title="Permanent link">&para;</a></h2>
@@ -36205,38 +36198,31 @@ and<span class="w"> </span>the<span class="w"> </span>repository<span class="w">
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--delete<span class="w"> </span>--remote<span class="w"> </span>origin/&lt;ローカルブランチ名&gt;
 </code></pre></div>
 <p>リモート追跡ブランチを削除する。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>まず、<code>branch --all</code> で作業中のローカルブランチとリモート追跡ブランチを取得する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--all
 
 *<span class="w"> </span>main
 <span class="w">  </span>remotes/origin/2019/Symfony_Nyumon/main
 <span class="w">  </span>remotes/origin/main
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>remotes/origin/2019/Symfony_Nyumon/main</code> を削除する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>-r<span class="w"> </span>origin/2019/Symfony_Nyumon/main
 
 Deleted<span class="w"> </span>remote-tracking<span class="w"> </span>branch<span class="w"> </span>origin/2019/Symfony_Nyumon/main<span class="w"> </span><span class="o">(</span>was<span class="w"> </span>18a31b5<span class="o">)</span>.
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>再び、<code>branch --all</code> で削除されたことを確認。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>branch<span class="w"> </span>--all
 *<span class="w"> </span>main
 <span class="w">  </span>remotes/origin/main
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="checkout-b">checkout -b<a class="headerlink" href="#checkout-b" title="Permanent link">&para;</a></h3>
 <p>指定のコミットから新しいブランチを生やせる。</p>
@@ -36250,7 +36236,6 @@ Deleted<span class="w"> </span>remote-tracking<span class="w"> </span>branch<spa
 <p>現在のブランチに対して、指定したコミットそれ単体をマージする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>cherry-pick<span class="w"> </span>&lt;コミットID&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>cherry-pick<span class="w"> </span>1d0ddeb9e52
 </code></pre></div>
 <p>プルリクエストのマージによるマージコミットを指定すると、そのプルリクエストで変更されたファイルのみがコミットの内容として取得できる。</p>
@@ -36522,12 +36507,9 @@ $<span class="w"> </span>git<span class="w"> </span>revert<span class="w"> </spa
 </blockquote>
 <p><br></p>
 <h3 id="reset_2">reset の使用例<a class="headerlink" href="#reset_2" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>まず、<code>log</code> コマンドで、作業中のローカルブランチにおけるコミット ID を確認。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
 
 commit<span class="w"> </span>f17f68e287b7d84318b4c49e133b2d1819f6c3db<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main,<span class="w"> </span><span class="m">2019</span>/foo-repository/main<span class="o">)</span>
@@ -36549,20 +36531,14 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 
 <span class="w">    </span>add<span class="w"> </span><span class="c1">#0 fooさんのREADME_1を追加</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>指定のコミットまで履歴を戻す。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--soft<span class="w"> </span>f81c813a1ead9a968c109671e6d83934debcab2e
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>log</code> コマンドで、正しく変更されているか確認。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
 
 commit<span class="w"> </span>f81c813a1ead9a968c109671e6d83934debcab2e<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main<span class="o">)</span>
@@ -36571,19 +36547,18 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 
 <span class="w">    </span>add<span class="w"> </span>新しいREADMEを追加
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>push --force</code> でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
-<font color="red"><strong>『強制的にプッシュした』というログも、リモート側には残らない。</strong></font></p>
-</dd>
-</dl>
+    <font color="red"><strong>『強制的にプッシュした』というログも、リモート側には残らない。</strong></font></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--force
 
 Total<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>,<span class="w"> </span>reused<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">(</span>delta<span class="w"> </span><span class="m">0</span><span class="o">)</span>
 To<span class="w"> </span>github.com:hiroki-hasegawa/foo-repository.git
 <span class="w"> </span>+<span class="w"> </span>f0d8b1a...f81c813<span class="w"> </span>main<span class="w"> </span>-&gt;<span class="w"> </span>main<span class="w"> </span><span class="o">(</span>forced<span class="w"> </span>update<span class="o">)</span>
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="pull">強制的に pull する<a class="headerlink" href="#pull" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>reset<span class="w"> </span>--hard<span class="w"> </span>origin/&lt;ブランチ名&gt;
@@ -36605,12 +36580,9 @@ To<span class="w"> </span>github.com:hiroki-hasegawa/foo-repository.git
 <h3 id="-interactive-id">--interactive &lt;コミット ID&gt;<a class="headerlink" href="#-interactive-id" title="Permanent link">&para;</a></h3>
 <p>派生元を変更する機能を応用して、過去のコミットのメッセージ変更、削除、統合などを実行する。</p>
 <p><strong>＊例 (コミットメッセージの変更) ＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>まず、<code>log</code> コマンドで、作業中のローカルブランチにおけるコミット ID を確認。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>log
 
 commit<span class="w"> </span>f17f68e287b7d84318b4c49e133b2d1819f6c3db<span class="w"> </span><span class="o">(</span>HEAD<span class="w"> </span>-&gt;<span class="w"> </span>main,<span class="w"> </span><span class="m">2019</span>/foo-repository/main<span class="o">)</span>
@@ -36632,12 +36604,9 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 
 <span class="w">    </span>add<span class="w"> </span><span class="c1">#0 fooさんのREADME_1を追加</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>指定した履歴の削除</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
 </code></pre></div>
 <p>とすると、タブが表示され、指定のコミット ID の履歴が表示される</p>
@@ -36652,59 +36621,45 @@ Date:<span class="w">   </span>Wed<span class="w"> </span>Mar<span class="w"> </
 <div class="highlight"><pre><span></span><code>:qa!
 </code></pre></div>
 <p>で終了。</p>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>git commit --amend</code> に <code>-m</code> オプションを付けて、メッセージを変更する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>-m<span class="o">=</span><span class="s2">"&lt;変更後のメッセージ&gt;"</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>git rebase --continue</code> コマンドを実行することで、変更を反映させる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
 
 Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span class="w"> </span>updated<span class="w"> </span>refs/heads/develop.
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>プッシュしようとすると、<code>![rejected] develop -&gt; develop (non-fast-forward)</code> とエラーが出るため、次のコマンドを実行する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>merge<span class="w"> </span>&lt;ブランチ名&gt;<span class="w"> </span>--allow-unrelated-histories
 </code></pre></div>
+</li>
+</ol>
 <p>で解決し、プッシュする。</p>
 <p><strong>＊例 (Author 名と Commiter 名の変更) ＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ハッシュ値を指定して、<code>git rebase</code> コマンドを実行する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>41cc21bb53a8597270b5deae3259751df18bce81
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>git commit --amend</code> コマンドに <code>--reset-author</code> オプションを付けて、config で設定した名前を Author 名と Committer 名に適用する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>commit<span class="w"> </span>--amend<span class="w"> </span>--reset-author
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>git rebase --continue</code> コマンドを実行し、変更を反映させる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--continue
 Successfully<span class="w"> </span>rebased<span class="w"> </span>and<span class="w"> </span>updated<span class="w"> </span>refs/heads/develop.
 </code></pre></div>
+</li>
+</ol>
 <p>過去のすべてのコミットに対して、Author 名と Committer 名を適用するコマンドもある。</p>
 <p>しかし、危険な方法であるため、個人利用のリポジトリのみで使用するようにする必要がある。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -36726,25 +36681,21 @@ git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w
 <p><br></p>
 <h3 id="-interactive-root">--interactive --root<a class="headerlink" href="#-interactive-root" title="Permanent link">&para;</a></h3>
 <p>一番古い、最初の履歴を削除する。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>変更タブの表示</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>rebase<span class="w"> </span>--interactive<span class="w"> </span>--root
 </code></pre></div>
 <p>そうすると、最初の履歴が記述されたタブを表示する。</p>
 <div class="highlight"><pre><span></span><code>pick<span class="w"> </span>b1b5c0f<span class="w"> </span>add<span class="w"> </span><span class="c1">#0 *****</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>pick b1b5c0f add #0 *****</code> の行を削除して保管し、タブを閉じ、エディタ上で『Ctrl+C』を押す。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>:qa!
 </code></pre></div>
+</li>
+</ol>
 <p>ここで未知のエラー</p>
 <div class="highlight"><pre><span></span><code>CONFLICT<span class="w"> </span><span class="o">(</span>modify/delete<span class="o">)</span>:<span class="w"> </span>README.md<span class="w"> </span>deleted<span class="w"> </span><span class="k">in</span><span class="w"> </span>HEAD<span class="w"> </span>and<span class="w"> </span>modified<span class="w"> </span><span class="k">in</span><span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した</span>
 した.<span class="w"> </span>Version<span class="w"> </span>37bee65...<span class="w"> </span>update<span class="w"> </span><span class="c1">#0 README.mdに本レポジトリのタイトルと引用を記載した of README.md left in tree.</span>
@@ -36800,7 +36751,6 @@ $<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>
 <p>リモートブランチのタグを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--delete<span class="w"> </span>origin<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>push<span class="w"> </span>--delete<span class="w"> </span>origin<span class="w"> </span>v1.0.0
 </code></pre></div>
 <p>注意点として、ローカルマシンのタグは別に削除する必要がある。</p>
@@ -36858,7 +36808,6 @@ $<span class="w"> </span>git<span class="w"> </span>pull<span class="w"> </span>
 <p><br></p>
 <h3 id="-f-tree-filter">-f --tree-filter<a class="headerlink" href="#-f-tree-filter" title="Permanent link">&para;</a></h3>
 <p>すべてのコミットに対して、指定した処理を実行する。</p>
-<p><strong>＊例＊</strong></p>
 <p>すべてのコミットに対して、特定のファイルを削除する処理を実行する。</p>
 <p>加えて、ローカルリポジトリに対してガーベジコレクションを実行すると、ローカルリポジトリから完全に削除できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>git<span class="w"> </span>filter-branch<span class="w"> </span>-f<span class="w"> </span>--tree-filter<span class="w"> </span><span class="se">\</span>

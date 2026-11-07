@@ -34612,7 +34612,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35026,7 +35026,6 @@
 </code></pre></div>
 <h4 id="_18">▼ フラットなデータ構造にすること<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>JSON の場合、階層構造にすると、データサイズが増えてしまう。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Taro</span><span class="nv"> </span><span class="s">Yamada"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
@@ -35040,7 +35039,6 @@
 <li><a href="https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864">https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Taro</span><span class="nv"> </span><span class="s">Yamada"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
@@ -35051,11 +35049,9 @@
 <p>代わりに、<code>Content-Type</code> ヘッダーに『<code>application/hal+json</code>』『<code>application/vnd.api+json</code>』『<code>application/vnd.collection+json</code>』といったより JSON ベースの強い制約のフォーマットを利用してもよい。</p>
 <h4 id="_19">▼ 日付データの形式に気をつけること<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
 <p>RFC3339 (W3C-DTF) 形式でオブジェクトデータに含めて送受信すること。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>2020-07-07T12:00:00+09:00
 </code></pre></div>
 <p>ただし、日付をリクエストパラメーターで送受信するとき、RFC3339 (W3C-DTF) 形式を正規表現で設定する必要があるので注意。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/users/12345?date=2020-07-07T12:00:00%2B09:00</span>
 </code></pre></div>
 <h4 id="textcsv">▼ <code>text/csv</code> 形式<a class="headerlink" href="#textcsv" title="Permanent link">&para;</a></h4>

@@ -34666,7 +34666,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34844,53 +34844,38 @@
   </tbody>
 </table>
 
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>最初、クライアントは、認証後にリクエストを送信できる Web ページのリクエストをサーバーに送信する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">GET https://example.com/foo-form</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、これ拒否し、<code>401</code> ステータスで realm 名を設定し、レスポンスを返信する。</p>
 <p>これにより、realm名の値をユーザーに示して、ユーザー名とパスワードの入力を求められる。</p>
 <p>ユーザーに表示するためのrealm名には、任意の値を持たせられ、サイト名が設定されることが多い。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
 <span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm="&lt;realm名&gt;", charaset="UTF-8"</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>『<code>&lt;ユーザー名&gt;:&lt;パスワード&gt;</code>』を base64 方式でエンコードした値を <code>Authorization</code> ヘッダーに割り当て、リクエストを送信する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form</span>
 <span class="nn">---</span>
 <span class="nt">Authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic bG9naW46cGFzc3dvcmQ=</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、ユーザー名とパスワードを照合し、合致していれば、認証後の Web ページを返信する。</p>
 <p>また、認証アーティファクトをブラウザのWebストレージに保管する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm=""</span>
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>認証の解除時は、誤った認証アーティファクトをブラウザに意図的に送信させて認証を失敗する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">POST https://example.com/foo-form/logout</span>
 <span class="nn">---</span>
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic &lt;誤った認証アーティファクト&gt;</span>
@@ -34900,16 +34885,15 @@
 <li><a href="https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out">https://stackoverflow.com/questions/4163122/http-basic-authentication-log-out</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、<code>401</code> ステータスでレスポンスを返信し、認証が解除される。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">401 Unauthorized</span>
 <span class="nn">---</span>
 <span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Basic realm="&lt;realm名&gt;", charaset="UTF-8"</span>
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="_11">ダイジェスト認証<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ ダイジェスト認証とは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
@@ -35085,14 +35069,11 @@
 </blockquote>
 <p><br></p>
 <h3 id="bearer_3">Bearer 認証の仕組み<a class="headerlink" href="#bearer_3" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>指定されたエンドポイントに対して、<code>POST</code> リクエストを送信する。</p>
 <p>この時、<code>Content-Type</code>ヘッダーを<code>application/x-www-form-urlencoded</code>とする。</p>
 <p>必要なボディパラメーターはAPIの提供元によって異なる。クライアントID、付与タイプなどが必要なことが多い。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format">アクセストークンのリクエスト方法 | Amazon Device Messaging</a></li>
@@ -35106,13 +35087,10 @@
 <span class="c1"># ボディ</span>
 <span class="l l-Scalar l-Scalar-Plain">client_id=*****&amp;grant_type=client_credentials&amp;scope=messaging:push</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>レスポンスボディに Bearer トークンを含むレスポンスが返信される。</p>
 <p>他に、有効期限、権限のスコープ、指定できる認証スキーマなどが提供されることが多い。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://developer.amazon.com/ja/docs/adm/request-access-token.html#request-format">アクセストークンのリクエスト方法 | Amazon Device Messaging</a></li>
@@ -35131,13 +35109,10 @@
 <span class="w">  </span><span class="s">"token_type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Bearer"</span><span class="p p-Indicator">,</span>
 <span class="p p-Indicator">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>発行された Bearer トークンを指定された認証スキーマで <code>Authorization</code> ヘッダーに割り当て、リクエストを送信する。</p>
 <p>ここでは詳しく言及しないが、Bearerトークンをフォーム認証のように<code>Cookie</code>ヘッダーに割り当てることもある。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie">https://stackoverflow.com/questions/34817617/should-jwt-be-stored-in-localstorage-or-cookie</a></li>
@@ -35148,25 +35123,21 @@
 <span class="nn">---</span>
 <span class="nt">authorization</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer &lt;Bearerトークン&gt;</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、Bearer トークンを照合し、合致していれば、認証後の Web ページを返信する。</p>
 <p>無効なBearerトークンをブラックリストとしてRedis/DBで管理しておく。</p>
 <p>DBでブラックリストを管理すると、リクエストの度にDBアクセス処理が実行されることなってしまうため、Redisでこれを管理したほうが良い。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">200 OK</span>
 <span class="nn">---</span>
 <span class="nt">WWW-Authenticate</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer realm=""</span>
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>認証の解除時は、Redis/DB で Bearer トークンの状態を無効化する。</p>
 <p>またサーバーは、<code>401</code>ステータスでレスポンスを返信し、認証が解除される。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens">https://stackoverflow.com/questions/21978658/invalidating-json-web-tokens</a></li>

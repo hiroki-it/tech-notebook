@@ -34766,7 +34766,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34908,65 +34908,51 @@
 <li><a href="https://incident.io/alternatives/pagerduty">incident.io vs PagerDuty | incident.io</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>CloudWactch アラームから Slack のチャンネルに、アラートが通知される。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>責任者は、Slack に通知されたアラートを確認する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>アラート名 (例：prd-foo-ecs-container-laravel-log-alarm) から、Amazon CloudWatch アラームを探す。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>アラートがどのロググループに紐づいているかを探す。</p>
 <p>執筆時点 (2021/12/09) では、AWSの仕様ではこれがわかりにくくなっている。</p>
 <p>メトリクスフィルターが設定されているロググループは、アラームに紐づいている可能性があり、メトリクスフィルターで作成されているメトリクス名 (例：ErrorCount) がアラームに記載されたものであれば、紐づいているとわかる。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>Log Insights を使用して、ロググループの直近のエラーログを抽出する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1">-- 小文字と大文字を区別せずに、Errorを含むログを検索する。</span>
 <span class="n">fields</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="p">,</span><span class="w"> </span><span class="o">@</span><span class="n">logStream</span>
 <span class="o">|</span><span class="w"> </span><span class="n">filter</span><span class="w"> </span><span class="o">@</span><span class="n">message</span><span class="w"> </span><span class="k">like</span><span class="w"> </span><span class="o">/</span><span class="p">(</span><span class="o">?</span><span class="n">i</span><span class="p">)(</span><span class="n">Error</span><span class="p">)</span><span class="o">/</span>
 <span class="o">|</span><span class="w"> </span><span class="n">sort</span><span class="w"> </span><span class="o">@</span><span class="k">timestamp</span><span class="w"> </span><span class="k">desc</span>
 <span class="o">|</span><span class="w"> </span><span class="k">limit</span><span class="w"> </span><span class="mi">100</span>
 </code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>クエリの結果から、アラートの原因になっているエラーを見つける。</p>
 <p>Amazon CloudWatchのタイムスタンプとSlackのアラートの通知時刻には若干のタイムラグがある。</p>
-</dd>
-<dt><code>(7)</code></dt>
-<dd>
+</li>
+<li>
 <p>クエリの結果をコピーし、アラートの Thread に貼り付ける。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="o">[</span><span class="m">2021</span>-12-01<span class="w"> </span><span class="m">00</span>:00:00<span class="o">]</span><span class="w"> </span>request.ERROR:<span class="w"> </span>Uncaught<span class="w"> </span>PHP<span class="w"> </span>Exception<span class="w"> </span>*****
 </code></pre></div>
-<dl>
-<dt><code>(8)</code></dt>
-<dd>
+</li>
+<li>
 <p>ログイベントが許容できるものあれば、保留として、オンコールをエスカレーションする。</p>
-</dd>
-<dt><code>(9)</code></dt>
-<dd>
+</li>
+<li>
 <p>ログイベントがインシデントであれば、オンコールをエスカレーションする。</p>
 <p>また、タスク化し、迅速に対応する。</p>
-</dd>
-<dt><code>(10)</code></dt>
-<dd>
+</li>
+<li>
 <p>ログイベントがインシデントでないエラーイベントであれば、オンコールをエスカレーションする。</p>
 <p>タスク化し、時間のある時に対応する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h2 id="04">04. インシデント管理の組織化<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_8">インシデントコマンドシステムに基づく役割分離<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
@@ -35112,7 +35098,6 @@
 <li><a href="https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/">https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p>システムが冗長化されている例を示す。</p>
 <p>すでに稼働率は算出されているものとする。</p>
 <p>すべてのインスタンスの非稼働率をかけて、全体から引く。</p>

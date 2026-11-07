@@ -35052,7 +35052,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35670,7 +35670,6 @@
 <p><br></p>
 <h3 id="aws-waf_1">AWS WAF ルールによる防御<a class="headerlink" href="#aws-waf_1" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ ユーザーエージェント拒否<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>悪意のあるユーザーエージェントを拒否する。</p>
 <p>ルール：<code>block-user-agents</code></p>
 <table>
@@ -35714,7 +35713,6 @@
 </table>
 
 <h4 id="ci">▼ CI ツールのアクセスを許可<a class="headerlink" href="#ci" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>社内の送信元 IP アドレスのみ許可した状態で、CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tekton など) が社内サービスにリクエストを送信できるようにする。</p>
 <p>ルール：<code>allow-request-including-access-token</code></p>
 <table>
@@ -35760,7 +35758,6 @@
 </table>
 
 <h4 id="_13">▼ 特定のパスを社内アクセスに限定<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>アプリケーションでは、特定の URL パスにリクエストを送信できる送信元 IP アドレスを社内だけに制限する。</p>
 <p><code>2</code> 個のルールを作成する必要がある。</p>
 <p>ルール：<code>allow-access--to-url-path</code></p>
@@ -35843,7 +35840,6 @@
 </table>
 
 <h4 id="_14">▼ 社内アクセスに限定<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>アプリケーション全体にリクエストを送信できる送信元 IP アドレスを、特定の IP アドレスだけに制限する。</p>
 <p>ルール：<code>allow-global-ip-addresses</code></p>
 <table>
@@ -35896,7 +35892,6 @@
 </table>
 
 <h4 id="aws-alb_2">▼ AWS ALB を直接的に指定することを防ぐ<a class="headerlink" href="#aws-alb_2" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>Amazon Route 53 のドメイン経由ではなく、AWS ALB を直接指定してリクエストを送信することを防ぐ。</p>
 <p>AWS ALB の IP アドレスは定期的に変化するため、任意の IP アドレスを指定できる正規表現を定義する必要がある。</p>
 <div class="highlight"><pre><span></span><code>^((25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|1[0-9][0-9]|[1-9]?[0-9])$

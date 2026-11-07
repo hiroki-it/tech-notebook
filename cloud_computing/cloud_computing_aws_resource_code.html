@@ -34554,7 +34554,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34728,41 +34728,33 @@
 <h4 id="_11">▼ ブルー/グリーンデプロイメントの仕組み<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><img alt="blue-green-deployment" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blue-green-deployment.jpeg" /></p>
 <p>以下の手順でデプロイする。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Amazon ECR のコンテナイメージを更新</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Amazon ECS タスク定義の新しいリビジョンを作成。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>サービスを更新。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>AWS CodeDeploy によって、Amazon ECS タスク定義を基に、現環境 (Prod ブルー) の Amazon ECS タスクとは別に、新環境 (Test グリーン) が作成される。</p>
 <p>ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>社内から新環境 (Test グリーン) の ALB に、特定のポート番号でアクセスし、動作を確認する。</p>
-</dd>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>動作確認で問題なければ、Console 画面からの入力で、ロードバランサーの接続先を新環境 (Test グリーン) のみに設定する。</p>
-</dd>
-<dt><code>(7)</code></dt>
-<dd>
+</li>
+<li>
 <p>新環境 (Test グリーン) が新しい現環境としてユーザーに公開される。</p>
-</dd>
-<dt><code>(8)</code></dt>
-<dd>
+</li>
+<li>
 <p>元の現環境 (Prod ブルー) は削除される。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://tech.isid.co.jp/entry/2022/01/11/CodeDeploy_%E3%81%AB%E3%82%88%E3%82%8BECS_%E3%81%A7%E3%81%AEBlue/Green%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%AE%E8%A9%B1">CodeDeploy によるECS でのBlue/Greenデプロイの話 - 電通総研 テックブログ</a></li>

@@ -34398,7 +34398,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34574,32 +34574,23 @@
 </ul>
 </blockquote>
 <h4 id="_9">▼ 仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>初めて実行された SQL の場合、Redis は SQL をキーとして保管し、キャッシュがないことをアプリケーションへ返却する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>アプリケーションは Amazon RDS に対して Read 処理を実行する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>データが読み出される。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>アプリケーションは Redis にデータを登録する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon ElastiCacheには、SQLの実行結果がまだ保管されていない</span>
 
 ***<span class="w"> </span>no<span class="w"> </span>cache<span class="w"> </span>***
@@ -34615,20 +34606,14 @@
 <span class="o">{</span><span class="s2">"id"</span><span class="o">=</span>&gt;<span class="s2">"10"</span>,<span class="w"> </span><span class="s2">"name"</span><span class="o">=</span>&gt;<span class="s2">"jonny"</span><span class="o">}</span>
 </code></pre></div>
 <p><img alt="クエリCache管理機能_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クエリCache管理機能_2.png" /></p>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>次回、アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">users</span><span class="p">;</span>
 </code></pre></div>
-<dl>
-<dt><code>(7)</code></dt>
-<dd>
+</li>
+<li>
 <p>Redis は、SQL をキーにしてデータを特定し、アプリケーションに返却する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Amazon ElastiCacheには、SQLの実行結果が既に保管されている</span>
 
 ***<span class="w"> </span>cache<span class="w"> </span>hit<span class="w"> </span>***
@@ -34643,6 +34628,8 @@
 <span class="o">{</span><span class="s2">"id"</span><span class="o">=</span>&gt;<span class="s2">"9"</span>,<span class="w"> </span><span class="s2">"name"</span><span class="o">=</span>&gt;<span class="s2">"Ignatius"</span><span class="o">}</span>
 <span class="o">{</span><span class="s2">"id"</span><span class="o">=</span>&gt;<span class="s2">"10"</span>,<span class="w"> </span><span class="s2">"name"</span><span class="o">=</span>&gt;<span class="s2">"jonny"</span><span class="o">}</span>
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="_10">障害対策<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="redis_6">▼ Redis のフェイルオーバー<a class="headerlink" href="#redis_6" title="Permanent link">&para;</a></h4>
@@ -34693,28 +34680,23 @@
 <p>サイトの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。</p>
 <h4 id="_14">▼ バックアップとインポートによるダウンタイムの最小化<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>以下の手順で、ダウンタイムを最小限にしてアップグレードできる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>Redis のセッションやクエリキャッシュを S3 にエクスポートする。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>新しい Redis を作成する。このとき、インポートを使用して、セッションやクエリキャッシュを引き継いだ Redis クラスターを別途作成する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>新しく作成した Redis クラスターをアップグレードする。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>アプリケーションの接続先を古い Redis クラスターから新しいものに変更する。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>古い Redis クラスターを削除する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 
   

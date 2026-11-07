@@ -39174,7 +39174,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -39409,10 +39409,8 @@ $<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span>
 <li><a href="https://kazmax.zpp.jp/linux_beginner/chmod.html">アクセス権（パーミッション）の変更 - chmod</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>foo
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code><span class="c1"># あらかじめ、fooディレクトリの所有者 (ここでは、UUIDが999のユーザー) を設定しておく</span>
 $<span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span><span class="m">999</span>:999<span class="w"> </span>foo
 
@@ -39440,11 +39438,9 @@ $<span class="w"> </span>chmod<span class="w"> </span>-R<span class="w"> </span>
 </blockquote>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chown<span class="w"> </span>&lt;ユーザー所有権&gt;:&lt;グループ所有権&gt;<span class="w"> </span>&lt;ファイル名&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>ユーザー所有権を <code>foo</code> に、グループ所有権は変更しない</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chown<span class="w"> </span>foo<span class="w"> </span>bar.txt
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>ユーザー所有権を <code>foo</code> に、グループ所有権を <code>bar</code> に変更する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>chown<span class="w"> </span>foo:foo<span class="w"> </span>bar.txt
 </code></pre></div>
@@ -39516,16 +39512,12 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
   </tbody>
 </table>
 
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>あらかじめ、各ディレクトリに cron ファイルを配置しておく。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>ジョブを登録するファイルを作成する。<code>run-parts</code> コマンドで、指定した時間に、各 cron ディレクトリ内の <code>cron</code> ファイルを一括で実行するように記述しておく。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 設定</span>
 <span class="nv">SHELL</span><span class="o">=</span>/bin/bash
 <span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
@@ -39552,6 +39544,8 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 <span class="m">40</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>root<span class="w"> </span>run-parts<span class="w"> </span>/etc/cron.monthly<span class="w"> </span><span class="c1"># 毎月一日・2時40分</span>
 @reboot<span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span>html<span class="w"> </span><span class="c1"># cron起動時に一度だけ</span>
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="crond"><code>cron.d</code> ファイル<a class="headerlink" href="#crond" title="Permanent link">&para;</a></h3>
 <p>複数の <code>cron</code> ファイルですべての 1 つのディレクトリで管理する場合に使用する。</p>
@@ -39590,12 +39584,9 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 <p><code>cron.d</code> ファイルは操作できない。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>crontab<span class="w"> </span>&lt;ファイルへのパス&gt;
 </code></pre></div>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>拡張子は自由で、時刻とコマンドが実装されたファイルを用意する。このとき、最後に改行がないとエラー (<code>premature EOF</code>) になるため、改行を追加する。</p>
-</dd>
-</dl>
 <div class="highlight"><span class="filename">.txt</span><pre><span></span><code><span class="c1"># 毎時・1分</span>
 <span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>root<span class="w"> </span>run-parts<span class="w"> </span>/etc/cron.hourly
 <span class="c1"># &lt;- 最後は改行する。</span>
@@ -39616,44 +39607,34 @@ $<span class="w"> </span>cp<span class="w"> </span>-Rp<span class="w"> </span>/&
 @reboot<span class="w"> </span>make<span class="w"> </span>clean<span class="w"> </span>html
 <span class="c1"># &lt;- 最後は改行する。</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>このファイルを <code>crontab</code> コマンドで登録する。cron ファイルの実体はないことと、ファイルの内容を変更した場合は登録し直さなければいけないことに注意する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>crontab<span class="w"> </span>/etc/cron.hourly/cron-hourly.txt
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>登録されている処理を取得する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>crontab<span class="w"> </span>-l
 
 <span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>root<span class="w"> </span>run-parts<span class="w"> </span>/etc/cron.hourly/cron.hourly
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>ログに表示されているか否かを確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/var/log
 
 $<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>cron
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>改行コードを確認。改行コードが表示されない場合は LF であり、問題ない。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>file<span class="w"> </span>/etc/cron.hourly/cron-hourly.txt
 
 foo.txt:<span class="w"> </span>ASCII<span class="w"> </span>text
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="-e">-e<a class="headerlink" href="#-e" title="Permanent link">&para;</a></h3>
 <p>エディタを開き、登録済みの cron ファイルを変更/削除する。</p>
@@ -39692,7 +39673,6 @@ foo.txt:<span class="w"> </span>ASCII<span class="w"> </span>text
 <p><br></p>
 <h3 id="-d">-d<a class="headerlink" href="#-d" title="Permanent link">&para;</a></h3>
 <p>メッセージボディを設定する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type:application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{}'</span><span class="w"> </span>https://example.com/foo
 </code></pre></div>
 <p><br></p>
@@ -39734,7 +39714,6 @@ $<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class=
 <h3 id="-l_1">-L<a class="headerlink" href="#-l_1" title="Permanent link">&para;</a></h3>
 <p>指定した URL でリダイレクトが行われても、リダイレクト後の URL からファイルをインストールする。</p>
 <p>リダイレクトを含む場合、ダウンロードしたディレクトリが空になってしまうため、必ずつけておく。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://example.com/foo
 </code></pre></div>
 <p><br></p>
@@ -39742,7 +39721,6 @@ $<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class=
 <p>インストール後のファイル名を定義する。これを指定しない場合、<code>-O</code> オプションを有効化する必要がある。</p>
 <p>インストール対象が圧縮ファイルの場合、圧縮ファイルの解凍後ファイルは圧縮ファイルの元々の名前になるため、<code>-o</code> オプションは意味がない。</p>
 <p>一方で、ディレクトリを指定してダウンロードする方法はなく、<code>-O</code> オプションをしてしなければならない。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>-o<span class="w"> </span>&lt;ファイルへのパス&gt;<span class="w"> </span>https://example.com
 </code></pre></div>
 <p><br></p>
@@ -39755,7 +39733,6 @@ $<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class=
 <p>ドメインと IP アドレスを紐付け、指定した名前解決をしつつ、<code>curl</code> コマンドを実行する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>--resolve<span class="w"> </span>&lt;ドメイン名&gt;:&lt;ポート番号&gt;:&lt;IPアドレス&gt;<span class="w"> </span>https://example.com
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>リクエストの名前解決時、<code>example.com</code> を正引きすると <code>127.0.0.1</code> が返却されるようにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>--resolve<span class="w"> </span>example.com:80:127.0.0.1<span class="w"> </span>https://example.com
 </code></pre></div>
@@ -39767,7 +39744,6 @@ $<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class=
 <p><br></p>
 <h3 id="-x">-X<a class="headerlink" href="#-x" title="Permanent link">&para;</a></h3>
 <p>HTTP メソッドを設定する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://example.com
 </code></pre></div>
 <p><br></p>
@@ -39775,7 +39751,6 @@ $<span class="w"> </span>curl<span class="w"> </span>https://*.*.*.*<span class=
 <h3 id="df_1">df とは<a class="headerlink" href="#df_1" title="Permanent link">&para;</a></h3>
 <p>パーティションの状態をデバイスファイル名で取得する。</p>
 <p>パーティションで区切られたストレージのうち、マウントされているもののみを取得する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df
 
 Filesystem<span class="w">      </span><span class="m">512</span>-blocks<span class="w">      </span>Used<span class="w"> </span>Available<span class="w"> </span>Capacity<span class="w"> </span>iused<span class="w">      </span>ifree<span class="w"> </span>%iused<span class="w">  </span>Mounted<span class="w"> </span>on
@@ -39793,7 +39768,6 @@ map<span class="w"> </span>auto_home<span class="w">            </span><span cla
 <p><br></p>
 <h3 id="-h-m-t">-h、-m、-t<a class="headerlink" href="#-h-m-t" title="Permanent link">&para;</a></h3>
 <p>ストレージの使用状況をメガバイトで取得する。</p>
-<p><strong>＊例＊</strong></p>
 <p>デバイスファイルと、これがマウントされたディレクトリの使用率を確認できる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># -h：--human-readable</span>
 $<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>-m<span class="w"> </span>--total
@@ -40549,14 +40523,12 @@ com.docke<span class="w"> </span><span class="m">46089</span><span class="w"> </
 <li><a href="https://takuya-1st.hatenablog.jp/entry/2017/01/16/182756">LVMの lvextend でLVを拡張する - それマグで！</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p>パーティションの空きサイズの 100%を使用して拡張する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvextend<span class="w"> </span>-l<span class="w"> </span>+100%FREE<span class="w"> </span>&lt;デバイスファイル名&gt;
 </code></pre></div>
 <p>50G 分の領域を拡張する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvextend<span class="w"> </span>-l<span class="w"> </span>+50G<span class="w"> </span>&lt;デバイスファイル名&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>あらかじめ、論理ボリュームに紐づくデバイスファイル名を確認する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvdisplay
 
@@ -40942,7 +40914,6 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <p>事前に、秘密鍵の権限は『<code>600</code>』にしておく。tty (擬似ターミナル) を使用する場合は、<code>-T</code> オプションをつける。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-l<span class="w"> </span>&lt;リモートサーバーのユーザー名&gt;@&lt;リモートサーバーのIPアドレス&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span><span class="w"> </span>-i<span class="w"> </span>&lt;秘密鍵へのパス&gt;<span class="w"> </span>-T
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-l<span class="w"> </span>foo_user@10.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span><span class="w"> </span>-i<span class="w"> </span>./etc/foo.key<span class="w"> </span>-T
 </code></pre></div>
 <p><br></p>
@@ -40951,14 +40922,12 @@ $<span class="w"> </span>find<span class="w"> </span>./*<span class="w"> </span>
 <div class="highlight"><pre><span></span><code><span class="c1"># -vvv：ログを出力する</span>
 $<span class="w"> </span>ssh<span class="w"> </span>-l<span class="w"> </span>&lt;リモートサーバーのユーザー名&gt;@&lt;リモートサーバーのIPアドレス&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span><span class="w"> </span>-i<span class="w"> </span>&lt;秘密鍵へのパス&gt;<span class="w"> </span>-T<span class="w"> </span>-vvv
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-l<span class="w"> </span>foo_user@10.0.0.1<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span><span class="w"> </span>-i<span class="w"> </span>./etc/foo.key<span class="w"> </span>-T<span class="w"> </span>-vvv
 </code></pre></div>
 <h3 id="-l_4">-L<a class="headerlink" href="#-l_4" title="Permanent link">&para;</a></h3>
 <p><code>ssh</code> コマンドで踏み台サーバーに接続しつつ、リモートサーバーにポートフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-L20000:&lt;リモートサーバー&gt;:&lt;ポート番号&gt;<span class="w"> </span>&lt;踏み台サーバーのユーザー名&gt;@&lt;踏み台サーバーのIPアドレス&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>ローカルマシンの <code>20000</code> 番ポートに対する通信を、踏み台サーバーを介して、リモートサーバーの <code>3306</code> 番ポートにポートフォワーディングする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-L20000:10.0.0.1:3306<span class="w"> </span>foo_user@192.168.0.1
 </code></pre></div>

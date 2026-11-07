@@ -34940,7 +34940,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -35010,33 +35010,27 @@
 <h3 id="_6">キャッシュメモリの仕組み<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 一度目<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>ユーザー ➔ メインメモリ ➔ 二次キャッシュメモリ ➔ 一次キャッシュメモリの順で、データがやり取りされる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ユーザーが、パソコンに対して命令を与える。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>CPU は、命令をメインメモリに書き込む。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>CPU は、メインメモリから命令を読み出す。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>CPU は、二次キャッシュメモリに書き込む。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>CPU は、一次キャッシュメモリに書き込む。</p>
-</dd>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>CPU は、命令する。</p>
-</dd>
-</dl>
 <p><img alt="メモリとキャッシュメモリ_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_1.jpg" /></p>
+</li>
+</ol>
 <h4 id="_8">▼ 二度目<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>一次キャッシュメモリ ➔ 二次キャッシュメモリ ➔ メインメモリの順で命令を探すため、一度目よりも速く命令を実行できる。</p>
 <p><img alt="メモリとキャッシュメモリ_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_2.jpg" /></p>
@@ -35137,78 +35131,63 @@
 <p>ブラウザは、Etag 値を使用してキャッシュを実現する。</p>
 <p><img alt="EtagとIf-NoneMach" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ETagとIf-None-Match.png" /></p>
 <h4 id="1"><code>(1)</code> キャッシュの有効時間が切れるまで<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>クライアントのブラウザは、リクエストをサーバーに送信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、特定のアルゴリズムを使用してハッシュ値を作成し、これをコンテンツの ETag 値とする。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、<code>ETag</code> ヘッダーに ETag 値を設定し、コンテンツとともにレスポンスをクライアントに送信する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>クライアントのブラウザは、コンテンツと ETag 値をキャッシュする。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>キャッシュの有効時間が切れるまで、クライアントサイドキャッシュを使用し続ける。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <h4 id="2"><code>(2)</code> キャッシュの有効時間が切れた後<a class="headerlink" href="#2" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>キャッシュの有効時間が切れる。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>クライアントのブラウザは、リクエストをサーバーに送信する。</p>
 <p>この時、If-None-MatchヘッダーにキャッシュしておいたETag値を設定する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、送信された ETag 値とコンテンツの ETag 値を比較検証する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <h4 id="3"><code>(3)</code> 検証により、クライアントサイドキャッシュを使用<a class="headerlink" href="#3" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ETag 値の比較検証の結果、一致する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、両方の値が一致する場合、<code>304</code> ステータスでレスポンスをクライアントに送信する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>クライアントのブラウザは、キャッシュを使用する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <h4 id="4"><code>(4)</code> 検証により、クライアントサイドキャッシュを使用せず<a class="headerlink" href="#4" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ETag 値の比較検証の結果、一致しない。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、両方の値が一致しない場合、ETag 値を作成し、これをコンテンツの新しい ETag 値とする。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、<code>ETag</code> ヘッダーに ETag 値を設定し、コンテンツとともにレスポンスをクライアントに送信する。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>クライアントのブラウザは、コンテンツと ETag 値をキャッシュする。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <p><br></p>
 <h3 id="_19">クライアントサイドキャッシュ時間の定義<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ クライアントサイドキャッシュなし<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>

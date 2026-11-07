@@ -36054,7 +36054,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -36086,20 +36086,17 @@
 <h2 id="01">01. 仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_2">バックエンド<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p><img alt="datadog_log-collection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-collection.png" /></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>サーバーの場合、稼働する datadog エージェントが、datadog-API にアプリケーションログを送信する。コンテナの場合、FluentBit が代わりにアプリケーションログを送信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Datadog にて、ログはパイプラインで処理され、構造化ログになる。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>ユーザーは、ログの属性値を基に、ログを検索できるようになる。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://developers.cyberagent.co.jp/blog/archives/12565/">Datadog Logsでアプリケーションログを管理する | CyberAgent Developers Blog</a></li>
@@ -36107,20 +36104,17 @@
 </blockquote>
 <p><br></p>
 <h3 id="_3">フロントエンド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ブラウザのコンソールに出力されるログを収集する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Datadog にて、ログはパイプラインで処理され、構造化ログになる。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>ユーザーは、ログの属性値を基に、ログを検索できるようになる。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/komtaki/items/a2d3f06e2265e55b0c08#2-js%E3%83%AD%E3%82%AC%E3%83%BC%E3%81%AE%E6%A7%8B%E7%AF%89">DatadogでフロントエンドのJSエラーを収集してサービス改善 #JavaScript - Qiita</a></li>
@@ -36457,7 +36451,6 @@
 <h4 id="_17">▼ リマッパー<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>指定した属性/タグに割り当てられた値を、別の属性に割り当て直す。</p>
 <p>再割り当て時に、元のデータ型を変更できる。</p>
-<p><strong>＊例＊</strong></p>
 <p>Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセスログの構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"content"</span><span class="p p-Indicator">:</span>
@@ -36579,7 +36572,6 @@
 <h3 id="_20">プロセッサー系<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ カテゴリプロセッサー<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>検索条件に一致する属性を持つ構造化ログに対して、属性を新しく付与する。</p>
-<p><strong>＊例＊</strong></p>
 <p>Nginx から、以下のような非構造化ログを受信する例を考える。</p>
 <div class="highlight"><pre><span></span><code>*.*.*.*<span class="w"> </span>-<span class="w"> </span>-<span class="w"> </span><span class="o">[</span><span class="m">01</span>/Sep/2021:00:00:00<span class="w"> </span>+0000<span class="o">]</span><span class="w"> </span><span class="s2">"GET /healthcheck HTTP/1.1"</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="s2">"-"</span><span class="w"> </span><span class="s2">"ELB-HealthChecker/2.0"</span>
 </code></pre></div>
@@ -37158,13 +37150,11 @@ autoFilledRule3<span class="w"> </span>...
 <p>入力欄右のアイコンで切り替える。</p>
 <p>検索条件として属性名と値を補完入力できる。</p>
 <p>オートコンプリートの使用時は、小文字で入力した属性名の頭文字が画面上で大文字に変換される。</p>
-<p><strong>＊例＊</strong></p>
 <p>『<code>service:foo</code>』をオートコンプリートで入力する。</p>
 <p><img alt="log-query_auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_auto-complete.png" /></p>
 <h4 id="_48">▼ 非オートコンプリート<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
 <p>入力欄右のアイコンで切り替える。</p>
 <p>検索条件として属性名と値をそのまま入力する。</p>
-<p><strong>＊例＊</strong></p>
 <p>『<code>service:foo</code>』を非オートコンプリートで入力する。</p>
 <p><img alt="log-query_non-auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_non-auto-complete.png" /></p>
 <h4 id="_49">▼ 文法<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>

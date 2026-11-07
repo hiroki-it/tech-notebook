@@ -35602,7 +35602,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35637,31 +35637,24 @@
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>istioctl
 </code></pre></div>
 <h4 id="_5">▼ チャートとして<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>インストール先のディレクトリに移動する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/Users/hiroki.hasegawa/projects
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>istioctl</code> コマンドをインストールする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>-L<span class="w"> </span>https://istio.io/downloadIstio<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="nv">ISTIO_VERSION</span><span class="o">=</span><span class="m">1</span>.12.1<span class="w"> </span>-<span class="w"> </span>sh
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>istioctl</code> コマンドへのパスを環境変数に登録する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>istio-1.12.1
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PWD</span>/bin:<span class="nv">$PATH</span>
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/setup/getting-started/#download">Istio / Getting Started</a></li>
@@ -36404,7 +36397,6 @@ NAME<span class="w">     </span>DOMAINS<span class="w">                         
 <p>MutatingWebhookConfiguration の <code>.metadata.labels</code> キーに、エイリアス (<code>istio.io/tag</code> キーの値) と、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) を作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span>generate<span class="w"> </span>&lt;エイリアス&gt;<span class="w"> </span>--revision<span class="w"> </span>&lt;エイリアスの実体&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p><code>default</code> というエイリアス (<code>istio.io/tag</code> キーの値) を作成し、エイリアスの実体 (<code>.metadata.labels.istio.io/rev</code> キーの値) として <code>1-10-0</code> を設定する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span>generate<span class="w"> </span>default<span class="w"> </span>--revision<span class="w"> </span><span class="m">1</span>-10-0
 </code></pre></div>
@@ -36448,24 +36440,17 @@ istio.io/tag:<span class="w"> </span>default
 <span class="c1"># もしあれば、MutatingWebhookConfigurationのエイリアスの実体を変更する。</span>
 $<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span><span class="nb">set</span><span class="w"> </span>&lt;エイリアス&gt;<span class="w"> </span>--revision<span class="w"> </span>&lt;エイリアスの実体&gt;<span class="w"> </span>--overwrite
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>現在のバージョンのエイリアス (<code>istio.io/tag</code> キーの値) が <code>default</code>、またバージョン (<code>.metadata.labels.istio.io/rev</code> キーの値) が <code>v1.10.0</code> とする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>tag<span class="w"> </span>list
 
 TAG<span class="w">      </span>REVISION<span class="w">   </span>NAMESPACES
 default<span class="w">   </span><span class="m">1</span>-10-0<span class="w">      </span>app
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>default</code> タグを持つ MutatingWebhookConfiguration を確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># MutatingWebhookConfiguration</span>
 $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfigurations
 
@@ -36473,21 +36458,15 @@ NAME<span class="w">                               </span>WEBHOOKS<span class="w
 istio-sidecar-injector-1-10-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.10.0</span>
 istio-revision-tag-default<span class="w">          </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>もし、ここで Istio をアップグレードしたとする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>istioctl<span class="w"> </span>install<span class="w"> </span>--set<span class="w"> </span><span class="nv">revision</span><span class="o">=</span><span class="m">1</span>-11-0
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>すると、既存の MutatingWebhookConfiguration を残して、新しい MutatingWebhookConfiguration を作成する。</p>
 <p>その他、新しいIstiodコントロールプレーンも作成される。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># Deployment</span>
 NAME<span class="w">                 </span>READY<span class="w">   </span>STATUS<span class="w">    </span>RESTARTS<span class="w">   </span>AGE
 istiod-1-10-0<span class="w">        </span><span class="m">1</span>/1<span class="w">     </span>Running<span class="w">   </span><span class="m">0</span><span class="w">          </span>1m<span class="w">  </span><span class="c1"># 1-10-0</span>
@@ -36506,6 +36485,8 @@ istio-sidecar-injector-1-10-0<span class="w">       </span><span class="m">1</sp
 istio-sidecar-injector-1-11-0<span class="w">       </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 1.11.0 (今回のアップグレード先)</span>
 istio-revision-tag-default<span class="w">          </span><span class="m">1</span><span class="w">          </span>7m56s<span class="w"> </span><span class="c1"># 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ</span>
 </code></pre></div>
+</li>
+</ol>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>

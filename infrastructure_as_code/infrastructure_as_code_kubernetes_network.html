@@ -34546,7 +34546,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34706,7 +34706,6 @@ $<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</s
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>Pod 内のコンテナで、宛先の Pod の IP アドレスやポート番号を直接的に指定する。</p>
 <p>ただし、Pod の IP アドレスは動的に変化するため、現実的な方法ではない。</p>
-<p><strong>＊例＊</strong></p>
 <p>foo-pod から、IP アドレス (<code>11.0.0.1</code>) とポート番号 (<code>80</code>) を指定して、bar-pod にパケットを送信してみる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>-it<span class="w"> </span>foo-pod<span class="w"> </span><span class="se">\</span>
@@ -34782,28 +34781,23 @@ options<span class="w"> </span>ndots:5
 <p>ドット数が多ければ多いほど、ローカルドメインから網羅的に名前解決を実施するため、ハードウェアリソースの消費が高くなる。</p>
 <p>例えば、<code>ndots:5</code> とした Pod が <code>example.com</code> を名前解決する場合、ドット数は <code>5</code> になる。</p>
 <p>そのため、最初は <code>example.com.default.svc.cluster.local.</code> から名前解決を始め、<code>example.com.</code> で終わる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>example.com.default.svc.cluster.local.</code></p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>example.com.svc.cluster.local.</code></p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>example.com.cluster.local.</code></p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>example.com.ec2.internal.</code></p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>example.com.</code></p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://techblog.stanby.co.jp/entry/EKS_Coredns">EKSのCoreDNSを安定させるための取り組み - Stanby Tech Blog</a></li>

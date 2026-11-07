@@ -34346,7 +34346,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34470,12 +34470,9 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 <h4 id="openapi-generator_1">▼ OpenAPI Generator の場合<a class="headerlink" href="#openapi-generator_1" title="Permanent link">&para;</a></h4>
 <p>以下の流れに基づいて、API を実装していく。</p>
 <p>ここでは、コードの自動作成に OpenAPI Generator を使用するものとする。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>OpenAPI に基づいて API 仕様を定義する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.3</span>
 <span class="nt">info</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC API</span>
@@ -34504,20 +34501,14 @@ $<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w">
 
 <span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>OpenAPI Generator を使用して、API 仕様から静的ファイルを自動的に作成する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-o<span class="w"> </span>docs/html<span class="w"> </span>-g<span class="w"> </span>html
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>OpenAPI Generator を使って、API 仕様からコードを自動的に作成する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># brew、npmなどでインストールする</span>
 $<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>openapi-generator
 
@@ -34552,6 +34543,8 @@ func main() {
     log.Fatal(router.Run(":{{serverPort}}"))
 }
 </code></pre></div>
+</li>
+</ol>
 <dl>
 <dt><code>(3)</code></dt>
 <dd>

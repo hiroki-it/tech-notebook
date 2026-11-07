@@ -35622,7 +35622,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -35881,7 +35881,6 @@ $<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </s
 <p>作成した Pod が Ready 状態になるまで、<code>helm install</code> コマンドの完了を待機する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>foo-release<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <blockquote>
@@ -36078,7 +36077,6 @@ Error:<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> <
 <p>チャートリポジトリのメタデータが設定された <code>index.yaml</code> ファイルを作成する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>index<span class="w"> </span>&lt;チャートへのパス&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>index<span class="w"> </span>.
 </code></pre></div>
 <h4 id="list_3">▼ list<a class="headerlink" href="#list_3" title="Permanent link">&para;</a></h4>
@@ -36094,7 +36092,6 @@ NAME<span class="w">                 </span>URL
 
 <span class="s2">"&lt;チャートリポジトリ名&gt;"</span><span class="w"> </span>has<span class="w"> </span>been<span class="w"> </span>removed<span class="w"> </span>from<span class="w"> </span>your<span class="w"> </span>repositories
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>repo<span class="w"> </span>remove<span class="w"> </span>foo-chart
 </code></pre></div>
 <h4 id="update">▼ update<a class="headerlink" href="#update" title="Permanent link">&para;</a></h4>
@@ -36135,7 +36132,6 @@ URL<span class="w">               </span>CHART<span class="w"> </span>VERSION<sp
 <p>チャート内のすべてのマニフェストを取得する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>show<span class="w"> </span>all<span class="w"> </span>&lt;チャート名&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>show<span class="w"> </span>all<span class="w"> </span>foo-chart
 </code></pre></div>
 <h4 id="chart">▼ chart<a class="headerlink" href="#chart" title="Permanent link">&para;</a></h4>
@@ -36179,10 +36175,8 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <div class="highlight"><pre><span></span><code><span class="c1"># デフォルト値として、チャートのルートディレクトリのvaluesファイルも暗黙的に読み込まれている</span>
 $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>&lt;出力先ファイル&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>CI 上でマニフェストの静的解析をしたい場合、CI の実行環境へ暗号化キーの使用許可を付与する必要はない。</p>
 <p><code>helm template</code> コマンドに暗号化された YAML ファイルをそのまま渡すと、暗号化ツール (例：SOPS) を介さない。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># 暗号化ツールを使用せずにSecretを作成する</span>
@@ -36224,7 +36218,6 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <p>Helm リリースを指定し、その Helm リリースでインストールされた Kubernetes リソースを削除する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>uninstall<span class="w"> </span>&lt;Helmリリース名&gt;
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>uninstall<span class="w"> </span>foo-release
 </code></pre></div>
 <blockquote>
@@ -36247,7 +36240,6 @@ $<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </
 <p><code>helm upgrade</code> コマンドが正常に完了しなかった場合に、自動的にロールバックする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--atomic<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>template<span class="w"> </span>--atomic<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
 <h4 id="-install">▼ --install<a class="headerlink" href="#-install" title="Permanent link">&para;</a></h4>
@@ -36273,7 +36265,6 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
 <p>なお、CRD のアップグレードは Helm の仕様上必ずスキップする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--skip-crds<span class="w"> </span>--install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p><code>helm upgrade</code> コマンド時に、CRD の作成をスキップし、非 CRD のみをインストールする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>--skip-crds<span class="w"> </span>--install<span class="w"> </span>foo-release<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>&gt;<span class="p">|</span><span class="w"> </span>release.yaml
 </code></pre></div>
@@ -36286,7 +36277,6 @@ TEST<span class="w"> </span>SUITE:<span class="w"> </span>None
 <p>作成した Pod が Ready 状態になるまで、<code>helm upgrade</code> コマンドの完了を待機する。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>foo-release<span class="w"> </span>.<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--wait
 </code></pre></div>
 <blockquote>

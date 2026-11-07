@@ -34480,7 +34480,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34513,7 +34513,6 @@
 <h3 id="-downsamplingperiod">-downsampling.period<a class="headerlink" href="#-downsamplingperiod" title="Permanent link">&para;</a></h3>
 <p>特定の日数以前のデータポイントをダウンサンプリング (数学的に集約) し、単一の値に変換する。</p>
 <p>データポイント数が少なくなるため、ストレージ容量を節約できる。</p>
-<p><strong>＊例＊</strong></p>
 <p><code>30</code> 日以前のデータを <code>5</code> 分ごとダウンサンプリングにする。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-downsampling.period<span class="o">=</span>30d:5m
 </code></pre></div>
@@ -34530,7 +34529,6 @@
 <p>重複排除のタイミングは、収集ツールの収集間隔と同じ値にするとよい。</p>
 <p>冗長化されたデータポイント収集ツールのインスタンスが単一の VictoriaMetrics へメトリクスを送信する場合、特定の期間には冗長化されたインスタンスによる同じデータポイント送信が発生する。</p>
 <p>この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-dedup.minScrapeInterval<span class="o">=</span>60s
 </code></pre></div>
 <blockquote>
@@ -34542,7 +34540,6 @@
 <p><br></p>
 <h3 id="-httplistenaddr">-httpListenAddr<a class="headerlink" href="#-httplistenaddr" title="Permanent link">&para;</a></h3>
 <p>インバウンド通信を待ち受ける IP アドレスとポート番号を設定する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-httpListenAddr<span class="o">=</span><span class="m">0</span>.0.0.0:8248
 </code></pre></div>
 <p><br></p>
@@ -34553,7 +34550,6 @@
 <p><br></p>
 <h3 id="-insertmaxqueueduration">-insert.maxQueueDuration<a class="headerlink" href="#-insertmaxqueueduration" title="Permanent link">&para;</a></h3>
 <p>DB への書き込みの同時実行時に、キューで待機する最大時間を設定する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-insert.maxQueueDuration<span class="o">=</span><span class="m">32</span>
 </code></pre></div>
 <blockquote>
@@ -34567,7 +34563,6 @@
 <p>各 CPU で 1 つずつ実行するため、 設定値はホストマシン (仮想サーバー、コンテナなど) の CPU のコア数に応じて自動的に設定される。</p>
 <p>最大同時実行数を制限することで、CPU やメモリのスパイクと、それに伴うクラッシュを防げる。</p>
 <p><img alt="victoria-metrics_ingestion-spike" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_ingestion-spike.png" /></p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-maxConcurrentInserts<span class="o">=</span>&lt;ホストマシンのCPUのコア数に応じて自動的に設定される&gt;
 </code></pre></div>
 <blockquote>
@@ -34582,7 +34577,6 @@
 <h3 id="-maxlabelspertimeseries">-maxLabelsPerTimeseries<a class="headerlink" href="#-maxlabelspertimeseries" title="Permanent link">&para;</a></h3>
 <p>メトリクスに付与できるラベルの上限数を設定する。</p>
 <p>VictoriaMetrics では、デフォルトで <code>30</code> 個しかラベルをつけられず、それ以上のラベルは切り捨てる。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-maxLabelsPerTimeseries<span class="o">=</span><span class="m">30</span>
 </code></pre></div>
 <blockquote>
@@ -34593,7 +34587,6 @@
 <p><br></p>
 <h3 id="-memoryallowedbytes">-memory.allowedBytes<a class="headerlink" href="#-memoryallowedbytes" title="Permanent link">&para;</a></h3>
 <p>VictoriaMetrics が使用できるメモリサイズを設定する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-memory.allowedBytes<span class="o">=</span><span class="m">100000</span>
 </code></pre></div>
 <blockquote>
@@ -34605,7 +34598,6 @@
 <h3 id="-memoryallowedpercent">-memory.allowedPercent<a class="headerlink" href="#-memoryallowedpercent" title="Permanent link">&para;</a></h3>
 <p>VictoriaMetrics が使用できるメモリサイズのうちで、許容するメモリ使用率を設定する。</p>
 <p>これが小さいと、VictoriaMetrics が OOM キラーで停止してしまう。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-memory.allowedPercent<span class="o">=</span><span class="m">80</span>
 </code></pre></div>
 <blockquote>
@@ -34617,7 +34609,6 @@
 <h3 id="-retentionperiod">-retentionPeriod<a class="headerlink" href="#-retentionperiod" title="Permanent link">&para;</a></h3>
 <p>メトリクスの保管期間を設定する。</p>
 <p><code>h(ours)</code>、<code>d(ays)</code>、<code>w(eeks)</code>、<code>y(ears)</code>、単位なし (<code>month</code>) で期間の単位を指定できる。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-retentionPeriod<span class="o">=</span>90d
 </code></pre></div>
 <blockquote>
@@ -34630,7 +34621,6 @@
 <h3 id="-storagecachesizeindexdbdatablocks">-storage.cacheSizeIndexDBDataBlocks<a class="headerlink" href="#-storagecachesizeindexdbdatablocks" title="Permanent link">&para;</a></h3>
 <p>転置インデックスのデータブロックの上限キャッシュサイズを設定する。</p>
 <p>デフォルトでは、キャッシュを作成しない。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-storage.cacheSizeIndexDBDataBlocks<span class="o">=</span><span class="m">0</span>
 </code></pre></div>
 <p><br></p>
@@ -34649,7 +34639,6 @@
 <h3 id="-storagedatapath">-storageDataPath<a class="headerlink" href="#-storagedatapath" title="Permanent link">&para;</a></h3>
 <p>メトリクスを保管するディレクトリを設定する。</p>
 <p>設定したディレクトリ配下に <code>data</code> ディレクトリを作成し、その配下にメトリクスを保管する。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-storageDataPath<span class="o">=</span>/var/lib/victoriametrics
 </code></pre></div>
 <blockquote>
@@ -34661,7 +34650,6 @@
 <h3 id="-tlscertfile-tlskeyfile">-tlsCertFile (-tlsKeyFile と一緒に使用する)<a class="headerlink" href="#-tlscertfile-tlskeyfile" title="Permanent link">&para;</a></h3>
 <p>サーバー証明書のパスを設定する。</p>
 <p>ペアになる秘密鍵を <code>-tlsKeyFile</code> オプションで指定する必要がある。</p>
-<p><strong>＊例＊</strong></p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>victoria-metrics-prod<span class="w"> </span>-tlsCertFile<span class="o">=</span>/etc/victoriametrics/server.crt<span class="w"> </span>-tlsKeyFile<span class="o">=</span>/etc/victoriametrics/server.key
 </code></pre></div>
 <p><br></p>

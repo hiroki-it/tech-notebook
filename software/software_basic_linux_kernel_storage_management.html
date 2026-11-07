@@ -34726,7 +34726,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34802,20 +34802,15 @@
 </blockquote>
 <p><br></p>
 <h3 id="_8">ストレージの変更方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ストレージのサイズを現状から <code>100</code>GB まで拡張する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>ストレージサイズを OS に適用するため、OS を再起動する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>パーティション、物理ボリューム、論理ボリューム、ファイルシステムは拡張できていないため、拡張していく。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://isleofhoso.com/linux-lvm-extend/">【Linux】LVMで論理ボリューム拡張-4ステップで設定できる | ほそぼそ話</a></li>
@@ -34842,44 +34837,29 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span><
 /dev/sda1<span class="w">             </span>xfs<span class="w">       </span>1014M<span class="w">  </span>194M<span class="w">  </span>821M<span class="w">    </span><span class="m">20</span>%<span class="w">  </span>/boot
 tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>777M<span class="w">     </span><span class="m">0</span><span class="w">  </span>777M<span class="w">     </span><span class="m">0</span>%<span class="w">  </span>/run/user/1000
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>パーティションを <code>growpart</code> コマンドで拡張する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>growpart<span class="w"> </span>/dev/sda<span class="w"> </span><span class="m">2</span>
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>論理ボリュームを拡張できるように、事前に物理ボリュームを <code>pvresize</code> コマンドで拡張する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>pvresize<span class="w"> </span>/dev/sda2
 </code></pre></div>
-<dl>
-<dt><code>(6)</code></dt>
-<dd>
+</li>
+<li>
 <p>論理ボリュームを <code>lvextend</code> コマンドで拡張する。ここでは、空きサイズいっぱいに拡張する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvextend<span class="w"> </span>-l<span class="w"> </span>+100%FREE<span class="w"> </span>/dev/root
 </code></pre></div>
-<dl>
-<dt><code>(7)</code></dt>
-<dd>
+</li>
+<li>
 <p>パーティションのマウントポイントを指定し、ファイルシステムのサイズを拡張する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/
 </code></pre></div>
-<dl>
-<dt><code>(8)</code></dt>
-<dd>
+</li>
+<li>
 <p>パーティション、物理ボリューム、論理ボリューム、ファイルシステムを拡張できた。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lsblk
 
 NAME<span class="w">          </span>MAJ:MIN<span class="w"> </span>RM<span class="w">  </span>SIZE<span class="w"> </span>RO<span class="w"> </span>TYPE<span class="w"> </span>MOUNTPOINT
@@ -34901,6 +34881,8 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span><
 /dev/sda1<span class="w">             </span>xfs<span class="w">       </span>1014M<span class="w">  </span>194M<span class="w">  </span>821M<span class="w">    </span><span class="m">20</span>%<span class="w">  </span>/boot
 tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>777M<span class="w">     </span><span class="m">0</span><span class="w">  </span>777M<span class="w">     </span><span class="m">0</span>%<span class="w">  </span>/run/user/1000
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h2 id="02">02. パーティション、物理ボリューム、マウントポイント<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">パーティション、物理ボリューム<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -34928,7 +34910,6 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <h3 id="_13">パーティション、マウントポイントの確認方法<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <h4 id="linux_1">▼ Linux の場合<a class="headerlink" href="#linux_1" title="Permanent link">&para;</a></h4>
 <p>Linux では、パーティションとマウントポイントは <code>df</code> コマンドで確認できる。</p>
-<p><strong>＊例＊</strong></p>
 <p>Linux の場合、<code>/dev/xvda1</code> をルートディレクトリにマウントしていることがある。</p>
 <p><code>Filesystem</code> 列にパーティション、<code>Mounted on</code> 列にパーティションへ対応するマウントポイントが表示される。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df
@@ -34938,7 +34919,6 @@ Filesystem<span class="w">     </span>Size<span class="w">   </span>Used<span cl
 /dev/xvda1<span class="w">       </span>8G<span class="w">   </span><span class="m">1</span>.9G<span class="w">    </span>14G<span class="w">   </span><span class="m">12</span>%<span class="w">   </span>/<span class="w">          </span><span class="c1"># ルートディレクトリにマウントしている。</span>
 /dev/nvme1n1<span class="w">   </span>200G<span class="w">   </span>161G<span class="w">    </span>40G<span class="w">   </span><span class="m">81</span>%<span class="w">   </span>/var/lib
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>特に CentOS の場合、<code>/dev/mapper/rhel-root</code> をルートディレクトリにマウントしていることがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-hT
 
@@ -34971,7 +34951,6 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <li><a href="https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280">【macos】外付けデバイスの操作をコマンドから（diskutilコマンドを使ったmount、unmount、ファイル操作） #macOS - Qiita</a></li>
 </ul>
 </blockquote>
-<p><strong>＊例＊</strong></p>
 <p>ストレージに紐づく <code>2</code> 個のデバイスファイルが表示され、<code>disk0</code> ファイル は 2 つ、また <code>disk1</code> ファイルは 6 つのパーティションで区切られていることが確認できる。マウントポイントは、<code>IDENTIFIER</code> 列で表示される (例：パーティションのデバイスファイル名が <code>/dev/disk0</code> なら、マウントポイントは <code>/dev/disk0&lt;IDENTIFIER名&gt;</code> になる) 。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>diskutil<span class="w"> </span>list
 
@@ -35007,7 +34986,6 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <p><br></p>
 <h3 id="_15">論理ボリュームの確認方法<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <h4 id="linux_2">▼ Linux の場合<a class="headerlink" href="#linux_2" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>Linux では論理ボリュームは、<code>lvdisplay</code> コマンドで確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>lvdisplay
 
@@ -35060,7 +35038,6 @@ tmpfs<span class="w">                 </span>tmpfs<span class="w">      </span>7
 <p><br></p>
 <h3 id="_17">デバイスファイルの確認方法<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="linux_3">▼ Linux の場合<a class="headerlink" href="#linux_3" title="Permanent link">&para;</a></h4>
-<p><strong>＊例＊</strong></p>
 <p>Linux のデバイスファイルは <code>/dev</code> ディレクトリ配下にある。</p>
 <p>Docker のデバイスファイルを確認すると、以下のデバイスファイルがある。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/dev
@@ -35252,12 +35229,9 @@ $<span class="w"> </span>mke2fs<span class="w"> </span>-t<span class="w"> </span
 <p><br></p>
 <h3 id="_25">セットアップ<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <h4 id="nfs">▼ NFS の場合<a class="headerlink" href="#nfs" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>ホスト側の MacOS にて、<code>/etc/exports</code> ファイルにマウントオプションを設定する。また、<code>/etc/exports</code> ファイルを検証する。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/imaiworks/items/b657046ea499ec8fd95c">macOS CatalinaからNFS exportsするには #nfs - Qiita</a></li>
@@ -35275,12 +35249,9 @@ $<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><sp
 <span class="c1"># 検証</span>
 $<span class="w"> </span>nfsd<span class="w"> </span>checkexports
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>MacOS に NFS サーバーを起動する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># nfsdプロセスを起動する</span>
 $<span class="w"> </span>sudo<span class="w"> </span>nfsd<span class="w"> </span>start
 
@@ -35290,12 +35261,9 @@ $<span class="w"> </span>showmount<span class="w"> </span>-e<span class="w"> </s
 Exports<span class="w"> </span>list<span class="w"> </span>on<span class="w"> </span>localhost:
 &lt;マウント元のディレクトリ&gt;<span class="w"> </span>&lt;マウント先のサーバーのIPアドレス&gt;
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>NFS クライアントにて、必要なパッケージをインストールする。</p>
-</dd>
-</dl>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/tukiyo3/items/c4dfd6a12bf3255ddc78">nfsマウント #Ubuntu - Qiita</a></li>
@@ -35304,16 +35272,15 @@ Exports<span class="w"> </span>list<span class="w"> </span>on<span class="w"> </
 <div class="highlight"><pre><span></span><code><span class="c1"># Ubuntuの場合</span>
 $<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nfs-common
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>NFS クライアントにて、マウントを実行する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>mount<span class="w"> </span>-t<span class="w"> </span>nfs<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>&lt;MacOSのIPアドレス&gt;:/System/Volumes/Data/Users/hiroki.hasegawa/projects/&lt;マウント元のディレクトリ&gt;<span class="w"> </span><span class="se">\</span>
 <span class="w">    </span>&lt;マウントポイント&gt;
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 
   

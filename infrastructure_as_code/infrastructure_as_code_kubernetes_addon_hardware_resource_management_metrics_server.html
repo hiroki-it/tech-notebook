@@ -34378,7 +34378,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34414,25 +34414,21 @@
 <p>また必須ではないが、HorizontalPodAutoscaler と VerticalPodAutoscaler を作成すれば、Pod の自動水平スケーリングや自動垂直スケーリングを実行できる。</p>
 <p>Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外) のメトリクスの元になるデータポイントを収集しつつ、収集したデータポイントを拡張 API サーバーで公開する。</p>
 <p>似た名前のツールに kube-metrics-server があるが、こちらは Exporter として稼働する。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>クライアント (<code>kubectl top</code> コマンド実行者、HorizontalPodAutoscaler、VerticalPodAutoscaler) が metrics-server の API からメトリクスを参照しようとする。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>クライアントは、kube-apiserver にリクエストが送信する。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>kube-apiserver は、metrics-server のプロキシ (APIService) にリクストをフォワーディングする。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>APIService は、クライアントにメトリクスを返信する。</p>
-</dd>
-</dl>
 <p><img alt="kubernetes_metrics-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png" /></p>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/bells17/metrics-server?slide=20">Metrics Server - Speaker Deck</a></li>

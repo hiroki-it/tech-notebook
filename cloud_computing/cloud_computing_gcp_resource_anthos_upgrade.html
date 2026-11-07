@@ -34196,7 +34196,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -34231,21 +34231,15 @@
 <p>ベアメタルのため、ワーカーNode を再作成することはなく、コントロールプレーンコンポーネント (例：kube-apiserver など) とワーカーNode コンポーネント (例：kubelet など) をそのままアップグレードしていく。</p>
 <p><br></p>
 <h3 id="bmctl"><code>bmctl</code> コマンドのセットアップ<a class="headerlink" href="#bmctl" title="Permanent link">&para;</a></h3>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>bmctl</code> コマンドをインストールする。Anthos GKE Cluster と <code>bmctl</code> コマンドのバージョンには対応関係がある。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>gsutil<span class="w"> </span>cp<span class="w"> </span>gs://anthos-baremetal-release/bmctl/1.13.2/linux-amd64/bmctl<span class="w"> </span>bmctl-1.12.0
 $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>bmctl-1.12.0
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Anthos GKE Cluster の現在のバージョンを確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">$ kubectl get cluster -A -o yaml</span>
 <span class="nn">---</span>
 <span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">baremetal.cluster.gke.io/v1</span>
@@ -34257,44 +34251,42 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <span class="w">  </span><span class="nt">anthosBareMetalVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.12.0</span><span class="w"> </span><span class="c1"># 現在のバージョン</span>
 </code></pre></div>
 <p>また、Anthos GKE Cluster のバージョンと Kubernetes のバージョンの対応関係を確認する。</p>
-<table>
-  <thead>
-    <tr>
-      <th>Anthos GKE Cluster のバージョン</th>
-      <th>Kubernetes のバージョン</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code> 1.11</code> 系</td>
-      <td><code>v1.22.8-gke</code></td>
-    </tr>
-    <tr>
-      <td><code>1.12</code> 系</td>
-      <td><code>v1.23.5-gke</code></td>
-    </tr>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-  </tbody>
-</table>
-
+<p><table>
+    <thead>
+  <tr>
+    <th>Anthos GKE Cluster のバージョン</th>
+    <th>Kubernetes のバージョン</th>
+  </tr>
+    </thead>
+    <tbody>
+  <tr>
+    <td><code> 1.11</code> 系</td>
+    <td><code>v1.22.8-gke</code></td>
+  </tr>
+  <tr>
+    <td><code>1.12</code> 系</td>
+    <td><code>v1.23.5-gke</code></td>
+  </tr>
+  <tr>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+    </tbody>
+  </table></p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support">https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>docker</code> プロセスが稼働しているかを確認する。Anthos のアップグレードでは、その仕組みのなかで Kind が使われている。</p>
 <p>ワークステーション (仮想サーバー) 上でKindを起動し、Kindを使用してAnthos K8s in Dockerを検証する。</p>
 <p>Kindによる検証のために、dockerが必要である。dockerプロセスのデーモンが正常なことを確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>docker
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="_3">アップグレードの実施<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <dl>
@@ -34389,21 +34381,15 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p>このとき、ASM のマイナーバージョンを固定できず、<code>asmcli</code> コマンドのインストールのタイミングによってはより新しいパッチバージョンが指定されている。</p>
 <p>そのため、各実行環境のアップグレードのたびに <code>asmcli</code> コマンドをインストールすると、より後に実施した実行環境のほうで新しいパッチバージョンの ASM をデプロイすることになってしまう。</p>
 <p>そこで、<code>asmcli</code> コマンドはバージョン管理したほうがよい。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>asmcli</code> コマンドをインストールする。アップグレード先のバージョン系の指定するようにする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>curl<span class="w"> </span>https://storage.googleapis.com/csm-artifacts/asm/asmcli_1.15<span class="w"> </span>&gt;<span class="w"> </span>asmcli
 $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span>asmcli
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>asmcli</code> コマンドが指定している <code>POINT</code> 値と <code>REV</code> 値を確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>grep<span class="w"> </span>-e<span class="w"> </span><span class="s1">'MAJOR='</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'MINOR='</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'POINT='</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">'REV='</span><span class="w"> </span>asmcli
 
 <span class="nv">MAJOR</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">MAJOR</span><span class="p">:=1</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>MAJOR<span class="p">;</span>
@@ -34412,15 +34398,14 @@ $<span class="w"> </span>chmod<span class="w"> </span>a+x<span class="w"> </span
 <span class="nv">REV</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">REV</span><span class="p">:=0</span><span class="si">}</span><span class="s2">"</span><span class="p">;</span><span class="w"> </span><span class="nb">readonly</span><span class="w"> </span>REV<span class="p">;</span><span class="w">       </span><span class="c1"># REV値</span>
 ...
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>バイナリファイルの名前を変更する。これをバージョン管理する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># asmcliコマンドの名前を変える。</span>
 $<span class="w"> </span>mv<span class="w"> </span>asmcli<span class="w"> </span>asmcli_1140-0
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh">https://cloud.google.com/service-mesh/docs/unified-install/upgrade#upgrade_anthos_service_mesh</a></li>

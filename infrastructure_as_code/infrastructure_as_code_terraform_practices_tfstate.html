@@ -33886,7 +33886,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -33940,7 +33940,6 @@
 <h3 id="aws">依存先 AWS リソース別<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <p>依存先の多い AWS リソースは、依存先の AWS リソース別にローカルモジュールを分割する。</p>
 <p>依存先 AWS リソース別の分割方法は、Terraform の公式リモートモジュールに一番多い構成である。</p>
-<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -33976,7 +33975,6 @@
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── outputs.tf</span>
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── variables.tf</span>
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── eks/</span><span class="w"> </span><span class="c1"># EKS</span>
@@ -34014,7 +34012,6 @@
 <h3 id="_2">リソース別<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>最上層は、AWS リソースで分割する。</p>
 <p>またスクリプトを使用する AWS リソース (例：Lambda) では、そのソースコードをモジュール下で管理する。</p>
-<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -34025,7 +34022,6 @@
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">│   ├── foo_function_src/</span><span class="w"> </span><span class="c1"># とある関数のソースコード</span>
 <span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── acm/</span><span class="w"> </span><span class="c1"># AWS Certificate Manager</span>
@@ -34038,7 +34034,6 @@
 <h3 id="_3">リージョン別<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>AWS リソースのプロビジョニング先のリージョン別にローカルモジュールを分割する。</p>
 <p>例えば、AWS Certificate Manager は同じリージョンの AWS リソースにしかアタッチできない制約があるため、AWS リソースによっては複数リージョン必要になる。</p>
-<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -34047,7 +34042,6 @@
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">├── ap-northeast-1/</span><span class="w"> </span><span class="c1"># 東京リージョン</span>
 <span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">└── us-east-1/</span><span class="w">      </span><span class="c1"># バージニアリージョン</span>
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">└── acm/</span><span class="w"> </span><span class="c1"># AWS Certificate Manager</span>
@@ -34058,7 +34052,6 @@
 <h3 id="_4">実行環境別<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>環境ごとに差分が大きい AWS リソースは、実行環境別にローカルモジュールを分割する。</p>
 <p>なお count で条件分岐してもよい</p>
-<p><strong>＊例＊</strong></p>
 <p>ローカルモジュールの場合</p>
 <p>ただ前述の通り、ローカルモジュールの使用するかどうかは考え直したほうがよい。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-repository/</span>
@@ -34079,7 +34072,6 @@
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">├── prd/</span>
 <span class="w">            </span><span class="l l-Scalar l-Scalar-Plain">└── stg/</span>
 </code></pre></div>
-<p><strong>＊例＊</strong></p>
 <p>リモートモジュールの場合</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">aws-remote-repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── route53/</span><span class="w"> </span><span class="c1"># Route53</span>
@@ -34102,13 +34094,10 @@
 <h2 id="03-tfstate">03. モノリスな <code>tfstate</code> ファイルを分割する<a class="headerlink" href="#03-tfstate" title="Permanent link">&para;</a></h2>
 <p>モノリスな <code>tfstate</code> ファイルとは、例えば特定の AWS アカウント内の AWS リソースをすべて 1 つの <code>tfstate</code> ファイルで管理している場合である。</p>
 <p>AWS リソース値を参照しない関係であれば、これらは別の <code>tfstate</code> ファイルに分割できる。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>既存のバックエンド内に新しいディレクトリを作成し、その配下に <code>tfstate</code> ファイルを新しく作成する。</p>
 <p>ここでは、サブシステムを分割すると仮定する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">repository/</span>
 <span class="l l-Scalar l-Scalar-Plain">├── foo/</span>
 <span class="l l-Scalar l-Scalar-Plain">│   ├── backend.tf</span><span class="w"> </span><span class="c1"># バックエンド内の/foo/terraform.tfstate</span>
@@ -34132,12 +34121,9 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>bar 側では、foo 側の <code>tfstate</code> ファイルからリソース値を取得しつつ、</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 分割した異なるfooというtfstateファイルから取得する</span>
 <span class="kr">data</span><span class="w"> </span><span class="nc">"terraform_remote_state"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">backend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"s3"</span>
@@ -34149,35 +34135,28 @@
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>新しい <code>tfstate</code> ファイルに、既存のサブシステムの状態をインポートする。</p>
 <p>事前に、バックエンドを新しいサブシステムの<code>tfstate</code>ファイルに切り替える。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
 $<span class="w"> </span>terraform<span class="w"> </span>import
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>サブシステムの <code>tfstate</code> ファイルで差分がないことを確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-sub-backend.tfvars
 $<span class="w"> </span>terraform<span class="w"> </span>plan
 </code></pre></div>
-<dl>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>モノリスな <code>tfstate</code> ファイルから、サブシステムの状態を削除する。</p>
 <p>事前に、バックエンドをモノリスな<code>tfstate</code>ファイルに切り替える。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>terraform<span class="w"> </span>init<span class="w"> </span>-reconfigure<span class="w"> </span>-backend-config<span class="o">=</span>foo-backend.tfvars
 $<span class="w"> </span>terraform<span class="w"> </span>state<span class="w"> </span>rm<span class="w"> </span>&lt;サブシステムの状態&gt;
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 
   

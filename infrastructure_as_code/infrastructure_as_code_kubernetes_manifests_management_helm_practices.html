@@ -35106,7 +35106,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:36:04 JST">2026-11-07</span>
   </span>
 
     
@@ -35386,22 +35386,18 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <li><a href="https://helm.sh/docs/intro/using_helm/#helpful-options-for-installupgraderollback">Using Helm | Helm</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p><code>helm upgrade</code> コマンドを実行することで、インストール済みのチャートをアップグレードする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートへのパス&gt;<span class="w"> </span>-f<span class="w"> </span>foo-values.yaml<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;<span class="w"> </span>--wait
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>Helm リリースのリビジョンが新しくなっていることを確認する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>list
 </code></pre></div>
+</li>
+</ol>
 <h4 id="crd_1">▼ CRD を含むチャートの場合<a class="headerlink" href="#crd_1" title="Permanent link">&para;</a></h4>
 <p>Helm は、CRD を含むチャートのインストールはサポートしているが、アップグレードとアンインストールをサポートしていない。</p>
 <p>そのため、アップグレードとアンインストールは <code>kubectl</code> コマンドで実行する必要がある。</p>
@@ -35411,41 +35407,31 @@ $<span class="w"> </span>asdf<span class="w"> </span>install
 <li><a href="https://helm.sh/docs/chart_best_practices/custom_resource_definitions/#method-1-let-helm-do-it-for-you">Custom Resource Definitions | Helm</a></li>
 </ul>
 </blockquote>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>kube-apiserver に CRD のマニフェストを送信し、新バージョンの CRD を更新する。</p>
 <p>Helmは、CRDの更新をサポートしていない (作成はサポートしている) .</p>
 <p>そのため、<code>kubectl</code>コマンドを使用してこれを更新する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>&lt;新バージョンのCRDのマニフェストのURL&gt;
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>kube-apiserver にカスタムリソースのマニフェストを送信する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>helm<span class="w"> </span>install<span class="w"> </span>&lt;Helmリリース名&gt;<span class="w"> </span>&lt;チャートリポジトリ名&gt;/foo-crd<span class="w"> </span>-n<span class="w"> </span>foo<span class="w"> </span>--version<span class="w"> </span>&lt;バージョンタグ&gt;
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>補足として、もし CRD をインストールする前にカスタムリソースをインストールしようとすると、カスタムリソースを定義できずエラーになってしまう。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>Error:<span class="w"> </span>unable<span class="w"> </span>to<span class="w"> </span>build<span class="w"> </span>kubernetes<span class="w"> </span>objects<span class="w"> </span>from<span class="w"> </span>release<span class="w"> </span>manifest:<span class="w"> </span><span class="o">[</span>unable<span class="w"> </span>to<span class="w"> </span>recognize<span class="w"> </span><span class="s2">""</span>:<span class="w"> </span>no<span class="w"> </span>matches<span class="w"> </span><span class="k">for</span><span class="w"> </span>kind<span class="w"> </span><span class="s2">"&lt;カスタムリソース名&gt;&gt;"</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>version<span class="w"> </span><span class="s2">"&lt;カスタムリソースのAPIグループ&gt;"</span>
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>旧バージョンの CRD を削除する。</p>
 <p>Helmは、CRDの削除をサポートしていないため、<code>kubectl delete</code>コマンドを使用する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>&lt;旧バージョンのCRDのマニフェストのURL&gt;
 </code></pre></div>
+</li>
+</ol>
 <p><br></p>
 <h3 id="_19">新バージョンの自動検出<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <p>外部のツール (例：renovate) を使用して、チャートの新バージョンを自動的に検出する。</p>

@@ -34786,7 +34786,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34923,7 +34923,6 @@
 <h4 id="ssh-ssh">▼ SSH ポートフォワーディング (SSH ポートフォワーディング)<a class="headerlink" href="#ssh-ssh" title="Permanent link">&para;</a></h4>
 <p>ローカルマシンと踏み台サーバーの SSH 公開鍵認証と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的にパケットを送受信する。</p>
 <p><img alt="ssh-port-forward" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png" /></p>
-<p><strong>＊例＊</strong></p>
 <p>このリモートサーバーが、仮想環境の場合もあり、ホストと仮想環境の接続でも SSH ポートフォワーディングを使用している。</p>
 <p>ホスト外部のパソコンから、ホスト上の仮想環境に接続したい場合、SSH ポートフォワーディングを使用することによって、ホストを踏み台とした仮想環境への接続が行えるようになる。</p>
 <p><img alt="docker_port-forwarding" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_port-forwarding.png" /></p>
@@ -34932,17 +34931,15 @@
 <h4 id="scp">▼ SCP とは<a class="headerlink" href="#scp" title="Permanent link">&para;</a></h4>
 <p>SSH を経由して、ファイルフォワーディングを実行する。</p>
 <p>SSH の能力をより拡張したプロトコルである。</p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>クライアントは、リモート通信先のサーバーにファイル送信を命令する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>サーバーは、Shell を使用して SCP プログラムを起動し、クライアントにファイルを送信する。</p>
-</dd>
-</dl>
 <p><img alt="SCPの仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SCPの仕組み.png" /></p>
+</li>
+</ol>
 <h4 id="_7">▼ ファイルを要求する側に必要なソフトウェア<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <ul>
 <li>WinSCP</li>
@@ -35063,7 +35060,6 @@
 <p><code>L5</code>〜<code>L7</code> のプロトコル (例：HTTP、HTTPS、SMTP、DNS、POP3 など) を暗号化する。</p>
 <p>『<code>S</code>』 (例：SMTPS) や『<code>over TLS/SSL</code>』 (例：HTTP over TLS/SSL、SMTP over TLS/SSL) をつけて表記する。</p>
 <p>暗号化プロトコルを使用する場合、<code>L6</code> にて <code>L7</code> のアプリケーションデータを暗号化/復号する。</p>
-<p><strong>＊例＊</strong></p>
 <p>Chrome では、HTTPS リクエストの使用時にサーバー証明書の不備 (例：自己署名サーバー証明書を使用している場合) があると、以下のような警告が表示される。</p>
 <p><img alt="SSL接続に不備がある場合の警告" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg" /></p>
 <blockquote>

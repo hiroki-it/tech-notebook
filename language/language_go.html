@@ -34832,7 +34832,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34965,22 +34965,16 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p><br></p>
 <h3 id="_3">アップグレード<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="github">▼ GitHub リポジトリ<a class="headerlink" href="#github" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>最新のバイナリをインストールする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>golang.org/dl/go&lt;新しいバージョン&gt;@HEAD
 
 $<span class="w"> </span>go&lt;新しいバージョン&gt;<span class="w"> </span>download
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>新しいバージョンに切り替える。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># GOROOTの場所を見つける</span>
 $<span class="w"> </span>go&lt;新しいバージョン&gt;<span class="w"> </span>env<span class="w"> </span>GOROOT
 
@@ -34990,30 +34984,26 @@ $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><
 $<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$GOROOT</span>/bin:<span class="nv">$PATH</span>
 $<span class="w"> </span><span class="nb">source</span><span class="w"> </span>~/.zshrc
 </code></pre></div>
-<dl>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p><code>go.mod</code> ファイルの Go のバージョン定義や、Go パッケージをアップグレードする。</p>
 <p><code>-go</code>オプションがあるが、基本的にはgoのバイナリのバージョンをアップグレードする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># 新しいバージョンになっていることを確認する</span>
 $<span class="w"> </span>go<span class="w"> </span>version
 
 $<span class="w"> </span>go<span class="w"> </span>mod<span class="w"> </span>tidy
 </code></pre></div>
-<dl>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>古いバージョンの Go バイナリをアンインストールする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code><span class="c1"># which goでバイナリの場所を確認する</span>
 $<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/usr/local/go
 
 <span class="c1"># もし、asdfでGoをインストールしている場合</span>
 $<span class="w"> </span>asdf<span class="w"> </span>uninstall<span class="w"> </span>go<span class="w"> </span>&lt;古いバージョン&gt;
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/wasuwa/articles/3d2e65516b760e">【初心者向け】丁寧な Go のバージョンアップ手順</a></li>
@@ -35021,23 +35011,19 @@ $<span class="w"> </span>asdf<span class="w"> </span>uninstall<span class="w"> <
 </ul>
 </blockquote>
 <h4 id="ppa">▼ PPA リポジトリから<a class="headerlink" href="#ppa" title="Permanent link">&para;</a></h4>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>PPA リポジトリを登録する。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:longsleep/golang-backports
 </code></pre></div>
-<dl>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>新しいバイナリをインストールする。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>apt<span class="w"> </span>update
 $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>golang-go
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/tamagram/articles/fd744d10e2e680">めんどくないGoのバージョンアップ</a></li>
@@ -35221,7 +35207,6 @@ $<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </sp
 <p>アプリ内で構造体名の頭文字が重複すると、同じレシーバ名の構造体が乱立してしまうため、これを防ぐために二文字を取るとよい。</p>
 <p>また、修飾語と組み合わせて構成される構造体名の場合、被修飾語の頭二文字を取る。</p>
 <p>オブジェクト指向で使われる『<code>this</code>』『<code>self</code>』</p>
-<p><strong>＊例＊</strong></p>
 <p>httpClient であれば、修飾語は『<code>http</code>』被修飾語『<code>client</code>』である。</p>
 <p>そのため、レシーバ名または引数名では『<code>cl</code>』とする。</p>
 <blockquote>

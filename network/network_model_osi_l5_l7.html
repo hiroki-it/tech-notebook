@@ -34342,7 +34342,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
   </span>
 
     
@@ -34382,20 +34382,18 @@
 <p><br></p>
 <h3 id="_3">アプリケーション層の仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p><img alt="application_expose-port" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/application_expose-port.png" /></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>各アプリケーションがプロセスとして稼働しており、プロセスがパケットペイロードの元になるアプリケーションデータを作成する。</p>
 <p>アプリケーションデータに、IPヘッダーとトランスポートヘッダーを追加し、パケットペイロードとする。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>各プロセスは特定のポート番号を受信する。</p>
 <p>補足として、ポート番号を使用しているプロセスの一覧は、以下のコマンドで表示できる。</p>
-</dd>
-</dl>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>lsof<span class="w"> </span>-i<span class="w"> </span>-P<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LISTEN
 </code></pre></div>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://netdekagaku.com/netstat-command/">netstatコマンドでポートに紐づいたプロセスを調べよう！ | .LOG</a></li>
@@ -34422,29 +34420,24 @@
 <h3 id="_4">メールデータの送受信<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p><img alt="smtp_pop3_imap4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png" /></p>
-<dl>
-<dt><code>(1)</code></dt>
-<dd>
+<ol>
+<li>
 <p>送信元アプリ (例：任意のアプリ、Gmail など) は、メールを送信する。</p>
-</dd>
-<dt><code>(2)</code></dt>
-<dd>
+</li>
+<li>
 <p>SMTP サーバー (送信元メールサーバー) は、メールを受信する。</p>
 <p>なお、宛先にも仲介用のSMTPサーバーがある場合がある。</p>
-</dd>
-<dt><code>(3)</code></dt>
-<dd>
+</li>
+<li>
 <p>SMTP サーバーは、メールを POP/IMAP サーバー (宛先メールサーバー) にフォワーディングする。</p>
-</dd>
-<dt><code>(4)</code></dt>
-<dd>
+</li>
+<li>
 <p>POP/IMAP サーバーは、メールを保管する。</p>
-</dd>
-<dt><code>(5)</code></dt>
-<dd>
+</li>
+<li>
 <p>宛先のアプリ( 例：任意のアプリ、Gmail など) は、各々が指定したプロトコルに応じて、POP/IMAP サーバーからメールデータを定期的に取得する。</p>
-</dd>
-</dl>
+</li>
+</ol>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/it/pc/article/basic/20120312/1043605/">【送受信編】「POP」や「IMAP」ってよくわからない・・という人必見 | 日経クロステック（xTECH）</a></li>
@@ -34478,7 +34471,6 @@
 <h4 id="imap4">▼ IMAP4 とは<a class="headerlink" href="#imap4" title="Permanent link">&para;</a></h4>
 <p>メールサーバーに届いたメールを、受信機器にダウンロードせず、メールサーバーに置いたまま参照するプロトコル。</p>
 <p>メールの既読未読状況は、他の受信機器と共有されない。</p>
-<p><strong>＊例＊</strong></p>
 <p>Gmail で POP か IMAP を設定できる。</p>
 <p><img alt="GmailでPOPorIMAPを設定" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg" /></p>
 <h4 id="imap4_1">▼ IMAP4 の仕組み<a class="headerlink" href="#imap4_1" title="Permanent link">&para;</a></h4>
