@@ -35926,7 +35926,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:43:37 JST">2026-11-07</span>
   </span>
 
     
@@ -36135,9 +36135,7 @@
 <p>GitLab CI では、定義した Job は自動的に実行される。</p>
 <p>一方で <code>.</code> (ドット) をつけることで、使用を明示的に宣言しない限り実行できない『隠し Job』として定義できる。</p>
 <p>また、子リポジトリで上書きできる変数を親リポジトリに設定しておく。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># foo-job.yaml</span>
-
-<span class="c1"># 変数のデフォルト値を設定しておく</span>
+<div class="highlight"><span class="filename">.yaml</span><pre><span></span><code><span class="c1"># 変数のデフォルト値を設定しておく</span>
 <span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
 
@@ -36146,9 +36144,7 @@
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/foo.txt</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># bar-job.yaml</span>
-
-<span class="c1"># 変数のデフォルト値を設定しておく</span>
+<div class="highlight"><span class="filename">.yaml</span><pre><span></span><code><span class="c1"># 変数のデフォルト値を設定しておく</span>
 <span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
 
@@ -36157,9 +36153,7 @@
 <span class="w">  </span><span class="nt">script</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cat "${PATH}"/bar.txt</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># baz-job.yaml</span>
-
-<span class="c1"># 変数のデフォルト値を設定しておく</span>
+<div class="highlight"><span class="filename">.yaml</span><pre><span></span><code><span class="c1"># 変数のデフォルト値を設定しておく</span>
 <span class="nt">variables</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">PATH</span><span class="p">:</span><span class="w"> </span><span class="s">"default"</span>
 
@@ -36971,8 +36965,7 @@
 <p>Job が発火した場合、特定のアクションを実施する。</p>
 <p><strong>＊例＊</strong></p>
 <p>モノレポで GitLabCI を採用している場合、 親の <code>.gitlab-ci.yml</code> ファイルでディレクトリ配下の変更を検知し、子の <code>.gitlab-ci.yml</code> ファイルを読み込む (<code>include</code>) ようにする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 親の.gitlab-ci.yml</span>
-<span class="nt">stage</span><span class="p">:</span>
+<div class="highlight"><span class="filename">.yml</span><pre><span></span><code><span class="nt">stage</span><span class="p">:</span>
 <span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
 
 <span class="nt">foo</span><span class="p">:</span>
