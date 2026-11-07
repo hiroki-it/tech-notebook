@@ -1710,7 +1710,7 @@ User は UserName に依存している。
 
 あらかじめクラスを登録 (バインド) しておき、必要なときにインスタンスを作成 (リゾルブ) してくれる。
 
-Pimple パッケージを使用した場合
+DI コンテナを使用した場合 (PHP では Pimple パッケージ)
 
 === "Go"
 
@@ -1849,7 +1849,7 @@ Pimple パッケージを使用した場合
 
     func main() {
     	// クラス名を宣言してインスタンスを作成。
-    	sample := autoload.Container.Get("sample")
+    	user := autoload.Container.Get("user")
     }
     ```
 
@@ -1858,9 +1858,10 @@ Pimple パッケージを使用した場合
     ```typescript title="TypeScript の場合の実装例"
     // IoCコンテナの読み出し
     import { container } from "./autoload";
+    import { User } from "~/domain/user/entity/User";
 
     // クラス名を宣言してインスタンスを作成。
-    const sample = container.get("sample");
+    const user = container.get<User>("user");
     ```
 
 === "PHP"
@@ -1872,7 +1873,7 @@ Pimple パッケージを使用した場合
     require_once __DIR__ . "/autoload.php";
 
     // クラス名を宣言してインスタンスを作成。
-    $sample = $container["sample"];
+    $user = $container["user"];
     ```
 
 #### ▼ Service Locator パターン
