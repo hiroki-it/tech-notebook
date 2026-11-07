@@ -34370,7 +34370,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月1日 23:20:14 JST">2026-11-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
   </span>
 
     
@@ -34397,12 +34397,7 @@
 
 <h1 id="_1">オブジェクト指向設計＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
 <h2 id="01">01. オブジェクト指向設計<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">構造の視点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -34427,7 +34422,7 @@
 <h3 id="_7">記法の種類<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <h4 id="has-onehas-many">▼ has-one、has-many (状態として保持する関係性)<a class="headerlink" href="#has-onehas-many" title="Permanent link">&para;</a></h4>
 <p><img alt="データとして保持する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png" /></p>
-<p>『has-one』『has-many』な関係と表現され、より具体的に説明すると、と状態として保持する関係性である。</p>
+<p>『has-one』『has-many』な関係と表現され、より具体的に説明すると、状態として保持する関係性である。</p>
 <p>Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。</p>
 <p>『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -34437,7 +34432,7 @@
 </blockquote>
 <h4 id="is-a-kind-of">▼ is-a-kind-of (グループとメンバーの関係性)<a class="headerlink" href="#is-a-kind-of" title="Permanent link">&para;</a></h4>
 <p><img alt="グループとメンバーの関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png" /></p>
-<p>『is-a-kind-of』な関係と表現され、より具体的に説明すると、とグループとメンバーの関係性である。</p>
+<p>『is-a-kind-of』な関係と表現され、より具体的に説明すると、グループとメンバーの関係性である。</p>
 <p>Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -34446,7 +34441,7 @@
 </blockquote>
 <h4 id="use">▼ use (引数型/返却値型として使用する関係性)<a class="headerlink" href="#use" title="Permanent link">&para;</a></h4>
 <p><img alt="引数型または返却値型として使用する関係性" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png" /></p>
-<p>『use』な関係と表現され、より具体的に説明すると、と引数型/返却値型として使用する関係性である。</p>
+<p>『use』な関係と表現され、より具体的に説明すると、引数型/返却値型として使用する関係性である。</p>
 <p>Dependency (依存) が使用される。</p>
 <p>実装例は以下のリンクを参考にせよ。</p>
 <blockquote>
@@ -34516,6 +34511,7 @@
 <p><br></p>
 <h3 id="ie">IE 記法<a class="headerlink" href="#ie" title="Permanent link">&para;</a></h3>
 <h4 id="ie_1">▼ IE 記法とは<a class="headerlink" href="#ie_1" title="Permanent link">&para;</a></h4>
+<p>エンティティ、属性、リレーション、カーディナリティを組み合わせて、テーブル間の関係性を表す記法のこと。</p>
 <p><img alt="er-diagram_ie" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/er-diagram_ie.png" /></p>
 <h4 id="_10">▼ エンティティ、属性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>テーブルに相当するエンティティと、カラムに相当する属性がある。</p>
@@ -34532,16 +34528,18 @@
 <p><br></p>
 <h3 id="_12">関係性の種類<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="11">▼ 1：1<a class="headerlink" href="#11" title="Permanent link">&para;</a></h4>
+<p>日本語名称マスタと中国語名称マスタのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが必ず 1 つだけ対応する関係性のこと。</p>
 <p><img alt="1対1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1.png" /></p>
 <h4 id="1">▼ 1：多 (リレーションが曖昧な状態)<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
-<p>オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化しく。</p>
+<p>オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化していく。</p>
 <p><img alt="1対1以上" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png" /></p>
 <h4 id="11_1">▼ 1：1 以上<a class="headerlink" href="#11_1" title="Permanent link">&para;</a></h4>
+<p>注文テーブルと注文明細テーブルのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが 1 つ以上対応する関係性のこと。</p>
 <p><img alt="1対1以上" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png" /></p>
 <p><br></p>
 <h2 id="04">04. シーケンス図<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="_13">シーケンス図とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>オブジェクト間のとき系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。</p>
+<p>オブジェクト間の時系列的な関係性を基に、ソフトウェアの『動的な振舞』を表すダイアグラムのこと。</p>
 <table>
   <thead>
     <tr>
@@ -34603,7 +34601,7 @@
     </tr>
     <tr>
       <td>複合フラグメント (結合フラグメント)</td>
-      <td>条件分岐、繰り返しなどによって実行されたコールであること表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。</td>
+      <td>条件分岐、繰り返しなどによって実行されたコールであることを表す。実行仕様とメッセージを四角で囲い、左上隅にオペレーター名を記載する。</td>
       <td>条件分岐の場合はオペレーター名を <code>alt</code> (<code>alternative</code>) 、繰り返しの場合は <code>loop</code> とする。<br>・<a href="https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#%E8%A4%87%E5%90%88%E3%83%95%E3%83%A9%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88">https://qiita.com/devopsCoordinator/items/4535c3cce207b114ad6c#複合フラグメント</a>&gt;</td>
     </tr>
   </tbody>

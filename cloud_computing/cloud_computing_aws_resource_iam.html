@@ -19207,10 +19207,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-iam-identify-and-access-management" class="md-nav__link">
+  <a href="#01-aws-iam-identity-and-access-management" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS IAM とは：Identify and Access Management
+        01. AWS IAM とは：Identity and Access Management
       
     </span>
   </a>
@@ -34053,10 +34053,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-iam-identify-and-access-management" class="md-nav__link">
+  <a href="#01-aws-iam-identity-and-access-management" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS IAM とは：Identify and Access Management
+        01. AWS IAM とは：Identity and Access Management
       
     </span>
   </a>
@@ -34660,7 +34660,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
   </span>
 
     
@@ -34687,14 +34687,9 @@
 
 <h1 id="aws-iamaws">AWS IAM＠AWS リソース<a class="headerlink" href="#aws-iamaws" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
-<h2 id="01-aws-iam-identify-and-access-management">01. AWS IAM とは：Identify and Access Management<a class="headerlink" href="#01-aws-iam-identify-and-access-management" title="Permanent link">&para;</a></h2>
+<h2 id="01-aws-iam-identity-and-access-management">01. AWS IAM とは：Identity and Access Management<a class="headerlink" href="#01-aws-iam-identity-and-access-management" title="Permanent link">&para;</a></h2>
 <p>AWS リソースへのアクセスに関する認証/認可を制御する。</p>
 <p>認証はアクセスキーID とシークレットアクセスキーによって、また認可は AWS IAM ロール/AWS IAM ポリシー/AWS IAM ステートメントによって制御される。</p>
 <p><br></p>
@@ -34707,7 +34702,7 @@
 <p>他には紐付けできない専用のポリシーが紐付けられている。</p>
 <p>『<code>AWSServiceRoleFor*****</code>』という名前で自動的に作成される。</p>
 <p>特に設定せずとも、自動的にリソースに紐付けられる。</p>
-<p>関連するリソースを削除するまで、ロール自体できない。</p>
+<p>関連するリソースを削除するまで、ロール自体を削除できない。</p>
 <p>サービスリンクロールの一覧については、以下のリンクを参考にせよ。</p>
 <blockquote>
 <ul>
@@ -34754,7 +34749,7 @@
 <p><br></p>
 <h3 id="_9">リソースベースのインラインポリシー<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ リソースベースのインラインポリシーとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p>単一の AWS リソースにインポリシーのこと。</p>
+<p>単一の AWS リソースに紐付けるためのインラインポリシーのこと。</p>
 <p>すでに紐付けられていると、他のものには紐付けできない。</p>
 <p><strong>＊例＊</strong></p>
 <p>以下に、EC2 の読み出しのみ認可スコープ (<code>AmazonEC2ReadOnlyAccess</code>) を紐付けできるポリシーを示す。</p>
@@ -34925,7 +34920,7 @@
 <h4 id="resource">▼ Resource<a class="headerlink" href="#resource" title="Permanent link">&para;</a></h4>
 <p>アクションの実行対象に選択できるリソースを設定する。</p>
 <p>ARN で AWS リソースの識別子を設定する。</p>
-<p>リージョンのグループには、<code>aws</code>、<code>aws-cn</code> (中国系ネットワーク) 、<code>aws-cn</code> (政府系ネットワーク) がある。</p>
+<p>リージョンのグループには、<code>aws</code>、<code>aws-cn</code> (中国系ネットワーク) 、<code>aws-us-gov</code> (政府系ネットワーク) がある。</p>
 <div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
 <span class="w">  </span><span class="s">"Version"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"2012-10-17"</span><span class="p p-Indicator">,</span>
 <span class="w">  </span><span class="s">"Statement"</span><span class="p p-Indicator">:</span>
@@ -35026,12 +35021,15 @@
 <p><br></p>
 <h2 id="03-03-aws-iam">03-03. AWS IAM ポリシーを紐付けできる対象<a class="headerlink" href="#03-03-aws-iam" title="Permanent link">&para;</a></h2>
 <h3 id="aws-iam_1">AWS IAM ユーザーに対する紐付け<a class="headerlink" href="#aws-iam_1" title="Permanent link">&para;</a></h3>
+<p>AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM ユーザーは紐付けた AWS IAM ポリシーの認可スコープをもち、同じ AWS IAM ポリシーを複数の AWS IAM ユーザーで共有できる。</p>
 <p><img alt="AWS IAMユーザにポリシーを付与" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg" /></p>
 <p><br></p>
 <h3 id="aws-iam_2">AWS IAM グループに対する紐付け<a class="headerlink" href="#aws-iam_2" title="Permanent link">&para;</a></h3>
+<p>AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グループに所属する AWS IAM ユーザーがまとめて同じ認可スコープをもつため、AWS IAM ユーザーごとに AWS IAM ポリシーを紐付けずに済む。</p>
 <p><img alt="AWS IAMグループにポリシーを付与" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg" /></p>
 <p><br></p>
 <h3 id="aws-iam_3">AWS IAM ロールに対する紐付け<a class="headerlink" href="#aws-iam_3" title="Permanent link">&para;</a></h3>
+<p>AWS IAM ロールに AWS IAM ポリシーを紐付けると、AWS IAM ロールを割り当てた EC2 などの AWS リソースが、AWS IAM ポリシーの認可スコープで他の AWS リソースを操作できる。</p>
 <p><img alt="AWS IAMロールにポリシーを付与" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg" /></p>
 <p><br></p>
 <h2 id="04-aws-iam">04. ルートユーザー、AWS IAM ユーザー<a class="headerlink" href="#04-aws-iam" title="Permanent link">&para;</a></h2>

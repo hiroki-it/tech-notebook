@@ -34646,7 +34646,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月4日 21:24:34 JST">2026-10-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
   </span>
 
     
@@ -34673,12 +34673,7 @@
 
 <h1 id="linux">メモリ管理＠Linux カーネル<a class="headerlink" href="#linux" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
 <h2 id="01">01. メモリ管理の種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>メモリ管理は、物理メモリと仮想メモリで管理方式がある。</p>
@@ -34829,6 +34824,7 @@
 </dl>
 <p><img alt="仮想メモリとのマッピングによる大容量アドレス空間の再現_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_3.png" /></p>
 <h4 id="_22">▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>ページテーブルは仮想ページ番号ごとに存在ビットと物理ページ番号をもち、存在ビットが 1 のページのみが物理メモリのページフレームにマッピングされている。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
@@ -34846,6 +34842,7 @@
 <p>ページアウトのアルゴリズムのこと。</p>
 <p>方式ごとに、物理メモリのページフレームからストレージにページアウトするページが異なる。</p>
 <h4 id="fifo-first-in-first-outlifo-last-in-first-out">▼ 『FIFO 方式：First In First Out』と『LIFO 方式：Last In First Out』<a class="headerlink" href="#fifo-first-in-first-outlifo-last-in-first-out" title="Permanent link">&para;</a></h4>
+<p>FIFO 方式は最初にページインしたページを、LIFO 方式は最後にページインしたページをページアウトするため、同じ参照の順番でもページアウトするページが異なる。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
@@ -34854,6 +34851,7 @@
 <p><img alt="p261-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-2.png" /></p>
 <p><img alt="p261-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-3.png" /></p>
 <h4 id="lru-least-recently-usedlfu-least-frequently-used">▼ 『LRU 方式：Least Recently Used』と『LFU 方式：Least Frequently Used』<a class="headerlink" href="#lru-least-recently-usedlfu-least-frequently-used" title="Permanent link">&para;</a></h4>
+<p>LRU 方式は最も長い間参照されていないページを、LFU 方式は最も参照回数の少ないページをページアウトし、いずれもページの参照の履歴をもとにページアウトするページを決める。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>

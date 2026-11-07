@@ -35394,7 +35394,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 19:31:27 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
   </span>
 
     
@@ -35421,12 +35421,7 @@
 
 <h1 id="_1">ドメイン駆動設計＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
 <h2 id="01">01. ドメイン駆動設計とは<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>オブジェクト指向分析設計から派生した分析設計の手法の一種。</p>
@@ -35488,7 +35483,7 @@
 <dt><code>(4)</code></dt>
 <dd>
 <p>ドメインモデル図を元に、クラス図を作成する。
-このとき、モデルをエンティティや値オブジェクトを切り分けるようにする。</p>
+このとき、モデルをエンティティや値オブジェクトに切り分けるようにする。</p>
 </dd>
 <dt><code>(5)</code></dt>
 <dd>
@@ -35518,7 +35513,7 @@
 例えば、コールセンター部 (電話対応業務、顧客管理業務) や法人営業部 (受注業務) がある。
 また、マーケティング部 (ユーザー集客業務、広告運用業務) や管理部 (会計業務、財務業務、採用業務) がある。</p>
 <p>このときの注意点として、業務領域は、ToB や ToC に関わらないことである。</p>
-<p>例えば、ToC なドメインには、マーケーティング部による業務 (ユーザー集客業務、広告運用業務) がある。</p>
+<p>例えば、ToC なドメインには、マーケティング部による業務 (ユーザー集客業務、広告運用業務) がある。</p>
 <blockquote>
 <ul>
 <li><a href="https://github.com/little-hands/ddd-q-and-a/issues/191">前から疑問だったのですが、DDDってtoCのサービスでもうまく機能するのでしょうか？toCのサービスの場合、どのようにドメインエキスパートを探す、あるいは設定するのでしょうか。 · Issue #191 · little-hands/ddd-q-and-a · GitHub</a></li>
@@ -35567,6 +35562,7 @@
 <p><br></p>
 <h3 id="_12">コアドメイン、サブドメイン、ドメインエキスパート<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <h4 id="_13">▼ コアドメイン、サブドメインとは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<p>広義のドメインの問題領域のうち、他と差別化する最も重要な業務領域がコアドメイン、コアドメインから使われる支援的または汎用的な業務領域がサブドメインである。</p>
 <p><img alt="core-domain_sub-domain_bounded-context" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png" /></p>
 <blockquote>
 <ul>
@@ -37022,7 +37018,7 @@
 <p>特定の境界づけられたコンテキストのみで使用するドメインモデルのこと。</p>
 <p><img alt="bounded-context_domain-model_type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png" /></p>
 <h4 id="_30">▼ 共有モデル<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
-<p>異なる境界づけられたコンテキスト間で、一部の状態を共有ドメインモデルのこと。</p>
+<p>異なる境界づけられたコンテキスト間で、一部の状態を共有するドメインモデルのこと。</p>
 <p>図では、在庫品目モデルがそれに相当する。</p>
 <p><img alt="bounded-context_domain-model_type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png" /></p>
 <p><br></p>
@@ -37188,7 +37184,7 @@
 <p>ドメインモデルの図のこと。</p>
 <p>基本的にオブジェクト指向分析設計では、分析のためにユースケース図やオブジェクト図を作成し、その後に設計のためにクラス図やシーケンス図を作成する。</p>
 <p>一方でドメイン駆動設計の分析では、オブジェクトの具体化のためにユースケース図やオブジェクト図でオブジェクトを作成し、抽象化のためにドメインモデル図も作成する。</p>
-<p>この『具体例から抽象を導く』という作業により、オブジェクト思考分析よりも現実に沿ったモデリングが可能になる。</p>
+<p>この『具体例から抽象を導く』という作業により、オブジェクト指向分析よりも現実に沿ったモデリングが可能になる。</p>
 <blockquote>
 <ul>
 <li><a href="https://booth.pm/ja/items/3363104">ドメイン駆動設計 サンプルコード&amp;FAQ - little-hands - BOOTH</a></li>
@@ -37252,7 +37248,7 @@
 </dd>
 <dt><code>(2)</code></dt>
 <dd>
-<p>ドメインエキスパートへの要件定義が終えた想定で、ユースケース図を作成する。
+<p>ドメインエキスパートへの要件定義を終えた想定で、ユースケース図を作成する。
 オブジェクト図は省略する。</p>
 </dd>
 </dl>
@@ -37436,7 +37432,7 @@
 <dl>
 <dt><code>(6)</code></dt>
 <dd>
-<p>集約間の関係性のみに着目する、オブジェクト間の関係性は複雑であるが、集約間は単純であることがわかる。</p>
+<p>集約間の関係性のみに着目すると、オブジェクト間の関係性は複雑であるが、集約間は単純であることがわかる。</p>
 </dd>
 </dl>
 <p><img alt="ticket-modeling_little-hands_domain-model-diagram_example-4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png" /></p>

@@ -16156,10 +16156,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#write-throught" class="md-nav__link">
+  <a href="#write-through" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Write-throught 方式
+        ▼ Write-through 方式
       
     </span>
   </a>
@@ -34414,10 +34414,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#write-throught" class="md-nav__link">
+  <a href="#write-through" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Write-throught 方式
+        ▼ Write-through 方式
       
     </span>
   </a>
@@ -34940,7 +34940,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年10月23日 22:32:25 JST">2026-10-23</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
   </span>
 
     
@@ -34967,12 +34967,7 @@
 
 <h1 id="_1">メモリ＠ハードウェア<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
 <h2 id="01">01. メインメモリ (主記憶装置)<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="dramdynamic-ram">DRAM：Dynamic RAM<a class="headerlink" href="#dramdynamic-ram" title="Permanent link">&para;</a></h3>
@@ -34983,6 +34978,7 @@
 <p><br></p>
 <h3 id="mask-rom">Mask ROM<a class="headerlink" href="#mask-rom" title="Permanent link">&para;</a></h3>
 <h4 id="mask-rom_1">▼ Mask ROM とは<a class="headerlink" href="#mask-rom_1" title="Permanent link">&para;</a></h4>
+<p>製造時にデータを書き込み、以降は内容を書き換えられない読み出し専用のメモリのこと。</p>
 <p><img alt="p164-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png" /></p>
 <blockquote>
 <ul>
@@ -34992,6 +34988,7 @@
 <p><br></p>
 <h3 id="programmable-rom">Programmable ROM<a class="headerlink" href="#programmable-rom" title="Permanent link">&para;</a></h3>
 <h4 id="programmable-rom_1">▼ Programmable ROM とは<a class="headerlink" href="#programmable-rom_1" title="Permanent link">&para;</a></h4>
+<p>ユーザーが内容を書き換えられる ROM のことで、データの消去方法によって EPROM、EEPROM、フラッシュメモリに分かれる。</p>
 <p><img alt="p164-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png" /></p>
 <blockquote>
 <ul>
@@ -35041,10 +35038,11 @@
 </dl>
 <p><img alt="メモリとキャッシュメモリ_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_1.jpg" /></p>
 <h4 id="_8">▼ 二度目<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>一次キャッシュメモリ ➔ 二次キャッシュメモリ ➔ メインメモリの順で命令を探すため、一度目よりも速く命令を実行できる。</p>
 <p><img alt="メモリとキャッシュメモリ_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_2.jpg" /></p>
 <p><br></p>
 <h3 id="_9">キャッシュメモリへの書き込み方式の種類<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="write-throught">▼ Write-throught 方式<a class="headerlink" href="#write-throught" title="Permanent link">&para;</a></h4>
+<h4 id="write-through">▼ Write-through 方式<a class="headerlink" href="#write-through" title="Permanent link">&para;</a></h4>
 <p>CPU は、命令をメインメモリとキャッシュメモリの両方に書き込む。</p>
 <p>常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが、メモリへの書き込みが頻繁に行われるので遅い。</p>
 <p><img alt="Write-through方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-through方式.jpg" /></p>
@@ -35055,6 +35053,7 @@
 <p><img alt="Write-back方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-back方式.jpg" /></p>
 <p><br></p>
 <h3 id="_10">実効アクセス時間<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>キャッシュメモリに目的のデータが存在する確率をヒット率とし、存在せずにメインメモリを読み出しに行く確率を <code>1 - ヒット率</code> として、実効アクセス時間を求める。</p>
 <p><img alt="p171-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p171-1.png" /></p>
 <blockquote>
 <ul>
@@ -35069,6 +35068,7 @@
 <p><br></p>
 <h2 id="02-02">02-02. キャッシュの保管場所の種類<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
 <h3 id="_11">全体像<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>キャッシュは、クライアント、CDN、ロードバランサー、API ゲートウェイ、アプリケーション、データベースなど、リクエストの経路上のさまざまな場所に保管できる。</p>
 <p><img alt="what_and_where_to_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpeg" /></p>
 <blockquote>
 <ul>
@@ -35134,7 +35134,7 @@
 <h2 id="02-03">02-03. クライアントサイドキャッシュの仕組み<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
 <h3 id="_18">クライアントサイドキャッシュ使用/不使用の検証<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <h4 id="etag">▼ ETag 値による検証<a class="headerlink" href="#etag" title="Permanent link">&para;</a></h4>
-<p>ブラウザは、Etag 値を使用してキャッシュの実現する。</p>
+<p>ブラウザは、Etag 値を使用してキャッシュを実現する。</p>
 <p><img alt="EtagとIf-NoneMach" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ETagとIf-None-Match.png" /></p>
 <h4 id="1"><code>(1)</code> キャッシュの有効時間が切れるまで<a class="headerlink" href="#1" title="Permanent link">&para;</a></h4>
 <dl>
@@ -35223,7 +35223,7 @@
 </code></pre></div>
 <h4 id="_21">▼ クライアントサイドキャッシュあり (有効時間あり)<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーにて、<code>Cache-Control</code> ヘッダーに <code>max-age=31536000</code> を設定する。</p>
-<p>Expire ヘッダーに有効時間を設定してもよいが、<code>Cache-Control</code> ヘッダーの有効時間が優先される。</p>
+<p>Expires ヘッダーに有効時間を設定してもよいが、<code>Cache-Control</code> ヘッダーの有効時間が優先される。</p>
 <p>この場合、有効時間を過ぎると、ETag 値を比較検証するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 200</span>
 <span class="nn">---</span>
@@ -35234,7 +35234,7 @@
 </code></pre></div>
 <h4 id="_22">▼ クライアントサイドキャッシュあり (有効時間なし)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>レスポンスヘッダーにて、<code>Cache-Control</code> ヘッダーに <code>max-age=0</code> を設定する。</p>
-<p>また、Expire ヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時に ETag 値を比較検証するようになる。</p>
+<p>また、Expires ヘッダーに期限切れの日時を設定する。この場合、毎回のリクエスト時に ETag 値を比較検証するようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">HTTP/1.1 200</span>
 <span class="nn">---</span>
 <span class="nt">Cache-Control</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">max-age=0</span>
@@ -35253,7 +35253,7 @@
 <h2 id="04-gpu-vram">04. GPU と VRAM<a class="headerlink" href="#04-gpu-vram" title="Permanent link">&para;</a></h2>
 <h3 id="gpu">GPU<a class="headerlink" href="#gpu" title="Permanent link">&para;</a></h3>
 <p>CPU より少ないパラメーターで、より高速に並列処理を実行できる。</p>
-<p>画像処理や機械学習処理に的する。</p>
+<p>画像処理や機械学習処理に適する。</p>
 <p><br></p>
 <h3 id="vram">VRAM<a class="headerlink" href="#vram" title="Permanent link">&para;</a></h3>
 <p>記入中...</p>

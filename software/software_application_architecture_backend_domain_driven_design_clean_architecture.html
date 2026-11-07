@@ -33902,7 +33902,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 18:26:47 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:04:23 JST">2026-11-07</span>
   </span>
 
     
@@ -33929,12 +33929,7 @@
 
 <h1 id="_1">クリーンアーキテクチャ＠アーキテクチャ<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<p>本サイトにつきまして、以下をご認識のほど宜しくお願いいたします。</p>
-<blockquote>
-<ul>
-<li><a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a></li>
-</ul>
-</blockquote>
+<p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
 <h2 id="01">01. アーキテクチャ概要<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">思想<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -33948,6 +33943,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_4">構成<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>クリーンアーキテクチャは同心円状の層で構成され、外側の層から内側の層に向かってのみ依存する。</p>
 <blockquote>
 <ul>
 <li><a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html">Clean Coder Blog</a></li>
@@ -34038,12 +34034,12 @@
     </tr>
     <tr>
       <td>Input (Command とも呼ぶ)</td>
-      <td>型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信 JSON データ) からバックエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>型変換、入力データ翻訳、フロントエンドインターフェース (あるいは受信 JSON データ) からバックエンドインターフェースへのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
       <td>Output (DTO とも呼ぶ)</td>
-      <td>型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>型変換、出力データ翻訳、バックエンドインターフェースからフロントエンドインターフェースへのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
@@ -34059,7 +34055,7 @@
     </tr>
     <tr>
       <td>Input (Command とも呼ぶ)</td>
-      <td>型変換、バックエンドインターフェースからユースケースのオブジェクトからへの詰め替え</td>
+      <td>型変換、バックエンドインターフェースからユースケースのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
@@ -34069,7 +34065,7 @@
     </tr>
     <tr>
       <td>Output (DTO とも呼ぶ)</td>
-      <td>型変換、ユースケースからフロントエンドインターフェースへのオブジェクトからへの詰め替え</td>
+      <td>型変換、ユースケースからフロントエンドインターフェースへのオブジェクトへの詰め替え</td>
       <td>実装</td>
     </tr>
     <tr>
@@ -34194,7 +34190,38 @@
 <h2 id="02">02. 依存方向の制御<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_7">ドキュメント<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>レイヤー間の依存関係の方向をドキュメントで明文化する。</p>
-<pre class="mermaid"><code></code></pre>
+<pre class="mermaid"><code>graph LR
+
+  %% インターフェース層
+  %% リクエストの受信やレスポンスの返信に関するロジックを置く
+  subgraph controllers ["【インターフェース層】./controllers"]
+    controller
+  end
+
+  %% ユースケース層
+  %% ドメイン層のロジックを組み合わせ、ユースケースを実現するロジックを置く
+  subgraph usecases ["【ユースケース層】./usecases"]
+    usecase
+  end
+
+  %% ドメイン層
+  %% ドメインルールに関するロジックと、リポジトリのインターフェースを置く
+  subgraph domain ["【ドメイン層】./domain"]
+    domainObject
+    repositoryInterface
+  end
+
+  %% インフラストラクチャ層
+  %% データベースへの接続や、リポジトリの実装に関するロジックを置く
+  subgraph infrastructure ["【インフラストラクチャ層】./infrastructure"]
+    repository
+    database
+  end
+
+  controllers --&gt; usecases
+  usecases --&gt; domain
+  infrastructure --&gt;|インターフェースを実装| domain
+  repository --&gt;|CRUD| database</code></pre>
 <p><br></p>
 <h3 id="_8">静的解析<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <p>レイヤー間の依存関係の方向を静的解析で制御する。</p>
