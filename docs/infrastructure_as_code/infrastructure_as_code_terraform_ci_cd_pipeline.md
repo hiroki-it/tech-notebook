@@ -104,8 +104,6 @@ description: CI/CDパイプライン＠Terraformの知見を記録していま�
 
 実行環境のイメージに `terraform` を使用する。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -319,8 +317,6 @@ workflows:
 
 Assume Role を実行し、CircleCI で使用する IAM ユーザーにロールを一時的に委譲する。
 
-**＊実装例＊**
-
 ```bash
 #!/bin/bash
 
@@ -380,8 +376,6 @@ EOF
 
 特定の AWS アカウントに対して `terraform apply` コマンドを実行する。
 
-**＊実装例＊**
-
 ```bash
 #!/bin/bash
 
@@ -399,8 +393,6 @@ terraform -chdir=./"${ENV}" apply \
 
 GitHub リポジトリにプッシュされたコードに対して `terraform fmt` コマンドを実行する。
 
-**＊実装例＊**
-
 ```bash
 #!/bin/bash
 
@@ -414,8 +406,6 @@ terraform fmt \
 #### ▼ `terraform_init.sh` ファイル
 
 GitHub リポジトリにプッシュされたコードに対して `terraform init` コマンドを実行する。
-
-**＊実装例＊**
 
 ```bash
 #!/bin/bash
@@ -438,8 +428,6 @@ terraform -chdir=./"${ENV}" init \
 
 特定の AWS アカウントに対して `terraform plan` コマンドを実行する。
 
-**＊実装例＊**
-
 ```bash
 #!/bin/bash
 
@@ -457,8 +445,6 @@ terraform -chdir=./"${ENV}" plan \
 #### ▼ `terraform_validate.sh` ファイル
 
 GitHub リポジトリにプッシュされたコードに対して `terraform validate` コマンドを実行する。
-
-**＊実装例＊**
 
 ```bash
 #!/bin/bash

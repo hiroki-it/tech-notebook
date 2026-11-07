@@ -25,8 +25,6 @@ description: ビルトインパッケージ@Goの知見を記録しています�
 
 渡された文字列を結合し、標準出力に出力する。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -178,8 +176,6 @@ should not use built-in type string as key for value; define your own type to av
 
 タイムアウト時間を設定しない場合、タイムアウトはせず、無限に待機する。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -216,8 +212,6 @@ func main()  {
 
 > - [context package - context - Go Packages](https://pkg.go.dev/context#example-WithTimeout)
 > - [Deadlineメソッドとタイムアウト｜よくわかるcontextの使い方](https://zenn.dev/hsaki/books/golang-context/viewer/deadline#withtimeout%E9%96%A2%E6%95%B0)
-
-**＊実装例＊**
 
 タイムアウト時間がすでに設定された既存コンテキストを使用した場合、タイムアウト時間のみを上書きする。
 
@@ -260,8 +254,6 @@ func main()  {
 
 }
 ```
-
-**＊実装例＊**
 
 ```go
 package main
@@ -495,8 +487,6 @@ type Context struct {
 
 > - https://golang.org/pkg/encoding/json/#Marshal
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -597,8 +587,6 @@ JSON を構造体に変換する。
 
 > - https://golang.org/pkg/encoding/json/#Unmarshal
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -636,8 +624,6 @@ func main() {
 ### `RawMessage()` 関数
 
 JSON から構造体へパースする場合は、`Unmarshal()` 関数を実行する。これにより、部分的にパースせず JSON のまま取得できる。
-
-**＊実装例＊**
 
 CloudWatch はさまざまなイベントを処理するため、一部の JSON 構造が動的に変化する。
 
@@ -855,8 +841,6 @@ Usage of main.go:
 > - https://golang.org/pkg/fmt/#Fprint
 > - https://golang.org/pkg/fmt/#Sprint
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -866,8 +850,6 @@ func main() {
     fmt.Print("Hello world!") // Hello world!
 }
 ```
-
-**＊実装例＊**
 
 ```go
 package main
@@ -919,8 +901,6 @@ func main() {
 
 標準出力に出力できるほかの関数の引数として渡す必要がある。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -947,8 +927,6 @@ func main() {
 > - https://golang.org/pkg/fmt/#Println
 > - https://golang.org/pkg/fmt/#Fprintln
 > - https://golang.org/pkg/fmt/#Sprintln
-
-**＊実装例＊**
 
 文字を連続で標準出力に出力する。
 
@@ -1012,8 +990,6 @@ func main() {
 > - https://golang.org/pkg/fmt/#Fprintf
 > - https://golang.org/pkg/fmt/#Sprintf
 
-**＊実装例＊**
-
 渡された引数を文字列として結合する
 
 ```go
@@ -1041,8 +1017,6 @@ func main() {
 }
 ```
 
-**＊実装例＊**
-
 渡された引数をポインタとして結合する。
 
 ```go
@@ -1062,8 +1036,6 @@ func main() {
     fmt.Printf("Pointer is %p", person) // 0xc0000821e0
 }
 ```
-
-**＊実装例＊**
 
 渡された複数の引数を文字列として結合する。
 
@@ -1137,8 +1109,6 @@ Go にはデフォルトで、ロギング用パッケージが用意されて�
 
 渡された値を標準出力に出力する。
 
-**＊実装例＊**
-
 成功をログに残す。
 
 ```go
@@ -1160,8 +1130,6 @@ if err != nil {
 渡された値を標準出力に出力し、`os.Exit(1)` を実行して、ステータス `1` で処理を完了する。
 
 ただ、この仕様がわかりにくいため、`os.Exit(1)` と `log.Printf()` 関数を別々に実行したほうがよい。
-
-**＊実装例＊**
 
 渡された `error` インターフェースを標準出力に出力する。
 
@@ -1220,8 +1188,6 @@ func main() {
 ただし、`panic` ではビルドやアーティファクト実行のエラー時に完了ステータスのみを返却することがあり、その場合に何が原因でエラーが発生したのかわからないことがあるため、非推奨である (ビルド失敗の原因がわからずに時間を溶かした経験あり) 。
 
 > - [CodeReviewComments · golang/go Wiki · GitHub](https://github.com/golang/go/wiki/CodeReviewComments#dont-panic)
-
-**＊実装例＊**
 
 渡された `error` インターフェースを標準出力に出力する。
 
@@ -1360,8 +1326,6 @@ func FooMiddleware() func(http.Handler) http.Handler {
 
 #### ▼ 認証系
 
-**＊実装例＊**
-
 HTML をレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
 
 ```go
@@ -1469,8 +1433,6 @@ func main() {
 
 ### `Get()` 関数
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -1498,8 +1460,6 @@ func main() {
 <br>
 
 ### `Post()` 関数
-
-**＊実装例＊**
 
 ```go
 package main
@@ -1555,8 +1515,6 @@ func main() {
 <br>
 
 ### `NewRequest()` 関数
-
-**＊実装例＊**
 
 ```go
 package main
@@ -1644,8 +1602,6 @@ func main() {
 
 第二引数に `nil` を渡した場合、デフォルト引数として `http.DefaultServeMux` が渡される。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -1674,8 +1630,6 @@ func main() {
 サーバーを起動する `ListenAndServe()` 関数に対して、自身で定義した ServeMux 関数を渡す場合、`NewServeMux()` 関数を使用する必要がある。
 
 作成した ServeMux の `HandleFunc()` 関数にルーティングと関数を定義する。
-
-**＊実装例＊**
 
 HTML をレスポンスとして返信するサーバ (`http://127.0.0.1:8080`) を起動する。
 
@@ -1903,8 +1857,6 @@ func main() {
 ### `Builder()` 関数
 
 渡された文字列を結合し、標準出力に出力する。
-
-**＊実装例＊**
 
 ```go
 package main

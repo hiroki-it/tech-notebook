@@ -581,8 +581,6 @@ spec:
 
 制限しなかった項目は、Karpenter がよしなに設定値を選ぶ。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: karpenter.sh/v1beta1
 kind: NodePool
@@ -629,8 +627,6 @@ spec:
             # スポットインスタンス
             - spot
 ```
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: karpenter.sh/v1beta1

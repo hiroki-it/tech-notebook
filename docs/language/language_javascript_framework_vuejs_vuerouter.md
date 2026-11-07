@@ -25,8 +25,6 @@ description: vue-router＠Vue.jsの知見を記録しています。
 GET https://example.com:80/<ルート>/<パスパラメータ>?text1=a&text2=b
 ```
 
-**＊実装例＊**
-
 ```javascript
 // vue-routerパッケージを読み込む。
 const vueRouter = require("vue-router").default;
@@ -89,8 +87,6 @@ Web アプリ全体に 1 つ存在し、全体的な Router 機能を管理し�
 </table>
 
 > - [Programmatic Navigation \| Vue Router](https://router.vuejs.org/guide/essentials/navigation.html)
-
-**＊実装例＊**
 
 ```javascript
 // users/?foo=xyz が履歴スタックに追加される。

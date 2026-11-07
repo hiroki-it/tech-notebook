@@ -227,8 +227,6 @@ Pod 内のコンテナは、これを使用し、Service を介して Pod にリ
 > - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#discovering-services)
 > - [Kubernetes道場 9日目 - Serviceについて - Toku's Blog](https://cstoku.dev/posts/2018/k8sdojo-09/#%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fservice%E3%81%B8%E3%81%AE%E6%8E%A5%E7%B6%9A)
 
-**＊実装例＊**
-
 foo-service という Service を作成した場合の環境変数を示す。
 
 ```bash

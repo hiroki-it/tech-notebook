@@ -25,8 +25,6 @@ description: アルゴリズムロジック＠PHPの知見を記録していま�
 
 #### ▼ 最小選択法
 
-**＊実装例＊**
-
 `(1)`
 
 : 比較基準値を決める。
@@ -116,8 +114,6 @@ var_dump($result);
 <br>
 
 ### クイックソート
-
-**＊実装例＊**
 
 `(1)`
 
@@ -338,8 +334,6 @@ var_dump($result);
 ## 03. グラフ探索のアルゴリズム (難し過ぎで記入途中)
 
 ### ダイクストラ法による最良優先探索
-
-**＊実装例＊**
 
 ![経路図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/経路図.png)
 

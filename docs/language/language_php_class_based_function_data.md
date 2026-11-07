@@ -28,8 +28,6 @@ title: 【IT技術の知見】振る舞い／状態＠PHP
 
 振る舞いの処理を関数またはメソッドという。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -56,8 +54,6 @@ class Foo
 この状態はプロパティとも呼ばれる。
 
 本ノートでは、状態であることを意識するために、プロパティという言葉を使用しないものとする。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -86,8 +82,6 @@ class Foo
 
 #### ▼ オブジェクト指向の場合
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -110,8 +104,6 @@ class Foo
 #### ▼ 関数型の場合
 
 オブジェクトのすべてのデータが `public` であるなら、オブジェクト指向における隠蔽のメリットは、特にないかもしれない。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -138,8 +130,6 @@ foo($state);
 
 親クラス次第ではあるが、処理で `$state` の中身を隠蔽できる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -161,8 +151,6 @@ class Foo extends ParentFoo
 #### ▼ 関数型の場合
 
 処理で、`$state` の中身を隠蔽できないため、危険である。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -190,8 +178,6 @@ foo($state);
 処理で、`$state` の中身を隠蔽できる。
 
 カプセル化を参照。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -221,8 +207,6 @@ class Foo
 #### ▼ 関数型の場合
 
 処理で、`$state` の中身を隠蔽できないため、危険である。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -254,8 +238,6 @@ foo($state);
 しかし、static 修飾子をつけることにより、インスタンス化しなくともコールできる。
 
 状態は使用せず (静的) 、引数の値のみを使用して処理を実行する関数に対して使用する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -310,8 +292,6 @@ class Foo
 
 Getter では、状態を取得するのみではなく、何かしらの処理を加えたうえで取得すること。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -339,8 +319,6 @@ class ABC {
 
 『ミュータブル』なオブジェクトを実現できる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -361,8 +339,6 @@ class Test01 {
 マジック関数の `__construct()` 関数を持たせることにより、このデータを持っていなければならないとい制約を明示できる。
 
 Setter を持たせずに、`__construct()` 関数のみを持たせれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -441,8 +417,6 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 
 関数は定義しているが、データは定義していないような状況で使用する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 class Foo
@@ -496,8 +470,6 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 
 > - [【IT技術の知見】ドメイン駆動設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 class Foo
@@ -536,8 +508,6 @@ $foo->bar = "bar";
 インスタンス化時に実行したい処理を記述できる。
 
 Setter を持たせずに、`__construct()` 関数のみで値を設定すれば、ValueObject のような、『イミュータブル』なオブジェクトを実現できる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -767,8 +737,6 @@ $D = objB()->objC()->objD();
 
 ![再帰的](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再帰的.png)
 
-**＊実装例＊**
-
 以下のリンクも参考にせよ。
 
 > - [【IT技術の知見】アルゴリズムロジック＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html)
@@ -788,8 +756,6 @@ $D = objB()->objC()->objD();
 `(4)`
 
 : ソートを繰り返し実行する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -868,8 +834,6 @@ var_dump($result);
 
 #### ▼ `return;`
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -889,8 +853,6 @@ $foo->returnMethod(); // returnMethod()です。
 ```
 
 #### ▼ `exit;`
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -923,8 +885,6 @@ $foo->exitMethod(); // exitMethod()です。
 関数がコールされた場所に値を返却した後、そこで終了せず、`yield` の次の処理が続く。
 
 返却値は、`Generator` 型である。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -991,8 +951,6 @@ $dispatcher->dispatch("foo", "test");
 
 特定のイベント名が渡されたとき、それに対応づけられた関数をコールする。
 
-**＊実装例＊**
-
 フレームワークの `EventDispatcher` クラスが簡単である。
 
 ```injectablephp
@@ -1013,8 +971,6 @@ class FooEventDispatcher
 そこで、そのような関数では、一度コールされて集計した後、データに返却値を保持しておく。
 
 そして、再びコールされたときには、返却値をデータから取り出す。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1081,8 +1037,6 @@ class ResultCacher
 
 #### ▼ `use()` 関数のみに引数を渡す場合
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1108,8 +1062,6 @@ echo $optionName();
 
 #### ▼ `function()` 関数と `use()` 関数に引数を渡す場合
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 class Item
@@ -1134,8 +1086,6 @@ echo $optionName("BC");
 ```
 
 #### ▼ データの値として、無名関数を格納しておく裏技
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1177,8 +1127,6 @@ echo ($option->name)("BC");
 
 無名関数をコールしたいときは、`call_user_func()` 関数を使用する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1212,8 +1160,6 @@ echo $optionName;
 関数を引数として受け取ったり、関数自体を返したりする関数を『高階関数』と呼ぶ。
 
 #### ▼ 無名関数を使用しない場合
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1282,8 +1228,6 @@ $foo->higherOrder("第一引数", [$foo, "callbackMethod"]);
 
 #### ▼ 無名関数を使用する場合
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1315,8 +1259,6 @@ $foo->higherOrder($parentVar, function () use ($parentVar): string {
 <br>
 
 ### 高階関数を使いこなす！
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1444,8 +1386,6 @@ URL を文字列を定数として扱う。
 
 この定数がコールされたファイルの配置ディレクトリパスは、ルートディレクトリ基準で格納されている。
 
-**＊実装例＊**
-
 以下の実装を持つファイルを、`/var/www/foo` ディレクトリ下に配置しておき、`/vendor/autoload.php` ファイルと結合してパスを通す。
 
 ```injectablephp
@@ -1458,8 +1398,6 @@ require_once realpath(__DIR__ . "/vendor/autoload.php");
 #### ▼ `__FUNCTION__`
 
 この定数には、コールされた関数名が格納されている。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1488,8 +1426,6 @@ $foo->foo(); // foo が返却される。
 #### ▼ `__METHOD__`
 
 この定数がコールされたクラス名と関数名が、`{クラス名}::{関数名}` の形式で格納されている。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1524,8 +1460,6 @@ $foo->foo(); // Foo::foo が返却される。
 
 シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1538,8 +1472,6 @@ echo 'これは$fruitです。'; // これは、$fruitです。
 #### ▼ シングルクオーテーションと波括弧による変数展開
 
 シングルクオーテーションの中身はすべて文字列として認識され、変数は展開されない。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1595,8 +1527,6 @@ $value = 1;
 $result = &$value; // 値の入れ物を参照先として代入
 ```
 
-**＊実装例＊**
-
 変数の `$b` には、`$a` の参照によって 10 が格納される。
 
 ```injectablephp
@@ -1620,8 +1550,6 @@ echo $b; // 10
 $value = 1;
 $result = $value; // 1をコピーして代入
 ```
-
-**＊実装例＊**
 
 変数の `$b` には、`$a` の１行目の格納によって 2 が格納される。
 
@@ -1697,8 +1625,6 @@ fwrite($stderr, "エラーログです。");
 
 ファイルに文字列を出力する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1730,8 +1656,6 @@ file_put_contents(
 
 #### ▼ 数字
 
-**＊実装例＊**
-
 『`0` から `9` のいずれか』の数字を意味する。
 
 ```injectablephp
@@ -1746,8 +1670,6 @@ var_dump($result); // true
 ```
 
 #### ▼ アルファベット
-
-**＊実装例＊**
 
 『`a` から `z` のいずれか』または『A から Z のいずれか』のアルファベットを意味する。
 
@@ -1768,8 +1690,6 @@ var_dump($result); // true
 
 > - [正規表現：エスケープが必要な文字一覧 \| WWWクリエイターズ](https://www-creators.com/archives/3102)
 
-**＊実装例＊**
-
 『`?`』『`.`』『`*`』『`$`』のいずれかのメタ文字を意味する。
 
 ```injectablephp
@@ -1789,8 +1709,6 @@ var_dump($result); // 1
 ドットは任意の文字、アスタリスクは直前の文字が `0` 回以上反復すること、プラスは `1` 回以上反復することを意味する。
 
 > - [正規表現とワイルドカード、そして記号の意味 #Linux - Qiita](https://qiita.com/whisky-shusuky/items/d719c92c566c133f51b1)
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1832,8 +1750,6 @@ var_dump($result); // 1
 ```
 
 #### ▼ オプションとしてのパターン演算子
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

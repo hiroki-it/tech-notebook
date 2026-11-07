@@ -79,8 +79,6 @@ Active Record パターンで実装されている。
 
 Eloquent モデルを継承したクラスは、`INSERT` 文や `UPDATE` 文などのデータアクセスロジックを使用できるようになる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -103,8 +101,6 @@ class Foo extends Model
 Eloquent がクラス名の複数形をテーブル名と見なし、これをスネークケースにした文字列を `table` プロパティに自動的に代入する。
 
 また、テーブル名を自前で命名したい場合は、代入による Override を行ってもよい。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -134,8 +130,6 @@ class Foo extends Model
 ER 図における各テーブルのリレーションシップを元に、モデル間の関連性を定義する。
 
 `hasOne()` 関数、`hasMany()` 関数、`belongsTo()` 関数を使用して表す。
-
-**＊実装例＊**
 
 Department モデルで、`hasMany()` 関数を使用して、Department モデル (親) と Employees モデル (子) のテーブル関係を定義する。
 
@@ -227,8 +221,6 @@ Eloquent は、`primaryKey` プロパティの値を主キーのカラム名と�
 
 `keyType` プロパティで主キーのデータ型、また `incrementing` プロパティで主キーの自動増分を有効化するか否かを設定できる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -266,8 +258,6 @@ Eloquent は、`timestamps` プロパティの値が `true` のときに、Eloqu
 
 また、TIMESTAMP 型カラム名を自前で命名したい場合は、代入による Overide を行ってもよい。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -297,8 +287,6 @@ class Foo extends Model
 #### ▼ TIMESTAMP 型カラム読み出し時のデータ型変換
 
 DB からタイムスタンプ型カラムの Read 処理を実行すると同時に、Carbon の DateTime クラスに変換したい場合、`data` プロパティにて、カラム名を設定する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -334,8 +322,6 @@ class User extends Model
 
 特定のカラムのデフォルト値を設定したい場合、`attributes` プロパティにて、カラム名と値を定義する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -369,8 +355,6 @@ class Foo extends Model
 変更できるカラム名を `fillable` プロパティを使用して定義する。
 
 カラムが増えるたびに、実装する必要がある。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -444,8 +428,6 @@ Laravel では、プロパティを定義しなくても、Eloquent モデルか
 
 そのため、これを使用せずに、`constructor()` 関数を使用したコンストラクタインジェクション、またはセッターインジェクションを使用するようにする。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -473,8 +455,6 @@ class Foo extends Model
 Laravel では、`getFooBarAttribute()` という名前の関数を、`foo_bar` という名前でコールできる。
 
 一見、プロパティをコールしているように見えるため、注意が必要である。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -515,8 +495,6 @@ $fooName = $foo->name;
 
 PHP のオブジェクト型を JSON に変換 (シリアライズ) する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -548,8 +526,6 @@ return $users->toArray();
 
 JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。
 
-**＊実装例＊**
-
 ```injectablephp
 // 実装中...
 ```
@@ -561,8 +537,6 @@ JSON を PHP のオブジェクト型に変換 (デシリアライズ) する。
 #### ▼ `filter()` 関数
 
 コールバック関数の返り値が `true` であった要素をすべて抽出する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -580,8 +554,6 @@ $filtered->all();
 ```
 
 補足として、複数の条件を設定したいときは、早期リターンを使用する必要がある。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -607,8 +579,6 @@ $filtered->all();
 #### ▼ `first()` 関数
 
 コールバック関数の返り値が `true` であった最初の要素のみを抽出する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -776,8 +746,6 @@ Eloquent モデルには `create()` 関数がない。代わりに、 Eloquent �
 
 これにより、挿入されたレコードのプライマリーキーが取得され、Eloquent モデルの ID 値のプロパティに保持される。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -858,8 +826,6 @@ Eloquent モデルには `all()` 関数がない。代わりに、 Eloquent ビ�
 
 `toArray()` 関数で配列型に再帰的に変換できる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -895,8 +861,6 @@ Eloquent モデルには `find()` 関数がない。代わりに、 Eloquent ビ
 
 `toArray()` 関数で配列型に変換できる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -931,8 +895,6 @@ foreach を使用してコレクションから Eloquent モデルを取り出�
 
 そこで、`first()` 関数を使用して、Eloquent モデルを直接的に取得する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -961,8 +923,6 @@ class FooController extends Controller
 これにより、ページネーションで、1 ページ当たりのレコード数 (`limit`) と、次のページの開始レコード (`offset`) を定義できる。
 
 これらのパラメーターはクエリパラメーターとして渡すとよい。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -997,8 +957,6 @@ class FooController extends Controller
 並び替えた結果を取得するためには、`get()` 関数を使用する。
 
 プライマリーキーの昇順で取得する場合、`all()` 関数ではなく、`orderBy()` 関数を使用して、プライマリーキーの昇順を明示的に設定する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1035,8 +993,6 @@ class FooController extends Controller
 #### ▼ `sortBy()` 関数
 
 指定したカラムの昇順でレコードを並び替える SELECT 句を発行する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1105,8 +1061,6 @@ N+1 問題を防げる。
 ただし、`with()` 関数に他の関数をチェーンしてしまうと、Eager ロードの後に SQL を発行されてしまうため、Eager ロードの恩恵を得られなくなることに注意する。
 
 > - [\[Laravel\] Eloquent リレーションと Eager Loading #DB - Qiita](https://qiita.com/shosho/items/abf6423283f761703d01#%E3%83%AA%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%A1%E3%82%BD%E3%83%89%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%97%E3%81%BE%E3%81%86%E3%81%A8-eager-loading-%E3%81%AB%E3%81%97%E3%81%A6%E3%81%A6%E3%82%82%E6%84%8F%E5%91%B3%E3%81%8C%E3%81%AA%E3%81%84%E3%81%AE%E3%81%A7%E6%B3%A8%E6%84%8F)
-
-**＊実装例＊**
 
 コントローラーにて、Department (親) と、これに紐付く Employee (子) を読み出す。
 
@@ -1226,8 +1180,6 @@ Eloquent ビルダーの `fill()` 関数で挿入先のカラムと値を設定�
 
 `save()` 関数は `CREATE` 処理も実行できるが、`fill()` 関数で ID 値を割り当てた場合は、`UPDATE` 処理が実行される。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1310,8 +1262,6 @@ Eloquent モデルの `destroy`/`delete()` 関数を使用する。
 手順として、テーブルに対応する Model にて、SoftDeletes の Trait を読み込む。
 
 DB マイグレーション時に追加される `delete_at` カラムを SQL で取得するときは、DataTime クラスへ変換できるようにしておく。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1481,8 +1431,6 @@ final class FooDTO extends Model
 
 #### ▼ `create()` 関数
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1559,8 +1507,6 @@ class FooDTO extends Model
 
 #### ▼ `find()` 関数
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1598,8 +1544,6 @@ class FooRepository extends Repository implements DomainFooRepository
 ```
 
 #### ▼ `all()` 関数
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1647,8 +1591,6 @@ class FooRepository extends Repository implements DomainFooRepository
 ### UPDATE
 
 #### ▼ `save()` 関数
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1718,8 +1660,6 @@ class FooDTO extends Model
 ### DELETE
 
 #### ▼ `destroy`/`delete()` 関数
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

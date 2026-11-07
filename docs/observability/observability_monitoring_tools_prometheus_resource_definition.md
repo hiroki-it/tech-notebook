@@ -145,8 +145,6 @@ $ kubectl port-forward svc/alertmanager -n prometheus 9093:9093
 
 Node の外から Prometheus のダッシュボードをネットワークに公開する場合、Node 外から Prometheus サーバーにインバウンド通信が届くようにする必要がある。
 
-**＊実装例＊**
-
 Ingress を作成する。
 
 ```yaml
@@ -213,8 +211,6 @@ spec:
 #### ▼ Alertmanager の場合
 
 Node の外から Alertmanager のダッシュボードをネットワークに公開する場合、Node 外から Alertmanager にインバウンド通信が届くようにする必要がある。
-
-**＊実装例＊**
 
 Ingress を作成する。
 

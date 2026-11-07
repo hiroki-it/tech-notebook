@@ -37,8 +37,6 @@ description: 統計分析＠Rの知見を記録しています。
 
 ![相関分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/相関分析.png)
 
-**＊実装例＊**
-
 ```r
 # データを読み込む。
 sample <- read.table("sample_edit.txt", header = T)
@@ -82,8 +80,6 @@ cor(ts, method = "pearson")
 
 ![単回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単回帰式.png)
 
-**＊実装例＊**
-
 ```r
 # データを読み込む。
 sample <- read.table("sample_edit.txt", header = T)
@@ -122,8 +118,6 @@ summary(Reg)
 #### ▼ 回帰方程式
 
 ![重回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/重回帰式.png)
-
-**＊実装例＊**
 
 ```r
 # データを読み込む。
@@ -191,8 +185,6 @@ summary(Reg)
 
 ![ロジスティック回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロジスティック回帰式.png)
 
-**＊実装例＊**
-
 ```r
 # データを読み込む。
 sample<-read.csv("CV_data2.csv",header=T)
@@ -233,8 +225,6 @@ exp(result_lg2$coefficients)
 
 ![決定木分析_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定木分析_2.png)
 
-**＊実装例＊**
-
 ```r
 # データを読み込む。
 sample <- read.csv("CV_data.csv", header = T)
@@ -265,8 +255,6 @@ fancyRpartPlot(tree)
 データ間の同一性を明らかにできる。
 
 ![階層クラスター分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/階層クラスター分析.png)
-
-**＊実装例＊**
 
 ```r
 # データを読み込む。

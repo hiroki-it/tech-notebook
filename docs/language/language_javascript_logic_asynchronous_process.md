@@ -20,8 +20,6 @@ title: 【IT技術の知見】非同期処理ロジック＠JavaScript
 
 これは非同期処理である。
 
-**＊実装例＊**
-
 非同期化する処理を `setTimeout()` 関数に渡し、処理を遅らせる。
 
 先行の処理をバックグラウンドで実行したまま、後続する処理が先に実行される。
@@ -316,8 +314,6 @@ rejectFunc.catch((err) => {
 
 ### コンストラクタを使用する場合
 
-**＊実装例＊**
-
 ```javascript
 const resolveFunc = new Promise((resolve, reject) => {
   return resolve("resolve!!");
@@ -358,8 +354,6 @@ resolveFunc.then((value) => {
 Promise や、そのコンストラクタに渡す関数を実装する必要がないため、可読性が高まる。
 
 また、仮に Promise オブジェクトをコールし、Promise オブジェクトが Promise オブジェクトに渡されてしまっても、結果的に入れ子にならないようによしなに処理してくれる。
-
-**＊実装例＊**
 
 以下のすべては、同じ処理を定義している。
 
@@ -409,8 +403,6 @@ Promise オブジェクトの `then()` 関数に相当するが、`then()` 関�
 
 また、await 宣言により、コールバック地獄のコードがわかりやすくなる。
 
-**＊実装例＊**
-
 ```javascript
 // Promiseオブジェクトのthen関数を使用した場合
 const asyncFunc = async () => {
@@ -429,8 +421,6 @@ const asyncFunc = async () => {
   console.log(response.data);
 };
 ```
-
-**＊実装例＊**
 
 ```javascript
 // Promiseオブジェクトのthen関数を使用した場合
@@ -484,8 +474,6 @@ const asyncFunc = async () => {
 - パッケージ内の関数のコール
 - 想定外のデータ型の入力
 
-**＊実装例＊**
-
 ```javascript
 const asyncFunc = async () => {
   return axios
@@ -533,8 +521,6 @@ const response = await retry(
   async (values) => {},
 );
 ```
-
-**＊実装例＊**
 
 ```typescript
 import retry from "async-retry";
@@ -593,8 +579,6 @@ JQuery パッケージの提供する独自の Promise オブジェクトであ�
 JQuery Promise オブジェクトが持つ関数。
 
 `ajax()` 関数によってレスポンスを受信した後、その結果を `done`、`fail`、`always` の `3` 個に分類し、これに応じたコールバック処理を実行する。
-
-**＊実装例＊**
 
 JQuery パッケージの `get()` 関数や `post()` 関数を使用した場合。
 
@@ -666,8 +650,6 @@ JQuery Promise オブジェクトが持つ関数。
 `ajax()` 関数によってレスポンスを受信した後、その結果を `then()` 関数の引数の順番で分類し、これに応じたコールバック処理を実行する。
 
 非同期処理の後に同期処理を行いたい場合に使用する。
-
-**＊実装例＊**
 
 JQuery パッケージの `ajax()` 関数を使用した場合。
 

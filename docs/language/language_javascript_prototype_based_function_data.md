@@ -55,8 +55,6 @@ const mycar = new car("Eagle", "Talon TSi", 1993);
 
 オブジェクトではない関数である。
 
-**＊実装例＊**
-
 ```javascript
 // 定義 (コールする場所が前後しても無関係)
 function foo() {
@@ -75,8 +73,6 @@ JavaScript でよく見かけるドルマーク。
 
 これは、関数の名前としてドルマークを使用しているのみである。
 
-**＊実装例＊**
-
 ```javascript
 // 定義
 function $() {
@@ -87,8 +83,6 @@ function $() {
 jQuery では、パッケージの読み出し宣言時に、『Jquery』という名前の代わりにドルマークを使用する仕様になってる。
 
 これと混乱しないように注意する。
-
-**＊実装例＊**
 
 ```javascript
 // jQuery.get() と同じ
@@ -125,8 +119,6 @@ asyncFunc(testParam, (err, data) => {
 
 関数の前で `export` を宣言する。
 
-**＊実装例＊**
-
 関数の定義と `export` の宣言を同時に実行する。
 
 ```javascript
@@ -155,8 +147,6 @@ export default foo;
 
 データを代入しないときに適用されるデータ型である。
 
-**＊実装例＊**
-
 ```javascript
 // 変数b: 初期化されていない (値が代入されていない)
 let b;
@@ -169,8 +159,6 @@ console.log(b); // undefined
 
 `null` は、undefined とは異なり、意図して代入しなければ適用されないデータ型である。
 
-**＊実装例＊**
-
 ```javascript
 // 変数a: 意図をもってnullを入れている
 const a = null;
@@ -181,8 +169,6 @@ console.log(a); // null
 #### ▼ undefined の返却
 
 undefined を返却する場合、`return` のみを記述する。
-
-**＊実装例＊**
 
 ```javascript
 function foo() {
@@ -397,8 +383,6 @@ let foo = "foo";
 
 配列の値を、任意の名前の変数に代入する。
 
-**＊実装例＊**
-
 ```javascript
 const array = [1, 2, 3];
 
@@ -413,8 +397,6 @@ console.log(baz); // 3
 #### ▼ オブジェクト
 
 オブジェクトの値を、プロパティ名と同じ名前の変数に代入する。
-
-**＊実装例＊**
 
 ```javascript
 const obj = {

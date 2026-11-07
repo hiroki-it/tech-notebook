@@ -168,8 +168,6 @@ DB にクエリを送信し、データを取得できる。
 
 認証処理がある場合、ローダーの前に実行する必要がある。
 
-**＊実装例＊**
-
 ```jsx
 import {json} from "@remix-run/node";
 import {useLoaderData} from "@remix-run/react";
@@ -206,8 +204,6 @@ export const loader = async () => {
 #### ▼ useLoaderData
 
 ローダーで取得したデータを出力できる。
-
-**＊実装例＊**
 
 ```tsx
 import {json} from "@remix-run/node";
@@ -798,8 +794,6 @@ app/                        # URL パス
 └── root.tsx
 ```
 
-**＊実装例＊**
-
 ```jsx
 // <ルート以降のパス>._index.tsx
 export default function Foo() {
@@ -832,8 +826,6 @@ app/                        # URL パス
 
 > - [ドキュメントを読んだのでRemixのRouting(v2)を整理する](https://zenn.dev/heysya_onsya/articles/5aae742104b32a#%E5%8B%95%E7%9A%84%E3%82%BB%E3%82%B0%E3%83%A1%E3%83%B3%E3%83%88%EF%BC%88dynamic-segments%EF%BC%89)
 
-**＊実装例＊**
-
 ```jsx
 // posts.$postId.tsxファイル
 export default function Post() {
@@ -860,8 +852,6 @@ export default function Post() {
 
 これにより、親からレイアウトを引き継ぎつつ、パスは引き継がない。
 
-**＊実装例＊**
-
 `_home.auth.tsx` ファイルは、親の `home.tsx` ファイルのレイアウトを引き継いでいる。
 
 しかし、`/home/auth` パスではなく、`/auth` パスになる。
@@ -886,8 +876,6 @@ app/                       #  URL パス                   引き継ぐレイア
 #### ▼ 親の `_<ルート以降のパス>.tsx` (親がパスレスルート)
 
 親のファイル名にプレフィクスとして `_` (パスレスルート) をつける。
-
-**＊実装例＊**
 
 `_auth.<任意の名前>.tsx` ファイルは、親の `_auth.tsx` ファイルのレイアウトを引き継いでいる。
 
@@ -1040,8 +1028,6 @@ Remix がコンポーネントであることを認識するために、名前�
 
 一方で、`action` 値を `/foos` パスとした場合、`routes/foos.jsx` ファイルにデータを送信する。
 
-**＊実装例＊**
-
 ここでは `action` 値を省略している。
 
 ```jsx
@@ -1070,8 +1056,6 @@ URL を書き換える。
 ページネーション処理に使える。
 
 Link コンポーネントが URL クエリストリングのページ値を書き換えると、Remix のローダーがそれを検知し、新しい URL クエリストリングで再リクエストを送信することで別のページが表示される。
-
-**＊実装例＊**
 
 ```tsx
 import {Link, useSearchParams} from "@remix-run/react";

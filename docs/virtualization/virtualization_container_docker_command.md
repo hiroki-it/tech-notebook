@@ -741,8 +741,6 @@ $ docker run -d -it --name <コンテナ名> /bin/bash \
     --mount type=volume, src=<ホストボリューム名> volume-driver=local, dst=<コンテナ側ディレクトリ>
 ```
 
-**＊実装例＊**
-
 Dockerfile でボリュームマウントを実行する場合、コンテナ側のマウントポイントを設定する。
 
 docker エリアのマウントポイントは、自動的に作成される。

@@ -182,8 +182,6 @@ use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
 シェルスクリプト (`.sh`) 、またはバッチファイル (`.bat`) におけるコマンドの処理内容を定義できる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 

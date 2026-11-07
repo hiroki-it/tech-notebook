@@ -52,8 +52,6 @@ Amazon ECS のために、CodeBuild の設定する。
 > - [Build specification reference for CodeBuild - AWS CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-spec-ref.html)
 > - [Tutorial: Amazon ECS Standard Deployment with CodePipeline - AWS CodePipeline](https://docs.aws.amazon.com/codepipeline/latest/userguide/ecs-cd-pipeline.html)
 
-**＊実装例＊**
-
 コンテナをビルドする場合を示す。
 
 コミットのハッシュ値でコンテナイメージをプッシュしたい場合、CodeBuild の設計上、`latest` タグもプッシュしておいたほうがよい。

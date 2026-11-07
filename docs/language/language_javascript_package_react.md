@@ -327,8 +327,6 @@ useEffect(
 
 #### ▼ 第一引数
 
-**＊実装例＊**
-
 ```jsx
 import {useEffect, useState} from "react";
 
@@ -360,8 +358,6 @@ export const MyComponent = () => {
 > - [React hooksでapiなどの非同期処理(async/await)を実施する方法と注意点 #JavaScript - Qiita](https://qiita.com/apollo_program/items/01fa3c4621155f64f930#useeffect%E3%81%AE%E7%AC%AC%E4%BA%8C%E5%BC%95%E6%95%B0%E3%82%92%E8%AA%A4%E3%82%8B%E3%81%A8%E7%84%A1%E9%99%90%E3%83%AB%E3%83%BC%E3%83%97%E3%81%8C%E7%99%BA%E7%94%9F%E3%81%99%E3%82%8B)
 
 #### ▼ 第二引数
-
-**＊実装例＊**
 
 ```jsx
 import React, {useState, useEffect} from "react";

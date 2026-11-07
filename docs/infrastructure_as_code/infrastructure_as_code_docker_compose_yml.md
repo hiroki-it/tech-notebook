@@ -51,8 +51,6 @@ Dockerfile に直接的に実装することとの使い分けとして、Docker
 
 他に、マルチステージビルドを使用しており、すべてのステージで共通した変数を展開したい場合、このオプションを使用すると展開する変数を共通化できる。
 
-**＊実装例＊**
-
 ```yaml
 services:
   app:
@@ -66,8 +64,6 @@ ARG PARAM
 ENV PARAM=${PARAM}
 ```
 
-**＊実装例＊**
-
 ```yaml
 # ここに実装例
 ```
@@ -80,8 +76,6 @@ ENV PARAM=${PARAM}
 
 指定した Dockerfile のあるディレクトリをカレントディレクトリとして、docker デーモンに送信するディレクトリを設定する。
 
-**＊実装例＊**
-
 ```yaml
 services:
   app:
@@ -92,8 +86,6 @@ services:
 #### ▼ `dockerfile`
 
 Dockerfile までのパスを設定する。
-
-**＊実装例＊**
 
 ```yaml
 services:
@@ -110,8 +102,6 @@ services:
 
 ステージを指定しない場合、一番最後に定義したステージを使用してビルドが実行される。
 
-**＊実装例＊**
-
 ```yaml
 services:
   app:
@@ -126,8 +116,6 @@ services:
 コンテナの起動時、最初に実行するコマンドを設定する。
 
 Dockerfile を必要とせず、ベンダーが提供するイメージをそのまま使用するような場合に役立つ。
-
-**＊実装例＊**
 
 mysql イメージを使用してコンテナを作成するときに、最初に文字コードを設定するコマンドを実行する。
 
@@ -148,8 +136,6 @@ services:
 
 また、接尾辞をベンダー名とするとよい。
 
-**＊実装例＊**
-
 ```yaml
 services:
   web:
@@ -161,8 +147,6 @@ services:
 ### `depends_on`
 
 サービスを起動する順番を設定する。
-
-**＊実装例＊**
 
 DB サービスの起動後に、該当するコンテナを起動する。
 
@@ -182,8 +166,6 @@ services:
 Dockerfile 内での環境変数とは異なり、マルチステージビルドの全ステージで使用できる。
 
 dotenv 系パッケージを使用しなくてもよくなる。
-
-**＊実装例＊**
 
 mysql イメージを使用した場合、DB の環境変数の設定が必要である。
 
@@ -318,15 +300,11 @@ services:
 
 ### `hostname`
 
-**＊実装例＊**
-
 コンテナに割り当てられるプライベート IP アドレスへ、指定したホスト名をマッピングする。
 
 マッピングは、`/etc/hosts` ファイルに書き込まれる。
 
 もし設定しなかった場合、サービス名またはコンテナ名がホスト名として扱われる。
-
-**＊実装例＊**
 
 ```yaml
 services:
@@ -354,8 +332,6 @@ ff02::2 ip6-allrouters
 イメージに名前をつける。
 
 デフォルトでは、『`プロジェクト名_サービス名`』となる。
-
-**＊実装例＊**
 
 ```yaml
 services:
@@ -391,8 +367,6 @@ services:
 
 ログのフォワーディング元よりも先に起動する必要がある。
 
-**＊実装例＊**
-
 ```yaml
 services:
   app:
@@ -422,8 +396,6 @@ services:
 コンテナを接続するうち/外ネットワークのエイリアスを設定する。
 
 ネットワーク名ではなく、エイリアスを指定することに注意する。
-
-**＊実装例＊**
 
 ```yaml
 networks:
@@ -522,8 +494,6 @@ $ docker network inspect <プロジェクト名>_default
 
 コンテナの CPU アーキテクチャ (例：Intel、AMD、ARM) を設定する。
 
-**＊実装例＊**
-
 ```yaml
 services:
   app:
@@ -537,8 +507,6 @@ services:
 ホストとコンテナの間のポートフォワーディングを設定する。
 
 コンテナのみポート番号を指定した場合、ホスト側のポート番号はランダムになる。
-
-**＊実装例＊**
 
 ```yaml
 services:
@@ -561,8 +529,6 @@ services:
 
 `docker compose` コマンドの裏側では、`docker run` コマンドが実行される。`i` オプションを有効化するか否かを設定する。
 
-**＊実装例＊**
-
 ```yaml
 services:
   app:
@@ -576,8 +542,6 @@ services:
 `docker compose` コマンドの裏側では、`docker run` コマンドが実行される。`t` オプションを有効化するか否かを設定する。
 
 疑似ターミナルを割り当てることで、`exit` の後もバックグラウンドでコンテナを起動させ続けられる。
-
-**＊実装例＊**
 
 ```yaml
 services:
@@ -595,8 +559,6 @@ services:
 
 Root 以外で実行するために使用する。
 
-**＊実装例＊**
-
 ```yaml
 services:
   app:
@@ -610,8 +572,6 @@ services:
 最上層と `service` 内で、異なるボリューム名を記述した場合、バインドマウントを定義する。
 
 ホスト側の `/Users` ディレクトリをコンテナ側にマウントする。
-
-**＊実装例＊**
 
 ```yaml
 services:
@@ -629,8 +589,6 @@ services:
 docker エリアに Volume が作成され、`service` オプション内に設定した `volumes` オプションでボリュームマウントを実行する。
 
 > - [Docker上のMySQLのデータをVolumeでホストのディレクトリにマウントすると権限周りで面倒なことになる #docker-compose - Qiita](https://qiita.com/ysd_marrrr/items/e8a50c43cff87951385c)
-
-**＊実装例＊**
 
 MySQL コンテナの datadir ディレクトリ (`/var/lib/mysql`) に、docker エリアのボリュームをマウントする。
 
@@ -673,8 +631,6 @@ mysqld: Can't create/write to file '/var/lib/mysql/is_writable' (Errcode: 13 - P
 ### 変数展開
 
 環境変数を `docker-compose.yml` ファイルに展開する。変数の展開にあたり、`docker-compose.yml` ファイルと同じ階層にある `.env` ファイルが自動的に読み込まれる。この展開に `env_file` オプションを使用できない。そのため、例えば `.env` ファイル以外の名前の環境変数ファイルを変数展開のために使用できない。
-
-**＊実装例＊**
 
 ```yaml
 services:
@@ -773,8 +729,6 @@ $ docker network inspect foo-network
 
 作成されるネットワーク名は、`<プロジェクト名>_<ネットワーク名>` になる。
 
-**＊実装例＊**
-
 フロントエンド領域とバックエンド領域が異なる `docker-compose.yml` ファイルで管理されている。
 
 フロントエンドコンテナとバックエンドコンテナの間で相互に通信できるように、ネットワークを公開する。
@@ -851,8 +805,6 @@ networks:
 
 NFS プラグインを使用することで、永続データを `/var/lib/docker/volumes` ディレクトリではなく、NFS ストレージに保管する。
 
-**＊実装例＊**
-
 以下に docker-compose を使用した場合を示す。
 
 ```yaml
@@ -895,8 +847,6 @@ mysql コンテナには `docker-entrypoint-initdb.d` ディレクトリがあ�
 具体的な実行タイミングについては、以下のリンクを参考にせよ。
 
 > - https://github.com/docker-library/mysql/blob/master/8.0/Dockerfile.debian#L92-L93
-
-**＊実装例＊**
 
 mysql コンテナに、PHPUnit の実行時のみ使用する DB を追加する。以下のような、`docker-compose.yml` ファイルを作成する。
 

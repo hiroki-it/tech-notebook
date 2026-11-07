@@ -17,8 +17,6 @@ description: SQLAlchemy ORM＠FastAPIの知見を記録しています。
 
 ### DB への接続
 
-**＊実装例＊**
-
 ```python
 # SessionLocalクラスを作成します。
 # @see https://fastapi.tiangolo.com/ja/tutorial/sql-databases/#create-a-sessionlocal-class
@@ -59,8 +57,6 @@ def get_db():
 ### モデルの定義
 
 基底モデルのインスタンスを `declarative_base()` 関数で作成し、この変数を各モデルで継承する。
-
-**＊実装例＊**
 
 ```python
 from sqlalchemy.ext.declarative import declarative_base

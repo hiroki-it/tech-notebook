@@ -71,8 +71,6 @@ Vue.js のパッケージの 1 つで、状態を管理する。
 
 クラスベースオブジェクト指向でいうところの、Setter 関数に相当する。
 
-**＊実装例＊**
-
 ```javascript
 // Vuexパッケージを読み込む。
 const vuex = require("vuex");
@@ -164,8 +162,6 @@ module.exports = new Vuex.Store({
 #### ▼ `mapActions()` ヘルパー
 
 コンポーネントの `methods: {}` に、`Vuex.Store()` 関数の `actions:{}` をマッピングし、コール可能にする。
-
-**＊実装例＊**
 
 ```html
 <!-- 子コンポーネント -->

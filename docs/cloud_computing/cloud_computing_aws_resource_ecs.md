@@ -355,8 +355,6 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 > - [ECS(Fargate)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_fargate_iamrole/)
 > - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
 
-**＊実装例＊**
-
 アプリケーションから Amazon CloudWatch Logs にログを送信するために、Amazon ECS タスクロールにカスタマー管理ポリシーを紐付ける。
 
 ```yaml
@@ -372,8 +370,6 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
     ],
 }
 ```
-
-**＊実装例＊**
 
 パラメーターストアから変数を取得するために、Amazon ECS タスクロールにインラインポリシーを紐付ける。
 
@@ -418,8 +414,6 @@ Amazon ECS タスク内のコンテナがリソースにリクエストを送信
     ],
 }
 ```
-
-**＊実装例＊**
 
 datadog エージェントが Amazon ECS クラスターやコンテナにリクエストを送信できるように、Amazon ECS タスク実行ロールにカスタマー管理ポリシーを紐付ける。
 
@@ -926,8 +920,6 @@ CI/CD パイプライン上で実行する以外に、ローカルマシンか�
 正規表現で設定する必要があり、加えて JSON では『`\`』を『`\\`』にエスケープしなければならない。
 
 コマンドが実行された後に、タスクは自動的に Stopped 状態になる。
-
-**＊実装例＊**
 
 Laravel の Seeder コマンドやロールバックコマンドを、ローカルマシンから実行する。
 

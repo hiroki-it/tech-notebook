@@ -447,8 +447,6 @@ REDIS_PORT=<Redisのポート>
 
 イベントに関するデータを保持するのみで、ビジネスロジックを持たない構成となる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -484,8 +482,6 @@ Eloquent モデルでは、DB アクセスに関する関数の実行開始や�
 
 紐付けは、プロパティで定義するか、各タイミングで実行される無名関数を使ってイベントを発生させる必要がある。
 
-**＊実装例＊**
-
 プロパティにて、`CREATE` 処理と `DELETE` 処理を独自イベントクラスに紐付ける。
 
 ```injectablephp
@@ -520,8 +516,6 @@ class User extends Authenticatable
 
 > - [8.x Eloquentの準備 Laravel](https://readouble.com/laravel/8.x/ja/eloquent.html#events)
 
-**＊実装例＊**
-
 無名関数にて、`CREATE` 処理を独自イベントクラスに紐付ける。
 
 ```injectablephp
@@ -554,8 +548,6 @@ class User extends Model
 #### ▼ 構成
 
 Listener クラスがコールされたときに実行する処理を `handle()` 関数に定義する。
-
-**＊実装例＊**
 
 ユーザーが作成されたときに、メールアドレスにメッセージを送信する。
 
@@ -590,8 +582,6 @@ event(new UserCreatedEvent($user));
 #### ▼ イベントとリスナーの紐付け
 
 EventServiceProvider クラスにて、Event クラスに紐付ける 1 つ以上の Listener クラスを設定する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -634,8 +624,6 @@ Eloquent モデルでは、インスタンス作成時に `boot()` 関数がコ�
 Trait に `boot+<クラス名>` という名前の静的関数が定義されていると、`bootTraits()` 関数はこれをコールする。
 
 `bootTraits()` 関数のなかで Eloquent モデルのイベントを発生させることにより、すべての Eloquent モデルのイベントを一括で発火させられる。
-
-**＊実装例＊**
 
 あらかじめ Trait を定義する。
 
@@ -947,8 +935,6 @@ Facade に登録されたクラス (Facade クラス) と ServiceContainer を�
 
 new 演算子でインスタンスを作成する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -978,8 +964,6 @@ $foo->method();
 ただし、自作クラスを Facade を使用してインスタンス化すると、スパゲッティな『Composition (合成) 』の依存関係を生じさせてしまう。
 
 例えば、Facade のなかでも `Route` のように、代替するより Facade を使ったほうが便利な部分以外は、使用しないほうがよい。
-
-**＊実装例＊**
 
 Facade として使用したいクラスを定義する。
 
@@ -1309,8 +1293,6 @@ Active Record のロジックを持たないため、Repository パターンの�
 
 参考リンクによると、MongoDB に対してトランザクション処理を実行する/行わない場合を比較して、処理時間が 17%弱長くなったとのこと。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -1354,8 +1336,6 @@ class FooRepository extends Repository implements DomainFooRepository
 #### ▼ `beginTransaction()` 関数、`commit()` 関数、`rollback()` 関数、
 
 トランザクション内に含まれる一連の処理（トランザクション開始、コミット、ロールバック）を別々に実行する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1422,8 +1402,6 @@ Nginx でもヘルスチェックの返信を実装できるが、アプリケ�
 
 RouteServiceProvider も参照せよ。
 
-**＊実装例＊**
-
 以下のような構成があるとする。
 
 Web サーバーではヘルスチェックエンドポイントを設けず、App サーバー側にヘルスエンドポイント (例：`/healthcheck`) を設ける。
@@ -1452,8 +1430,6 @@ Route::get("/healthcheck", function (): \Illuminate\Http\Response {
 コントローラーへのルーティング時に実行する Middleware クラスを設定する。
 
 引数として、`App\Http\Kernel.php` ファイルで定義された Middleware クラスのエイリアスを設定する。
-
-**＊実装例＊**
 
 認証方法として Web ガードを使用する場合、`auth` エイリアスを設定する。
 
@@ -1522,8 +1498,6 @@ Route::middleware("auth:api")->group(function (): void {
 
 エンドポイントが共通として持つ最初のパスを、接頭辞として定義する。
 
-**＊実装例＊**
-
 各エンドポイントの最初の『`foos`』を接頭辞として定義する。
 
 ```injectablephp
@@ -1545,8 +1519,6 @@ Route::prefix("foos")->group(function (): void {
 パスパラメーターに対するバリデーションルールを正規表現で定義し、加えて実行する。
 
 RouteServiceProvider の `boot()` 関数にて、`pattern()` 関数で制約を設定することによって、ルーティング時に where を使用する必要がなくなる。
-
-**＊実装例＊**
 
 userId の形式を『0〜9 が 1 つ以上』に設定している。
 
@@ -1571,8 +1543,6 @@ Route::prefix("foos")->group(function (): void {
 または、RouteServiceProvider クラスに `pattern()` 関数を定義すると、各エンドポイントに対する正規表現を一括で実行できる。
 
 > - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints)
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1602,8 +1572,6 @@ class RouteServiceProvider extends ServiceProvider
 #### ▼ `group()` 関数
 
 複数のグループを組み合わせる場合、`group()` 関数を使用する。
-
-**＊実装例＊**
 
 エンドポイントの接頭辞とミドルウェアの指定を定義する。
 
@@ -1667,8 +1635,6 @@ return [
 ];
 ```
 
-**＊実装例＊**
-
 Storage ファサードの `disk()` 関数を使用して local ディスクを指定する。
 
 `file.txt` ファイルを `storage/app/file.txt` として保管する。
@@ -1721,8 +1687,6 @@ return [
 ];
 ```
 
-**＊実装例＊**
-
 Storage ファサードの `disk()` 関数を使用して public ディスクを指定する。
 
 また、`file.txt` ファイルを `storage/app/public/file.txt` として保管する。
@@ -1744,8 +1708,6 @@ FILESYSTEM_DRIVER=s3
 
 Storage::put("file.txt", "file.txt");
 ```
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1826,8 +1788,6 @@ return [
 ];
 ```
 
-**＊実装例＊**
-
 Storage ファサードの `disk()` 関数を使用して s3 ディスクを指定する。
 
 また、`file.txt` ファイルを S3 バケットのルートに `file.txt` として保管する。
@@ -1869,8 +1829,6 @@ Validate ファサードの `make()` 関数を使用して、ルールを定義�
 ルールに反すると、1 つ目のルール名 (例：`required`) に基づき、`validation.php` ファイルから対応するエラーメッセージを自動的に選択する。
 
 次に、`fails()` 関数を使用して、バリデーションでエラーが発生した場合の処理を定義する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1998,8 +1956,6 @@ $auth = auth();
 
 環境変数ファイル名とキー名をドットで指定し、事前に設定された値を出力する。
 
-**＊実装例＊**
-
 デフォルトで搭載されている `app.php` ファイルの `timezone` キーの値を出力する。
 
 ```injectablephp
@@ -2013,8 +1969,6 @@ $value = config("app.timezone");
 任意の名前の php 形式ファイルを `config` ディレクトリ配下に作成しておく。
 
 これは、config ヘルパーで読み込める。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -2067,8 +2021,6 @@ $hash = bcrypt('foo'); // 『foo』をハッシュ化して、『$2y$10$ZkYG.whh
 
 > - [framework/src/Illuminate/Contracts/Routing/ResponseFactory.php at 8.x · laravel/framework · GitHub](https://github.com/laravel/framework/blob/8.x/src/Illuminate/Contracts/Routing/ResponseFactory.php)
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -2099,8 +2051,6 @@ class FooController extends Controller
 また、View クラスの `header()` 関数に HTTP ヘッダー値を設定する。
 
 `response()` ヘルパーは初期値として `200` ステータスが設定されているが、`view()` 関数や `setStatusCode()` 関数を使用して、明示的に設定してもよい。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -2260,8 +2210,6 @@ Farker クラスは、プロパティにランダムなデータを保持して�
 
 #### ▼ Factory によるレコード定義
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -2313,8 +2261,6 @@ class Foo
 #### ▼ Factory による Seed の初期データ量産
 
 Factory の定義を基にして、指定した数だけ Seed の初期データを量産する。
-
-**＊実装例＊**
 
 FooSeeder を定義し、`50` 個のダミーユーザーデータを量産する。
 
@@ -2414,8 +2360,6 @@ class DatabaseSeeder extends Seeder
 
 バリデーションでエラーが発生した場合、Handler クラスの `invalid()` 関数がコールされ、元の Web ページにリダイレクトされる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -2454,8 +2398,6 @@ class FooController extends Controller
 ```
 
 注意点として、ルールによっては、配列を使用せずとも定義できる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -2497,8 +2439,6 @@ FormRequest クラスの `validated()` 関数を使用して、バリデーシ�
 
 バリデーションでエラーが発生した場合、Handler クラスの `invalid()` 関数がコールされ、元の Web ページにリダイレクトされる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -2532,8 +2472,6 @@ class FooController extends Controller
 FormRequest クラスの `rules()` 関数を使用して、ルールを定義する。
 
 ルールに反すると、1 つ目のルール名 (例：`required`) に基づき、`validation.php` ファイルから対応するエラーメッセージを自動的に選択する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -2758,8 +2696,6 @@ class FooRequest extends FormRequest
 
 `validation.php` ファイルでメッセージを定義し、これを参照してもよい。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -2820,8 +2756,6 @@ class FooRequest extends FormRequest
 
 FormRequest クラスの `session()` 関数を使用して、セッション変数を取得する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -2866,8 +2800,6 @@ $request->session()
 #### ▼ `authorize()` 関数
 
 ユーザーがリソースに対して CRUD を実行する権限を持っているかを、コントローラーの関数を実行する前に、判定する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -2918,8 +2850,6 @@ class UpdateCommentRequest extends FormRequest
 
 これらのクラスはクロージャー (無名関数) として、`next` 変数に格納されている。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -2949,8 +2879,6 @@ class FooBeforeMiddleware
 あらかじめ、FormRequest クラスを、前の Middleware クラスや Controller クラスから受け取る必要がある。
 
 これらのクラスはクロージャー (無名関数) として、`next` 変数に格納されている。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -3017,8 +2945,6 @@ CSRF トークンによる CSRF の防御については、以下のリンクを
 #### ▼ Kernel
 
 Middleware クラスをコールするときの方法をカスタマイズできる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -3111,8 +3037,6 @@ class Kernel extends HttpKernel
 
 クエリパラメーターとメッセージボディの両方を取得する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -3148,8 +3072,6 @@ class FooController extends Controller
 
 クエリパラメーターを取得する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -3175,8 +3097,6 @@ class FooController extends Controller
 
 パスパラメーターを取得する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -3199,8 +3119,6 @@ class FooController extends Controller
 ```
 
 代わりに、コントローラーの第二引数にパスパラメーター名を記述することにより、パスパラメーターの値を取得してもよい。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -3409,8 +3327,6 @@ return [
 
 エラーメッセージを定義するとき、`sprintf()` 関数を使用すると便利である。
 
-**＊実装例＊**
-
 外部の API へリクエストを送信し、データを取得する。
 
 取得した JSON 型データを、クライアントにレスポンスする。
@@ -3501,8 +3417,6 @@ return [
 
 `down()` 関数で `up()` 関数の結果をロールバックする。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -3543,8 +3457,6 @@ class CreateFooTable extends Migration
 
 指定したカラムを追加する。
 
-**＊実装例＊**
-
 カラムを追加するためだけに DB マイグレーションファイルを作成する。
 
 ```bash
@@ -3583,8 +3495,6 @@ $ php artisan migrate
 #### ▼ `renameColumn()` 関数
 
 指定したカラムの名前を変更する。
-
-**＊実装例＊**
 
 カラム名を変更するためだけに DB マイグレーションファイルを作成する。
 
@@ -3635,8 +3545,6 @@ $ php artisan migrate
 
 指定したカラムの DB カラム型を変更する。
 
-**＊実装例＊**
-
 DB カラム型を変更するためだけに DB マイグレーションファイルを作成する。
 
 ```bash
@@ -3685,8 +3593,6 @@ $ php artisan migrate
 #### ▼ `dropColumn()` 関数
 
 指定したカラムを削除する。
-
-**＊実装例＊**
 
 カラムを削除するためだけに DB マイグレーションファイルを作成する。
 
@@ -3744,8 +3650,6 @@ $ php artisan migrate
 
 自動増分のカラムは `1` 個のテーブルに 1 つしか定義できず、他の ID カラムは `unsignedBigInteger()` 関数を使用して定義する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -3789,8 +3693,6 @@ Schema::create("foos", function (Blueprint $table): void {
 
 VARCHAR 型カラムを作成する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -3808,8 +3710,6 @@ Schema::create("foos", function (Blueprint $table): void {
 #### ▼ `timestamp()` 関数
 
 TIMESTAMP 型カラムを作成する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -3847,8 +3747,6 @@ Schema::create("foos", function (Blueprint $table): void {
 複数の値を設定した場合は、それぞれに通信が送信される。
 
 `toMail()` 関数、`toSms()` 関数、`toSlack()` 関数、`toArray()` 関数を使用して、Laravel の標準のチャンネルに渡す通知内容を定義できる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -4023,8 +3921,6 @@ Laravel がデフォルトで用意しているチャンネル以外に送信し
 
 これは、Notification クラスの `via()` 関数で使用される。
 
-**＊実装例＊**
-
 Amazon SNS を受信チャンネルとする。
 
 AWS から配布されているパッケージが必要である。
@@ -4190,8 +4086,6 @@ Resource クラスの `toArray()` 関数では、`this` 変数は自身ではな
 Controller にて、Resource クラスに Eloquent モデルを渡すようにする。
 
 Laravel はレスポンスの JSON 型データを作成するために、まず `toArray()` 関数により配列化し、加えてこれを JSON 型データに変換する。
-
-**＊実装例＊**
 
 Foo クラスからデータを取り出し、配列化する。
 
@@ -4372,8 +4266,6 @@ class Kernel extends HttpKernel
 ルーティング時に使用するパラメーター名とコントローラーの関数の引数型と変数名が同じであり、かつパラメーターに数値が割り当てられた場合、その数値を ID とする Eloquent モデルが自動的にインジェクションされる。
 
 > - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#implicit-binding)
-
-**＊実装例＊**
 
 ルーティング時に、パスパラメーター名を `user` としておく。
 
@@ -4705,8 +4597,6 @@ class DatabaseSeeder extends Seeder
 
 そのため、ServiceContainer へのクラスのバインドが自動的に完了する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -4766,8 +4656,6 @@ Laravel では、クラスは ServiceContainer に自動的にバインドされ
 ただし、ユニオン型の場合は、ServiceContainer が注入するクラスを特定できないため、リゾルブは実行できない。
 
 > - [8.x サービスコンテナ Laravel](https://readouble.com/laravel/8.x/ja/container.html#automatic-injection)
-
-**＊実装例＊**
 
 バインドする。
 
@@ -4864,8 +4752,6 @@ $qux = new Qux($foo1);
 
 関数の引数でクラスを指定しさえすれば、そのクラスのインスタンスが渡されるため、自動的に依存オブジェクト注入が実行されたことになる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -4928,8 +4814,6 @@ Laravel ではクラスが自動的にバインドされ、そのインスタン
 
 この方法は、上位レイヤーが抽象に依存することが必要な場面 (例：依存性逆転の原則) で役立つ。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -4976,8 +4860,6 @@ class Interactor
 `make()` 関数の引数にクラスの名前空間を渡すことにより、インスタンスがリゾルブされる。
 
 > - [8.x サービスコンテナ Laravel](https://readouble.com/laravel/8.x/ja/container.html#the-make-method)
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -5133,8 +5015,6 @@ return [
 
 > - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#parameters-global-constraints)
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -5174,8 +5054,6 @@ class RouteServiceProvider extends ServiceProvider
 加えて、Throttle ミドルウェアに制限名を渡し、指定したルートにリクエスト上限数を適用させる。もし制限を超えた場合、`configureRateLimiting()` 関数によって `429` ステータスでレスポンスが返信される。
 
 > - [8.x ルーティング Laravel](https://readouble.com/laravel/8.x/ja/routing.html#rate-limiting)
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -5352,8 +5230,6 @@ FormRequest クラスの `session()` 関数は Store クラスを返却する。
 
 > - https://laravel.com/api/8.x/Illuminate/Session/Store.html
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -5428,8 +5304,6 @@ Controller クラスから返却されたデータは、`{{ 変数名 }}` で取
 
 `
 
-**＊実装例＊**
-
 ```html
 <html>
   <body>
@@ -5445,8 +5319,6 @@ Controller クラスから返却されたデータは、`{{ 変数名 }}` で取
 MessageBag クラスは、Blade 上で `errors` 変数に格納されており、各関数をコールしてエラーメッセージを出力できる。
 
 > - https://laravel.com/api/8.x/Illuminate/Support/MessageBag.html
-
-**＊実装例＊**
 
 MessageBag クラスの `all()` 関数で、すべてのエラーメッセージを出力する。
 
@@ -5494,8 +5366,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 
 両者は、PHP でいう `extends` (クラスチェーン) と `require` (単なる読み出し) の関係に近い。
 
-**＊実装例＊**
-
 ```html
 <div>
   @include("shared.errors")
@@ -5510,8 +5380,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 #### ▼ `@yield`、`@extends`、`@section`、`@endsection`
 
 子テンプレートのレンダリング時に、子テンプレートで新しく定義した HTML の要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、`@yield("foo")` を定義する。
-
-**＊実装例＊**
 
 ```html
 <!-- 親テンプレート -->
@@ -5531,8 +5399,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 
 これを子テンプレートで `@extends` で継承すると、レンダリング時に、子テンプレートの `@section("foo")`-`@endsection` で定義した要素が、親テンプレートの `@yieid` 関数部分に出力される。
 
-**＊実装例＊**
-
 ```html
 <!-- 子テンプレート -->
 
@@ -5542,8 +5408,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 ```
 
 補足として、子テンプレートは、レンダリング時に以下のように出力される。
-
-**＊実装例＊**
 
 ```html
 <!-- 子テンプレート -->
@@ -5564,8 +5428,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 #### ▼ `@section`、`@show`、`@extends`、`@parent`
 
 子テンプレートのレンダリング時に、親テンプレートと子テンプレートそれぞれで新しく定義した HTML の要素を、親テンプレートの指定した場所に出力する。親テンプレートにて、`@section`-`@show` で要素を定義する。
-
-**＊実装例＊**
 
 ```html
 <!-- 親テンプレート -->
@@ -5589,8 +5451,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 
 親テンプレートと子テンプレートそれぞれの要素が出力される。
 
-**＊実装例＊**
-
 ```html
 <!-- 子テンプレート -->
 
@@ -5600,8 +5460,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 ```
 
 補足として、子テンプレートは、レンダリング時に以下のように出力される。
-
-**＊実装例＊**
 
 ```html
 <!-- 子テンプレート -->
@@ -5623,8 +5481,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 #### ▼ `@stack`、`@push`
 
 子テンプレートのレンダリング時に、`.css` ファイルと `.js` ファイルを動的に出力する場合に使用する。親テンプレートにて、`@stack("foo")` を定義する。これを継承した子テンプレートのレンダリング時に、`@push("foo")`-`@endpush` で定義した要素が、`@stack` 関数部分に出力される。
-
-**＊実装例＊**
 
 ```html
 <!-- 親テンプレート -->
@@ -5649,8 +5505,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 ### Twig との互換
 
 #### ▼ Blade で実装した場合
-
-**＊実装例＊**
 
 ```html
 <!-- 親テンプレート -->
@@ -5680,8 +5534,6 @@ MessageBag クラスの `all()` 関数で、すべてのエラーメッセージ
 ```
 
 #### ▼ Twig で実装した場合
-
-**＊実装例＊**
 
 ```html
 <!-- 親テンプレート -->

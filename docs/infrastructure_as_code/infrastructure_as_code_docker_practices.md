@@ -384,8 +384,6 @@ Unix ユーティリティをインストールするとキャッシュが残る
 
 キャッシュが使用されることはないため、削除してしまう。
 
-**＊実装例＊**
-
 ```dockerfile
 FROM centos:8
 
@@ -478,8 +476,6 @@ OS ベンダーが提供するベースイメージを使用すると、不要�
 
 > - https://cloud.google.com/architecture/best-practices-for-building-containers?hl=ja#build-the-smallest-image-possible
 
-**＊実装例＊**
-
 以下は CentOS をベースイメージに使っており、よくない例である。
 
 ```dockerfile
@@ -510,8 +506,6 @@ RUN dnf upgrade -y \
 # DockerHubのComposerイメージからバイナリファイルを取得
 COPY --from=composer:<バージョン> /usr/bin/composer /usr/bin/composer
 ```
-
-**＊実装例＊**
 
 以下は CentOS をベースイメージに使っており、よくない例である。
 
@@ -625,8 +619,6 @@ EOF
 
 #### ▼ コンパイル済バイナリファイルを再利用する場合
 
-**＊実装例＊**
-
 ```dockerfile
 # 中間イメージ
 FROM golang:1.7.3 AS builder
@@ -644,8 +636,6 @@ WORKDIR /root/
 COPY --from=builder /go/src/github.com/alexellis/href-counter/app .
 CMD ["./app"]
 ```
-
-**＊実装例＊**
 
 ```dockerfile
 FROM maven:3.5.0-jdk-8-alpine AS builder
@@ -665,8 +655,6 @@ CMD ["java", "-jar", "app.jar"]
 #### ▼ 実行環境別にステージを分ける場合
 
 実行環境別にステージを分けることにより、その環境に必要なファイルのみが含まれるようにする。
-
-**＊実装例＊**
 
 ```dockerfile
 #===================

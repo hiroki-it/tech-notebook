@@ -687,8 +687,6 @@ Amazon RDS にはダウンタイムに関する情報が多いが、Amazon Auror
 
 レスポンスと Amazon RDS イベントログから、ダウンタイムを計測する。
 
-**＊実装例＊**
-
 Amazon Aurora MySQL のアップグレードに伴うダウンタイムを計測する。
 
 踏み台サーバー (Amazon EC2) を経由して Amazon RDS に接続し、現在時刻を取得する SQL を送信する。

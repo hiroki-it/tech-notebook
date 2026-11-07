@@ -35,8 +35,6 @@ description: ブロック＠Terraformの知見を記録しています。
 
 #### ▼ AWS の場合
 
-**＊実装例＊**
-
 ```terraform
 # ---------------------------------------------
 # AWS ALB
@@ -63,8 +61,6 @@ resource "aws_lb" "this" {
 
 #### ▼ AWS の場合
 
-**＊実装例＊**
-
 例として、Amazon ECS タスク定義名を指定して、AWS から
 
 ```terraform
@@ -75,8 +71,6 @@ data "aws_ecs_task_definition" "this" {
   task_definition = "prd-foo-ecs-task-definition"
 }
 ```
-
-**＊実装例＊**
 
 AMI を検索したうえで、AWS から特定の AMI を取得する。
 
@@ -157,8 +151,6 @@ repository/
 ...
 ```
 
-**＊実装例＊**
-
 ルートモジュール内で `output` ブロックを使用したとする。
 
 ```terraform
@@ -229,8 +221,6 @@ repository/
 │   │   ├── variables.tf
 ...
 ```
-
-**＊実装例＊**
 
 ローカルモジュール内で `output` ブロックを使用したとする。
 
@@ -327,8 +317,6 @@ resource "foo" "this" {
 そのため、`output` ブロックではキー名を指定して出力できる。
 
 補足として、`for_each` 引数で作成した `resource` ブロックはアスタリスクでインデックス名を指定できないため、注意。
-
-**＊実装例＊**
 
 例として、VPC のサブネットを示す。
 
@@ -459,8 +447,6 @@ locals {
 
 単一値、list 型、map 型を定義できる。
 
-**＊実装例＊**
-
 AZ、サブネットの CIDR ブロック、RDS のパラメーターグループ値などは map 型として保持しておくとよい。
 
 また、IP アドレスのセット、ユーザーエージェントなどは list 型として保持しておくとよい。
@@ -539,8 +525,6 @@ variable "waf_blocked_user_agents" {
 
 そのため、無効値 (例：boolean 型であれば `false`、string 型であれば空文字、list 型であれば空配列など) を設定する。
 
-**＊実装例＊**
-
 `module` ブロックや `resource` ブロック内で、`count` 引数を使用して条件分岐を定義した場合に、そのフラグ値となる boolean 値をデフォルト値として定義するとよい。
 
 ```terraform
@@ -578,8 +562,6 @@ Terraform では、基本的に `resource` ブロック間の依存関係が暗�
 ALB Target group と ALB の `resource` ブロックを適切な順番で作成できないため、ECS の作成時にエラーが起こる。
 
 ALB の後に ALB target group を作成する必要がある。
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -727,8 +709,6 @@ resource "aws_s3_bucket_policy" "foo" {
 指定した数だけ、`resource` ブロックの作成を繰り返す。
 
 `count.index` オプションでインデックス数を展開する。
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -904,8 +884,6 @@ output "foo_kms_key_arn" {
 
 繰り返し処理を実行するときに、`count` 引数とは違い、要素名を指定して出力できる。
 
-**＊実装例＊**
-
 例として、subnet を繰り返し作成する。
 
 ```terraform
@@ -947,8 +925,6 @@ resource "aws_subnet" "public" {
 `for_each` 引数で作成された `resource` ブロックは `terraform apply` コマンド実行中に map 構造として扱われ、`resource` ブロック名の下層にキー名で `resource` ブロックが並ぶ構造になっている。
 
 これを参照するために、『`<resourceタイプ>.<resourceブロック名>[each.key].<attribute>`』とする。
-
-**＊実装例＊**
 
 パブリックサブネット、プライベートサブネット、プライベートサブネットに紐付く AWS NAT Gateway の設定が冗長化された AZ で共通の場合、`for_each` 引数で作成する。
 
@@ -1056,8 +1032,6 @@ output "public_c_subnet_id" {
 
 #### ▼ map 型で `output` ブロック
 
-**＊実装例＊**
-
 ```terraform
 # ---------------------------------------------
 # Variables Global
@@ -1122,8 +1096,6 @@ resource "aws_lb" "this" {
 
 #### ▼ map 型の場合
 
-**＊実装例＊**
-
 map 型のキー名と値の両方を設定値として使用する。
 
 例として、RDS パラメーターグループの `parameter` ブロックを、map 型通常変数を使用して繰り返し作成する。
@@ -1169,8 +1141,6 @@ resource "aws_rds_cluster_parameter_group" "this" {
 }
 ```
 
-**＊実装例＊**
-
 map 型の値を設定値として使用する。
 
 ```terraform
@@ -1208,8 +1178,6 @@ resource "aws_security_group" "ec2" {
 ```
 
 #### ▼ list 型の場合
-
-**＊実装例＊**
 
 例として、WAF の正規表現パターンセットの `regular_expression` ブロックを、list 型通常変数を使用して繰り返し作成する。
 
@@ -1263,8 +1231,6 @@ resource "aws_wafv2_regex_pattern_set" "cloudfront" {
 
 これに対処するため、先に新しい `resource` ブロックを作成し、紐付けし直してから削除する必要がある。
 
-**＊実装例＊**
-
 例として、AWS Certificate Manager のサーバー証明書を示す。
 
 AWS Certificate Manager のサーバー証明書は、ALB や CloudFront に紐付いている。新しい証明書に紐付け直した後、既存のものを削除する必要がある。
@@ -1283,8 +1249,6 @@ resource "aws_acm_certificate" "foo" {
   }
 }
 ```
-
-**＊実装例＊**
 
 例として、RDS のクラスターパラメーターグループとサブネットグループを示す。
 
@@ -1315,8 +1279,6 @@ resource "aws_db_subnet_group" "this" {
 
 }
 ```
-
-**＊実装例＊**
 
 例として、Redis のパラメーターグループとサブネットグループを示す。
 
@@ -1356,8 +1318,6 @@ resource "aws_elasticache_subnet_group" "redis" {
 
 ただし、リソースによっては `ignore_changes` 引数を使えないものがある (例：SSM パラメーターストア) 。
 
-**＊実装例＊**
-
 例として、ECS を示す。
 
 ECS では、AWS AutoScaling によって Amazon ECS タスク数が増加する。
@@ -1381,8 +1341,6 @@ resource "aws_ecs_service" "this" {
 }
 ```
 
-**＊実装例＊**
-
 例として、Redis を示す。
 
 Redis では、AWS AutoScaling によってプライマリー数とレプリカ数が増減する。
@@ -1405,8 +1363,6 @@ resource "aws_elasticache_replication_group" "redis" {
   }
 }
 ```
-
-**＊実装例＊**
 
 使用例はすくないが、補足として `resource` ブロック全体を無視する場合は `all` 値を設定する。
 
@@ -1485,8 +1441,6 @@ resource "aws_security_group" "ec2" {
 第一引数でポリシーが定義されたファイルを読み出し、第二引数でファイルに変数を渡す。
 
 ファイルの拡張子は tpl とするのがよい。
-
-**＊実装例＊**
 
 例として、Amazon S3 を示す。
 
@@ -1573,8 +1527,6 @@ resource "aws_s3_bucket_policy" "alb" {
 
 Amazon ECS タスク定義のうち、コンテナを定義する部分のこと。
 
-**＊実装例＊**
-
 ```yaml
 {
   "ipcMode": null,
@@ -1598,8 +1550,6 @@ integer 型を通常変数として渡せるように、拡張子を json では
 ログ分割の目印を設定する `awslogs-datetime-format` キーでは、タイムスタンプを表す `\\[%Y-%m-%d %H:%M:%S\\]` を設定するとよい。
 
 これにより、同じ時間に発生したログを 1 つのログとしてまとめられるため、スタックトレースが見やすくなる。
-
-**＊実装例＊**
 
 ```yaml
 [

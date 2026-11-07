@@ -98,8 +98,6 @@ PHP の `list()` 関数は、List 型とは意味合いが異なる。
 
 配列の個々の要素を変数に格納したい場合、List 型を使用しなければ、冗長ではあるが、以下のように実装する必要がある。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -112,8 +110,6 @@ echo $a.$i.$u; // あいう
 ```
 
 しかし、以下のように、`list()` 関数を使用することによって、複数の変数への格納を１行で実装できる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -138,8 +134,6 @@ echo $a.$i.$u; // あいう
 ![Queue3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue3.gif)
 
 PHP では、`array_push()` 関数と `array_shift()` 関数を組み合わせることにより、実装できる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

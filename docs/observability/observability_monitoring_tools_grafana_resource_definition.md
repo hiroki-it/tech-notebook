@@ -70,8 +70,6 @@ $ kubectl apply -f grafana.yaml
 
 Node の外から Prometheus のダッシュボードをネットワークに公開する場合、Node 外から Prometheus サーバーにインバウンド通信が届くようにする必要がある。
 
-**＊実装例＊**
-
 Ingress を作成する。
 
 ```yaml

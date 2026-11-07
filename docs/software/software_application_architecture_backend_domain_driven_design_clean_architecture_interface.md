@@ -98,37 +98,84 @@ SSO の場合を選んだユーザーの場合、ID プロバイダーから取�
 
 ### API における入力値のバリデーション
 
-**＊実装例＊**
-
 日時データのフォーマットを検証する。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Interface\Foo\Validators;
+    ```go
+    package validators
 
-// Validationのパッケージ
-use Respect\Validation\Validator;
+    import "time"
 
-class FormatValidator
-{
-    /**
-     * 日時データのフォーマットを検証する
-     */
-    public function validateFormat(mixed $dateTime): bool
-    {
-        if (empty($dateTime)) {
-            return false;
+    type FormatValidator struct{}
+
+    // 日時データのフォーマットを検証する
+    func (v *FormatValidator) ValidateFormat(dateTime any) bool {
+    	value, ok := dateTime.(string)
+    	if !ok || value == "" {
+    		return false
+    	}
+
+    	if _, err := time.Parse(time.RFC3339, value); err != nil {
+    		return false
+    	}
+
+    	return true
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    const ATOM_FORMAT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/;
+
+    export class FormatValidator {
+      /**
+       * 日時データのフォーマットを検証する
+       */
+      public validateFormat(dateTime: unknown): boolean {
+        if (typeof dateTime !== "string" || dateTime === "") {
+          return false;
         }
 
-        if (!Validator::date(\DateTime::ATOM)->validate($dateTime)) {
-            return false;
+        if (!ATOM_FORMAT.test(dateTime) || Number.isNaN(Date.parse(dateTime))) {
+          return false;
         }
 
         return true;
+      }
     }
-}
-```
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    namespace App\Interface\Foo\Validators;
+
+    // Validationのパッケージ
+    use Respect\Validation\Validator;
+
+    class FormatValidator
+    {
+        /**
+         * 日時データのフォーマットを検証する
+         */
+        public function validateFormat(mixed $dateTime): bool
+        {
+            if (empty($dateTime)) {
+                return false;
+            }
+
+            if (!Validator::date(\DateTime::ATOM)->validate($dateTime)) {
+                return false;
+            }
+
+            return true;
+        }
+    }
+    ```
 
 ### UI おける入力値のバリデーション
 
@@ -138,40 +185,110 @@ class FormatValidator
 
 受信した URL クエリストリングの形式が誤っていた場合、デフォルト値で処理するように実装するとよい。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Interface\Foo\Validators;
+    ```go
+    package validators
 
-// Validationのパッケージ
-use Respect\Validation\Validatable;
+    type Validatable interface {
+    	Validate(value any) bool
+    }
 
-class UrlValidator
-{
+    type UrlValidator struct{}
 
-    /**
-     * URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
-     */
-    public function validateFormat(string $key, mixed $value, Validatable $validator): mixed
-    {
+    // URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
+    func (v *UrlValidator) ValidateFormat(key string, value any, validator Validatable) any {
+    	// 例：ページングやソートのURLクエリストリングを想定する。
+    	// - page: 1始まり
+    	// - limit: 1〜100
+    	// - sort: created_at の昇順/降順
+    	defaultValues := map[string]any{
+    		"page":  1,
+    		"limit": 20,
+    		"sort":  "created_at_desc",
+    	}
+
+    	// クエリストリングが不正ならデフォルト値を使用する
+    	if !validator.Validate(value) {
+    		return defaultValues[key]
+    	}
+
+    	return value
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    export interface Validatable {
+      validate(value: unknown): boolean;
+    }
+
+    export class UrlValidator {
+      /**
+       * URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
+       */
+      public validateFormat(
+        key: string,
+        value: unknown,
+        validator: Validatable,
+      ): unknown {
         // 例：ページングやソートのURLクエリストリングを想定する。
         // - page: 1始まり
         // - limit: 1〜100
         // - sort: created_at の昇順/降順
-        $defaultValues = [
-            'page'  => 1,
-            'limit' => 20,
-            'sort'  => 'created_at_desc',
-        ];
+        const defaultValues: Record<string, unknown> = {
+          page: 1,
+          limit: 20,
+          sort: "created_at_desc",
+        };
 
         // クエリストリングが不正ならデフォルト値を使用する
-        if (!$validator->validate($value)) {
-            return $defaultValues[$key];
+        if (!validator.validate(value)) {
+          return defaultValues[key];
         }
 
-        return $value;
+        return value;
+      }
     }
-}
-```
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    namespace App\Interface\Foo\Validators;
+
+    // Validationのパッケージ
+    use Respect\Validation\Validatable;
+
+    class UrlValidator
+    {
+
+        /**
+         * URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
+         */
+        public function validateFormat(string $key, mixed $value, Validatable $validator): mixed
+        {
+            // 例：ページングやソートのURLクエリストリングを想定する。
+            // - page: 1始まり
+            // - limit: 1〜100
+            // - sort: created_at の昇順/降順
+            $defaultValues = [
+                'page'  => 1,
+                'limit' => 20,
+                'sort'  => 'created_at_desc',
+            ];
+
+            // クエリストリングが不正ならデフォルト値を使用する
+            if (!$validator->validate($value)) {
+                return $defaultValues[$key];
+            }
+
+            return $value;
+        }
+    }
+    ```
 
 <br>

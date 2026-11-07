@@ -185,8 +185,6 @@ JavaScript Promise を実装しやすくする。
 
 #### ▼ GET リクエスト
 
-**＊実装例＊**
-
 ```javascript
 // URL
 const url = "https://example.com/";
@@ -211,8 +209,6 @@ xhr.send();
 > - [Ajax送信の歴史！fetch、axios、jQuery、XMLHttpRequest – console dot log](https://blog.capilano-fw.com/?p=6920#Ajax)
 
 #### ▼ POST リクエスト
-
-**＊実装例＊**
 
 ```javascript
 // URL
@@ -262,8 +258,6 @@ xhr.send(queryString);
 
 #### ▼ GET リクエスト
 
-**＊実装例＊**
-
 ```javascript
 const url = "https://example.com/";
 
@@ -271,8 +265,6 @@ $.get(url);
 ```
 
 #### ▼ POST リクエスト
-
-**＊実装例＊**
 
 ```javascript
 const url = "https://example.com/";
@@ -293,8 +285,6 @@ $.post(url, params);
 Promise オブジェクトを返却する。
 
 > - [jQuery.ajax() \| jQuery API Documentation](https://api.jquery.com/jquery.ajax)
-
-**＊実装例＊**
 
 ```javascript
 const id = 1;
@@ -335,8 +325,6 @@ $.ajax({
 
 #### ▼ GET リクエスト
 
-**＊実装例＊**
-
 ```javascript
 import axios from "axios";
 
@@ -344,8 +332,6 @@ const url = "https://example.com/";
 
 const response = axios.get(url);
 ```
-
-**＊実装例＊**
 
 ここでは、バックエンドにポーリング受信をする。
 
@@ -379,8 +365,6 @@ pollBackend();
 ```
 
 #### ▼ POST リクエスト
-
-**＊実装例＊**
 
 ```javascript
 import axios from "axios";

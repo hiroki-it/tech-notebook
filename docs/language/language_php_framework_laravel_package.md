@@ -56,8 +56,6 @@ $ npm run watch
 
 BenSampo の enum 型のクラスを継承し、区分値と判定関数を実装する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -116,8 +114,6 @@ class RoleType extends Enum
 ```
 
 #### ▼ enum 型のクラスの使い方
-
-**＊実装例＊**
 
 DB から区分値を取得し、これを元に enum 型のクラスを作成する。
 

@@ -339,8 +339,6 @@ service           = "bar"
 
 > - https://cloud.google.com/docs/terraform/best-practices-for-terraform#variables
 
-**＊実装例＊**
-
 例として、VPC を示す。
 
 ```terraform
@@ -407,8 +405,6 @@ module "alb_foo" {
 
 もし種類がある場合、リソース名でその種類を表す。
 
-**＊実装例＊**
-
 例として、VPC を示す。
 
 ```terraform
@@ -449,8 +445,6 @@ resource "aws_route_table" "route_table_private" {
 
 ただし、リファクタリングすることが大変なため、非推奨である。
 
-**＊実装例＊**
-
 ```terraform
 # ---------------------------------------------
 # Resource Internet Gateway
@@ -470,8 +464,6 @@ Lambda 以外では、作成されるクラウドプロバイダーのリソー�
 - 接頭辞は、 `<実行環境>-<サービス名>` とする。
 - 接尾辞は、クラウドプロバイダーのリソース名とする。
 
-**＊実装例＊**
-
 例として、CloudWatch を示す。
 
 - 接尾辞は、 `<実行環境>-<サービス名>`
@@ -489,8 +481,6 @@ resource "aws_cloudwatch_metric_alarm" "alb_httpcode_target_4xx_count" {
 Lambda では Lambda 関数が稼働する。
 
 接尾辞に function とつけることは冗長と判断したため、関数名のみで命名する。
-
-**＊実装例＊**
 
 例として、Lambda をしめす。
 
@@ -514,8 +504,6 @@ resource "aws_lambda_function" "echo_helloworld" {
 
 『`<リソース名>_<リソースタイプ>_<attribute名>`』で命名する。可読性の観点から、リソース一括ではなく、具体的な attribute を出力する。
 
-**＊実装例＊**
-
 例として、CloudWatch を示す。
 
 リソース名は `ecs_container_nginx`、リソースタイプは `aws_cloudwatch_log_group`、attribute は `name` オプションである。
@@ -525,8 +513,6 @@ output "ecs_container_nginx_cloudwatch_log_group_name" {
   value = aws_cloudwatch_log_group.ecs_container_nginx.name
 }
 ```
-
-**＊実装例＊**
 
 例として、IAM Role を示す。
 
@@ -551,8 +537,6 @@ output "rds_enhanced_monitoring_iam_role_arn" {
 
 リソース名が `this` である場合、`output` ブロック名ではこれを省略してもよい。
 
-**＊実装例＊**
-
 例として、ALB を示す。
 
 ```terraform
@@ -573,8 +557,6 @@ output "alb_dns_name" {
 ルール通りに命名すると、一部のクラウドプロバイダーのリソースで冗長な名前になってしまうことがある。
 
 この場合は、省略を許容する。
-
-**＊実装例＊**
 
 ルール通りに名付けると、『`laravel_ecr_repository_repository_url`』という `output` ブロック名になってしまう。
 
@@ -684,8 +666,6 @@ module "alb_foo" {
 最後に共通の設定として、`tags`、`depends_on`、`lifecycle` の順で配置する。
 
 ただし実際、これらのすべての設定が必要なリソースはない。
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------

@@ -154,8 +154,6 @@ JSON 型データとして、レスポンスを返信する。
 
 第二引数の引数型がインターフェースになっているため、さまざまなデータ型を渡せる。
 
-**＊実装例＊**
-
 map 型データを渡す。
 
 ```go
@@ -229,8 +227,6 @@ func fooHandler(ginCtx *gin.Context) {
 
 受信したリクエストのコンテキストを取得する。
 
-**＊実装例＊**
-
 ```go
 package server
 
@@ -252,8 +248,6 @@ func getRequestContext(ginCtx *gin.Context) context.Context {
 
 受信したリクエストの HTTP ヘッダーを操作する。
 
-**＊実装例＊**
-
 ```go
 package server
 
@@ -274,8 +268,6 @@ func getRequestHeader(ginCtx *gin.Context) string {
 ```
 
 > - [ginでcontextからHeaderの情報を取得する方法 - はい！今やってます！](https://yuji-ueda.hatenadiary.jp/entry/2019/10/13/104227)
-
-**＊実装例＊**
 
 ```go
 package server
@@ -326,8 +318,6 @@ func printRequestHeaderList(ginCtx *gin.Context) {
 `Set()` 関数後に `Get()` 関数で取得される値は、元のデータ型と関係なくインターフェース型に変換されてしまう。
 
 そのため、例えば、タイプ ID 型として値を保管したとしても、`Get()` 関数で得られたインターフェース型データをあらためて変換しないといけなくなってしまう。
-
-**＊実装例＊**
 
 ```go
 package middlewares

@@ -98,8 +98,6 @@ $ go mod tidy
 
 Go に関する環境変数を出力する。
 
-**＊実装例＊**
-
 ```bash
 $ go env
 

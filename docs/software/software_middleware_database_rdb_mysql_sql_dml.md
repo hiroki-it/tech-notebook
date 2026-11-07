@@ -109,8 +109,6 @@ SELECT <カラム名> COUNT(*) FROM <テーブル名>;
 
 **※消去法の小技：集合関数を入れ子状にはできない**
 
-**＊実装例＊**
-
 集合関数を、集合関数のなかへ入れ子状にできない。
 
 ```mysql
@@ -191,8 +189,6 @@ FROM
 
 `2` 個の `WHERE` 文が、`AND` で結びつけられているとき、まず 1 つ目の `WHERE` を満たすレコードを読み込んだ後、取得したレコードのなかから、2 つ目の `WHERE` を満たすレコードを読み込む。
 
-**＊実装例＊**
-
 ```mysql
 -- 『カラム』のみでなく、どの『表』なの物なのかも指定
 SELECT
@@ -209,8 +205,6 @@ WHERE
 ```
 
 #### ▼ 内部結合に `INNER JOIN ON` を使用する場合
-
-**＊実装例＊**
 
 ```mysql
 -- 『カラム』のみでなく、どの『表』なの物なのかも指定
@@ -233,35 +227,93 @@ FROM
 
 #### ▼ 使い方
 
-**＊実装例＊**
+=== "Go"
 
-```injectablephp
-<?php
-$joinedIdList = implode(",", $idList);
+    ```go
+    joinedIdList := strings.Join(idList, ",")
 
-// 並び替え条件を設定
-$expression = call_user_func(function () use ($orders, $joinedIdList): string {
-    if ($orders) {
-        foreach ($orders as $key => $order) {
-            switch ($key) {
-                case "id":
-                    return sprintf("ss.id %s", $order);
+    // 並び替え条件を設定
+    expression := func() string {
+    	if len(orders) > 0 {
+    		for key, order := range orders {
+    			switch key {
+    			case "id":
+    				return fmt.Sprintf("ss.id %s", order)
+    			}
+    		}
+    	}
+
+    	// IN句順の場合
+    	return fmt.Sprintf("FIELD(ss.id, %s)", joinedIdList)
+    }()
+
+    sql := fmt.Sprintf(`
+        SELECT
+            name
+        FROM
+            table
+        ORDER BY %s
+    `, expression)
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    const joinedIdList: string = idList.join(",");
+
+    // 並び替え条件を設定
+    const expression: string = ((): string => {
+      if (orders) {
+        for (const [key, order] of Object.entries(orders)) {
+          switch (key) {
+            case "id":
+              return `ss.id ${order}`;
+          }
+        }
+      }
+
+      // IN句順の場合
+      return `FIELD(ss.id, ${joinedIdList})`;
+    })();
+
+    const sql: string = `
+        SELECT
+            name
+        FROM
+            table
+        ORDER BY ${expression}
+    `;
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+    $joinedIdList = implode(",", $idList);
+
+    // 並び替え条件を設定
+    $expression = call_user_func(function () use ($orders, $joinedIdList): string {
+        if ($orders) {
+            foreach ($orders as $key => $order) {
+                switch ($key) {
+                    case "id":
+                        return sprintf("ss.id %s", $order);
+                }
             }
         }
-    }
 
-    // IN句順の場合
-    return sprintf("FIELD(ss.id, %s)", $joinedIdList);
-});
+        // IN句順の場合
+        return sprintf("FIELD(ss.id, %s)", $joinedIdList);
+    });
 
-$sql = <<<SQL
-            SELECT
-                name
-            FROM
-                table
-            ORDER BY {$expression}
-        SQL;
-```
+    $sql = <<<SQL
+                SELECT
+                    name
+                FROM
+                    table
+                ORDER BY {$expression}
+            SQL;
+    ```
 
 <br>
 
@@ -270,8 +322,6 @@ $sql = <<<SQL
 #### ▼ `IN` の使い方
 
 指定した値と同じ『フィールド』を取得する。
-
-**＊実装例＊**
 
 指定したカラムで、指定した値の『フィールド』を取得する。
 
@@ -319,8 +369,6 @@ SELECT * FROM <テーブル名> WHERE <カラム名> = ANY(foo, bar, baz);
 
 カラムをグループ化し、集合関数を使用して、フィールドの値を算出する。
 
-**＊実装例＊**
-
 指定したカラムをグループ化し、フィールドの値の平均値を算出する。
 
 ```mysql
@@ -346,8 +394,6 @@ SELECT <カラム名1> AVG(<カラム名2>) FROM <テーブル名> GROUP BY <カ
 各句の処理の順番から考慮して、`GROUP BY` でグループ化した結果から、`HAVING` で『フィールド』を取得する。
 
 `SELECT` における集計関数が、`HAVING` における集計関数の結果を指定していることに注意せよ。
-
-**＊実装例＊**
 
 ```mysql
 -- HAVINGによる集計結果を指定して出力。
@@ -379,8 +425,6 @@ SELECT <カラム名> FROM <テーブル名> WHERE <レコード名> GROUP BY <�
 
 #### ▼ 使い方
 
-**＊実装例＊**
-
 ```mysql
 SELECT * FROM <テーブル名> WHERE <カラム名> LIKE "%営業";
 ```
@@ -395,8 +439,6 @@ SELECT * FROM <テーブル名> WHERE <カラム名> LIKE "_営業";
 
 #### ▼ 使い方
 
-**＊実装例＊**
-
 指定したカラムで、1 以上 10 以下の『フィールド』を取得する。
 
 ```mysql
@@ -408,8 +450,6 @@ SELECT * FROM <テーブル名> BETWEEN 1 AND 10;
 ### `SET` 関数
 
 #### ▼ 使い方
-
-**＊実装例＊**
 
 ```mysql
 SET @X = <パラメーター値>;
@@ -448,8 +488,6 @@ SELECT * FROM <テーブル名> LIMIT <数値> OFFSET <数値>;
 #### ▼ 使い方
 
 掛け算と同様に、括弧内から先に処理を実行する。
-
-**＊実装例＊**
 
 ```mysql
 -- Main-query
@@ -678,8 +716,6 @@ ANALYZE TABLE foos;
 > - https://www.amazon.co.jp/dp/4297124513
 
 #### ▼ 使い方
-
-**＊実装例＊**
 
 `SELECT` 文の stored procedure を作成する例を考える。
 

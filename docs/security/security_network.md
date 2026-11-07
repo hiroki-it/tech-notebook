@@ -456,8 +456,6 @@ DB の SQL クエリのパラメーターとなる入力では、『シングル
 
 レスポンスの `Access-Control-Allow-Origin` ヘッダーは、リクエストの `Origin` ヘッダーと同じ値あるいはワイルドカード (`*`) とする必要がある。
 
-**＊実装例＊**
-
 `(1)`
 
 : リクエストの `Origin` ヘッダーに送信元オリジンを設定する。
@@ -561,8 +559,6 @@ Access-Control-Allow-Headers: *
 > - [Cookieの仕様 - プログラミング雑ネタ集](https://azisava.sakura.ne.jp/programming/0017.html#sec4-1)
 
 #### ▼ Domain 属性の仕組み
-
-**＊実装例＊**
 
 Domain 属性に `example.com` が割り当てられていたとする。
 
@@ -725,8 +721,6 @@ $2y$10$1QVmWNzk.TsaZQLQ/zeI9OAZL02AWP.VdFPPyAc9hSc2Cp4yOXKtG
 <br>
 
 ### POST リクエストのリクエスト制限
-
-**＊実装例＊**
 
 `php.ini` ファイルにて、一度に受信できる POST リクエストの上限値を設定できる。
 

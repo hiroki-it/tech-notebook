@@ -941,8 +941,6 @@ Deployment 自体の `.metadata.labels` キーを更新した場合、Pod は再
 
 > - [Pods \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates)
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -2096,8 +2094,6 @@ spec:
 
 Node 間で DB を共有したい場合に使用する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -2114,8 +2110,6 @@ spec:
 
 Node 間で読み出し処理のみ DB を共有したい場合に使用する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -2131,8 +2125,6 @@ spec:
 ボリュームに対して、単一の Node からのみ読み出し/書き込み可能にする。
 
 もし Node に Pod のインスタンスが複数ある場合、`ReadWriteOnce` であっても複数の Pod から読み込み/書き込みがある。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -2153,8 +2145,6 @@ spec:
 #### ▼ capacity とは
 
 ストレージの最大サイズを設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -2248,8 +2238,6 @@ spec:
 
 #### ▼ mountOptions とは
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -2273,8 +2261,6 @@ spec:
 NFS サーバーのストレージ上にボリュームを作成する。
 
 Node 内の Pod を、ホスト上の NFS サーバーにマウントする。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -2332,8 +2318,6 @@ PersistentVolume の作成先とする Node を設定する。
   </tbody>
 </table>
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -2375,8 +2359,6 @@ PersistentVolume を指定する PersistentVolumeClaim が削除された場合�
 
 クラウドプロバイダーの PersistentVolume の動的プロビジョニングのために使用することが多い。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -2393,8 +2375,6 @@ spec:
 PersistentVolume を指定する PersistentVolumeClaim が削除された場合、PersistentVolume 内のデータのみを削除し、PersistentVolume 自体は削除しない。
 
 将来的に廃止予定のため、非推奨。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -2414,8 +2394,6 @@ PersistentVolume を指定する PersistentVolumeClaim が削除されたとし�
 割り当てから解除された PersistentVolume は Released ステータスになる。
 
 一度、Released ステータスになると、他の PersistentVolumeClaim からは指定できなくなる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -2475,8 +2453,6 @@ PersistentVolume にストレージクラス名を設定しない場合、これ
   </tbody>
 </table>
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -2500,8 +2476,6 @@ spec:
 
 要求対象の PersistentVolume の accessMode を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -2523,8 +2497,6 @@ spec:
 #### ▼ requests
 
 要求対象の PersistentVolume の requests を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -2548,8 +2520,6 @@ spec:
 これを設定しない場合は、ストレージクラス名が `standard` の PersistentVolume を要求する。
 
 注意点として、もし異なる StorageClassName に変更したい場合は、PersistentVolume を作成し直す必要がある。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -2877,8 +2847,6 @@ Pod を Deployment や ReplicaSet に紐付けず、単体で使用すること�
 
 Pod を構成するコンテナの名前、ベースイメージを設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -2913,8 +2881,6 @@ spec:
 
 環境変数を設定する。
 
-**＊実装例＊**
-
 `status.podIP` から自身の IP アドレスを取得し、`MY_POD_IP` という名前で設定する。
 
 ```yaml
@@ -2939,8 +2905,6 @@ spec:
 #### ▼ envFrom
 
 `.spec.volumes.secret` キー (ファイルをコンテナに設定する) とは異なり、Secret や ConfigMap からコンテナに環境変数を出力する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -3013,8 +2977,6 @@ spec:
     </tr>
   </tbody>
 </table>
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -3124,8 +3086,6 @@ Allocatable:
   </tbody>
 </table>
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -3178,8 +3138,6 @@ volumeMount という名前であるが、『ボリュームマウント』を�
 
 > - [MountPath inside container should be an absolute path · Issue #48749 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/issues/48749)
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -3203,8 +3161,6 @@ spec:
 
 > - https://stackoverflow.com/questions/62312227/docker-volume-and-kubernetes-volume
 
-**＊実装例＊**
-
 Secret の名前を指定できる。
 
 ```yaml
@@ -3227,8 +3183,6 @@ spec:
       secret:
         secretName: app-secret
 ```
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -4045,8 +3999,6 @@ Pod のホスト名を設定する。
 
 また、`.spec.hostname` キーが設定されていないときは、`.metadata.name` がホスト名として使用される。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -4474,8 +4426,6 @@ Pod に ServiceAccount を紐付ける。
 
 Pod のプロセスに認証済みの ID が付与され、Kubernetes と通信できるようになる。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -4586,8 +4536,6 @@ spec:
 
 なお、実行中の Pod が違反していた場合でも、再スケジューリングさせない。
 
-**＊実装例＊**
-
 `kube-system` で管理したいような重要な Pod に `CriticalAddonsOnly` キーの Tolerations を設定する。
 
 合わせて Node の Taint にも `CriticalAddonsOnly` キーを設定することで、Taint に耐性のある Pod (`CriticalAddonsOnly` キー) しか、この Node にスケジューリングできなくなる。
@@ -4610,8 +4558,6 @@ spec:
 ```
 
 > - [ゼロからはじめる実践 Kubernetes セキュリティ(6) Kubernetes クラスタの保護 \| TECH+（テックプラス）](https://news.mynavi.jp/techplus/article/k8ssecurity-6/2)
-
-**＊実装例＊**
 
 ```bash
 $ kubectl taint node foo-node group=monitoring:NoSchedule
@@ -4643,8 +4589,6 @@ spec:
 指定した条件に合致する Node にはスケジューリングさせない。
 
 なお、実行中の Pod が違反していた場合、再スケジューリングさせる。
-
-**＊実装例＊**
 
 ```bash
 $ kubectl taint node foo-node group=monitoring:NoExecute
@@ -4688,8 +4632,6 @@ spec:
 
 `.spec.topologySpreadConstraints[*].topologyKey` キーで指定した分散の単位の間で、Pod の個数差を設定する。
 
-**＊実装例＊**
-
 AZ が `2` 個あるとすると、各 AZ 間の Pod の個数差を `1` 個にする。
 
 ```yaml
@@ -4713,8 +4655,6 @@ spec:
 
 Pod の分散の単位を設定する。
 
-**＊実装例＊**
-
 AZ を分散の単位に設定する。
 
 ```yaml
@@ -4737,8 +4677,6 @@ spec:
 
 分散の条件に合致する Node がない場合の振る舞いを設定する。
 
-**＊実装例＊**
-
 分散の条件に合致する Node がない場合、この Pod をスケジューリングさせない。
 
 ```yaml
@@ -4759,8 +4697,6 @@ spec:
 #### ▼ labelSelector
 
 分散させる Pod の条件を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -4791,8 +4727,6 @@ Pod 内で使用するボリュームを設定する。
 ConfigMap の `.data` キー配下のキーをファイルとしてマウントする。
 
 Secret をマウントする場合は、`.spec.volumes.secret` キーで設定することに注意する。
-
-**＊実装例＊**
 
 ConfigMap の持つキー (ここでは `fluent-bit.conf` キー) をコンテナにファイルとしてマウントする
 
@@ -4848,8 +4782,6 @@ Volume の一種である EmptyDir Volume を作成する。
 
 『Pod』が削除されると、この EmptyDir Volume も同時に削除される。
 
-**＊実装例＊**
-
 オンディスクストレージを設定する。
 
 ```yaml
@@ -4871,8 +4803,6 @@ spec:
 
 > - [Volumes \| Kubernetes](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir)
 > - [Kubernetes基礎(6)：Volume-emptyDir, hostPath, PV/PVC #kubernetes - Qiita](https://qiita.com/umkyungil/items/218be95f7a1f8d881415)
-
-**＊実装例＊**
 
 インメモリストレージを設定する。
 
@@ -4909,8 +4839,6 @@ PersistentVolume の一種である HostPath Volume とは区別すること。
 『Node』が削除されると、この HostPath Volume も同時に削除される。
 
 HostPath Volume 自体は本番環境で非推奨である。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -4958,8 +4886,6 @@ spec:
 
 複数のソース (Secret、downwardAPI、ConfigMap、ServiceAccount の Token) を同じ Volume 上のディレクトリに配置する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -4988,8 +4914,6 @@ spec:
 #### ▼ persistentVolumeClaim
 
 PersistentVolume を使用する場合、PersistentVolumeClaim を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -5050,8 +4974,6 @@ Secret の `.data` キー配下のキーをファイルとしてマウントす�
 `.spec.containers[*].envFrom` キー (環境変数をコンテナに出力する) とは異なり、Secret からファイルを設定する。
 
 ConfigMap をマウントする場合は、`.spec.volumes.configMap` キーで設定することに注意する。
-
-**＊実装例＊**
 
 Secret が持つ資格情報ファイル (ここでは `credentials.json` キー) をコンテナにファイルとしてマウントする
 
@@ -5795,8 +5717,6 @@ spec:
 
 受信する通信のプロトコルを設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Service
@@ -5834,8 +5754,6 @@ spec:
 
 インバウンド通信を待ち受けるポート番号を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Service
@@ -5863,8 +5781,6 @@ spec:
 Pod 内で最初にインバウンド通信を受信するコンテナの `containerPort` の番号に合わせる。
 
 デフォルトでは、`.spec.ports.port` キーと同じ値になる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -5900,8 +5816,6 @@ LoadBalancer Service のみで設定できる。
 
 プロビジョニングされる `L4` ロードバランサーのインバウンド通信で許可する CIDR を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Service
@@ -5929,8 +5843,6 @@ spec:
 #### ▼ selector とは
 
 インバウンド通信のフォワーディング先とする Pod の `.metadata.labels` キー名と値を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -5962,8 +5874,6 @@ Pod へのルーティング時にセッションを維持する (スティッ�
 
 同じセッション内であれば、特定のクライアントからのリクエストを Service 配下の同じ Pod にルーティングし続けられる。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Service
@@ -5980,8 +5890,6 @@ spec:
 #### ▼ None
 
 sessionAffinity を無効化する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -6003,8 +5911,6 @@ spec:
 `.spec.sessionAffinity` キーを使用している場合に、セッションのタイムアウト時間を設定する。
 
 タイムアウト時間を過ぎると、Node 上に保管したセッション ID を削除する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -6311,8 +6217,6 @@ data:
 
 StatefulSet によって管理される Pod にルーティングする Service を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: apps/v1
 kind: StatefulSet
@@ -6361,8 +6265,6 @@ spec:
 StatefulSet で維持管理する Pod を設定する。
 
 設定項目は Pod と同じである。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: apps/v1
@@ -6422,8 +6324,6 @@ PersistentVolumeClaim を作成する。
 設定の項目は `kind: PersistentVolumeClaim` の場合と同じである。
 
 StatefulSet が削除されても、これは削除されない。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: apps/v1

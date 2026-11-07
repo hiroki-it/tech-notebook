@@ -79,8 +79,6 @@ $name = new UserName();
 $user = new User($name); // 集約の関係
 ```
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -137,8 +135,6 @@ $car = new Car($tire1, $tire2, $tire3, $tire4);
 
 #### ▼ 例
 
-**＊実装例＊**
-
 ![composition_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png)
 
 User クラスは UserName クラスを状態として保持する。
@@ -173,8 +169,6 @@ final class User
 
 $user = new User();
 ```
-
-**＊実装例＊**
 
 Car クラスは Lock クラスを状態として保持する。
 
@@ -221,8 +215,6 @@ $car = new Car();
 #### ▼ 汎化における Override
 
 汎化のとき、子クラスで関数の処理内容を再び実装すると、処理内容は上書きされる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -331,8 +323,6 @@ class GoodsWithTax extends Goods
 
 ![抽象クラスと抽象関数-2](https://user-images.githubusercontent.com/42175286/59590387-e8adcd80-9126-11e9-87b3-7659468af2f6.PNG)
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -433,8 +423,6 @@ class EnginnerShainManagement extends ShainManagement
 多重継承できる。
 
 ![子インターフェースの多重継承_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/子インターフェースの多重継承_2.png)
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -556,8 +544,6 @@ class Mammal implements Animal
 
 類似するものとして、JavaScript のプロトタイプチェーンがある。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -602,8 +588,6 @@ echo $subFoo->getValue();
 
 ### 継承元の関数を参照
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -645,8 +629,6 @@ Trait 自体は不完全なクラスであり、インスタンス化できな�
 
 また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -677,8 +659,6 @@ $bar->foo(); // Hello World
 マジック関数を使用すると、処理が多くなるため、性能が悪くなる。
 
 そこで、各クラスで trait を使用して、マジック関数をコールしたときに、開発者向けにエラーが発生させる。
-
-**＊実装例＊**
 
 マジックゲッター関数とマジックセッター関数がコールされることを禁止する。
 
@@ -843,8 +823,6 @@ Composer のオートロード機能を有効化したうえで、外部ファ�
 
 クラスの `namespace` を `use` 文で指定する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -882,8 +860,6 @@ class Bar
 ```
 
 #### ▼ 外部ファイルのクラスから定数をコール
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -925,8 +901,6 @@ class Bar
 > - https://stackoverflow.com/questions/41765798/difference-between-aggregation-and-dependency-injection
 
 #### ▼ 例
-
-**＊実装例＊**
 
 ![dependency_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dependency_example.png)
 
@@ -975,8 +949,6 @@ final class User
 
 そのため、ビジネス上ありえないオブジェクトを作成できなくなり、インジェクションのなかで、ソフトウェアの安全性の観点でもっとも優れている。
 
-**＊実装例＊**
-
 依存先の Supplier クラスを、`construct()` 関数の引数として、Client クラスに注入する。
 
 ```injectablephp
@@ -987,8 +959,6 @@ $supplier = new Supplier();
 // 依存されるSupplierクラスをClientクラス
 $client = new Client($supplier);
 ```
-
-**＊実装例＊**
 
 依存先の UserName クラスを、`construct()` 関数の引数として、User クラスに注入する。
 
@@ -1023,8 +993,6 @@ $user = new User($name); // インジェクション
 
 サプライヤー側を状態として保持させ、Aggregation の関係性を作られる。
 
-**＊実装例＊**
-
 依存先の Supplier クラスを、セッターの引数として、Client クラスに注入する。
 
 ```injectablephp
@@ -1036,8 +1004,6 @@ $client = new Client();
 // ClientクラスはSuppierクラスに依存している。
 $client->setSupplier($supplier);
 ```
-
-**＊実装例＊**
 
 依存先の UserName クラスを、セッターの引数として、User クラスに注入する。
 
@@ -1072,8 +1038,6 @@ $user->setUserName($name); // インジェクション
 上記 2 つ以外の関数の引数として、サプライヤー側のインスタンスを注入する。
 
 サプライヤー側を状態として保持せず、読み込んで関数を使用する。
-
-**＊実装例＊**
 
 依存先の UserName クラスを、関数の引数として、User クラスに注入する。
 
@@ -1112,8 +1076,6 @@ $user->method($name); // インジェクション
 依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。
 
 あらかじめクラスを登録 (バインド) しておき、必要なときにインスタンスを作成 (リゾルブ) してくれる。
-
-**＊実装例＊**
 
 Pimple パッケージを使用した場合
 
@@ -1165,8 +1127,6 @@ $sample = $container["sample"];
 Service Locater パターンはアンチパターンである。
 
 インスタンスへのコンテナ渡しのファイルを実装せず、コンテナ自体を注入していまう誤った実装方法。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -1307,8 +1267,6 @@ $sample = new Sample($container);
 
 スカラ型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡すような関係。
 
-**＊実装例＊**
-
 ModuleA と ModuleB は、データ結合の関係にある。
 
 ```injectablephp
@@ -1335,8 +1293,6 @@ class ModuleB // コールする側
     }
 }
 ```
-
-**＊実装例＊**
 
 デザインパターンの Factory クラスでは、スカラ型データの値に応じて、インスタンスを作り分ける。
 
@@ -1369,8 +1325,6 @@ class TransportationMethodsFactory
 #### ▼ スタンプ結合とは
 
 object 型のデータをサプライヤー側として、クライアント側のインスタンスの引数として渡す関係。
-
-**＊実装例＊**
 
 ModuleA と ModuleB は、スタンプ結合の関係にある。
 

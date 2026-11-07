@@ -440,8 +440,6 @@ repo-server は Helm を実行できるため、Helm のサイドカーは不要
 
 Helm を使用できるように、Helm をインストールする。
 
-**＊実装例＊**
-
 ここでは軽量の InitContainer を定義し、起動時に Helm をインストールする。
 
 ```yaml
@@ -507,8 +505,6 @@ ArgoCD と Helmfile を連携すれば、`helmfile` コマンドを宣言的に�
 
 `helm` コマンドを宣言的に実行するのであれば、`.spec.source.helm` キーを使用すれば十分ではあるが、`helmfile` を使用すれば Helmfile の機能 (例：複数の `values`
 ファイルを参照するなど) も活用できる。
-
-**＊実装例＊**
 
 ここでは軽量の InitContainer を定義し、起動時に Helmfile をインストールする。
 
@@ -712,8 +708,6 @@ repo-server は helm プラグインを実行できず、サイドカーが必�
 #### ▼ helm プラグインのインストール
 
 helm プラグインを使用できるように、helm プラグインをインストールする。
-
-**＊実装例＊**
 
 ここでは軽量の InitContainer を定義し、起動時に helm プラグインの helm-secrets をインストールする。
 
@@ -1030,8 +1024,6 @@ repo-server は Kustomize を実行できるため、Kustomize のサイドカ�
 
 Kustomize を使用できるように、Kustomize をインストールする。
 
-**＊実装例＊**
-
 ここでは軽量の InitContainer を定義し、起動時に Kustomize をインストールする。
 
 ```yaml
@@ -1144,8 +1136,6 @@ KSOPS はコンテナイメージがあるため、軽量の InitContainer を�
 ArgoCD のビルトインの Kustomize のバージョンの場合、Kustomize をインストールする必要はない。
 
 > - [kustomize-sops/Makefile at v4.2.1 · viaduct-ai/kustomize-sops · GitHub](https://github.com/viaduct-ai/kustomize-sops/blob/v4.2.1/Makefile#L29-L30)
-
-**＊実装例＊**
 
 ArgoCD の Kustomize 系オプションを活用するために、KSOPS はサイドカーで実行しない。
 

@@ -19,8 +19,6 @@ description: serverless.yml＠Serverless Frameworkの知見を記録していま
 
 設定ファイルのバリデーションの実行時に、エラーを出力するレベルを設定する。
 
-**＊実装例＊**
-
 ```yaml
 configValidationMode: warn
 ```
@@ -34,8 +32,6 @@ configValidationMode: warn
 ### custom とは
 
 スコープが `serverless.yml` ファイル内のみの変数を設定する。
-
-**＊実装例＊**
 
 ```yaml
 custom:
@@ -51,8 +47,6 @@ custom:
 ### frameworkVersion とは
 
 Serverless Framework のバージョンを設定する。
-
-**＊実装例＊**
 
 ```yaml
 frameworkVersion: "2"
@@ -74,8 +68,6 @@ frameworkVersion: "2"
 
 Lambda 関数の説明文を設定する。
 
-**＊実装例＊**
-
 ```yaml
 functions:
   main:
@@ -89,8 +81,6 @@ functions:
 Lambda 関数の変数を設定する。
 
 > - [Serverless Framework - AWS Lambda Functions \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/functions#environment-variables)
-
-**＊実装例＊**
 
 ```yaml
 functions:
@@ -108,8 +98,6 @@ functions:
 #### ▼ eventBridge
 
 Lambda 関数に紐付けて作成する Amazon EventBridge を設定する。
-
-**＊実装例＊**
 
 イベントパターンとして、`json` ファイルを読み込む
 
@@ -129,8 +117,6 @@ Lambda 関数に紐付ける SQS を設定する。
 
 新しく SQS を作成できず、既存の SQS と紐付ける動作しかないことに注意する。
 
-**＊実装例＊**
-
 ```yaml
 functions:
   main:
@@ -148,8 +134,6 @@ functions:
 
 Lambda 関数で使用するイメージのエイリアスを設定する。
 
-**＊実装例＊**
-
 ```yaml
 functions:
   main:
@@ -165,8 +149,6 @@ Lambda 関数のリトライ回数を設定する。
 
 > - [Serverless Framework - AWS Lambda Functions \| Serverless Framework](https://www.serverless.com/framework/docs/providers/aws/guide/functions#maximum-event-age-and-maximum-retry-attempts)
 
-**＊実装例＊**
-
 ```yaml
 functions:
   main:
@@ -178,8 +160,6 @@ functions:
 ### memorySize
 
 Lambda 関数のメモリサイズを設定する。
-
-**＊実装例＊**
 
 ```yaml
 functions:
@@ -193,8 +173,6 @@ functions:
 
 Lambda 関数の名前を設定する。
 
-**＊実装例＊**
-
 ```yaml
 functions:
   main:
@@ -206,8 +184,6 @@ functions:
 ### role
 
 Lambda 関数に紐付ける IAM ロールを設定する。
-
-**＊実装例＊**
 
 別に `resources.Resources` を使用して作成した IAM ロールを設定する。
 
@@ -222,8 +198,6 @@ functions:
 ### runtime
 
 Lambda 関数で使用する言語とバージョンを設定する。
-
-**＊実装例＊**
 
 ```yaml
 functions:
@@ -244,8 +218,6 @@ functions:
 <br>
 
 ### patterns
-
-**＊実装例＊**
 
 ```yaml
 package:
@@ -269,8 +241,6 @@ Serverless Framework で操作するクラウドインフラベンダーを設�
 
 #### ▼ scanOnPush
 
-**＊実装例＊**
-
 ```yaml
 provider:
   ecr:
@@ -282,8 +252,6 @@ provider:
 Lambda 関数のベースイメージを指定し、エイリアスを付ける。
 
 名前はすべて小文字である必要がある。
-
-**＊実装例＊**
 
 ```yaml
 provider:
@@ -313,8 +281,6 @@ provider:
 
 Lambda 関数のハッシュバージョンを設定する。
 
-**＊実装例＊**
-
 ```yaml
 provider:
   lambdaHashingVersion: 20201221
@@ -325,8 +291,6 @@ provider:
 ### name
 
 クラウドインフラベンダー名を設定する。
-
-**＊実装例＊**
 
 ```yaml
 provider:
@@ -350,8 +314,6 @@ provider:
 
 CloudFormation のスタック名を設定する。
 
-**＊実装例＊**
-
 ```yaml
 provider:
   stackName: <CloudFormationスタック名>
@@ -364,8 +326,6 @@ provider:
 ステージ名を設定する。
 
 クラウドインフラの実行環境名と考えてよい。
-
-**＊実装例＊**
 
 ```yaml
 provider:
@@ -385,8 +345,6 @@ provider:
 ### IAM ロール
 
 IAM ロールを作成する。
-
-**＊実装例＊**
 
 IAM ロールに紐付ける IAM ポリシーは、`json` ファイルで切り分けておいたほうがよい。
 
@@ -414,8 +372,6 @@ resources:
 
 ### service とは (aws プロバイダーの場合)
 
-**＊実装例＊**
-
 ```yaml
 service: foo-service
 ```
@@ -428,8 +384,6 @@ service: foo-service
 
 ### useDotenv とは
 
-**＊実装例＊**
-
 ```yaml
 useDotenv: "true"
 ```
@@ -439,8 +393,6 @@ useDotenv: "true"
 ## 10. variablesResolutionMode
 
 ### variablesResolutionMode とは
-
-**＊実装例＊**
 
 ```yaml
 variablesResolutionMode: null

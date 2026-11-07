@@ -147,8 +147,6 @@ spec:
 
 事前に、ConfigMap の `.mesh.extensionProviders` キーに ID プロバイダーを登録しておく必要がある。
 
-**＊実装例＊**
-
 ここでは、OAuth2 Proxy を ID プロバイダーとして使用する。
 
 ```yaml
@@ -207,8 +205,6 @@ Istio はクライアント証明書に ID (例：SPIFFE ID) を設定してお�
 
 Kubernetes では送信元 Pod の名前を知る方法がない (IP アドレスは可能) なので、制御しやすくなる。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
@@ -251,8 +247,6 @@ spec:
 
 リクエストヘッダーにある JWT トークンの発行元 ID プロバイダーが適切な場合、認可を実施するように設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: security.istio.io/v1
 kind: AuthorizationPolicy
@@ -267,8 +261,6 @@ spec:
           # JWT トークンがある場合にのみ許可する
           values: ["<JWTトークンの発行元IDプロバイダーの識別子 (issuer)>"]
 ```
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -387,8 +379,6 @@ DestinationRule の設定を公開する Namespace を設定する。
 
 Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -419,8 +409,6 @@ spec:
 
 Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -437,8 +425,6 @@ spec:
 
 トラフィックポリシーの適用対象とする宛先 Service または ServiceEntry のホスト名を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -449,8 +435,6 @@ spec:
 ```
 
 > - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#DestinationRule)
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -478,8 +462,6 @@ VirtualService を起点とした Pod のカナリアリリースで使用する
 `.spec.subsets[*].name` キーの値は、VirtualService で設定した `.spec.http[*].route[*].destination.subset` キーに合わせる必要がある。
 
 ![istio_virtual-service_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service_destination-rule_subset.png)
-
-**＊実装例＊**
 
 `subset` が `v1` に対するインバウンド通信では、`version` キーの値が `v1` である Pod にルーティングする。
 
@@ -520,8 +502,6 @@ HTTP/2 の場合は、1 つの TCP 接続上で複数のストリームを使用
 
 istio-proxy は HTTP/2 ストリームを個別に数える。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -556,8 +536,6 @@ spec:
 
 キューを超える HTTP リクエストに対しては、`503` レスポンスを返信する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -579,8 +557,6 @@ spec:
 
 これを超過した場合、そのリクエストに対しては `503` ステータスになる。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -600,8 +576,6 @@ spec:
 HTTP リクエストでアイドルタイムアウト (パケットの送受信がない状態) を許可する時間を設定する。
 
 不要な接続を早期に切断できる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -623,8 +597,6 @@ spec:
 
 双方向ストリーミング RPC は同時ストリーミングであり、サーバーストリーミング RPC やクライアントストリーミング RPC も、非同期的に実行すれば同時ストリーミングになる。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -642,8 +614,6 @@ spec:
 #### ▼ connectionPool.tcp.connectTimeout
 
 接続タイムアウト時間を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -665,8 +635,6 @@ spec:
 
 VirtualService の `.spec.http.timeout` キーとは異なり、DestinationRule のアイドルタイムアウトは TCP 接続中に無通信状態を許可する時間である。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -682,8 +650,6 @@ spec:
 #### ▼ connectionPool.tcp.tcpKeepalive
 
 宛先との間で TCP KeepAlive を実施する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -705,8 +671,6 @@ spec:
 #### ▼ connectionPool.tcp.maxConnections
 
 同時に確立できる TCP 接続の最大数を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -732,8 +696,6 @@ spec:
 復帰後に再び除外条件を満たした場合、除外期間は `baseEjectionTime` と除外回数の積になる。
 
 外れ値検出の判定間隔は、`interval` キーで設定する。
-
-**＊実装例＊**
 
 Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
@@ -765,8 +727,6 @@ spec:
 
 外れ値検出の判定間隔は、`interval` キーで設定する。
 
-**＊実装例＊**
-
 Gateway 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
 初回は、異常な Pod を 30 秒間排除する。
@@ -796,8 +756,6 @@ spec:
 
 外れ値検出の判定間隔は、`interval` キーで設定する。
 
-**＊実装例＊**
-
 `500` 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
 初回は、異常な Pod を 30 秒間排除する。
@@ -824,8 +782,6 @@ spec:
 
 指定した間隔で、連続エラー数が閾値に達した宛先を判定する。
 
-**＊実装例＊**
-
 `500` 系ステータスが 10 回以上連続した宛先を 10 秒間隔で判定し、ルーティング対象から除外する。
 
 初回は、異常な Pod を 30 秒間排除する。
@@ -851,8 +807,6 @@ spec:
 
 Pod 全体のうちで排除できる Pod の最大割合 (%) を設定する。
 
-**＊実装例＊**
-
 すべての Pod を排除する。
 
 代わりに istio-proxy から返却された `503` ステータス (response_flag は `UH`) のレスポンスに応じて、送信元マイクロサービスでフォールバックを実行する。
@@ -877,8 +831,6 @@ spec:
 
 宛先サブセットの正常率が指定値を下回った場合に、外れ値検出を無効化するための最低正常率を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -899,8 +851,6 @@ spec:
 
 Pod へのルーティング時に使用する負荷分散方式を設定する。
 
-**＊実装例＊**
-
 複数のゾーンの Pod に対して、ラウンドロビンでルーティングする。
 
 ```yaml
@@ -916,8 +866,6 @@ spec:
 ```
 
 > - [Istio / Destination Rule](https://istio.io/latest/docs/reference/config/networking/destination-rule/#LoadBalancerSettings)
-
-**＊実装例＊**
 
 指定したゾーンの Pod に対して、指定した重みづけでルーティングする。
 
@@ -943,8 +891,6 @@ spec:
 > - [Istio / Locality weighted distribution](https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/distribute/)
 > - [Istio / Locality Load Balancing](https://istio.io/latest/docs/tasks/traffic-management/locality-load-balancing/)
 
-**＊実装例＊**
-
 複数のゾーンの Pod に対して、最小リクエスト数でルーティングする。
 
 ```yaml
@@ -963,8 +909,6 @@ spec:
 
 Service の待ち受けポート番号ごとに、負荷分散方式を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: DestinationRule
@@ -982,8 +926,6 @@ spec:
 #### ▼ portLevelSettings.port
 
 トラフィックポリシーの適用対象とする Service の待ち受けポート番号を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1004,8 +946,6 @@ spec:
 DestinationRule と宛先 (特にサービスメッシュ外にある対象) の間の暗号化方式を設定する。
 
 Gateway にも似た設定があるが、あちらは送信元と Gateway の間の暗号化方式を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1134,8 +1074,6 @@ spec:
 
 パッチの適用対象とする Envoy の処理 (例：LISTENER、CLUSTER、HTTP_FILTER) を設定する。
 
-**＊実装例＊**
-
 ネットワークフィルターの設定値を変更する。
 
 ```yaml
@@ -1150,8 +1088,6 @@ spec:
 
 > - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo)
 
-**＊実装例＊**
-
 HTTP フィルターの設定値を変更する。
 
 ```yaml
@@ -1165,8 +1101,6 @@ spec:
 ```
 
 > - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-ApplyTo)
-
-**＊実装例＊**
 
 リスナーフィルターの設定値を変更する。
 
@@ -1196,8 +1130,6 @@ spec:
 
 指定したクラスターが存在する場合、フィルターの設定値を変更する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
@@ -1213,8 +1145,6 @@ spec:
 #### ▼ listener
 
 指定したリスナーが存在する場合、フィルターの設定値を変更する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1235,8 +1165,6 @@ spec:
 #### ▼ context
 
 指定したワークロードタイプ (例：istio-ingressgateway 内の istio-proxy、istio-proxy コンテナの istio-proxy) の場合、フィルターの設定値を変更する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1302,8 +1230,6 @@ spec:
 
 フィルターの設定値の変更方法を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: EnvoyFilter
@@ -1316,8 +1242,6 @@ spec:
 ```
 
 > - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
-
-**＊実装例＊**
 
 `.spec.configPatches.match` キーに合致したフィルターの直前に挿入する。
 
@@ -1334,8 +1258,6 @@ spec:
 
 > - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
 
-**＊実装例＊**
-
 フィルターの一番最初に挿入する。
 
 ```yaml
@@ -1350,8 +1272,6 @@ spec:
 ```
 
 > - [Istio / Envoy Filter](https://istio.io/latest/docs/reference/config/networking/envoy-filter/#EnvoyFilter-Patch-Operation)
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1369,8 +1289,6 @@ spec:
 #### ▼ value
 
 既存のフィルターに適用したいフィルターを設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1397,8 +1315,6 @@ spec:
 複数の EnvoyFilter が同じコンポーネントに適用される場合、パッチの適用順を設定する。
 
 数字の昇順に適用し、同じ値の場合は作成時刻、完全修飾リソース名の順で決まる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1alpha3
@@ -1770,8 +1686,6 @@ Deployment や Pod の `.metadata.annotations` キーにて、istio-proxy ごと
 
 Deployment や Pod で istio-proxy を定義することにより設定を変更できる。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -1828,8 +1742,6 @@ Istio Ingress Gateway/EgressGateway に付与された `.metadata.labels` キー
 
 また、Istio Egress Gateway には `istio` ラベルがあり、値は `egressgateway` である。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -1859,8 +1771,6 @@ metadata:
 
 Istio Ingress Gateway/EgressGateway の Pod で待ち受けるポート名を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -1883,8 +1793,6 @@ Ingress Nginx Controller であれば、Nginx Controller Pod で待ち受ける�
 IngressGateway の内部的な Service のタイプで NodePort Service を選んだ場合、Node の宛先ポート番号に合わせる。
 
 一方で、LoadBalancer Service を選んだ場合、LoadBalancer がルーティングできる宛先ポート番号とする。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -1918,8 +1826,6 @@ Istio Ingress Gateway/EgressGateway の Pod で受信するプロトコルを設
 - Redis
 - MySQL
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -1949,8 +1855,6 @@ spec:
 
 Istio Ingress Gateway/EgressGateway の Pod の宛先ポート番号を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -1973,8 +1877,6 @@ Gateway でフィルタリングするインバウンド通信の `Host` ヘッ�
 Istio Ingress Gateway では、複数のマイクロサービスで API を公開している場合、ワイルドカード (`*`) を使用してすべてのドメインを許可することになる。
 
 また、Istio Egress Gateway でも任意の API への接続を許可するために、同様にワイルドカード (`*`) を使用することになる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2004,8 +1906,6 @@ spec:
 
 `.spec.servers.tls.mode` キーで相互 TLS 認証を設定している場合、クライアント証明書のペアになる CA 証明書が必要である。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -2028,8 +1928,6 @@ CA を含むサーバー証明書を保持する Secret を設定する。
 サーバー証明書のファイルを指定する場合は、`.spec.servers[*].tls.serverCertificate` キーを設定する。
 
 Secret を更新した場合、Pod を再起動せずに、Pod に Secret を再マウントできる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2060,8 +1958,6 @@ spec:
 
 クライアント証明書は不要にである。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -2076,8 +1972,6 @@ spec:
 #### ▼ MUTUAL
 
 送信元と Gateway の間で、Istio の作成していない証明書による相互 TLS 認証を実施する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2095,8 +1989,6 @@ spec:
 送信元と Gateway の間で、Istio の作成した証明書による相互 TLS 認証を実施する。
 
 istio-proxy と Istio Egress Gateway の間で相互 TLS 認証を実施する場合、これを使用する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2119,8 +2011,6 @@ Gateway で HTTPS リクエストを受信した場合、サーバー証明書�
 
 注意点として、Gateway は受信した HTTPS を TCP プロトコルとして処理するため、`L7` ヘッダーにある HTTP ヘッダーやパスを使用してトラフィックを制御できない。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -2139,8 +2029,6 @@ spec:
 <br>
 
 ### .spec.servers.tls.privateKey
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -2165,8 +2053,6 @@ spec:
 
 サーバー証明書を保持する Secret を指定する場合は、`.spec.servers[*].tls.credentialName` キーを設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: Gateway
@@ -2187,8 +2073,6 @@ spec:
 ### .spec.selector
 
 指定した Namespace の特定の Pod で相互 TLS 認証を有効化する
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2248,8 +2132,6 @@ spec:
     </tr>
   </tbody>
 </table>
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: security.istio.io/v1
@@ -2633,8 +2515,6 @@ spec:
 
 部分的にワイルドカード (`*`) を使用できるが、すべてのドメインを許可 (ワイルドカードのみ) できない。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
@@ -2703,8 +2583,6 @@ spec:
 
 コンフィグストレージに登録する宛先のポート番号を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
@@ -2746,8 +2624,6 @@ DNS サーバーから返信された IP アドレスを許可する。
 
 サービスメッシュ外のパブリックなドメインに接続する場合は、必須である。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: ServiceEntry
@@ -2766,8 +2642,6 @@ Istio Egress Gateway は値に注意が必要である。
 ServiceEntry に対するリクエストの宛先 IP アドレスは Istio Egress Gateway に書き換えられている。
 
 そのため、DNS 解決を `NONE` にすると、Istio Egress Gateway は ServiceEntry を見つけられず、自分自身でループしてしまう。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3027,8 +2901,6 @@ VirtualService の設定を公開する Namespace を設定する。
 
 Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3052,8 +2924,6 @@ spec:
 異なる Namespace の通信元で設定を使用する場合、`*` で全 Namespace に公開する。
 
 Gateway を使用するかどうかではなく、設定を使用する通信元の Namespace に合わせて公開範囲を決める。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3079,8 +2949,6 @@ VirtualService の設定値を適用する `Host` ヘッダー値を設定する
 ワイルドカード (`*`) を使用してすべてのドメインを許可してもよいが、特定のマイクロサービスへのリクエストのみを扱うため、宛先マイクロサービスのホスト名に限定するとよい。
 
 なお、`.spec.gateways` キーで `mesh` (デフォルト値) を使用する場合、ワイルドカード以外を設定しないといけない。 (例：`.spec.hosts` キーを設定しない、特定の Host ヘッダー値を設定するなど)
-
-**＊実装例＊**
 
 すべての Host ヘッダー値で VirtualService を適用する。
 
@@ -3116,8 +2984,6 @@ VirtualService と Gateway が同じ Namespace に所属する場合は、Namesp
 
 ただ、Namespace は省略しないほうがわかりやすい。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3141,8 +3007,6 @@ VirtualService を、Istio Ingress Gateway/EgressGateway に紐づける場合 (
 VirtualService と Gateway が同じ Namespace に所属する場合は、Namespace を省略できる (`.spec.export` キーとは関係ない) 。
 
 ただ、Namespace は省略しないほうがわかりやすい。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3292,8 +3156,6 @@ VirtualService を、Pod 間通信で使用する場合は `mesh` (デフォル�
 
 Host ヘッダーに `*` (ワイルドカード) を使用できず、特定の Host ヘッダーのみを許可する必要がある。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3338,8 +3200,6 @@ HTTP/1.1、HTTP/2 (例：gRPC、GraphQL など) のプロトコルによる通�
 
 発生させるフォールトインジェクションを設定する。
 
-**＊実装例＊**
-
 `503` ステータスのエラーを `100`%の確率で発生させる。
 
 ```yaml
@@ -3359,8 +3219,6 @@ spec:
 ```
 
 > - [Istio入門 - Speaker Deck](https://speakerdeck.com/nutslove/istioru-men?slide=19)
-
-**＊実装例＊**
 
 `10` 秒のレスポンスの遅延を `100`%の確率で発生させる。
 
@@ -3394,8 +3252,6 @@ spec:
 
 ヘッダー名で合致条件を設定する。
 
-**＊実装例＊**
-
 受信した通信のうち、`x-foo` ヘッダーに `bar` が割り当てられたものだけにルールを適用する。
 
 ```yaml
@@ -3410,8 +3266,6 @@ spec:
             x-foo:
               exact: bar
 ```
-
-**＊実装例＊**
 
 ユーザーエージェントで振り分ける。
 
@@ -3492,8 +3346,6 @@ spec:
 
 リクエストの URI で合致条件を設定する。
 
-**＊実装例＊**
-
 受信した通信のうち、URL の接頭辞が `/foo` のものだけにルールを適用する。
 
 ```yaml
@@ -3519,8 +3371,6 @@ spec:
 リトライ条件を設定する。
 
 なお、TCP 接続には `spec.tcp[*].retries` キーのような同様の設定は存在しない。
-
-**＊実装例＊**
 
 Gateway 系ステータス (`502`、`503`、`504`) の場合、`attempts` の数だけリトライする。
 
@@ -3588,8 +3438,6 @@ istio-proxy のリバースプロキシに失敗した場合の最大リトラ�
 
 Service へのルーティングの失敗ではないことに注意する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3606,8 +3454,6 @@ spec:
 リトライ失敗の理由を設定する。
 
 istio-proxy は、レスポンスの `x-envoy-retry-on` ヘッダーに割り当てるため、その値を設定する。
-
-**＊実装例＊**
 
 デフォルトでは、リトライの条件は `connect-failure,refused-stream,unavailable` である。
 
@@ -3636,8 +3482,6 @@ spec:
 
 受信した通信で宛先の Service のドメイン名 (あるいは Service 名) を設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3658,8 +3502,6 @@ spec:
 #### ▼ destination.port
 
 受信する通信でルーティング先のポート番号を設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3690,8 +3532,6 @@ VirtualService を起点とした Pod のカナリアリリースで使用する
 紐付けたい DestinationRule のサブセット名と同じ名前を設定する。
 
 DestinationRule で受信した通信を、DestinationRule のサブセットに紐づく Pod へルーティングする。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3731,8 +3571,6 @@ Service の重み付けルーティングの割合を設定する。
 `.spec.http[*].route[*].destination.subset` キーの値は、DestinationRule で設定した `.spec.subsets[*].name` キーに合わせる必要がある。
 
 重み付けの偏りの割合によって、カナリアリリースや B/G デプロイメントを実現できる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3821,8 +3659,6 @@ spec:
 
 #### ▼ match
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: networking.istio.io/v1
 kind: VirtualService
@@ -3837,8 +3673,6 @@ spec:
 #### ▼ route.destination.host
 
 `.spec.http` キーと同じ機能である。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3861,8 +3695,6 @@ spec:
 #### ▼ route.destination.port
 
 `.spec.http` キーと同じ機能である。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1
@@ -3887,8 +3719,6 @@ spec:
 #### ▼ route.destination.subset
 
 `.spec.http` キーと同じ機能である。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: networking.istio.io/v1

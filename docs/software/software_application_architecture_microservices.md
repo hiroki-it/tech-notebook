@@ -136,8 +136,6 @@ description: マイクロサービスアーキテクチャ＠アーキテクチ�
 
 > - [A pattern language for microservices](https://microservices.io/patterns/)
 
-**＊実装例＊**
-
 `microservices.io` サイトで紹介しきれていない実装方法は、`softwarepatternslexicon` サイトで確認できる。
 
 > - [Microservices Architecture & Design Patterns \| Software Patterns Lexicon](https://softwarepatternslexicon.com/microservices/)

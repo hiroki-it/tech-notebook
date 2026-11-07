@@ -25,8 +25,6 @@ JavaScript Promise を使用した HTTP クライアントパッケージであ�
 
 HTTP リクエストを送信する。
 
-**＊実装例＊**
-
 非同期処理として GET リクエストを送信する。
 
 ```javascript
@@ -60,8 +58,6 @@ axios.defaults.headers.post["Content-Type"] = "application/json";
 
 #### ▼ data
 
-**＊実装例＊**
-
 ```javascript
 import axios from "axios";
 
@@ -81,8 +77,6 @@ const asyncFunc = async () => {
 > - https://axios-http.com/docs/req_config
 
 #### ▼ headers
-
-**＊実装例＊**
 
 ```javascript
 import axios from "axios";
@@ -105,8 +99,6 @@ const asyncFunc = async () => {
 #### ▼ httpsAgent
 
 `https` パッケージを使用して、`axios` パッケージを拡張する。
-
-**＊実装例＊**
 
 クライアント証明書を使用して、HTTPS リクエストを送信する。
 
@@ -140,8 +132,6 @@ const asyncFunc = async () => {
 
 `Cookie` ヘッダーをリクエストに設定する。
 
-**＊実装例＊**
-
 ```javascript
 import axios from "axios";
 
@@ -163,8 +153,6 @@ const asyncFunc = async () => {
 > - [Axiosを利用してCookieを送信する方法](https://apidog.com/jp/blog/axios-send-cookie/#axios%E3%81%A7cookie%E3%82%92%E9%80%81%E4%BF%A1%E3%81%99%E3%82%8B%E3%81%AB%E3%81%AF%EF%BC%9F)
 
 #### ▼ xsrfCookieName
-
-**＊実装例＊**
 
 ```javascript
 import axios from "axios";

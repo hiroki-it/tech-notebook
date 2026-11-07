@@ -122,8 +122,6 @@ PHPUnit の実行前に設定する `ini_set()` 関数、`define()` 関数、グ
 
 > - https://phpunit.readthedocs.io/ja/latest/configuration.html#php-ini
 
-**＊実装例＊**
-
 Composer の実行時はメモリ不足を避ける。
 
 そのため、メモリを拡張する。
@@ -231,8 +229,6 @@ $this->assertSame(200, $response->getStatusCode());
 
 > - https://phpunit.readthedocs.io/ja/latest/writing-tests-for-phpunit.html#writing-tests-for-phpunit-data-providers
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -272,8 +268,6 @@ class FooTest extends TestCase
 
 事前処理として、すべてのテスト関数の前にコールされる関数である。
 
-**＊実装例＊**
-
 IoC コンテナを事前に作成する。
 
 ```injectablephp
@@ -293,8 +287,6 @@ class FooTest extends TestCase
     }
 }
 ```
-
-**＊実装例＊**
 
 ユニットテストで検証するクラスが実際の処理のなかでインスタンス化されるとき、依存先のクラスはすでにインスタンス化されているはずである。
 
@@ -335,8 +327,6 @@ class FooTest extends TestCase
 事後処理として、すべてのテスト関数の後にコールされる関数である。
 
 グローバル変数やサービスコンテナにデータを格納する場合、後の検証でもそのデータが誤って使用されてしまわないように、サービスコンテナを破棄するために使用される。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -447,8 +437,6 @@ class FooTest extends TestCase
 
 ### ユニットテストの場合
 
-**＊実装例＊**
-
 以降のテストケースでは、次のような通知クラスとメッセージクラスが前提にあるとする。
 
 ```injectablephp
@@ -546,8 +534,6 @@ class FooMessage
 
 関数のアノテーションで、`@test` を宣言する。
 
-**＊実装例＊**
-
 リクエストにて、チャンネルとメッセージを送信したとき、レスポンスとして `TRUE` が返信されるかを検証する。
 
 ```injectablephp
@@ -597,8 +583,6 @@ class FooNotificationTest extends TestCase
 
 関数のアノテーションで、`@test` と `@expectedException` を宣言する。
 
-**＊実装例＊**
-
 リクエストにて、メッセージのみを送信しようとしたとき、例外を発生させられるかを検証する。
 
 ```injectablephp
@@ -646,8 +630,6 @@ class FooNotificationTest extends TestCase
 <br>
 
 ### 機能テストの場合
-
-**＊実装例＊**
 
 関数のアノテーションで、`@test` を宣言する必要がある。
 
@@ -766,8 +748,6 @@ class FooControllerTest extends TestCase
 
 コントローラーが `200` ステータスを含むレスポンスを返信することを検証する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -801,8 +781,6 @@ class FooControllerTest extends TestCase
 #### ▼ 正常系 POST
 
 コントローラーが `200` ステータスを含むレスポンスを返信すること、更新されたデータの ID が期待通りであること、レスポンスされたデータが期待通りであることを検証する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -857,8 +835,6 @@ class FooControllerTest extends TestCase
 #### ▼ 異常系 POST
 
 コントローラーが `400` ステータスを含むレスポンスを返信すること、レスポンスされたデータが期待通りであることを検証する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

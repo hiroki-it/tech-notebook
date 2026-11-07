@@ -76,8 +76,6 @@ Include ディレクティブを使用すれば、任意の名前で設定ファ
 
 そのルートディレクトリを設定する。
 
-**＊実装例＊**
-
 通常であれば、etc ディレクトリ配下に conf ファイルが配置される。
 
 ```apacheconf
@@ -105,8 +103,6 @@ Apache の稼働するサーバーが、複数のドメインを仮想的に持�
 複数の仮想ホストを設定した場合、いずれの仮想ホストを選ぶかは、`Host` ヘッダー値がいずれの ServerName 値と一致するかで決まる。
 
 > - [名前ベースのバーチャルホスト - Apache HTTP サーバ バージョン 2.5](https://httpd.apache.org/docs/trunk/ja/vhosts/name-based.html)
-
-**＊実装例＊**
 
 ```apacheconf
 Listen 80
@@ -141,8 +137,6 @@ NameVirtualHost *:80
 
 ドキュメントルートに『`index.html`』というファイルを配置すると、ファイル名を指定しなくとも、ルートディレクトリ内の `index.html` ファイルが、エントリーポイントとして自動的に認識されて表示される。
 
-**＊実装例＊**
-
 ```apacheconf
 <VirtualHost *:80>
     DocumentRoot /var/www/foo:
@@ -151,8 +145,6 @@ NameVirtualHost *:80
 ```
 
 index.html 以外の名前をエントリーポイントにする場合、ファイル名を指定する必要がある。
-
-**＊実装例＊**
 
 ```apacheconf
 <VirtualHost *:80>
@@ -171,8 +163,6 @@ index.html 以外の名前をエントリーポイントにする場合、ファ
 
 指定したディレクトリ内にリクエストがあったときに実行するディレクティブを設定する。
 
-**＊実装例＊**
-
 ```apacheconf
 <Directory "/var/www/foo">
     DirectoryIndex index.php
@@ -190,8 +180,6 @@ httpd プロセスのユーザー名を設定する。
 
 httpd プロセスによって作成されたファイルの所有者名は、このディレクティブで定義したものになる。
 
-**＊実装例＊**
-
 ```apacheconf
 User apache
 ```
@@ -201,8 +189,6 @@ User apache
 httpd プロセスのグループ名を設定する。
 
 httpd プロセスによって作成されたファイルのグループ名は、このディレクティブで定義したものになる。
-
-**＊実装例＊**
 
 ```apacheconf
 Group apache
@@ -216,8 +202,6 @@ Group apache
 
 TCP KeepAlive を有効化する。
 
-**＊実装例＊**
-
 ```apacheconf
 KeepAlive On
 ```
@@ -228,8 +212,6 @@ KeepAlive On
 
 セッション ID を付与中のクライアントで、再びリクエストを送信するまでに何秒間経過したら、セッション ID を破棄するかを設定する。
 
-**＊実装例＊**
-
 ```apacheconf
 # KeepAliveがOnの時のみ
 KeepAliveTimeout 5
@@ -238,8 +220,6 @@ KeepAliveTimeout 5
 #### ▼ MaxKeepAliveRequests
 
 セッション ID を付与中のクライアントで、リクエストのファイルの最大数を設定する。
-
-**＊実装例＊**
 
 ```apacheconf
 # KeepAliveがOnの時のみ
@@ -255,8 +235,6 @@ MaxKeepAliveRequests 1000
 #### ▼ LoadModule
 
 モジュールを読み出し、設定ディレクティブを宣言できるようにする。
-
-**＊実装例＊**
 
 相対パスを指定し、ServerRoot を適用させる。
 
@@ -277,15 +255,11 @@ LoadModule dir_module modules/mod_dir.so
 
 Directory ディレクティブによってリクエストされたディレクトリのインデックスファイルをレスポンスする。
 
-**＊実装例＊**
-
 ```apacheconf
 <Directory "/var/www/foo">
     DirectoryIndex index.html index.php
 </Directory>
 ```
-
-**＊実装例＊**
 
 ```apacheconf
 <Directory "/var/www/foo">
@@ -302,8 +276,6 @@ Directory ディレクティブによってリクエストされたディレク�
 
 別に用意した `.htaccess` ファイルにて、有効化するディレクティブを設定する。
 
-**＊実装例＊**
-
 ```apacheconf
 <Directory "/var/www/foo">
     DirectoryIndex index.php
@@ -315,8 +287,6 @@ Directory ディレクティブによってリクエストされたディレク�
 
 別に用意した `.htaccess` ファイルにて、実装できるディレクティブをすべて有効化する。
 
-**＊実装例＊**
-
 ```apacheconf
 AllowOverride All
 ```
@@ -325,8 +295,6 @@ AllowOverride All
 
 別に用意した `.htaccess` ファイルにて、実装できるディレクティブをすべて無効化する。
 
-**＊実装例＊**
-
 ```apacheconf
 AllowOverride None
 ```
@@ -334,8 +302,6 @@ AllowOverride None
 #### ▼ Indexes
 
 別に用意した `.htaccess` ファイルにて、DirectoryIndex ディレクティブを有効化するか否かを設定する。
-
-**＊実装例＊**
 
 ```apacheconf
 AllowOverride Indexes
@@ -351,13 +317,9 @@ AllowOverride Indexes
 
 条件分岐と、それによる処理を設定する。
 
-**＊実装例＊**
-
 ```apacheconf
 RewriteCond %変数名 条件
 ```
-
-**＊実装例＊**
 
 ```apacheconf
 RewriteCond %{HTTP:X-Forwarded-Port} !^443$
@@ -380,8 +342,6 @@ RewriteCond %{HTTP:X-Forwarded-Port} !^443$
 ```apacheconf
 RewriteRule URL書換＆ルーティングの記述
 ```
-
-**＊実装例＊**
 
 リクエストを HTTPS プロトコルに変換して、リダイレクトする。
 
@@ -421,8 +381,6 @@ SetEnvIf Request_URI "\.(gif|jpe?g|png|js|css)$" object-is-ignore
 #### ▼ アクセスログ形式と出力内容
 
 アクセスログの出力先ログファイルとフォーマットを合わせて設定する。
-
-**＊実装例＊**
 
 ```apacheconf
 # common形式
@@ -517,8 +475,6 @@ LogFormat "%h %l %u %t "%r" %>s %b "%{Referer}i" "%{User-Agent}i"" combined
 
 エラーログの出力先を設定する。
 
-**＊実装例＊**
-
 ```apacheconf
 ErrorLog /var/log/httpd/error_log
 ```
@@ -547,8 +503,6 @@ PKI における公開鍵の検証に必要なサーバー証明書のディレ�
 
 本番環境では AWS Certificate Manager の証明書を使用することが多いため、基本的な用途は、ローカル開発で自己署名サーバー証明書を読み出すことである。
 
-**＊実装例＊**
-
 ```apacheconf
 SSLCertificateFile /etc/httpd/conf.d/server.crt
 ```
@@ -560,8 +514,6 @@ SSLCertificateFile /etc/httpd/conf.d/server.crt
 #### ▼ SSLCertificateKeyFile とは
 
 PKI における公開鍵の検証に必要な秘密鍵のディレクトリを設定する。
-
-**＊実装例＊**
 
 ```apacheconf
 SSLCertificateKeyFile /etc/httpd/conf.d/server.key
@@ -587,8 +539,6 @@ SSLCertificateKeyFile /etc/httpd/conf.d/server.key
 
 レスポンスヘッダーを追加する。
 
-**＊実装例＊**
-
 `Referrer-Policy` ヘッダーを追加し、値を `no-referrer-when-downgrade` とする。
 
 ```apacheconf
@@ -606,8 +556,6 @@ Header set Referrer-Policy "no-referrer-when-downgrade" always
 #### ▼ unset
 
 レスポンスヘッダーを削除する。
-
-**＊実装例＊**
 
 `Referrer-Policy` ヘッダーを削除する
 

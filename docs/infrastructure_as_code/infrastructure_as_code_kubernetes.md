@@ -424,8 +424,6 @@ Tenant には、複数の Namespace が所属できる。
 
 #### ▼ テナントの実装
 
-**＊実装例＊**
-
 foo チームが使用する foo テナント (`foo-tenant`) を作成する。
 
 ```yaml
@@ -475,8 +473,6 @@ Account は、Space を介して、複数の Namespace を管理する。
 > - [GitHub - loft-sh/kiosk: kiosk 🏢 Multi-Tenancy Extension For Kubernetes - Secure Cluster Sharing & Self-Service Namespace Provisioning · GitHub](https://github.com/loft-sh/kiosk#3-working-with-spaces)
 
 #### ▼ テナントの実装
-
-**＊実装例＊**
 
 foo チームが使用する foo テナント (`foo-account`) を作成する。
 

@@ -183,8 +183,6 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 #### ▼ NPM の場合
 
-**＊実装例＊**
-
 Nuxt.js の場合、エントリーポイントは `nuxt.config` ファイルである。
 
 プラグインとして実装し、これをエントリーポイントで読み込むようにする。
@@ -383,8 +381,6 @@ export default browserLogsForSsgPlugin;
 #### ▼ PHP Monolog の場合
 
 Log パッケージに Monolog を採用している場合、`/etc/datadog-agent/conf.d/php.d` ディレクトリ配下に `conf.yaml` ファイルを作成する。ここに、Datadog にログを送信するための設定する。
-
-**＊実装例＊**
 
 ```yaml
 init_config:

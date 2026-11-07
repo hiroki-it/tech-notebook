@@ -176,8 +176,6 @@ Saga オーケストレーターをステートマシン図や State パター�
 
 マイクロサービスの処理のなかで実装する。
 
-**＊実装例＊**
-
 Saga オーケストレーターと、これをコールする別のマイクロサービスを配置する。
 
 Saga オーケストレーターは、各ローカルトランザクションの成否を表す Saga ログを DB で管理する。
@@ -865,8 +863,6 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 マイクロサービスの処理のなかで実装する。
 
-**＊実装例＊**
-
 以下のリポジトリを参考にせよ。
 
 ![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png)
@@ -1017,8 +1013,6 @@ Outbox パターンでは、Saga ログテーブルに加えて、Outbox テー�
 > - [Pattern: Transactional outbox](https://microservices.io/patterns/data/transactional-outbox.html)
 > - [マイクロサービスアーキテクチャにおけるデータ整合性について #microservices - Qiita](https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B)
 > - [Reliable Microservices Data Exchange With the Outbox Pattern](https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/)
-
-**＊実装例＊**
 
 カタログコンテキストサービスが永続化処理の結果をメッセージブローカーにパブリッシュしたい場合に、次の設計パターンがある。
 

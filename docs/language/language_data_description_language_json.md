@@ -111,8 +111,6 @@ JSON を PHP のオブジェクト型に変換する処理はデシリアライ�
 
 キーを、シングルクオーテーションではなく、クオーテーションで囲う必要がある。
 
-**＊実装例＊**
-
 ```javascript
 const json = {
   account: 200,
@@ -121,8 +119,6 @@ const json = {
 ```
 
 #### ▼ キーと値の変更方法
-
-**＊実装例＊**
 
 ```javascript
 // どんなデータを含むJSONなのかわかりやすい方法
@@ -137,8 +133,6 @@ json.name = "taro";
 json.tel = "090-0123-4567";
 ```
 
-**＊実装例＊**
-
 ```javascript
 const json = {};
 
@@ -151,8 +145,6 @@ json["prefecture"] = "Tokyo";
 // 以下は。undefined になる。二段階の定義はできない。
 //// json.prefecture.area = "Shibuya";
 ```
-
-**＊実装例＊**
 
 ```javascript
 const json = {
@@ -184,8 +176,6 @@ json["prefecture"] = "Tokyo";
 
 キーはクオーテーションで囲う必要がない。
 
-**＊実装例＊**
-
 ```javascript
 const object = {
   account: 200,
@@ -210,8 +200,6 @@ class Foo {
 ### バックエンドの場合
 
 #### ▼ 定義方法
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -239,8 +227,6 @@ class Foo
 
 JS 型オブジェクトから JSON への変換には、`JSON.stringfy()` 関数を使用する。
 
-**＊実装例＊**
-
 ```javascript
 const object = {
   fruit: ["banana", "apple"],
@@ -260,8 +246,6 @@ JSON から JS 型オブジェクトへの変換には、`JSON.parse()` 関数�
 
 レスポンスされた JSON はエスケープされていることに注意する。
 
-**＊実装例＊**
-
 ```javascript
 const escapedJson = '{"fruit":["banana","apple"],"account":200}';
 
@@ -275,8 +259,6 @@ console.log(object);
 ```
 
 #### ▼ 相互パース関数を持つクラス
-
-**＊実装例＊**
 
 シリアライズとデシリアライズを行うクラスを以下に示す。
 

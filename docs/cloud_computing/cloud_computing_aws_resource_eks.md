@@ -1624,8 +1624,6 @@ KubeletConfiguration の `--image-gc-high-threshold` オプションで、キャ
 
 `--image-gc-low-threshold` オプションで、解放しようとするディスク使用率を設定する。
 
-**＊実装例＊**
-
 ディスク使用率が `70`%を超過した場合、ディスク使用率 `50`%分を解放する。
 
 ```bash
@@ -1670,8 +1668,6 @@ KubeletConfiguration の `--shutdown-grace-period` オプション (`shutdownGra
 `InhibitDelayMaxSec` には、`--shutdown-grace-period` オプションと同じ秒数 (単位は不要) を設定する。
 
 注意点として、この時間が長すぎると、ワーカーNode の停止の全体時間が長くなるため、結果的にローリングアップグレードで Node の所要時間も長くなってしまう。
-
-**＊実装例＊**
 
 ワーカーNode の停止を `6` 分だけ待機し、その後に停止を始める。
 

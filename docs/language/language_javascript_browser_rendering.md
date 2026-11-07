@@ -68,8 +68,6 @@ Web ページをテキストによって構成するための言語をマーク�
 
 スキーマ言語に、DTD：Document Type Definition (文書型定義) がある。
 
-**＊実装例＊**
-
 ```xml
 <!DOCTYPE Employee[
     <!ELEMENT Name (First, Last)>
@@ -318,8 +316,6 @@ Intersection Observer の仕組みでは、特定の HTML 要素を指定し、�
 例えば、交差率の閾値を『`0.5`』と設定すると、ターゲットエレメントの交差率が『`0.5`』を超えた要素を随時読み込む。
 
 ![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png)
-
-**＊実装例＊**
 
 ```tsx
 import {useRef, useState, useEffect, type ReactNode} from "react";
@@ -586,8 +582,6 @@ JavaScript エンジンは、コードを、字句解析、構造解析、意味
 
 指定した ID に対して、`1` 個のイベントと `1` 個のイベントハンドラ関数を紐付ける。
 
-**＊実装例＊**
-
 ```javascript
 // 指定したIDで、クリックイベントが発火した時に、処理を実行する。
 document.getElementById("btn").onclick = () => {
@@ -602,8 +596,6 @@ document.getElementById("btn").onclick = () => {
 第一引数で、`click` などのイベントを設定し、第二引数で関数 (無名関数でも可) を渡す。
 
 `false` を設定することで、イベントバブリングを行わせない。
-
-**＊実装例＊**
 
 ```html
 <button id="btn">表示</button>

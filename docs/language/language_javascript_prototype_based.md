@@ -26,8 +26,6 @@ JavaScript の実行環境にあらかじめ組み込まれたオブジェクト
 
 他の標準ビルトインオブジェクトすべての継承元になっているため、標準ビルトインオブジェクトは、Object が持つ振る舞いと状態を使用できる。
 
-**＊実装例＊**
-
 ```javascript
 // new演算子を使用してインスタンスを作成する。
 const obj = new Object();
@@ -47,8 +45,6 @@ const obj = new Object();
 
 配列から key と value を取得する。
 
-**＊実装例＊**
-
 ```javascript
 const array = ["foo", "bar", "baz"];
 
@@ -67,15 +63,11 @@ for (const value of iterator) {
 
 #### ▼ `Array.prototype.map()` 関数
 
-**＊実装例＊**
-
 ```javascript
 // ここに実装例
 ```
 
 #### ▼ `Array.prototype.filter()` 関数
-
-**＊実装例＊**
 
 ```javascript
 // ここに実装例
@@ -84,8 +76,6 @@ for (const value of iterator) {
 #### ▼ `Array.length`
 
 要素数を出力する。
-
-**＊実装例＊**
 
 ```javascript
 const param = ["foo", "bar", "baz", "qux"];
@@ -103,8 +93,6 @@ console.log(param.length);
 
 JavaScript から JSON にシリアライズする。
 
-**＊実装例＊**
-
 ```javascript
 console.log(
   JSON.stringify({
@@ -121,8 +109,6 @@ console.log(
 #### ▼ `stringify()` 関数
 
 JSON から JavaScript にデシリアライズする。
-
-**＊実装例＊**
 
 ```javascript
 console.log(
@@ -152,8 +138,6 @@ console.log(
 > - [リテラル(Literal)とは？](https://zenn.dev/hyung8/articles/16bfc28d110bef#%E3%83%AA%E3%83%86%E3%83%A9%E3%83%AB%E8%A1%A8%E8%A8%98%E6%B3%95%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B%EF%BC%9F)
 
 #### ▼ 非省略形
-
-**＊実装例＊**
 
 ```javascript
 // リテラル表記
@@ -209,8 +193,6 @@ const foo = {
 
 補足として、オブジェクトのプロパティ値として作成された関数を、関数と呼ぶ。
 
-**＊実装例＊**
-
 ```javascript
 const foo = new Object({
   // 慣習的にアンダースコアでprivateを表す。
@@ -228,8 +210,6 @@ const foo = new Object({
 
 #### ▼ `Function` コンストラクタ関数
 
-**＊実装例＊**
-
 ```javascript
 const Foo = new Function();
 ```
@@ -239,8 +219,6 @@ const Foo = new Function();
 以下の関数宣言、関数式、アロー関数による関数式省略の記法が推奨である。
 
 特にアロー関数では、`this` が宣言されたオブジェクト自身を指すため、保守性が高くおすすめである。
-
-**＊実装例＊**
 
 ```javascript
 // 関数宣言
@@ -297,8 +275,6 @@ const Foo = (value = 0) => ({
 
 リテラル表記と `Object` コンストラクタ関数による作成とは異なり、コンストラクタ関数によって宣言されたオブジェクトは、暗示的に `prototype` プロパティを持つ。
 
-**＊実装例＊**
-
 ```javascript
 // リテラル表記による作成
 const object1 = {};
@@ -332,8 +308,6 @@ ES6 から、糖衣構文の `class` によって、オブジェクトを宣言�
 パスカルケース (大文字から始める記法) を使用する。
 
 #### ▼ クラス宣言記法
-
-**＊実装例＊**
 
 ```typescript
 // named exportによる出力
@@ -413,8 +387,6 @@ foo.getValue();
 
 #### ▼ `new Obejct` 関数を使用した継承
 
-**＊実装例＊**
-
 ```javascript
 // 大元となるオブジェクトは個別ファイルで管理しておくのがベター。
 // コンストラクタ関数の関数式による宣言。
@@ -433,8 +405,6 @@ const Foo = (value) => {
 ```
 
 別クラスで、以下のように継承する。
-
-**＊実装例＊**
 
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに。
@@ -463,8 +433,6 @@ console.log(result);
 
 #### ▼ `Object.create()` 関数を使用した継承とメンバ追加
 
-**＊実装例＊**
-
 ```javascript
 // 継承元のオブジェクトのファイルを読み込むことも忘れずに。
 // prototypeプロパティの継承先のオブジェクトを宣言。
@@ -492,8 +460,6 @@ console.log(result);
 
 また、`Object.create()` 関数を使用する場合、継承のみでなく、メンバを新しく追加もできる。
 
-**＊実装例＊**
-
 ```javascript
 // Object.create()による継承。
 SubFoo.prototype = Object.create(Foo.prototype, {
@@ -518,8 +484,6 @@ console.log(result);
 ### 関数としてコールする場合
 
 関数内の `this` は、foo オブジェクトを指す。
-
-**＊実装例＊**
 
 ```javascript
 const foo = {
@@ -549,8 +513,6 @@ foo.getValue(); // 1
 #### ▼ 関数宣言と関数式によるコンストラクタ関数内の `this` の場合
 
 コンストラクタ関数内の this は、自身がコールされたオブジェクトを指す。
-
-**＊実装例＊**
 
 ```javascript
 // 一番外側はWindowオブジェクト
@@ -592,8 +554,6 @@ object2.printParam; // object2 param
 そこで、参照先が文脈によって変わらない機能が追加された。
 
 `this` は、自身が宣言されたオブジェクトを指す。
-
-**＊実装例＊**
 
 ```javascript
 // 一番外側はWindowオブジェクト

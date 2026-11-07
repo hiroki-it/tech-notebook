@@ -23,8 +23,6 @@ description: メタデータ＠Istioの知見を記録しています。
 
 `.metadata.labels.istio-injection` キーを使用する場合、Istio のアップグレードがインプレース方式になる。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: Namespace
@@ -69,8 +67,6 @@ IstoOperator の `.spec.revision` キーと同じである。
 `.metadata.labels.istio-injection` キーとはコンフリクトを発生させるため、どちらかしか使えない (`.metadata.labels.istio-injection` キーの値が `disabled` の場合は共存できる) 。
 
 `.metadata.labels.istio.io/rev` キーを使用する場合、Istio のアップグレードがカナリア方式になる。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -288,8 +284,6 @@ ProxyConfig が最優先であり、これらの設定はマージされる。
 
 デフォルトでは、`/etc/istio/proxy` ディレクトリ配下に最終的な設定値ファイルを作成する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくは Pod
@@ -353,8 +347,6 @@ istio-proxy 上の Envoy の親プロセスを終了するまでに待機する�
 
 Pod の `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration` キーよりも、最低 `5` 秒以上長くするとよい。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくは Pod
@@ -389,8 +381,6 @@ istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処�
 この接続のドレイン処理時間を設定する。
 
 似た設定の `drainDuration` は、Envoy のリスナーやフィルターチェーンを変更した際に、ドレイン処理が終わるまで待機する時間である。
-
-**＊実装例＊**
 
 Envoy プロセスの接続のドレイン処理 `5` 秒間に実施する。
 
@@ -444,8 +434,6 @@ spec:
 
 特定の Pod (例：DB) にサイドカーを注入するか否かを設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくは Pod
@@ -468,8 +456,6 @@ spec:
 ### sidecar.istio.io/proxyCPU
 
 istio-proxy で使用する CPU サイズを設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: apps/v1
@@ -494,8 +480,6 @@ spec:
 
 istio-proxy の作成に使用するコンテナイメージを設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: apps/v1
 kind: Deployment # もしくは Pod
@@ -518,8 +502,6 @@ spec:
 ### sidecar.istio.io/proxyMemory
 
 istio-proxy で使用するメモリサイズを設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: apps/v1

@@ -192,8 +192,6 @@ AWS EBS を手動で作成する必要がある。
 
 #### ▼ PersistentVolume
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
@@ -221,8 +219,6 @@ PersistentVolumeClaim で Volume を要求する。
 PersistentVolumeClaim で Volume を要求すると、AWS EBS CSI ドライバーは、PersistentVolume とそれに紐づく AWS EBS を自動的に作成する。
 
 Pod の `.spec.nodeSelector` キーも不要である。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -290,8 +286,6 @@ AWS EBS は、AWS EBS CSI ドライバーが自動で作成するため、作成
 
 `reclaimPolicy` が `Delete` になっている PersistentVolumeClaim を削除すれば、StorageClass が EBS もよしなに削除してくれる。
 
-**＊実装例＊**
-
 マニフェストまたは Terraform で定義する。
 
 ```yaml
@@ -339,8 +333,6 @@ PersistentVolumeClaim で StorageClass を指定し、外部サービスが提�
 StorageClass が指定された PersistentVolumeClaim で Volume を要求すると、AWS EBS CSI ドライバーは、PersistentVolume とそれに紐づく AWS EBS を自動的に作成する。
 
 Pod の `.spec.nodeSelector` キーも不要である。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1

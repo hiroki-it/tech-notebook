@@ -175,8 +175,6 @@ http {
 
 特定のパスのインバウンド通信に関する処理を設定する。
 
-**＊実装例＊**
-
 各設定の優先順位に沿った以下の順番で実装したほうがよい。
 
 ```nginx
@@ -260,8 +258,6 @@ location / {
 
 特定のルーティング先に関する処理を設定する。
 
-**＊実装例＊**
-
 ```nginx
 server {
     # 80番ポートで受信
@@ -293,8 +289,6 @@ server {
 
 `Content-Type` ヘッダー値が `mime.types` ファイルにない MIME type であった場合、適用する MIME type を設定する。
 
-**＊実装例＊**
-
 任意の MIME type (指定なし) のインバウンド通信を処理する。
 
 ```nginx
@@ -306,8 +300,6 @@ default_type application/octet-stream
 #### ▼ listen
 
 インバウンド通信を待ち受けるポート番号を設定する。
-
-**＊実装例＊**
 
 インバウンド通信を `80` 番ポートで受信する。
 
@@ -330,8 +322,6 @@ listen 443 ssl;
 ファイル返信処理を OS 内で実行するため、処理が速くなる。
 
 使用しない場合、Nginx がレスポンス時に自身でファイル返信処理を実行する。
-
-**＊実装例＊**
 
 ```nginx
 sendfile on;
@@ -369,8 +359,6 @@ server_name 127.0.0.1;
 
 HTTPS プロトコルを受信する場合、SSL/TLS プロトコルを有効化する必要がある。
 
-**＊実装例＊**
-
 ```nginx
 ssl on;
 ```
@@ -381,8 +369,6 @@ ssl on;
 
 HTTPS プロトコルを受信する場合、サーバー証明書のパスを設定する。
 
-**＊実装例＊**
-
 ```nginx
 ssl_certificate /etc/nginx/ssl/server.crt;
 ```
@@ -391,8 +377,6 @@ ssl_certificate /etc/nginx/ssl/server.crt;
 
 HTTPS プロトコルを受信する場合、サーバー証明書と対になる秘密鍵へのパスを設定する。
 
-**＊実装例＊**
-
 ```nginx
 ssl_certificate_key /etc/nginx/ssl/server.key;
 ```
@@ -400,8 +384,6 @@ ssl_certificate_key /etc/nginx/ssl/server.key;
 #### ▼ ssl_client_certificate
 
 HTTPS プロトコルを受信する場合、クライアント証明書のパスを設定する。
-
-**＊実装例＊**
 
 ```nginx
 ssl_client_certificate /etc/nginx/ssl/client.crt;
@@ -412,8 +394,6 @@ ssl_client_certificate /etc/nginx/ssl/client.crt;
 上述の Linux の `sendfile` システムコールを使用する場合に適用できる。
 
 クライアントへのレスポンス時、ヘッダーとファイルを `1` 個のパケットにまとめて返信するか否かを設定する。
-
-**＊実装例＊**
 
 ```nginx
 tcp_nopush on;
@@ -447,8 +427,6 @@ location / {
 }
 ```
 
-**＊実装例＊**
-
 ```nginx
 location / {
     # 1. 『/foo.html』のパスで、ファイルをレスポンス
@@ -480,8 +458,6 @@ Web サーバーのみヘルスチェックを受信する。
 
 Nginx でアクセスログを出力する必要はないため、`location` ブロックでは `access_log` を無効化する。
 
-**＊実装例＊**
-
 ```nginx
 server {
     listen 80      default_server;
@@ -504,8 +480,6 @@ Web サーバーとアプリケーションの両方でヘルスチェックを�
 アプリケーション側に `200` ステータスを含むレスポンスを返信するエンドポイントを実装したうえで、ヘルスチェック用の `server` ブロックで Web サーバーにルーティングするように `location` ブロックを定義する。
 
 Nginx でアクセスログを出力する必要はないため、`location` ブロックでは `access_log` を無効化する。
-
-**＊実装例＊**
 
 ```nginx
 server {
@@ -531,8 +505,6 @@ server {
 
 リクエストの URL がトレイリングスラッシュで終了するすべての場合、指定されたファイルを URL の末尾に追加する。
 
-**＊実装例＊**
-
 ```nginx
 index index.php;
 ```
@@ -548,8 +520,6 @@ index index.php;
 #### ▼ add_header
 
 レスポンス時に付与するレスポンスヘッダーを設定する。
-
-**＊実装例＊**
 
 ```nginx
 # Referrer-Policyヘッダーに値を設定する
@@ -574,8 +544,6 @@ add_header Referrer-Policy "no-referrer-when-downgrade";
 
 そのため、`resolver` ディレクティブ、`upstream` ディレクティブ、UNIX ドメインソケットを使用する必要がある。(ちょっと複雑すぎる...)
 
-**＊実装例＊**
-
 ```nginx
 upstream foo_servers {
     server 192.168.0.1:80;
@@ -598,8 +566,6 @@ upstream foo_servers {
 
 FastCGI プロトコルでインバウンド通信をルーティングする場合、ルーティング先で使用する変数とその値を設定する。
 
-**＊実装例＊**
-
 ```nginx
 fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 ```
@@ -609,8 +575,6 @@ fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
 #### ▼ fastcgi_pass
 
 FastCGI プロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
-
-**＊実装例＊**
 
 ```nginx
 fastcgi_pass 127.0.0.1:9000;
@@ -655,8 +619,6 @@ gRPC による HTTP リクエストの宛先を設定する。
 
 HTTP/2 (例：gRPC、GraphQL など) を有効化する必要がある。
 
-**＊実装例＊**
-
 ```nginx
 grpc_pass 127.0.0.1:80;
 ```
@@ -686,8 +648,6 @@ server {
 #### ▼ proxy_pass
 
 HTTP プロトコルでインバウンド通信をルーティングする場合、ルーティング先のアドレスとポートを設定する。
-
-**＊実装例＊**
 
 ```nginx
 proxy_pass http://127.0.0.1:80;

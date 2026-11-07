@@ -1166,8 +1166,6 @@ data:
 
 ### `BOOTSTRAP_XDS_AGENT`
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1188,8 +1186,6 @@ data:
 ### `ENABLE_DEFERRED_CLUSTER_CREATION`
 
 `pilot-discovery` コマンドでも設定できるため、そちらを参照せよ。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1214,8 +1210,6 @@ data:
 
 `pilot-discovery` コマンドでも設定できるため、そちらを参照せよ。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1239,8 +1233,6 @@ data:
 デフォルトで `true` である。
 
 `pilot-discovery` コマンドでも設定できるため、そちらを参照せよ。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1276,8 +1268,6 @@ istio-proxy の終了順序を調整する場合は、`.spec.containers[*].lifec
 
 `.spec.containers[*].lifecycle.postStart.exec.command` キーへの自動設定は、`.mesh.defaultConfig.holdApplicationUntilProxyStarts` キーで対応する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -1299,8 +1289,6 @@ data:
 ### `ISTIO_META_CERT_SIGNER`
 
 デフォルトで `""` (空文字) である。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1328,8 +1316,6 @@ data:
 `ISTIO_META_DNS_CAPTURE` を有効にしないと、`ISTIO_META_DNS_AUTO_ALLOCATE` は機能しない。
 
 `PILOT_ENABLE_IP_AUTOALLOCATE` と同じであり、Istio 1.25 以降で、`PILOT_ENABLE_IP_AUTOALLOCATE` のほうが推奨になった。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1
@@ -1530,8 +1516,6 @@ istio-proxy 内の Envoy プロセスは、終了時に接続のドレイン処�
 
 `drainDuration` はリスナーやフィルターチェーンの変更時のドレイン待機時間を設定する。`MINIMUM_DRAIN_DURATION` は Envoy プロセスの終了時の最小待機時間を設定するため、用途が異なる。
 
-**＊実装例＊**
-
 Envoy プロセスが接続をドレインし終わるまで最低 `5` 秒間待機し、`downstream_cx_active` メトリクスが 0 になるまで終了を待機する。
 
 ```yaml
@@ -1587,8 +1571,6 @@ AuthorizationPolicy による認可処理を外部の認可プロバイダーに
 #### ▼ OAuth2 Proxy の場合
 
 OAuth2 Proxy を任意の認可プロバイダーの前段に置き、OAuth2 Proxy で認可プロバイダーを宛先に設定する。
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: v1

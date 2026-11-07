@@ -43,8 +43,6 @@ GitLab の場合は tfcmt-gitlab を使用するとよい。
 
 設定ファイルを使用して、tfnotify を実行する。
 
-**＊実装例＊**
-
 ```bash
 #!/bin/bash
 

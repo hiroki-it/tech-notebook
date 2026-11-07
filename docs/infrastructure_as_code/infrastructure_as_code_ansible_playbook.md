@@ -23,8 +23,6 @@ description: Playbook＠Ansibleの知見を記録しています。
 
 切り分ける場合、`roles` ディレクトリを作業ディレクトリとし、相対パスでファイルを指定することになる。
 
-**＊実装例＊**
-
 App サーバー、DB サーバー、Web サーバーをセットアップする。
 
 各コンポーネントは `roles` ディレクトリに切り分けている。
@@ -124,8 +122,6 @@ task ファイルの `notify` オプションで指定できる。
 
 playbook ファイルから切り分けたセットアップ処理が設定された task ファイルを配置する。
 
-**＊実装例＊**
-
 PHP 製のアプリケーションが稼働する App サーバーをセットアップする。
 
 ```yaml
@@ -172,8 +168,6 @@ PHP 製のアプリケーションが稼働する App サーバーをセット�
 アップロードファイルの鋳型となる `j2` ファイルを配置する。
 
 鋳型に変数を出力できる。
-
-**＊実装例＊**
 
 `php.ini` ファイルの鋳型として、`php.ini.j2` ファイルを配置する。
 
@@ -282,8 +276,6 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
 > - [インベントリーの基本｜Ansible の使い方](https://zenn.dev/y_mrok/books/ansible-no-tsukaikata/viewer/chapter5)
 > - [Ansibleのインベントリファイルの拡張子に .ini を使わない方がいい理由 - てくなべ](https://tekunabe.hatenablog.jp/entry/2017/11/08/ansible_inventory_ini)
 
-**＊実装例＊**
-
 もし `yml` 形式の場合は以下の通りとなる。
 
 ```yaml
@@ -348,8 +340,6 @@ $ ansible-playbook <playbookファイル> -i <inventoriesディレクトリ>
             ansible_password: ubuntu
             ansible_ssh_private_key_file: /etc/ansible/ssh_keys/prd-foo.pem
 ```
-
-**＊実装例＊**
 
 もし `ini` 形式の場合は以下の通りとなる。
 
@@ -530,8 +520,6 @@ root 以外であれば、`become_user` キーを設定する。
 
 任意のバージョンのパッケージをインストールする場合は、`name` キーにそれを指定し、`state` キーの値は `present` とする。
 
-**＊実装例＊**
-
 ```yaml
 # nginx をインストールします。
 - name: Install Nginx
@@ -550,8 +538,6 @@ root 以外であれば、`become_user` キーを設定する。
 #### ▼ ansible.builtin.dnf とは
 
 管理対象ノードで、パッケージを dnf リポジトリからインストールする。
-
-**＊実装例＊**
 
 ```yaml
 # cloudwatch エージェントをインストールする。
@@ -596,8 +582,6 @@ root 以外であれば、`become_user` キーを設定する。
 
 任意のバージョンのパッケージをインストールする場合は、`name` キーにそれを指定し、`state` キーの値は `present` とする。
 
-**＊実装例＊**
-
 ```yaml
 # nginx をインストールします。
 - name: Install Nginx
@@ -625,13 +609,9 @@ root 以外であれば、`become_user` キーを設定する。
 
 管理対象ノードにあるファイルを行単位で編集する。
 
-**＊実装例＊**
-
 SELinux を無効化する。
 
 > - [\[Ansible\] lineinfile モジュールの基本的な使い方（テキストファイルの行単位の編集） - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/02/24/ansible_lineinfile_intro#Playbook)
-
-**＊実装例＊**
 
 ```yaml
 # SELinux を無効化します。
@@ -642,8 +622,6 @@ SELinux を無効化する。
     line: "SELINUX=disabled"
 ```
 
-**＊実装例＊**
-
 ```yaml
 # unlimit の設定を追加します
 - name: Add ulimit setting
@@ -652,8 +630,6 @@ SELinux を無効化する。
     regexp: "^DefaultLimitNOFILE=.*$"
     line: "DefaultLimitNOFILE=65536:65536"
 ```
-
-**＊実装例＊**
 
 ```yaml
 # rsyslog_conf_file に stat を格納する
@@ -679,8 +655,6 @@ SELinux を無効化する。
 
 管理対象ノードのディレクトリにファイルをコピーする。
 
-**＊実装例＊**
-
 ```yaml
 # 設定ファイルを配置します。
 - name: Copy foo.json
@@ -701,8 +675,6 @@ SELinux を無効化する。
 管理対象ノードでファイルを操作する。
 
 > - [\[Ansible\] file モジュールの基本的な使い方（ファイルやディレクトリの操作） - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/03/ansible_file_intro)
-
-**＊実装例＊**
 
 管理対象ノードで `chown` コマンドを実行することで、ファイルの所有権を設定する。
 
@@ -741,8 +713,6 @@ SELinux を無効化する。
 
 > - https://docs.ansible.com/ansible/2.9/modules/service_module.html
 
-**＊実装例＊**
-
 ```yaml
 # service コマンドを使用して、nginx を起動します。
 - name: Start nginx service
@@ -763,15 +733,11 @@ SELinux を無効化する。
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/shell_module.html
 > - [Environment Variables with Ansible \| Ruan Bekker's Blog](https://blog.ruanbekker.com/blog/2020/01/24/environment-variables-with-ansible/)
 
-**＊実装例＊**
-
 ```yaml
 - name: Echo foo
   ansible.builtin.shell: |
     echo foo
 ```
-
-**＊実装例＊**
 
 ```yaml
 - name: fetch-config amazon-cloudwatch-agent.json
@@ -793,8 +759,6 @@ SELinux を無効化する。
 
 > - https://docs.ansible.com/ansible/latest/collections/ansible/builtin/systemd_module.html
 
-**＊実装例＊**
-
 ```yaml
 # systemd で nginx のプロセスを管理します。
 - name: Start nginx systemd
@@ -804,8 +768,6 @@ SELinux を無効化する。
     enabled: yes
     daemon_reload: yes
 ```
-
-**＊実装例＊**
 
 ```yaml
 # systemd で cloudwatch エージェントのプロセスを管理します。
@@ -858,8 +820,6 @@ SELinux を無効化する。
 
 テンプレート (`.j2` ファイル) から作成したファイルを管理対象ノードのディレクトリに配置する。
 
-**＊実装例＊**
-
 ```yaml
 - name: Upload foo.conf
   ansible.builtin.template:
@@ -874,8 +834,6 @@ SELinux を無効化する。
 #### ▼ ansible.builtin.unarchive とは
 
 コントロールノードまたは管理対象ノードで `tar` コマンドを実行することで、圧縮ファイルを解凍する。
-
-**＊実装例＊**
 
 ```yaml
 - name: Unarchive file
@@ -894,8 +852,6 @@ SELinux を無効化する。
 #### ▼ ansible.builtin.user とは
 
 シェルのユーザーを操作する。
-
-**＊実装例＊**
 
 ユーザーを作成する。
 
@@ -933,8 +889,6 @@ SELinux を無効化する。
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 > - [\[Ansible\] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
 
-**＊実装例＊**
-
 管理対象ノードの環境変数の `FOO` を出力する。
 
 `gather_facts` オプションを有効化しておく。
@@ -958,8 +912,6 @@ task 内で出力できる環境変数を設定する。
 
 > - https://docs.ansible.com/ansible/2.9/user_guide/playbooks_environment.html
 
-**＊実装例＊**
-
 ```yaml
 - name: Echo foo
   ansible.builtin.shell: |
@@ -981,8 +933,6 @@ task 内で出力できる環境変数を設定する。
 
 > - [はじめてのAnsible #4 template編 - ねこの足跡R](https://blog.katsubemakito.net/ansible/ansible-1st-4)
 > - [テンプレートに環境変数を埋め込む。 - ksaitoの日記](https://ksaito11.hatenablog.com/entry/2018/10/24/232929)
-
-**＊実装例＊**
 
 ```yaml
 - name: Upload foo.conf
@@ -1011,8 +961,6 @@ task 内で出力できる環境変数を設定する。
 
 > - https://docs.ansible.com/ansible/2.9/reference_appendices/faq.html#shell
 > - [\[Ansible\] 環境変数を取得する ansible_env.hoge と lookup("env", "hoge") の違い - てくなべ](https://tekunabe.hatenablog.jp/entry/2019/03/09/ansible_env)
-
-**＊実装例＊**
 
 コントロールノードの環境変数の `FOO` を出力する。
 

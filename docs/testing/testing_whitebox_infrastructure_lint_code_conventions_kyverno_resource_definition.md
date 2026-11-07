@@ -85,8 +85,6 @@ Webhook リクエスト時に実行する Kyverno のルールを設定する。
 
 #### ▼ Mutate ルールの場合
 
-**＊実装例＊**
-
 コンテナイメージのタグ名が『`latest`』だった場合に、マニフェストに `imagePullPolicy` キーを追加する。
 
 ```yaml
@@ -115,8 +113,6 @@ spec:
 
 #### ▼ Validate ルールの場合
 
-**＊実装例＊**
-
 Pod のマニフェストの `metadata.labels` キー以下に、`app.kubernetes.io/name` キーがあるか否かを検証する。
 
 ```yaml
@@ -142,8 +138,6 @@ spec:
 ```
 
 > - [Kyvernoで作成したポリシーを"実環境のリソースでリハーサル（dry-run）"する](https://zenn.dev/k6s4i53rx/articles/5942b9e77b041b#dry-run-%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B)
-
-**＊実装例＊**
 
 Pod のマニフェストの `.spec.containers` キー以下に、`resources` キーがあるか否かを検証する。
 

@@ -87,8 +87,6 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 # Amazon SNS のデータ
 ```
 
-**＊実装例＊**
-
 AWS Amplify の指定した ID のアプリケーションが `AWS Amplify Deployment Status Change` イベントを送信し、イベントの `jobStatus` が `SUCCEED`/`FAILED` だった場合、これを送信する。
 
 ```yaml
@@ -124,8 +122,6 @@ AWS リソースで発生したイベントを受信し、他の AWS リソー�
 Amazon EventBridge では、どのような JSON のイベントをターゲットに送信したかを確認できない。
 
 そこで、デバッグ時は Amazon EventBridge のターゲットに AWS Lambda を設定し、イベント構造をログから確認する。
-
-**＊実装例＊**
 
 あらかじめ、イベントの内容を出力する関数を AWS Lambda に作成しておく。
 
@@ -180,8 +176,6 @@ AWS リソースで意図的にイベントを起こし、AWS Lambda のログ�
 イベントの JSON の値を変数として出力できる。
 
 `event` キーをドルマークとして、ドットで繋いでアクセスする。
-
-**＊実装例＊**
 
 入力パスにて、使用する値を抽出する。
 

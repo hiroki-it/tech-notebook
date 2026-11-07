@@ -97,13 +97,9 @@ DB からの値を直接的に表示する場合と異なり、新しく作ら�
 
 ### if-elseif-else 、switch-case-break
 
-**＊実装例＊**
-
 曜日をバリデーションし、文字列を出力する。
 
 #### ▼ if-elseif-else
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -134,8 +130,6 @@ if ($weeks == "Mon") {
 #### ▼ switch-case-break
 
 定数ごとに処理が変わるときは、こちらのほうが読みやすい。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -181,8 +175,6 @@ switch ($weeks) {
 #### ▼ if-else を使用した場合
 
 可読性が悪いため、避けるべき。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -234,8 +226,6 @@ class Example
 
 よりすっきりした書き方になる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -278,8 +268,6 @@ class Example
 #### ▼ 初期値と上書きのロジックを使用した場合
 
 よりすっきりした書き方になる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -332,8 +320,6 @@ class Example
 
 #### ▼ 決定表を使用した条件分岐の整理
 
-**＊実装例＊**
-
 うるう年であるかをバリデーションし、文字列を出力する。
 
 以下の手順で設計と実装をする。
@@ -355,8 +341,6 @@ class Example
 #### ▼ if-elseif-else は使用しない
 
 可読性が悪いため、避けるべき。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -398,8 +382,6 @@ function leapYear(int $year): string
 
 これを、早期リターンともいう。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -440,8 +422,6 @@ if 文の代わりに、`switch-case-break` によって、実装に、『◯◯
 
 ここでは、関数に実装することを想定して、`break` ではなく `return` を使用している。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -477,8 +457,6 @@ function leapYear(int $year): string
 
 早期リターンの if 文の波括弧を省略した記法を、ガード節という。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -512,8 +490,6 @@ function leapYear(int $year): string
 
 同じオブジェクトから別々に作られたインスタンスであっても、『同じもの』として認識される。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -531,8 +507,6 @@ if(new Example == new Example){
 
 同じオブジェクトから別々に作られたインスタンスであっても、『異なるもの』として認識される。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -549,8 +523,6 @@ if (new Example === new Example) {
 ```
 
 同じインスタンスの場合のみ、『同じもの』として認識される。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

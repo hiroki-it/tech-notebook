@@ -81,8 +81,6 @@ echo $carbon; // 2019-07-07 19:07:07
 
 日時の文字列から Carbon インスタンスを作成する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -94,8 +92,6 @@ echo $carbon; // 2019-07-07 19:07:07
 #### ▼ `createFromXXX()` 関数
 
 指定の文字列から、Carbon インスタンスを作成する。
-
-**＊実装例＊**
 
 日時数字から Carbon インスタンスを作成する。
 
@@ -150,8 +146,6 @@ echo $carbonFromTimestamp; // 2019-07-07 19:07:07
 
 `createFromFormat()` 関数とは異なり、フォーマットを指定する必要がない。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -175,8 +169,6 @@ $carbon = Carbon::parse("2019-07-07 19:07:07");
 ### `Traversable::from` 関数
 
 SQL の `SELECT` や `WHERE` といった単語を使用して、`foreach` のように、配列データやオブジェクトデータの各要素に対して、処理を行える。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -220,8 +212,6 @@ class Foo
 ### リクエスト
 
 #### ▼ GET リクエスト
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -282,8 +272,6 @@ $response = $client->request(
 
 #### ▼ レスポンスからボディを取得
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -331,8 +319,6 @@ $body = json_decode($response->getBody(), true);
 #### ▼ `generateFromHtml()` 関数
 
 ローカルディレクトリ配下に、`html` ファイルを基にした PDF ファイルを作成する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

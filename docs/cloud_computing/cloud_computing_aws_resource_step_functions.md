@@ -29,8 +29,6 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 #### ▼ AWS Lambda
 
-**＊実装例＊**
-
 ```yaml
 {
   "StartAt": "Call AWS Lambda",

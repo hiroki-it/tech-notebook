@@ -90,8 +90,6 @@ Envoy では、YAML ファイルのキー名がスネークケースになって
 
 Envoy のアクセスログの出力先を設定する。
 
-**＊実装例＊**
-
 ```yaml
 admin:
   access_log_path: /dev/null
@@ -113,8 +111,6 @@ admin:
 
 管理ダッシュボードで受信する通信のプロトコルを設定する。
 
-**＊実装例＊**
-
 ```yaml
 admin:
   address:
@@ -128,8 +124,6 @@ admin:
 
 『`0.0.0.0`』とすると、任意の宛先 IP アドレスを指定するパケットをフィルタリングできるようになる。
 
-**＊実装例＊**
-
 ```yaml
 admin:
   address:
@@ -140,8 +134,6 @@ admin:
 #### ▼ port_value
 
 管理ダッシュボードでインバウンド通信を待ち受けるポート番号を設定する。
-
-**＊実装例＊**
 
 ```yaml
 admin:
@@ -181,8 +173,6 @@ admin:
 
 受信する通信のプロトコルを設定する。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   listeners:
@@ -195,8 +185,6 @@ static_resources:
 
 通信を待ち受ける IP アドレスを設定する。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   listeners:
@@ -208,8 +196,6 @@ static_resources:
 #### ▼ port_value
 
 通信を待ち受けるポート番号を設定する。
-
-**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -227,8 +213,6 @@ static_resources:
 
 使用するフィルターを設定する
 
-**＊実装例＊**
-
 ネットワークフィルターである `network.http_connection_manager` を指定する。
 
 ```yaml
@@ -244,8 +228,6 @@ static_resources:
 #### ▼ typed_config.access_log
 
 Envoy のアクセスログの出力方法を設定する。
-
-**＊実装例＊**
 
 標準出力に出力する。
 
@@ -279,8 +261,6 @@ static_resources:
 #### ▼ typed_config.stat_prefix
 
 統計ダッシュボードのメトリクスの接頭辞を設定する。
-
-**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -319,8 +299,6 @@ Envoy が `L4` プロトコルを処理できるようになる。
 
 `network.http_connection_manager` とは異なり、ルートではなくクラスターに処理を繋ぐ。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   listeners:
@@ -344,8 +322,6 @@ static_resources:
 Envoy が `L7` プロトコルを処理できるようになる。
 
 `network.tcp_proxy` とは異なり、ルートに処理を繋ぐ。
-
-**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -451,8 +427,6 @@ Envoy が、複数のドメインを仮想的に持ち、`Host` ヘッダー値�
 
 補足として `Host` ヘッダーには、インバウンド通信のルーティング先のドメイン名が割り当てられている。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   listeners:
@@ -493,8 +467,6 @@ static_resources:
 #### ▼ `virtual_hosts.routes.route.max_stream_duration`
 
 `max_stream_duration` は `max_grpc_timeout` の移行先として追加された設定である。
-
-**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -652,8 +624,6 @@ gRPCサーバー # タイムアウト (DeadlineExceeded を投げる)
 
 インバウンド通信を受信するリスナーの名前を設定する。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   listeners:
@@ -686,8 +656,6 @@ static_resources:
 
 直近の成功時の処理結果などを返すには、通信元でフォールバックを実装する必要がある。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   clusters:
@@ -713,8 +681,6 @@ static_resources:
 
 宛先との TCP 接続を確立するまでのタイムアウト時間を設定する。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   clusters:
@@ -729,8 +695,6 @@ static_resources:
 
 記入中...
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   clusters:
@@ -744,8 +708,6 @@ static_resources:
 #### ▼ lb_policy とは
 
 ルーティングのアルゴリズムを設定する。
-
-**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -762,8 +724,6 @@ static_resources:
 ルーティング先の IP アドレスとポート番号のリストを設定する。
 
 > - [Router (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/extensions/filters/http/router/v3/router.proto#envoy-v3-api-msg-extensions-filters-http-router-v3-router)
-
-**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -787,8 +747,6 @@ static_resources:
 
 ルーティング先のグループの名前を設定する。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   clusters:
@@ -804,8 +762,6 @@ static_resources:
 
 ルーティング先のグループの名前を設定する。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   clusters:
@@ -820,8 +776,6 @@ static_resources:
 
 ルーティング時に使用するソケット名を設定する。
 
-**＊実装例＊**
-
 ```yaml
 static_resources:
   clusters:
@@ -832,8 +786,6 @@ static_resources:
 #### ▼ typed_config
 
 HTTPS リクエストを送受信する場合に、証明書を設定する。
-
-**＊実装例＊**
 
 サービスメッシュツールを使用せずに、`envoy` コンテナを直接的に稼働させるとする。
 
@@ -898,8 +850,6 @@ static_resources:
           E0:F3:C8:CE:5E:2E:A3:05:F0:70:1F:F5:12:E3:6E:2E:97:92:82:84:A2:28:BC:F7:73:32:D3:39:30:A1:B6:FD
 ```
 
-**＊実装例＊**
-
 サービスメッシュツールを使用せずに、`envoy` コンテナを直接的に稼働させるとする。また、コントロールプレーンの SDS-API から取得した動的な値を設定したとする。
 
 > - [Secret discovery service (SDS) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-two-sds-server)
@@ -915,8 +865,6 @@ static_resources:
 ルーティング先のアドレスを IP アドレスではなくドメイン名で指定する場合、必須である。
 
 > - [Service discovery — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/service_discovery#arch-overview-service-discovery-types)
-
-**＊実装例＊**
 
 ```yaml
 static_resources:
@@ -1014,8 +962,6 @@ ADS-API の宛先情報は、`static_resources.clusters` キー配下で設定�
 
 > - [gRPC services (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/config/core/v3/grpc_service.proto#envoy-v3-api-msg-config-core-v3-grpcservice-envoygrpc)
 
-**＊実装例＊**
-
 サービスメッシュツールを使用せずに、`envoy` コンテナを直接的に稼働させるとする。
 
 ```yaml
@@ -1072,8 +1018,6 @@ static_resources:
 > - [envoy_discovery/envoy_config.yaml at 8f939d1ba7aaf8724651a9e2530099da4ab686d6 · salrashid123/envoy_discovery · GitHub](https://github.com/salrashid123/envoy_discovery/blob/8f939d1ba7aaf8724651a9e2530099da4ab686d6/envoy_config.yaml#L39-L74)
 > - [Envoy ProxyのためのEDSサーバーを作る \| Folioscope](https://i-beam.org/2019/03/13/envoy-xds-server/)
 
-**＊実装例＊**
-
 Istio を使用して、`envoy` コンテナを稼働させるとする。
 
 Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
@@ -1109,8 +1053,6 @@ staticResources:
 
 記入中...
 
-**＊実装例＊**
-
 ```yaml
 dynamic_resources:
   ads_config:
@@ -1120,8 +1062,6 @@ dynamic_resources:
 #### ▼ transport_api_version
 
 記入中...
-
-**＊実装例＊**
 
 ```yaml
 dynamic_resources:
@@ -1141,8 +1081,6 @@ CDS-API について設定する。
 
 `cds.yaml` ファイル (CDS-API から取得した動的な宛先情報が設定されたファイル) を読み込む。
 
-**＊実装例＊**
-
 ```yaml
 dynamic_resources:
   cds_config:
@@ -1160,8 +1098,6 @@ LDS-API について設定する。
 #### ▼ path
 
 `lds.yaml` ファイル (LDS-API から取得した動的な宛先情報が設定されたファイル) を読み込む。
-
-**＊実装例＊**
 
 ```yaml
 dynamic_resources:

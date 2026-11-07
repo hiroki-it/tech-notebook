@@ -19,8 +19,6 @@ description: config.yml＠CircleCIの知見を記録しています。
 
 CircleCI のバージョンを宣言。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 ```
@@ -137,8 +135,6 @@ commands:
 
 `workflows` にて、値を設定する。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -179,8 +175,6 @@ workflows:
 
 `workflows` にて、値を設定する。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -218,8 +212,6 @@ workflows:
 引数として、特定の文字列や整数のみを渡したいときに使用する。
 
 `workflows` にて、値を設定する。
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1
@@ -465,8 +457,6 @@ job を実行する仮想環境を選択できる。
 
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png)
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -497,8 +487,6 @@ jobs:
 Linux サーバーを実行環境として設定する。
 
 ![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine_executor.png)
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1
@@ -554,8 +542,6 @@ if 文を定義する。
 
 `when` キーでは条件が true の場合、また `unless` キーでは false の場合に実行する `steps` キーを定義する。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -606,8 +592,6 @@ Workflow 間で使いまわせるキャッシュを作成する。
 
 > - https://circleci.com/docs/ja/2.0/caching/#%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%81%AE%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5
 
-**＊実装例＊**
-
 Composer を使用してパッケージをインストールするとき、前回の結果を再利用する。
 
 ```yaml
@@ -632,8 +616,6 @@ jobs:
           paths:
             - ./vendor
 ```
-
-**＊実装例＊**
 
 yarn を使用してパッケージをインストールするとき、前回の結果を再利用する。
 
@@ -669,8 +651,6 @@ jobs:
 ```
 
 ただし、この能力は commands で共通化すると可読性がよい。
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1
@@ -710,8 +690,6 @@ jobs:
 
 CircleCI では、job ごとに異なる仮想環境を作成するため、他の `jobs` キーで使用された一時ファイルを再利用したい場合、これを使用する。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -736,8 +714,6 @@ jobs:
 ```
 
 すべてのディレクトリを保持するような場合がほとんどと思われるため、カレントディレクトリ配下 (`.`) を指定するのがよい。
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1
@@ -766,8 +742,6 @@ jobs:
 <br>
 
 ### 部品化と再利用
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1
@@ -808,8 +782,6 @@ jobs:
 
 ### 部品化と再利用
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -838,8 +810,6 @@ jobs:
 ### workflow の粒度
 
 #### ▼ ブランチ別
-
-**＊実装例＊**
 
 ```yaml
 workflows:
@@ -903,8 +873,6 @@ workflows:
 
 `workspace` キーで、コールされる `jobs` キーの引数として設定することで、その `jobs` キー内の最初と最後に、`steps` キーを追加できる。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -937,8 +905,6 @@ workflows:
 ```
 
 Orbs を使用する場合は、オプションに引数を渡す前に定義する。
-
-**＊実装例＊**
 
 ```yaml
 workflows:
@@ -991,8 +957,6 @@ workflows:
     </tr>
   </tbody>
 </table>
-
-**＊実装例＊**
 
 ```yaml
 workflows:
@@ -1189,8 +1153,6 @@ jobs:
 
 > - https://circleci.com/docs/ja/2.0/env-vars/#%E3%82%B7%E3%82%A7%E3%83%AB-%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%81%AE%E7%92%B0%E5%A2%83%E5%A4%89%E6%95%B0%E3%81%AE%E8%A8%AD%E5%AE%9A
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -1247,8 +1209,6 @@ jobs:
 
 環境変数に値を設定する処理をシェルスクリプトに切り分け、環境変数を使用する前にこれを読み込む。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -1287,8 +1247,6 @@ source $BASH_ENV
 ヒアドキュメントでは、各行で echo が実行される。
 
 そのため、echo の実装が不要であることに注意する。
-
-**＊実装例＊**
 
 ```bash
 cat <<EOF > "export_envs.sh"
@@ -1397,8 +1355,6 @@ Docker Compose は、コンテナの作成の順番を制御できるものの�
 
 > - [Is there a way to delay container startup to support dependant services with a longer startup time · Issue #374 · docker/compose · GitHub](https://github.com/docker/compose/issues/374#issuecomment-126312313)
 
-**＊実装例＊**
-
 Laravel コンテナと MySQL コンテナの場合を示す。
 
 コンテナ内に対してコマンドを実行するときのディレクトリは、Dockerfile の `WORKDIR` によって決まるので注意する。
@@ -1499,8 +1455,6 @@ CircleCI でコンテナイメージをビルドした後、各イメージレ�
 
 machine タイプで使用する場合、machine キーの下で `docker_layer_caching` を使用する。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -1533,8 +1487,6 @@ jobs:
 ```
 
 docker タイプで使用する場合、docker キーの下で `docker_layer_caching` を使用する。
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1

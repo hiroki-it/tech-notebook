@@ -38,8 +38,6 @@ Go ではオブジェクトの概念がないため、モックオブジェク�
 
 構造体のフィールドにモック構造体を設定すれば、その構造体をモック化できる。
 
-**＊実装例＊**
-
 AWS クライアントをモック構造体化する。
 
 ```go
@@ -138,8 +136,6 @@ func TestUser_UserName(t *testing.T) {
 
 `On()` 関数で設定された引数や返却値を取得する。
 
-**＊実装例＊**
-
 ```go
 package user
 
@@ -209,8 +205,6 @@ func TestUser_UserName(t *testing.T) {
 ```
 
 > - [testify/mockでgolangのテストを書く #Go - Qiita](https://qiita.com/muroon/items/f8beec802c29e66d1918#%E3%83%A2%E3%83%83%E3%82%AFstruct)
-
-**＊実装例＊**
 
 ```go
 package amplify
@@ -385,8 +379,6 @@ func Test_Mock(t *testing.T) {
 
 `Called()` 関数に渡される設定値は `On()` 関数が元になっている。
 
-**＊実装例＊**
-
 ```go
 package user
 
@@ -454,8 +446,6 @@ func TestUser_UserName(t *testing.T) {
 	}
 }
 ```
-
-**＊実装例＊**
 
 ```go
 package amplify
@@ -495,8 +485,6 @@ func (m *MockedAmplifyAPI) GetBranch(
 
 `Called()` 関数に渡される設定値は `On()` 関数が元になっている。
 
-**＊実装例＊**
-
 ```go
 package user
 
@@ -564,8 +552,6 @@ func TestUser_UserName(t *testing.T) {
 	}
 }
 ```
-
-**＊実装例＊**
 
 ```go
 package amplify
@@ -650,8 +636,6 @@ func (m *MockedAmplifyAPI) GetBranch(
     </tr>
   </tbody>
 </table>
-
-**＊実装例＊**
 
 事前にモック構造体を作成するために、`BeforeTest()` 関数を使用する。
 

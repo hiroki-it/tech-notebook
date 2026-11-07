@@ -204,8 +204,6 @@ class RouteServiceProvider extends ServiceProvider
 
 > - [【Laravel Jetstream】複数モデルでログインできるようにする（Multi Auth） – console dot log](https://blog.capilano-fw.com/?p=8159)
 
-**＊実装例＊**
-
 権限の異なるユーザーに応じたガード、またガードに紐付ける Eloquent モデルをプロバイダを定義しておく。
 
 ```injectablephp
@@ -310,8 +308,6 @@ $user = auth()->user();
 #### ▼ `check()` 関数
 
 現在のセッションのユーザーが認証済みであれば、`true` を返却する。
-
-**＊実装例＊**
 
 認証済みのユーザーがブラウザを閉じたとしても、セッションが続いている (例：ログアウトしない) 限り、認証処理をあらためて実行する必要はない。
 
@@ -451,8 +447,6 @@ AuthorizeMiddleware のエイリアスのデフォルト値は `can` であり�
 
 認可に失敗した場合、`403` ステータスを含むレスポンスを返信する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -483,8 +477,6 @@ Route::group(['middleware' => ['auth:web']], function (): void {
 第二引数に、ポリシーに紐付くクラス名前空間あるいはそのインスタンスを渡す。
 
 認可に失敗した場合は AuthorizationException を投げる。その後は自前で `403` レスポンスする。
-
-**＊実装例＊**
 
 ユーザーが該当 ID の Foo モデルを更新する権限があるか否かを検証する。
 
@@ -538,8 +530,6 @@ class FooController extends Controller
 DB アクセスが、そのアカウントに設定された認可スコープの範囲内か否かを検証する。
 
 認可に失敗した場合は `false` を返却する。その後は自前で `403` レスポンスする。
-
-**＊実装例＊**
 
 ユーザーが Foo モデルを作成する権限があるか否かを検証する。
 
@@ -790,8 +780,6 @@ return [
 
 : OAuth (認証フェーズ + 認可フェーズ) を実行するために、`auth.php` ファイルで、`driver` キーに passport ドライバを設定する。また、`provider` キーで、`users` を設定する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -856,8 +844,6 @@ return [
 
      これにより、OAuthに成功したユーザーのみがルーティングを行えるようになる。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -867,8 +853,6 @@ Route::get("user", "UserController@index")->middleware("auth:api");
 `(5)`
 
 : 認証ガードを行った Eloquent モデルに対して、HasAPIToken、Notifiable の Trait をコールする。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -894,8 +878,6 @@ class User extends Authenticatable
      これにより、Passportの認証フェーズに関わる全てのルーティング (`/oauth/xxx`) が有効になる。
 
      また、リフレッシュトークンを含むアクセストークンを発行できるようになる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -935,8 +917,6 @@ $ php artisan passport:client --password
 
      ここでは、リクエストGuzzleパッケージを使用して、リクエストを送信するものとする。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -958,8 +938,6 @@ $response = $http->post("http://your-app.com/oauth/token", [
 
 : アクセストークンを含む JSON 型データを受信する。
 
-**＊実装例＊**
-
 ```yaml
 {"token_type": "Bearer", "expires_in": 31536000, "access_token": "*****"}
 ```
@@ -969,8 +947,6 @@ $response = $http->post("http://your-app.com/oauth/token", [
 : ヘッダーにアクセストークンを含めて、認証ガードの設定されたバックエンド側のルーティングへリクエストを送信する。
 
      レスポンスのメッセージボディからデータを取得する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -986,8 +962,6 @@ return (string)$response->getBody();
 ```
 
 #### ▼ API ガード用のテーブル
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

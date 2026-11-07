@@ -89,8 +89,6 @@ exec:
 
 > - [Configuration \| github-comment](https://suzuki-shunsuke.github.io/github-comment/config/#define-variables)
 
-**＊実装例＊**
-
 ```bash
 #!/bin/bash
 
@@ -108,8 +106,6 @@ exec:
 #### ▼ 変数の出力
 
 レビューコメント中に変数を出力できる。
-
-**＊実装例＊**
 
 ```bash
 #!/bin/bash
@@ -448,8 +444,6 @@ exec:
 #### ▼ when とは
 
 テンプレートを使用する条件を設定する。
-
-**＊実装例＊**
 
 テンプレートが 1 つの場合は、`when` キーを `true` とする
 

@@ -55,8 +55,6 @@ description: Redis＠NoSQLの知見を記録しています。
 
 #### ▼ Python
 
-**＊実装例＊**
-
 ```python
 import redis
 
@@ -121,8 +119,6 @@ newLock(redisClient, 10000);
 > - [SET \| Docs](https://redis.io/docs/latest/commands/set/)
 
 #### ▼ Go
-
-**＊実装例＊**
 
 ```go
 func (c *Client) updateCache(ctx context.Context, contentID string) error {

@@ -677,41 +677,158 @@ flowchart LR
 
 書籍モデルの実装例は次のとおりである。
 
-```typescript
-/** カタログコンテキストの書籍モデル */
-class Book {
-  constructor(
-    /** 書籍の一意の識別子 */
-    public isbn: string,
-    /** 書籍のタイトル */
-    public title: string,
-    /** 書籍の著者 */
-    public author: string,
-    /** 書籍の説明 */
-    public description: string,
-    /** 書籍の販売価格 */
-    public price: number,
-  ) {}
-}
-```
+=== "Go"
 
-```typescript
-/** 在庫コンテキストの書籍モデル */
-class Book {
-  constructor(
-    /** 書籍の一意の識別子 */
-    public isbn: string,
-    /** 書籍のタイトル */
-    public title: string,
-    /** 書籍の在庫数 */
-    public quantityAvailable: number,
-    /** 保管場所 */
-    public location: string,
-    /** 書籍の在庫ステータス */
-    public status: "IN_STOCK" | "OUT_OF_STOCK",
-  ) {}
-}
-```
+    ```go
+    // カタログコンテキストの書籍モデル
+    type Book struct {
+    	// 書籍の一意の識別子
+    	Isbn string
+    	// 書籍のタイトル
+    	Title string
+    	// 書籍の著者
+    	Author string
+    	// 書籍の説明
+    	Description string
+    	// 書籍の販売価格
+    	Price int
+    }
+
+    func NewBook(isbn string, title string, author string, description string, price int) *Book {
+    	return &Book{
+    		Isbn:        isbn,
+    		Title:       title,
+    		Author:      author,
+    		Description: description,
+    		Price:       price,
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    /** カタログコンテキストの書籍モデル */
+    class Book {
+      constructor(
+        /** 書籍の一意の識別子 */
+        public isbn: string,
+        /** 書籍のタイトル */
+        public title: string,
+        /** 書籍の著者 */
+        public author: string,
+        /** 書籍の説明 */
+        public description: string,
+        /** 書籍の販売価格 */
+        public price: number,
+      ) {}
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    /** カタログコンテキストの書籍モデル */
+    class Book
+    {
+        public function __construct(
+            /** 書籍の一意の識別子 */
+            public string $isbn,
+            /** 書籍のタイトル */
+            public string $title,
+            /** 書籍の著者 */
+            public string $author,
+            /** 書籍の説明 */
+            public string $description,
+            /** 書籍の販売価格 */
+            public int $price,
+        ) {
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go
+    type BookStatus string
+
+    const (
+    	InStock    BookStatus = "IN_STOCK"
+    	OutOfStock BookStatus = "OUT_OF_STOCK"
+    )
+
+    // 在庫コンテキストの書籍モデル
+    type Book struct {
+    	// 書籍の一意の識別子
+    	Isbn string
+    	// 書籍のタイトル
+    	Title string
+    	// 書籍の在庫数
+    	QuantityAvailable int
+    	// 保管場所
+    	Location string
+    	// 書籍の在庫ステータス
+    	Status BookStatus
+    }
+
+    func NewBook(isbn string, title string, quantityAvailable int, location string, status BookStatus) *Book {
+    	return &Book{
+    		Isbn:              isbn,
+    		Title:             title,
+    		QuantityAvailable: quantityAvailable,
+    		Location:          location,
+    		Status:            status,
+    	}
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    /** 在庫コンテキストの書籍モデル */
+    class Book {
+      constructor(
+        /** 書籍の一意の識別子 */
+        public isbn: string,
+        /** 書籍のタイトル */
+        public title: string,
+        /** 書籍の在庫数 */
+        public quantityAvailable: number,
+        /** 保管場所 */
+        public location: string,
+        /** 書籍の在庫ステータス */
+        public status: "IN_STOCK" | "OUT_OF_STOCK",
+      ) {}
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    enum BookStatus: string
+    {
+        case InStock = "IN_STOCK";
+        case OutOfStock = "OUT_OF_STOCK";
+    }
+
+    /** 在庫コンテキストの書籍モデル */
+    class Book
+    {
+        public function __construct(
+            /** 書籍の一意の識別子 */
+            public string $isbn,
+            /** 書籍のタイトル */
+            public string $title,
+            /** 書籍の在庫数 */
+            public int $quantityAvailable,
+            /** 保管場所 */
+            public string $location,
+            /** 書籍の在庫ステータス */
+            public BookStatus $status,
+        ) {
+        }
+    }
+    ```
 
 #### ▼ 例：完全個室ジムを運営するハコジム
 

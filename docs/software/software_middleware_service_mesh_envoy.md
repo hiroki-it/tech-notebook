@@ -483,8 +483,6 @@ service ListenerDiscoveryService {
 > - [envoy/api/envoy/service/listener/v3/lds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/listener/v3/lds.proto#L23-L42)
 > - [envoy/source/common/config/type_to_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
-**＊実装例＊**
-
 Istio を使用して、`envoy` コンテナを稼働させるとする。
 
 Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
@@ -735,8 +733,6 @@ service RouteDiscoveryService {
 > - [envoy/api/envoy/service/route/v3/rds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/route/v3/rds.proto#L22-L42)
 > - [envoy/source/common/config/type_to_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
 
-**＊実装例＊**
-
 Istio を使用して、`envoy` コンテナを稼働させるとする。
 
 Kubernetes では、YAML ファイルのキー名の設計規約がローワーキャメルケースであることに注意する。
@@ -960,8 +956,6 @@ service ClusterDiscoveryService {
 
 > - [envoy/api/envoy/service/cluster/v3/cds.proto at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/api/envoy/service/cluster/v3/cds.proto#L22-L38)
 > - [envoy/source/common/config/type_to_endpoint.cc at v1.25.0 · envoyproxy/envoy · GitHub](https://github.com/envoyproxy/envoy/blob/v1.25.0/source/common/config/type_to_endpoint.cc#L43-L87)
-
-**＊実装例＊**
 
 Istio を使用して、`envoy` コンテナを稼働させるとする。
 

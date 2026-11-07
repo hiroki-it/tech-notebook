@@ -166,8 +166,6 @@ description: ACID＠RDBMSの知見を記録しています。
 
 PDO では書き込み処理に `exec()` 関数、読み出し処理に `query()` 関数を使用する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 try{

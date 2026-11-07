@@ -101,8 +101,6 @@ rule_files:
   - /etc/prometheus/pod_memory_utilized_rule.yaml
 ```
 
-**＊実装例＊**
-
 Pod の CPU 使用率とメモリ使用率が閾値を超えた場合に、アラートを作成する。
 
 ```yaml
@@ -146,8 +144,6 @@ groups:
 ```
 
 > - [【Prometheus】Alertmanagerをローカルで使ってみる](https://amateur-engineer-blog.com/alertmanager-docker-compose/)
-
-**＊実装例＊**
 
 サーバー証明書の有効期限のタイムスタンプと現在の時刻を比較し、`7` 日以内であればアラートを作成する。
 

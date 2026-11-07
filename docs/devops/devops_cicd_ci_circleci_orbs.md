@@ -62,8 +62,6 @@ AWS の資格情報は、CircleCI のデフォルト名と同じ環境変数名�
 
 ただし Alpine Linux では、『`$BASH_ENV`』を使用して、複数の `run` 間で環境変数を共有できず、orbs のステップに環境変数を渡せないため注意する。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -105,8 +103,6 @@ aws-cli コマンドのインストールを実行する。
 aws-cli コマンドのインストールと、Credentials 情報の設定する。
 
 AWS リソースを操作するために使用する。
-
-**＊実装例＊**
 
 Amazon CloudFront に保管されているキャッシュを削除する。
 
@@ -210,8 +206,6 @@ aws configure list
 
 CircleCI コンテナでコンテナイメージをビルドし、ECR にデプロイする。`remote-docker-layer-caching` を使用して、Docker Layer Cache を有効化できる。
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -287,8 +281,6 @@ ECR イメージを使用して、新しいリビジョンの Amazon ECS タス�
 
 > - https://circleci.com/docs/ja/2.0/ecs-ecr/#deploy-the-new-docker-image-to-an-existing-aws-ecs-service
 
-**＊実装例＊**
-
 ```yaml
 version: 2.1
 
@@ -341,8 +333,6 @@ workflows:
 Amazon ECS タスク定義を更新する。加えて、ブルー/グリーンデプロイメントがその Amazon ECS タスク定義を指定し、Amazon ECS サービスを更新する。
 
 ローリングアップデートと同様にして、`verify-revision-is-deployed` オプションを使用できる。
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1
@@ -402,8 +392,6 @@ workflows:
 正規表現で設定する必要があり、加えて JSON では『`\`』を『`\\`』にエスケープしなければならない。
 
 コマンドが実行された後に、Amazon ECS タスクは自動的に Stopped 状態になる。
-
-**＊実装例＊**
 
 例えば、DB マイグレーションを実行するための Amazon ECS タスクを起動する。
 
@@ -469,8 +457,6 @@ workflows:
 S3 にコードと appspec ファイルをデプロイできる。
 
 また、CodeDeploy を使用して、これを EC2 にデプロイできる。
-
-**＊実装例＊**
 
 ```yaml
 version: 2.1

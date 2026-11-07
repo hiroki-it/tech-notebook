@@ -21,8 +21,6 @@ description: 設定ファイル＠FluentBitの知見を記録しています。
 
 各設定の頭文字は大文字とする。
 
-**＊実装例＊**
-
 ```bash
 [SERVICE]
     # バッファーに蓄えられた全てのログを宛先にアウトプットする間隔
@@ -165,8 +163,6 @@ Inputs
 
 #### ▼ セットアップ
 
-**＊実装例＊**
-
 ```bash
 [INPUT]
     Name   dummy
@@ -225,8 +221,6 @@ $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 
 #### ▼ セットアップ
 
-**＊実装例＊**
-
 ```bash
 [INPUT]
     # プラグイン名
@@ -279,8 +273,6 @@ kubernetes-event-exporter の代わりに使用できる。
 
 #### ▼ セットアップ
 
-**＊実装例＊**
-
 ```bash
 [INPUT]
     # プラグイン名
@@ -325,8 +317,6 @@ systemd のログを収集する。
 
 #### ▼ セットアップ
 
-**＊実装例＊**
-
 ```bash
 [INPUT]
     # プラグイン名
@@ -349,8 +339,6 @@ log_router:
 ```
 
 > - https://docs.fluentbit.io/manual/pipeline/inputs/tail
-
-**＊実装例＊**
 
 ```bash
 [INPUT]
@@ -423,8 +411,6 @@ $ fluent-bit \
 Containerd のコンテナが作成する非構造化ログを構造化ログに変換する。
 
 #### ▼ セットアップ
-
-**＊実装例＊**
 
 PARSER セクションで、cri プラグインを定義する。
 
@@ -674,8 +660,6 @@ Filters
 
 ここで定義したパーサー名を、multiline プラグインで指定する必要がある。
 
-**＊実装例＊**
-
 Laravel のスタックトレースを結合する。
 
 ```bash
@@ -821,8 +805,6 @@ STREAM_TASK セッションは、ユーザー定義の SQL ステートメント
 
 SELECT ステートメントの結果を使用して、データストリームを作成する。
 
-**＊実装例＊**
-
 ```bash
 [STREAM_TASK]
     Name foo-stream-task
@@ -841,8 +823,6 @@ SELECT ステートメントの結果を使用して、データストリーム�
 #### ▼ SELECT
 
 マッチしたログから、指定したキーを抽出する。
-
-**＊実装例＊**
 
 タグが `*-bar-*` (ワイルドカード指定) であるログのうち、`container_name` キーの値が `qux` であるもののみをフィルタリングし、その `log` キーを抽出する。
 
@@ -888,8 +868,6 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 バッファーとして使用する媒体を設定する。
 
-**＊実装例＊**
-
 メモリ上でバッファリングを実行する。
 
 デフォルト値である。
@@ -906,8 +884,6 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 ```
 
 > - https://docs.fluentbit.io/manual/administration/buffering-and-storage#input-section-configuration
-
-**＊実装例＊**
 
 ファイル上でバッファリングを実行する。
 
@@ -1208,8 +1184,6 @@ newRelic プラグインがプリインストールされているベースイ�
 #### ▼ null プラグインとは
 
 アウトプットを破棄する。
-
-**＊実装例＊**
 
 ```bash
 [OUTPUT]

@@ -44,15 +44,40 @@ JWT は以下のサイトから取得できる。
 
 例えば JavaScript であれば、以下のような処理を実行し、JWT を作成する。
 
-```javascript
-// <ヘッダーエンコード値>.<ペイロードエンコード値>.<署名エンコード値>
-const token =
-  base64urlEncoding(header) +
-  "." +
-  base64urlEncoding(payload) +
-  "." +
-  base64urlEncoding(signature);
-```
+=== "Go"
+
+    ```go
+    // <ヘッダーエンコード値>.<ペイロードエンコード値>.<署名エンコード値>
+    token := base64urlEncoding(header) +
+    	"." +
+    	base64urlEncoding(payload) +
+    	"." +
+    	base64urlEncoding(signature)
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    // <ヘッダーエンコード値>.<ペイロードエンコード値>.<署名エンコード値>
+    const token: string =
+      base64urlEncoding(header) +
+      "." +
+      base64urlEncoding(payload) +
+      "." +
+      base64urlEncoding(signature);
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    // <ヘッダーエンコード値>.<ペイロードエンコード値>.<署名エンコード値>
+    $token =
+        base64urlEncoding($header) .
+        "." .
+        base64urlEncoding($payload) .
+        "." .
+        base64urlEncoding($signature);
+    ```
 
 > - [JWT の仕組み](https://zenn.dev/mikakane/articles/tutorial_for_jwt#jwt-%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E6%A7%8B%E9%80%A0)
 
@@ -66,12 +91,32 @@ const token =
 
 署名のためのアルゴリズムは、『`HS256` (共通鍵方式) 』『`RS256` (公開鍵方式) 』『`ES256`』『`none` (署名なし) 』から選択できる。
 
-```javascript
-const header = {
-  typ: "JWT", // JWTトークンの使用
-  alg: "HS256", // 署名のためのアルゴリズム
-};
-```
+=== "Go"
+
+    ```go
+    header := map[string]string{
+    	"typ": "JWT",   // JWTトークンの使用
+    	"alg": "HS256", // 署名のためのアルゴリズム
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    const header: { typ: string; alg: string } = {
+      typ: "JWT", // JWTトークンの使用
+      alg: "HS256", // 署名のためのアルゴリズム
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    $header = [
+        "typ" => "JWT", // JWTトークンの使用
+        "alg" => "HS256", // 署名のためのアルゴリズム
+    ];
+    ```
 
 > - [JWT の仕組み](https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%98%E3%83%83%E3%83%80)
 
@@ -139,16 +184,51 @@ const header = {
   </tbody>
 </table>
 
-```javascript
-const payload = {
-  aud: "foo",
-  exp: 1452565628,
-  iat: 1452565568,
-  iss: "https://example.com",
-  jti: "foo",
-  sub: "foo",
-};
-```
+=== "Go"
+
+    ```go
+    payload := map[string]any{
+    	"aud": "foo",
+    	"exp": 1452565628,
+    	"iat": 1452565568,
+    	"iss": "https://example.com",
+    	"jti": "foo",
+    	"sub": "foo",
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    const payload: {
+      aud: string;
+      exp: number;
+      iat: number;
+      iss: string;
+      jti: string;
+      sub: string;
+    } = {
+      aud: "foo",
+      exp: 1452565628,
+      iat: 1452565568,
+      iss: "https://example.com",
+      jti: "foo",
+      sub: "foo",
+    };
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    $payload = [
+        "aud" => "foo",
+        "exp" => 1452565628,
+        "iat" => 1452565568,
+        "iss" => "https://example.com",
+        "jti" => "foo",
+        "sub" => "foo",
+    ];
+    ```
 
 > - [JSON Web Token（JWT）のClaimについて · なるはやで いい感じの 動作確認](https://kamichidu.github.io/post/2017/01/24-about-json-web-token/)
 > - [JWT の仕組み](https://zenn.dev/mikakane/articles/tutorial_for_jwt#%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89)
@@ -162,12 +242,32 @@ const payload = {
 
 JWT を検証する場合、この署名の値を使用する。
 
-```javascript
-const signature = HMACSHA256(
-  base64urlEncoding(header) + "." + base64urlEncoding(payload),
-  secret,
-);
-```
+=== "Go"
+
+    ```go
+    signature := HMACSHA256(
+    	base64urlEncoding(header)+"."+base64urlEncoding(payload),
+    	secret,
+    )
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    const signature: string = HMACSHA256(
+      base64urlEncoding(header) + "." + base64urlEncoding(payload),
+      secret,
+    );
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    $signature = HMACSHA256(
+        base64urlEncoding($header) . "." . base64urlEncoding($payload),
+        $secret,
+    );
+    ```
 
 <br>
 

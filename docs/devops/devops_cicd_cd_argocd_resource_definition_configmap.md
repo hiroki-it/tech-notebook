@@ -610,8 +610,6 @@ Casbin の記法を使用して、ロールと認可スコープを定義しつ�
 
 AppProject に所属する ArgoCD 系リソースのみへのアクセスを許可すれば、結果として特定の Cluster へのデプロイのみを許可したことになる。
 
-**＊実装例＊**
-
 管理チーム (`app`、`infra`) 単位で AppProject を作成したうえで、AppProject に所属する ArgoCD 系リソースのみに認可スコープを持つロールを定義する。
 
 これにより、その管理チームに所属するエンジニアしか Sync できなくなる。
@@ -650,8 +648,6 @@ data:
 > - [GitOpsをArgoCDで学ぶ](https://weseek.co.jp/tech/95/#SSO_RBAC)
 > - [MLOpsマルチテナントクラスタへのArgo CDの導入と運用 - ZOZO TECH BLOG](https://techblog.zozo.com/entry/mlops-argocd)
 
-**＊実装例＊**
-
 実行環境 (`dev`、`prd`) 別に AppProject を作成したうえで、AppProject に所属する ArgoCD 系リソースのみに認可スコープを持つロールを定義する。
 
 - `developer` ロールに、開発環境の AppProject 内に所属する ArgoCD 系リソースのみを操作できる認可スコープ
@@ -687,8 +683,6 @@ data:
 
 ID プロバイダーに委譲する場合、グループ名は ID プロバイダーで認証されたものにする必要がある。
 
-**＊実装例＊**
-
 ID プロバイダー側で、チームによる認証グループがすでに存在しているとする。
 
 以下のように、ロールと認可スコープを紐付ける。
@@ -720,8 +714,6 @@ data:
     g, example-org.github.com:maintainer, role:maintainer
   scopes: "[groups]"
 ```
-
-**＊実装例＊**
 
 ID プロバイダー側で、チームによる認証グループがすでに存在しているとする。
 

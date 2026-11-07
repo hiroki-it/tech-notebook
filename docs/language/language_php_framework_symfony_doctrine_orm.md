@@ -31,8 +31,6 @@ Data Mapper パターンで実装されている。
 
 CRUD 処理に必要な SQL を保持し、トランザクションによって SQL を実行する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -50,8 +48,6 @@ $queryBuilder = $this->createQueryBuilder();
 
 QueryBuilder クラスの `select()` 関数に、値を設定する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -68,8 +64,6 @@ $queryBuilder
 
 QueryBuilder クラスの `insert()` 関数に、値を設定する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -81,8 +75,6 @@ $queryBuilder
 
 QueryBuilder クラスの `update()` 関数に、値を設定する。
 
-**＊実装例＊**
-
 ```injectablephp
 <?php
 
@@ -93,8 +85,6 @@ $queryBuilder
 #### ▼ `delete()` 関数
 
 QueryBuilder クラスの `delete()` 関数に、値を設定する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -112,8 +102,6 @@ $queryBuilder
 DB への接続し、SQL の実行する。
 
 DB 接続に関わる `getConnection()` 関数を開始点として、返り値から繰り返し関数を取得し、`fetchAll()` 関数で、テーブルのクエリ名をキーとした連想配列が返される。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -135,8 +123,6 @@ $queryBuilder->getConnection()
 処理速度が速い。
 
 また、パラメーターに誤って SQL が渡されても、これを実行できなくなるため、SQL インジェクションの対策にもなる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php
@@ -226,8 +212,6 @@ class Foo
 ![コミットメント制御](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミットメント制御.jpg)
 
 RDB の処理用語に相当する `beginTransaction()` 関数、`commit()` 関数、`rollBack()` 関数を使用して、RDB を操作する。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

@@ -35,8 +35,6 @@ AWS Lambda はハンドラ関数を非同期関数としてコールし、引数
 
 レスポンスとして、Promise オブジェクトを送信もできる。
 
-**＊実装例＊**
-
 JavaScript の場合を示す。
 
 ```javascript
@@ -89,8 +87,6 @@ AWS Lambda はハンドラ関数を同期関数としてコールし、引数 (e
 > - [Define Lambda function handler in Node.js - AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html#nodejs-handler-sync)
 
 (※『Non』が翻訳をおかしくしているため、英語版を推奨)
-
-**＊実装例＊**
 
 JavaScript の場合を示す。
 
@@ -494,8 +490,6 @@ exports.handler = async (event) => {
 
 ### AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
-**＊実装例＊**
-
 AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを AWS Lambda にフォワーディングする。AWS Lambda では、メッセージを構成し、Slack-API に送信する。
 
 ```javascript
@@ -711,8 +705,6 @@ const postMessageToSlack = (message) => {
 
 ### Amazon API Gateway ➡️ AWS Lambda ➡️ Amazon S3
 
-**＊実装例＊**
-
 Amazon API Gateway でリクエストを受信し、それに応じて特定のデータを Amazon S3 に保管する。
 
 AWS Lambda が Amazon S3 に対してアクションを実行できるように、事前に、AWS 管理ポリシーの『`LambdaExecute`』が紐付けられたロールを AWS Lambda に紐付けしておく必要がある。
@@ -771,8 +763,6 @@ exports.handler = (event, context, callback) => {
 ### Amazon CloudFront ➡️ AWS Lambda@Edge ➡️ Amazon S3
 
 ![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
-
-**＊実装例＊**
 
 event オブジェクトの `domainName` と `host.value` に代入されたバケットのドメイン名によって、フォワーディング先のバケットが決まる。
 

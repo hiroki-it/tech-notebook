@@ -41,8 +41,6 @@ AWS や Google Cloud など、使用するプロバイダを定義する。
 
 一番最初に読みこまれるファイルのため、通常変数やモジュール化などが行えない。
 
-**＊実装例＊**
-
 ```terraform
 # @ルートモジュール
 
@@ -74,8 +72,6 @@ S3 などの実インフラで管理する場合、資格情報を設定する�
 通常は変数を使用できず、ハードコーディングする必要がある。そのため、値を動的に変更したい場合は、ローカルマシンでは `providers.tf` ファイルの `backend` オプションを参照し、CD のなかで `terraform init` コマンドのオプションを使用して値を渡すようにする。
 
 > - https://www.terraform.io/language/settings/backends/s3
-
-**＊実装例＊**
 
 ```terraform
 # @ルートモジュール
@@ -111,8 +107,6 @@ terraform {
 
 どのユーザーもバケット内のオブジェクトを削除できないように、ポリシーを設定しておくとよい。
 
-**＊実装例＊**
-
 ```yaml
 {
   "Version": "2008-10-17",
@@ -137,8 +131,6 @@ terraform {
 ルートモジュールで、Terraform で操作するクラウドインフラベンダーを設定する。
 
 ベンダーでのアカウント認証のため、資格情報を渡す必要がある。
-
-**＊実装例＊**
 
 ```terraform
 # @ルートモジュール
@@ -167,8 +159,6 @@ provider "aws" {
 }
 ```
 
-**＊実装例＊**
-
 `terraform` ブロックとは異なり、`provider` ブロックでは変数を使用できる。
 
 ```terraform
@@ -190,8 +180,6 @@ provider "aws" {
 # リージョンは変数として定義しておく
 region = "ap-northeast-1"
 ```
-
-**＊実装例＊**
 
 ```terraform
 # @ルートモジュール
@@ -219,8 +207,6 @@ provider "google" {
   region = "asia-northeast1"
 }
 ```
-
-**＊実装例＊**
 
 PagerDuty の状態を Amazon S3 バケットで管理する場合。
 
@@ -258,8 +244,6 @@ provider "pagerduty" {
 
 複数の `provider` ブロックを実装し、エイリアスを使用して、これらを動的に切り替える方法。
 
-**＊実装例＊**
-
 ```terraform
 # @ルートモジュール
 
@@ -289,8 +273,6 @@ provider "aws" {
 #### ▼ default_tags
 
 Terraform で作成するリソースに一括してタグを設定できる。
-
-**＊実装例＊**
 
 ```terraform
 terraform {
@@ -325,8 +307,6 @@ locals {
 ```
 
 反対に、default_tags を無効化する `provider` ブロックを定義しておくとよい。
-
-**＊実装例＊**
 
 ```terraform
 terraform {
@@ -371,8 +351,6 @@ resource "aws_s3_bucket" "bar" {
 
 モジュールにプロバイダーをパラメーターとして設定する場合、`provider` ブロックを使用する。
 
-**＊実装例＊**
-
 ```terraform
 # @ルートモジュール
 
@@ -388,8 +366,6 @@ module "route53_foo" {
 ```
 
 加えてモジュールに `provider` ブロックでオプションを設定する必要がある。
-
-**＊実装例＊**
 
 ```terraform
 # @ルートモジュール
@@ -456,8 +432,6 @@ resource "aws_acm_certificate" "example" {
 
 ローカルモジュールをコールし、オプションを設定する。
 
-**＊実装例＊**
-
 ```terraform
 # @ルートモジュール
 
@@ -481,8 +455,6 @@ module "alb_foo" {
 
 リポジトリの認証時にベーシック認証や SSH 公開鍵認証で接続できるが、鍵の登録が不要なベーシック認証のほうが簡単である。
 
-**＊実装例＊**
-
 ```terraform
 # @ルートモジュール
 
@@ -498,8 +470,6 @@ module "alb_foo" {
   acm_certificate_api_arn = module.acm.acm_certificate_api_arn
 }
 ```
-
-**＊実装例＊**
 
 サブディレクトリを指定できる。リポジトリ以下にスラッシュを２つ (`//`) つけ、その後にパスを続ける。
 
@@ -520,8 +490,6 @@ module "alb_foo" {
 ```
 
 > - https://www.terraform.io/language/modules/sources#modules-in-package-sub-directories
-
-**＊実装例＊**
 
 特定のタグを指定できる。
 
@@ -616,8 +584,6 @@ $ terraform plan -var-file=foo.tfvars
 # ファイルを指定しなくとも読み込まれる
 $ terraform plan
 ```
-
-**＊実装例＊**
 
 ```terraform
 # @ルートモジュール

@@ -53,8 +53,6 @@ go のプログラムが起動したときに、各パッケージの `init()` �
 
 ステータス『0』でプロセスを終了する。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -173,8 +171,6 @@ func main() {
 構造体に紐付けられていない関数のこと。
 
 > - [What is the difference between a method and a function?](https://www.educative.io/answers/what-is-the-difference-between-a-method-and-a-function)
-
-**＊実装例＊**
 
 ```go
 package main
@@ -297,8 +293,6 @@ module example.com/foo
 
 定義したその場でコールされる無名関数のこと。
 
-**＊実装例＊**
-
 main 関数で即時関数を実行する。
 
 ```go
@@ -314,8 +308,6 @@ func main() {
 	log.Printf("%v", result)
 }
 ```
-
-**＊実装例＊**
 
 即時関数に引数を設定できる。
 
@@ -358,8 +350,6 @@ Go は、言語としてオブジェクトという機能を持っていない�
 
 関数名とフィールド名に同じ名前は使用できない。
 
-**＊実装例＊**
-
 integer 型を値レシーバとして渡し、構造体に関数を紐付ける。
 
 ```go
@@ -382,8 +372,6 @@ func main() {
     log.Printf("%v", age.PrintAge())
 }
 ```
-
-**＊実装例＊**
 
 構造体を値レシーバとして渡し、構造体に関数を紐付ける。
 
@@ -427,8 +415,6 @@ func main() {
 レシーバとして渡された引数を関数内でコピーしてから使用する。
 
 値レシーバによって紐付けられると、その関数は構造体の状態を変えられなくなるため、構造体をイミュータブルにしたい場合は、値レシーバを使用するとよい。
-
-**＊実装例＊**
 
 構造体を値レシーバとして渡し、構造体に関数を紐付ける。
 
@@ -481,8 +467,6 @@ func main() {
 
 また、構造体はポインタ型として扱ったほうがメモリを節約できる。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -526,8 +510,6 @@ func main() {
 defer は複数の関数で宣言できる。
 
 複数宣言した場合、後に宣言されたものから実行される。
-
-**＊実装例＊**
 
 ```go
 package main
@@ -582,8 +564,6 @@ func main() {
 即時関数を `defer()` 関数化している。
 
 処理の最後にランタイムエラーが発生したとき、これを `recover()` 関数で吸収できる。
-
-**＊実装例＊**
 
 ```go
 package main
@@ -771,8 +751,6 @@ func main() {
 
 パラメーターと `append()` 関数の返り値の両方の slice を、アンパック (`...`) する必要がある。
 
-**＊実装例＊**
-
 ```go
 package middleware
 
@@ -815,8 +793,6 @@ func WithSpanNameFormatter() otelhttp.Option {
 	})
 }
 ```
-
-**＊実装例＊**
 
 ```go
 package middleware
@@ -867,8 +843,6 @@ func InterceptorFilterHealthCheck() otelgrpc.Option {
 
 #### ▼ 複数の返却値
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -899,8 +873,6 @@ func main() {
 
 関数から複数の値が返却されるとき、使用しない値をアンダースコアに代入することにより、これを破棄できる。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -921,8 +893,6 @@ func main() {
 #### ▼ 関数の返却
 
 引数型と返却型を指定して、関数を返却できる。
-
-**＊実装例＊**
 
 `http.Handler` を引数型、`http.Handler` を返却型、として設定する。
 
@@ -1046,8 +1016,6 @@ func main() {
 
 を用意する必要がある。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -1156,8 +1124,6 @@ func Invoke(ctx context.Context) error {
 > - [GoでShutdown Hook - Carpe Diem](https://christina04.hatenablog.com/entry/go-shudown-hooks)
 > - https://medium.com/@pthtantai97/mastering-grpc-server-with-graceful-shutdown-within-golangs-hexagonal-architecture-0bba657b8622
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -1215,8 +1181,6 @@ func GracefulShutdown() {
 
 #### ▼ 明示的な定義
 
-**＊実装例＊**
-
 ```go
 // 1個の変数を定義 (宣言と代入が同時でない)
 var number int
@@ -1231,8 +1195,6 @@ foo, bar, baz = 1, 3, 5
 ```
 
 #### ▼ 暗黙的な定義 (型推論)
-
-**＊実装例＊**
 
 ```go
 // データ型が自動的に認識される
@@ -1275,8 +1237,6 @@ func main() {
 
 ただし、複数の変数を宣言するときは注意する。いずれかに新しい変数の宣言が含まれていれば、既存の変数を宣言したとしても代入のみが実行される。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -1304,8 +1264,6 @@ func main() {
 関数の外部で定義した変数のこと。
 
 スコープとして、宣言されたパッケージ外部でも使用できる。
-
-**＊実装例＊**
 
 グローバル変数を宣言し、関数内で値を代入する。
 
@@ -1349,8 +1307,6 @@ func main() {
 関数の内部で定義した変数のこと。
 
 スコープとして、宣言されたパッケージ内部でしか使用できない。
-
-**＊実装例＊**
 
 ```go
 package main
@@ -1514,8 +1470,6 @@ os.Setenv("FOO_ENABLED", strconv.FormatBool(true))
 
 変数名または定数名の頭文字を大文字すると、パッケージ内外でこれをコールできるようになる。
 
-**＊実装例＊**
-
 ```go
 package foo
 
@@ -1540,8 +1494,6 @@ func main() {
 #### ▼ パッケージ内のみ参照可能
 
 変数名または定数名の頭文字を小文字すると、パッケージ外でこれをコールできなくなる。
-
-**＊実装例＊**
 
 ```go
 package foo
@@ -1572,8 +1524,6 @@ func main() {
 
 関数名の頭文字を大文字すると、パッケージ内外でこれをコールできるようになる。
 
-**＊実装例＊**
-
 ```go
 package foo
 
@@ -1593,8 +1543,6 @@ func main() {
 #### ▼ パッケージ内のみ参照可能
 
 関数名の頭文字を小文字すると、パッケージ外でこれをコールできなくなる。
-
-**＊実装例＊**
 
 ```go
 package main
@@ -1799,8 +1747,6 @@ func main() {
 #### ▼ 単一処理とは
 
 特定の処理のみを実行する。
-
-**＊実装例＊**
 
 ```go
 package main
@@ -2341,8 +2287,6 @@ type error interface {
 }
 ```
 
-**＊実装例＊**
-
 os パッケージの `Open()` 関数から `error` インターフェースが返却される。
 
 `error` インターフェースは `Error()` 関数を自動的に実行し、標準エラー出力に出力する。
@@ -2376,8 +2320,6 @@ errors パッケージの `New()` 関数にエラーを設定する。
 これにより、ユーザー定義のエラーを保持する `error` インターフェースを定義できる。
 
 `error` インターフェースは `Error()` 関数を自動的に実行する。
-
-**＊実装例＊**
 
 ```go
 package main
@@ -2418,8 +2360,6 @@ fmt パッケージの `Errorf()` 関数で自前エラーを作成できる。
 
 `error` インターフェースは `Error()` 関数を自動的に実行する。
 
-**＊実装例＊**
-
 ```go
 package main
 
@@ -2449,8 +2389,6 @@ func main() {
 これにより、ユーザー定義のエラーを保持する `error` インターフェースを定義できる。
 
 `error` インターフェースは `Error()` 関数を自動的に実行する。
-
-**＊実装例＊**
 
 ```go
 package main
@@ -2498,8 +2436,6 @@ func main() {
 xerrors パッケージによって作成される `error` インターフェースには、返却された行数がスタックトレースとして含まれている。
 
 #### ▼ `New()` 関数によるトレース付与
-
-**＊実装例＊**
 
 ```go
 package main

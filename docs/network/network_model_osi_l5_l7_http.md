@@ -893,19 +893,51 @@ $_COOKIE = ["Cookie名" => "値"];
 
 : サーバーは、レスポンスヘッダーの `Set-Cookie` ヘッダーに Cookie 情報を埋め込んで送信する。
 
-```injectablephp
-<?php
+=== "Go"
 
-setcookie(
-    "Cookie名",
-    "Cookie値",
-    time() + 3600, // 有効日時
-    "/", // パス
-    "example.com", // ドメイン
-    true, // HTTPSリクエストのみ
-    true // JavaScript無効 (HttpOnly)
-);
-```
+    ```go
+    http.SetCookie(w, &http.Cookie{
+    	Name:     "Cookie名",
+    	Value:    "Cookie値",
+    	Expires:  time.Now().Add(3600 * time.Second), // 有効日時
+    	Path:     "/",                                // パス
+    	Domain:   "example.com",                      // ドメイン
+    	Secure:   true,                               // HTTPSリクエストのみ
+    	HttpOnly: true,                               // JavaScript無効 (HttpOnly)
+    })
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    res.setHeader(
+      "Set-Cookie",
+      [
+        "Cookie名=Cookie値",
+        `Expires=${new Date(Date.now() + 3600 * 1000).toUTCString()}`, // 有効日時
+        "Path=/", // パス
+        "Domain=example.com", // ドメイン
+        "Secure", // HTTPSリクエストのみ
+        "HttpOnly", // JavaScript無効 (HttpOnly)
+      ].join("; "),
+    );
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    setcookie(
+        "Cookie名",
+        "Cookie値",
+        time() + 3600, // 有効日時
+        "/", // パス
+        "example.com", // ドメイン
+        true, // HTTPSリクエストのみ
+        true // JavaScript無効 (HttpOnly)
+    );
+    ```
 
 `(3)`
 
@@ -970,8 +1002,6 @@ GoogleConsole におけるセッションについては、以下のリンクを
 セッションデータの名前は、`sess_*****` ファイルとなっており、セッションデータ名を元にしてセッション ID に紐付くデータを参照する。
 
 もしクライアントにすでにセッション ID が発行されている場合、セッションデータを参照するようになる。
-
-**＊実装例＊**
 
 ```injectablephp
 <?php

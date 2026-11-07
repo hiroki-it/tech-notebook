@@ -75,8 +75,6 @@ CoreDNS に対する問い合わせを受信し、CoreDNS へルーティング�
 
 ConfigMap の `.Corefile` キーに、`Corefile` ファイルの設定値を定義する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: v1
 kind: ConfigMap

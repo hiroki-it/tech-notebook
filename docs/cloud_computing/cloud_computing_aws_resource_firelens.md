@@ -507,8 +507,6 @@ FireLens コンテナで処理中のログのタグ名は『`<コンテナ名>-f
 
 補足として、STREAM_TASK でタグ付けされたログは、INPUT から再び処理し直される。
 
-＊実装例＊
-
 ```bash
 # laravelコンテナのログへのタグ付け
 [STREAM_TASK]

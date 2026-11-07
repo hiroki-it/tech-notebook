@@ -29,16 +29,12 @@ description: Kustomize＠マニフェスト管理の知見を記録していま�
 
 使用するリソース定義ファイルを設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - ./applications/deployment.yaml
 ```
-
-**＊実装例＊**
 
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
@@ -58,8 +54,6 @@ resources:
 #### ▼ `リソース定義ファイル`
 
 後の `overlays` ディレクトリの元になるリソース定義を設定する。
-
-**＊実装例＊**
 
 元になるリソース定義を設定する。
 
@@ -110,8 +104,6 @@ spec:
 
 使用するリソース定義ファイルを設定する。
 
-**＊実装例＊**
-
 ```yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -129,8 +121,6 @@ patches:
 #### ▼ `差分リソース定義ファイル`
 
 `base` ディレクトリ配下のリソース定義ファイルとの差分の実装を設定する。
-
-**＊実装例＊**
 
 ここでは、Deployment の差分を設定する。
 

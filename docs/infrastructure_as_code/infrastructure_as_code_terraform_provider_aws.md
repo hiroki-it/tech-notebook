@@ -29,8 +29,6 @@ Terraform が AWS リソースの API と通信できるようにする。
 
 #### ▼ サーバー証明書のリクエスト
 
-**＊実装例＊**
-
 E メール検証の場合を示す。
 
 ```terraform
@@ -53,8 +51,6 @@ resource "aws_acm_certificate" "www_an1" {
   }
 }
 ```
-
-**＊実装例＊**
 
 DNS 検証の場合を示す。
 
@@ -81,8 +77,6 @@ resource "aws_acm_certificate" "www_an1" {
 
 #### ▼ 検証の実行
 
-**＊実装例＊**
-
 E メール検証の場合を示す。
 
 ```terraform
@@ -94,8 +88,6 @@ resource "aws_acm_certificate_validation" "www_an1" {
   certificate_arn = aws_acm_certificate.www_an1.arn
 }
 ```
-
-**＊実装例＊**
 
 DNS 検証の場合を示す。
 
@@ -170,8 +162,6 @@ resource "aws_ami_from_instance" "foo" {
 
 #### ▼ まとめ
 
-**＊実装例＊**
-
 AMI を検索したうえで、AWS から特定の AMI を取得する。
 
 ```terraform
@@ -233,8 +223,6 @@ AWS Backup で EC2 の AMI を作成している場合に、フィルターの�
 ## Amazon API Gateway
 
 ### resource
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -311,8 +299,6 @@ API Gateway の各 ARN については、以下のリンクを参考にせよ。
 
 > - [API Gateway Amazon Resource Name (ARN) reference - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html)
 
-**＊実装例＊**
-
 WAF に API Gateway を紐付けるために、ステージの ARN が必要である。
 
 これは自力で作る。
@@ -350,8 +336,6 @@ resource "aws_cloudwatch_log_group" "ecs_service_container_datadog" {
 ## Amazon CloudFront
 
 ### resource
-
-**＊実装例＊**
 
 ```terraform
 resource "aws_cloudfront_distribution" "this" {
@@ -397,8 +381,6 @@ Terraform では、`retain_on_delete` で設定できる。
 #### origin ブロック
 
 Origins 画面に設定するオリジンを定義する。
-
-**＊実装例＊**
 
 ```terraform
 resource "aws_cloudfront_distribution" "this" {
@@ -448,8 +430,6 @@ resource "aws_cloudfront_distribution" "this" {
 
 Behavior 画面で設定するオリジンにルーティングするパスを定義する。
 
-**＊実装例＊**
-
 ```terraform
 resource "aws_cloudfront_distribution" "this" {
 
@@ -483,8 +463,6 @@ resource "aws_cloudfront_distribution" "this" {
 #### default_cache_behavior
 
 Behavior 画面で設定するオリジンにルーティングする標準パスを定義する。
-
-**＊実装例＊**
 
 ```terraform
 resource "aws_cloudfront_distribution" "this" {
@@ -561,8 +539,6 @@ ECR に紐付けられる、コンテナイメージの有効期間を定義す�
 ## Amazon ECS
 
 ### resource
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -677,8 +653,6 @@ Amazon ECS サービスの削除には『ドレイニング』の時間が発生
 ## Amazon EC2
 
 ### resource
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -839,8 +813,6 @@ EKS では、cluster-autoscaler を使用して、Node をスケーリングさ�
 
 作成済みの IAM ロールに、`aws_iam_policy` リソースを使用して、AWS 管理ポリシーを IAM ユーザーに紐付ける。
 
-**＊実装例＊**
-
 ローカルマシンから AWS CLI コマンドを実行する必要がある場合、コマンドを特定の送信元 IP アドレスを特定のものに限定する。
 
 事前に、list 型で IP アドレスを定義する。
@@ -901,8 +873,6 @@ resource "aws_iam_policy" "aws_cli_command_executor_ip_address_restriction" {
 
 IAM ユーザーに AWS 管理ポリシーを紐付ける。
 
-**＊実装例＊**
-
 ```terraform
 # ---------------------------------------------
 # For IAM User
@@ -926,8 +896,6 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 事前に、tpl 形式の信頼ポリシーを定義しておく。
 
 `aws_iam_role` リソースを使用して、IAM ロールを作成すると同時に、これに信頼ポリシーを紐付ける。
-
-**＊実装例＊**
 
 事前に、ECS タスクのための信頼ポリシーを定義する。
 
@@ -973,8 +941,6 @@ resource "aws_iam_role" "ecs_task" {
 }
 ```
 
-**＊実装例＊**
-
 事前に、Lambda@Edge のための信頼ポリシーを定義する。
 
 ```yaml
@@ -1016,8 +982,6 @@ resource "aws_iam_role" "lambda_execute" {
 
 `aws_iam_role_policy` リソースを使用して、インラインポリシーを作成すると同時に、これにインラインポリシーを紐付ける。
 
-**＊実装例＊**
-
 事前に、ECS タスクに必要最低限の権限を与えるインラインポリシーを定義する。
 
 ```yaml
@@ -1052,8 +1016,6 @@ resource "aws_iam_role_policy" "ecs_task" {
 
 ポリシーの ARN は、AWS のコンソール画面を確認する。
 
-**＊実装例＊**
-
 ```terraform
 # ---------------------------------------------
 # IAM Role For ECS Task Execution
@@ -1071,8 +1033,6 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 `aws_iam_role_policy` リソースを使用して、カスタマー管理ポリシーを作成する。
 
 `aws_iam_role_policy_attachment` リソースを使用して、カスタマー管理ポリシーを作成済みの IAM ロールに紐付ける。
-
-**＊実装例＊**
 
 事前に、ECS タスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。
 
@@ -1118,8 +1078,6 @@ resource "aws_iam_role_policy_attachment" "ecs_task" {
 そのため、Terraform の管理外である。
 
 `aws_iam_service_linked_role` リソースを使用して、手動で作成できるが、数が多く実装の負担にもなるため、あえて管理外としても問題ない。
-
-**＊実装例＊**
 
 サービス名を指定して、ApplicationAutoScaling のサービスリンクロールを作成する。
 
@@ -1167,8 +1125,6 @@ resource "aws_appautoscaling_target" "ecs" {
 ## AWS リスナーとターゲットグループ
 
 ### resource
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -1241,8 +1197,6 @@ status code: 400, request id: *****
 ## Amazon Aurora の場合
 
 ### resource
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -1620,8 +1574,6 @@ resource "aws_rds_cluster" "foo" {
 
 ### resource
 
-**＊実装例＊**
-
 ```terraform
 # ---------------------------------------------
 # For foo domain
@@ -1642,8 +1594,6 @@ resource "aws_route53_record" "foo" {
   }
 }
 ```
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -1691,8 +1641,6 @@ Amazon S3 紐付けられる、自身へのアクセスを制御するために�
 
 ALB がバケットにログを書き込めるように、『ELB のサービスアカウント ID』を許可する必要がある。
 
-**＊実装例＊**
-
 ```terraform
 # ---------------------------------------------
 # Amazon S3 bucket policy
@@ -1734,8 +1682,6 @@ ALB のアクセスログを送信するバケット内には、自動的に『/
 #### ▼ NLB アクセスログ
 
 ALB がバケットにログを書き込めるように、『`delivery.logs.amazonaws.com`』からのリクエストを許可する必要がある。
-
-**＊実装例＊**
 
 ```terraform
 # ---------------------------------------------
@@ -2110,8 +2056,6 @@ resource "aws_vpc_endpoint" "ssmmessages" {
 
 #### ▼ rule ブロック
 
-**＊実装例＊**
-
 API Gateway 用の WAF に、特定のユーザーエージェントを拒否するルールを設定する。
 
 ```terraform
@@ -2167,8 +2111,6 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 }
 ```
 
-**＊実装例＊**
-
 API Gateway 用の WAF に、特定のグローバル IP アドレスを拒否するルールを設定する。
 
 ```terraform
@@ -2213,8 +2155,6 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 }
 ```
 
-**＊実装例＊**
-
 API Gateway 用の WAF に、SQL インジェクションを拒否するマネージドルールを設定する。
 
 ```terraform
@@ -2258,8 +2198,6 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 }
 ```
-
-**＊実装例＊**
 
 特定のパスのみ AWSManagedRulesSQLiRuleSet の対象から除外する。
 
@@ -2327,8 +2265,6 @@ resource "aws_wafv2_web_acl" "api_gateway" {
 
 }
 ```
-
-**＊実装例＊**
 
 ALB 用の WAF に、API キーまたは Bearer トークンを OR 条件ルールを設定する。
 

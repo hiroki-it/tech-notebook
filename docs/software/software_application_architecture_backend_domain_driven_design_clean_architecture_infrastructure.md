@@ -180,36 +180,90 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 
 インフラストラクチャ層の実装リポジトリクラスと対応関係にある。
 
-**＊実装例＊**
+=== "Go"
 
-```injectablephp
-<?php
+    ```go
+    package repositories
 
-declare(strict_types=1);
+    import (
+    	"context"
 
-namespace App\Domain\Foo\Repositories;
+    	"example.com/app/domain"
+    	"example.com/app/domain/foo/criterion"
+    	"example.com/app/domain/foo/entities"
+    	"example.com/app/domain/foo/ids"
+    )
 
-use App\Domain\Foo\Criterion\FooCriteria;
-use App\Domain\Foo\Entities\Foo;
-use App\Domain\Foo\Ids\FooId;
-use App\Domain\Repository;
+    type FooRepository interface {
+    	domain.Repository
 
-interface FooRepository extends Repository
-{
+    	FindById(ctx context.Context, fooId ids.FooId) (*entities.Foo, error)
 
-    public function findById(FooId $fooId): ?Foo;
+    	FindAll(ctx context.Context) ([]*entities.Foo, error)
 
-    public function findAll(): array;
+    	FindAllByCriteria(ctx context.Context, criteria criterion.FooCriteria) ([]*entities.Foo, error)
 
-    public function findAllByCriteria(FooCriteria $criteria): array;
+    	Create(ctx context.Context, foo *entities.Foo) error
 
-    public function create(Foo $foo): void;
+    	Update(ctx context.Context, foo *entities.Foo) error
 
-    public function update(Foo $foo): void;
+    	Delete(ctx context.Context, fooId ids.FooId) error
+    }
+    ```
 
-    public function delete(FooId $fooId): void;
-}
-```
+=== "TypeScript"
+
+    ```typescript
+    import { FooCriteria } from "@/Domain/Foo/Criterion/FooCriteria";
+    import { Foo } from "@/Domain/Foo/Entities/Foo";
+    import { FooId } from "@/Domain/Foo/Ids/FooId";
+    import { Repository } from "@/Domain/Repository";
+
+    export interface FooRepository extends Repository {
+      findById(fooId: FooId): Promise<Foo | null>;
+
+      findAll(): Promise<Foo[]>;
+
+      findAllByCriteria(criteria: FooCriteria): Promise<Foo[]>;
+
+      create(foo: Foo): Promise<void>;
+
+      update(foo: Foo): Promise<void>;
+
+      delete(fooId: FooId): Promise<void>;
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    declare(strict_types=1);
+
+    namespace App\Domain\Foo\Repositories;
+
+    use App\Domain\Foo\Criterion\FooCriteria;
+    use App\Domain\Foo\Entities\Foo;
+    use App\Domain\Foo\Ids\FooId;
+    use App\Domain\Repository;
+
+    interface FooRepository extends Repository
+    {
+
+        public function findById(FooId $fooId): ?Foo;
+
+        public function findAll(): array;
+
+        public function findAllByCriteria(FooCriteria $criteria): array;
+
+        public function create(Foo $foo): void;
+
+        public function update(Foo $foo): void;
+
+        public function delete(FooId $fooId): void;
+    }
+    ```
 
 ### DB に対する書き込み責務 (CREATE／UPDATE／DELETE)
 
@@ -233,103 +287,307 @@ DB に対する書き込み操作をする。
 
 : ルートエンティティをレコードとして DB に挿入する。
 
-**＊実装例＊**
-
 `CREATE` 処理のため、Laravel の `insert()` 関数を実行する。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Infrastructure\Foo\Repositories;
+    ```go
+    package repositories
 
-use App\Domain\Dog\Entities\DogToy;
-use Illuminate\Support\Facades\DB;
+    import (
+    	"context"
+    	"database/sql"
 
-/**
- * 犬用おもちゃリポジトリ
- */
-class DogToyRepository
-{
+    	"example.com/app/domain/dog/entities"
+    )
+
+    // 犬用おもちゃリポジトリ
+    type DogToyRepository struct {
+    	db *sql.DB
+    }
+
+    func NewDogToyRepository(db *sql.DB) *DogToyRepository {
+    	return &DogToyRepository{db: db}
+    }
+
+    // ドメインモデルを作成する
+    func (r *DogToyRepository) Create(ctx context.Context, dogToy *entities.DogToy) error {
+    	_, err := r.db.ExecContext(
+    		ctx,
+    		"INSERT INTO dog_toy_table (name, type, price, color) VALUES (?, ?, ?, ?)",
+    		// ルートエンティティの要素をカラム値として設定する。
+    		// IDは自動増分
+    		dogToy.Name().Value(),
+    		dogToy.Type().Value(),
+    		dogToy.PriceVO().Value(),
+    		dogToy.ColorVO().Value(),
+    	)
+
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
+    import type { Database } from "@/Infrastructure/Database";
+
     /**
-     * ドメインモデルを作成する
+     * 犬用おもちゃリポジトリ
      */
-    public function create(DogToy $dogToy): void
-    {
-        DB::table("dog_toy_table")->insert([
+    export class DogToyRepository {
+      constructor(private readonly db: Database) {}
+
+      /**
+       * ドメインモデルを作成する
+       */
+      public async create(dogToy: DogToy): Promise<void> {
+        await this.db.execute(
+          "INSERT INTO dog_toy_table (name, type, price, color) VALUES (?, ?, ?, ?)",
+          [
             // ルートエンティティの要素をカラム値として設定する。
             // IDは自動増分
-            "name"  => $dogToy->getName()->value(),
-            "type"  => $dogToy->getType()->value(),
-            "price" => $dogToy->getPriceVO()->value(),
-            "color" => $dogToy->getColorVO()->value(),
-        ]);
+            dogToy.getName().value(),
+            dogToy.getType().value(),
+            dogToy.getPriceVO().value(),
+            dogToy.getColorVO().value(),
+          ],
+        );
+      }
     }
-}
-```
+    ```
 
-`UPDATE` 処理のため、Laravel の `update()` 関数を実行する。
+=== "PHP"
 
-```injectablephp
-<?php
+    ```injectablephp
+    <?php
 
-namespace App\Infrastructure\Foo\Repositories;
+    namespace App\Infrastructure\Foo\Repositories;
 
-use App\Domain\Dog\Entities\DogToy;
-use Illuminate\Support\Facades\DB;
+    use App\Domain\Dog\Entities\DogToy;
+    use Illuminate\Support\Facades\DB;
 
-/**
- * 犬用おもちゃリポジトリ
- */
-class DogToyRepository
-{
     /**
-     * ドメインモデルを更新する
+     * 犬用おもちゃリポジトリ
      */
-    public function update(DogToy $dogToy): void
+    class DogToyRepository
     {
-        DB::table("dog_toy_table")
-            // ルートエンティティの要素をカラム値として設定する。
-            ->where("id", $dogToy->getId()->value())
-            ->update([
+        /**
+         * ドメインモデルを作成する
+         */
+        public function create(DogToy $dogToy): void
+        {
+            DB::table("dog_toy_table")->insert([
+                // ルートエンティティの要素をカラム値として設定する。
+                // IDは自動増分
                 "name"  => $dogToy->getName()->value(),
                 "type"  => $dogToy->getType()->value(),
                 "price" => $dogToy->getPriceVO()->value(),
                 "color" => $dogToy->getColorVO()->value(),
             ]);
+        }
     }
-}
-```
+    ```
+
+`UPDATE` 処理のため、Laravel の `update()` 関数を実行する。
+
+=== "Go"
+
+    ```go
+    package repositories
+
+    import (
+    	"context"
+    	"database/sql"
+
+    	"example.com/app/domain/dog/entities"
+    )
+
+    // 犬用おもちゃリポジトリ
+    type DogToyRepository struct {
+    	db *sql.DB
+    }
+
+    func NewDogToyRepository(db *sql.DB) *DogToyRepository {
+    	return &DogToyRepository{db: db}
+    }
+
+    // ドメインモデルを更新する
+    func (r *DogToyRepository) Update(ctx context.Context, dogToy *entities.DogToy) error {
+    	_, err := r.db.ExecContext(
+    		ctx,
+    		"UPDATE dog_toy_table SET name = ?, type = ?, price = ?, color = ? WHERE id = ?",
+    		// ルートエンティティの要素をカラム値として設定する。
+    		dogToy.Name().Value(),
+    		dogToy.Type().Value(),
+    		dogToy.PriceVO().Value(),
+    		dogToy.ColorVO().Value(),
+    		dogToy.Id().Value(),
+    	)
+
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
+    import type { Database } from "@/Infrastructure/Database";
+
+    /**
+     * 犬用おもちゃリポジトリ
+     */
+    export class DogToyRepository {
+      constructor(private readonly db: Database) {}
+
+      /**
+       * ドメインモデルを更新する
+       */
+      public async update(dogToy: DogToy): Promise<void> {
+        await this.db.execute(
+          "UPDATE dog_toy_table SET name = ?, type = ?, price = ?, color = ? WHERE id = ?",
+          [
+            // ルートエンティティの要素をカラム値として設定する。
+            dogToy.getName().value(),
+            dogToy.getType().value(),
+            dogToy.getPriceVO().value(),
+            dogToy.getColorVO().value(),
+            dogToy.getId().value(),
+          ],
+        );
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    namespace App\Infrastructure\Foo\Repositories;
+
+    use App\Domain\Dog\Entities\DogToy;
+    use Illuminate\Support\Facades\DB;
+
+    /**
+     * 犬用おもちゃリポジトリ
+     */
+    class DogToyRepository
+    {
+        /**
+         * ドメインモデルを更新する
+         */
+        public function update(DogToy $dogToy): void
+        {
+            DB::table("dog_toy_table")
+                // ルートエンティティの要素をカラム値として設定する。
+                ->where("id", $dogToy->getId()->value())
+                ->update([
+                    "name"  => $dogToy->getName()->value(),
+                    "type"  => $dogToy->getType()->value(),
+                    "price" => $dogToy->getPriceVO()->value(),
+                    "color" => $dogToy->getColorVO()->value(),
+                ]);
+        }
+    }
+    ```
 
 `DELETE` 処理 (論理削除) のため、Laravel の `update()` 関数を実行する。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Infrastructure\Foo\Repositories;
+    ```go
+    package repositories
 
-use App\Constants\FlagConstant;
-use App\Domain\Foo\Ids\ToyId;
-use Illuminate\Support\Facades\DB;
+    import (
+    	"context"
+    	"database/sql"
 
-/**
- * 犬用おもちゃリポジトリ
- */
-class DogToyRepository
-{
-    /**
-     * ドメインモデルを削除する
-     */
-    public function delete(ToyId $toyId): void
-    {
-        DB::table("dog_toy_table")
-            // 論理削除
-            ->where("id", $toyId->value())
-            ->update([
-                "is_deleted" => FlagConstant::IS_ON,
-            ]);
+    	"example.com/app/constants"
+    	"example.com/app/domain/foo/ids"
+    )
+
+    // 犬用おもちゃリポジトリ
+    type DogToyRepository struct {
+    	db *sql.DB
     }
-}
-```
+
+    func NewDogToyRepository(db *sql.DB) *DogToyRepository {
+    	return &DogToyRepository{db: db}
+    }
+
+    // ドメインモデルを削除する
+    func (r *DogToyRepository) Delete(ctx context.Context, toyId ids.ToyId) error {
+    	_, err := r.db.ExecContext(
+    		ctx,
+    		// 論理削除
+    		"UPDATE dog_toy_table SET is_deleted = ? WHERE id = ?",
+    		constants.FlagIsOn,
+    		toyId.Value(),
+    	)
+
+    	return err
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    import { FlagConstant } from "@/Constants/FlagConstant";
+    import { ToyId } from "@/Domain/Foo/Ids/ToyId";
+    import type { Database } from "@/Infrastructure/Database";
+
+    /**
+     * 犬用おもちゃリポジトリ
+     */
+    export class DogToyRepository {
+      constructor(private readonly db: Database) {}
+
+      /**
+       * ドメインモデルを削除する
+       */
+      public async delete(toyId: ToyId): Promise<void> {
+        await this.db.execute(
+          // 論理削除
+          "UPDATE dog_toy_table SET is_deleted = ? WHERE id = ?",
+          [FlagConstant.IS_ON, toyId.value()],
+        );
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    namespace App\Infrastructure\Foo\Repositories;
+
+    use App\Constants\FlagConstant;
+    use App\Domain\Foo\Ids\ToyId;
+    use Illuminate\Support\Facades\DB;
+
+    /**
+     * 犬用おもちゃリポジトリ
+     */
+    class DogToyRepository
+    {
+        /**
+         * ドメインモデルを削除する
+         */
+        public function delete(ToyId $toyId): void
+        {
+            DB::table("dog_toy_table")
+                // 論理削除
+                ->where("id", $toyId->value())
+                ->update([
+                    "is_deleted" => FlagConstant::IS_ON,
+                ]);
+        }
+    }
+    ```
 
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -356,74 +614,235 @@ DB に対する書き込み操作をする。
 
 : リポジトリからルートエンティティを返却し、ユースケース層に渡す。
 
-**＊実装例＊**
-
 `READ` 処理のため、Doctrine の QueryBuilder クラスの `select()` 関数を実行する。
 
-```injectablephp
-<?php
+=== "Go"
 
-namespace App\Infrastructure\Foo\Repositories;
+    ```go
+    package repositories
 
-use App\Constants\FlagConstant;
-use App\Domain\Dog\Entities\DogToy;
-use Doctrine\DBAL\Query\QueryBuilder;
+    import (
+    	"context"
+    	"database/sql"
 
-/**
- * 犬用おもちゃリポジトリ
- */
-class DogToyRepository
-{
-     /**
-     * ドメインモデルを全て取得する
-     */
-    public function findAll(): array
-    {
-        // クエリビルダー作成
-        $query = $this->createQueryBuilder();
+    	"example.com/app/constants"
+    	"example.com/app/domain/dog/entities"
+    	"example.com/app/domain/dog/values"
+    )
 
-        // SQLを設定する。
-        $query->select(
-            "dog_toy.id    AS dog_toy_id",
-            "dog_toy.name  AS dog_toy_name",
-            "dog_toy.type  AS dog_toy_type",
-            "dog_toy.price AS dog_toy_price",
-            "dog_toy.color AS dog_toy_color"
-        )
-        ->from("dog_toy_table", "dog_toy")
-        // 論理削除されていないもののみ
-        ->where("dog_toy.is_deleted", FlagConstant::IS_OFF)
-        ->getQuery();
-
-        // Read処理を実行する。
-        $entities = $query->getResult();
-
-        $dogToys = [];
-        foreach($entities as $entity){
-            // 取得したエンティティをドメインモデルに変換する。
-            $dogToys[] = $this->toDogToy($entity);
-        }
-
-        return $dogToys;
+    // 犬用おもちゃリポジトリ
+    type DogToyRepository struct {
+    	db *sql.DB
     }
+
+    func NewDogToyRepository(db *sql.DB) *DogToyRepository {
+    	return &DogToyRepository{db: db}
+    }
+
+    type dogToyRecord struct {
+    	dogToyId    int
+    	dogToyName  string
+    	dogToyType  string
+    	dogToyPrice int
+    	dogToyColor string
+    }
+
+    // ドメインモデルを全て取得する
+    func (r *DogToyRepository) FindAll(ctx context.Context) ([]*entities.DogToy, error) {
+    	// SQLを設定する。
+    	query := `
+    		SELECT
+    			dog_toy.id    AS dog_toy_id,
+    			dog_toy.name  AS dog_toy_name,
+    			dog_toy.type  AS dog_toy_type,
+    			dog_toy.price AS dog_toy_price,
+    			dog_toy.color AS dog_toy_color
+    		FROM dog_toy_table AS dog_toy
+    		-- 論理削除されていないもののみ
+    		WHERE dog_toy.is_deleted = ?`
+
+    	// Read処理を実行する。
+    	rows, err := r.db.QueryContext(ctx, query, constants.FlagIsOff)
+    	if err != nil {
+    		return nil, err
+    	}
+    	defer rows.Close()
+
+    	var dogToys []*entities.DogToy
+    	for rows.Next() {
+    		var record dogToyRecord
+    		err := rows.Scan(
+    			&record.dogToyId,
+    			&record.dogToyName,
+    			&record.dogToyType,
+    			&record.dogToyPrice,
+    			&record.dogToyColor,
+    		)
+    		if err != nil {
+    			return nil, err
+    		}
+
+    		// 取得したエンティティをドメインモデルに変換する。
+    		dogToys = append(dogToys, r.toDogToy(record))
+    	}
+
+    	if err := rows.Err(); err != nil {
+    		return nil, err
+    	}
+
+    	return dogToys, nil
+    }
+
+    // ドメインモデルに変換する
+    func (r *DogToyRepository) toDogToy(record dogToyRecord) *entities.DogToy {
+    	dogToy := entities.NewDogToy(
+    		values.NewDogId(record.dogToyId),
+    		values.NewDogName(record.dogToyName),
+    		values.NewDogToyType(record.dogToyType),
+    		values.NewPriceVO(record.dogToyPrice),
+    		values.NewColorVO(record.dogToyColor),
+    	)
+
+    	return dogToy
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    import { FlagConstant } from "@/Constants/FlagConstant";
+    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
+    import {
+      ColorVO,
+      DogId,
+      DogName,
+      DogToyType,
+      PriceVO,
+    } from "@/Domain/Dog/Values";
+    import type { Database } from "@/Infrastructure/Database";
+
+    type DogToyRecord = {
+      dog_toy_id: number;
+      dog_toy_name: string;
+      dog_toy_type: string;
+      dog_toy_price: number;
+      dog_toy_color: string;
+    };
 
     /**
-     * ドメインモデルに変換する
+     * 犬用おもちゃリポジトリ
      */
-    private function toDogToy(array $entity): DogToy
-    {
-        $dogToy = new DogToy(
-            new DogId($entity["dog_toy_id"]),
-            new DogName($entity["dog_toy_name"]),
-            new DogToyType($entity["dog_toy_type"]),
-            new PriceVO($entity["dog_toy_price"]),
-            new ColorVO($entity["dog_toy_color"])
+    export class DogToyRepository {
+      constructor(private readonly db: Database) {}
+
+      /**
+       * ドメインモデルを全て取得する
+       */
+      public async findAll(): Promise<DogToy[]> {
+        // SQLを設定する。
+        const query = `
+          SELECT
+            dog_toy.id    AS dog_toy_id,
+            dog_toy.name  AS dog_toy_name,
+            dog_toy.type  AS dog_toy_type,
+            dog_toy.price AS dog_toy_price,
+            dog_toy.color AS dog_toy_color
+          FROM dog_toy_table AS dog_toy
+          -- 論理削除されていないもののみ
+          WHERE dog_toy.is_deleted = ?`;
+
+        // Read処理を実行する。
+        const entities = await this.db.query<DogToyRecord>(query, [
+          FlagConstant.IS_OFF,
+        ]);
+
+        // 取得したエンティティをドメインモデルに変換する。
+        return entities.map((entity) => this.toDogToy(entity));
+      }
+
+      /**
+       * ドメインモデルに変換する
+       */
+      private toDogToy(entity: DogToyRecord): DogToy {
+        const dogToy = new DogToy(
+          new DogId(entity.dog_toy_id),
+          new DogName(entity.dog_toy_name),
+          new DogToyType(entity.dog_toy_type),
+          new PriceVO(entity.dog_toy_price),
+          new ColorVO(entity.dog_toy_color),
         );
 
-        return $dogToy;
+        return dogToy;
+      }
     }
-}
-```
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    namespace App\Infrastructure\Foo\Repositories;
+
+    use App\Constants\FlagConstant;
+    use App\Domain\Dog\Entities\DogToy;
+    use Doctrine\DBAL\Query\QueryBuilder;
+
+    /**
+     * 犬用おもちゃリポジトリ
+     */
+    class DogToyRepository
+    {
+         /**
+         * ドメインモデルを全て取得する
+         */
+        public function findAll(): array
+        {
+            // クエリビルダー作成
+            $query = $this->createQueryBuilder();
+
+            // SQLを設定する。
+            $query->select(
+                "dog_toy.id    AS dog_toy_id",
+                "dog_toy.name  AS dog_toy_name",
+                "dog_toy.type  AS dog_toy_type",
+                "dog_toy.price AS dog_toy_price",
+                "dog_toy.color AS dog_toy_color"
+            )
+            ->from("dog_toy_table", "dog_toy")
+            // 論理削除されていないもののみ
+            ->where("dog_toy.is_deleted", FlagConstant::IS_OFF)
+            ->getQuery();
+
+            // Read処理を実行する。
+            $entities = $query->getResult();
+
+            $dogToys = [];
+            foreach($entities as $entity){
+                // 取得したエンティティをドメインモデルに変換する。
+                $dogToys[] = $this->toDogToy($entity);
+            }
+
+            return $dogToys;
+        }
+
+        /**
+         * ドメインモデルに変換する
+         */
+        private function toDogToy(array $entity): DogToy
+        {
+            $dogToy = new DogToy(
+                new DogId($entity["dog_toy_id"]),
+                new DogName($entity["dog_toy_name"]),
+                new DogToyType($entity["dog_toy_type"]),
+                new PriceVO($entity["dog_toy_price"]),
+                new ColorVO($entity["dog_toy_color"])
+            );
+
+            return $dogToy;
+        }
+    }
+    ```
 
 > - https://www.doctrine-project.org/projects/doctrine-orm/en/2.8/reference/query-builder.html
 > - https://github.com/doctrine/dbal/blob/2.12.x/lib/Doctrine/DBAL/Query/QueryBuilder.php
@@ -444,46 +863,141 @@ class DogToyRepository
 
 責務として、新たな集約の作成や、既存の集約の再作成をする。
 
-**＊実装例＊**
+=== "Go"
 
-```injectablephp
-<?php
+    ```go
+    package factories
 
-namespace App\Infrastructure\Foo\Factories;
+    import (
+    	"example.com/app/domain/dog/entities"
+    	fooentities "example.com/app/domain/foo/entities"
+    )
 
-use App\Domain\Dog\Entities\DogToy;
-use App\Domain\Foo\Entities\DogFood;
-use App\Domain\Foo\Entities\DogCombo;
-
-/**
- * 犬用コンボファクトリ
- */
-class DogComboFactory
-{
-    /**
-     * 新たな集約を作成する
-     */
-    public static function createDogCombo(array $data): DogCombo
-    {
-        return new DogCombo(
-            new DogToy(
-                $data["dog_toy_id"],
-                $data["dog_toy_name"],
-                $data["dog_toy_type"],
-                $data["dog_toy_price"],
-                $data["dog_toy_color"],
-            ),
-            new DogFood(
-                $data["dog_food_id"],
-                $data["dog_food_name"],
-                $data["dog_food_type"],
-                $data["dog_food_price"],
-                $data["dog_food_flavor"],
-            )
-        );
+    type DogComboData struct {
+    	DogToyId      int
+    	DogToyName    string
+    	DogToyType    string
+    	DogToyPrice   int
+    	DogToyColor   string
+    	DogFoodId     int
+    	DogFoodName   string
+    	DogFoodType   string
+    	DogFoodPrice  int
+    	DogFoodFlavor string
     }
-}
-```
+
+    // 犬用コンボファクトリ
+    type DogComboFactory struct{}
+
+    // 新たな集約を作成する
+    func (f *DogComboFactory) CreateDogCombo(data DogComboData) *fooentities.DogCombo {
+    	return fooentities.NewDogCombo(
+    		entities.NewDogToy(
+    			data.DogToyId,
+    			data.DogToyName,
+    			data.DogToyType,
+    			data.DogToyPrice,
+    			data.DogToyColor,
+    		),
+    		fooentities.NewDogFood(
+    			data.DogFoodId,
+    			data.DogFoodName,
+    			data.DogFoodType,
+    			data.DogFoodPrice,
+    			data.DogFoodFlavor,
+    		),
+    	)
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript
+    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
+    import { DogCombo } from "@/Domain/Foo/Entities/DogCombo";
+    import { DogFood } from "@/Domain/Foo/Entities/DogFood";
+
+    type DogComboData = {
+      dog_toy_id: number;
+      dog_toy_name: string;
+      dog_toy_type: string;
+      dog_toy_price: number;
+      dog_toy_color: string;
+      dog_food_id: number;
+      dog_food_name: string;
+      dog_food_type: string;
+      dog_food_price: number;
+      dog_food_flavor: string;
+    };
+
+    /**
+     * 犬用コンボファクトリ
+     */
+    export class DogComboFactory {
+      /**
+       * 新たな集約を作成する
+       */
+      public static createDogCombo(data: DogComboData): DogCombo {
+        return new DogCombo(
+          new DogToy(
+            data.dog_toy_id,
+            data.dog_toy_name,
+            data.dog_toy_type,
+            data.dog_toy_price,
+            data.dog_toy_color,
+          ),
+          new DogFood(
+            data.dog_food_id,
+            data.dog_food_name,
+            data.dog_food_type,
+            data.dog_food_price,
+            data.dog_food_flavor,
+          ),
+        );
+      }
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp
+    <?php
+
+    namespace App\Infrastructure\Foo\Factories;
+
+    use App\Domain\Dog\Entities\DogToy;
+    use App\Domain\Foo\Entities\DogFood;
+    use App\Domain\Foo\Entities\DogCombo;
+
+    /**
+     * 犬用コンボファクトリ
+     */
+    class DogComboFactory
+    {
+        /**
+         * 新たな集約を作成する
+         */
+        public static function createDogCombo(array $data): DogCombo
+        {
+            return new DogCombo(
+                new DogToy(
+                    $data["dog_toy_id"],
+                    $data["dog_toy_name"],
+                    $data["dog_toy_type"],
+                    $data["dog_toy_price"],
+                    $data["dog_toy_color"],
+                ),
+                new DogFood(
+                    $data["dog_food_id"],
+                    $data["dog_food_name"],
+                    $data["dog_food_type"],
+                    $data["dog_food_price"],
+                    $data["dog_food_flavor"],
+                )
+            );
+        }
+    }
+    ```
 
 <br>
 
