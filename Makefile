@@ -1,7 +1,7 @@
 push:
 	git pull
 	git add docs
-	git commit -m "update ノートを更新した。"
+	git commit -m "ノートの内容を更新した"
 	git push
 
 format:
