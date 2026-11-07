@@ -849,8 +849,6 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 既知のサイバー攻撃を意図的に行い、システムの脆弱性を確認するテストのこと。
 
-**＊例＊**
-
 株式会社 LAC によるペネトレーションテストサービス
 
 ![ペネトレーションテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ペネトレーションテスト.png)

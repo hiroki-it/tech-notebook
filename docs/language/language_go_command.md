@@ -453,8 +453,6 @@ all modules verified
 
 この場合、`// indirect` のモジュールを手動で変更する。
 
-**＊例＊**
-
 `// indirect` で指定した依存先モジュール (`go.module.io/foo-dependency`) のバージョンが `1.27` になっている。
 
 しかし、`go.module.io/foo-dependency` (`1.27`) には、`bar` モジュールがないためエラーになっている。

@@ -60,8 +60,6 @@ description: ソフトウェアの知見を記録しています。
 
 > - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
-**＊例＊**
-
 Office、BookLive のアプリ版
 
 <br>
@@ -82,8 +80,6 @@ URL を指定して Web サーバーにリクエストを送信することで�
 
 > - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
-**＊例＊**
-
 - Google アプリケーション
 - Amazon
 - BookLive のブラウザ版
@@ -92,8 +88,6 @@ URL を指定して Web サーバーにリクエストを送信することで�
 #### ▼ クラウドアプリケーション
 
 Web サーバー上のソフトウェアによって稼働するアプリケーションのうち、クラウドサービスを提供するもののこと。
-
-**＊例＊**
 
 - Google Drive
 - Dropbox
@@ -109,8 +103,6 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 ![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッドアプリ.png)
 
 > - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
-
-**＊例＊**
 
 クックパッド
 

@@ -633,8 +633,6 @@ $ git checkout -b feature/3 d7e49b04
 $ git cherry-pick <コミットID>
 ```
 
-**＊例＊**
-
 ```bash
 $ git cherry-pick 1d0ddeb9e52
 ```
@@ -1348,8 +1346,6 @@ $ git push origin <コミットID>:main
 $ git push --delete origin <バージョンタグ>
 ```
 
-**＊例＊**
-
 ```bash
 $ git push --delete origin v1.0.0
 ```
@@ -1427,8 +1423,6 @@ $ git filter-branch --force --env-filter '
 ### -f --tree-filter
 
 すべてのコミットに対して、指定した処理を実行する。
-
-**＊例＊**
 
 すべてのコミットに対して、特定のファイルを削除する処理を実行する。
 

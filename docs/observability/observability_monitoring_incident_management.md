@@ -362,8 +362,6 @@ Slack をインシデント管理ツールとして、Slack に通知された�
 
 > - https://www.seplus.jp/dokushuzemi/fe/fenavi/easy_calc/availability/
 
-**＊例＊**
-
 システムが冗長化されている例を示す。
 
 すでに稼働率は算出されているものとする。

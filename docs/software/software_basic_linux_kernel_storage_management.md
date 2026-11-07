@@ -183,8 +183,6 @@ description: ストレージ管理＠Linuxカーネルの知見を記録して�
 
 Linux では、パーティションとマウントポイントは `df` コマンドで確認できる。
 
-**＊例＊**
-
 Linux の場合、`/dev/xvda1` をルートディレクトリにマウントしていることがある。
 
 `Filesystem` 列にパーティション、`Mounted on` 列にパーティションへ対応するマウントポイントが表示される。
@@ -197,8 +195,6 @@ Filesystem     Size   Used  Avail  Use%   Mounted on
 /dev/xvda1       8G   1.9G    14G   12%   /          # ルートディレクトリにマウントしている。
 /dev/nvme1n1   200G   161G    40G   81%   /var/lib
 ```
-
-**＊例＊**
 
 特に CentOS の場合、`/dev/mapper/rhel-root` をルートディレクトリにマウントしていることがある。
 
@@ -229,8 +225,6 @@ Windows では、C ドライブと D ドライブがパーティションに相�
 MacOS では、`diskutil` コマンドを実行することで、パーティションとマウントポイントを確認できる。
 
 > - [【macos】外付けデバイスの操作をコマンドから（diskutilコマンドを使ったmount、unmount、ファイル操作） #macOS - Qiita](https://qiita.com/sfp_waterwalker/items/188b536e3519058e3280)
-
-**＊例＊**
 
 ストレージに紐づく `2` 個のデバイスファイルが表示され、`disk0` ファイル は 2 つ、また `disk1` ファイルは 6 つのパーティションで区切られていることが確認できる。マウントポイントは、`IDENTIFIER` 列で表示される (例：パーティションのデバイスファイル名が `/dev/disk0` なら、マウントポイントは `/dev/disk0<IDENTIFIER名>` になる) 。
 
@@ -274,8 +268,6 @@ $ diskutil list
 ### 論理ボリュームの確認方法
 
 #### ▼ Linux の場合
-
-**＊例＊**
 
 Linux では論理ボリュームは、`lvdisplay` コマンドで確認できる。
 
@@ -335,8 +327,6 @@ Linux カーネルが入出力装置や標準入出力を操作できるよう�
 ### デバイスファイルの確認方法
 
 #### ▼ Linux の場合
-
-**＊例＊**
 
 Linux のデバイスファイルは `/dev` ディレクトリ配下にある。
 

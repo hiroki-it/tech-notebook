@@ -36,8 +36,6 @@ $ helmfile -e prd <コマンド>
 
 > - [helmfile](https://helmfile.readthedocs.io/en/latest/#cli-reference)
 
-**＊例＊**
-
 ```bash
 $ helmfile -e prd diff
 ```

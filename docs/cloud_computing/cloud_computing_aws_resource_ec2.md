@@ -828,8 +828,6 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 
 サイズを拡張するためには、実際のストレージ (AWS EBS ボリューム) 、AWS EBS ボリューム内のパーティション、Amazon EC2 内のファイルシステムについて作業する必要がある。
 
-**＊例＊**
-
 1. 任意で、バックアップのために拡張対象の Amazon EC2 の AWS AMI を作成しておく。
 
 2. Amazon EC2 の AWS EBS ボリュームを `8`GiB から `16`GiB に拡張する例を考える。

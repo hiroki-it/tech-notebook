@@ -247,8 +247,6 @@ Fargate では、Fargate ワーカーNode 内で Pod が使用したリソース
 
 > - [AWS Fargate の料金](https://aws.amazon.com/jp/fargate/pricing/)
 
-**＊例＊**
-
 バージニア北部の Fargate ワーカーNode 内で、Pod が `10` 個を毎日 `1` 時間稼働させ、Pod が `0.25`vCPU と `1`GiB メモリを使用したとする。
 
 この場合、１ヶ月の請求額は以下のようになる。

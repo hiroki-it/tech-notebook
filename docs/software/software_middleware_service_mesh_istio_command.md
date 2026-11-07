@@ -919,8 +919,6 @@ MutatingWebhookConfiguration の `.metadata.labels` キーに、エイリアス 
 $ istioctl tag generate <エイリアス> --revision <エイリアスの実体>
 ```
 
-**＊例＊**
-
 `default` というエイリアス (`istio.io/tag` キーの値) を作成し、エイリアスの実体 (`.metadata.labels.istio.io/rev` キーの値) として `1-10-0` を設定する。
 
 ```bash
@@ -979,8 +977,6 @@ MutatingWebhookConfiguration の `.metadata.labels` キーにある既存のエ�
 # もしあれば、MutatingWebhookConfigurationのエイリアスの実体を変更する。
 $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --overwrite
 ```
-
-**＊例＊**
 
 1. 現在のバージョンのエイリアス (`istio.io/tag` キーの値) が `default`、またバージョン (`.metadata.labels.istio.io/rev` キーの値) が `v1.10.0` とする。
 

@@ -61,8 +61,6 @@ SSR のアプリケーションはブラウザを操作できないため、ブ�
 
 ### 場所
 
-**＊例＊**
-
 ローカルマシンが MacOS であれば、Chrome は `~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/` ディレクトリに保管する。
 
 > - https://stackoverflow.com/questions/8634058/where-the-sessionstorage-and-localstorage-stored
@@ -141,8 +139,6 @@ LocalStorage は SessionStorage と比べて保管期間が長いため、XSS �
 > - https://magazine.techacademy.jp/magazine/32870
 > - [SPA認証トークンはlocalStorageでもCookieでもない、Auth0方式はいいねというお話 - @mizumotokのブログ](https://mizumotok.hatenablog.jp/entry/2021/08/04/114431#%E3%83%96%E3%83%A9%E3%82%A6%E3%82%B6%E3%81%A7%E3%83%88%E3%83%BC%E3%82%AF%E3%83%B3%E3%82%92%E4%BF%9D%E5%AD%98%E3%81%A7%E3%81%8D%E3%82%8B%E5%A0%B4%E6%89%80)
 
-**＊例＊**
-
 ローカルマシンが MacOS であれば、Chrome は `~/Library/Application Support/Google/Chrome/<Profile>/Local Storage/` ディレクトリに保管する。
 
 > - https://stackoverflow.com/a/27612275/12771072
@@ -176,8 +172,6 @@ CSR または SSR のアプリケーションは、`Cookie` ヘッダーを介�
 > - [SSRのNext.jsにJWT TokenをHeaderに追加してtRPC通信を行う](https://zenn.dev/marton/articles/67f7ec30cda716)
 
 #### ▼ 場所
-
-**＊例＊**
 
 クライアント PC が MacOS であれば、Chrome は `/Users/<ユーザー名>/Library/Application Support/Google/Chrome/Default/Cookies` ディレクトリに `Cookie` ヘッダーの値を保管する。
 

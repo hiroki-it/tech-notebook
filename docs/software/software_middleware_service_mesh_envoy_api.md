@@ -236,8 +236,6 @@ $ kubectl exec \
 
 `cluster_name` キーは、`/config_dump?resource={dynamic_active_clusters}` エンドポイントから取得できる JSON の `service_name` キーのエイリアスと紐づいている。
 
-**＊例＊**
-
 foo-pod に登録されている bar-pod の `endpoint` 値を確認してみる。
 
 ```yaml
@@ -363,8 +361,6 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/dynamic-configuration-control-plane#step-5-dump-envoy-s-dynamic-active-clusters-config
 > - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-clustersconfigdump-dynamiccluster)
 
-**＊例＊**
-
 foo-pod に登録されている bar-pod の `dynamic_active_clusters` 値を確認してみる。
 
 ```yaml
@@ -418,8 +414,6 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 > - [Cluster manager — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/upstream/cluster_manager#cluster-warming)
 > - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#admin-v3-clustersconfigdump)
 
-**＊例＊**
-
 foo-pod に登録されている bar-pod の `dynamic_warming_clusters` 値を確認してみる。
 
 ```yaml
@@ -451,8 +445,6 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 ```
 
 > - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-listenersconfigdump-dynamiclistener)
-
-**＊例＊**
 
 foo-pod に登録されている bar-pod の `dynamic_listeners` 値を確認してみる。
 
@@ -516,8 +508,6 @@ envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={dyn
 ```
 
 > - [ConfigDump (proto) — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/api-v3/admin/v3/config_dump_shared.proto#envoy-v3-api-msg-admin-v3-routesconfigdump-dynamicrouteconfig)
-
-**＊例＊**
 
 foo-pod に登録されている bar-pod の `dynamic_route_configs` 値を確認してみる。
 
@@ -589,8 +579,6 @@ configs:
 # envoyコンテナ内でローカルホストにリクエストを送信する。
 envoy@<コンテナ名>: $ curl http://127.0.0.1:15000/config_dump?resource={static_listeners}
 ```
-
-**＊例＊**
 
 foo-pod に登録されている bar-pod の `static_listeners` 値を確認してみる。
 

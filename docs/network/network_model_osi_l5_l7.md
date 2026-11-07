@@ -135,8 +135,6 @@ SMTP に認証を組み込んだ仕組みのこと。
 
 メールの既読未読状況は、他の受信機器と共有されない。
 
-**＊例＊**
-
 Gmail で POP か IMAP を設定できる。
 
 ![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg)

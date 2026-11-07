@@ -147,8 +147,6 @@ $ sops -e ./values/foo-values.yaml -k $SOPS_KMS_ARN
 $ sops -d <暗号化された.yamlファイル/.jsonファイル> > <復号された.yamlファイル/.jsonファイル>
 ```
 
-**＊例＊**
-
 ```bash
 $ sops -d ./secrets/foo-secrets.yaml > ./values/foo-values.yaml
 ```
@@ -174,8 +172,6 @@ $ sops -e <平文の.yamlファイル/.jsonファイル> > <暗号化された.y
 # AWS KMSを暗号化キーとして使用する場合
 Failed to call KMS encryption service: AccessDeniedException: status code: 400, request id: *****
 ```
-
-**＊例＊**
 
 ```bash
 $ sops -e ./values/foo-values.yaml > ./secrets/foo-secrets.yaml

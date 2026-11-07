@@ -596,8 +596,6 @@ Istio は、宛先の Service に送信しようとするプロトコルを厳�
 
 宛先の Service の `.spec.ports[*].name` キー (`<プロトコル名>-<任意の文字列>`) または `.spec.ports[*].appProtocol` キーを認識し、その Service には指定されたプロトコルでしか通信を送れなくなる。
 
-**＊例＊**
-
 appProtocol を使用しない場合は以下の通りとなる。
 
 ```yaml
@@ -623,8 +621,6 @@ spec:
     - name: tcp-foo
       port: 9000
 ```
-
-**＊例＊**
 
 appProtocol を使用する場合は以下の通りとなる。
 

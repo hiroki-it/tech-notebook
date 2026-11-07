@@ -304,8 +304,6 @@ $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.ya
 $ helm install <Helmリリース名> <チャートへのパス> -f foo-values.yaml --wait
 ```
 
-**＊例＊**
-
 ```bash
 $ helm install foo-release . -f foo-values.yaml --wait
 ```
@@ -593,8 +591,6 @@ Error: failed to download "<チャートリポジトリ名>"
 $ helm repo index <チャートへのパス>
 ```
 
-**＊例＊**
-
 ```bash
 $ helm repo index .
 ```
@@ -619,8 +615,6 @@ $ helm repo remove <チャート名>
 
 "<チャートリポジトリ名>" has been removed from your repositories
 ```
-
-**＊例＊**
 
 ```bash
 $ helm repo remove foo-chart
@@ -678,8 +672,6 @@ URL               CHART VERSION      APP VERSION                       DESCRIPTI
 ```bash
 $ helm show all <チャート名>
 ```
-
-**＊例＊**
 
 ```bash
 $ helm show all foo-chart
@@ -747,13 +739,9 @@ $ helm template . -f foo-values.yaml >| releases.yaml
 $ helm template . -f foo-values.yaml >| <出力先ファイル>
 ```
 
-**＊例＊**
-
 ```bash
 $ helm template . -f foo-values.yaml >| release.yaml
 ```
-
-**＊例＊**
 
 CI 上でマニフェストの静的解析をしたい場合、CI の実行環境へ暗号化キーの使用許可を付与する必要はない。
 
@@ -820,8 +808,6 @@ Helm リリースを指定し、その Helm リリースでインストールさ
 $ helm uninstall <Helmリリース名>
 ```
 
-**＊例＊**
-
 ```bash
 $ helm uninstall foo-release
 ```
@@ -849,8 +835,6 @@ Helm は、CRD を含むチャートのインストールはサポートして�
 ```bash
 $ helm upgrade --atomic <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
-
-**＊例＊**
 
 ```bash
 $ helm template --atomic . -f foo-values.yaml >| release.yaml
@@ -894,8 +878,6 @@ $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.ya
 $ helm upgrade --skip-crds --install <Helmリリース名> <チャートへのパス> -f foo-values.yaml
 ```
 
-**＊例＊**
-
 `helm upgrade` コマンド時に、CRD の作成をスキップし、非 CRD のみをインストールする。
 
 ```bash
@@ -911,8 +893,6 @@ $ helm upgrade --skip-crds --install foo-release . -f foo-values.yaml >| release
 ```bash
 $ helm upgrade <Helmリリース名> <チャートへのパス> -f foo-values.yaml --wait
 ```
-
-**＊例＊**
 
 ```bash
 $ helm upgrade foo-release . -f foo-values.yaml --wait

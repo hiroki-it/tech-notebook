@@ -129,8 +129,6 @@ $ yum install -y bind-utils
 
 > - [Linux環境でnslookupやdigコマンドでDNSを学ぶ #dns - Qiita](https://qiita.com/toshihirock/items/1ff01a51570bf6ca4f59)
 
-**＊例＊**
-
 ```bash
 # 正引き
 $ nslookup google.co.jp
@@ -183,8 +181,6 @@ Address: 142.251.42.131
 #### ▼ -type
 
 正引き/逆引きによる名前解決をし、このときに指定した DNS レコードタイプのレコード値を返却させる。
-
-**＊例＊**
 
 名前解決をし、NS レコード値を返却させる。
 
@@ -350,8 +346,6 @@ $ tcpdump
 
 > - https://stackoverflow.com/questions/10300656/capture-incoming-traffic-in-tcpdump
 
-**＊例＊**
-
 スリーウェイハンドシェイクによって接続を確率するまでの仕組みである。
 
 (1) 送信元から宛先に SYN パケットを送信する。
@@ -384,8 +378,6 @@ $ tcpdump <コマンド/オプション> \
     | awk -F ' ' '{print $3}' \
     | grep <特定のIPアドレス>
 ```
-
-**＊例＊**
 
 `ping` コマンドの宛先で、通信を受信できていることを確認する。
 
@@ -484,8 +476,6 @@ $ tcpdump src port 80
 > - [コンテンツが存在しません｜よくあるご質問｜法人向けクラウドサービスのbit-drive](https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false)
 > - [ネットワーク入門サイト - tracert・traceroute](https://beginners-network.com/tracert_traceroute.html)
 
-**＊例＊**
-
 UDP プロトコルを使用して、パケットを送信する。
 
 もし、`traceroute` コマンドが終了すれば、すべてのルーターを経由できていることを表す。
@@ -540,8 +530,6 @@ ICMP プロトコルを使用して、Ping (ICMP エコーリクエスト) を�
 
 TCP プロトコルの一種である。
 
-**＊例＊**
-
 ```bash
 $ traceroute -I -n google.com -p 443
 
@@ -555,8 +543,6 @@ $ traceroute -I -n *.*.*.* -p 443
 IP アドレスの名前解決するせずに、ルーターの送信元 IP アドレスをそのまま取得する。
 
 ネットワークの境目がわかりやすくなる。
-
-**＊例＊**
 
 ```bash
 $ traceroute -n google.com
@@ -584,8 +570,6 @@ traceroute to google.com (173.194.38.105), 30 hops max, 60 byte packets
 
 デフォルト値は、`33434` 番ポートである。
 
-**＊例＊**
-
 ```bash
 $ traceroute *.*.*.* -p 9000
 ```
@@ -600,8 +584,6 @@ $ traceroute *.*.*.* -p 9000
 
 `traceroute` コマンドでは UDP プロトコルで送信するため、ネットワークが正常でもそれ以外 (ファイアウォールなど) のところで通信できない場合がある。
 
-**＊例＊**
-
 ```bash
 $ traceroute google.com -T -p 443
 
@@ -615,8 +597,6 @@ $ traceroute *.*.*.* -T -p 443
 ### tracepath
 
 > - https://qiita.com/chellwo/items/d81f35944aec09bd9a84#tracepath
-
-**＊例＊**
 
 ```bash
 $ tracepath -n google.com
@@ -641,8 +621,6 @@ $ tracepath -n google.com
 その場合の代わりとして `tcptraceroute` コマンドを使用する。
 
 > - [tracerouteで応答がないときはtcptracerouteを試す - 一歩前進](https://succzero.hatenablog.com/entry/2013/09/01/181615)
-
-**＊例＊**
 
 ```bash
 $ tcptraceroute google.com 443

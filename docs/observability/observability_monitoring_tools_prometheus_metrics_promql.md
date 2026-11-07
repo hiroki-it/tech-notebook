@@ -160,8 +160,6 @@ sum(idelta(istio_requests_total{response_flags!="-"}[1h])) by (pod_name, respons
 
 rate 関数のラッパーであり、rate 関数の結果 (平均増加率) に、期間を自動的に掛けた数値 (期間当たりの増加数) を集約する。
 
-**＊例＊**
-
 rate 関数に期間 (今回は 5m) を自動的に掛けた数値を集約する。
 
 ```bash

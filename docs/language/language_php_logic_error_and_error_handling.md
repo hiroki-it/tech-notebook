@@ -78,8 +78,6 @@ function foo(string $foo): string {
 
 また、開発者にとって詳しく理解できるように、コンストラクタの引数にメッセージを渡す。
 
-**＊例＊**
-
 - InvalidArgumentException
 
 > - https://bartlomiej-kielbasa.medium.com/how-to-name-exceptions-its-not-so-obvious-df104014166a

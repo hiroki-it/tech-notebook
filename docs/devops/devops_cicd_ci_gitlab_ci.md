@@ -1171,8 +1171,6 @@ foo_job:
 
 Job が発火した場合、特定のアクションを実施する。
 
-**＊例＊**
-
 モノレポで GitLabCI を採用している場合、 親の `.gitlab-ci.yml` ファイルでディレクトリ配下の変更を検知し、子の `.gitlab-ci.yml` ファイルを読み込む (`include`) ようにする。
 
 ```yaml title=".yml"

@@ -1057,8 +1057,6 @@ spec:
 
 ServiceMonitor では、Kubernetes SD configurations のメタラベルのうちで、`service`/`pod`/`endpoints` のラベルを変換できる。
 
-**＊例＊**
-
 Node Exporter が作成したメトリクスでは、`instance` ラベルが `*.*.*.*:<ポート番号>` になっている。
 
 これだとわかりにくいため、Pod の `__meta_kubernetes_pod_node_name` ラベルの値 (Node のホスト名) に変換する。
@@ -1234,8 +1232,6 @@ metadata:
 
 > - [続くといいな日記 – Prometheus Operator で k8s を監視する](https://mizunashi-mana.github.io/blog/posts/2020/07/prometheus-operator/)
 > - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/troubleshooting.md
-
-**＊例＊**
 
 Node Exporter の Pod からメトリクスの元になるデータポイントを収集する。
 

@@ -115,8 +115,6 @@ webhook サーバーは、Cluster 内部に配置することが多い。
 
 ![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
 
-**＊例＊**
-
 Istio の MutatingWebhookConfiguration は以下の通りである。
 
 Pod を作成するための kube-apiserver のコール自体がエラーとなる。
@@ -183,8 +181,6 @@ ValidatingAdmissionWebhook プラグインを使用すると、validating-admiss
 ValidatingWebhookConfiguration で、ValidatingAdmissionWebhook プラグインの発火条件や webhook サーバーの宛先情報を設定する。
 
 webhook サーバーは、Cluster 内部に配置することが多い。
-
-**＊例＊**
 
 ```yaml
 apiVersion: admissionregistration.k8s.io/v1
@@ -253,8 +249,6 @@ admission-controller アドオンと webhook サーバーの間で送受信す�
 
 kube-apiserver は、特定のリクエストを受信すると、webhook サーバーに AdmissionReview 内の AdmissionRequest にリクエストパラメーターを格納し、リクエストとして送信する。
 
-**＊例＊**
-
 ```yaml
 {
   "apiVersion": "admission.k8s.io/v1",
@@ -314,8 +308,6 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
 
 マニフェストの patch 処理の定義方法は、JSON Patch ツールに依存している。
 
-**＊例＊**
-
 ```yaml
 {
   "apiVersion": "admission.k8s.io/v1",
@@ -365,8 +357,6 @@ kube-apiserver は、mutating-admission ステップと同じ AdmissionReview �
 #### ▼ AdmissionResponse
 
 webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデーションの結果を格納し、レスポンスとして返信する。
-
-**＊例＊**
 
 ```yaml
 {

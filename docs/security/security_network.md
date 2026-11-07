@@ -117,8 +117,6 @@ Linux/Ubuntu での iptables は、標準的な NAPT ルーターかつパケッ
   </tbody>
 </table>
 
-**＊例＊**
-
 ```bash
 $ cat /etc/sysconfig/iptables
 
@@ -148,8 +146,6 @@ CentOS での firewalld は、標準的なパケットフィルタリング型�
 
 > - [【Redhat 7】firewalld まとめ \| CentOS7 \| CentOS 7.2](https://tooljp.com/linux/Redhat7/faqRedhat7/html/firewalld-wiki.html)
 > - [Firewalld編～サーバーへ不要な通信はさせない～ – Linuxセキュリティ入門(2) \| さくらのナレッジ](https://knowledge.sakura.ad.jp/22269/)
-
-**＊例＊**
 
 アクセスが許可されているポート番号を確認する。
 
@@ -191,8 +187,6 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 ![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif)
 
 > - [Windows 10 - ファイアウォールの特定ポート番号の通信を許可する方法 - PC設定のカルマ](https://pc-karuma.net/windows-10-firewall-open-port/)
-
-**＊例＊**
 
 <br>
 

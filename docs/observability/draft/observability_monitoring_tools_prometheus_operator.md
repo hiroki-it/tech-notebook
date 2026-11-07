@@ -25,8 +25,6 @@ PrometheusOperator は、Prometheus、Alertmanager、Expoter (Node Exporter、ku
 
 PrometheusOperator は、Prometheus 系のすべてのカスタムリソースを要求するため、これを作成する必要がある。
 
-**＊例＊**
-
 kube-prometheus-stack が提供する CRD を使用する。
 
 ```bash

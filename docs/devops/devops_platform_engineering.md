@@ -73,8 +73,6 @@ SREing とは異なり、開発者体験の向上から DevOps を実現する�
 
 > - https://tag-app-delivery.cncf.io/wgs/platforms/whitepaper/#capabilities-of-platforms
 
-**＊例＊**
-
 - Port
 - Backstage
 

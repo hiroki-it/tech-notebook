@@ -437,8 +437,6 @@ $ aws cloudwatch describe-alarms --alarm-names <アラーム名>
 
 #### ▼ set-alarm-state
 
-**＊例＊**
-
 Amazon CloudWatch アラームの状態を変更する。
 
 アラームをテストできる。
@@ -458,8 +456,6 @@ $ aws cloudwatch set-alarm-state \
 ```
 
 #### ▼ get-metric-statistics
-
-**＊例＊**
 
 すべてのロググループに対して、一日当たりの収集サイズを `start-time` から `end-time` の間で取得する。
 
@@ -600,15 +596,11 @@ $ aws rds describe-db-clusters \
 
 #### ▼ ls
 
-**＊例＊**
-
 指定したバケット内のファイル名を取得する。
 
 ```bash
 $ aws s3 ls s3://<バケット名>
 ```
-
-**＊例＊**
 
 指定したバケット内のファイルサイズを合計する。
 

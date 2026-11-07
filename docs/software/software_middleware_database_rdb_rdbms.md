@@ -204,8 +204,6 @@ CREATE INDEX foo_index
     ON foo_table (foo_column, bar_column, ...)
 ```
 
-**＊例＊**
-
 以下のような `foo` テーブルがあり、`name` カラムと `address` カラムを基準に並び替えた `foo_index` という複合 DB インデックス名を作成する。
 
 ```mysql

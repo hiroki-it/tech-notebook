@@ -82,8 +82,6 @@ $ kubectl annotate --overwrite pod foo-pod <キー名>- -n foo-namespace
 
 kube-apiserver に送信するマニフェストを指定する。`-R` オプションでディレクトリ内のファイルを再帰的に指定もできる。
 
-**＊例＊**
-
 マニフェストを指定し、`kubectl apply` コマンドを実行する。
 
 ```bash
@@ -205,8 +203,6 @@ CURRENT   NAME             CLUSTER          AUTHINFO         NAMESPACE
 
 `kubectl` コマンドの向き先を、指定した Kubernetes の実行環境の kube-apiserver に変更する。
 
-**＊例＊**
-
 宛先を Minikube の kube-apiserver に変更する。
 
 ```bash
@@ -228,8 +224,6 @@ $ kubectl config use-context <ClusterのARN>
 #### ▼ view
 
 パラメーターのデフォルト値が設定された `kubeconfig` ファイルを取得する。
-
-**＊例＊**
 
 ```bash
 $ kubectl config view
@@ -339,8 +333,6 @@ $ kubectl cp <ホストPCのパス> <Namespace名>/<PodID>:<コンテナのデ�
 
 同じ識別子 (リソース名) の Kubernetes リソースが存在する場合は重複エラーになってしまう。
 
-**＊例＊**
-
 マニフェストを指定し、`kubectl create` コマンドを実行する。
 
 ```bash
@@ -362,8 +354,6 @@ service/foo-service created
 Pod 数を維持管理する ReplicaSet を作成する。
 
 Pod を終了するためには、Deployment 自体を削除しなければならない。
-
-**＊例＊**
 
 ```bash
 $ kubectl create deployment -f ./kubernetes/foo-deployment.yaml
@@ -391,8 +381,6 @@ $ kubectl create secret docker-registry foo-secret \
 #### ▼ secret generic
 
 Secret を作成する。
-
-**＊例＊**
 
 指定した `.env` ファイルから Secret を作成する。
 
@@ -443,8 +431,6 @@ Kubernetes リソースを削除する。
 $ kubectl delete <Kubernetesリソース> <Kubernetesリソース名>
 ```
 
-**＊例＊**
-
 Pod を終了する。
 
 Pod の場合、オプションのない `kubectl delete` コマンドが Graceful Shutdown となる。
@@ -454,8 +440,6 @@ $ kubectl delete pod foo-pod
 ```
 
 > - [Force Delete StatefulSet Pods \| Kubernetes](https://kubernetes.io/docs/tasks/run-application/force-delete-stateful-set-pod/#delete-pods)
-
-**＊例＊**
 
 指定した名前の Pod をすべて削除する。
 
@@ -489,8 +473,6 @@ $ kubectl delete pod <TerminatingステータスのままのPod名> --force --gr
 
 簡易的な情報を参照するときは、`kubectl get` コマンドを使用する。
 
-**＊例＊**
-
 ```bash
 $ kubectl describe node
 ```
@@ -500,8 +482,6 @@ $ kubectl describe node
 ```bash
 $ kubectl describe pod <Pod名> | grep Node:
 ```
-
-**＊例＊**
 
 ```bash
 $ kubectl describe clusterrole foo-cluster-role
@@ -521,8 +501,6 @@ PolicyRule:
 > - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe)
 
 #### ▼ -A
-
-**＊例＊**
 
 すべての Node の詳細な情報を取得する。
 
@@ -623,8 +601,6 @@ $ kubectl edit statefulset foo-statefulset
 
 #### ▼ -it
 
-**＊例＊**
-
 コンテナを指定して、デタッチモードで `kubectl exec` コマンドを実行する。
 
 ```bash
@@ -655,8 +631,6 @@ Service を作成する。
 > - [kubectl run/create/expose のススメ #kubernetes - Qiita](https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908)
 
 #### ▼ --type、--port、--target-port
-
-**＊例＊**
 
 ClusterIP Service を作成する。
 
@@ -697,8 +671,6 @@ $ kubectl expose <Service名> \
 
 > - [Kubectl Reference Docs](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get)
 
-**＊例＊**
-
 特定の Namespace のすべての Kubernetes リソースを取得する。
 
 > - [kubectl get all は全リソースの情報を表示しない \| text․superbrothers․dev](https://text.superbrothers.dev/190616-kubectl-get-all-does-not-include-most-resources/)
@@ -706,8 +678,6 @@ $ kubectl expose <Service名> \
 ```bash
 $ kubectl get "$(kubectl api-resources --namespaced=true --verbs=list -o name | tr "\n" "," | sed -e 's/,$//')" -n foo-namespace
 ```
-
-**＊例＊**
 
 すべての Node の情報を取得する。
 
@@ -722,8 +692,6 @@ baz-node  Ready    worker                 12h   v1.22.0 # 同上
 
 ```
 
-**＊例＊**
-
 指定した Pod の情報を取得する。
 
 ```bash
@@ -733,8 +701,6 @@ NAME       READY   STATUS             RESTARTS   AGE
 foo-pod    0/2     ImagePullBackOff   0          7m52s
 bar-pod    2/2     Running            0          5m01s
 ```
-
-**＊例＊**
 
 指定した Service の情報を取得する。
 
@@ -746,8 +712,6 @@ foo-service    ClusterIP   *.*.*.*        <none>        80/TCP    10s
 kubernetes     ClusterIP   *.*.*.*        <none>        443/TCP   12h
 ```
 
-**＊例＊**
-
 `grep` コマンドを使用して、`Running` フェーズの Pod のみを取得する。
 
 ```bash
@@ -756,8 +720,6 @@ $ kubectl get pod | grep -e NAME -e Running
 NAME       READY   STATUS             RESTARTS   AGE
 bar-pod    2/2     Running            0          5m01s
 ```
-
-**＊例＊**
 
 `wc` コマンドで出力内容の行数を数える。
 
@@ -770,8 +732,6 @@ $ kubectl get pod --no-headers | wc -l
 
 20
 ```
-
-**＊例＊**
 
 各 Node で作成できる Pod の上限数を確認する。
 
@@ -788,8 +748,6 @@ $ for node in $(kubectl get node | awk '{if (NR!=1) {print $1}}'); \
     kubectl describe node ${node} | grep "Non-terminated" ; done
 ```
 
-**＊例＊**
-
 ArgoCD の Application から、`argocd app diff` コマンドで反復的に差分を確認する。
 
 ```bash
@@ -805,8 +763,6 @@ for application_name in "${application_names[@]}"; do
   argocd app diff "$application_name"
 done
 ```
-
-**＊例＊**
 
 特定の値を持つマニフェストのみを取得する。
 
@@ -844,8 +800,6 @@ $ kubectl get pod -A -o jsonpath="{.items[*].spec.containers[*].image}" \
 
 カスタムリソースの情報をいい感じに取得する際、役立つ。
 
-**＊例＊**
-
 Service の指定した情報をユーザー定義のカラムで取得する。
 
 ```bash
@@ -869,8 +823,6 @@ $ kubectl get service \
 
 > - https://stackoverflow.com/a/43521302
 
-**＊例＊**
-
 Application の指定した情報をユーザー定義のカラムを取得する。
 
 ```bash
@@ -883,8 +835,6 @@ foo-application    foo-project    Synced
 bar-application    bar-project    OutOfSync
 baz-application    baz-project    Unknown
 ```
-
-**＊例＊**
 
 `kubectl` コマンドの結果をマークダウンの表にして出力する。
 
@@ -989,8 +939,6 @@ cat merged.txt | awk '
 md2confl merged.md >| merged.wiki
 ```
 
-**＊例＊**
-
 `kubectl` コマンドの結果でアノテーションの一覧を出力する。
 
 ```bash
@@ -1000,8 +948,6 @@ kubectl get pod -n foo -o custom-columns=NAME:.metadata.name,ANNOTATIONS:.metada
 #### ▼ -o custom-columns-file
 
 事前に定義したユーザー定義のカラムに基づいて、Kubernetes リソースを取得する。
-
-**＊例＊**
 
 Application の指定した情報をユーザー定義のカラムを取得する。
 
@@ -1026,8 +972,6 @@ baz-application    baz-project    Unknown
 
 指定した Kubernetes リソースの特定の設定を出力する。
 
-**＊例＊**
-
 `L4` ロードバランサーの IP アドレスを取得する。
 
 ```bash
@@ -1035,8 +979,6 @@ $ kubectl get service istio-ingressgateway \
     -n istio-ingress \
     -o jsonpath="{.status.loadBalancer.ingress[0].ip}"
 ```
-
-**＊例＊**
 
 Pod 内のコンテナを取得する。
 
@@ -1052,8 +994,6 @@ $ kubectl get pod \
     -o jsonpath="{.items[*].spec.containers[*].name}" | sed 's/ /\n/g' && echo
 ```
 
-**＊例＊**
-
 Pod の現在の IP アドレスを取得する。
 
 ```bash
@@ -1061,8 +1001,6 @@ $ kubectl get pod foo-pod \
     -n foo-namespace \
     -o jsonpath="{.status.podIP}"
 ```
-
-**＊例＊**
 
 IstioOperator に定義した Istio のバージョンを取得する。
 
@@ -1078,8 +1016,6 @@ $ kubectl get istiooperator \
 
 Node が複数ある場合、Node に渡って Kubernetes リソースの情報を確認できるところがよい。
 
-**＊例＊**
-
 Pod の詳細な情報を取得する。
 
 ```bash
@@ -1090,8 +1026,6 @@ foo         foo-pod     2/2     Running       0          16d   *.*.*.*     foo-n
 bar         bar-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
 baz         baz-pod     2/2     Running       0          16d   *.*.*.*     bar-node   <none>           <none>
 ```
-
-**＊例＊**
 
 `grep` コマンドを使用して、特定の Pod のみを取得する。
 
@@ -1111,8 +1045,6 @@ NAMESPACE   NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)       AG
 foo         foo-service  NodePort    *.*.*.*      <none>        443:443/TCP   2d    app.kubernetes.io/instance=prd-foo-app
 ```
 
-**＊例＊**
-
 Node の詳細な情報を取得する。
 
 ```bash
@@ -1128,8 +1060,6 @@ baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 #### ▼ -o yaml
 
 指定した Kubernetes リソースの設定を取得し、`yaml` 形式で出力する。
-
-**＊例＊**
 
 指定した Secret を `yaml` 形式で取得する。
 
@@ -1158,8 +1088,6 @@ data:
 
 大文字の `-L` オプションとは異なり、特定のラベルの値を持つ Kubernetes リソースを絞り込める。
 
-**＊例＊**
-
 ```bash
 $ kubectl get pod -l <キー>=<値>
 ```
@@ -1180,8 +1108,6 @@ $ kubectl get pod -l <キー>=<値>,<キー>=<値>
 $ kubectl get pod -l '<キー> in (<値>,<値>)'
 ```
 
-**＊例＊**
-
 `.metadata.labels.topology.kubernetes.io/zone` キーの値が `ap-northeast-1a` である Node を取得する。
 
 ```bash
@@ -1200,8 +1126,6 @@ $ kubectl get node -l topology.kubernetes.io/zone=ap-northeast-1a
 $ kubectl get <Kubernetesリソースの種類> -L <metadata.labelsキー>
 ```
 
-**＊例＊**
-
 Amazon EKS にて、Node グループの種類を確認するため、`eks.amazonaws.com/nodegroup` キーを取得する。
 
 ```bash
@@ -1215,8 +1139,6 @@ qux-node    Ready    <none>   6d8h   v1.22.0-eks   mesh
 ...
 ```
 
-**＊例＊**
-
 Node が作成された AWS リージョンを確認するため、`topology.kubernetes.io/zone` キーを取得する。
 
 ```bash
@@ -1228,8 +1150,6 @@ bar-node   Ready    <none>   18h     v1.22.0   ap-northeast-1c
 baz-node   Ready    <none>   18h     v1.22.0   ap-northeast-1d
 ```
 
-**＊例＊**
-
 istio のコンテナインジェクションが有効されている Namespace を確認するため、`.metadata.labels.istio.io/rev` キーを取得する。
 
 ```bash
@@ -1240,8 +1160,6 @@ foo-namespace          Active   145d    1-0-0
 bar-namespace          Active   145d           # キーが設定されていないNamespace
 baz-namespace          Active   145d           # 同上
 ```
-
-**＊例＊**
 
 特定の Kubernetes リソースがどのように管理されているかを取得する。
 
@@ -1263,8 +1181,6 @@ $ kubectl get -A <Kubernetesリソース> \
 
 指定した `.spec.selector` キーを持つ Deployment を取得する。
 
-**＊例＊**
-
 ```bash
 $ kubectl get deployment --selector<キー>=<値>
 ```
@@ -1273,15 +1189,11 @@ $ kubectl get deployment --selector<キー>=<値>
 
 指定した Kubernetes リソースの `.metadata.labels` キーの値を表示する。
 
-**＊例＊**
-
 すべての Kubernetes リソースの `.metadata.labels` キーの値を表示する。
 
 ```bash
 $ kubectl get all -A --show-labels
 ```
-
-**＊例＊**
 
 すべての Kubernetes リソースのなかから、ArgoCD で管理していないものの `.metadata.labels` キーの値を表示する。
 
@@ -1294,8 +1206,6 @@ $ kubectl get all -A --show-labels | grep -v "argocd.argoproj.io/instance"
 指定した Pod の情報 (フェーズ、ステータスなど) を継続的に取得し、情報に変更があれば出力を追記していく。
 
 別ツールで時間のかかる Kubernetes リソースを作成しながら、`--watch` オプションを使用すると、作成状況を確認できる。
-
-**＊例＊**
 
 ```bash
 $ kubectl get pod -w
@@ -1315,8 +1225,6 @@ $ kubectl get pod -w
 
 指定したリソースに `.metadata.labels` キーを作成する。
 
-**＊例＊**
-
 ```bash
 $ kubectl label <リソースの種類> <リソース名> foo=bar
 ```
@@ -1333,8 +1241,6 @@ $ kubectl label ns default istio.io/rev=stable
 $ kubectl label <リソースの種類> <リソース名> foo-
 ```
 
-**＊例＊**
-
 ```bash
 $ kubectl label ns default istio.io/rev-
 ```
@@ -1346,8 +1252,6 @@ $ kubectl label ns default istio.io/rev-
 ```bash
 $ kubectl label --overwrite <リソースの種類> <リソース名> foo=bar
 ```
-
-**＊例＊**
 
 `.metadata.labels.istio-injection` キーを `.metadata.labels.istio.io/rev` キー (値は `1-0-0`) に上書きする。
 
@@ -1369,15 +1273,11 @@ $ kubectl label --overwrite namespace foo istio.io/rev=1-0-0 istio-injection-
 
 Pod 名とコンテナ名を指定し、コンテナのログを取得する。
 
-**＊例＊**
-
 ```bash
 $ kubectl logs -n <Namespace名> <Pod名> -c <コンテナ名> | grep -i error
 
 [ERROR] *****
 ```
-
-**＊例＊**
 
 Namespace 名、Pod 名、コンテナ名を指定し、kube-proxy のログを確認する。
 
@@ -1454,8 +1354,6 @@ Deployment、DaemonSet、StatefulSet、でコピーされた Pod を操作する
 
 Pod の Volume (例：ConfigMap、Secret、PersistentVolume、persistentVolumeClaim) の設定を変更した後、Pod へ再び読み込ませるために役立つ。
 
-**＊例＊**
-
 ```bash
 # Deployment配下のPodを再作成する。
 $ kubectl rollout restart deployment foo-deployment -n foo-namespace
@@ -1498,8 +1396,6 @@ kubectl patch cronjobs foo-batch -p '{"spec" : {"suspend" : true }}'
 #### ▼ pv
 
 PersistentVolume の設定値を変更する。
-
-**＊例＊**
 
 削除されないボリュームを削除する。
 
@@ -1587,8 +1483,6 @@ kube-proxy とは異なるリソースであることに注意する。
 
 #### ▼ --address、--accept-hosts
 
-**＊例＊**
-
 ```bash
 $ kubectl proxy --address=0.0.0.0 --accept-hosts='.*'
 
@@ -1608,8 +1502,6 @@ Deployment、Pod、Job を作成する。
 > - [kubectl run/create/expose のススメ #kubernetes - Qiita](https://qiita.com/sourjp/items/f0c8c8b4a2a494a80908)
 
 #### ▼ --restart、--image、--port
-
-**＊例＊**
 
 もし `--restart` オプションが `Always` なら、Deployment を作成する。
 
@@ -1660,8 +1552,6 @@ Node に Taint を付与する。
   </tbody>
 </table>
 
-**＊例＊**
-
 Node に Taint (`app=batch:NoSchedule`) を付与する。
 
 ```bash
@@ -1690,8 +1580,6 @@ spec:
       operator: Equal
       effect: NoSchedule
 ```
-
-**＊例＊**
 
 コントロールプレーン Node として扱う Taint を付与する。
 
@@ -1726,8 +1614,6 @@ spec:
 #### ▼ `-` (ラベル値のハイフン)
 
 指定した Node から Taint を削除する。
-
-**＊例＊**
 
 ```bash
 $ kubectl taint node foo-node app=batch:NoSchedule-

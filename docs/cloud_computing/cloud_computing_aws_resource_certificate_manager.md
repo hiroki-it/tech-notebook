@@ -179,8 +179,6 @@ DNS 検証または E メール検証によって、ドメインの所有者で�
 
 Chrome を例に挙げると、サーバー証明書は URL の鍵マークから確認できる。
 
-**＊例＊**
-
 CircleCI のサイトは、サーバー証明書のために AWS Certificate Manager を使用している。
 
 ![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_certificate_chrome.png)

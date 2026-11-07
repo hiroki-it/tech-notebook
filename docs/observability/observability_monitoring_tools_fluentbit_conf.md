@@ -170,8 +170,6 @@ Inputs
 
 #### ▼ コマンド
 
-**＊例＊**
-
 ```bash
 $ /fluent-bit/bin/fluent-bit -i dummy -o stdout
 ```
@@ -248,8 +246,6 @@ Fluent Bit v1.8.6
 > - https://docs.fluentbit.io/manual/pipeline/inputs/forward
 
 #### ▼ コマンド
-
-**＊例＊**
 
 ```bash
 $ /fluent-bit/bin/fluent-bit \
@@ -350,8 +346,6 @@ log_router:
 ```
 
 #### ▼ コマンド
-
-**＊例＊**
 
 ```bash
 $ fluent-bit \
@@ -737,8 +731,6 @@ FILTER までのパイプラインが正しく動作しているかのデバッ�
 ```
 
 #### ▼ コマンド
-
-**＊例＊**
 
 ```bash
 $ /fluent-bit/bin/fluent-bit \
@@ -1190,8 +1182,6 @@ newRelic プラグインがプリインストールされているベースイ�
 ```
 
 #### ▼ コマンド
-
-**＊例＊**
 
 ```bash
 $ /fluent-bit/bin/fluent-bit \

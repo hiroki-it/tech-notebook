@@ -280,8 +280,6 @@ SELECT txid_current();
 
 #### ▼ システム障害からの回復
 
-**＊例＊**
-
 『`b`』の値を更新する SQL ステートメントを含むトランザクションの途中に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新前ログ『`b = 1`』を使用して、障害発生前の状態に戻す。
 
 ![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg)
@@ -300,15 +298,11 @@ SELECT txid_current();
 
 #### ▼ システム障害からの回復
 
-**＊例＊**
-
 『`a`』の値を更新する SQL ステートメントを含むトランザクションの後に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新後ログ『`a = 5`』を使用して、ストレージ上の DB ファイルに更新結果を反映させる。
 
 ![障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg)
 
 #### ▼ 媒体障害からの回復
-
-**＊例＊**
 
 ストレージを初期化/交換した後、バックアップファイルから DB を修復する。
 
@@ -317,8 +311,6 @@ SELECT txid_current();
 ![媒体障害の障害回復機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/媒体障害の障害回復機能.jpg)
 
 > - [耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html)
-
-**＊例＊**
 
 バックアップファイルの実際のコード
 

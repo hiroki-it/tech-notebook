@@ -249,8 +249,6 @@ AWS リソースで作成されたログを収集できる。
 
 #### ▼ OR 条件
 
-**＊例＊**
-
 次のログを検出する。
 
 - OR 条件
@@ -263,8 +261,6 @@ AWS リソースで作成されたログを収集できる。
 ?"WARNING:" ?"Warning:" ?"ERROR:" ?"Error:" ?"CRITICAL:" ?"Critical:" ?"EMERGENCY:" ?"Emergency:" ?"ALERT:" ?"Alert:"
 ```
 
-**＊例＊**
-
 次のログを検出する。
 
 - OR 条件
@@ -275,8 +271,6 @@ AWS リソースで作成されたログを収集できる。
 ```bash
 ?"WARNING message" ?"Warning message" ?"ERROR message" ?"Error message" ?"CRITICAL message" ?"Critical message" ?"EMERGENCY message" ?"Emergency message" ?"ALERT message" ?"Alert message"
 ```
-
-**＊例＊**
 
 次のログを検出する。
 
@@ -290,8 +284,6 @@ AWS リソースで作成されたログを収集できる。
 ```
 
 #### ▼ 除外条件
-
-**＊例＊**
 
 次のログを検出する。
 
@@ -383,8 +375,6 @@ log_group_name   = /var/www/project/app/storage/logs/laravel_log.production
 
 設定後、`awslogs` コマンドでプロセスを起動する。
 
-**＊例＊**
-
 ```bash
 # cloudwatchエージェントの再起動
 # 注意: restartだとAmazon CloudWatchに反映されない時がある。
@@ -438,8 +428,6 @@ $ service awslogs start
 
 汎用的なクエリを示す。
 
-**＊例＊**
-
 `@message` で、小文字と大文字を区別せずに Error を含むログを検索する。
 
 ```sql
@@ -469,8 +457,6 @@ fields @timestamp, @message, @logStream
 | limit 100
 ```
 
-**＊例＊**
-
 `@message` フィールドに `like` を使用して、小文字と大文字を区別せずに Warning または Error を含むログを検索する。
 
 ```sql
@@ -481,8 +467,6 @@ fields @timestamp, @message, @logStream
 ```
 
 > - [CloudWatch Logs Insights language query syntax - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html)
-
-**＊例＊**
 
 JSON がネストになっている場合、`filter` では `.` (ドット) でつなぐ。
 
@@ -507,8 +491,6 @@ fields @timestamp, @message, @logStream
 ```
 
 > - [Supported logs and discovered fields - Amazon CloudWatch Logs](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_AnalyzeLogData-discoverable-fields.html#CWL_AnalyzeLogData-discoverable-JSON-logs)
-
-**＊例＊**
 
 閾値以上の実行時間のスロークエリを実行時間の昇順で取得する。
 
@@ -627,8 +609,6 @@ cloudwatch エージェントのオプションを設定する。セットアッ
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/install-Amazon CloudWatch-Agent-commandline-fleet.html
 
-**＊例＊**
-
 設定ファイルを読み込み、EC2 上の cloudwatch エージェントを起動/再起動する。
 
 ```bash
@@ -656,8 +636,6 @@ RestartSec=60s
 [Install]
 WantedBy=multi-user.target
 ```
-
-**＊例＊**
 
 プロセスのステータスを確認する。
 

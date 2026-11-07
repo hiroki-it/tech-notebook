@@ -47,8 +47,6 @@ description: ストレージ＠Dockerの知見を記録しています。
 
 なお、バインドマウントは Dockerfile では定義できない。
 
-**＊例＊**
-
 ```bash
 # ホストをコンテナ側にバインドマウント
 $ docker run -d -it --name <コンテナ名> /bin/bash \
@@ -140,8 +138,6 @@ docker エリア (`/var/lib/docker/volumes` ディレクトリ) に保管され�
 ### 使用方法
 
 `docker` コマンドの実行、Dockerfile、`docker-compose.yml` ファイル、で定義できる。
-
-**＊例＊**
 
 ```bash
 # ホストをコンテナ側にバインドマウント

@@ -173,8 +173,6 @@ image-updater は、アプリリポジトリからイメージリポジトリに
 
 そのため、デバッグが可能である。
 
-**＊例＊**
-
 プラグインとして使用するためにインストールした SOPS のバージョンを確認する。
 
 ```bash
@@ -183,8 +181,6 @@ $ kubectl -it exec foo-argocd-repo-server \
     -n foo \
     -- bash -c "sops --version"
 ```
-
-**＊例＊**
 
 `/tmp/_argocd-repo/<URLに基づくUUID>` ディレクトリ配下で、`helm template` コマンドを使用して Secret の値を確認する。
 

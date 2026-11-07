@@ -53,8 +53,6 @@ ansible-vault プラグインによって暗号化されたパスワードファ
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ> --ask-vault-pass
 ```
 
-**＊例＊**
-
 すべてのインベントリーを指定し、また暗号化済みファイルを復号し、プロビジョニングを実行する。
 
 ```bash
@@ -91,15 +89,11 @@ inventory ファイルを指定する。
 $ ansible-playbook <playbookファイル> -i <inventoryファイル/ディレクトリ>
 ```
 
-**＊例＊**
-
 foo インベントリのみを指定して、プロビジョニングを実行する。
 
 ```bash
 $ ansible-playbook foo-playbook.yml -i ./inventories/foo-inventory
 ```
-
-**＊例＊**
 
 すべてのインベントリーを指定して、プロビジョニングを実行する。
 
@@ -173,8 +167,6 @@ $ANSIBLE_VAULT;1.1;AES256
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list
 ```
 
-**＊例＊**
-
 ```bash
 $ ansible-inventory -i ./inventories/inventory --list
 ```
@@ -188,8 +180,6 @@ $ ansible-inventory -i ./inventories/inventory --list
 ```bash
 $ ansible-playbook -i <inventoryファイル/ディレクトリ> --list -y
 ```
-
-**＊例＊**
 
 ```bash
 $ ansible-inventory -i ./inventories/inventory --list -y

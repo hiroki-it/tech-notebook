@@ -223,8 +223,6 @@ Minikube では、`mount` コマンド、ホスト側の `$MINIKUBE_HOME/files` 
 
 #### ▼ HyperKit ドライバーを使用する場合
 
-**＊例＊**
-
 1. HyperKit ドライバーを使用する場合、ホストと Node 間のマウント機能がない。そこで `mount` コマンドを使用して、ホスト側のディレクトリを Node のボリュームにマウントする。
 
     ```bash
@@ -279,8 +277,6 @@ Node 内で `ip addr` コマンドを実行することで、Node に割り当�
 
 > - [KubernetesでNode, Pod, Serviceに割り当てられるIPアドレスの範囲を確認する \| Nishipy Notes](https://nishipy.com/archives/1467)
 
-**＊例＊**
-
 CNI として Bridge アドオンを使用している。
 
 CIDR ブロックは、`192.168.49.2/24` である。
@@ -298,8 +294,6 @@ docker@minikube:~$ ip addr | grep eth0
 #### ▼ Pod
 
 Node 内で `/etc/cni/net.d` ディレクトリ配下にあるファイルを確認すると、Pod に割り当てられた CIDR ブロックを確認できる。
-
-**＊例＊**
 
 CNI として Bridge アドオンを使用している。
 

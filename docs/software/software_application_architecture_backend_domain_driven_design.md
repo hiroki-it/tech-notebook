@@ -204,8 +204,6 @@ description: ドメイン駆動設計＠アーキテクチャの知見を記録�
 > - [24時間個室ジム・パーソナルトレーニングジム \| ハコジム](https://hacogym.jp/)
 > - [実際の業務とDDD - スマートロック開発日誌 #2](https://zenn.dev/hsshss/articles/e11efefc7011ab)
 
-**＊例＊**
-
 EC サイトを運営するアスクルの例。
 
 ドメインのうちで、個人向け販売ドメイン (サイト名は LOHACO) に基づくコアドメインとサブドメインを以下に示す。
@@ -1756,8 +1754,6 @@ flowchart LR
 
 #### ▼ 記法
 
-**＊例＊**
-
 完全個室ジムを運営するハコジムの例。
 
 個室ジムドメインのそれぞれの境界づけられたコンテキストに基づくモデリング。
@@ -1775,8 +1771,6 @@ flowchart LR
 データベースを `1` 個のままにして、その中で境界づけられたコンテキストごとにテーブルを区切る場合、異なる境界づけられたコンテキストのデータを `1` 個のデータベースで管理する「Shared Database パターン」を採用していることになる。
 
 一方で、境界づけられたコンテキストごとにデータベースを分ける場合、「Database per service パターン」を採用していることになる。
-
-**＊例＊**
 
 監視 SaaS の例。
 
@@ -1972,15 +1966,11 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 > - [PlantUMLを通じてドメインモデル図の書き方を学ぶ - EurekaMoments](https://www.eureka-moments-blog.com/entry/2018/12/29/145802)
 > - [PlantUML/DomainModelDiagram/DomainModelDiagram.pdf at master · ShisatoYano/PlantUML · GitHub](https://github.com/ShisatoYano/PlantUML/blob/master/DomainModelDiagram/DomainModelDiagram.pdf)
 
-**＊例＊**
-
 1. 業務内容をヒアリングし、ユースケース図を作成する
 2. ヒアリング内容からユビキタス言語を抽出し、ドメインモデル図を作成する
 3. ドメインモデル図からエンティティと値オブジェクトを含むルートエンティティを作成する
 
 > - [DDD ドメインモデリングサンプル #設計 - Qiita](https://qiita.com/little_hand_s/items/dfa4b156f533ba1a1491)
-
-**＊例＊**
 
 とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、いろいろなほうがユースケース図とドメインモデル図を作成されている。
 

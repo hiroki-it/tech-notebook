@@ -39,8 +39,6 @@ OpenTelemetry の TracerProvider をアプリケーションの実行時に動�
 > - [OpenTelemetry の Node.js Example で SDKが何をしているのか \| blog.ojisan.io](https://blog.ojisan.io/otel-node-sdk/)
 > - https://opentelemetry.io/docs/languages/python/automatic/example/
 
-**＊例＊**
-
 JavaScript や Python では、モンキーパッチで自動計装を実現している。
 
 ```bash
@@ -70,8 +68,6 @@ $ opentelemetry-instrument python app.py
 eBPF によるコンパイル言語の自動計装のほうが、手動計装よりもリクエスト処理のパフォーマンスが高くなる。
 
 > - https://odigos.io/blog/ebpf-instrumentation-faster-than-manual
-
-**＊例＊**
 
 Java では Java エージェント、Go では eBPF で自動計装を実現している。
 

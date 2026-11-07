@@ -39,8 +39,6 @@ description: サービスレベル＠監視の知見を記録しています。
 
 > - https://quaffmedia.com/what-is-critical-user-journey/
 
-**＊例＊**
-
 EC サイトであれば、以下の一連の行動がクリティカルユーザージャーニーとなる。
 
 1. 商品を検索する。
@@ -369,8 +367,6 @@ AWS ではサービスレベルの項目として、サーバー稼働率を採�
 各リソースに SLA が定義されている。
 
 > - [AWS サービスレベルアグリーメント](https://aws.amazon.com/jp/legal/service-level-agreements/)
-
-**＊例＊**
 
 Amazon EC2、AWS EBS、Amazon ECS、Amazon EKS の例を示す。
 

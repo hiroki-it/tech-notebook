@@ -803,15 +803,11 @@ $ yum install -y xclip
 
 > - https://linuxfan.info/xclip
 
-**＊例＊**
-
 ファイルの内容を、メモリ上のクリップボードにコピーする。
 
 ```bash
 $ cat foo.txt | xclip -selection clipboard
 ```
-
-**＊例＊**
 
 コマンドの実行結果を、メモリ上のクリップボードにコピーする。
 
@@ -822,8 +818,6 @@ $ ls -la | xclip -selection clipboard
 #### ▼ -o
 
 保持した内容をファイルに出力する。
-
-**＊例＊**
 
 クリップボードの内容をファイルに出力する。
 

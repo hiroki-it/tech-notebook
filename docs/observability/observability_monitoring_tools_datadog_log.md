@@ -409,8 +409,6 @@ Datadog に送信されたログのメッセージから値を抽出し、構造
 
 再割り当て時に、元のデータ型を変更できる。
 
-**＊例＊**
-
 Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセスログの構造化ログを受信する例を考える。
 
 ```yaml
@@ -544,8 +542,6 @@ Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセ�
 #### ▼ カテゴリプロセッサー
 
 検索条件に一致する属性を持つ構造化ログに対して、属性を新しく付与する。
-
-**＊例＊**
 
 Nginx から、以下のような非構造化ログを受信する例を考える。
 
@@ -1285,8 +1281,6 @@ autoFilledRule3 ...
 
 オートコンプリートの使用時は、小文字で入力した属性名の頭文字が画面上で大文字に変換される。
 
-**＊例＊**
-
 『`service:foo`』をオートコンプリートで入力する。
 
 ![log-query_auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_auto-complete.png)
@@ -1296,8 +1290,6 @@ autoFilledRule3 ...
 入力欄右のアイコンで切り替える。
 
 検索条件として属性名と値をそのまま入力する。
-
-**＊例＊**
 
 『`service:foo`』を非オートコンプリートで入力する。
 

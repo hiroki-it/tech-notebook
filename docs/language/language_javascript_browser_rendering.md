@@ -484,8 +484,6 @@ DOM のインターフェースについては、以下のリンクを参考に�
 
 レンダリングエンジンは、最初に出現するルート要素を根 (ルート) として扱う。さらに、すべての要素や属性を、そこから延びる枝葉として意味づける。これにより、レンダリングツリーを作成する。
 
-**＊例＊**
-
 ![DOMによるツリー構造化](https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png)
 
 > - https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB

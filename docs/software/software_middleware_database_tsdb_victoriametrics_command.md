@@ -19,8 +19,6 @@ description: コマンド＠VictoriaMetricsの知見を記録しています。
 
 データポイント数が少なくなるため、ストレージ容量を節約できる。
 
-**＊例＊**
-
 `30` 日以前のデータを `5` 分ごとダウンサンプリングにする。
 
 ```bash
@@ -43,8 +41,6 @@ $ victoria-metrics-prod -downsampling.period=30d:5m
 
 この重複を排除するために、期間内で最新のタイムスタンプを持つデータポイントのみを残す。
 
-**＊例＊**
-
 ```bash
 $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 ```
@@ -57,8 +53,6 @@ $ victoria-metrics-prod -dedup.minScrapeInterval=60s
 ### -httpListenAddr
 
 インバウンド通信を待ち受ける IP アドレスとポート番号を設定する。
-
-**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -httpListenAddr=0.0.0.0:8248
@@ -80,8 +74,6 @@ $ victoria-metrics-prod -loggerOutput=stderr
 
 DB への書き込みの同時実行時に、キューで待機する最大時間を設定する。
 
-**＊例＊**
-
 ```bash
 $ victoria-metrics-prod -insert.maxQueueDuration=32
 ```
@@ -100,8 +92,6 @@ DB への書き込みの最大同時実行数を設定する。
 
 ![victoria-metrics_ingestion-spike](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_ingestion-spike.png)
 
-**＊例＊**
-
 ```bash
 $ victoria-metrics-prod -maxConcurrentInserts=<ホストマシンのCPUのコア数に応じて自動的に設定される>
 ```
@@ -119,8 +109,6 @@ $ victoria-metrics-prod -maxConcurrentInserts=<ホストマシンのCPUのコア
 
 VictoriaMetrics では、デフォルトで `30` 個しかラベルをつけられず、それ以上のラベルは切り捨てる。
 
-**＊例＊**
-
 ```bash
 $ victoria-metrics-prod -maxLabelsPerTimeseries=30
 ```
@@ -132,8 +120,6 @@ $ victoria-metrics-prod -maxLabelsPerTimeseries=30
 ### -memory.allowedBytes
 
 VictoriaMetrics が使用できるメモリサイズを設定する。
-
-**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -memory.allowedBytes=100000
@@ -149,8 +135,6 @@ VictoriaMetrics が使用できるメモリサイズのうちで、許容する�
 
 これが小さいと、VictoriaMetrics が OOM キラーで停止してしまう。
 
-**＊例＊**
-
 ```bash
 $ victoria-metrics-prod -memory.allowedPercent=80
 ```
@@ -164,8 +148,6 @@ $ victoria-metrics-prod -memory.allowedPercent=80
 メトリクスの保管期間を設定する。
 
 `h(ours)`、`d(ays)`、`w(eeks)`、`y(ears)`、単位なし (`month`) で期間の単位を指定できる。
-
-**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -retentionPeriod=90d
@@ -181,8 +163,6 @@ $ victoria-metrics-prod -retentionPeriod=90d
 転置インデックスのデータブロックの上限キャッシュサイズを設定する。
 
 デフォルトでは、キャッシュを作成しない。
-
-**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -storage.cacheSizeIndexDBDataBlocks=0
@@ -220,8 +200,6 @@ $ victoria-metrics-prod -storage.cacheSizeIndexDBTagFilters=0
 
 設定したディレクトリ配下に `data` ディレクトリを作成し、その配下にメトリクスを保管する。
 
-**＊例＊**
-
 ```bash
 $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 ```
@@ -235,8 +213,6 @@ $ victoria-metrics-prod -storageDataPath=/var/lib/victoriametrics
 サーバー証明書のパスを設定する。
 
 ペアになる秘密鍵を `-tlsKeyFile` オプションで指定する必要がある。
-
-**＊例＊**
 
 ```bash
 $ victoria-metrics-prod -tlsCertFile=/etc/victoriametrics/server.crt -tlsKeyFile=/etc/victoriametrics/server.key

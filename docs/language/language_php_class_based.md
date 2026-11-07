@@ -277,8 +277,6 @@ class GoodsWithTax extends Goods
 
 多重継承できない。
 
-**＊例＊**
-
 以下の条件の社員オブジェクトを実装したいとする。
 
 1. 午前９時に出社
@@ -376,8 +374,6 @@ class EnginnerShainManagement extends ShainManagement
 }
 ```
 
-**＊例＊**
-
 プリウスと各世代プリウスが、抽象クラスと子クラスの関係にある。
 
 ![抽象クラス](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/抽象クラス.png)
@@ -392,11 +388,7 @@ class EnginnerShainManagement extends ShainManagement
 
 これによって、必ず実装クラスを正常に働かせられる。
 
-**＊例＊**
-
 オープンソースのパッケージは、ユーザーが実装クラスを自身で追加実装することも考慮して、Realization を使用している。
-
-**＊例＊**
 
 各車は、モーター機能を必ず持っていなければ、正常に働けない。
 
@@ -505,8 +497,6 @@ class Mammal implements Animal
     </tr>
   </tbody>
 </table>
-
-**＊例＊**
 
 1. 種々の車クラスに共通する処理を持つ抽象クラスとして、Car クラスを作成。
 

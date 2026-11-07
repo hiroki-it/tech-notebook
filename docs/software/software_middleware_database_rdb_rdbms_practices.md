@@ -98,8 +98,6 @@ master テーブルと transaction テーブルがわかるように命名する
 
 #### ▼ 方法
 
-**＊例＊**
-
 まず、主キーが受注 No と商品 ID の 2 つであることを確認。
 
 これらの主キーは、複合主キーではないとする。
@@ -132,8 +130,6 @@ master テーブルと transaction テーブルがわかるように命名する
 
     ![正規化後にどんな表ができるのか](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/正規化後にどんな表ができるのか.png)
 
-**＊例＊**
-
 1. エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。
 
     ![非正規形-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/非正規形-2.png)
@@ -153,8 +149,6 @@ DB データを作成するあるいは削除する場合、カラムではな�
 一方で、レコードの増減の処理には時間がかからない。
 
 ![カラムの増減は✖_レコードの増減は〇](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/カラムの増減は✖_レコードの増減は〇-1.png)
-
-**＊例＊**
 
 賞与を年 1 回から、2 回・3 回と変える場合、主キーを繰り返し、新しく賞与区分と金額区分を作る。
 

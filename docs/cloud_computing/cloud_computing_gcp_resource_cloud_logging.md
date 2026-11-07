@@ -120,8 +120,6 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
   </tbody>
 </table>
 
-**＊例＊**
-
 例えば、Containerd が以下のようなログを作成したとする。
 
 ログメッセージは、構造化ログになっている。

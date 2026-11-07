@@ -120,8 +120,6 @@ Dependency (依存) が使用される。
   </tbody>
 </table>
 
-**＊例＊**
-
 社員は `1` 個の会社にしか所属できないとする。
 
 『社員クラス』から見たときに、`1` 個の『会社クラス』にしか保持されない。
@@ -270,15 +268,11 @@ Dependency (依存) が使用される。
 > - [シーケンス図の書き方やサンプルのご紹介（内部設計） – Rainbow Engine](https://rainbow-engine.com/sequence-diagram-sample/)
 > - https://lecture.ecc.u-tokyo.ac.jp/~hideo-t/references/uml/sequence-diagram/sequence-diagram.html
 
-**＊例＊**
-
 1. 5 つのライフライン (店員オブジェクト、管理画面オブジェクト、検索画面オブジェクト、商品 DB オブジェクト、商品詳細画面オブジェクト) を設定する。
 
 2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
     ![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図.png)
-
-**＊例＊**
 
 1. `3` 個のライフラインを設定する。
 
@@ -317,8 +311,6 @@ Dependency (依存) が使用される。
 
 > - https://www.itsenka.com/contents/development/uml/component.html
 > - https://www.bcm.co.jp/site/2002/uml/uml10.htm
-
-**＊例＊**
 
 レイヤードアーキテクチャで、UIとAPIからFooを登録する処理を表す例。
 

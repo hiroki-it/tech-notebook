@@ -54,8 +54,6 @@ GraphQL-API に送信する CRUD の実際のデータを定義したもの。
 
 #### ▼ API スキーマ (サーバー側)
 
-**＊例＊**
-
 ここでは、Query 処理を受信するための API スキーマを定義したとする。
 
 ```graphql
@@ -79,8 +77,6 @@ type User {
 データ読出のクエリを定義する。
 
 > - https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#graphql-%E3%81%AE%E3%82%AF%E3%82%A8%E3%83%AA
-
-**＊例＊**
 
 ここでは、前述の Query 処理の API スキーマで定義した `GetUser()` 関数を使用すると仮定する。
 
@@ -118,8 +114,6 @@ $ curl \
 
 #### ▼ API スキーマ (サーバー側)
 
-**＊例＊**
-
 ここでは、Mutation 処理を受信するための API スキーマを定義したとする。
 
 ```graphql
@@ -150,8 +144,6 @@ input UserCreateInput {
 データ作成/更新/削除のクエリを定義する。
 
 > - https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%83%9F%E3%83%A5%E3%83%BC%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3
-
-**＊例＊**
 
 ここでは、前述の Mutation 処理の API スキーマで定義した `CreateUser()` 関数を実行すると仮定する。
 

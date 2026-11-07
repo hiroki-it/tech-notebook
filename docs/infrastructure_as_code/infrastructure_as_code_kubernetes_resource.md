@@ -320,8 +320,6 @@ Pod を単位として、コンテナ起動/停止や水平スケールアウト
 
 > - [Pods \| Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/)
 
-**＊例＊**
-
 PHP-FPM コンテナと Nginx コンテナを稼働させる場合、これら同じ Pod 内に配置する。
 
 ![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_php-fpm_nginx.png)

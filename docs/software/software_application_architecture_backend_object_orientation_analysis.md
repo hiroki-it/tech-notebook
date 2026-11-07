@@ -120,8 +120,6 @@ DFD、ユースケース図、アクティビティ図などがある。
 > - https://it-koala.com/usecasediagrams-1832>
 > - https://www.itsenka.com/contents/development/uml/usecase.html
 
-**＊例＊**
-
 UIとAPIの両方を提供するソフトウェアで、〇〇機能のユースケースを表す例。
 
 入力値や送信データの妥当性の確認は、登録や更新の機能を細分化すると含まれるため、包含（`<< include >>`）で表す。
@@ -161,8 +159,6 @@ graph LR
   ApiRegister -. << include >> .-> BarValidator
   ApiChange -. << include >> .-> BarValidator
 ```
-
-**＊例＊**
 
 とある映画チケット料金を題材に、ハッシュタグチケット料金モデリングとして、いろいろなほうがユースケース図とクラス図を作成されている。
 
@@ -214,8 +210,6 @@ graph LR
 ### アクティビティ図とは
 
 ビジネスロジックや業務フローを手続き的に表記する。
-
-**＊例＊**
 
 ![アクティビティ図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アクティビティ図.png)
 

@@ -37,8 +37,6 @@ description: 3大クラウド (クラウドコンピューティング) の知�
 
 > - [国産パブリッククラウド/国内クラウド事業者まとめ\[日本製\]\[IaaS\] \| Gadgeblo](https://www.gadgeblo.com/cloud-service-brand/)
 
-**＊例＊**
-
 - AWS
 - Google Cloud
 - Azure
@@ -54,8 +52,6 @@ description: 3大クラウド (クラウドコンピューティング) の知�
 エンジニアを潤沢に用意できる大企業が所有していることが多い。
 
 > - https://www.cyberagent.co.jp/way/list/detail/id=26235
-
-**＊例＊**
 
 - Yahoo
 - Cycloud (サイバーエージェント)

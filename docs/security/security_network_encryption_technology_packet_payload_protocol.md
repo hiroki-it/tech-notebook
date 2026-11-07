@@ -155,8 +155,6 @@ ISP が、動的 IP アドレスを割り当てた利用者のネットワーク
 
 ![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
 
-**＊例＊**
-
 このリモートサーバーが、仮想環境の場合もあり、ホストと仮想環境の接続でも SSH ポートフォワーディングを使用している。
 
 ホスト外部のパソコンから、ホスト上の仮想環境に接続したい場合、SSH ポートフォワーディングを使用することによって、ホストを踏み台とした仮想環境への接続が行えるようになる。
@@ -321,8 +319,6 @@ SSL/TLS を使用した通信では、TLS ライブラリ (例：OpenSSL、Borin
 『`S`』 (例：SMTPS) や『`over TLS/SSL`』 (例：HTTP over TLS/SSL、SMTP over TLS/SSL) をつけて表記する。
 
 暗号化プロトコルを使用する場合、`L6` にて `L7` のアプリケーションデータを暗号化/復号する。
-
-**＊例＊**
 
 Chrome では、HTTPS リクエストの使用時にサーバー証明書の不備 (例：自己署名サーバー証明書を使用している場合) があると、以下のような警告が表示される。
 

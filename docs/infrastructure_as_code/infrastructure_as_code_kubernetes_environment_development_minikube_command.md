@@ -25,8 +25,6 @@ Minikube のアドオンを操作する。
 
 > - [addons \| minikube](https://minikube.sigs.k8s.io/docs/commands/addons/)
 
-**＊例＊**
-
 開発環境専用の Ingress Controller として、Nginx Ingress Controller を有効化するか否かを設定する。
 
 本番環境では、同じく Nginx Ingress Controller や、クラウドプロバイダーのロードバランサーなどを使用する。
@@ -118,8 +116,6 @@ $ minikube start --cni=cilium
 
 `kubectl` コマンド実行時のデフォルト値を設定する。
 
-**＊例＊**
-
 デフォルトのドライバーを設定する。
 
 ```bash
@@ -154,8 +150,6 @@ $ minikube config set kubernetes-version=v1.23.0
 #### ▼ dashboard とは
 
 Kubernetes のダッシュボードを開発環境に作成する。
-
-**＊例＊**
 
 ```bash
 $ minikube dashboard
@@ -197,8 +191,6 @@ $ minikube delete --all --purge
 ホストで `docker` コマンドを実行したときに、ホスト側の docker デーモンでなく、ゲスト仮想環境内の Node の docker デーモンにリクエストを送信できるように環境変数を設定する。
 
 バージョンタグ名が `latest` であると、仮想環境外に対してイメージをプルしてしまうことに注意する。
-
-**＊例＊**
 
 ```bash
 $ minikube docker-env
@@ -584,8 +576,6 @@ $ docker run --rm -it <ビルドに失敗したコンテナイメージID> /bin/
 
 Node に SSH 公開鍵認証で接続し、任意のコマンドを実行する。
 
-**＊例＊**
-
 ```bash
 $ minikube ssh -- ls -la
 
@@ -603,8 +593,6 @@ drwx------ 2 docker docker  80 Jan  1  1970 .ssh
 #### ▼ start とは
 
 ゲスト仮想環境を作成し、仮想環境内に Node を作成する。
-
-**＊例＊**
 
 ```bash
 $ minikube start
@@ -720,8 +708,6 @@ metrics-server を入れて、`kubectl top node` コマンドを実行しても�
 
 別に `docker-env` コマンドを実行しつつ、`start` コマンドを実行する。
 
-**＊例＊**
-
 ```bash
 $ minikube start --docker-env
 ```
@@ -761,8 +747,6 @@ $ minikube node add --control-plane
 
 ドライバーの使用前に、これをインストールしておく必要があることに注意する。
 
-**＊例＊**
-
 ```bash
 # 事前にVirtualBoxのダウンロードが必要。
 $ minikube start --driver=virtualbox
@@ -794,8 +778,6 @@ $ minikube start --listen-address=0.0.0.0
 
 ホストとゲスト仮想環境間のマウントディレクトリを指定しつつ、`start` コマンドを実行する。
 
-**＊例＊**
-
 ```bash
 $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/foo:/data"
 ```
@@ -808,15 +790,11 @@ $ minikube start --mount=true --mount-string="/Users/hiroki.hasegawa/projects/fo
 
 Minikube は、同じ CPU とメモリを持つ Node を冗長化するため、`--nodes` オプションで Node を増やすだけ、Pod のリソースに余裕がでる。
 
-**＊例＊**
-
 CPU4 コアとメモリ 7168GB を持った Node が 3 台作られる。
 
 ```bash
 $ minikube start --nodes 3 --cpu 4 --memory 7168
 ```
-
-**＊例＊**
 
 ```bash
 $ minikube start --nodes 3
@@ -915,8 +893,6 @@ LoadBalancer を一時的に作成し、LoadBalancer Service に自動的に紐�
 紐付けられた LoadBalancer Service には『External Endpoints (`http://127.0.0.1:80`) 』が割り当てられ、ここから LoadBalancer Service にリクエストを送信できるようになる。
 
 Node 外から Pod へ通信できるようになる。`minikube ssh` コマンドで Node に接続しつつ、公開された Service へリクエストを送信できる。
-
-**＊例＊**
 
 ```bash
 $ minikube tunnel

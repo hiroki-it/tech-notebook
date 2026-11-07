@@ -70,8 +70,6 @@ description: 分散トレース＠テレメトリーの知見を記録してい�
 
 > - [What is Distributed Tracing? • DeepSource](https://deepsource.io/blog/distributed-tracing/#monolithic-observability)
 
-**＊例＊**
-
 1. `a1`：クライアントがリクエストを送信する。
 
 2. `a1`：リクエストがロードバランサ－に到達する。

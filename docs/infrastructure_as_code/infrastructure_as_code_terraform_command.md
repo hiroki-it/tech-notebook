@@ -135,8 +135,6 @@ $ terraform apply \
     -target='module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
 ```
 
-**＊例＊**
-
 ```bash
 $ terraform apply \
     -var-file=foo.tfvars \
@@ -729,8 +727,6 @@ Plan: 0 to add, 1 to change, 0 to destroy.
 #### ▼ provider とは
 
 `terraform.lock.hcl` ファイルを作成する。
-
-**＊例＊**
 
 CPU アーキテクチャ (例：Intel、AMD、ARM) を設定しつつ、`terraform.lock.hcl` ファイルを作成する。
 

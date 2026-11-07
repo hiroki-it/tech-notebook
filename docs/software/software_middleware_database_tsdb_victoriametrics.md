@@ -250,8 +250,6 @@ vmstorage の `/var/lib/victoriametrics` ディレクトリ配下の増加量 (�
 
 > - [Welcome to VictoriaMetrics Docs](https://docs.victoriametrics.com/#capacity-planning)
 
-**＊例＊**
-
 ここでは、増加率を以下の数式で算出している。
 
 ```mathematica

@@ -148,8 +148,6 @@ $ helm template . -f secrets://foo-secrets.yaml
 $ helm secrets template <チャートへのパス> -f <SOPSが作成したsecretsファイルへのパス> -f foo-values.yaml
 ```
 
-**＊例＊**
-
 以下のような SOPS の `secrets` ファイルがあるとする。
 
 ```yaml
