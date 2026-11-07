@@ -35468,7 +35468,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:22:04 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 21:34:38 JST">2026-11-07</span>
   </span>
 
     
@@ -35602,7 +35602,7 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewCar</span><span class="p">(</span><span class="nx">t1</span><span class="w"> </span><span class="o">*</span><span class="nx">entity</span><span class="p">.</span><span class="nx">Tire1</span><span class="p">,</span><span class="w"> </span><span class="nx">t2</span><span class="w"> </span><span class="o">*</span><span class="nx">entity</span><span class="p">.</span><span class="nx">Tire2</span><span class="p">,</span><span class="w"> </span><span class="nx">t3</span><span class="w"> </span><span class="o">*</span><span class="nx">entity</span><span class="p">.</span><span class="nx">Tire3</span><span class="p">,</span><span class="w"> </span><span class="nx">t4</span><span class="w"> </span><span class="o">*</span><span class="nx">entity</span><span class="p">.</span><span class="nx">Tire4</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Tireクラスのインスタンスを状態として保持</span>
+<span class="w">    </span><span class="c1">// Tire構造体のインスタンスを状態として保持</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Car</span><span class="p">{</span>
 <span class="w">        </span><span class="nx">tire1</span><span class="p">:</span><span class="w"> </span><span class="nx">t1</span><span class="p">,</span>
 <span class="w">        </span><span class="nx">tire2</span><span class="p">:</span><span class="w"> </span><span class="nx">t2</span><span class="p">,</span>
@@ -35670,13 +35670,13 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Go</label><label for="__tabbed_4_2">TypeScript</label><label for="__tabbed_4_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// Tireクラスをインスタンス化</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// Tire構造体をインスタンス化</span>
 <span class="nx">tire1</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTire1</span><span class="p">()</span>
 <span class="nx">tire2</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTire2</span><span class="p">()</span>
 <span class="nx">tire3</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTire3</span><span class="p">()</span>
 <span class="nx">tire4</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewTire4</span><span class="p">()</span>
 
-<span class="c1">// Tireクラスのインスタンスの作成、Carによって制限されない。</span>
+<span class="c1">// Tire構造体のインスタンスの作成、Carによって制限されない。</span>
 <span class="nx">car</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCar</span><span class="p">(</span><span class="nx">tire1</span><span class="p">,</span><span class="w"> </span><span class="nx">tire2</span><span class="p">,</span><span class="w"> </span><span class="nx">tire3</span><span class="p">,</span><span class="w"> </span><span class="nx">tire4</span><span class="p">)</span>
 </code></pre></div>
 </div>
@@ -35725,9 +35725,9 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">u</span><span class="w"> </span><span class="o">*</span><span class="nx">User</span><span class="p">)</span><span class="w"> </span><span class="nx">Method</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">valueobject</span><span class="p">.</span><span class="nx">NewUserName</span><span class="p">()</span><span class="w"> </span><span class="c1">// 合成の関係</span>
+<span class="w">    </span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">valueobject</span><span class="p">.</span><span class="nx">NewUserName</span><span class="p">()</span><span class="w"> </span><span class="c1">// 合成の関係</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Hello! "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">.</span><span class="nx">GetName</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s">"Hello! "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">u</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">GetName</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
@@ -35738,9 +35738,9 @@
 <span class="w">  </span><span class="k">private</span><span class="w"> </span><span class="nx">name?</span><span class="o">:</span><span class="w"> </span><span class="kt">UserName</span><span class="p">;</span><span class="w"> </span><span class="c1">// 状態として保持</span>
 
 <span class="w">  </span><span class="nx">method</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span><span class="w"> </span><span class="c1">// 合成の関係</span>
+<span class="w">    </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">UserName</span><span class="p">();</span><span class="w"> </span><span class="c1">// 合成の関係</span>
 
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"Hello! "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">name</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="s2">"Hello! "</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">.</span><span class="nx">getName</span><span class="p">();</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35758,9 +35758,9 @@
 
     <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span>
     <span class="p">{</span>
-        <span class="nv">$name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span> <span class="c1">// 合成の関係</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">UserName</span><span class="p">();</span> <span class="c1">// 合成の関係</span>
 
-        <span class="k">return</span> <span class="s2">"Hello! "</span> <span class="o">.</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+        <span class="k">return</span> <span class="s2">"Hello! "</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35796,7 +35796,7 @@
 <span class="p">}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">NewCar</span><span class="p">()</span><span class="w"> </span><span class="o">*</span><span class="nx">Car</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// Lockクラスのインスタンスを状態として保持。</span>
+<span class="w">    </span><span class="c1">// Lock構造体のインスタンスを状態として保持。</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">Car</span><span class="p">{</span><span class="nx">lock</span><span class="p">:</span><span class="w"> </span><span class="nx">NewLock</span><span class="p">()}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -35834,7 +35834,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="8:3"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Go</label><label for="__tabbed_8_2">TypeScript</label><label for="__tabbed_8_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// Car構造体のインスタンスの中で、Lock構造体がインスタンス化される。</span>
 <span class="nx">car</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewCar</span><span class="p">()</span>
 </code></pre></div>
 </div>
@@ -35866,7 +35866,7 @@
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="s">"fmt"</span>
 
-<span class="c1">// 親クラス</span>
+<span class="c1">// 親クラスに相当する構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Goods</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 商品名データ</span>
 <span class="w">    </span><span class="nx">name</span><span class="w"> </span><span class="kt">string</span>
@@ -35983,7 +35983,7 @@
 <span class="w">    </span><span class="s">"math"</span>
 <span class="p">)</span>
 
-<span class="c1">// 子クラス</span>
+<span class="c1">// 子クラスに相当する構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">GoodsWithTax</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="o">*</span><span class="nx">Goods</span>
 <span class="p">}</span>
@@ -36050,16 +36050,16 @@
 <ol>
 <li>
 <p>営業部社員オブジェクト、開発部社員オブジェクト、総務部社員オブジェクトを別々に実装</p>
-<p>⇒ メリット：同じ部署のほかのオブジェクトに影響を与えられる。</p>
+<p>⇒ メリット：ほかの部署のオブジェクトに影響を与えない。</p>
 <p>⇒ デメリット：各社員オブジェクトで共通の処理を個別に実装しなければならない。</p>
 <p>共通の処理が同じコードで書かれる保証がない。</p>
 </li>
 <li>
 <p><code>1</code> 個の社員オブジェクトのなかで、働く関数に部署ごとで変化する引数を設定</p>
-</li>
-</ol>
 <p>⇒ メリット：全部署の社員を <code>1</code> 個のオブジェクトで呼び出せる。</p>
 <p>⇒ デメリット：<code>1</code> 個の修正が、全部署の社員の処理に影響を与えてしまう。</p>
+</li>
+</ol>
 <p>抽象オブジェクトと抽象関数を使用すると、<code>2</code> 個のメリットを生かしつつ、デメリットを解決可能。</p>
 <p><img alt="抽象クラスと抽象関数-2" src="https://user-images.githubusercontent.com/42175286/59590387-e8adcd80-9126-11e9-87b3-7659468af2f6.PNG" /></p>
 <div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Go</label><label for="__tabbed_11_2">TypeScript</label><label for="__tabbed_11_3">PHP</label></div>
@@ -36072,24 +36072,24 @@
 
 <span class="c1">// 定数の定義</span>
 <span class="kd">const</span><span class="w"> </span><span class="p">(</span>
-<span class="w">    </span><span class="nx">TimeToArrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"10:00:00"</span>
-<span class="w">    </span><span class="nx">TimeToLeave</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">"19:00:00"</span>
+<span class="w">    </span><span class="nx">TimeToArrive</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"09:00:00"</span>
+<span class="w">    </span><span class="nx">TimeToLeave</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">"18:00:00"</span>
 <span class="p">)</span>
 
-<span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
+<span class="c1">// 抽象クラスに相当するインターフェース。型として提供したいものを定義する。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">ShainManagement</span><span class="w"> </span><span class="kd">interface</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 抽象関数。</span>
-<span class="w">    </span><span class="c1">// 処理内容を子クラスでOverrideしなければならない。</span>
+<span class="w">    </span><span class="c1">// 処理内容を子クラスに相当する構造体でOverrideしなければならない。</span>
 <span class="w">    </span><span class="nx">ToWork</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">ToArrive</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
 <span class="w">    </span><span class="nx">ToLeave</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span>
 <span class="p">}</span>
 
-<span class="c1">// 具象関数を持つ構造体。子クラスに埋め込む。</span>
+<span class="c1">// 具象関数を持つ構造体。子クラスに相当する構造体に埋め込む。</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">BaseShainManagement</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="c1">// 具象関数。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。</span>
-<span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
+<span class="c1">// 子クラスに相当する構造体へ、埋め込みによってそのまま引き継がれる。子クラスに相当する構造体でオーバーライドしなくても良い。</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">BaseShainManagement</span><span class="p">)</span><span class="w"> </span><span class="nx">ToArrive</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">nowTime</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 <span class="w">    </span><span class="nx">arriveTime</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">todayAt</span><span class="p">(</span><span class="nx">nowTime</span><span class="p">,</span><span class="w"> </span><span class="nx">TimeToArrive</span><span class="p">)</span>
@@ -36109,7 +36109,7 @@
 <span class="p">}</span>
 
 <span class="c1">// 具象関数。退社時間と残業時間を表示。</span>
-<span class="c1">// 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。</span>
+<span class="c1">// 子クラスに相当する構造体へ、埋め込みによってそのまま引き継がれる。子クラスに相当する構造体でオーバーライドしなくても良い。</span>
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">b</span><span class="w"> </span><span class="o">*</span><span class="nx">BaseShainManagement</span><span class="p">)</span><span class="w"> </span><span class="nx">ToLeave</span><span class="p">()</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">nowTime</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">time</span><span class="p">.</span><span class="nx">Now</span><span class="p">()</span>
 
@@ -36136,8 +36136,8 @@
 <div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 抽象クラス。型として提供したいものを定義する。</span>
 <span class="k">abstract</span><span class="w"> </span><span class="kd">class</span><span class="w"> </span><span class="nx">ShainManagement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 定数の定義</span>
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">TIME_TO_ARRIVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"10:00:00"</span><span class="p">;</span>
-<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">TIME_TO_LEAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"19:00:00"</span><span class="p">;</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">TIME_TO_ARRIVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"09:00:00"</span><span class="p">;</span>
+<span class="w">  </span><span class="k">static</span><span class="w"> </span><span class="k">readonly</span><span class="w"> </span><span class="nx">TIME_TO_LEAVE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"18:00:00"</span><span class="p">;</span>
 
 <span class="w">  </span><span class="c1">// 抽象関数。</span>
 <span class="w">  </span><span class="c1">// 処理内容を子クラスでOverrideしなければならない。</span>
@@ -36196,8 +36196,8 @@
 <span class="k">abstract</span> <span class="k">class</span> <span class="nc">ShainManagement</span>
 <span class="p">{</span>
     <span class="c1">// 定数の定義</span>
-    <span class="k">const</span> <span class="no">TIME_TO_ARRIVE</span> <span class="o">=</span> <span class="s2">"10:00:00"</span><span class="p">;</span>
-    <span class="k">const</span> <span class="no">TIME_TO_LEAVE</span> <span class="o">=</span> <span class="s2">"19:00:00"</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">TIME_TO_ARRIVE</span> <span class="o">=</span> <span class="s2">"09:00:00"</span><span class="p">;</span>
+    <span class="k">const</span> <span class="no">TIME_TO_LEAVE</span> <span class="o">=</span> <span class="s2">"18:00:00"</span><span class="p">;</span>
 
     <span class="c1">// 抽象関数。</span>
     <span class="c1">// 処理内容を子クラスでOverrideしなければならない。</span>
@@ -36245,20 +36245,20 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="12:3"><input checked="checked" id="__tabbed_12_1" name="__tabbed_12" type="radio" /><input id="__tabbed_12_2" name="__tabbed_12" type="radio" /><input id="__tabbed_12_3" name="__tabbed_12" type="radio" /><div class="tabbed-labels"><label for="__tabbed_12_1">Go</label><label for="__tabbed_12_2">TypeScript</label><label for="__tabbed_12_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 子クラス</span>
-<span class="kd">type</span><span class="w"> </span><span class="nx">EnginnerShainManagement</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 子クラスに相当する構造体</span>
+<span class="kd">type</span><span class="w"> </span><span class="nx">EngineerShainManagement</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">BaseShainManagement</span>
 <span class="p">}</span>
 
-<span class="c1">// 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。</span>
-<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">EnginnerShainManagement</span><span class="p">)</span><span class="w"> </span><span class="nx">ToWork</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">// 鋳型となった抽象クラスに相当するインターフェースの関数は実装しなければならない。</span>
+<span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">e</span><span class="w"> </span><span class="o">*</span><span class="nx">EngineerShainManagement</span><span class="p">)</span><span class="w"> </span><span class="nx">ToWork</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 処理内容</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// 子クラス</span>
-<span class="kd">class</span><span class="w"> </span><span class="nx">EnginnerShainManagement</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">ShainManagement</span><span class="w"> </span><span class="p">{</span>
+<span class="kd">class</span><span class="w"> </span><span class="nx">EngineerShainManagement</span><span class="w"> </span><span class="k">extends</span><span class="w"> </span><span class="nx">ShainManagement</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="c1">// 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。</span>
 <span class="w">  </span><span class="nx">toWork</span><span class="p">()</span><span class="o">:</span><span class="w"> </span><span class="ow">void</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// 処理内容</span>
@@ -36270,7 +36270,7 @@
 <div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="c1">// 子クラス</span>
-<span class="k">class</span> <span class="nc">EnginnerShainManagement</span> <span class="k">extends</span> <span class="nx">ShainManagement</span>
+<span class="k">class</span> <span class="nc">EngineerShainManagement</span> <span class="k">extends</span> <span class="nx">ShainManagement</span>
 <span class="p">{</span>
     <span class="c1">// 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">toWork</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
@@ -36291,7 +36291,7 @@
 <p>これによって、必ず実装クラスを正常に働かせられる。</p>
 <p>オープンソースのパッケージは、ユーザーが実装クラスを自身で追加実装することも考慮して、Realization を使用している。</p>
 <p>各車は、モーター機能を必ず持っていなければ、正常に働けない。</p>
-<p>そこで、モータ機能に最低限必要な関数の実装を強制する。</p>
+<p>そこで、モーター機能に最低限必要な関数の実装を強制する。</p>
 <p><img alt="インターフェースとは" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースとは.png" /></p>
 <p>実装クラスに処理内容を記述しなければならない。</p>
 <p>つまり、抽象クラスに関数の型のみ定義した場合と同じである。</p>
@@ -36322,10 +36322,10 @@
 
 <span class="k">interface</span> <span class="nx">Animal</span>
 <span class="p">{</span>
-     <span class="c1">// インターフェイスでは、実装を伴う関数や状態の宣言はできない</span>
-     <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-     <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
-     <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="c1">// インターフェイスでは、実装を伴う関数や状態の宣言はできない</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
@@ -36334,7 +36334,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="14:3"><input checked="checked" id="__tabbed_14_1" name="__tabbed_14" type="radio" /><input id="__tabbed_14_2" name="__tabbed_14" type="radio" /><input id="__tabbed_14_3" name="__tabbed_14" type="radio" /><div class="tabbed-labels"><label for="__tabbed_14_1">Go</label><label for="__tabbed_14_2">TypeScript</label><label for="__tabbed_14_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 実装クラスに相当する構造体が正常に動作するために最低限必要な関数の実装を強制する。</span>
 <span class="kd">var</span><span class="w"> </span><span class="nx">_</span><span class="w"> </span><span class="nx">Animal</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="nx">Mammal</span><span class="p">)(</span><span class="kc">nil</span><span class="p">)</span>
 
 <span class="kd">type</span><span class="w"> </span><span class="nx">Mammal</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
@@ -36375,20 +36375,20 @@
 <span class="k">class</span> <span class="nc">Mammal</span> <span class="k">implements</span> <span class="nx">Animal</span>
 <span class="p">{</span>
     <span class="c1">// 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。</span>
-     <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
-     <span class="p">{</span>
-          <span class="c1">// 食べる</span>
-     <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">eat</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// 食べる</span>
+    <span class="p">}</span>
 
-     <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
-     <span class="p">{</span>
-          <span class="c1">// 眠る</span>
-     <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">sleep</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// 眠る</span>
+    <span class="p">}</span>
 
-     <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
-     <span class="p">{</span>
-          <span class="c1">// 交尾する</span>
-     <span class="p">}</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">mating</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// 交尾する</span>
+    <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
@@ -36470,7 +36470,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="15:3"><input checked="checked" id="__tabbed_15_1" name="__tabbed_15" type="radio" /><input id="__tabbed_15_2" name="__tabbed_15" type="radio" /><input id="__tabbed_15_3" name="__tabbed_15" type="radio" /><div class="tabbed-labels"><label for="__tabbed_15_1">Go</label><label for="__tabbed_15_2">TypeScript</label><label for="__tabbed_15_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 継承元クラス</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 継承元クラスに相当する構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">Foo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">value1</span><span class="w"> </span><span class="kt">any</span>
 <span class="p">}</span>
@@ -36511,7 +36511,7 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="16:3"><input checked="checked" id="__tabbed_16_1" name="__tabbed_16" type="radio" /><input id="__tabbed_16_2" name="__tabbed_16" type="radio" /><input id="__tabbed_16_3" name="__tabbed_16" type="radio" /><div class="tabbed-labels"><label for="__tabbed_16_1">Go</label><label for="__tabbed_16_2">TypeScript</label><label for="__tabbed_16_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 継承先クラス</span>
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// 継承先クラスに相当する構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">SubFoo</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="nx">Foo</span>
 <span class="w">    </span><span class="nx">SubValue</span><span class="w"> </span><span class="kt">any</span>
@@ -36555,8 +36555,8 @@
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">subFoo</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="o">&amp;</span><span class="nx">SubFoo</span><span class="p">{}</span>
 
-<span class="c1">// SubFooクラスにはgetValue()は無い。</span>
-<span class="c1">// 継承元まで辿り、Fooクラスから関数がコールされる (クラスチェーン) 。</span>
+<span class="c1">// SubFoo構造体にはGetValue()は無い。</span>
+<span class="c1">// 埋め込んだFoo構造体まで辿り、Foo構造体から関数がコールされる (クラスチェーンに相当する) 。</span>
 <span class="nx">fmt</span><span class="p">.</span><span class="nx">Println</span><span class="p">(</span><span class="nx">subFoo</span><span class="p">.</span><span class="nx">GetValue</span><span class="p">())</span>
 </code></pre></div>
 </div>
@@ -36644,7 +36644,7 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">subFoo</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
         <span class="c1">// 継承元の関数を参照。</span>
-        <span class="nv">$foo</span> <span class="o">=</span> <span class="k">parent</span><span class="o">::</span><span class="na">foo</span><span class="p">();</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">foo</span><span class="p">();</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
@@ -36656,7 +36656,7 @@
 <h3 id="_10">委譲による関数コール<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 委譲とは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>処理の一部またはすべてを他のクラスに託すこと。</p>
-<p>PHP では、集約や合成の関係性を作り、委譲先クラスの関数では委譲元のコールして、処理を追加実装することに相当する。</p>
+<p>PHP では、集約や合成の関係性を作り、委譲元クラスの関数で委譲先クラスの関数をコールして、処理を追加実装することに相当する。</p>
 <p>他に、インターフェースによる Realization の関係性でも実現できる。</p>
 <h4 id="_12">▼ 継承よりも優れた点<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <blockquote>
@@ -36741,7 +36741,7 @@
 </ul>
 </blockquote>
 <h4 id="_14">▼ コンストラクタインジェクションとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
-<p>関数の特に、<code>construct()</code> 関数 の引数として、サプライヤー側のインスタンスを注入する。</p>
+<p>関数のなかでも特に、<code>construct()</code> 関数 の引数として、サプライヤー側のインスタンスを注入する。</p>
 <p>サプライヤー側を状態として保持させ、Aggregation の関係性を作れる。</p>
 <p>コンストラクタインジェクションのみが、<code>construct()</code> 関数 によって、インスタンス作成のために依存関係の要件を強制できる。</p>
 <p>また、セッターを完全になくした場合、インスタンス作成後にオブジェクトの状態を変更できなくなる。</p>
@@ -36752,14 +36752,14 @@
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">supplier</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewSupplier</span><span class="p">()</span>
 
-<span class="c1">// 依存されるSupplierクラスをClientクラス</span>
+<span class="c1">// 依存されるSupplier構造体をClient構造体に注入</span>
 <span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewClient</span><span class="p">(</span><span class="nx">supplier</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">();</span>
 
-<span class="c1">// 依存されるSupplierクラスをClientクラス</span>
+<span class="c1">// 依存されるSupplierクラスをClientクラスに注入</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">(</span><span class="nx">supplier</span><span class="p">);</span>
 </code></pre></div>
 </div>
@@ -36768,7 +36768,7 @@
 
 <span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
 
-<span class="c1">// 依存されるSupplierクラスをClientクラス</span>
+<span class="c1">// 依存されるSupplierクラスをClientクラスに注入</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
 </code></pre></div>
 </div>
@@ -36845,7 +36845,7 @@
 </div>
 </div>
 <h4 id="_15">▼ セッターインジェクションとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p>関数の特に、セッターの引数として、サプライヤー側のインスタンスを注入する。</p>
+<p>関数のなかでも特に、セッターの引数として、サプライヤー側のインスタンスを注入する。</p>
 <p>サプライヤー側を状態として保持させ、Aggregation の関係性を作れる。</p>
 <p>依存先の Supplier クラスを、セッターの引数として、Client クラスに注入する。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="24:3"><input checked="checked" id="__tabbed_24_1" name="__tabbed_24" type="radio" /><input id="__tabbed_24_2" name="__tabbed_24" type="radio" /><input id="__tabbed_24_3" name="__tabbed_24" type="radio" /><div class="tabbed-labels"><label for="__tabbed_24_1">Go</label><label for="__tabbed_24_2">TypeScript</label><label for="__tabbed_24_3">PHP</label></div>
@@ -36854,7 +36854,7 @@
 <div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="nx">supplier</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewSupplier</span><span class="p">()</span>
 <span class="nx">client</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">NewClient</span><span class="p">()</span>
 
-<span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
+<span class="c1">// Client構造体はSupplier構造体に依存している。</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">SetSupplier</span><span class="p">(</span><span class="nx">supplier</span><span class="p">)</span>
 </code></pre></div>
 </div>
@@ -36862,7 +36862,7 @@
 <div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">supplier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Supplier</span><span class="p">();</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Client</span><span class="p">();</span>
 
-<span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
+<span class="c1">// ClientクラスはSupplierクラスに依存している。</span>
 <span class="nx">client</span><span class="p">.</span><span class="nx">setSupplier</span><span class="p">(</span><span class="nx">supplier</span><span class="p">);</span>
 </code></pre></div>
 </div>
@@ -36872,7 +36872,7 @@
 <span class="nv">$supplier</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Supplier</span><span class="p">();</span>
 <span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
 
-<span class="c1">// ClientクラスはSuppierクラスに依存している。</span>
+<span class="c1">// ClientクラスはSupplierクラスに依存している。</span>
 <span class="nv">$client</span><span class="o">-&gt;</span><span class="na">setSupplier</span><span class="p">(</span><span class="nv">$supplier</span><span class="p">);</span>
 </code></pre></div>
 </div>
@@ -36994,7 +36994,7 @@
 <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="nf">method</span><span class="p">(</span><span class="nx">UserName</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
     <span class="p">{</span>
-        <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
+        <span class="nv">$userName</span> <span class="o">=</span> <span class="nv">$name</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">();</span>
 
         <span class="c1">// 何らかの処理</span>
     <span class="p">}</span>
@@ -37032,7 +37032,7 @@
 <h4 id="di-container-service-container_1">▼ DI Container (依存オブジェクト注入コンテナ) 、Service Container とは<a class="headerlink" href="#di-container-service-container_1" title="Permanent link">&para;</a></h4>
 <p>依存オブジェクト注入の責務に特化したデザインパターンを『Service Container』という。</p>
 <p>あらかじめクラスを登録 (バインド) しておき、必要なときにインスタンスを作成 (リゾルブ) してくれる。</p>
-<p>Pimple パッケージを使用した場合</p>
+<p>DI コンテナを使用した場合 (PHP では Pimple パッケージ)</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="29:3"><input checked="checked" id="__tabbed_29_1" name="__tabbed_29" type="radio" /><input id="__tabbed_29_2" name="__tabbed_29" type="radio" /><input id="__tabbed_29_3" name="__tabbed_29" type="radio" /><div class="tabbed-labels"><label for="__tabbed_29_1">Go</label><label for="__tabbed_29_2">TypeScript</label><label for="__tabbed_29_3">PHP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -37052,12 +37052,12 @@
 <span class="w">        </span><span class="nx">instances</span><span class="p">:</span><span class="w"> </span><span class="kt">map</span><span class="p">[</span><span class="kt">string</span><span class="p">]</span><span class="kt">any</span><span class="p">{},</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// UserNameクラスの準備</span>
+<span class="w">    </span><span class="c1">// UserName構造体の準備</span>
 <span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">factories</span><span class="p">[</span><span class="s">"user_name"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">container</span><span class="w"> </span><span class="o">*</span><span class="nx">Container</span><span class="p">)</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">valueobject</span><span class="p">.</span><span class="nx">NewUserName</span><span class="p">(</span><span class="s">"Hiroki"</span><span class="p">)</span>
 <span class="w">    </span><span class="p">}</span>
 
-<span class="w">    </span><span class="c1">// UserクラスにUserNameクラスを注入</span>
+<span class="w">    </span><span class="c1">// User構造体にUserName構造体を注入</span>
 <span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">factories</span><span class="p">[</span><span class="s">"user"</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">func</span><span class="p">(</span><span class="nx">container</span><span class="w"> </span><span class="o">*</span><span class="nx">Container</span><span class="p">)</span><span class="w"> </span><span class="kt">any</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">entity</span><span class="p">.</span><span class="nx">NewUser</span><span class="p">(</span><span class="nx">container</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"user_name"</span><span class="p">).(</span><span class="o">*</span><span class="nx">valueobject</span><span class="p">.</span><span class="nx">UserName</span><span class="p">))</span>
 <span class="w">    </span><span class="p">}</span>
@@ -37165,17 +37165,18 @@
 <span class="kn">import</span><span class="w"> </span><span class="s">"app/autoload"</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="nx">main</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="c1">// クラス名を宣言してインスタンスを作成。</span>
-<span class="w">    </span><span class="nx">sample</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">autoload</span><span class="p">.</span><span class="nx">Container</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"sample"</span><span class="p">)</span>
+<span class="w">    </span><span class="c1">// 登録名を宣言してインスタンスを作成。</span>
+<span class="w">    </span><span class="nx">user</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">autoload</span><span class="p">.</span><span class="nx">Container</span><span class="p">.</span><span class="nx">Get</span><span class="p">(</span><span class="s">"user"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="c1">// IoCコンテナの読み出し</span>
 <span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">container</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"./autoload"</span><span class="p">;</span>
+<span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">User</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">"~/domain/user/entity/User"</span><span class="p">;</span>
 
 <span class="c1">// クラス名を宣言してインスタンスを作成。</span>
-<span class="kd">const</span><span class="w"> </span><span class="nx">sample</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"sample"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">container</span><span class="p">.</span><span class="nx">get</span><span class="o">&lt;</span><span class="nx">User</span><span class="o">&gt;</span><span class="p">(</span><span class="s2">"user"</span><span class="p">);</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -37185,7 +37186,7 @@
 <span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s2">"/autoload.php"</span><span class="p">;</span>
 
 <span class="c1">// クラス名を宣言してインスタンスを作成。</span>
-<span class="nv">$sample</span> <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"sample"</span><span class="p">];</span>
+<span class="nv">$user</span> <span class="o">=</span> <span class="nv">$container</span><span class="p">[</span><span class="s2">"user"</span><span class="p">];</span>
 </code></pre></div>
 </div>
 </div>
@@ -37402,7 +37403,7 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="c1">// コールされる側</span>
-<span class="c1">// 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス</span>
+<span class="c1">// 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラスに相当する構造体</span>
 <span class="kd">type</span><span class="w"> </span><span class="nx">TransportationMethodsFactory</span><span class="w"> </span><span class="kd">struct</span><span class="p">{}</span>
 
 <span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">TransportationMethodsFactory</span><span class="p">)</span><span class="w"> </span><span class="nx">CreateInstance</span><span class="p">(</span><span class="nx">distance</span><span class="w"> </span><span class="kt">int</span><span class="p">)</span><span class="w"> </span><span class="nx">TransportationMethod</span><span class="w"> </span><span class="p">{</span>
