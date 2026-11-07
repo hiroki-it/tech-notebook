@@ -41,6 +41,7 @@ hide:
   > - ##### [ユースケース層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html)
   > - ##### [ドメイン層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html)
   > - ##### [インフラストラクチャ層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html)
+  > - ##### [エラー](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html)
 
 - #### [︎CQRS](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_cqrs.html)
 
