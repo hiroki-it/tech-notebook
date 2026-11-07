@@ -29,7 +29,7 @@ description: ６章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserRepositoryDI struct {
     	UserRepository UserRepository
     }
@@ -77,7 +77,7 @@ description: ６章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type userRepositoryDI = Readonly<{
       userRepository: UserRepository;
     }>;
@@ -119,7 +119,7 @@ description: ６章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final class UserRepositoryDI
     {
         public function __construct(

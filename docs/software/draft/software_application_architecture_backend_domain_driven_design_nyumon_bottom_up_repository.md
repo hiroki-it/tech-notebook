@@ -29,7 +29,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserRepositoryInterface interface {
     	FindById(id UserId) (*User, error)
     	Save(user *User) error
@@ -38,7 +38,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type UserRepositoryInterface = {
       findById: (id: UserId) => Promise<User>;
       save: (user: User) => Promise<void>;
@@ -47,7 +47,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface UserRepositoryInterface
     {
         public function findById(UserId $id): ?User;
@@ -62,7 +62,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import (
     	"database/sql"
     	"errors"
@@ -110,7 +110,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {Pool} from "mysql2/promise";
     import {User} from "../domain/user";
     import {UserId} from "../domain/userId";
@@ -157,7 +157,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     use App\Domain\User;
     use App\Domain\UserId;
     use App\Domain\UserName;
@@ -211,7 +211,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type userRepositoryInMemory struct {
     	store map[UserId]*User
     }
@@ -234,7 +234,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const createUserRepositoryInMemory = (): UserRepositoryInterface => {
       const store = new Map<UserId, User>();
 
@@ -251,7 +251,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     function createUserRepositoryInMemory(): UserRepositoryInterface
     {
         return new class () implements UserRepositoryInterface {
@@ -283,7 +283,7 @@ ORM のデータモデルをエンティティそのままに使用する場合�
 
 #### ▼ DTO を使用しない場合
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 import {PrismaClient} from "@prisma/client";
 import {User} from "../domain/user";
 import {UserId} from "../domain/userId";
@@ -330,7 +330,7 @@ export const save = async (
 
 #### ▼ DTO を使用する場合
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 import {PrismaClient} from "@prisma/client";
 
 import {User} from "../domain/user";
@@ -384,7 +384,7 @@ User オブジェクトに実装するべき振る舞いのビジネスロジッ
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserRepositoryInterface interface {
     	FindbyId(id UserId) (*User, error)
     	UpdateName(name UserName) error
@@ -393,7 +393,7 @@ User オブジェクトに実装するべき振る舞いのビジネスロジッ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type UserRepositoryInterface = {
       findbyId: (id: UserId) => Promise<User>;
       updateName: (name: UserName) => Promise<void>;
@@ -402,7 +402,7 @@ User オブジェクトに実装するべき振る舞いのビジネスロジッ
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface UserRepositoryInterface
     {
         public function findbyId(UserId $id): ?User;
@@ -413,7 +413,7 @@ User オブジェクトに実装するべき振る舞いのビジネスロジッ
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     user, err := userRepository.FindById(userId)
     if err != nil {
     	return err
@@ -425,14 +425,14 @@ User オブジェクトに実装するべき振る舞いのビジネスロジッ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const user = await userRepository.findById(userId);
     await userRepository.updateName(getName(user)); // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $user = $userRepository->findById($userId);
     $userRepository->updateName(getName($user)); // リポジトリの UpdateName のなかで、ドメインロジックを書くことになってしまう
     ```
@@ -445,7 +445,7 @@ User オブジェクトが振る舞いのビジネスロジックをもち、Rep
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserRepositoryInterface interface {
     	FindById(id UserId) (*User, error)
     	Save(user *User) error
@@ -454,7 +454,7 @@ User オブジェクトが振る舞いのビジネスロジックをもち、Rep
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type UserRepositoryInterface = {
       findById: (id: UserId) => Promise<User>;
       save: (user: User) => Promise<void>;
@@ -463,7 +463,7 @@ User オブジェクトが振る舞いのビジネスロジックをもち、Rep
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface UserRepositoryInterface
     {
         public function findById(UserId $id): ?User;
@@ -474,7 +474,7 @@ User オブジェクトが振る舞いのビジネスロジックをもち、Rep
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     user, err := userRepository.FindById(userId)
     if err != nil {
     	return err
@@ -487,7 +487,7 @@ User オブジェクトが振る舞いのビジネスロジックをもち、Rep
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const user = await userRepository.findById(userId);
     const updatedUser = changeName(user, newName); // ユーザーオブジェクトが自分でユーザー名の状態を変更する
     await userRepository.save(updatedUser); // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ
@@ -495,7 +495,7 @@ User オブジェクトが振る舞いのビジネスロジックをもち、Rep
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $user = $userRepository->findById($userId);
     $updatedUser = changeName($user, $newName); // ユーザーオブジェクトが自分でユーザー名の状態を変更する
     $userRepository->save($updatedUser); // リポジトリは、状態の変更されたユーザーオブジェクトを保存するだけ

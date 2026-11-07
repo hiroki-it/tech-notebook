@@ -67,7 +67,7 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 解説を補足するために長谷川で追加
 
     type Review struct {
@@ -88,7 +88,7 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 解説を補足するために長谷川で追加
 
     type Review = {
@@ -110,7 +110,7 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 解説を補足するために長谷川で追加
 
     final class Review
@@ -135,7 +135,7 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 解説を補足するために長谷川で追加
 
     type ReviewEvent interface {
@@ -205,7 +205,7 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 解説を補足するために長谷川で追加
 
     type ReviewEvent =
@@ -256,7 +256,7 @@ description: 21章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 解説を補足するために長谷川で追加
 
     interface ReviewEvent
@@ -452,7 +452,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     func getReview(ctx context.Context, reviewID ReviewID) (ReviewState, error) {
@@ -482,7 +482,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     async function getReview(reviewId: ReviewId): Promise<ReviewState> {
@@ -512,7 +512,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     function getReview(EventStore $eventStore, ReviewId $reviewId): ReviewState
@@ -547,7 +547,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     func findTop3RecommendedBooks(ctx context.Context, bookID BookID) ([]string, error) {
@@ -577,7 +577,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     async function findTop3RecommendedBooks(bookId: BookId): Promise<string[]> {
@@ -597,7 +597,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     /**
@@ -662,7 +662,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     type Review struct {
@@ -683,7 +683,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     type Review = {
@@ -705,7 +705,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     final class Review
@@ -730,7 +730,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // イベントソーシングを導入したくなったら、Review集約をイベント列で表現する
     type ReviewEvent interface {
     	Type() string
@@ -802,7 +802,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // イベントソーシングを導入したくなったら、Review集約をイベント列で表現する
     type ReviewEvent =
       | {
@@ -855,7 +855,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // イベントソーシングを導入したくなったら、Review集約をイベント列で表現する
     interface ReviewEvent
     {
@@ -939,7 +939,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     // 新しい機能として、信頼性スコア関数を追加できる
@@ -968,7 +968,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     // 新しい機能として、信頼性スコア関数を追加できる
@@ -991,7 +991,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     // 新しい機能として、信頼性スコア関数を追加できる
@@ -1133,7 +1133,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     type Persistence string
@@ -1160,7 +1160,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     type AggregatePersistencePolicy = {
@@ -1180,7 +1180,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     enum Persistence: string
@@ -1263,7 +1263,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     func needsSnapshot(metrics struct {
@@ -1276,7 +1276,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     function needsSnapshot(metrics: {
@@ -1289,7 +1289,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     /**
@@ -1309,7 +1309,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 現在の実装（ステートソーシング）
     type BookRecommendationDomainService struct {
     	reviewRepository IReviewRepository
@@ -1349,7 +1349,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 現在の実装（ステートソーシング）
     export class BookRecommendationDomainService {
       constructor(private reviewRepository: IReviewRepository) {}
@@ -1374,7 +1374,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 現在の実装（ステートソーシング）
     class BookRecommendationDomainService
     {
@@ -1415,7 +1415,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type BookReviewsQueryModel struct {
     	// プロパティ
     }
@@ -1423,7 +1423,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     interface BookReviewsQueryModel {
       // プロパティ
     }
@@ -1431,7 +1431,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final class BookReviewsQueryModel
     {
         // プロパティ
@@ -1454,7 +1454,7 @@ BookRecommendation を取得するためのクエリモデル設計例として�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 方法1: BookIDごとのレビューリストモデル
     type BookReviewsQueryModel struct {
     	BookID  string
@@ -1471,7 +1471,7 @@ BookRecommendation を取得するためのクエリモデル設計例として�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 方法1: BookIDごとのレビューリストモデル
     interface BookReviewsQueryModel {
       readonly bookId: string;
@@ -1488,7 +1488,7 @@ BookRecommendation を取得するためのクエリモデル設計例として�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 方法1: BookIDごとのレビューリストモデル
     final class BookReviewsQueryModel
     {
@@ -1505,7 +1505,7 @@ BookRecommendation を取得するためのクエリモデル設計例として�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 方法2: 事前集計されたRecommendedBookモデル
     type BookRecommendationQueryModel struct {
     	BookID           string
@@ -1515,7 +1515,7 @@ BookRecommendation を取得するためのクエリモデル設計例として�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 方法2: 事前集計されたRecommendedBookモデル
     interface BookRecommendationQueryModel {
       readonly bookId: string;
@@ -1525,7 +1525,7 @@ BookRecommendation を取得するためのクエリモデル設計例として�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 方法2: 事前集計されたRecommendedBookモデル
     final class BookRecommendationQueryModel
     {
@@ -1563,7 +1563,7 @@ CQRS では、コマンドサイドとクエリサイドの間に時間差が生
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     func addReview(ctx context.Context, command AddReviewCommand) error {
@@ -1594,7 +1594,7 @@ CQRS では、コマンドサイドとクエリサイドの間に時間差が生
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     async function addReview(command: AddReviewCommand): Promise<void> {
@@ -1625,7 +1625,7 @@ CQRS では、コマンドサイドとクエリサイドの間に時間差が生
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍中にはないコードブロックで、具体例を理解するために長谷川が追加
 
     function addReview(EventStore $eventStore, AddReviewCommand $command): void

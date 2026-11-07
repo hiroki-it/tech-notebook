@@ -44,7 +44,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserId string
 
     type User struct {
@@ -56,7 +56,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type UserId = string;
 
     export type User = {
@@ -68,7 +68,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final readonly class UserId
     {
         public function __construct(
@@ -90,7 +90,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     func createUser(id UserId, name string, email string) (User, error) {
     	if id == "" || email == "" {
     		return User{}, errors.New("IDとメールは必須です")
@@ -101,7 +101,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const createUser = (id: UserId, name: string, email: string): User | Error => {
       if (!id || !email) return new Error("IDとメールは必須です");
       return Object.freeze({id, name, email});
@@ -110,7 +110,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     function createUser(UserId $id, string $name, string $email): User
     {
         if ($id->value === "" || $email === "") {
@@ -130,7 +130,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserId string
 
     type User struct {
@@ -142,7 +142,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type UserId = string;
 
     export type User = {
@@ -154,7 +154,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final readonly class UserId
     {
         public function __construct(
@@ -176,7 +176,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     func EqualsUser(a User, b User) bool {
     	return a.Id == b.Id
     }
@@ -184,7 +184,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export const equalsUser = (a: User, b: User): boolean => {
       return a.id === b.id;
     };
@@ -192,7 +192,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     function equalsUser(User $a, User $b): bool
     {
         return $a->id->value === $b->id->value;
@@ -207,7 +207,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserId string
 
     type User struct {
@@ -219,7 +219,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type UserId = string;
 
     export type User = {
@@ -231,7 +231,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final readonly class UserId
     {
         public function __construct(
@@ -253,7 +253,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 処理の途中で状態を変更できる
     func ChangeUserName(user User, newName string) User {
     	user.Name = newName
@@ -263,7 +263,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 処理の途中で状態を変更できる
     export const changeUserName = (user: User, newName: string): User => {
       return Object.freeze({...user, name: newName});
@@ -272,7 +272,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 処理の途中で状態を変更できる
     function changeUserName(User $user, string $newName): User
     {
@@ -288,7 +288,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserId string
 
     type User struct {
@@ -300,7 +300,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type UserId = string;
 
     export type User = {
@@ -312,7 +312,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final readonly class UserId
     {
         public function __construct(
@@ -334,7 +334,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 削除
     func CreateUser(
     	id UserId,
@@ -355,7 +355,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 削除
     export const createUser = (
       id: UserId,
@@ -374,7 +374,7 @@ description: ３章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 削除
     function createUser(
         UserId $id,

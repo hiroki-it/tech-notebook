@@ -43,7 +43,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type ObjectA struct {
     	objectB *ObjectB
     }
@@ -51,7 +51,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class ObjectA {
       private objectB?: ObjectB;
     }
@@ -59,7 +59,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class ObjectA
     {
         private ?ObjectB $objectB = null;
@@ -76,7 +76,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type IUserRepository interface {
     	Find(id UserId) (*User, error)
     }
@@ -90,7 +90,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type IUserRepository = {
       find: (id: UserId) => Promise<User | null>;
     };
@@ -104,7 +104,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface IUserRepository
     {
         public function find(UserId $id): ?User;
@@ -131,7 +131,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	repository *UserRepository
     }
@@ -147,7 +147,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly repository: UserRepository;
 
@@ -161,7 +161,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly UserRepository $repository;
@@ -185,7 +185,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	repository IUserRepository
     }
@@ -201,7 +201,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly repository: IUserRepository;
 
@@ -215,7 +215,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly IUserRepository $repository;
@@ -235,7 +235,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type IUserRepository interface {
     	Find(id UserId) (*User, error)
     }
@@ -249,7 +249,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type IUserRepository = {
       find: (id: UserId) => Promise<User | null>;
     };
@@ -263,7 +263,7 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface IUserRepository
     {
         public function find(UserId $id): ?User;
@@ -296,7 +296,7 @@ A を満たす。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	// 上位レベル（≒ 上位レイヤー）が抽象に依存する
     	repository IUserRepository
@@ -313,7 +313,7 @@ A を満たす。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       // 上位レベル（≒ 上位レイヤー）が抽象に依存する
       private readonly repository: IUserRepository;
@@ -328,7 +328,7 @@ A を満たす。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         // 上位レベル（≒ 上位レイヤー）が抽象に依存する
@@ -347,7 +347,7 @@ A と B を満たす。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type IUserRepository interface {
     	Find(id UserId) (*User, error)
     }
@@ -363,7 +363,7 @@ A と B を満たす。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type IUserRepository = {
       find: (id: UserId) => Promise<User | null>;
     };
@@ -379,7 +379,7 @@ A と B を満たす。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface IUserRepository
     {
         public function find(UserId $id): ?User;
@@ -412,7 +412,7 @@ A と B を満たす。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	userRepository IUserRepository
     }
@@ -429,7 +429,7 @@ A と B を満たす。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly userRepository: IUserRepository;
 
@@ -444,7 +444,7 @@ A と B を満たす。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly IUserRepository $userRepository;
@@ -465,7 +465,7 @@ A と B を満たす。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	userRepository IUserRepository
     }
@@ -482,7 +482,7 @@ A と B を満たす。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly userRepository: IUserRepository;
 
@@ -497,7 +497,7 @@ A と B を満たす。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly IUserRepository $userRepository;
@@ -530,7 +530,7 @@ ServiceLocator パターンによって、オブジェクトの呼び出しを�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	userRepository IUserRepository
     }
@@ -546,7 +546,7 @@ ServiceLocator パターンによって、オブジェクトの呼び出しを�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly userRepository: IUserRepository;
 
@@ -561,7 +561,7 @@ ServiceLocator パターンによって、オブジェクトの呼び出しを�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly IUserRepository $userRepository;
@@ -585,7 +585,7 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
     servicelocator.RegisterClass(
     	"IUserRepository",
@@ -595,7 +595,7 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
 
     // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
     ServiceLocator.registerClass<IUserRepository>(
@@ -607,7 +607,7 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
     ServiceLocator::registerClass(
         IUserRepository::class,
@@ -621,21 +621,21 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
     servicelocator.RegisterClass("IUserRepository", NewUserRepository)
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
     ServiceLocator.registerClass<IUserRepository>(IUserRepository, UserRepository);
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
     ServiceLocator::registerClass(IUserRepository::class, UserRepository::class);
     ```
@@ -652,7 +652,7 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package main
 
     import (
@@ -711,7 +711,7 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {IUserRepository} from "./domain/IUserRepository";
     import {ICircleRepository} from "./domain/ICircleRepository";
     import {
@@ -762,7 +762,7 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     use App\Domain\IUserRepository;
@@ -819,7 +819,7 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package servicelocator
 
     var registry = map[string]any{}
@@ -842,7 +842,7 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class ServiceLocator {
       private static registry = new Map<symbol, unknown>();
 
@@ -865,7 +865,7 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class ServiceLocator
     {
         private static array $registry = [];
@@ -900,7 +900,7 @@ UserApplicationService を外から見ても、UserRepository に依存するこ
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	userRepository IUserRepository
     }
@@ -914,7 +914,7 @@ UserApplicationService を外から見ても、UserRepository に依存するこ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly userRepository: IUserRepository;
 
@@ -927,7 +927,7 @@ UserApplicationService を外から見ても、UserRepository に依存するこ
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly IUserRepository $userRepository;
@@ -947,7 +947,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package main
 
     import "app/application"
@@ -962,7 +962,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {UserApplicationService} from "./userApplicationService";
 
     // UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。
@@ -973,7 +973,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     use App\Application\UserApplicationService;
 
     // UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。
@@ -990,7 +990,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	userRepository IUserRepository
     	fooRepository  IFooRepository
@@ -1007,7 +1007,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly userRepository: IUserRepository;
       private readonly fooRepository: IFooRepository;
@@ -1023,7 +1023,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly IUserRepository $userRepository;
@@ -1061,21 +1061,21 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     userRepository := NewInMemoryUserRepository()
     userApplicationService := NewUserApplicationService(userRepository)
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const userRepository = new InMemoryUserRepository();
     const userApplicationService = new UserApplicationService(userRepository);
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $userRepository = new InMemoryUserRepository();
     $userApplicationService = new UserApplicationService($userRepository);
     ```
@@ -1086,7 +1086,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService struct {
     	userRepository   IUserRepository
     	circleRepository ICircleRepository
@@ -1108,7 +1108,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserApplicationService {
       private readonly userRepository: IUserRepository;
       private readonly circleRepository: ICircleRepository;
@@ -1128,7 +1128,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserApplicationService
     {
         private readonly IUserRepository $userRepository;
@@ -1171,7 +1171,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // IoCコンテナオブジェクト
     serviceCollection := NewServiceCollection()
 
@@ -1187,7 +1187,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // IoCコンテナオブジェクト
     const serviceCollection = new ServiceCollection();
 
@@ -1203,7 +1203,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // IoCコンテナオブジェクト
     $serviceCollection = new ServiceCollection();
 
@@ -1223,7 +1223,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package main
 
     import (
@@ -1282,7 +1282,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {IUserRepository} from "./domain/IUserRepository";
     import {ICircleRepository} from "./domain/ICircleRepository";
     import {
@@ -1330,7 +1330,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     use App\Domain\IUserRepository;
@@ -1386,7 +1386,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package iocontainer
 
     // IoCコンテナ
@@ -1421,7 +1421,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // IoCコンテナ
     type Constructor<T> = new (...args: any[]) => T;
 
@@ -1448,7 +1448,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // IoCコンテナ
     class IocContainer
     {
@@ -1480,7 +1480,7 @@ IoC コンテナオブジェクトでインスタンスを作成し、これを�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // IoC Containerとコンストラクタインジェクションの場合
 
     package main
@@ -1506,7 +1506,7 @@ IoC コンテナオブジェクトでインスタンスを作成し、これを�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // IoC Containerとコンストラクタインジェクションの場合
 
     import { container } from "./repositories";
@@ -1526,7 +1526,7 @@ IoC コンテナオブジェクトでインスタンスを作成し、これを�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // IoC Containerとコンストラクタインジェクションの場合
 
     use App\Application\UserApplicationService;
@@ -1553,7 +1553,7 @@ ServiceLocator オブジェクトからインスタンスを取り出せない�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // ServiceLocatorオブジェクトの場合
 
     package main
@@ -1571,7 +1571,7 @@ ServiceLocator オブジェクトからインスタンスを取り出せない�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // ServiceLocatorオブジェクトの場合
 
     import {UserApplicationService} from "./userApplicationService";
@@ -1585,7 +1585,7 @@ ServiceLocator オブジェクトからインスタンスを取り出せない�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // ServiceLocatorオブジェクトの場合
 
     use App\Application\UserApplicationService;

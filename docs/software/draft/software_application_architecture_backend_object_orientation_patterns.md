@@ -40,7 +40,7 @@ description: デザインパターン＠オブジェクト指向の知見を記�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     app.command = &LoginCommand{browser: browser, credentials: credentials}
 
     // コマンド経由で、ブラウザでログインさせてトークンを保存させる
@@ -49,7 +49,7 @@ description: デザインパターン＠オブジェクト指向の知見を記�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     app.command = new LoginCommand(browser, credentials);
 
     // コマンド経由で、ブラウザでログインさせてトークンを保存させる
@@ -58,7 +58,7 @@ description: デザインパターン＠オブジェクト指向の知見を記�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $app->command = new LoginCommand(browser: $browser, credentials: $credentials);
 
     // コマンド経由で、ブラウザでログインさせてトークンを保存させる
@@ -77,7 +77,7 @@ HTTP リクエストを受信する API とこれを処理するハンドラー�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     handler := WithAccessLog(WithAuth(projectListHandler))
 
     http.ListenAndServe(":8080", handler)
@@ -95,7 +95,7 @@ HTTP リクエストを受信する API とこれを処理するハンドラー�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { createServer, IncomingMessage, ServerResponse } from "node:http";
 
     type Handler = (req: IncomingMessage, res: ServerResponse) => void;
@@ -118,7 +118,7 @@ HTTP リクエストを受信する API とこれを処理するハンドラー�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $handler = withAccessLog(withAuth($projectListHandler));
 
     $handler();

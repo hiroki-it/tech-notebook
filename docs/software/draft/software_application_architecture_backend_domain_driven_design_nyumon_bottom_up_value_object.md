@@ -95,7 +95,7 @@ flowchart LR
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 値オブジェクト
     type FullName struct {
     	// 状態
@@ -125,7 +125,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 値オブジェクト
     export type FullName = Readonly<{
       // 状態
@@ -156,7 +156,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 値オブジェクト
     final readonly class FullName
     {
@@ -193,7 +193,7 @@ flowchart LR
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     fullName, err := CreateFullName("太郎", "山田")
     if err != nil {
     	return err
@@ -204,7 +204,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const fullName = createFullName("太郎", "山田");
 
     console.log(getDisplayName(fullName)); // 山田 太郎
@@ -212,7 +212,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $fullName = createFullName("太郎", "山田");
 
     echo getDisplayName($fullName) . PHP_EOL; // 山田 太郎
@@ -227,7 +227,7 @@ flowchart LR
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 値オブジェクト
     type FullName struct {
     	// 状態
@@ -257,7 +257,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 値オブジェクト
     export type FullName = Readonly<{
       // 状態
@@ -288,7 +288,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 値オブジェクト
     final readonly class FullName
     {
@@ -325,7 +325,7 @@ flowchart LR
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // インスタンスのデータを後から変えられない
     fullName, err := CreateFullName("太郎", "山田")
     if err != nil {
@@ -335,14 +335,14 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // インスタンスのデータを後から変えられない
     const fullName = createFullName("太郎", "山田");
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // インスタンスのデータを後から変えられない
     $fullName = createFullName("太郎", "山田");
     ```
@@ -353,7 +353,7 @@ flowchart LR
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     fullName1, err := CreateFullName("太郎", "山田")
     if err != nil {
     	return err
@@ -372,7 +372,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const fullName1 = createFullName("太郎", "山田");
     const fullName2 = createFullName("太郎", "山田");
 
@@ -385,7 +385,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $fullName1 = createFullName("太郎", "山田");
     $fullName2 = createFullName("太郎", "山田");
 
@@ -400,7 +400,7 @@ flowchart LR
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 値オブジェクト
     type FullName struct {
     	// 状態
@@ -430,7 +430,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 値オブジェクト
     export type FullName = Readonly<{
       // 状態
@@ -461,7 +461,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 値オブジェクト
     final readonly class FullName
     {
@@ -498,7 +498,7 @@ flowchart LR
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     fullName1, err := CreateFullName("太郎", "山田")
     if err != nil {
     	return err
@@ -513,7 +513,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const fullName1 = createFullName("太郎", "山田");
     const fullName2 = createFullName("太郎", "山田");
 
@@ -522,7 +522,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $fullName1 = createFullName("太郎", "山田");
     $fullName2 = createFullName("太郎", "山田");
 
@@ -537,7 +537,7 @@ flowchart LR
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 状態
     const firstName = "太郎"
     const lastName = "山田"
@@ -550,7 +550,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 状態
     const firstName = "太郎";
     const lastName = "山田";
@@ -563,7 +563,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 状態
     $firstName = "太郎";
     $lastName = "山田";
@@ -577,19 +577,19 @@ flowchart LR
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     fmt.Println(getDisplayName(firstName, lastName)) // 山田 太郎
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     console.log(getDisplayName(firstName, lastName)); // 山田 太郎
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     echo getDisplayName($firstName, $lastName) . PHP_EOL; // 山田 太郎
     ```
 
@@ -608,7 +608,7 @@ flowchart LR
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 値オブジェクト
     type FullName struct {
     	// 状態
@@ -638,7 +638,7 @@ flowchart LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 値オブジェクト
     export type FullName = Readonly<{
       // 状態
@@ -669,7 +669,7 @@ flowchart LR
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 値オブジェクト
     final readonly class FullName
     {

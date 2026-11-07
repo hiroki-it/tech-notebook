@@ -19,7 +19,7 @@ DB テーブルの仕様書に基づいて、CRUD のコードを実装する。
 
 #### ▼ Gorm Gen の場合
 
-```go title=".go"
+```go title="Go の場合の実装例"
 package main
 
 import (

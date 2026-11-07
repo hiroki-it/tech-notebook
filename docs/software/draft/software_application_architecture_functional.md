@@ -72,7 +72,7 @@ description: 関数型の知見を記録しています。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package main
 
     import "fmt"
@@ -98,7 +98,7 @@ description: 関数型の知見を記録しています。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type User = {
       // 状態
       name: string;
@@ -118,7 +118,7 @@ description: 関数型の知見を記録しています。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class User
@@ -149,7 +149,7 @@ description: 関数型の知見を記録しています。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package main
 
     import "fmt"
@@ -174,7 +174,7 @@ description: 関数型の知見を記録しています。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type User = {
       // 状態
       name: string;
@@ -193,7 +193,7 @@ description: 関数型の知見を記録しています。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class User

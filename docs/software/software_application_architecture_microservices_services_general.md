@@ -80,7 +80,7 @@ func convertToXRayTraceID(traceID trace.TraceID) string {
 
 代わりにサービスメッシュツールを使用できる。
 
-```go title=".go"
+```go title="Go の場合の実装例"
 package telemetry
 
 package telemetry
@@ -128,7 +128,7 @@ func SetupMetrics(ctx context.Context) func() {
 
 #### ▼ trace.go
 
-```go title=".go"
+```go title="Go の場合の実装例"
 package telemetry
 
 import (

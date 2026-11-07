@@ -820,13 +820,13 @@ describe("User.social unknown property behavior", () => {
 
 これらの関数は別のファイルにある前提である。
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 export function doInternalWork(value: number): number {
   return value * 2;
 }
 ```
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 export function runTask(num: number): string {
   const result = doInternalWork(num);
   return `result=${result}`;
@@ -870,7 +870,7 @@ describe("runTask", () => {
 
 `axios()` 関数のようなクライアントではなく、独自のクライアントクラスがあるとする。
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 export class HttpClient {
   constructor(private baseUrl: string) {}
 
@@ -880,7 +880,7 @@ export class HttpClient {
 }
 ```
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 import {HttpClient} from "./httpClient";
 
 export async function fetchUser() {

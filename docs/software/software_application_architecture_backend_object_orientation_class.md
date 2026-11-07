@@ -49,7 +49,7 @@ User は UserName を状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package entity
 
     import "app/domain/user/valueobject"
@@ -65,7 +65,7 @@ User は UserName を状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { UserName } from "~/domain/user/valueObject/UserName";
 
     export class User {
@@ -79,7 +79,7 @@ User は UserName を状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Domain\User\Entity;
@@ -104,21 +104,21 @@ User は UserName を状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     name := NewUserName()
     user := NewUser(name) // 集約の関係
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const name = new UserName();
     const user = new User(name); // 集約の関係
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $name = new UserName();
@@ -127,7 +127,7 @@ User は UserName を状態として保持する。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import "app/domain/car/entity"
 
     type Car struct {
@@ -153,7 +153,7 @@ User は UserName を状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { Tire1, Tire2, Tire3, Tire4 } from "~/domain/car/entity";
 
     class Car {
@@ -177,7 +177,7 @@ User は UserName を状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     use App\Domain\Car\Entity\Tire1;
@@ -212,7 +212,7 @@ User は UserName を状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // Tireクラスをインスタンス化
     tire1 := NewTire1()
     tire2 := NewTire2()
@@ -225,7 +225,7 @@ User は UserName を状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // Tireクラスをインスタンス化
     const tire1 = new Tire1();
     const tire2 = new Tire2();
@@ -238,7 +238,7 @@ User は UserName を状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // Tireクラスをインスタンス化
@@ -267,7 +267,7 @@ User クラスは UserName クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package entity
 
     import "app/domain/user/valueobject"
@@ -285,7 +285,7 @@ User クラスは UserName クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { UserName } from "~/domain/user/valueObject/UserName";
 
     export class User {
@@ -301,7 +301,7 @@ User クラスは UserName クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Domain\User\Entity;
@@ -328,19 +328,19 @@ User クラスは UserName クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     user := &User{}
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const user = new User();
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $user = new User();
@@ -350,7 +350,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Car struct {
     	lock *Lock
     }
@@ -363,7 +363,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Car {
       private readonly lock: Lock;
 
@@ -376,7 +376,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class Car
@@ -397,21 +397,21 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
     car := NewCar()
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
     const car = new Car();
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
@@ -438,7 +438,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import "fmt"
 
     // 親クラス
@@ -477,7 +477,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 親クラス
     class Goods {
       // 商品名データ
@@ -512,7 +512,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 親クラス
@@ -554,7 +554,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import (
     	"fmt"
     	"math"
@@ -576,7 +576,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 子クラス
     class GoodsWithTax extends Goods {
       // ★★★★★★注目★★★★★★
@@ -591,7 +591,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 子クラス
@@ -648,7 +648,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import (
     	"fmt"
     	"time"
@@ -718,7 +718,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 抽象クラス。型として提供したいものを定義する。
     abstract class ShainManagement {
       // 定数の定義
@@ -777,7 +777,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 抽象クラス。型として提供したいものを定義する。
@@ -830,7 +830,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 子クラス
     type EnginnerShainManagement struct {
     	BaseShainManagement
@@ -844,7 +844,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 子クラス
     class EnginnerShainManagement extends ShainManagement {
       // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
@@ -856,7 +856,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 子クラス
@@ -902,7 +902,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Animal interface {
     	// インターフェイスでは、実装を伴う関数や状態の宣言はできない
     	Eat()
@@ -913,7 +913,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     interface Animal {
       // インターフェイスでは、実装を伴う関数や状態の宣言はできない
       eat(): void;
@@ -924,7 +924,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     interface Animal
@@ -938,7 +938,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
     var _ Animal = (*Mammal)(nil)
 
@@ -959,7 +959,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Mammal implements Animal {
       // 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
       eat(): void {
@@ -978,7 +978,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class Mammal implements Animal
@@ -1082,7 +1082,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 継承元クラス
     type Foo struct {
     	value1 any
@@ -1095,7 +1095,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 継承元クラス
     class Foo {
       private value1: unknown = null;
@@ -1108,7 +1108,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 継承元クラス
@@ -1125,7 +1125,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 継承先クラス
     type SubFoo struct {
     	Foo
@@ -1139,7 +1139,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 継承先クラス
     class SubFoo extends Foo {
       public subValue: unknown = null;
@@ -1152,7 +1152,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 継承先クラス
@@ -1169,7 +1169,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     subFoo := &SubFoo{}
 
     // SubFooクラスにはgetValue()は無い。
@@ -1179,7 +1179,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const subFoo = new SubFoo();
 
     // SubFooクラスにはgetValue()は無い。
@@ -1189,7 +1189,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $subFoo = new SubFoo;
@@ -1205,7 +1205,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Foo struct{}
 
     func (f *Foo) Foo() {
@@ -1215,7 +1215,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     abstract class Foo {
       foo(): void {
         // 処理内容;
@@ -1225,7 +1225,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     abstract class Foo
@@ -1239,7 +1239,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type SubFoo struct {
     	Foo
     }
@@ -1252,7 +1252,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class SubFoo extends Foo {
       subFoo(): void {
         // 継承元の関数を参照。
@@ -1263,7 +1263,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class SubFoo extends Foo
@@ -1325,7 +1325,7 @@ User は UserName に依存している。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package entity
 
     import "app/domain/user/valueobject"
@@ -1339,7 +1339,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { UserName } from "~/domain/user/valueObject/UserName";
 
     export class User {
@@ -1351,7 +1351,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Domain\User\Entity;
@@ -1396,7 +1396,7 @@ User は UserName に依存している。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     supplier := NewSupplier()
 
     // 依存されるSupplierクラスをClientクラス
@@ -1405,7 +1405,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const supplier = new Supplier();
 
     // 依存されるSupplierクラスをClientクラス
@@ -1414,7 +1414,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $supplier = new Supplier();
@@ -1427,7 +1427,7 @@ User は UserName に依存している。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package entity
 
     import "app/domain/user/valueobject"
@@ -1443,7 +1443,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { UserName } from "~/domain/user/valueObject/UserName";
 
     export class User {
@@ -1457,7 +1457,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Domain\User\Entity;
@@ -1477,21 +1477,21 @@ User は UserName に依存している。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     name := NewUserName()
     user := NewUser(name) // インジェクション
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const name = new UserName();
     const user = new User(name); // インジェクション
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $name = new UserName();
@@ -1508,7 +1508,7 @@ User は UserName に依存している。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     supplier := NewSupplier()
     client := NewClient()
 
@@ -1518,7 +1518,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const supplier = new Supplier();
     const client = new Client();
 
@@ -1528,7 +1528,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $supplier = new Supplier();
@@ -1542,7 +1542,7 @@ User は UserName に依存している。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package entity
 
     import "app/domain/user/valueobject"
@@ -1558,7 +1558,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { UserName } from "~/domain/user/valueObject/UserName";
 
     export class User {
@@ -1572,7 +1572,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Domain\User\Entity;
@@ -1592,7 +1592,7 @@ User は UserName に依存している。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     user := &User{}
     name := NewUserName()
     user.SetUserName(name) // インジェクション
@@ -1600,7 +1600,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const user = new User();
     const name = new UserName();
     user.setUserName(name); // インジェクション
@@ -1608,7 +1608,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $user = new User();
@@ -1626,7 +1626,7 @@ User は UserName に依存している。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package entity
 
     import "app/domain/user/valueobject"
@@ -1642,7 +1642,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import { UserName } from "~/domain/user/valueObject/UserName";
 
     export class User {
@@ -1656,7 +1656,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Domain\User\Entity;
@@ -1676,7 +1676,7 @@ User は UserName に依存している。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     user := &User{}
     name := NewUserName()
     user.Method(name) // インジェクション
@@ -1684,7 +1684,7 @@ User は UserName に依存している。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const user = new User();
     const name = new UserName();
     user.method(name); // インジェクション
@@ -1692,7 +1692,7 @@ User は UserName に依存している。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $user = new User();
@@ -1712,7 +1712,7 @@ User は UserName に依存している。
 
 Pimple パッケージを使用した場合
 
-```injectablephp title=".php"
+```injectablephp title="PHP の場合の実装例"
 <?php
 
 use Pimple\Container as PimpleContainer;
@@ -1738,14 +1738,14 @@ class Container extends PimpleContainer
 }
 ```
 
-```injectablephp title=".php"
+```injectablephp title="PHP の場合の実装例"
 <?php
 
 // autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。
 $container = new Container();
 ```
 
-```injectablephp title=".php"
+```injectablephp title="PHP の場合の実装例"
 <?php
 
 // IoCコンテナの読み出し
@@ -1763,7 +1763,7 @@ Service Locator パターンはアンチパターンである。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Sample struct {
     	logger       any
     	notification any
@@ -1779,7 +1779,7 @@ Service Locator パターンはアンチパターンである。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Sample {
       private readonly logger: unknown;
       private readonly notification: unknown;
@@ -1793,7 +1793,7 @@ Service Locator パターンはアンチパターンである。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class Sample
@@ -1811,21 +1811,21 @@ Service Locator パターンはアンチパターンである。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
     sample := NewSample(container)
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
     const sample = new Sample(container);
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
@@ -1944,7 +1944,7 @@ ModuleA と ModuleB は、データ結合の関係にある。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type ModuleA struct{} // コールされる側
 
     func (m *ModuleA) MethodA(a int, b int, c string) string {
@@ -1954,7 +1954,7 @@ ModuleA と ModuleB は、データ結合の関係にある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class ModuleA { // コールされる側
       methodA(a: number, b: number, c: string): string {
         return `${a} + ${b}` + c;
@@ -1964,7 +1964,7 @@ ModuleA と ModuleB は、データ結合の関係にある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class ModuleA // コールされる側
@@ -1978,7 +1978,7 @@ ModuleA と ModuleB は、データ結合の関係にある。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type ModuleB struct{} // コールする側
 
     func (m *ModuleB) MethodB() {
@@ -1989,7 +1989,7 @@ ModuleA と ModuleB は、データ結合の関係にある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class ModuleB { // コールする側
       methodB(): void {
         const moduleA = new ModuleA();
@@ -2000,7 +2000,7 @@ ModuleA と ModuleB は、データ結合の関係にある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class ModuleB // コールする側
@@ -2019,7 +2019,7 @@ Factory クラスのインスタンスと、これをコールするほかのイ
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // コールされる側
     // 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス
     type TransportationMethodsFactory struct{}
@@ -2038,7 +2038,7 @@ Factory クラスのインスタンスと、これをコールするほかのイ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     /**
      * コールされる側
      *
@@ -2060,7 +2060,7 @@ Factory クラスのインスタンスと、これをコールするほかのイ
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     /**
@@ -2092,7 +2092,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Shared struct {
     	value int
     }
@@ -2108,7 +2108,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Shared {
       private readonly value: number;
 
@@ -2124,7 +2124,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class Shared
@@ -2145,7 +2145,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type ModuleA struct{}
 
     func (m *ModuleA) MethodA() int {
@@ -2159,7 +2159,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class ModuleA {
       methodA(): number {
         const shared = new Shared(1);
@@ -2173,7 +2173,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class ModuleA
@@ -2191,7 +2191,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type ModuleB struct{}
 
     func (m *ModuleB) MethodB(shared *Shared) int {
@@ -2201,7 +2201,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class ModuleB {
       methodB(shared: Shared): number {
         return shared.getValue(); // 1
@@ -2211,7 +2211,7 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     class ModuleB

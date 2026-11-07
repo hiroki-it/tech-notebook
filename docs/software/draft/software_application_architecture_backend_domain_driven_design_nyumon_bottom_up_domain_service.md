@@ -27,7 +27,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserId = string
     type UserName = string
 
@@ -49,7 +49,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export type UserId = string;
     export type UserName = string;
 
@@ -67,7 +67,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final class User
     {
         public function __construct(
@@ -91,7 +91,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserExistenceServiceDI struct {
     	ExistsByName func(ctx context.Context, name UserName) (bool, error)
     }
@@ -105,7 +105,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import type {User, UserName} from "./user";
 
     export type UserExistenceServiceDI = {
@@ -121,7 +121,7 @@ description: ４章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     require_once __DIR__ . "/user.php";
 
     final class UserExistenceServiceDI

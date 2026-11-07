@@ -27,7 +27,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Book struct {
     	BookID BookID // ID値オブジェクト
     	Title  Title  // タイトル値オブジェクト
@@ -57,7 +57,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Book {
       constructor(
         public bookId: BookId, // ID値オブジェクト
@@ -76,7 +76,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Book
     {
         public function __construct(
@@ -121,7 +121,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // アンチパターン: 集約が他の集約を直接コールする
     type Book struct {
     	BookID  BookID
@@ -144,7 +144,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // アンチパターン: 集約が他の集約を直接コールする
     class Book {
       constructor(
@@ -165,7 +165,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // アンチパターン: 集約が他の集約を直接コールする
     class Book
     {
@@ -195,7 +195,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Review struct {
     	ReviewID ReviewID // ID値オブジェクト
     	BookID   BookID
@@ -213,7 +213,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Review {
       constructor(
         public reviewId: ReviewId, // ID値オブジェクト
@@ -228,7 +228,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Review
     {
         public function __construct(
@@ -249,7 +249,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Book struct {
     	BookID    BookID
     	Title     Title
@@ -266,7 +266,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Book {
       constructor(
         public bookId: BookId,
@@ -280,7 +280,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Book
     {
         public function __construct(
@@ -302,7 +302,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 冒頭の悪い例
     type Book struct {
     	BookID  BookID
@@ -329,7 +329,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 冒頭の悪い例
     class Book {
       constructor(
@@ -354,7 +354,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 冒頭の悪い例
     class Book
     {
@@ -385,7 +385,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 書籍の基本情報に焦点を当てた集約
     type Book struct {
     	bookID BookID
@@ -445,7 +445,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 書籍の基本情報に焦点を当てた集約
     class Book {
       constructor(
@@ -491,7 +491,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 書籍の基本情報に焦点を当てた集約
     class Book
     {
@@ -553,7 +553,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Book struct {
     	BookID BookID
     	// ...
@@ -578,7 +578,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Book {
       constructor(
         public bookId: BookId,
@@ -600,7 +600,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Book
     {
         public array $reviews; // レビューを直接含める
@@ -629,7 +629,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // Book集約 - 基本情報管理に特化
     type Book struct {
     	bookID BookID
@@ -693,7 +693,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // Book集約 - 基本情報管理に特化
     class Book {
       constructor(
@@ -746,7 +746,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // Book集約 - 基本情報管理に特化
     class Book
     {
@@ -851,7 +851,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package review
 
     import (
@@ -959,7 +959,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {BookId} from "../Book/BookId/BookId";
     import {Comment} from "./Comment/Comment";
     import {Name} from "./Name/Name";
@@ -1076,7 +1076,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace Domain\Models\Review;
@@ -1220,7 +1220,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package book
 
     type Book struct {
@@ -1270,7 +1270,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {Author} from "./Author/Author";
     import {BookId} from "./BookId/BookId";
     import {BookIdentity} from "./BookIdentity/BookIdentity";
@@ -1324,7 +1324,7 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace Domain\Models\Book;
@@ -1414,7 +1414,7 @@ npx jest src/Domain/models/Review/Review.test.ts
 - レビュアーの名前変更（`"updateName"`）、評価変更（`"updateRating"`）
 - レビュアーのコメント編集（`"editComment"`）
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 import {BookId} from "../Book/BookId/BookId";
 import {Comment} from "./Comment/Comment";
 import {Name} from "./Name/Name";
@@ -1660,7 +1660,7 @@ npx jest src/Domain/models/Book/Book.test.ts
 - `Book` 集約の同一性判定（`"equals"`）
 - 書籍価格の変更（`"changePrice"`）
 
-```typescript title=".ts"
+```typescript title="TypeScript の場合の実装例"
 import {Author} from "./Author/Author";
 import {Book} from "./Book";
 import {BookId} from "./BookId/BookId";

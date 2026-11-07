@@ -23,7 +23,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import (
     	"gorm.io/driver/mysql"
     	"gorm.io/gorm"
@@ -44,7 +44,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import type {User} from "@prisma/client";
     import {prisma} from "~/services/prisma.server";
 
@@ -57,7 +57,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     function handler(): array
@@ -88,7 +88,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     user := User{
     	ID:        1,
     	BirthDate: "2000-01-01",
@@ -97,7 +97,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const user = {
       id: 1,
       birthDate: "2000-01-01",
@@ -106,7 +106,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $user = [
@@ -125,7 +125,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     user := User{
     	ID: 1,
     	// 日付（DBではDATE型のカラムにする）
@@ -147,7 +147,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {Prisma} from "@prisma/client";
 
     const user = {
@@ -171,7 +171,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     use Brick\Math\BigDecimal;
@@ -209,7 +209,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     var user User
     err := db.
     	// 不要なカラムも取得してしまっている
@@ -222,7 +222,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import type {User} from "@prisma/client";
     import {prisma} from "~/services/prisma.server";
 
@@ -235,7 +235,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $user = User::query()
@@ -264,7 +264,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 親テーブルにSQLを発行 (1回)
     var users []User
     db.Where("team_id = ?", teamID).Find(&users)
@@ -278,7 +278,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import type {User} from "@prisma/client";
     import {prisma} from "~/services/prisma.server";
 
@@ -295,7 +295,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 親テーブルにSQLを発行 (1回)
@@ -324,7 +324,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 親テーブルにSQLを発行 (1回)
     var users []User
     db.Where("team_id = ?", teamID).Find(&users)
@@ -344,7 +344,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import type {User} from "@prisma/client";
     import {prisma} from "~/services/prisma.server";
 
@@ -364,7 +364,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 親テーブルにSQLを発行 (1回)
@@ -386,7 +386,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
     GORM では、`Where()` 関数で IN 句を指定すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 親テーブルにSQLを発行 (1回)
     var users []User
     db.Where("team_id = ?", teamID).Find(&users)
@@ -406,7 +406,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
     Prisma では、`in` プロパティを使用すると、IN 句を含む SQL が発行され、最終的に 2 回で済む。
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import type {User} from "@prisma/client";
     import {prisma} from "~/services/prisma.server";
 
@@ -426,7 +426,7 @@ DB 処理のたびに DB 接続を確立すると、DB 処理に時間がかか�
 
     Laravel では `with()` 関数を使用すると、内部的に親テーブルへの SQL と IN 句を使用した SQL が発行され、最終的に 2 回で済む。
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     // 親テーブルと子テーブルにSQLを発行する (2回)
@@ -461,7 +461,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     page := 1
     limit := 50
 
@@ -476,7 +476,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const page = 1;
     const limit = 50;
 
@@ -490,7 +490,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $page = 1;
@@ -521,7 +521,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     var events []Event
     err := db.
     	Where("tenant_id = ?", tenantID).
@@ -533,7 +533,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const events = await prisma.event.findMany({
       where: {
         tenantId,
@@ -549,7 +549,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $events = Event::where("tenant_id", $tenantId)
@@ -572,7 +572,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     err := db.
     	Clauses(clause.OnConflict{
     		Columns:   []clause.Column{{Name: "tenant_id"}, {Name: "hour"}},
@@ -587,7 +587,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     await prisma.eventHourlySummary.upsert({
       where: {
         tenantId_hour: {
@@ -608,7 +608,7 @@ DB からレコードの一覧を取得する場合、ページング（取得�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     EventHourlySummary::upsert(
@@ -643,7 +643,7 @@ model EventHourlySummary {
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     var eventSummary EventHourlySummary
     err := db.
     	Where("tenant_id = ? AND hour = ?", tenantID, startAt).
@@ -657,7 +657,7 @@ model EventHourlySummary {
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const eventSummary = await prisma.eventHourlySummary.findUnique({
       where: {
         tenantId_hour: {
@@ -672,7 +672,7 @@ model EventHourlySummary {
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $eventSummary = EventHourlySummary::where("tenant_id", $tenantId)
@@ -700,7 +700,7 @@ model EventHourlySummary {
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     func findByUserNames(userNames []string) ([]User, error) {
     	var users []User
     	err := db.
@@ -712,7 +712,7 @@ model EventHourlySummary {
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     async function findByUserNames(userNames: string[]) {
       return prisma.user.findMany({
         where: {
@@ -724,7 +724,7 @@ model EventHourlySummary {
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     function findByUserNames(array $userNames): array
@@ -741,7 +741,7 @@ model EventHourlySummary {
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     func findByUserNames(userNames []string) ([]User, error) {
     	if len(userNames) == 0 {
     		return []User{}, nil
@@ -757,7 +757,7 @@ model EventHourlySummary {
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     async function findByUserNames(userNames: string[]) {
       if (userNames.length === 0) {
         return [];
@@ -773,7 +773,7 @@ model EventHourlySummary {
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     function findByUserNames(array $userNames): array
@@ -804,7 +804,7 @@ model EventHourlySummary {
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     var users []User
     err := db.
     	Select("team_id").
@@ -818,7 +818,7 @@ model EventHourlySummary {
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const users = await prisma.user.findMany({
       select: {
         teamId: true,
@@ -833,7 +833,7 @@ model EventHourlySummary {
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $users = User::select("team_id")->get();
@@ -850,7 +850,7 @@ Prisma の `groupBy()` 関数を使用し、チームごとのユーザー数を
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     var userCountByTeam []struct {
     	TeamID string
     	Count  int
@@ -864,7 +864,7 @@ Prisma の `groupBy()` 関数を使用し、チームごとのユーザー数を
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const userCountByTeam = await prisma.user.groupBy({
       by: ["teamId"],
       _count: {
@@ -875,7 +875,7 @@ Prisma の `groupBy()` 関数を使用し、チームごとのユーザー数を
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $userCountByTeam = User::selectRaw("team_id, COUNT(*)")
@@ -909,7 +909,7 @@ GROUP BY team_id;
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     var orders []Order
     err := db.
     	Select("amount").
@@ -923,7 +923,7 @@ GROUP BY team_id;
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const orders = await prisma.order.findMany({
       select: {
         amount: true,
@@ -935,7 +935,7 @@ GROUP BY team_id;
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $orders = Order::select("amount")->get();
@@ -949,7 +949,7 @@ Prisma の `aggregate()` 関数を使用し、注文金額を合計する処理�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     var totalAmount int
     err := db.
     	Model(&Order{}).
@@ -959,7 +959,7 @@ Prisma の `aggregate()` 関数を使用し、注文金額を合計する処理�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     const result = await prisma.order.aggregate({
       _sum: {
         amount: true,
@@ -971,7 +971,7 @@ Prisma の `aggregate()` 関数を使用し、注文金額を合計する処理�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     $totalAmount = Order::sum("amount");

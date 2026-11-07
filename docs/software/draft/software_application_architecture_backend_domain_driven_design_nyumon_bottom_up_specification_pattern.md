@@ -31,7 +31,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type CircleFullSpecification struct {
     	userRepository IUserRepository
     }
@@ -64,7 +64,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class CircleFullSpecification {
       constructor(private readonly userRepository: IUserRepository) {}
 
@@ -82,7 +82,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final class CircleFullSpecification
     {
         public function __construct(
@@ -105,7 +105,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type CircleApplicationService struct {
     	circleFactory    ICircleFactory
     	circleRepository ICircleRepository
@@ -176,7 +176,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class CircleApplicationService {
       constructor(
         private readonly circleFactory: ICircleFactory,
@@ -218,7 +218,7 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final class CircleApplicationService
     {
         public function __construct(
@@ -269,7 +269,7 @@ Criteria パターンと呼ぶこともある。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type CircleRecommendSpecification struct {
     	executeDateTime time.Time
     }
@@ -289,7 +289,7 @@ Criteria パターンと呼ぶこともある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class CircleRecommendSpecification {
       constructor(private readonly executeDateTime: Date) {}
 
@@ -306,7 +306,7 @@ Criteria パターンと呼ぶこともある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final class CircleRecommendSpecification
     {
         public function __construct(
@@ -327,7 +327,7 @@ Criteria パターンと呼ぶこともある。
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type CircleApplicationService struct {
     	circleFactory    ICircleFactory
     	circleRepository ICircleRepository
@@ -372,7 +372,7 @@ Criteria パターンと呼ぶこともある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class CircleApplicationService {
       constructor(
         private readonly circleFactory: ICircleFactory,
@@ -401,7 +401,7 @@ Criteria パターンと呼ぶこともある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final class CircleApplicationService
     {
         public function __construct(

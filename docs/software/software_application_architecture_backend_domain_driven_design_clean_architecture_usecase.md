@@ -99,7 +99,7 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // UIクライアント向けのインターラクター
     type UiFooInteractor struct {
     	fooRepository FooRepository
@@ -143,7 +143,7 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // UIクライアント向けのインターラクター
     export class UiFooInteractor {
       constructor(private readonly fooRepository: FooRepository) {}
@@ -181,7 +181,7 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // UIクライアント向けのインターラクター
     class UiFooInteractor
     {
@@ -353,7 +353,7 @@ flowchart TB
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package interactors
 
     import "errors"
@@ -404,7 +404,7 @@ flowchart TB
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     /**
      * Foo作成インターラクタークラス
      * ※ユースケースごとにクラスを定義する方法
@@ -444,7 +444,7 @@ flowchart TB
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Usecase\Foo\Interactors;
@@ -497,7 +497,7 @@ flowchart TB
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package interactors
 
     import "errors"
@@ -624,7 +624,7 @@ flowchart TB
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     /**
      * Fooインターラクタークラス
      * ※CRUD全てのユースケースを、1個のクラスを定義する方法
@@ -726,7 +726,7 @@ flowchart TB
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Usecase\Foo\Interactors;
@@ -856,7 +856,7 @@ flowchart TB
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package inputboundaries
 
     // Fooインターラクターインターフェース
@@ -873,7 +873,7 @@ flowchart TB
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     /**
      * Fooインターラクターインターフェース
      */
@@ -892,7 +892,7 @@ flowchart TB
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Usecase\Foo\InputBoundaries;
@@ -939,7 +939,7 @@ flowchart TB
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package requests
 
     type FooCreateRequest struct {
@@ -958,7 +958,7 @@ flowchart TB
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class FooCreateRequest {
       private readonly fooId: number;
 
@@ -973,7 +973,7 @@ flowchart TB
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Interface\Foo\Requests;
@@ -1013,7 +1013,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package responses
 
     type FooIndexResponse struct {
@@ -1033,7 +1033,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class FooIndexResponse {
       private readonly foos: Foo[];
 
@@ -1051,7 +1051,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Interface\Foo\Responses;
@@ -1079,7 +1079,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package responses
 
     type FooCreateResponse struct {
@@ -1105,7 +1105,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class FooCreateResponse {
       private readonly fooId: number;
 
@@ -1127,7 +1127,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Interface\Foo\Responses;
@@ -1177,7 +1177,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package notify
 
     type NotifyFooService struct {
@@ -1196,7 +1196,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class NotifyFooService {
       private readonly message: Message;
 
@@ -1212,7 +1212,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Usecase\Foo\Services\Notify;
@@ -1238,7 +1238,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package services
 
     type FooInteractor struct{}
@@ -1252,7 +1252,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class FooInteractor {
       async foo(): Promise<void> {
         const message = new Message(/* メッセージに関するデータを渡す */);
@@ -1264,7 +1264,7 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     namespace App\Usecase\Foo\Services;

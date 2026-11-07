@@ -47,7 +47,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package controller
 
     import (
@@ -92,7 +92,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {Request, Response} from "express";
     import {UserRegisterDto} from "../../application/dto/UserRegisterDto";
     import {IUserApplicationService} from "../../application/UserApplicationService";
@@ -110,7 +110,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     use App\Application\Dto\UserRegisterDto;
@@ -138,7 +138,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package dto
 
     type UserRegisterDto struct {
@@ -156,7 +156,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     export class UserRegisterDto {
       constructor(
         public readonly name: string,
@@ -167,7 +167,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserRegisterDto
     {
         public function __construct(
@@ -186,7 +186,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     package application
 
     import "app/application/dto"
@@ -205,7 +205,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {UserRegisterDto} from "./dto/UserRegisterDto";
 
     export interface IUserApplicationService {
@@ -221,7 +221,7 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     use App\Application\Dto\UserRegisterDto;

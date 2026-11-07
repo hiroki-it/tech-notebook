@@ -31,7 +31,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserName struct {
     	Value string
     }
@@ -46,7 +46,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type UserName = {
       value: string;
     };
@@ -61,7 +61,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final readonly class UserName
     {
         public function __construct(
@@ -83,7 +83,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserId string
 
     type User struct {
@@ -101,7 +101,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type UserId = string;
 
     type User = {
@@ -117,7 +117,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     final readonly class UserId
     {
         public function __construct(
@@ -152,7 +152,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import "github.com/google/uuid"
 
     type UserFactory interface {
@@ -185,7 +185,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {v4 as uuidv4} from "uuid";
 
     type UserFactory = {
@@ -209,7 +209,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     use Ramsey\Uuid\Uuid;
 
     interface UserFactory
@@ -239,7 +239,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserApplicationService interface {
     	RegisterUser(userName string) (User, error)
     }
@@ -271,7 +271,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type UserApplicationService = {
       registerUser: (userName: string) => Promise<User>;
     };
@@ -291,7 +291,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface UserApplicationService
     {
         public function registerUser(string $userName): User;
@@ -332,7 +332,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserRepository interface {
     	NextIdentity() (UserId, error)
     	Save(user User) error
@@ -370,7 +370,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     type UserRepository = {
       nextIdentity: () => Promise<UserId>;
       save: (user: User) => Promise<void>;
@@ -400,7 +400,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface UserRepository
     {
         public function nextIdentity(): UserId;
@@ -433,7 +433,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 ===! "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import (
     	"database/sql"
     	"os"
@@ -461,7 +461,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import mysql from "mysql2/promise";
     import {v4 as uuidv4} from "uuid";
 
@@ -475,7 +475,7 @@ description: ９章＠ドメイン駆動設計入門ボトムアップの知見�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $pool = new PDO(
         sprintf("mysql:host=%s;dbname=%s", getenv("DB_HOST"), getenv("DB_NAME")),
         getenv("DB_USER"),

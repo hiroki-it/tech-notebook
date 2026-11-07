@@ -372,7 +372,7 @@ graph LR
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import eslint from "@eslint/js";
     import tseslint from "typescript-eslint";
     import * as importPlugin from "eslint-plugin-import";

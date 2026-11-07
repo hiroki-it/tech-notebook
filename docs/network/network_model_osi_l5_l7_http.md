@@ -409,7 +409,7 @@ GET リクエストではあるが、ボディにクエリパラメーターを�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import (
     	"crypto/tls"
     	"io"
@@ -459,7 +459,7 @@ GET リクエストではあるが、ボディにクエリパラメーターを�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {Agent, fetch} from "undici";
 
     const URL = "https://example.com";
@@ -485,7 +485,7 @@ GET リクエストではあるが、ボディにクエリパラメーターを�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     <?php
 
     define("URL", "https://example.com");
@@ -947,7 +947,7 @@ HTTP はステートレスなプロトコルであるが、Cookie 情報によ�
 
 クライアントから受信したリクエストの `Cookie` ヘッダーの内容は、グローバル変数に格納されている。
 
-```injectablephp title=".php"
+```injectablephp title="PHP の場合の実装例"
 <?php
 
 $_COOKIE = ["Cookie名" => "値"];
@@ -963,7 +963,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
   === "Go"
 
-      ```go title=".go"
+      ```go title="Go の場合の実装例"
       http.SetCookie(w, &http.Cookie{
       	Name:     "Cookie名",
       	Value:    "Cookie値",
@@ -977,7 +977,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
   === "TypeScript"
 
-      ```typescript title=".ts"
+      ```typescript title="TypeScript の場合の実装例"
       res.setHeader(
         "Set-Cookie",
         [
@@ -993,7 +993,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
   === "PHP"
 
-      ```injectablephp title=".php"
+      ```injectablephp title="PHP の場合の実装例"
       <?php
 
       setcookie(
@@ -1067,7 +1067,7 @@ GoogleConsole におけるセッションについては、以下のリンクを
 
 もしクライアントにすでにセッション ID が発行されている場合、セッションデータを参照するようになる。
 
-```injectablephp title=".php"
+```injectablephp title="PHP の場合の実装例"
 <?php
 
 // セッションの開始。セッションIDを発行する。

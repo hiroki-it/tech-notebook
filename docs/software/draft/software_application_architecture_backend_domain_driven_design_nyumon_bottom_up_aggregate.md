@@ -73,7 +73,7 @@ UserName の状態を変更するときは、User に UserName を渡さない�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     // 誤った方法
     // これをできないように実装するべき
     user := &User{}
@@ -86,7 +86,7 @@ UserName の状態を変更するときは、User に UserName を渡さない�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     // 誤った方法
     // これをできないように実装するべき
     const user = new User();
@@ -99,7 +99,7 @@ UserName の状態を変更するときは、User に UserName を渡さない�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     // 誤った方法
     // これをできないように実装するべき
     $user = new User();
@@ -128,19 +128,19 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     circle.members = append(circle.members, member)
     ```
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     circle.members.add(member);
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $circle->members[] = $member;
     ```
 
@@ -152,7 +152,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	id    CircleId
     	owner *User
@@ -182,7 +182,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       private readonly id: CircleId;
       private owner: User;
@@ -209,7 +209,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private readonly CircleId $id;
@@ -245,7 +245,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     if err := circle.Join(user); err != nil {
     	return err
     }
@@ -253,13 +253,13 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     circle.join(user);
     ```
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     $circle->join($user);
     ```
 
@@ -275,7 +275,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     import (
     	"context"
     	"database/sql"
@@ -339,7 +339,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     import {PrismaClient} from "@prisma/client";
 
     const prisma = new PrismaClient();
@@ -377,7 +377,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private readonly CircleId $id;
@@ -429,7 +429,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     if len(circle.members) >= 29 {
     	return NewCircleFullException(s.id)
     }
@@ -437,7 +437,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     if (circle.members.count >= 29) {
       throw new CircleFullException(this.id);
     }
@@ -445,7 +445,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     if (count($circle->members) >= 29) {
         throw new CircleFullException($this->id);
     }
@@ -457,7 +457,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	id      CircleId
     	members []*User
@@ -489,7 +489,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       private readonly id: CircleId;
       private members: User[];
@@ -518,7 +518,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private readonly CircleId $id;
@@ -557,7 +557,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     if circle.IsFull() {
     	return NewCircleFullException(circleId)
     }
@@ -565,7 +565,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     if (circle.isFull()) {
       throw new CircleFullException(circleId);
     }
@@ -573,7 +573,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     if ($circle->isFull()) {
         throw new CircleFullException($circleId);
     }
@@ -585,7 +585,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	members []*User
     }
@@ -604,7 +604,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       private members: User[];
 
@@ -621,7 +621,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private array $members;
@@ -649,7 +649,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type EFUserRepository struct {
     	db *sql.DB
     }
@@ -681,7 +681,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class EFUserRepository implements IUserRepository {
       constructor(private readonly prisma: PrismaClient) {}
 
@@ -701,7 +701,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class EFUserRepository implements IUserRepository
     {
         public function __construct(private readonly PDO $pdo)
@@ -732,7 +732,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type IUserNotification interface {
     	Id(id UserId)
     	Name(name UserName)
@@ -741,7 +741,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     interface IUserNotification {
       id(id: UserId): void;
       name(name: UserName): void;
@@ -750,7 +750,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     interface IUserNotification
     {
         public function id(UserId $id): void;
@@ -766,7 +766,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type UserDataModelBuilder struct {
     	// ドメインオブジェクトをプロパティに設定する
     	id   UserId
@@ -794,7 +794,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class UserDataModelBuilder implements IUserNotification {
       // ドメインオブジェクトをプロパティに設定する
       private id!: UserId;
@@ -820,7 +820,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class UserDataModelBuilder implements IUserNotification
     {
         // ドメインオブジェクトをプロパティに設定する
@@ -854,7 +854,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type User struct {
     	id   UserId
     	name UserName
@@ -876,7 +876,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class User {
       private readonly id: UserId;
       private name: UserName;
@@ -896,7 +896,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class User
     {
         private readonly UserId $id;
@@ -925,7 +925,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type EFUserRepository struct {
     	db *sql.DB
     }
@@ -957,7 +957,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class EFUserRepository implements IUserRepository {
       constructor(private readonly prisma: PrismaClient) {}
 
@@ -980,7 +980,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class EFUserRepository implements IUserRepository
     {
         public function __construct(private readonly PDO $pdo)
@@ -1038,7 +1038,7 @@ Circle では、User を Members 配列で保持することで、Circle から 
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	members []*User
     }
@@ -1061,7 +1061,7 @@ Circle では、User を Members 配列で保持することで、Circle から 
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       private members: User[];
 
@@ -1080,7 +1080,7 @@ Circle では、User を Members 配列で保持することで、Circle から 
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private array $members;
@@ -1114,7 +1114,7 @@ CircleRepository で User を永続化しようとしている。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type CircleRepository struct {
     	db *sql.DB
     }
@@ -1160,7 +1160,7 @@ CircleRepository で User を永続化しようとしている。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class CircleRepository implements ICircleRepository {
       constructor(private readonly prisma: PrismaClient) {}
 
@@ -1189,7 +1189,7 @@ CircleRepository で User を永続化しようとしている。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class CircleRepository implements ICircleRepository
     {
         public function __construct(private readonly PDO $pdo)
@@ -1232,7 +1232,7 @@ CircleRepository で User を永続化しようとしている。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	id   CircleId
     	name CircleName
@@ -1268,7 +1268,7 @@ CircleRepository で User を永続化しようとしている。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       public readonly id: CircleId;
       private name: CircleName;
@@ -1294,7 +1294,7 @@ CircleRepository で User を永続化しようとしている。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         public readonly CircleId $id;
@@ -1335,7 +1335,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type CircleApplicationService struct {
     	circleRepository ICircleRepository
     	circleService    *CircleService
@@ -1387,7 +1387,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class CircleApplicationService {
       constructor(
         private readonly circleRepository: ICircleRepository,
@@ -1422,7 +1422,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class CircleApplicationService
     {
         public function __construct(
@@ -1472,7 +1472,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	name    *CircleName
     	owner   *UserId
@@ -1521,7 +1521,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       private name: CircleName;
       private owner: UserId;
@@ -1564,7 +1564,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private CircleName $name;
@@ -1627,7 +1627,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type CircleApplicationService struct {
     	db               *sql.DB
     	circleRepository ICircleRepository
@@ -1689,7 +1689,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class CircleApplicationService {
       constructor(
         private readonly prisma: PrismaClient,
@@ -1724,7 +1724,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class CircleApplicationService
     {
         public function __construct(
@@ -1791,7 +1791,7 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	owner   *User
     	members []*User
@@ -1815,7 +1815,7 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       private owner: User;
       private members: User[];
@@ -1833,7 +1833,7 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private User $owner;
@@ -1858,7 +1858,7 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 
 === "Go"
 
-    ```go title=".go"
+    ```go title="Go の場合の実装例"
     type Circle struct {
     	owner   *User
     	members []*User
@@ -1886,7 +1886,7 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 
 === "TypeScript"
 
-    ```typescript title=".ts"
+    ```typescript title="TypeScript の場合の実装例"
     class Circle {
       private owner: User;
       private members: User[];
@@ -1908,7 +1908,7 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 
 === "PHP"
 
-    ```injectablephp title=".php"
+    ```injectablephp title="PHP の場合の実装例"
     class Circle
     {
         private User $owner;
