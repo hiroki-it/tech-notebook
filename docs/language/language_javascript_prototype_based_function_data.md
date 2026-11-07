@@ -575,8 +575,6 @@ PHP にも、`forEach()` 関数と同様に配列に対してコールバック�
 
 補足として PHP にも、`forEach()` 関数と同じような使い方をする `array_walk()` 関数がある。
 
-> - [【IT技術の知見】反復ロジック＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html)
-
 ```javascript
 const array = ["foo", "bar", "baz"];
 

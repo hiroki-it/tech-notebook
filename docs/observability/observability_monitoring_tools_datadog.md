@@ -71,10 +71,6 @@ description: Datadog＠監視ツールの知見を記録しています。
 
 そのため、アプリケーション間で重要度レベルを共通化できる。
 
-ステータスに応じてアラートするか否かの決め方については、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】監視＠可観測性 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html)
-
 #### ▼ テンプレート変数
 
 記入中...

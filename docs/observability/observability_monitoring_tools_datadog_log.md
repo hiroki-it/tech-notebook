@@ -83,9 +83,6 @@ description: ログ＠Datadogの知見を記録しています。
 
 メトリクスと分散トレースであれば収集できる。
 
-> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_metrics.html
-> - https://hiroki-it.github.io/tech-notebook/observability/observability_telemetry_datadog_distributed_trace.html
-
 <br>
 
 ### FireLens コンテナ
@@ -599,10 +596,6 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 これに対して、以下のようなカテゴリパーサーのルールを定義する。
 
 `http.status_code` 属性のステータスコード値に応じて、`http.status_category` 属性にレベル値 (`info`、`notice`、`warning`、`critical`) に変換する。
-
-ステータスコードとレベルの対応関係については、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】監視＠可観測性 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/observability/observability_monitoring.html)
 
 ```bash
 INFO @http.status_code:[200 TO 299]

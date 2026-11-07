@@ -62,7 +62,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
     <tr>
       <td>モデル</td>
       <td>リクエスト／レスポンスのスキーマを設定する。これらのバリデーションのために使用できる。</td>
-      <td>OpenAPI 仕様におけるスキーマについては、以下のリンクを参考にせよ。<br><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html">https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html</a></td>
+      <td></td>
     </tr>
     <tr>
       <td>リソースポリシー</td>
@@ -174,7 +174,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
     <tr>
       <td>API キーの必要性</td>
       <td>リクエストヘッダーにおける API キーのバリデーションを実行する。リクエストのヘッダーに『<code>x-api-key</code>』を含み、これに API キーが割り当てられていることを強制する。</td>
-      <td>ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。<br><a href="https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html">https://hiroki-it.github.io/tech-notebook/software/software_application_messaging_api_restful.html</a></td>
+      <td>ヘッダー名は大文字でも小文字でも問題ないが、小文字が推奨。</td>
     </tr>
     <tr>
       <td>URL クエリ文字列パラメーター</td>

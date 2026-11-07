@@ -475,8 +475,6 @@ func main() {
 }
 ```
 
-> - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
-
 <br>
 
 ### 埋め込みによる委譲

@@ -19,8 +19,6 @@ description: クラス＠PHPの知見を記録しています。
 
 ![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
 
-> - [【IT技術の知見】オブジェクト指向設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html)
-
 <br>
 
 ### Association (関連)
@@ -207,8 +205,6 @@ $car = new Car();
 クラスがほかのクラスの性質を継承する、またはその振る舞いを実装する関係性のことで、Generalization と Realization に分類できる。
 
 ![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
-
-> - [【IT技術の知見】オブジェクト指向設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html)
 
 <br>
 

@@ -1353,10 +1353,6 @@ Laravel は Active Record パターンを採用しており、これはビジネ
 
 その場合、Laravel にリポジトリパターンを導入することが選択肢の 1 つになる。
 
-リポジトリパターンについては、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】クリーンアーキテクチャ＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)
-
 <br>
 
 ### 工夫

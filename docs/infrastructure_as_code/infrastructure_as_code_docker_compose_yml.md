@@ -15,10 +15,6 @@ description: docker-compose.yml＠Docker composeの知見を記録していま�
 
 コンテナを宣言的に定義し、コンテナのプロビジョニングを実行する。
 
-プロビジョニングされるコンテナについては、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】Docker＠コンテナ型仮想化 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html)
-
 <br>
 
 ## 02. services
@@ -590,10 +586,6 @@ docker エリアに Volume が作成され、`service` オプション内に設�
 
 MySQL コンテナの datadir ディレクトリ (`/var/lib/mysql`) に、docker エリアのボリュームをマウントする。
 
-datadir ディレクトリについては、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】設定ファイル＠MySQL - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html)
-
 ```yaml
 service:
   db:
@@ -892,9 +884,5 @@ initdb
 CREATE DATABASE IF NOT EXISTS `test` COLLATE 'utf8mb4_general_ci' CHARACTER SET 'utf8mb4';
 GRANT ALL ON *.* TO 'foo'@'%' ;
 ```
-
-PHPUnit で接続する DB を指定する方法については、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】PHPのテストツール＠ホワイトボックステスト - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/testing/testing_whitebox_application_php.html)
 
 <br>

@@ -169,7 +169,6 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 
 これにより、ルートエンティティとテーブルを別々に設計できる。
 
-> - [【IT技術の知見】RDBMS＠DB系ミドルウェア - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
 > - https://codezine.jp/article/detail/10776
 
 <br>

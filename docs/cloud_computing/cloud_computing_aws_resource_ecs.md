@@ -814,7 +814,7 @@ Amazon ECS タスク内のコンテナ 1 つに環境を設定する。
       <td>image</td>
       <td></td>
       <td>Amazon ECR の URL を設定する。</td>
-      <td>指定できる URL の記法は、Dockerfile の <code>FROM</code> 処理と同じである。<br><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html">https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html</a></td>
+      <td>指定できる URL の記法は、Dockerfile の <code>FROM</code> 処理と同じである。</td>
     </tr>
     <tr>
       <td>logConfiguration<br>(logDriver)</td>
@@ -856,7 +856,7 @@ Amazon ECS タスク内のコンテナ 1 つに環境を設定する。
       <td>mountPoints</td>
       <td></td>
       <td>隠蔽されたホストとコンテナの間でボリュームマウントを実行する。Fargate は、脆弱性と性能の観点で、バインドマウントに対応していない。</td>
-      <td>・<a href="https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html">https://hiroki-it.github.io/tech-notebook/virtualization/virtualization_container_docker.html</a></td>
+      <td></td>
     </tr>
     <tr>
       <td>ulimit</td>

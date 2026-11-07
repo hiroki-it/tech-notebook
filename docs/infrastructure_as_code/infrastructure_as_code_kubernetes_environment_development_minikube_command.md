@@ -297,7 +297,6 @@ Server Version: version.Info{
 ```
 
 > - [Kubectl \| minikube](https://minikube.sigs.k8s.io/docs/handbook/kubectl/)
-> - [【IT技術の知見】コマンド＠Kubernetes - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html)
 
 <br>
 

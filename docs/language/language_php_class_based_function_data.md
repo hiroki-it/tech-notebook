@@ -464,10 +464,6 @@ PHP には最初からマジック関数は組み込まれているが、自身�
 
 オブジェクトの不変性を実現するために使用される。
 
-オブジェクトの不変性は、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】ドメイン駆動設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
-
 ```injectablephp
 <?php
 class Foo
@@ -734,10 +730,6 @@ $D = objB()->objC()->objD();
 ある関数 `f` の定義のなかに `f` 自身を呼び出している箇所がある。
 
 ![再帰的](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再帰的.png)
-
-以下のリンクも参考にせよ。
-
-> - [【IT技術の知見】アルゴリズムロジック＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html)
 
 `(1)`
 

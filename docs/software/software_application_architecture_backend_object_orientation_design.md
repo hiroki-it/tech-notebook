@@ -29,8 +29,6 @@ description: オブジェクト指向設計＠アーキテクチャの知見を�
 
 ドメインモデル図がある。
 
-> - [【IT技術の知見】ドメイン駆動設計＠アーキテクチャ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
-
 <br>
 
 ## 02. クラス図
@@ -53,9 +51,7 @@ description: オブジェクト指向設計＠アーキテクチャの知見を�
 
 Association (関連) 、Aggregation (集約) 、Composition (合成) が使用される。
 
-『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。実装例は以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
+『Association ＞ Aggregation ＞ Composition』の順で、依存性が低くなる。
 
 #### ▼ is-a-kind-of (グループとメンバーの関係性)
 
@@ -63,9 +59,7 @@ Association (関連) 、Aggregation (集約) 、Composition (合成) が使用�
 
 『is-a-kind-of』な関係と表現され、より具体的に説明すると、グループとメンバーの関係性である。
 
-Generalization (汎化) 、Realization (実現) が使用される。実装例は以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
+Generalization (汎化) 、Realization (実現) が使用される。
 
 #### ▼ use (引数型/返却値型として使用する関係性)
 
@@ -74,10 +68,6 @@ Generalization (汎化) 、Realization (実現) が使用される。実装例�
 『use』な関係と表現され、より具体的に説明すると、引数型/返却値型として使用する関係性である。
 
 Dependency (依存) が使用される。
-
-実装例は以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
 
 <br>
 

@@ -785,8 +785,6 @@ Laravel ではデフォルトで Handler クラスがすべてのステップを
 
 エラーハンドリングのステップのうち、エラー検出については言及しないこととする。
 
-> - [【IT技術の知見】エラーとエラーハンドリング＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html)
-
 <br>
 
 ### 例外スロー
@@ -2922,10 +2920,6 @@ class FooAfterMiddleware
 
 また、同一セッションで一意な CSRF トークンを作成する。
 
-CSRF トークンによる CSRF の防御については、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】サイバー攻撃＠セキュリティ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/security/security_cyber_attacks.html)
-
 #### ▼ VerifyCsrfToken
 
 セッションデータに書かれた CSRF トークンと、リクエストボディに割り当てられたトークンを比較する。
@@ -3201,8 +3195,6 @@ $ chmod -R 777 /var/www/foo/storage
 #### ▼ PHP-FPM のログについて
 
 Laravel と PHP-FPM のプロセスはそれぞれ独立しているため、Laravel のログの出力先を変更しても、PHP-FPM のログの出力先は変更されない。
-
-> - [【IT技術の知見】PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェア - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html)
 
 #### ▼ `stack` キー
 
@@ -4611,10 +4603,6 @@ return [
 ### ServiceContainer
 
 #### ▼ ServiceContainer、バインド、リゾルブとは
-
-ServiceContainer、バインド、リゾルブについては、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】クラス＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
 
 ```injectablephp
 <?php

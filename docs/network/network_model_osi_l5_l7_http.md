@@ -666,8 +666,6 @@ API に認証/認可プロセスが存在せず、トークン発行と参照権
 
 一意な識別子として使用しているデータの重複や、楽観的ロックによる排他制御が起こる場合に使用する。
 
-> - [【IT技術の知見】RDBMS＠DB系ミドルウェア - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
-
 #### ▼ `412` (リソースアクセスエラー)
 
 誤ったリクエストである。

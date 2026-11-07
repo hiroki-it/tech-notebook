@@ -110,7 +110,6 @@ PID  TTY  TIME     CMD
 ```
 
 > - [Linuxの「プロセス」って何だろう？：“応用力”をつけるためのLinux再入門（13）（2/2 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1706/23/news010_2.html)
-> - [【IT技術の知見】シェル＠ユーティリティ - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html)
 
 #### ▼ 同時処理できるリクエスト数
 

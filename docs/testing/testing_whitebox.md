@@ -199,10 +199,6 @@ Fooクラスやfoo関数の内部処理
 
 このとき、データアクセスに関わる層のユニットテストのために、本来の DB とは別に、あらかじめテスト用 DB を用意したほうがよい。
 
-テスト用 DB を `docker-compose.yml` ファイルによって用意する方法については、以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】docker-compose.yml＠Docker compose - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
-
 <br>
 
 ## 03-02. 設計規約
