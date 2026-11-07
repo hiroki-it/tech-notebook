@@ -120,3 +120,19 @@ JVM は以下でメモリを消費するため、これらすべてを合計し�
 > - [KubernetesでJVMアプリを動かすための実践的ノウハウ集 / JVM on Kubernetes - Speaker Deck](https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27)
 
 <br>
+
+## 05. データ構造の実装方法
+
+データ構造の Java による実装方法を以下に示す。
+
+### 配列型
+
+#### ▼ ArrayList
+
+ArrayList クラスによって実装される配列型。
+
+#### ▼ HashMap
+
+HashMap クラスによって実装される配列型。
+
+<br>

@@ -1,8 +1,9 @@
 ---
-title: 【IT技術の知見】データ構造＠PHP
+title: 【IT技術の知見】データ型＠PHP
+description: データ型＠PHPの知見を記録しています。
 ---
 
-# データ構造＠PHP
+# データ型＠PHP
 
 ## はじめに
 
@@ -10,281 +11,7 @@ title: 【IT技術の知見】データ構造＠PHP
 
 <br>
 
-## 01. データ構造の実装方法
-
-ハードウェアが処理を行うときに、データの集合を効率的に扱うためのデータ格納形式をデータ構造という。
-
-データ構造の PHP による実装方法を以下に示す。
-
-### 配列型
-
-同じデータ型のデータを並べたデータ格納様式のこと。
-
-#### ▼ インデックス配列
-
-番号キーごとに値が格納された配列型のこと。
-
-```yaml
-Array
-(
-[0] => A
-[1] => B
-[2] => C
-)
-```
-
-#### ▼ 多次元配列
-
-配列のなかに配列を持つ配列型のこと。
-
-配列の入れ子構造が２段の場合、『2 次元配列』と呼ぶ。
-
-```yaml
-(
-[0] => Array
-(
-[0] => リンゴ
-[1] => イチゴ
-[2] => トマト
-)
-
-[1] => Array
-(
-[0] => メロン
-[1] => キュウリ
-[2] => ピーマン
-)
-)
-```
-
-#### ▼ 連想配列
-
-キー名 (赤、緑、黄、果物、野菜) ごとに値が格納された配列型のこと。
-
-下の例は、2 次元配列かつ連想配列である。
-
-```yaml
-Array
-(
-[赤] => Array
-(
-[果物] => リンゴ
-[果物] => イチゴ
-[野菜] => トマト
-)
-
-[緑] => Array
-(
-[果物] => メロン
-[野菜] => キュウリ
-[野菜] => ピーマン
-)
-)
-```
-
-<br>
-
-### LinkedList 型
-
-PHP で使用することは個人的にはないデータ格納様式。
-
-詳しくは、Java における LinkedList 型を参考にせよ。
-
-#### ▼ PHP の `list()` 関数とは何なのか
-
-PHP の `list()` 関数は、List 型とは意味合いが異なる。
-
-配列の個々の要素を変数に格納したい場合、List 型を使用しなければ、冗長ではあるが、以下のように実装する必要がある。
-
-```injectablephp
-<?php
-
-$array = array("あ", "い", "う");
-$a = $array[0];
-$i = $array[1];
-$u = $array[2];
-
-echo $a.$i.$u; // あいう
-```
-
-しかし、以下のように、`list()` 関数を使用することによって、複数の変数への格納を１行で実装できる。
-
-```injectablephp
-<?php
-
-list($a, $i, $u) = array("あ", "い", "う");
-
-echo $a.$i.$u; // あいう
-```
-
-<br>
-
-### キュー型
-
-![Queue1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue1.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![Queue2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue2.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![Queue3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue3.gif)
-
-PHP では、`array_push()` 関数と `array_shift()` 関数を組み合わせることにより、実装できる。
-
-```injectablephp
-<?php
-$array = array("Blue", "Green");
-
-// 引数を、配列の最後に、要素として追加する。
-array_push($array, "Red");
-print_r($array);
-
-// 出力結果
-
-//	Array
-//	(
-//		[0] => Blue
-//		[1] => Green
-//		[2] => Red
-//	)
-
-// 配列の最初の要素を取り出す。
-$theFirst= array_shift($array);
-print_r($array);
-
-// 出力結果
-
-//	Array
-//	(
-//    [0] => Green
-//    [1] => Red
-//	)
-
-// 取り出された値の確認
-echo $theFirst; // Blue
-```
-
-#### ▼ メッセージキュー
-
-送信元の好きなタイミングでファイル (メッセージ) をメッセージキューに追加できる。
-
-また、宛先の好きなタイミングでメッセージを取り出せる。
-
-![メッセージキュー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メッセージキュー.jpg)
-
-<br>
-
-### Stack 型
-
-PHP では、`array_push()` 関数と `array_pop()` 関数で実装可能。
-
-![Stack1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack1.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![Stack2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack2.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![Stack3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack3.gif)
-
-<br>
-
-### Tree 型
-
-#### ▼ 二分探索木
-
-各ノードにデータが格納されている。
-
-![二分探索木](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索木1.gif)
-
-#### ▼ ヒープ
-
-プライオリティキューを実現するときに使用される。
-
-各ノードにデータが格納されている。
-
-![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ1.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ2.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![ヒープ2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ3.gif)
-
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
-
-![. ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ4.gif)
-
-<br>
-
-## 01-02. Java におけるデータ構造の実装方法
-
-データ構造の Java による実装方法を以下に示す。
-
-### 配列型
-
-#### ▼ ArrayList
-
-ArrayList クラスによって実装される配列型。
-
-PHP のインデックス配列に相当する。
-
-#### ▼ HashMap
-
-HashMap クラスによって実装される配列型。
-
-PHP の連想配列に相当する。
-
-<br>
-
-### 連結リスト型
-
-値をポインタによって順序通り並べたデータ格納形式のこと。
-
-#### ▼ 単方向リスト
-
-単方向リストでは、各データが次のデータへのポインタのみを持つため、先頭から順にしかデータを辿れない。
-
-> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
-
-![p555-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-1.gif)
-
-#### ▼ 双方向リスト
-
-双方向リストでは、各データが次のデータと前のデータの両方へのポインタを持つため、前後のどちらにもデータを辿れる。
-
-> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
-
-![p555-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-2.gif)
-
-#### ▼ 循環リスト
-
-循環リストでは、最後尾のデータが先頭のデータへのポインタを持つため、リスト全体が環状につながり、最後尾から先頭に戻って辿り続けられる。
-
-> - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
-
-![p555-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p555-3.gif)
-
-<br>
-
-### キュー型
-
-<br>
-
-### スタック型
-
-<br>
-
-### ツリー型
-
-<br>
-
-## 02. プリミティブデータ型
+## 01. プリミティブデータ型
 
 ### プリミティブ型
 
@@ -443,7 +170,7 @@ print_r($a);
 
 <br>
 
-### 02-02. データ型の判定/変換
+## 02. データ型の判定/変換
 
 ### 判定関数
 
@@ -522,3 +249,36 @@ $var = (array) $var;
 // Object型
 $var = (object) $var;
 ```
+
+<br>
+
+## 03. `list()` 関数
+
+### `list()` 関数とは
+
+PHP の `list()` 関数は、List 型とは意味合いが異なる。
+
+配列の個々の要素を変数に格納したい場合、List 型を使用しなければ、冗長ではあるが、以下のように実装する必要がある。
+
+```injectablephp
+<?php
+
+$array = array("あ", "い", "う");
+$a = $array[0];
+$i = $array[1];
+$u = $array[2];
+
+echo $a.$i.$u; // あいう
+```
+
+しかし、以下のように、`list()` 関数を使用することによって、複数の変数への格納を１行で実装できる。
+
+```injectablephp
+<?php
+
+list($a, $i, $u) = array("あ", "い", "う");
+
+echo $a.$i.$u; // あいう
+```
+
+<br>

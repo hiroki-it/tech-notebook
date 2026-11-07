@@ -1712,48 +1712,168 @@ User は UserName に依存している。
 
 Pimple パッケージを使用した場合
 
-```injectablephp title="PHP の場合の実装例"
-<?php
+=== "Go"
 
-use Pimple\Container as PimpleContainer;
-use App\Domain\User\Entity\User;
-use App\Domain\User\ValueObject\UserName;
+    ```go title="Go の場合の実装例"
+    import (
+    	"app/domain/user/entity"
+    	"app/domain/user/valueobject"
+    )
 
-class Container extends PimpleContainer
-{
-    public function __construct()
-    {
-        parent::__construct();
+    type Container struct {
+    	factories map[string]func(container *Container) any
+    	instances map[string]any
+    }
 
+    func NewContainer() *Container {
+    	c := &Container{
+    		factories: map[string]func(container *Container) any{},
+    		instances: map[string]any{},
+    	}
+
+    	// UserNameクラスの準備
+    	c.factories["user_name"] = func(container *Container) any {
+    		return valueobject.NewUserName("Hiroki")
+    	}
+
+    	// UserクラスにUserNameクラスを注入
+    	c.factories["user"] = func(container *Container) any {
+    		return entity.NewUser(container.Get("user_name").(*valueobject.UserName))
+    	}
+
+    	return c
+    }
+
+    func (c *Container) Get(id string) any {
+    	if _, ok := c.instances[id]; !ok {
+    		c.instances[id] = c.factories[id](c)
+    	}
+
+    	return c.instances[id]
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title="TypeScript の場合の実装例"
+    import { User } from "~/domain/user/entity/User";
+    import { UserName } from "~/domain/user/valueObject/UserName";
+
+    type Factory = (container: Container) => unknown;
+
+    export class Container {
+      private readonly factories = new Map<string, Factory>();
+
+      private readonly instances = new Map<string, unknown>();
+
+      constructor() {
         // UserNameクラスの準備
-        $this["user_name"] = function (PimpleContainer $container): UserName {
-            return new UserName("Hiroki");
-        };
+        this.factories.set("user_name", (container: Container): UserName => {
+          return new UserName("Hiroki");
+        });
 
         // UserクラスにUserNameクラスを注入
-        $this["user"] = function (PimpleContainer $container): User {
-            return new User($container["user_name"]);
-        };
+        this.factories.set("user", (container: Container): User => {
+          return new User(container.get<UserName>("user_name"));
+        });
+      }
+
+      get<T>(id: string): T {
+        if (!this.instances.has(id)) {
+          this.instances.set(id, this.factories.get(id)!(this));
+        }
+
+        return this.instances.get(id) as T;
+      }
     }
-}
-```
+    ```
 
-```injectablephp title="PHP の場合の実装例"
-<?php
+=== "PHP"
 
-// autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。
-$container = new Container();
-```
+    ```injectablephp title="PHP の場合の実装例"
+    <?php
 
-```injectablephp title="PHP の場合の実装例"
-<?php
+    use Pimple\Container as PimpleContainer;
+    use App\Domain\User\Entity\User;
+    use App\Domain\User\ValueObject\UserName;
 
-// IoCコンテナの読み出し
-require_once __DIR__ . "/autoload.php";
+    class Container extends PimpleContainer
+    {
+        public function __construct()
+        {
+            parent::__construct();
 
-// クラス名を宣言してインスタンスを作成。
-$sample = $container["sample"];
-```
+            // UserNameクラスの準備
+            $this["user_name"] = function (PimpleContainer $container): UserName {
+                return new UserName("Hiroki");
+            };
+
+            // UserクラスにUserNameクラスを注入
+            $this["user"] = function (PimpleContainer $container): User {
+                return new User($container["user_name"]);
+            };
+        }
+    }
+    ```
+
+===! "Go"
+
+    ```go title="Go の場合の実装例"
+    package autoload
+
+    // autoload.go で、IoCコンテナ自体のインスタンスを事前に作成。
+    var Container = NewContainer()
+    ```
+
+=== "TypeScript"
+
+    ```typescript title="TypeScript の場合の実装例"
+    // autoload.ts で、IoCコンテナ自体のインスタンスを事前に作成。
+    export const container = new Container();
+    ```
+
+=== "PHP"
+
+    ```injectablephp title="PHP の場合の実装例"
+    <?php
+
+    // autoload.php で、IoCコンテナ自体のインスタンスを事前に作成。
+    $container = new Container();
+    ```
+
+===! "Go"
+
+    ```go title="Go の場合の実装例"
+    // IoCコンテナの読み出し
+    import "app/autoload"
+
+    func main() {
+    	// クラス名を宣言してインスタンスを作成。
+    	sample := autoload.Container.Get("sample")
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title="TypeScript の場合の実装例"
+    // IoCコンテナの読み出し
+    import { container } from "./autoload";
+
+    // クラス名を宣言してインスタンスを作成。
+    const sample = container.get("sample");
+    ```
+
+=== "PHP"
+
+    ```injectablephp title="PHP の場合の実装例"
+    <?php
+
+    // IoCコンテナの読み出し
+    require_once __DIR__ . "/autoload.php";
+
+    // クラス名を宣言してインスタンスを作成。
+    $sample = $container["sample"];
+    ```
 
 #### ▼ Service Locator パターン
 
