@@ -28,7 +28,11 @@ hide:
   > - ##### [︎オブジェクト指向設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html)
   > - ##### [︎クラス](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_class.html)
 
-- #### [︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
+- #### <u>︎ドメイン駆動設計</u>
+
+  > - ##### [︎ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)
+  > - ##### [︎戦略的設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_strategic_design.html)
+  > - ##### [︎戦術的設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_tactical_design.html)
 
 - #### <u>︎クリーンアーキテクチャ</u>
 
