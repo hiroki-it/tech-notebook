@@ -231,7 +231,8 @@ nav:
       - ■ API:
           - ■ RESTful-API:
               - RESTful-API: software/software_application_api_restful.md
-              - API仕様書: software/software_application_api_restful_api_specification.md
+              - ■ API仕様書:
+                  - OpenAPI: software/software_application_api_restful_api_specification_openapi.md
           - ■ RPC-API:
               - gRPC: software/software_application_api_rpc_api_grpc.md
               - ■ クライアントパッケージ:

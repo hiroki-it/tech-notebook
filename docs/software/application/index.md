@@ -111,7 +111,8 @@ hide:
 - #### <u>RESTful-API</u>
 
   > - ##### [︎RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful.html)
-  > - ##### [︎API 仕様書](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification.html)
+  > - ##### <u>API 仕様書</u>
+  >   > - ##### [︎OpenAPI](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification_openapi.html)
 
 - #### <u>RPC-API</u>
 
