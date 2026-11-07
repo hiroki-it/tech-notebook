@@ -1409,7 +1409,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
     // エンティティ
     type Entity struct {
-    	// IDクラス
+    	// ID構造体
     	id Id
     }
 
@@ -1418,7 +1418,7 @@ Specification パターンを検索条件オブジェクトとして使った場
     	return e.id.Equals(entity.Id()) // IDオブジェクトの等価性
     }
 
-    // IDクラスを返却する
+    // ID構造体を返却する
     func (e *Entity) Id() Id {
     	return e.id
     }
@@ -2103,7 +2103,7 @@ abstract class Id
     	MaxNameLength = 64
     )
 
-    // 氏名クラスの値オブジェクト
+    // 氏名構造体の値オブジェクト
     type Name struct {
     	// 姓
     	lastName string

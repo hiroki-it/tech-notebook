@@ -141,7 +141,7 @@ User は UserName を状態として保持する。
     }
 
     func NewCar(t1 *entity.Tire1, t2 *entity.Tire2, t3 *entity.Tire3, t4 *entity.Tire4) *Car {
-    	// Tireクラスのインスタンスを状態として保持
+    	// Tire構造体のインスタンスを状態として保持
     	return &Car{
     		tire1: t1,
     		tire2: t2,
@@ -213,13 +213,13 @@ User は UserName を状態として保持する。
 === "Go"
 
     ```go title="Go の場合の実装例"
-    // Tireクラスをインスタンス化
+    // Tire構造体をインスタンス化
     tire1 := NewTire1()
     tire2 := NewTire2()
     tire3 := NewTire3()
     tire4 := NewTire4()
 
-    // Tireクラスのインスタンスの作成、Carによって制限されない。
+    // Tire構造体のインスタンスの作成、Carによって制限されない。
     car := NewCar(tire1, tire2, tire3, tire4)
     ```
 
@@ -356,7 +356,7 @@ Car クラスは Lock クラスを状態として保持する。
     }
 
     func NewCar() *Car {
-    	// Lockクラスのインスタンスを状態として保持。
+    	// Lock構造体のインスタンスを状態として保持。
     	return &Car{lock: NewLock()}
     }
     ```
@@ -398,7 +398,7 @@ Car クラスは Lock クラスを状態として保持する。
 === "Go"
 
     ```go title="Go の場合の実装例"
-    // Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
+    // Car構造体のインスタンスの中で、Lock構造体がインスタンス化される。
     car := NewCar()
     ```
 
@@ -441,7 +441,7 @@ Car クラスは Lock クラスを状態として保持する。
     ```go title="Go の場合の実装例"
     import "fmt"
 
-    // 親クラス
+    // 親クラスに相当する構造体
     type Goods struct {
     	// 商品名データ
     	name string
@@ -560,7 +560,7 @@ Car クラスは Lock クラスを状態として保持する。
     	"math"
     )
 
-    // 子クラス
+    // 子クラスに相当する構造体
     type GoodsWithTax struct {
     	*Goods
     }
@@ -660,20 +660,20 @@ Car クラスは Lock クラスを状態として保持する。
     	TimeToLeave  = "18:00:00"
     )
 
-    // 抽象クラス。型として提供したいものを定義する。
+    // 抽象クラスに相当するインターフェース。型として提供したいものを定義する。
     type ShainManagement interface {
     	// 抽象関数。
-    	// 処理内容を子クラスでOverrideしなければならない。
+    	// 処理内容を子クラスに相当する構造体でOverrideしなければならない。
     	ToWork()
     	ToArrive() string
     	ToLeave() string
     }
 
-    // 具象関数を持つ構造体。子クラスに埋め込む。
+    // 具象関数を持つ構造体。子クラスに相当する構造体に埋め込む。
     type BaseShainManagement struct{}
 
     // 具象関数。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。
-    // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
+    // 子クラスに相当する構造体へ、埋め込みによってそのまま引き継がれる。子クラスに相当する構造体でオーバーライドしなくても良い。
     func (b *BaseShainManagement) ToArrive() string {
     	nowTime := time.Now()
     	arriveTime := todayAt(nowTime, TimeToArrive)
@@ -693,7 +693,7 @@ Car クラスは Lock クラスを状態として保持する。
     }
 
     // 具象関数。退社時間と残業時間を表示。
-    // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
+    // 子クラスに相当する構造体へ、埋め込みによってそのまま引き継がれる。子クラスに相当する構造体でオーバーライドしなくても良い。
     func (b *BaseShainManagement) ToLeave() string {
     	nowTime := time.Now()
 
@@ -831,12 +831,12 @@ Car クラスは Lock クラスを状態として保持する。
 ===! "Go"
 
     ```go title="Go の場合の実装例"
-    // 子クラス
+    // 子クラスに相当する構造体
     type EngineerShainManagement struct {
     	BaseShainManagement
     }
 
-    // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
+    // 鋳型となった抽象クラスに相当するインターフェースの関数は実装しなければならない。
     func (e *EngineerShainManagement) ToWork() {
     	// 処理内容
     }
@@ -939,7 +939,7 @@ Car クラスは Lock クラスを状態として保持する。
 ===! "Go"
 
     ```go title="Go の場合の実装例"
-    // 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
+    // 実装クラスに相当する構造体が正常に動作するために最低限必要な関数の実装を強制する。
     var _ Animal = (*Mammal)(nil)
 
     type Mammal struct{}
@@ -1083,7 +1083,7 @@ Car クラスは Lock クラスを状態として保持する。
 === "Go"
 
     ```go title="Go の場合の実装例"
-    // 継承元クラス
+    // 継承元クラスに相当する構造体
     type Foo struct {
     	value1 any
     }
@@ -1126,7 +1126,7 @@ Car クラスは Lock クラスを状態として保持する。
 ===! "Go"
 
     ```go title="Go の場合の実装例"
-    // 継承先クラス
+    // 継承先クラスに相当する構造体
     type SubFoo struct {
     	Foo
     	SubValue any
@@ -1172,8 +1172,8 @@ Car クラスは Lock クラスを状態として保持する。
     ```go title="Go の場合の実装例"
     subFoo := &SubFoo{}
 
-    // SubFooクラスにはgetValue()は無い。
-    // 継承元まで辿り、Fooクラスから関数がコールされる (クラスチェーン) 。
+    // SubFoo構造体にはGetValue()は無い。
+    // 埋め込んだFoo構造体まで辿り、Foo構造体から関数がコールされる (クラスチェーンに相当する) 。
     fmt.Println(subFoo.GetValue())
     ```
 
@@ -1399,7 +1399,7 @@ User は UserName に依存している。
     ```go title="Go の場合の実装例"
     supplier := NewSupplier()
 
-    // 依存されるSupplierクラスをClientクラスに注入
+    // 依存されるSupplier構造体をClient構造体に注入
     client := NewClient(supplier)
     ```
 
@@ -1512,7 +1512,7 @@ User は UserName に依存している。
     supplier := NewSupplier()
     client := NewClient()
 
-    // ClientクラスはSupplierクラスに依存している。
+    // Client構造体はSupplier構造体に依存している。
     client.SetSupplier(supplier)
     ```
 
@@ -1731,12 +1731,12 @@ DI コンテナを使用した場合 (PHP では Pimple パッケージ)
     		instances: map[string]any{},
     	}
 
-    	// UserNameクラスの準備
+    	// UserName構造体の準備
     	c.factories["user_name"] = func(container *Container) any {
     		return valueobject.NewUserName("Hiroki")
     	}
 
-    	// UserクラスにUserNameクラスを注入
+    	// User構造体にUserName構造体を注入
     	c.factories["user"] = func(container *Container) any {
     		return entity.NewUser(container.Get("user_name").(*valueobject.UserName))
     	}
@@ -1848,7 +1848,7 @@ DI コンテナを使用した場合 (PHP では Pimple パッケージ)
     import "app/autoload"
 
     func main() {
-    	// クラス名を宣言してインスタンスを作成。
+    	// 登録名を宣言してインスタンスを作成。
     	user := autoload.Container.Get("user")
     }
     ```
@@ -2142,7 +2142,7 @@ Factory クラスのインスタンスと、これをコールするほかのイ
 
     ```go title="Go の場合の実装例"
     // コールされる側
-    // 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス
+    // 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラスに相当する構造体
     type TransportationMethodsFactory struct{}
 
     func (TransportationMethodsFactory) CreateInstance(distance int) TransportationMethod {
