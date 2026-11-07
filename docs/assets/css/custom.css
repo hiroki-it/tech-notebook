@@ -20,7 +20,11 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 60%;
+    /* 縦長の画像が画面からはみ出さず、小さい画像が引き伸ばされないように、上限だけを決める */
+    width: auto;
+    height: auto;
+    max-width: 60%;
+    max-height: 60vh;
 }
 
 /***************
