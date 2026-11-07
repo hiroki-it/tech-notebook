@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="コマンド＠Protocol Bufferの知見を記録しています。">
+        <meta name="description" content="Goプラグイン＠Protocol Bufferコンパイラーの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_command.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer_compiler_go.html">
       
       
-        <link rel="prev" href="language_data_description_language_protocol_buffer.html">
+        <link rel="prev" href="software_application_api_rpc_api_specification_protocol_buffer_command.html">
       
       
-        <link rel="next" href="language_data_description_language_protocol_buffer_compiler_go.html">
+        <link rel="next" href="software_application_api_rpc_api_grpc_client_package_go.html">
       
       
         
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】コマンド＠Protocol Buffer - 俺の技術ノート</title>
+        <title>【IT技術の知見】Goプラグイン＠Protocol Bufferコンパイラー - 俺の技術ノート</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#protocol-buffer" class="md-skip">
+        <a href="#go-protocol-buffer" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】コマンド＠Protocol Buffer
+              【IT技術の知見】Goプラグイン＠Protocol Bufferコンパイラー
             
           </span>
         </div>
@@ -309,7 +309,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/index.html" class="md-tabs__link">
+        <a href="index.html" class="md-tabs__link">
           
   
   
@@ -327,11 +327,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../software/application/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="application/index.html" class="md-tabs__link">
           
   
   
@@ -353,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/middleware/index.html" class="md-tabs__link">
+        <a href="middleware/index.html" class="md-tabs__link">
           
   
   
@@ -375,7 +377,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/basic/index.html" class="md-tabs__link">
+        <a href="basic/index.html" class="md-tabs__link">
           
   
   
@@ -393,13 +395,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
           
   
   
@@ -1015,7 +1015,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   
@@ -1059,7 +1059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software.html" class="md-nav__link">
+      <a href="software.html" class="md-nav__link">
         
   
   
@@ -1087,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_practices.html" class="md-nav__link">
+      <a href="software_practices.html" class="md-nav__link">
         
   
   
@@ -1119,6 +1119,8 @@
       
   
   
+    
+  
   
   
     
@@ -1146,20 +1148,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/application/index.html" class="md-nav__link ">
+            <a href="application/index.html" class="md-nav__link ">
               
   
   
@@ -1177,13 +1180,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1203,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture.html" class="md-nav__link">
+      <a href="software_application_architecture.html" class="md-nav__link">
         
   
   
@@ -1355,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation.html" class="md-nav__link">
         
   
   
@@ -1383,7 +1386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
         
   
   
@@ -1411,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
         
   
   
@@ -1439,7 +1442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
         
   
   
@@ -1535,7 +1538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
         
   
   
@@ -1563,7 +1566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_strategic_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_strategic_design.html" class="md-nav__link">
         
   
   
@@ -1591,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_tactical_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_tactical_design.html" class="md-nav__link">
         
   
   
@@ -1693,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
         
   
   
@@ -1721,7 +1724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html" class="md-nav__link">
         
   
   
@@ -1749,7 +1752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html" class="md-nav__link">
         
   
   
@@ -1777,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html" class="md-nav__link">
         
   
   
@@ -1805,7 +1808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html" class="md-nav__link">
         
   
   
@@ -1833,7 +1836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html" class="md-nav__link">
         
   
   
@@ -1869,7 +1872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_cqrs.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_cqrs.html" class="md-nav__link">
         
   
   
@@ -1967,7 +1970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend.html" class="md-nav__link">
         
   
   
@@ -1995,7 +1998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend_ui_rendering_patterns.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend_ui_rendering_patterns.html" class="md-nav__link">
         
   
   
@@ -2023,7 +2026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend_state.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend_state.html" class="md-nav__link">
         
   
   
@@ -2051,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend_ui_design.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend_ui_design.html" class="md-nav__link">
         
   
   
@@ -2163,7 +2166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices.html" class="md-nav__link">
         
   
   
@@ -2191,7 +2194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_cloudnative.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_cloudnative.html" class="md-nav__link">
         
   
   
@@ -2219,7 +2222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_api_gateway.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_api_gateway.html" class="md-nav__link">
         
   
   
@@ -2247,7 +2250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_cicd.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_cicd.html" class="md-nav__link">
         
   
   
@@ -2275,7 +2278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_data_processing_workflow.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_data_processing_workflow.html" class="md-nav__link">
         
   
   
@@ -2303,7 +2306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_cache.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_cache.html" class="md-nav__link">
         
   
   
@@ -2395,7 +2398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_design.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_design.html" class="md-nav__link">
         
   
   
@@ -2423,7 +2426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_connection.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_connection.html" class="md-nav__link">
         
   
   
@@ -2451,7 +2454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_transaction.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_transaction.html" class="md-nav__link">
         
   
   
@@ -2479,7 +2482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_auth.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_auth.html" class="md-nav__link">
         
   
   
@@ -2507,7 +2510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_general.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_general.html" class="md-nav__link">
         
   
   
@@ -2543,7 +2546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_storage.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_storage.html" class="md-nav__link">
         
   
   
@@ -2629,7 +2632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_test_blackbox.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_test_blackbox.html" class="md-nav__link">
         
   
   
@@ -2657,7 +2660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_test_whitebox.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_test_whitebox.html" class="md-nav__link">
         
   
   
@@ -2749,7 +2752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_resiliency_recovery.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_resiliency_recovery.html" class="md-nav__link">
         
   
   
@@ -2843,7 +2846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_development_organization.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_development_organization.html" class="md-nav__link">
         
   
   
@@ -2871,7 +2874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_development_repository.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_development_repository.html" class="md-nav__link">
         
   
   
@@ -2977,7 +2980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_request_response.html" class="md-nav__link">
+      <a href="software_application_communication_style_request_response.html" class="md-nav__link">
         
   
   
@@ -3005,7 +3008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_publish_subscribe.html" class="md-nav__link">
+      <a href="software_application_communication_style_publish_subscribe.html" class="md-nav__link">
         
   
   
@@ -3033,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_streaming.html" class="md-nav__link">
+      <a href="software_application_communication_style_streaming.html" class="md-nav__link">
         
   
   
@@ -3061,7 +3064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_sharing_data.html" class="md-nav__link">
+      <a href="software_application_communication_style_sharing_data.html" class="md-nav__link">
         
   
   
@@ -3094,8 +3097,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3112,13 +3117,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
         
           
           <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
@@ -3139,7 +3142,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3215,7 +3218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_restful.html" class="md-nav__link">
+      <a href="software_application_api_restful.html" class="md-nav__link">
         
   
   
@@ -3299,7 +3302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_restful_api_specification_openapi.md" class="md-nav__link">
+      <a href="software_application_api_restful_api_specification_openapi.html" class="md-nav__link">
         
   
   
@@ -3340,8 +3343,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3349,6 +3354,8 @@
       
         
       
+        
+      
     
     
     
@@ -3356,13 +3363,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_2" checked>
         
           
           <label class="md-nav__link" for="__nav_5_7_2" id="__nav_5_7_2_label" tabindex="0">
@@ -3383,7 +3388,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_7_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3401,7 +3406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_rpc_api_grpc.html" class="md-nav__link">
+      <a href="software_application_api_rpc_api_grpc.html" class="md-nav__link">
         
   
   
@@ -3417,6 +3422,413 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2_2" id="__nav_5_7_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ API仕様書
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ API仕様書
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_2_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2_2_1" id="__nav_5_7_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ Protocol Buffer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_5_7_2_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ Protocol Buffer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_rpc_api_specification_protocol_buffer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Buffer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_rpc_api_specification_protocol_buffer_command.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コマンド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_2_2_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2_2_1_3" id="__nav_5_7_2_2_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ Protocol Bufferコンパイラー
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_5_7_2_2_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_7_2_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ Protocol Bufferコンパイラー
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goプラグイン
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_application_api_rpc_api_specification_protocol_buffer_compiler_go.html" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goプラグイン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        はじめに
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-protocol-buffer-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01. Protocol Buffer コンパイラーGo プラグイン
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. Protocol Buffer コンパイラーGo プラグイン">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#protocol-buffer-go" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Buffer コンパイラーGo プラグインとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-buffer-go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Buffer と Go の対応関係
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. 文法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. 文法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        option
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -3448,10 +3860,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_5_7_2_2" id="__nav_5_7_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5_7_2_3" id="__nav_5_7_2_3_label" tabindex="0">
             
   
   
@@ -3469,8 +3881,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_7_2_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3487,7 +3899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
+      <a href="software_application_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
         
   
   
@@ -3515,7 +3927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_rpc_api_grpc_client_package_tools.html" class="md-nav__link">
+      <a href="software_application_api_rpc_api_grpc_client_package_tools.html" class="md-nav__link">
         
   
   
@@ -3615,7 +4027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_graphql_api_graphql.html" class="md-nav__link">
+      <a href="software_application_api_graphql_api_graphql.html" class="md-nav__link">
         
   
   
@@ -3775,7 +4187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_argoworkflow.html" class="md-nav__link">
+      <a href="software_application_workflow_argoworkflow.html" class="md-nav__link">
         
   
   
@@ -3803,7 +4215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_argoworkflow_resource_definition.html" class="md-nav__link">
+      <a href="software_application_workflow_argoworkflow_resource_definition.html" class="md-nav__link">
         
   
   
@@ -3897,7 +4309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_temporal.html" class="md-nav__link">
+      <a href="software_application_workflow_temporal.html" class="md-nav__link">
         
   
   
@@ -3983,7 +4395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_temporal_conf_cluster.html" class="md-nav__link">
+      <a href="software_application_workflow_temporal_conf_cluster.html" class="md-nav__link">
         
   
   
@@ -4011,7 +4423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_temporal_conf_web.html" class="md-nav__link">
+      <a href="software_application_workflow_temporal_conf_web.html" class="md-nav__link">
         
   
   
@@ -4115,7 +4527,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/middleware/index.html" class="md-nav__link ">
+            <a href="middleware/index.html" class="md-nav__link ">
               
   
   
@@ -4281,7 +4693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx.html" class="md-nav__link">
         
   
   
@@ -4309,7 +4721,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_conf.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_conf.html" class="md-nav__link">
         
   
   
@@ -4337,7 +4749,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_command.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_command.html" class="md-nav__link">
         
   
   
@@ -4365,7 +4777,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_module_builtin.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_module_builtin.html" class="md-nav__link">
         
   
   
@@ -4393,7 +4805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_module_utility.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_module_utility.html" class="md-nav__link">
         
   
   
@@ -4489,7 +4901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache.html" class="md-nav__link">
+      <a href="software_middleware_web_apache.html" class="md-nav__link">
         
   
   
@@ -4517,7 +4929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_conf.html" class="md-nav__link">
+      <a href="software_middleware_web_apache_conf.html" class="md-nav__link">
         
   
   
@@ -4545,7 +4957,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_command.html" class="md-nav__link">
+      <a href="software_middleware_web_apache_command.html" class="md-nav__link">
         
   
   
@@ -4707,7 +5119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
         
   
   
@@ -4735,7 +5147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
         
   
   
@@ -4829,7 +5241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
         
   
   
@@ -4857,7 +5269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
         
   
   
@@ -4893,7 +5305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
         
   
   
@@ -5053,7 +5465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms.html" class="md-nav__link">
         
   
   
@@ -5081,7 +5493,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
         
   
   
@@ -5109,7 +5521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
         
   
   
@@ -5205,7 +5617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql.html" class="md-nav__link">
         
   
   
@@ -5233,7 +5645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
         
   
   
@@ -5321,7 +5733,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
         
   
   
@@ -5349,7 +5761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
         
   
   
@@ -5377,7 +5789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
         
   
   
@@ -5479,7 +5891,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
         
   
   
@@ -5507,7 +5919,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
         
   
   
@@ -5543,7 +5955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_antipatterns.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_antipatterns.html" class="md-nav__link">
         
   
   
@@ -5571,7 +5983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_er.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_er.html" class="md-nav__link">
         
   
   
@@ -5665,7 +6077,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_nosqldb.html" class="md-nav__link">
+      <a href="software_middleware_database_nosqldb.html" class="md-nav__link">
         
   
   
@@ -5751,7 +6163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_nosqldb_redis.html" class="md-nav__link">
+      <a href="software_middleware_database_nosqldb_redis.html" class="md-nav__link">
         
   
   
@@ -5779,7 +6191,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_nosqldb_redis_command.html" class="md-nav__link">
+      <a href="software_middleware_database_nosqldb_redis_command.html" class="md-nav__link">
         
   
   
@@ -5937,7 +6349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
+      <a href="software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
         
   
   
@@ -5965,7 +6377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
         
   
   
@@ -6067,7 +6479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb.html" class="md-nav__link">
         
   
   
@@ -6153,7 +6565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
         
   
   
@@ -6181,7 +6593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
         
   
   
@@ -6343,7 +6755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh.html" class="md-nav__link">
         
   
   
@@ -6371,7 +6783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_responsibility.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_responsibility.html" class="md-nav__link">
         
   
   
@@ -6471,7 +6883,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy.html" class="md-nav__link">
         
   
   
@@ -6499,7 +6911,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
         
   
   
@@ -6527,7 +6939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
         
   
   
@@ -6555,7 +6967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
         
   
   
@@ -6583,7 +6995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
         
   
   
@@ -6691,7 +7103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio.html" class="md-nav__link">
         
   
   
@@ -6777,7 +7189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_sidecar_control_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_sidecar_control_plane.html" class="md-nav__link">
         
   
   
@@ -6805,7 +7217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_sidecar_data_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_sidecar_data_plane.html" class="md-nav__link">
         
   
   
@@ -6899,7 +7311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_ambient_control_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_ambient_control_plane.html" class="md-nav__link">
         
   
   
@@ -6927,7 +7339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_ambient_data_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_ambient_data_plane.html" class="md-nav__link">
         
   
   
@@ -6963,7 +7375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_non.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_non.html" class="md-nav__link">
         
   
   
@@ -6991,7 +7403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_command.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_command.html" class="md-nav__link">
         
   
   
@@ -7019,7 +7431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_practices.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_practices.html" class="md-nav__link">
         
   
   
@@ -7047,7 +7459,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_patterns.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_patterns.html" class="md-nav__link">
         
   
   
@@ -7133,7 +7545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource.html" class="md-nav__link">
         
   
   
@@ -7223,7 +7635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition.html" class="md-nav__link">
         
   
   
@@ -7251,7 +7663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition_common.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition_common.html" class="md-nav__link">
         
   
   
@@ -7279,7 +7691,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition_configmap.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition_configmap.html" class="md-nav__link">
         
   
   
@@ -7307,7 +7719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition_secret.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition_secret.html" class="md-nav__link">
         
   
   
@@ -7409,7 +7821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_operator.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_operator.html" class="md-nav__link">
         
   
   
@@ -7437,7 +7849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_operator_resource_definition.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_operator_resource_definition.html" class="md-nav__link">
         
   
   
@@ -7603,7 +8015,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_dns_coredns.html" class="md-nav__link">
+      <a href="software_middleware_dns_coredns.html" class="md-nav__link">
         
   
   
@@ -7631,7 +8043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_dns_coredns_conf.html" class="md-nav__link">
+      <a href="software_middleware_dns_coredns_conf.html" class="md-nav__link">
         
   
   
@@ -7795,7 +8207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_cert_manager.html" class="md-nav__link">
+      <a href="software_middleware_security_cert_manager.html" class="md-nav__link">
         
   
   
@@ -7823,7 +8235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_cert_manager_resource_definition.html" class="md-nav__link">
+      <a href="software_middleware_security_cert_manager_resource_definition.html" class="md-nav__link">
         
   
   
@@ -7917,7 +8329,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco.html" class="md-nav__link">
+      <a href="software_middleware_security_falco.html" class="md-nav__link">
         
   
   
@@ -7945,7 +8357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco_conf.html" class="md-nav__link">
+      <a href="software_middleware_security_falco_conf.html" class="md-nav__link">
         
   
   
@@ -8041,7 +8453,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_keycloak.html" class="md-nav__link">
+      <a href="software_middleware_security_keycloak.html" class="md-nav__link">
         
   
   
@@ -8069,7 +8481,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_keycloak_conf.html" class="md-nav__link">
+      <a href="software_middleware_security_keycloak_conf.html" class="md-nav__link">
         
   
   
@@ -8153,7 +8565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_keycloak_client_package_javascript.html" class="md-nav__link">
+      <a href="software_middleware_security_keycloak_client_package_javascript.html" class="md-nav__link">
         
   
   
@@ -8255,7 +8667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_oauth2_proxy.html" class="md-nav__link">
+      <a href="software_middleware_security_oauth2_proxy.html" class="md-nav__link">
         
   
   
@@ -8283,7 +8695,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_oauth2_proxy_conf.html" class="md-nav__link">
+      <a href="software_middleware_security_oauth2_proxy_conf.html" class="md-nav__link">
         
   
   
@@ -8385,7 +8797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_messaging_message_broker_rabbitmq.html" class="md-nav__link">
+      <a href="software_middleware_messaging_message_broker_rabbitmq.html" class="md-nav__link">
         
   
   
@@ -8413,7 +8825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_messaging_message_streamer_apache_kafka.html" class="md-nav__link">
+      <a href="software_middleware_messaging_message_streamer_apache_kafka.html" class="md-nav__link">
         
   
   
@@ -8505,7 +8917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_data_analysis.html" class="md-nav__link">
+      <a href="software_middleware_data_analysis.html" class="md-nav__link">
         
   
   
@@ -8577,7 +8989,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/basic/index.html" class="md-nav__link ">
+            <a href="basic/index.html" class="md-nav__link ">
               
   
   
@@ -8689,7 +9101,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel.html" class="md-nav__link">
         
   
   
@@ -8717,7 +9129,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_process_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_process_management.html" class="md-nav__link">
         
   
   
@@ -8745,7 +9157,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_memory_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_memory_management.html" class="md-nav__link">
         
   
   
@@ -8773,7 +9185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_storage_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_storage_management.html" class="md-nav__link">
         
   
   
@@ -8801,7 +9213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_io_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_io_management.html" class="md-nav__link">
         
   
   
@@ -8829,7 +9241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_job_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_job_management.html" class="md-nav__link">
         
   
   
@@ -8857,7 +9269,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_security_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_security_management.html" class="md-nav__link">
         
   
   
@@ -8959,7 +9371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility.html" class="md-nav__link">
+      <a href="software_basic_utility.html" class="md-nav__link">
         
   
   
@@ -8987,7 +9399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_unix.html" class="md-nav__link">
+      <a href="software_basic_utility_unix.html" class="md-nav__link">
         
   
   
@@ -9015,7 +9427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_shell.html" class="md-nav__link">
+      <a href="software_basic_utility_shell.html" class="md-nav__link">
         
   
   
@@ -9043,7 +9455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_script.html" class="md-nav__link">
+      <a href="software_basic_utility_script.html" class="md-nav__link">
         
   
   
@@ -9133,7 +9545,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_memory.html" class="md-nav__link">
+      <a href="software_basic_utility_package_memory.html" class="md-nav__link">
         
   
   
@@ -9161,7 +9573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_network.html" class="md-nav__link">
+      <a href="software_basic_utility_package_network.html" class="md-nav__link">
         
   
   
@@ -9189,7 +9601,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_security.html" class="md-nav__link">
+      <a href="software_basic_utility_package_security.html" class="md-nav__link">
         
   
   
@@ -9217,7 +9629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_storage.html" class="md-nav__link">
+      <a href="software_basic_utility_package_storage.html" class="md-nav__link">
         
   
   
@@ -9315,7 +9727,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management.html" class="md-nav__link">
         
   
   
@@ -9343,7 +9755,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_linux.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_linux.html" class="md-nav__link">
         
   
   
@@ -9371,7 +9783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_redhat.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_redhat.html" class="md-nav__link">
         
   
   
@@ -9399,7 +9811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_debian.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_debian.html" class="md-nav__link">
         
   
   
@@ -9501,7 +9913,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor.html" class="md-nav__link">
+      <a href="software_basic_language_processor.html" class="md-nav__link">
         
   
   
@@ -9529,7 +9941,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
+      <a href="software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
         
   
   
@@ -9569,8 +9981,6 @@
       
   
   
-    
-  
   
   
     
@@ -9608,21 +10018,20 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../language/index.html" class="md-nav__link ">
               
   
   
@@ -9640,13 +10049,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -9666,7 +10075,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_type.html" class="md-nav__link">
+      <a href="../language/language_type.html" class="md-nav__link">
         
   
   
@@ -9694,7 +10103,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_process_mode.html" class="md-nav__link">
+      <a href="../language/language_process_mode.html" class="md-nav__link">
         
   
   
@@ -9722,7 +10131,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_structure.html" class="md-nav__link">
+      <a href="../language/language_data_structure.html" class="md-nav__link">
         
   
   
@@ -9747,10 +10156,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -9758,8 +10165,6 @@
       
         
       
-        
-      
     
     
     
@@ -9767,11 +10172,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
         
           
           <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
@@ -9792,7 +10199,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -9868,7 +10275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_json.html" class="md-nav__link">
+      <a href="../language/language_data_description_language_json.html" class="md-nav__link">
         
   
   
@@ -9896,7 +10303,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_json_query.html" class="md-nav__link">
+      <a href="../language/language_data_description_language_json_query.html" class="md-nav__link">
         
   
   
@@ -9988,7 +10395,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_yaml.html" class="md-nav__link">
+      <a href="../language/language_data_description_language_yaml.html" class="md-nav__link">
         
   
   
@@ -10004,510 +10411,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_8_5_3" id="__nav_8_5_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ■ Protocol Buffer
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ■ Protocol Buffer
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="language_data_description_language_protocol_buffer.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Protocol Buffer
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    コマンド
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="language_data_description_language_protocol_buffer_command.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    コマンド
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        はじめに
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-protoc" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        01. protoc コマンド
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="01. protoc コマンド">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-i-proto_path" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        -I (--proto_path)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-_opt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. プラグイン名 _opt
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. プラグイン名 _opt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-_opt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --プラグイン名_opt とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_opt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go_opt
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="go_opt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#paths" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ paths
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go-grpc_opt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go-grpc_opt
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="go-grpc_opt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#paths_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ paths
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#require_unimplemented_servers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ require_unimplemented_servers
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        03. --プラグイン名 _out
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. --プラグイン名 _out">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --プラグイン名_out とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-go_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --go_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-go-grpc_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --go-grpc_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-java_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --java_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-php_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --php_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-python_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --python_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-ruby_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --ruby_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-rust_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --rust_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_5_3_3" id="__nav_8_5_3_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ■ Protocol Bufferコンパイラー
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_5_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_5_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ■ Protocol Bufferコンパイラー
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="language_data_description_language_protocol_buffer_compiler_go.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Goプラグイン
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -10602,7 +10505,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go.html" class="md-nav__link">
+      <a href="../language/language_go.html" class="md-nav__link">
         
   
   
@@ -10630,7 +10533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_conf.html" class="md-nav__link">
+      <a href="../language/language_go_conf.html" class="md-nav__link">
         
   
   
@@ -10658,7 +10561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_command.html" class="md-nav__link">
+      <a href="../language/language_go_command.html" class="md-nav__link">
         
   
   
@@ -10746,7 +10649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_data.html" class="md-nav__link">
+      <a href="../language/language_go_logic_data.html" class="md-nav__link">
         
   
   
@@ -10774,7 +10677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_function.html" class="md-nav__link">
+      <a href="../language/language_go_logic_function.html" class="md-nav__link">
         
   
   
@@ -10802,7 +10705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_validation.html" class="md-nav__link">
+      <a href="../language/language_go_logic_validation.html" class="md-nav__link">
         
   
   
@@ -10894,7 +10797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_framework_gin.html" class="md-nav__link">
+      <a href="../language/language_go_framework_gin.html" class="md-nav__link">
         
   
   
@@ -10990,7 +10893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_builtin.html" class="md-nav__link">
+      <a href="../language/language_go_package_builtin.html" class="md-nav__link">
         
   
   
@@ -11018,7 +10921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_sql.html" class="md-nav__link">
+      <a href="../language/language_go_package_sql.html" class="md-nav__link">
         
   
   
@@ -11046,7 +10949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_utility.html" class="md-nav__link">
+      <a href="../language/language_go_package_utility.html" class="md-nav__link">
         
   
   
@@ -11090,7 +10993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_java.html" class="md-nav__link">
+      <a href="../language/language_java.html" class="md-nav__link">
         
   
   
@@ -11240,7 +11143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_prototype_based.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based.html" class="md-nav__link">
         
   
   
@@ -11268,7 +11171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_prototype_based_function_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
@@ -11368,7 +11271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_validation.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_validation.html" class="md-nav__link">
         
   
   
@@ -11396,7 +11299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_asynchronous_process.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_asynchronous_process.html" class="md-nav__link">
         
   
   
@@ -11424,7 +11327,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_debug.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_debug.html" class="md-nav__link">
         
   
   
@@ -11452,7 +11355,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_authentication.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_authentication.html" class="md-nav__link">
         
   
   
@@ -11480,7 +11383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_browser_rendering.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_browser_rendering.html" class="md-nav__link">
         
   
   
@@ -11576,7 +11479,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_nuxtjs.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_nuxtjs.html" class="md-nav__link">
         
   
   
@@ -11664,7 +11567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_vuejs.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_vuejs.html" class="md-nav__link">
         
   
   
@@ -11692,7 +11595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_vuejs_vuerouter.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_vuejs_vuerouter.html" class="md-nav__link">
         
   
   
@@ -11720,7 +11623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_vuejs_vuex.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_vuejs_vuex.html" class="md-nav__link">
         
   
   
@@ -11814,7 +11717,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_remix.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_remix.html" class="md-nav__link">
         
   
   
@@ -11842,7 +11745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_remix_command.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_remix_command.html" class="md-nav__link">
         
   
   
@@ -11948,7 +11851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_management.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_management.html" class="md-nav__link">
         
   
   
@@ -11976,7 +11879,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_utility.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_utility.html" class="md-nav__link">
         
   
   
@@ -12004,7 +11907,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_react.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_react.html" class="md-nav__link">
         
   
   
@@ -12088,7 +11991,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_sql_prisma.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_sql_prisma.html" class="md-nav__link">
         
   
   
@@ -12188,7 +12091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_browser_rendering.html" class="md-nav__link">
+      <a href="../language/language_javascript_browser_rendering.html" class="md-nav__link">
         
   
   
@@ -12300,7 +12203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php.html" class="md-nav__link">
+      <a href="../language/language_php.html" class="md-nav__link">
         
   
   
@@ -12328,7 +12231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_conf.html" class="md-nav__link">
+      <a href="../language/language_php_conf.html" class="md-nav__link">
         
   
   
@@ -12356,7 +12259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_command.html" class="md-nav__link">
+      <a href="../language/language_php_command.html" class="md-nav__link">
         
   
   
@@ -12444,7 +12347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based.html" class="md-nav__link">
+      <a href="../language/language_php_class_based.html" class="md-nav__link">
         
   
   
@@ -12472,7 +12375,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_function_data.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
@@ -12500,7 +12403,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_data_structure.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_data_structure.html" class="md-nav__link">
         
   
   
@@ -12600,7 +12503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_validation.html" class="md-nav__link">
+      <a href="../language/language_php_logic_validation.html" class="md-nav__link">
         
   
   
@@ -12628,7 +12531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_error_and_error_handling.html" class="md-nav__link">
+      <a href="../language/language_php_logic_error_and_error_handling.html" class="md-nav__link">
         
   
   
@@ -12656,7 +12559,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_iteration.html" class="md-nav__link">
+      <a href="../language/language_php_logic_iteration.html" class="md-nav__link">
         
   
   
@@ -12684,7 +12587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_algorithm.html" class="md-nav__link">
+      <a href="../language/language_php_logic_algorithm.html" class="md-nav__link">
         
   
   
@@ -12712,7 +12615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_debug.html" class="md-nav__link">
+      <a href="../language/language_php_logic_debug.html" class="md-nav__link">
         
   
   
@@ -12870,7 +12773,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_component.html" class="md-nav__link">
         
   
   
@@ -12898,7 +12801,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_eloquent_orm.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_eloquent_orm.html" class="md-nav__link">
         
   
   
@@ -12926,7 +12829,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_package.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_package.html" class="md-nav__link">
         
   
   
@@ -12954,7 +12857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_package_auth.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_package_auth.html" class="md-nav__link">
         
   
   
@@ -12982,7 +12885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_command.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_command.html" class="md-nav__link">
         
   
   
@@ -13076,7 +12979,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_symfony_component.html" class="md-nav__link">
+      <a href="../language/language_php_framework_symfony_component.html" class="md-nav__link">
         
   
   
@@ -13104,7 +13007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_symfony_doctrine_orm.html" class="md-nav__link">
+      <a href="../language/language_php_framework_symfony_doctrine_orm.html" class="md-nav__link">
         
   
   
@@ -13208,7 +13111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_management.html" class="md-nav__link">
+      <a href="../language/language_php_package_management.html" class="md-nav__link">
         
   
   
@@ -13236,7 +13139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_sql.html" class="md-nav__link">
+      <a href="../language/language_php_package_sql.html" class="md-nav__link">
         
   
   
@@ -13264,7 +13167,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_utility.html" class="md-nav__link">
+      <a href="../language/language_php_package_utility.html" class="md-nav__link">
         
   
   
@@ -13368,7 +13271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python.html" class="md-nav__link">
+      <a href="../language/language_python.html" class="md-nav__link">
         
   
   
@@ -13512,7 +13415,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_component.html" class="md-nav__link">
+      <a href="../language/language_python_framework_flask_component.html" class="md-nav__link">
         
   
   
@@ -13540,7 +13443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_command.html" class="md-nav__link">
+      <a href="../language/language_python_framework_flask_command.html" class="md-nav__link">
         
   
   
@@ -13568,7 +13471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_package.html" class="md-nav__link">
+      <a href="../language/language_python_framework_flask_package.html" class="md-nav__link">
         
   
   
@@ -13668,7 +13571,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_package_management.html" class="md-nav__link">
+      <a href="../language/language_python_package_management.html" class="md-nav__link">
         
   
   
@@ -13712,7 +13615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_r.html" class="md-nav__link">
+      <a href="../language/language_r.html" class="md-nav__link">
         
   
   
@@ -13798,7 +13701,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_rust.html" class="md-nav__link">
+      <a href="../language/language_rust.html" class="md-nav__link">
         
   
   
@@ -13826,7 +13729,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_rust_function.html" class="md-nav__link">
+      <a href="../language/language_rust_function.html" class="md-nav__link">
         
   
   
@@ -13922,7 +13825,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_typescript.html" class="md-nav__link">
+      <a href="../language/language_typescript.html" class="md-nav__link">
         
   
   
@@ -13950,7 +13853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_typescript_conf.html" class="md-nav__link">
+      <a href="../language/language_typescript_conf.html" class="md-nav__link">
         
   
   
@@ -13978,7 +13881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_typescript_logic.html" class="md-nav__link">
+      <a href="../language/language_typescript_logic.html" class="md-nav__link">
         
   
   
@@ -34076,22 +33979,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-protoc" class="md-nav__link">
+  <a href="#01-protocol-buffer-go" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. protoc コマンド
+        01. Protocol Buffer コンパイラーGo プラグイン
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="01. protoc コマンド">
+    <nav class="md-nav" aria-label="01. Protocol Buffer コンパイラーGo プラグイン">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#-i-proto_path" class="md-nav__link">
+  <a href="#protocol-buffer-go" class="md-nav__link">
     <span class="md-ellipsis">
       
-        -I (--proto_path)
+        Protocol Buffer コンパイラーGo プラグインとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#protocol-buffer-go_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Protocol Buffer と Go の対応関係
       
     </span>
   </a>
@@ -34104,194 +34018,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-_opt" class="md-nav__link">
+  <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. プラグイン名 _opt
+        02. 文法
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02. プラグイン名 _opt">
+    <nav class="md-nav" aria-label="02. 文法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#-_opt" class="md-nav__link">
+  <a href="#option" class="md-nav__link">
     <span class="md-ellipsis">
       
-        --プラグイン名_opt とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go_opt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go_opt
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="go_opt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#paths" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ paths
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#go-grpc_opt" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        go-grpc_opt
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="go-grpc_opt">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#paths_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ paths
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#require_unimplemented_servers" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ require_unimplemented_servers
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        03. --プラグイン名 _out
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. --プラグイン名 _out">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#-_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --プラグイン名_out とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-go_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --go_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-go-grpc_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --go-grpc_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-java_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --java_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-php_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --php_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-python_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --python_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-ruby_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --ruby_out
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#-rust_out" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        --rust_out
+        option
       
     </span>
   </a>
@@ -34346,10 +34088,10 @@
     
     
       <li class="md-path__item">
-        <a href="index.html" class="md-path__link">
+        <a href="application/index.html" class="md-path__link">
           
   <span class="md-ellipsis">
-    🔠 言語
+    🚀 アプリ
   </span>
 
         </a>
@@ -34369,10 +34111,10 @@
     
     
       <li class="md-path__item">
-        <a href="language_data_description_language_json.html" class="md-path__link">
+        <a href="software_application_api_restful.html" class="md-path__link">
           
   <span class="md-ellipsis">
-    ■ データ記述言語
+    ■ API
   </span>
 
         </a>
@@ -34390,10 +34132,72 @@
     
     
       <li class="md-path__item">
-        <a href="language_data_description_language_protocol_buffer.html" class="md-path__link">
+        <a href="software_application_api_rpc_api_grpc.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ■ RPC-API
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="software_application_api_rpc_api_specification_protocol_buffer.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ■ API仕様書
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="software_application_api_rpc_api_specification_protocol_buffer.html" class="md-path__link">
           
   <span class="md-ellipsis">
     ■ Protocol Buffer
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="software_application_api_rpc_api_specification_protocol_buffer_compiler_go.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ■ Protocol Bufferコンパイラー
   </span>
 
         </a>
@@ -34461,120 +34265,67 @@
   </aside>
 
 
-<h1 id="protocol-buffer">コマンド＠Protocol Buffer<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h1>
+<h1 id="go-protocol-buffer">Go プラグイン＠Protocol Buffer コンパイラー<a class="headerlink" href="#go-protocol-buffer" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
-<h2 id="01-protoc">01. protoc コマンド<a class="headerlink" href="#01-protoc" title="Permanent link">&para;</a></h2>
-<h3 id="-i-proto_path">-I (--proto_path)<a class="headerlink" href="#-i-proto_path" title="Permanent link">&para;</a></h3>
-<p><code>--proto_path</code> でもよい。</p>
-<p><code>proto</code> ファイルのあるディレクトリを指定する。</p>
-<p><code>protoc</code> コマンドで <code>proto</code> ファイルを直接指定するだけではエラーになる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># foo.protoファイルのあるディレクトリを指定する</span>
-$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>foo.proto
+<h2 id="01-protocol-buffer-go">01. Protocol Buffer コンパイラーGo プラグイン<a class="headerlink" href="#01-protocol-buffer-go" title="Permanent link">&para;</a></h2>
+<h3 id="protocol-buffer-go">Protocol Buffer コンパイラーGo プラグインとは<a class="headerlink" href="#protocol-buffer-go" title="Permanent link">&para;</a></h3>
+<p>サービス定義ファイル (<code>proto</code> ファイル) から <code>pb.go</code> ファイルをコンパイルできる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>go<span class="w"> </span>install<span class="w"> </span>google.golang.org/protobuf/cmd/protoc-gen-go@HEAD
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://christina04.hatenablog.com/entry/protoc-usage">protocの使い方 - Carpe Diem</a></li>
+<li><a href="https://protobuf.dev/reference/go/go-generated/#invocation">Go Generated Code Guide (Open) | Protocol Buffers Documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02-_opt">02. プラグイン名 _opt<a class="headerlink" href="#02-_opt" title="Permanent link">&para;</a></h2>
-<h3 id="-_opt">--プラグイン名_opt とは<a class="headerlink" href="#-_opt" title="Permanent link">&para;</a></h3>
-<p><code>proto</code> ファイルから <code>pb</code> ファイルをコンパイルするときのオプションを設定する。</p>
+<h3 id="protocol-buffer-go_1">Protocol Buffer と Go の対応関係<a class="headerlink" href="#protocol-buffer-go_1" title="Permanent link">&para;</a></h3>
+<p><code>pb.go</code> ファイルをコンパイルした場合、以下の対応関係になる。</p>
+<table>
+  <thead>
+    <tr>
+      <th>Protocol Buffer</th>
+      <th>Go (<code>pb.go</code> ファイル)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>service</code></td>
+      <td><code>interface</code></td>
+    </tr>
+    <tr>
+      <td><code>rpc()</code> 関数の引数と返却値</td>
+      <td><code>struct</code></td>
+    </tr>
+  </tbody>
+</table>
+
 <blockquote>
 <ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B">protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC</a></li>
+<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#%E3%82%B3%E3%83%BC%E3%83%89%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%81%AE%E4%BB%95%E6%A7%98">protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC</a></li>
+<li><a href="https://grpc.io/docs/languages/go/generated-code/">Generated-code reference | Go | gRPC</a></li>
+<li><a href="https://protobuf.dev/reference/go/go-generated/">Go Generated Code Guide (Open) | Protocol Buffers Documentation</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="go_opt">go_opt<a class="headerlink" href="#go_opt" title="Permanent link">&para;</a></h3>
-<h4 id="paths">▼ paths<a class="headerlink" href="#paths" title="Permanent link">&para;</a></h4>
-<p>--プラグイン名_opt オプションのパスが絶対パスか相対パスかを設定する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go_opt<span class="o">=</span><span class="nv">paths</span><span class="o">=</span>source_relative<span class="w"> </span>foo.proto
+<h2 id="02">02. 文法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="option">option<a class="headerlink" href="#option" title="Permanent link">&para;</a></h3>
+<p>サービス定義ファイル (<code>proto</code> ファイル) からコンパイルした <code>pb.go</code> ファイルの <code>package</code> 名を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="k">option</span><span class="w"> </span><span class="na">go_package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"github.com/hiroki-hasegawa/foo-repository/src/foo-service"</span><span class="p">;</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B">protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="go-grpc_opt">go-grpc_opt<a class="headerlink" href="#go-grpc_opt" title="Permanent link">&para;</a></h3>
-<h4 id="paths_1">▼ paths<a class="headerlink" href="#paths_1" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-I<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go_out<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go_opt<span class="o">=</span><span class="nv">paths</span><span class="o">=</span>source_relative<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go-grpc_opt<span class="o">=</span><span class="nv">paths</span><span class="o">=</span>source_relative<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>foo.proto
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B">protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC</a></li>
-</ul>
-</blockquote>
-<h4 id="require_unimplemented_servers">▼ require_unimplemented_servers<a class="headerlink" href="#require_unimplemented_servers" title="Permanent link">&para;</a></h4>
-<p><code>pb.go</code> ファイルに <code>mustEmbedUnimplemented&lt;Service名&gt;Server</code> 関数を自動定義するかどうかを設定する。</p>
-<p>古い <code>github.com/golang/protobuf</code> パッケージから新しい <code>google.golang.org/protobuf</code> パッケージに移行する場合、これを <code>false</code> にする必要がある。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>-I<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go_out<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go_opt<span class="o">=</span><span class="nv">paths</span><span class="o">=</span>source_relative<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--go-grpc_opt<span class="o">=</span><span class="nv">paths</span><span class="o">=</span>source_relative,require_unimplemented_servers<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>foo.proto
+<div class="highlight"><pre><span></span><code><span class="c1">// pb.goファイル</span>
+<span class="kn">package</span><span class="w"> </span><span class="nx">foo_service</span>
+
+<span class="kd">func</span><span class="w"> </span><span class="nx">foo</span><span class="p">()</span><span class="w">  </span><span class="p">{</span>
+
+<span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://github.com/grpc/grpc-go/blob/master/cmd/protoc-gen-go-grpc/README.md">grpc-go/cmd/protoc-gen-go-grpc/README.md at master · grpc/grpc-go · GitHub</a></li>
-<li><a href="https://note.com/dd_techblog/n/nb8b925d21118">Go言語でのgRPCコード生成(2020年10月以降版)｜電通デジタル｜Tech Blog​</a></li>
+<li><a href="https://protobuf.dev/reference/go/go-generated/#package">Go Generated Code Guide (Open) | Protocol Buffers Documentation</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="03-_out">03. --プラグイン名 _out<a class="headerlink" href="#03-_out" title="Permanent link">&para;</a></h2>
-<h3 id="-_out">--プラグイン名_out とは<a class="headerlink" href="#-_out" title="Permanent link">&para;</a></h3>
-<p><code>pb</code> ファイルの出力先パスを設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/hsaki/books/golang-grpc-starting/viewer/codegenerate#protoc%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E3%81%A7%E3%82%B3%E3%83%BC%E3%83%89%E3%82%92%E7%94%9F%E6%88%90%E3%81%99%E3%82%8B">protoファイルからコードを自動生成する｜作ってわかる！ はじめてのgRPC</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="-go_out">--go_out<a class="headerlink" href="#-go_out" title="Permanent link">&para;</a></h3>
-<p><code>foo.proto</code> ファイルから、<code>foo.pb.go</code> ファイルをコンパイルする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>foo.proto
-</code></pre></div>
-<p><br></p>
-<h3 id="-go-grpc_out">--go-grpc_out<a class="headerlink" href="#-go-grpc_out" title="Permanent link">&para;</a></h3>
-<p><code>foo.proto</code> ファイルから、gRPC に対応する <code>foo.pb.go</code> ファイルをコンパイルする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--go_out<span class="o">=</span>.<span class="w"> </span>--go-grpc_out<span class="o">=</span>.<span class="w"> </span>foo.proto
-</code></pre></div>
-<p><br></p>
-<h3 id="-java_out">--java_out<a class="headerlink" href="#-java_out" title="Permanent link">&para;</a></h3>
-<p><code>foo.proto</code> ファイルから、<code>foo.pb.java</code> ファイルをコンパイルする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--java_out<span class="o">=</span>.<span class="w"> </span>foo.proto
-</code></pre></div>
-<p><br></p>
-<h3 id="-php_out">--php_out<a class="headerlink" href="#-php_out" title="Permanent link">&para;</a></h3>
-<p><code>foo.proto</code> ファイルから、<code>foo.pb.php</code> ファイルをコンパイルする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--php_out<span class="o">=</span>.<span class="w"> </span>foo.proto
-</code></pre></div>
-<p><br></p>
-<h3 id="-python_out">--python_out<a class="headerlink" href="#-python_out" title="Permanent link">&para;</a></h3>
-<p><code>foo.proto</code> ファイルから、<code>foo.pb.py</code> ファイルをコンパイルする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--python_out<span class="o">=</span>.<span class="w"> </span>foo.proto
-</code></pre></div>
-<p><br></p>
-<h3 id="-ruby_out">--ruby_out<a class="headerlink" href="#-ruby_out" title="Permanent link">&para;</a></h3>
-<p><code>foo.proto</code> ファイルから、<code>foo.pb.rb</code> ファイルをコンパイルする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--ruby_out<span class="o">=</span>.<span class="w"> </span>foo.proto
-</code></pre></div>
-<p><br></p>
-<h3 id="-rust_out">--rust_out<a class="headerlink" href="#-rust_out" title="Permanent link">&para;</a></h3>
-<p><code>foo.proto</code> ファイルから、<code>foo.pb.rs</code> ファイルをコンパイルする。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>protoc<span class="w"> </span>-I<span class="o">=</span>.<span class="w"> </span>--rust_out<span class="o">=</span>.<span class="w"> </span>foo.proto
-</code></pre></div>
 <p><br></p>
 
   

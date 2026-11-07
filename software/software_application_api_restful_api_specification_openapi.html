@@ -10,19 +10,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Protocol Buffer＠データ記述型言語の知見を記録しています。">
+        <meta name="description" content="OpenAPI＠API仕様書の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
       
       
-        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer.html">
+        <link rel="canonical" href="https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification_openapi.html">
       
       
-        <link rel="prev" href="language_data_description_language_yaml.html">
+        <link rel="prev" href="software_application_api_restful.html">
       
       
-        <link rel="next" href="language_data_description_language_protocol_buffer_command.html">
+        <link rel="next" href="software_application_api_rpc_api_grpc.html">
       
       
         
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】Protocol Buffer＠データ記述型言語 - 俺の技術ノート</title>
+        <title>【IT技術の知見】OpenAPI＠API仕様書 - 俺の技術ノート</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#protocol-buffer" class="md-skip">
+        <a href="#openapirestful-api" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】Protocol Buffer＠データ記述型言語
+              【IT技術の知見】OpenAPI＠API仕様書
             
           </span>
         </div>
@@ -309,7 +309,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/index.html" class="md-tabs__link">
+        <a href="index.html" class="md-tabs__link">
           
   
   
@@ -327,11 +327,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../software/application/index.html" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="application/index.html" class="md-tabs__link">
           
   
   
@@ -353,7 +355,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/middleware/index.html" class="md-tabs__link">
+        <a href="middleware/index.html" class="md-tabs__link">
           
   
   
@@ -375,7 +377,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../software/basic/index.html" class="md-tabs__link">
+        <a href="basic/index.html" class="md-tabs__link">
           
   
   
@@ -393,13 +395,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="index.html" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../language/index.html" class="md-tabs__link">
           
   
   
@@ -1015,7 +1015,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/index.html" class="md-nav__link ">
+            <a href="index.html" class="md-nav__link ">
               
   
   
@@ -1059,7 +1059,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software.html" class="md-nav__link">
+      <a href="software.html" class="md-nav__link">
         
   
   
@@ -1087,7 +1087,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_practices.html" class="md-nav__link">
+      <a href="software_practices.html" class="md-nav__link">
         
   
   
@@ -1119,6 +1119,8 @@
       
   
   
+    
+  
   
   
     
@@ -1146,20 +1148,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/application/index.html" class="md-nav__link ">
+            <a href="application/index.html" class="md-nav__link ">
               
   
   
@@ -1177,13 +1180,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1203,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture.html" class="md-nav__link">
+      <a href="software_application_architecture.html" class="md-nav__link">
         
   
   
@@ -1355,7 +1358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation.html" class="md-nav__link">
         
   
   
@@ -1383,7 +1386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_analysis.html" class="md-nav__link">
         
   
   
@@ -1411,7 +1414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_design.html" class="md-nav__link">
         
   
   
@@ -1439,7 +1442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_object_orientation_class.html" class="md-nav__link">
         
   
   
@@ -1535,7 +1538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design.html" class="md-nav__link">
         
   
   
@@ -1563,7 +1566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_strategic_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_strategic_design.html" class="md-nav__link">
         
   
   
@@ -1591,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_tactical_design.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_tactical_design.html" class="md-nav__link">
         
   
   
@@ -1693,7 +1696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture.html" class="md-nav__link">
         
   
   
@@ -1721,7 +1724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html" class="md-nav__link">
         
   
   
@@ -1749,7 +1752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html" class="md-nav__link">
         
   
   
@@ -1777,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html" class="md-nav__link">
         
   
   
@@ -1805,7 +1808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html" class="md-nav__link">
         
   
   
@@ -1833,7 +1836,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html" class="md-nav__link">
         
   
   
@@ -1869,7 +1872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_backend_cqrs.html" class="md-nav__link">
+      <a href="software_application_architecture_backend_cqrs.html" class="md-nav__link">
         
   
   
@@ -1967,7 +1970,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend.html" class="md-nav__link">
         
   
   
@@ -1995,7 +1998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend_ui_rendering_patterns.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend_ui_rendering_patterns.html" class="md-nav__link">
         
   
   
@@ -2023,7 +2026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend_state.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend_state.html" class="md-nav__link">
         
   
   
@@ -2051,7 +2054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_frontend_ui_design.html" class="md-nav__link">
+      <a href="software_application_architecture_frontend_ui_design.html" class="md-nav__link">
         
   
   
@@ -2163,7 +2166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices.html" class="md-nav__link">
         
   
   
@@ -2191,7 +2194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_cloudnative.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_cloudnative.html" class="md-nav__link">
         
   
   
@@ -2219,7 +2222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_api_gateway.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_api_gateway.html" class="md-nav__link">
         
   
   
@@ -2247,7 +2250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_cicd.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_cicd.html" class="md-nav__link">
         
   
   
@@ -2275,7 +2278,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_data_processing_workflow.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_data_processing_workflow.html" class="md-nav__link">
         
   
   
@@ -2303,7 +2306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_cache.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_cache.html" class="md-nav__link">
         
   
   
@@ -2395,7 +2398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_design.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_design.html" class="md-nav__link">
         
   
   
@@ -2423,7 +2426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_connection.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_connection.html" class="md-nav__link">
         
   
   
@@ -2451,7 +2454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_transaction.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_transaction.html" class="md-nav__link">
         
   
   
@@ -2479,7 +2482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_auth.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_auth.html" class="md-nav__link">
         
   
   
@@ -2507,7 +2510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_general.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_general.html" class="md-nav__link">
         
   
   
@@ -2543,7 +2546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_storage.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_storage.html" class="md-nav__link">
         
   
   
@@ -2629,7 +2632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_test_blackbox.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_test_blackbox.html" class="md-nav__link">
         
   
   
@@ -2657,7 +2660,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_test_whitebox.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_test_whitebox.html" class="md-nav__link">
         
   
   
@@ -2749,7 +2752,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_services_resiliency_recovery.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_services_resiliency_recovery.html" class="md-nav__link">
         
   
   
@@ -2843,7 +2846,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_development_organization.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_development_organization.html" class="md-nav__link">
         
   
   
@@ -2871,7 +2874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_architecture_microservices_development_repository.html" class="md-nav__link">
+      <a href="software_application_architecture_microservices_development_repository.html" class="md-nav__link">
         
   
   
@@ -2977,7 +2980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_request_response.html" class="md-nav__link">
+      <a href="software_application_communication_style_request_response.html" class="md-nav__link">
         
   
   
@@ -3005,7 +3008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_publish_subscribe.html" class="md-nav__link">
+      <a href="software_application_communication_style_publish_subscribe.html" class="md-nav__link">
         
   
   
@@ -3033,7 +3036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_streaming.html" class="md-nav__link">
+      <a href="software_application_communication_style_streaming.html" class="md-nav__link">
         
   
   
@@ -3061,7 +3064,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_communication_style_sharing_data.html" class="md-nav__link">
+      <a href="software_application_communication_style_sharing_data.html" class="md-nav__link">
         
   
   
@@ -3094,8 +3097,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3112,13 +3117,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7" checked>
         
           
           <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
@@ -3139,7 +3142,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_7">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3154,8 +3157,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3170,13 +3175,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_1" checked>
         
           
           <label class="md-nav__link" for="__nav_5_7_1" id="__nav_5_7_1_label" tabindex="0">
@@ -3197,7 +3200,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_7_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_7_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3215,7 +3218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_restful.html" class="md-nav__link">
+      <a href="software_application_api_restful.html" class="md-nav__link">
         
   
   
@@ -3240,8 +3243,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -3254,13 +3259,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_1_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_7_1_2" checked>
         
           
           <label class="md-nav__link" for="__nav_5_7_1_2" id="__nav_5_7_1_2_label" tabindex="0">
@@ -3281,7 +3284,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_1_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_1_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_7_1_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3296,10 +3299,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../software/software_application_api_restful_api_specification_openapi.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAPI
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="software_application_api_restful_api_specification_openapi.html" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3315,6 +3345,361 @@
   
 
       </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      このページの内容
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        はじめに
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#01-openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01. OpenAPI
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01. OpenAPI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenAPI とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenAPI の視覚化
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="OpenAPI の視覚化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openapi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ OpenAPI の視覚化とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ ReDoc の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger-uiswagger-codegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Swagger UI／Swagger Codegen の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ OpenAPI Generator の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oapi-codegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ oapi-codegen の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API スキーマ駆動開発
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API スキーマ駆動開発">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ API スキーマ駆動開発とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-generator_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ OpenAPI Generator の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oapi-codegen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ oapi-codegen の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クラウドプロバイダーとの統合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="クラウドプロバイダーとの統合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ API ゲートウェイの場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. フィールド
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. フィールド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openapi_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        openapi フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        info フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servers フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        paths フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        components フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        security フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tags フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#externaldocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        externalDocs フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03. API スキーマ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. API スキーマ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API スキーマとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API スキーマによるバリデーション
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3344,6 +3729,8 @@
   
     
     
+      
+        
       
         
       
@@ -3401,7 +3788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_rpc_api_grpc.html" class="md-nav__link">
+      <a href="software_application_api_rpc_api_grpc.html" class="md-nav__link">
         
   
   
@@ -3433,8 +3820,6 @@
       
         
       
-        
-      
     
     
     
@@ -3458,7 +3843,7 @@
   <span class="md-ellipsis">
     
   
-    ■ クライアントパッケージ
+    ■ API仕様書
   
 
     
@@ -3471,6 +3856,288 @@
         
         <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5_7_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ API仕様書
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2_2_1" id="__nav_5_7_2_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ Protocol Buffer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_5_7_2_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_2_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ Protocol Buffer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_rpc_api_specification_protocol_buffer.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Protocol Buffer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_rpc_api_specification_protocol_buffer_command.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    コマンド
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2_2_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2_2_1_3" id="__nav_5_7_2_2_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ Protocol Bufferコンパイラー
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_5_7_2_2_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_2_2_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ Protocol Bufferコンパイラー
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="software_application_api_rpc_api_specification_protocol_buffer_compiler_go.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goプラグイン
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7_2_3" id="__nav_5_7_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ クライアントパッケージ
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_7_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -3487,7 +4154,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
+      <a href="software_application_api_rpc_api_grpc_client_package_go.html" class="md-nav__link">
         
   
   
@@ -3515,7 +4182,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_rpc_api_grpc_client_package_tools.html" class="md-nav__link">
+      <a href="software_application_api_rpc_api_grpc_client_package_tools.html" class="md-nav__link">
         
   
   
@@ -3615,7 +4282,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_api_graphql_api_graphql.html" class="md-nav__link">
+      <a href="software_application_api_graphql_api_graphql.html" class="md-nav__link">
         
   
   
@@ -3775,7 +4442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_argoworkflow.html" class="md-nav__link">
+      <a href="software_application_workflow_argoworkflow.html" class="md-nav__link">
         
   
   
@@ -3803,7 +4470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_argoworkflow_resource_definition.html" class="md-nav__link">
+      <a href="software_application_workflow_argoworkflow_resource_definition.html" class="md-nav__link">
         
   
   
@@ -3897,7 +4564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_temporal.html" class="md-nav__link">
+      <a href="software_application_workflow_temporal.html" class="md-nav__link">
         
   
   
@@ -3983,7 +4650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_temporal_conf_cluster.html" class="md-nav__link">
+      <a href="software_application_workflow_temporal_conf_cluster.html" class="md-nav__link">
         
   
   
@@ -4011,7 +4678,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_application_workflow_temporal_conf_web.html" class="md-nav__link">
+      <a href="software_application_workflow_temporal_conf_web.html" class="md-nav__link">
         
   
   
@@ -4115,7 +4782,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/middleware/index.html" class="md-nav__link ">
+            <a href="middleware/index.html" class="md-nav__link ">
               
   
   
@@ -4281,7 +4948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx.html" class="md-nav__link">
         
   
   
@@ -4309,7 +4976,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_conf.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_conf.html" class="md-nav__link">
         
   
   
@@ -4337,7 +5004,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_command.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_command.html" class="md-nav__link">
         
   
   
@@ -4365,7 +5032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_module_builtin.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_module_builtin.html" class="md-nav__link">
         
   
   
@@ -4393,7 +5060,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_nginx_module_utility.html" class="md-nav__link">
+      <a href="software_middleware_web_nginx_module_utility.html" class="md-nav__link">
         
   
   
@@ -4489,7 +5156,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache.html" class="md-nav__link">
+      <a href="software_middleware_web_apache.html" class="md-nav__link">
         
   
   
@@ -4517,7 +5184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_conf.html" class="md-nav__link">
+      <a href="software_middleware_web_apache_conf.html" class="md-nav__link">
         
   
   
@@ -4545,7 +5212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_web_apache_command.html" class="md-nav__link">
+      <a href="software_middleware_web_apache_command.html" class="md-nav__link">
         
   
   
@@ -4707,7 +5374,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_fastcgi_php_fpm.html" class="md-nav__link">
         
   
   
@@ -4735,7 +5402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_fastcgi_php_fpm_conf.html" class="md-nav__link">
         
   
   
@@ -4829,7 +5496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_wsgi_uwsgi.html" class="md-nav__link">
         
   
   
@@ -4857,7 +5524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_wsgi_uwsgi_conf.html" class="md-nav__link">
         
   
   
@@ -4893,7 +5560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
+      <a href="software_middleware_application_gi_asgi_uvicorn.html" class="md-nav__link">
         
   
   
@@ -5053,7 +5720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms.html" class="md-nav__link">
         
   
   
@@ -5081,7 +5748,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms_practices.html" class="md-nav__link">
         
   
   
@@ -5109,7 +5776,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_rdbms_acid.html" class="md-nav__link">
         
   
   
@@ -5205,7 +5872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql.html" class="md-nav__link">
         
   
   
@@ -5233,7 +5900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_conf.html" class="md-nav__link">
         
   
   
@@ -5321,7 +5988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_dml.html" class="md-nav__link">
         
   
   
@@ -5349,7 +6016,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_dcl.html" class="md-nav__link">
         
   
   
@@ -5377,7 +6044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_mysql_sql_ddl.html" class="md-nav__link">
         
   
   
@@ -5479,7 +6146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_postgresql_conf.html" class="md-nav__link">
         
   
   
@@ -5507,7 +6174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_postgresql_repmgr.html" class="md-nav__link">
         
   
   
@@ -5543,7 +6210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_antipatterns.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_antipatterns.html" class="md-nav__link">
         
   
   
@@ -5571,7 +6238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_rdb_er.html" class="md-nav__link">
+      <a href="software_middleware_database_rdb_er.html" class="md-nav__link">
         
   
   
@@ -5665,7 +6332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_nosqldb.html" class="md-nav__link">
+      <a href="software_middleware_database_nosqldb.html" class="md-nav__link">
         
   
   
@@ -5751,7 +6418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_nosqldb_redis.html" class="md-nav__link">
+      <a href="software_middleware_database_nosqldb_redis.html" class="md-nav__link">
         
   
   
@@ -5779,7 +6446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_nosqldb_redis_command.html" class="md-nav__link">
+      <a href="software_middleware_database_nosqldb_redis_command.html" class="md-nav__link">
         
   
   
@@ -5937,7 +6604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
+      <a href="software_middleware_database_connection_pool_proxy_pgbouncer.html" class="md-nav__link">
         
   
   
@@ -5965,7 +6632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
+      <a href="software_middleware_database_connection_pool_proxy_pgbouncer_conf.html" class="md-nav__link">
         
   
   
@@ -6067,7 +6734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb.html" class="md-nav__link">
         
   
   
@@ -6153,7 +6820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb_victoriametrics.html" class="md-nav__link">
         
   
   
@@ -6181,7 +6848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
+      <a href="software_middleware_database_tsdb_victoriametrics_command.html" class="md-nav__link">
         
   
   
@@ -6343,7 +7010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh.html" class="md-nav__link">
         
   
   
@@ -6371,7 +7038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_responsibility.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_responsibility.html" class="md-nav__link">
         
   
   
@@ -6471,7 +7138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy.html" class="md-nav__link">
         
   
   
@@ -6499,7 +7166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_envoy_yaml.html" class="md-nav__link">
         
   
   
@@ -6527,7 +7194,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_telemetry.html" class="md-nav__link">
         
   
   
@@ -6555,7 +7222,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_api.html" class="md-nav__link">
         
   
   
@@ -6583,7 +7250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_envoy_practice.html" class="md-nav__link">
         
   
   
@@ -6691,7 +7358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio.html" class="md-nav__link">
         
   
   
@@ -6777,7 +7444,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_sidecar_control_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_sidecar_control_plane.html" class="md-nav__link">
         
   
   
@@ -6805,7 +7472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_sidecar_data_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_sidecar_data_plane.html" class="md-nav__link">
         
   
   
@@ -6899,7 +7566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_ambient_control_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_ambient_control_plane.html" class="md-nav__link">
         
   
   
@@ -6927,7 +7594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_ambient_data_plane.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_ambient_data_plane.html" class="md-nav__link">
         
   
   
@@ -6963,7 +7630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_non.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_non.html" class="md-nav__link">
         
   
   
@@ -6991,7 +7658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_command.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_command.html" class="md-nav__link">
         
   
   
@@ -7019,7 +7686,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_practices.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_practices.html" class="md-nav__link">
         
   
   
@@ -7047,7 +7714,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_patterns.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_patterns.html" class="md-nav__link">
         
   
   
@@ -7133,7 +7800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource.html" class="md-nav__link">
         
   
   
@@ -7223,7 +7890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition.html" class="md-nav__link">
         
   
   
@@ -7251,7 +7918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition_common.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition_common.html" class="md-nav__link">
         
   
   
@@ -7279,7 +7946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition_configmap.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition_configmap.html" class="md-nav__link">
         
   
   
@@ -7307,7 +7974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_resource_definition_secret.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_resource_definition_secret.html" class="md-nav__link">
         
   
   
@@ -7409,7 +8076,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_operator.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_operator.html" class="md-nav__link">
         
   
   
@@ -7437,7 +8104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_service_mesh_istio_operator_resource_definition.html" class="md-nav__link">
+      <a href="software_middleware_service_mesh_istio_operator_resource_definition.html" class="md-nav__link">
         
   
   
@@ -7603,7 +8270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_dns_coredns.html" class="md-nav__link">
+      <a href="software_middleware_dns_coredns.html" class="md-nav__link">
         
   
   
@@ -7631,7 +8298,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_dns_coredns_conf.html" class="md-nav__link">
+      <a href="software_middleware_dns_coredns_conf.html" class="md-nav__link">
         
   
   
@@ -7795,7 +8462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_cert_manager.html" class="md-nav__link">
+      <a href="software_middleware_security_cert_manager.html" class="md-nav__link">
         
   
   
@@ -7823,7 +8490,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_cert_manager_resource_definition.html" class="md-nav__link">
+      <a href="software_middleware_security_cert_manager_resource_definition.html" class="md-nav__link">
         
   
   
@@ -7917,7 +8584,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco.html" class="md-nav__link">
+      <a href="software_middleware_security_falco.html" class="md-nav__link">
         
   
   
@@ -7945,7 +8612,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_falco_conf.html" class="md-nav__link">
+      <a href="software_middleware_security_falco_conf.html" class="md-nav__link">
         
   
   
@@ -8041,7 +8708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_keycloak.html" class="md-nav__link">
+      <a href="software_middleware_security_keycloak.html" class="md-nav__link">
         
   
   
@@ -8069,7 +8736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_keycloak_conf.html" class="md-nav__link">
+      <a href="software_middleware_security_keycloak_conf.html" class="md-nav__link">
         
   
   
@@ -8153,7 +8820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_keycloak_client_package_javascript.html" class="md-nav__link">
+      <a href="software_middleware_security_keycloak_client_package_javascript.html" class="md-nav__link">
         
   
   
@@ -8255,7 +8922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_oauth2_proxy.html" class="md-nav__link">
+      <a href="software_middleware_security_oauth2_proxy.html" class="md-nav__link">
         
   
   
@@ -8283,7 +8950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_security_oauth2_proxy_conf.html" class="md-nav__link">
+      <a href="software_middleware_security_oauth2_proxy_conf.html" class="md-nav__link">
         
   
   
@@ -8385,7 +9052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_messaging_message_broker_rabbitmq.html" class="md-nav__link">
+      <a href="software_middleware_messaging_message_broker_rabbitmq.html" class="md-nav__link">
         
   
   
@@ -8413,7 +9080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_messaging_message_streamer_apache_kafka.html" class="md-nav__link">
+      <a href="software_middleware_messaging_message_streamer_apache_kafka.html" class="md-nav__link">
         
   
   
@@ -8505,7 +9172,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_middleware_data_analysis.html" class="md-nav__link">
+      <a href="software_middleware_data_analysis.html" class="md-nav__link">
         
   
   
@@ -8577,7 +9244,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../software/basic/index.html" class="md-nav__link ">
+            <a href="basic/index.html" class="md-nav__link ">
               
   
   
@@ -8689,7 +9356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel.html" class="md-nav__link">
         
   
   
@@ -8717,7 +9384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_process_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_process_management.html" class="md-nav__link">
         
   
   
@@ -8745,7 +9412,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_memory_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_memory_management.html" class="md-nav__link">
         
   
   
@@ -8773,7 +9440,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_storage_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_storage_management.html" class="md-nav__link">
         
   
   
@@ -8801,7 +9468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_io_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_io_management.html" class="md-nav__link">
         
   
   
@@ -8829,7 +9496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_job_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_job_management.html" class="md-nav__link">
         
   
   
@@ -8857,7 +9524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_linux_kernel_security_management.html" class="md-nav__link">
+      <a href="software_basic_linux_kernel_security_management.html" class="md-nav__link">
         
   
   
@@ -8959,7 +9626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility.html" class="md-nav__link">
+      <a href="software_basic_utility.html" class="md-nav__link">
         
   
   
@@ -8987,7 +9654,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_unix.html" class="md-nav__link">
+      <a href="software_basic_utility_unix.html" class="md-nav__link">
         
   
   
@@ -9015,7 +9682,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_shell.html" class="md-nav__link">
+      <a href="software_basic_utility_shell.html" class="md-nav__link">
         
   
   
@@ -9043,7 +9710,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_script.html" class="md-nav__link">
+      <a href="software_basic_utility_script.html" class="md-nav__link">
         
   
   
@@ -9133,7 +9800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_memory.html" class="md-nav__link">
+      <a href="software_basic_utility_package_memory.html" class="md-nav__link">
         
   
   
@@ -9161,7 +9828,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_network.html" class="md-nav__link">
+      <a href="software_basic_utility_package_network.html" class="md-nav__link">
         
   
   
@@ -9189,7 +9856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_security.html" class="md-nav__link">
+      <a href="software_basic_utility_package_security.html" class="md-nav__link">
         
   
   
@@ -9217,7 +9884,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_storage.html" class="md-nav__link">
+      <a href="software_basic_utility_package_storage.html" class="md-nav__link">
         
   
   
@@ -9315,7 +9982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management.html" class="md-nav__link">
         
   
   
@@ -9343,7 +10010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_linux.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_linux.html" class="md-nav__link">
         
   
   
@@ -9371,7 +10038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_redhat.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_redhat.html" class="md-nav__link">
         
   
   
@@ -9399,7 +10066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_utility_package_management_debian.html" class="md-nav__link">
+      <a href="software_basic_utility_package_management_debian.html" class="md-nav__link">
         
   
   
@@ -9501,7 +10168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor.html" class="md-nav__link">
+      <a href="software_basic_language_processor.html" class="md-nav__link">
         
   
   
@@ -9529,7 +10196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../software/software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
+      <a href="software_basic_language_processor_machine_language_and_radix.html" class="md-nav__link">
         
   
   
@@ -9569,8 +10236,6 @@
       
   
   
-    
-  
   
   
     
@@ -9608,21 +10273,20 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="index.html" class="md-nav__link ">
+            <a href="../language/index.html" class="md-nav__link ">
               
   
   
@@ -9640,13 +10304,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
@@ -9666,7 +10330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_type.html" class="md-nav__link">
+      <a href="../language/language_type.html" class="md-nav__link">
         
   
   
@@ -9694,7 +10358,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_process_mode.html" class="md-nav__link">
+      <a href="../language/language_process_mode.html" class="md-nav__link">
         
   
   
@@ -9722,7 +10386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_structure.html" class="md-nav__link">
+      <a href="../language/language_data_structure.html" class="md-nav__link">
         
   
   
@@ -9747,10 +10411,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -9758,8 +10420,6 @@
       
         
       
-        
-      
     
     
     
@@ -9767,11 +10427,13 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
         
           
           <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
@@ -9792,7 +10454,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -9868,7 +10530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_json.html" class="md-nav__link">
+      <a href="../language/language_data_description_language_json.html" class="md-nav__link">
         
   
   
@@ -9896,7 +10558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_json_query.html" class="md-nav__link">
+      <a href="../language/language_data_description_language_json_query.html" class="md-nav__link">
         
   
   
@@ -9988,7 +10650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_data_description_language_yaml.html" class="md-nav__link">
+      <a href="../language/language_data_description_language_yaml.html" class="md-nav__link">
         
   
   
@@ -10004,404 +10666,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_5_3" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_8_5_3" id="__nav_8_5_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ■ Protocol Buffer
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_8_5_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ■ Protocol Buffer
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Protocol Buffer
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="language_data_description_language_protocol_buffer.html" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Protocol Buffer
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-  
-
-<nav class="md-nav md-nav--secondary" aria-label="このページの内容">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      このページの内容
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        はじめに
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#01-protocol-buffer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        01. Protocol Buffer とは
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. 文法
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 文法">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#enum" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        enum
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#map" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        map
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        message
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oneof" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        oneof
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#package" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        package
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        service
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="service">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#service_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ service とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        syntax
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="language_data_description_language_protocol_buffer_command.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    コマンド
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5_3_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_5_3_3" id="__nav_8_5_3_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ■ Protocol Bufferコンパイラー
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_5_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_5_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ■ Protocol Bufferコンパイラー
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="language_data_description_language_protocol_buffer_compiler_go.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Goプラグイン
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -10496,7 +10760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go.html" class="md-nav__link">
+      <a href="../language/language_go.html" class="md-nav__link">
         
   
   
@@ -10524,7 +10788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_conf.html" class="md-nav__link">
+      <a href="../language/language_go_conf.html" class="md-nav__link">
         
   
   
@@ -10552,7 +10816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_command.html" class="md-nav__link">
+      <a href="../language/language_go_command.html" class="md-nav__link">
         
   
   
@@ -10640,7 +10904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_data.html" class="md-nav__link">
+      <a href="../language/language_go_logic_data.html" class="md-nav__link">
         
   
   
@@ -10668,7 +10932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_function.html" class="md-nav__link">
+      <a href="../language/language_go_logic_function.html" class="md-nav__link">
         
   
   
@@ -10696,7 +10960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_logic_validation.html" class="md-nav__link">
+      <a href="../language/language_go_logic_validation.html" class="md-nav__link">
         
   
   
@@ -10788,7 +11052,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_framework_gin.html" class="md-nav__link">
+      <a href="../language/language_go_framework_gin.html" class="md-nav__link">
         
   
   
@@ -10884,7 +11148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_builtin.html" class="md-nav__link">
+      <a href="../language/language_go_package_builtin.html" class="md-nav__link">
         
   
   
@@ -10912,7 +11176,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_sql.html" class="md-nav__link">
+      <a href="../language/language_go_package_sql.html" class="md-nav__link">
         
   
   
@@ -10940,7 +11204,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_go_package_utility.html" class="md-nav__link">
+      <a href="../language/language_go_package_utility.html" class="md-nav__link">
         
   
   
@@ -10984,7 +11248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_java.html" class="md-nav__link">
+      <a href="../language/language_java.html" class="md-nav__link">
         
   
   
@@ -11134,7 +11398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_prototype_based.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based.html" class="md-nav__link">
         
   
   
@@ -11162,7 +11426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_prototype_based_function_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
         
   
   
@@ -11262,7 +11526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_validation.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_validation.html" class="md-nav__link">
         
   
   
@@ -11290,7 +11554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_asynchronous_process.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_asynchronous_process.html" class="md-nav__link">
         
   
   
@@ -11318,7 +11582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_debug.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_debug.html" class="md-nav__link">
         
   
   
@@ -11346,7 +11610,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_authentication.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_authentication.html" class="md-nav__link">
         
   
   
@@ -11374,7 +11638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_logic_browser_rendering.html" class="md-nav__link">
+      <a href="../language/language_javascript_logic_browser_rendering.html" class="md-nav__link">
         
   
   
@@ -11470,7 +11734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_nuxtjs.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_nuxtjs.html" class="md-nav__link">
         
   
   
@@ -11558,7 +11822,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_vuejs.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_vuejs.html" class="md-nav__link">
         
   
   
@@ -11586,7 +11850,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_vuejs_vuerouter.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_vuejs_vuerouter.html" class="md-nav__link">
         
   
   
@@ -11614,7 +11878,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_vuejs_vuex.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_vuejs_vuex.html" class="md-nav__link">
         
   
   
@@ -11708,7 +11972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_remix.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_remix.html" class="md-nav__link">
         
   
   
@@ -11736,7 +12000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_framework_remix_command.html" class="md-nav__link">
+      <a href="../language/language_javascript_framework_remix_command.html" class="md-nav__link">
         
   
   
@@ -11842,7 +12106,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_management.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_management.html" class="md-nav__link">
         
   
   
@@ -11870,7 +12134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_utility.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_utility.html" class="md-nav__link">
         
   
   
@@ -11898,7 +12162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_react.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_react.html" class="md-nav__link">
         
   
   
@@ -11982,7 +12246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_package_sql_prisma.html" class="md-nav__link">
+      <a href="../language/language_javascript_package_sql_prisma.html" class="md-nav__link">
         
   
   
@@ -12082,7 +12346,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_javascript_browser_rendering.html" class="md-nav__link">
+      <a href="../language/language_javascript_browser_rendering.html" class="md-nav__link">
         
   
   
@@ -12194,7 +12458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php.html" class="md-nav__link">
+      <a href="../language/language_php.html" class="md-nav__link">
         
   
   
@@ -12222,7 +12486,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_conf.html" class="md-nav__link">
+      <a href="../language/language_php_conf.html" class="md-nav__link">
         
   
   
@@ -12250,7 +12514,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_command.html" class="md-nav__link">
+      <a href="../language/language_php_command.html" class="md-nav__link">
         
   
   
@@ -12338,7 +12602,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based.html" class="md-nav__link">
+      <a href="../language/language_php_class_based.html" class="md-nav__link">
         
   
   
@@ -12366,7 +12630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_function_data.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
         
   
   
@@ -12394,7 +12658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_class_based_data_structure.html" class="md-nav__link">
+      <a href="../language/language_php_class_based_data_structure.html" class="md-nav__link">
         
   
   
@@ -12494,7 +12758,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_validation.html" class="md-nav__link">
+      <a href="../language/language_php_logic_validation.html" class="md-nav__link">
         
   
   
@@ -12522,7 +12786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_error_and_error_handling.html" class="md-nav__link">
+      <a href="../language/language_php_logic_error_and_error_handling.html" class="md-nav__link">
         
   
   
@@ -12550,7 +12814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_iteration.html" class="md-nav__link">
+      <a href="../language/language_php_logic_iteration.html" class="md-nav__link">
         
   
   
@@ -12578,7 +12842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_algorithm.html" class="md-nav__link">
+      <a href="../language/language_php_logic_algorithm.html" class="md-nav__link">
         
   
   
@@ -12606,7 +12870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_logic_debug.html" class="md-nav__link">
+      <a href="../language/language_php_logic_debug.html" class="md-nav__link">
         
   
   
@@ -12764,7 +13028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_component.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_component.html" class="md-nav__link">
         
   
   
@@ -12792,7 +13056,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_eloquent_orm.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_eloquent_orm.html" class="md-nav__link">
         
   
   
@@ -12820,7 +13084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_package.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_package.html" class="md-nav__link">
         
   
   
@@ -12848,7 +13112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_package_auth.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_package_auth.html" class="md-nav__link">
         
   
   
@@ -12876,7 +13140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_laravel_command.html" class="md-nav__link">
+      <a href="../language/language_php_framework_laravel_command.html" class="md-nav__link">
         
   
   
@@ -12970,7 +13234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_symfony_component.html" class="md-nav__link">
+      <a href="../language/language_php_framework_symfony_component.html" class="md-nav__link">
         
   
   
@@ -12998,7 +13262,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_framework_symfony_doctrine_orm.html" class="md-nav__link">
+      <a href="../language/language_php_framework_symfony_doctrine_orm.html" class="md-nav__link">
         
   
   
@@ -13102,7 +13366,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_management.html" class="md-nav__link">
+      <a href="../language/language_php_package_management.html" class="md-nav__link">
         
   
   
@@ -13130,7 +13394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_sql.html" class="md-nav__link">
+      <a href="../language/language_php_package_sql.html" class="md-nav__link">
         
   
   
@@ -13158,7 +13422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_php_package_utility.html" class="md-nav__link">
+      <a href="../language/language_php_package_utility.html" class="md-nav__link">
         
   
   
@@ -13262,7 +13526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python.html" class="md-nav__link">
+      <a href="../language/language_python.html" class="md-nav__link">
         
   
   
@@ -13406,7 +13670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_component.html" class="md-nav__link">
+      <a href="../language/language_python_framework_flask_component.html" class="md-nav__link">
         
   
   
@@ -13434,7 +13698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_command.html" class="md-nav__link">
+      <a href="../language/language_python_framework_flask_command.html" class="md-nav__link">
         
   
   
@@ -13462,7 +13726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_framework_flask_package.html" class="md-nav__link">
+      <a href="../language/language_python_framework_flask_package.html" class="md-nav__link">
         
   
   
@@ -13562,7 +13826,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_python_package_management.html" class="md-nav__link">
+      <a href="../language/language_python_package_management.html" class="md-nav__link">
         
   
   
@@ -13606,7 +13870,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_r.html" class="md-nav__link">
+      <a href="../language/language_r.html" class="md-nav__link">
         
   
   
@@ -13692,7 +13956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_rust.html" class="md-nav__link">
+      <a href="../language/language_rust.html" class="md-nav__link">
         
   
   
@@ -13720,7 +13984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_rust_function.html" class="md-nav__link">
+      <a href="../language/language_rust_function.html" class="md-nav__link">
         
   
   
@@ -13816,7 +14080,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_typescript.html" class="md-nav__link">
+      <a href="../language/language_typescript.html" class="md-nav__link">
         
   
   
@@ -13844,7 +14108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_typescript_conf.html" class="md-nav__link">
+      <a href="../language/language_typescript_conf.html" class="md-nav__link">
         
   
   
@@ -13872,7 +14136,7 @@
   
   
     <li class="md-nav__item">
-      <a href="language_typescript_logic.html" class="md-nav__link">
+      <a href="../language/language_typescript_logic.html" class="md-nav__link">
         
   
   
@@ -33970,33 +34234,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-protocol-buffer" class="md-nav__link">
+  <a href="#01-openapi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. Protocol Buffer とは
+        01. OpenAPI
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. 文法
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 文法">
+    <nav class="md-nav" aria-label="01. OpenAPI">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#enum" class="md-nav__link">
+  <a href="#openapi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        enum
+        OpenAPI とは
       
     </span>
   </a>
@@ -34004,66 +34257,66 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#map" class="md-nav__link">
+  <a href="#openapi_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        map
+        OpenAPI の視覚化
       
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#message" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        message
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#oneof" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        oneof
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#package" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        package
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#service" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        service
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="service">
+    <nav class="md-nav" aria-label="OpenAPI の視覚化">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#service_1" class="md-nav__link">
+  <a href="#openapi_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ service とは
+        ▼ OpenAPI の視覚化とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#redoc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ ReDoc の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#swagger-uiswagger-codegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ Swagger UI／Swagger Codegen の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-generator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ OpenAPI Generator の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oapi-codegen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ oapi-codegen の場合
       
     </span>
   </a>
@@ -34076,10 +34329,221 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#syntax" class="md-nav__link">
+  <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
       
-        syntax
+        API スキーマ駆動開発
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API スキーマ駆動開発">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ API スキーマ駆動開発とは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openapi-generator_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ OpenAPI Generator の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#oapi-codegen_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ oapi-codegen の場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クラウドプロバイダーとの統合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="クラウドプロバイダーとの統合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ API ゲートウェイの場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02. フィールド
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02. フィールド">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openapi_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        openapi フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#info" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        info フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servers フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#paths" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        paths フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        components フィールド (必須)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        security フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        tags フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#externaldocs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        externalDocs フィールド
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03. API スキーマ
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. API スキーマ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#api_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API スキーマとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#api_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API スキーマによるバリデーション
       
     </span>
   </a>
@@ -34134,10 +34598,10 @@
     
     
       <li class="md-path__item">
-        <a href="index.html" class="md-path__link">
+        <a href="application/index.html" class="md-path__link">
           
   <span class="md-ellipsis">
-    🔠 言語
+    🚀 アプリ
   </span>
 
         </a>
@@ -34157,10 +34621,10 @@
     
     
       <li class="md-path__item">
-        <a href="language_data_description_language_json.html" class="md-path__link">
+        <a href="software_application_api_restful.html" class="md-path__link">
           
   <span class="md-ellipsis">
-    ■ データ記述言語
+    ■ API
   </span>
 
         </a>
@@ -34178,10 +34642,28 @@
     
     
       <li class="md-path__item">
-        <a href="language_data_description_language_protocol_buffer.html" class="md-path__link">
+        <a href="software_application_api_restful.html" class="md-path__link">
           
   <span class="md-ellipsis">
-    ■ Protocol Buffer
+    ■ RESTful-API
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="software_application_api_restful_api_specification_openapi.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ■ API仕様書
   </span>
 
         </a>
@@ -34224,7 +34706,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:24:44 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月8日 03:02:03 JST">2026-11-08</span>
   </span>
 
     
@@ -34249,100 +34731,612 @@
   </aside>
 
 
-<h1 id="protocol-buffer">Protocol Buffer＠データ記述型言語<a class="headerlink" href="#protocol-buffer" title="Permanent link">&para;</a></h1>
+<h1 id="openapirestful-api">OpenAPI＠RESTful-API<a class="headerlink" href="#openapirestful-api" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
-<h2 id="01-protocol-buffer">01. Protocol Buffer とは<a class="headerlink" href="#01-protocol-buffer" title="Permanent link">&para;</a></h2>
-<p>異なる言語間やサーバー間で変換できるデータ記述型言語である。</p>
+<h2 id="01-openapi">01. OpenAPI<a class="headerlink" href="#01-openapi" title="Permanent link">&para;</a></h2>
+<h3 id="openapi">OpenAPI とは<a class="headerlink" href="#openapi" title="Permanent link">&para;</a></h3>
+<p>RESTful-API の仕様を実装により説明するためのフォーマットのこと。JSON 型または YAML 型で実装できる。</p>
+<p>いくつかのフィールドから構成されている。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="c1"># openapi フィールド</span>
+
+<span class="nt">info</span><span class="p">:</span><span class="w"> </span><span class="c1"># info フィールド</span>
+
+<span class="nt">servers</span><span class="p">:</span><span class="w"> </span><span class="c1"># servers フィールド</span>
+
+<span class="nt">paths</span><span class="p">:</span><span class="w"> </span><span class="c1"># paths フィールド</span>
+
+<span class="nt">webhooks</span><span class="p">:</span><span class="w"> </span><span class="c1"># webhooks フィールド</span>
+
+<span class="nt">components</span><span class="p">:</span><span class="w"> </span><span class="c1"># components フィールド</span>
+
+<span class="nt">security</span><span class="p">:</span><span class="w"> </span><span class="c1"># security フィールド</span>
+
+<span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="c1"># tags フィールド</span>
+
+<span class="nt">externalDocs</span><span class="p">:</span><span class="w"> </span><span class="c1"># externalDocs フィールド</span>
+</code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://docs.wantedly.dev/fields/the-system/apis">https://docs.wantedly.dev/fields/the-system/apis</a></li>
+<li><a href="https://spec.openapis.org/oas/v3.1.0#fixed-fields">OpenAPI Specification v3.1.0</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. 文法<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="enum">enum<a class="headerlink" href="#enum" title="Permanent link">&para;</a></h3>
-<p>enum 型のデータを設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">enum</span><span class="w"> </span><span class="n">GenderType</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">UNKNOWN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
-<span class="w">  </span><span class="na">MAN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="na">WOMAN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<h3 id="openapi_1">OpenAPI の視覚化<a class="headerlink" href="#openapi_1" title="Permanent link">&para;</a></h3>
+<h4 id="openapi_2">▼ OpenAPI の視覚化とは<a class="headerlink" href="#openapi_2" title="Permanent link">&para;</a></h4>
+<p>OpenAPI を共有して閲覧できるように、仕様書の静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、<code>js</code> ファイル) を自動的に作成する。</p>
+<p>さらに、静的な Web サイトとして公開すると、チーム内で共有するとなおよい。</p>
+<blockquote>
+<ul>
+<li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">APIドキュメントをRedocで一新しました | AQ Tech Blog</a></li>
+</ul>
+</blockquote>
+<h4 id="redoc">▼ ReDoc の場合<a class="headerlink" href="#redoc" title="Permanent link">&para;</a></h4>
+<p>ReDoc を使用して、OpenAPI から静的ファイルを作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
+<span class="nt">info</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.0.0</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Swagger sample</span>
+<span class="nt">paths</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">/users</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Usersを取得するAPIです。</span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HTTPステータスコード200と以下の情報を含むJSONオブジェクトを返します。</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">                </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">user_id</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">                    </span><span class="nt">example</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1234567</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>redoc-cli
+
+$<span class="w"> </span>redoc-cli<span class="w"> </span>bundle<span class="w"> </span>openapi.yaml<span class="w"> </span>redoc.html
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/icck/items/97d00495ec324e1902d6">作ったOpenAPIのyamlからReDocを使ってドキュメント生成する方法 #OpenAPI - Qiita</a></li>
+<li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">APIドキュメントをRedocで一新しました | AQ Tech Blog</a></li>
+</ul>
+</blockquote>
+<h4 id="swagger-uiswagger-codegen">▼ Swagger UI／Swagger Codegen の場合<a class="headerlink" href="#swagger-uiswagger-codegen" title="Permanent link">&para;</a></h4>
+<p>Swagger UI／Swagger Codegen を使用して、OpenAPI から静的ファイルを作成する。</p>
+<blockquote>
+<ul>
+<li><a href="https://techblog.asia-quest.jp/202207/api-documentation-has-been-redesigned-with-redoc">APIドキュメントをRedocで一新しました | AQ Tech Blog</a></li>
+</ul>
+</blockquote>
+<h4 id="openapi-generator">▼ OpenAPI Generator の場合<a class="headerlink" href="#openapi-generator" title="Permanent link">&para;</a></h4>
+<p>OpenAPI Generator を使用して、OpenAPI から静的ファイルを作成する。</p>
+<p>なお、OpenAPI Generator は OpenAPI からコードを作成できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-o<span class="w"> </span>docs/html<span class="w"> </span>-g<span class="w"> </span>html
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://ky-yk-d.hatenablog.com/entry/2019/01/13/234108#OpenAPI-Generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9F%E8%87%AA%E5%8B%95%E7%94%9F%E6%88%90%E3%82%92%E8%A9%A6%E3%81%99">OpenAPI GeneratorでRESTful APIの定義書から色々自動生成する #OpenAPI - こまぶろ</a></li>
+</ul>
+</blockquote>
+<h4 id="oapi-codegen">▼ oapi-codegen の場合<a class="headerlink" href="#oapi-codegen" title="Permanent link">&para;</a></h4>
+<p>記入中...</p>
+<p><br></p>
+<h3 id="api">API スキーマ駆動開発<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<h4 id="api_1">▼ API スキーマ駆動開発とは<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h4>
+<p>API 仕様書に基づいて、API を実装する。</p>
+<h4 id="openapi-generator_1">▼ OpenAPI Generator の場合<a class="headerlink" href="#openapi-generator_1" title="Permanent link">&para;</a></h4>
+<p>以下の流れに基づいて、API を実装していく。</p>
+<p>ここでは、コードの自動作成に OpenAPI Generator を使用するものとする。</p>
+<ol>
+<li>
+<p>OpenAPI に基づいて API 仕様を定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.3</span>
+<span class="nt">info</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC API</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EC</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2023.1.1</span>
+<span class="nt">servers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Online EC Example Service</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http://example.com/v1</span>
+<span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product Operation</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product</span>
+<span class="nt">paths</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">/products</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">/products/{productId}</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+
+<span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+
+
+<span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">...</span>
+</code></pre></div>
+</li>
+<li>
+<p>OpenAPI Generator を使用して、API 仕様から静的ファイルを自動的に作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-o<span class="w"> </span>docs/html<span class="w"> </span>-g<span class="w"> </span>html
+</code></pre></div>
+</li>
+<li>
+<p>OpenAPI Generator を使って、API 仕様からコードを自動的に作成する。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># brew、npmなどでインストールする</span>
+$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>openapi-generator
+
+<span class="c1"># GoのAPIを作成する</span>
+<span class="c1"># openapi-generator generate -i &lt;OpenAPI仕様書&gt; -g &lt;言語、フレームワーク&gt; -p packageVersion=&lt;タグ&gt; -o &lt;出力先ディレクトリ&gt;</span>
+$<span class="w"> </span>openapi-generator<span class="w"> </span>generate<span class="w"> </span>-i<span class="w"> </span>docs/openapi.yaml<span class="w"> </span>-g<span class="w"> </span>go-gin-server<span class="w"> </span>-p<span class="w"> </span><span class="nv">packageVersion</span><span class="o">=</span><span class="m">0</span>.0.1<span class="w"> </span>-o<span class="w"> </span>go-gin
+
+<span class="c1"># --template-dirを使用すると、ユーザー定義のテンプレートからコードを作成できる</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>// テンプレートファイル (mustache形式)
+{{&gt;partial_header}}
+package main
+
+import (
+    "log"
+    // WARNING!
+    // Change this to a fully-qualified import path
+    // once you place this file into your project.
+    // For example,
+    //
+    //    sw "github.com/myname/myrepo/{{apiPath}}"
+    //
+    sw "openapi-gin-server/{{apiPath}}"
+)
+
+func main() {
+
+    log.Printf("Server started")
+
+    router := sw.NewRouter()
+
+    log.Fatal(router.Run(":{{serverPort}}"))
+}
+</code></pre></div>
+</li>
+<li>
+<p>自動的に作成されたファイル (<code>api_product.go</code>) に実際の API を追加実装していく。</p>
+<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
+<span class="cm"> * EC</span>
+<span class="cm"> *</span>
+<span class="cm"> * EC API</span>
+<span class="cm"> *</span>
+<span class="cm"> * API version: 2023.1.1</span>
+<span class="cm"> * Generated by: OpenAPI Generator (https://openapi-generator.tech)</span>
+<span class="cm"> */</span>
+
+<span class="kn">package</span><span class="w"> </span><span class="nx">openapi</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="s">"net/http"</span>
+<span class="w">    </span><span class="s">"github.com/gin-gonic/gin"</span>
+<span class="p">)</span>
+
+<span class="c1">// DeleteProductById - Cancel a specified product</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">DeleteProductById</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{})</span>
 <span class="p">}</span>
 
-<span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="n">GenderType</span><span class="w"> </span><span class="na">gender_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<span class="c1">// GetProductById - Get a specified product</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetProductById</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{})</span>
 <span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://protobuf.dev/overview/#syntax">Overview | Protocol Buffers Documentation</a></li>
-<li><a href="https://protobuf.dev/programming-guides/enum/">Enum Behavior | Protocol Buffers Documentation</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="map">map<a class="headerlink" href="#map" title="Permanent link">&para;</a></h3>
-<p>キーと値の組合せからなる連想配列型のフィールドを設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://protobuf.dev/overview/#syntax">Overview | Protocol Buffers Documentation</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="message">message<a class="headerlink" href="#message" title="Permanent link">&para;</a></h3>
-<p>リクエストメッセージで送信するデータ構造を設定する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"proto3"</span><span class="p">;</span>
 
-<span class="kd">message</span><span class="w"> </span><span class="nc">Person</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">int32</span><span class="w"> </span><span class="na">id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
-<span class="w">  </span><span class="k">optional</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="c1">// GetProducts - Get all products</span>
+<span class="kd">func</span><span class="w"> </span><span class="nx">GetProducts</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="o">*</span><span class="nx">gin</span><span class="p">.</span><span class="nx">Context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">c</span><span class="p">.</span><span class="nx">JSON</span><span class="p">(</span><span class="nx">http</span><span class="p">.</span><span class="nx">StatusOK</span><span class="p">,</span><span class="w"> </span><span class="nx">gin</span><span class="p">.</span><span class="nx">H</span><span class="p">{})</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://protobuf.dev/overview/#syntax">Overview | Protocol Buffers Documentation</a></li>
+<li><a href="https://zenn.dev/team_soda/articles/b749228a360454#openapi-generator%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%9Fschema%E9%A7%86%E5%8B%95%E9%96%8B%E7%99%BA%E3%81%AE%E6%B5%81%E3%82%8C">OpenAPI Generator を使った Schema駆動開発</a></li>
+<li><a href="https://openapi-generator.tech/docs/generators/">Generators List | OpenAPI Generator</a></li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<h4 id="oapi-codegen_1">▼ oapi-codegen の場合<a class="headerlink" href="#oapi-codegen_1" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code>oapi-codegen<span class="w"> </span>-package<span class="o">=</span>openapi<span class="w"> </span>-generate<span class="o">=</span>types,client,spec<span class="w"> </span>openapi.yaml<span class="w"> </span>&gt;<span class="w"> </span>api.go
+</code></pre></div>
+<p><br></p>
+<h3 id="_2">クラウドプロバイダーとの統合<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h4 id="api_2">▼ API ゲートウェイの場合<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h4>
+<p>API ゲートウェイによる OpenAPI のインポートについては、以下のリンクを参考にせよ。</p>
+<blockquote>
+<ul>
+<li><a href="https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html">【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS - 俺の技術ノート</a></li>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="oneof">oneof<a class="headerlink" href="#oneof" title="Permanent link">&para;</a></h3>
-<p>複数のフィールドのうち、いずれか 1 つのフィールドだけに値を設定できるグループを設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://protobuf.dev/overview/#syntax">Overview | Protocol Buffers Documentation</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="package">package<a class="headerlink" href="#package" title="Permanent link">&para;</a></h3>
-<p><code>pb</code> ファイルに自動的に定義するパッケージ名を設定する。</p>
-<p>例えば Go の場合、<code>pb.go</code> ファイルでパッケージ名を自動的に定義する。</p>
-<div class="highlight"><pre><span></span><code><span class="kn">package</span><span class="w"> </span><span class="nn">foo</span><span class="p">;</span>
+<h2 id="02">02. フィールド<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="openapi_3">openapi フィールド (必須)<a class="headerlink" href="#openapi_3" title="Permanent link">&para;</a></h3>
+<p>OpenAPI のバージョンを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">openapi</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3.0.0</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="service">service<a class="headerlink" href="#service" title="Permanent link">&para;</a></h3>
-<h4 id="service_1">▼ service とは<a class="headerlink" href="#service_1" title="Permanent link">&para;</a></h4>
-<p>関数 (<code>rpc</code>) とそのグループ (<code>service</code>) を設定する。</p>
-<p>gRPC の API 仕様である。</p>
-<div class="highlight"><pre><span></span><code><span class="kd">service</span><span class="w"> </span><span class="n">GreetingService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">rpc</span><span class="w"> </span><span class="n">Hello</span><span class="w"> </span><span class="p">(</span><span class="n">HelloRequest</span><span class="p">)</span><span class="w"> </span><span class="k">returns</span><span class="w"> </span><span class="p">(</span><span class="n">HelloResponse</span><span class="p">);</span>
-<span class="p">}</span>
+<h3 id="info">info フィールド (必須)<a class="headerlink" href="#info" title="Permanent link">&para;</a></h3>
+<p>API 名、作成者名、メールアドレス、ライセンスなどを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">info</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Foo API</span><span class="w"> </span><span class="c1"># API 名</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The API for Foo.</span><span class="w"> </span><span class="c1"># API の説明</span>
+<span class="w">  </span><span class="nt">termsOfService</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.foo.com/terms/</span><span class="w"> </span><span class="c1"># 利用規約</span>
+<span class="w">  </span><span class="nt">contact</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API support</span><span class="w"> </span><span class="c1"># 連絡先名</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.foo.com/support</span><span class="w"> </span><span class="c1"># 連絡先に関する URL</span>
+<span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">support@foo.com</span><span class="w"> </span><span class="c1"># メールアドレス</span>
+<span class="w">  </span><span class="nt">license</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Apache 2.0</span><span class="w"> </span><span class="c1"># ライセンス</span>
+<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://www.apache.org/licenses/LICENSE-2.0.html</span><span class="w"> </span><span class="c1"># URL</span>
+<span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;バージョンタグ&gt;</span><span class="w"> </span><span class="c1"># API ドキュメントのバージョン</span>
 </code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.wantedly.dev/fields/the-system/apis#protofairu">https://docs.wantedly.dev/fields/the-system/apis#protofairu</a></li>
-</ul>
-</blockquote>
 <p><br></p>
-<h3 id="syntax">syntax<a class="headerlink" href="#syntax" title="Permanent link">&para;</a></h3>
-<p>Protocol Buffer コンパイラーのバージョンを設定する。</p>
-<p>Protocol Buffer コンパイラーは、<code>proto</code> ファイルから <code>pb</code> ファイルを自動的に作成する。</p>
-<div class="highlight"><pre><span></span><code><span class="k">syntax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"proto3"</span><span class="p">;</span>
+<h3 id="servers">servers フィールド<a class="headerlink" href="#servers" title="Permanent link">&para;</a></h3>
+<p>API 自体の URL などを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">servers</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://{env}.foo.com/api/v1</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">    </span><span class="nt">variables</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stg</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">API environment</span>
+<span class="w">        </span><span class="nt">enum</span><span class="p">:</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">stg</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">www</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="paths">paths フィールド (必須)<a class="headerlink" href="#paths" title="Permanent link">&para;</a></h3>
+<p>API のエンドポイント、HTTP メソッド、ステータスコードなどを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">paths</span><span class="p">:</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="c1"># paths オブジェクト</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="nt">/users</span><span class="p">:</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="c1"># path item オブジェクト</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span><span class="w"> </span><span class="c1"># GET メソッドを設定する。</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報取得エンドポイント</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報取得</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">全ユーザー情報を取得する。</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># リクエスト</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># レスポンス</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
+<span class="w">                </span><span class="nt">Users</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">User</span><span class="p">:</span>
+<span class="w">                    </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">                    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
+<span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
+<span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"不正なリクエストです。"</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="c1"># path item オブジェクト</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="nt">post</span><span class="p">:</span><span class="w"> </span><span class="c1"># POST メソッドを設定する。</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報作成エンドポイント</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報作成</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報を作成する。</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># リクエスト</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<span class="w">      </span><span class="nt">requestBody</span><span class="p">:</span><span class="w"> </span><span class="c1"># メッセージボディにパラメーターを割り当てる。</span>
+<span class="w">        </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
+<span class="w">        </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">            </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># メッセージボディ例</span>
+<span class="w">              </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">            </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
+<span class="w">              </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># レスポンス</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
+<span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/normal"</span><span class="w"> </span><span class="c1"># API スキーマとして、正常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># レスポンスボディ例</span>
+<span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
+<span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># API スキーマとして、異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="c1"># paths オブジェクト</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">/users/{userId}</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="c1"># path item オブジェクト</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="nt">get</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報取得エンドポイント</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">指定ユーザー情報取得</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">指定したユーザー情報を取得する。</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># リクエスト</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
+<span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">            </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># パスパラメーター例</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">userId=1</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># レスポンス</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># ボディ例</span>
+<span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># ボディ例</span>
+<span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
+<span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># ボディ例</span>
+<span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
+<span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="c1"># path item オブジェクト</span>
+<span class="w">    </span><span class="c1">#===========================</span>
+<span class="w">    </span><span class="nt">put</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">tags</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報更新エンドポイント</span>
+<span class="w">      </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">指定ユーザー更新</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">指定したユーザー情報を更新する。</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># リクエスト</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">parameters</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">path</span><span class="w"> </span><span class="c1"># パスにパラメーターを割り当てる。</span>
+<span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">userId</span>
+<span class="w">          </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザーID</span>
+<span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">            </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># パスパラメーター例</span>
+<span class="w">              </span><span class="l l-Scalar l-Scalar-Plain">userId=1</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="c1"># レスポンス</span>
+<span class="w">      </span><span class="c1">#===========================</span>
+<span class="w">      </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">        </span><span class="s">"200"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">OK レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># Content-Type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># ボディ例</span>
+<span class="w">                </span><span class="nt">userId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">                </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Hiroki</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="c1"># API スキーマ</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/user"</span><span class="w"> </span><span class="c1"># User モデルを参照する。</span>
+<span class="w">        </span><span class="s">"400"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># Content-Type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># ボディ例</span>
+<span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">400</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bad Request</span>
+<span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"ユーザーIDは必ず指定してください。"</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">        </span><span class="s">"401"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/responses/unauthorized"</span><span class="w"> </span><span class="c1"># 認証エラーを参照する。</span>
+<span class="w">        </span><span class="s">"404"</span><span class="p p-Indicator">:</span>
+<span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found レスポンス</span>
+<span class="w">          </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># Content-Type</span>
+<span class="w">              </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># ボディ例</span>
+<span class="w">                </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">404</span>
+<span class="w">                </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Not Found</span>
+<span class="w">                </span><span class="nt">errors</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"対象のユーザーが見つかりませんでした。"</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="components">components フィールド (必須)<a class="headerlink" href="#components" title="Permanent link">&para;</a></h3>
+<p>API スキーマなど、他の項目で共通して利用するものを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">components</span><span class="p">:</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="c1"># callback キーの共通化</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="nt">callbacks</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="c1"># link キーの共通化</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="nt">links</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="c1"># response キーの共通化</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="nt">responses</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">unauthorized</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized レスポンス</span>
+<span class="w">      </span><span class="nt">content</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">application/json</span><span class="p">:</span><span class="w"> </span><span class="c1"># MIME type</span>
+<span class="w">          </span><span class="nt">foo</span><span class="p">:</span><span class="w"> </span><span class="c1"># ボディ例</span>
+<span class="w">            </span><span class="nt">status</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">401</span>
+<span class="w">            </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Unauthorized</span>
+<span class="w">            </span><span class="nt">errors</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">messages</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"APIキーの認可に失敗しました。"</span><span class="p p-Indicator">]</span>
+<span class="w">          </span><span class="nt">schema</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">$ref</span><span class="p">:</span><span class="w"> </span><span class="s">"#/components/schemas/error"</span><span class="w"> </span><span class="c1"># 異常系モデルを参照する。</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="c1"># schema キーの共通化</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="nt">schemas</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ユーザー</span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">userId</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="c1"># 正常系</span>
+<span class="w">    </span><span class="nt">normal</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">userId</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="c1"># 異常系</span>
+<span class="w">    </span><span class="nt">error</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">      </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">messages</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="w">          </span><span class="nt">items</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="c1"># security フィールドの共通化</span>
+<span class="w">  </span><span class="c1">#===========================</span>
+<span class="w">  </span><span class="nt">securitySchemes</span><span class="p">:</span>
+<span class="w">    </span><span class="c1"># ベーシック認証</span>
+<span class="w">    </span><span class="nt">basicAuth</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ベーシック認証</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">basic</span>
+<span class="w">    </span><span class="c1"># Bearer 認証</span>
+<span class="w">    </span><span class="nt">bearerAuth</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Bearer認証</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">http</span>
+<span class="w">      </span><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bearer</span>
+<span class="w">    </span><span class="c1"># API キー認証</span>
+<span class="w">    </span><span class="nt">apiKeyAuth</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">APIキー認証</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apiKey</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-api-key</span><span class="w"> </span><span class="c1"># ヘッダ名は『x-api-key』とする。小文字が推奨である。</span>
+<span class="w">      </span><span class="nt">in</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">header</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="security">security フィールド<a class="headerlink" href="#security" title="Permanent link">&para;</a></h3>
+<p>components フィールドで定義した認証方法を宣言する。</p>
+<p>ルートで宣言すると、すべてのパスに適用できる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">security</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">apiKeyAuth</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="tags">tags フィールド<a class="headerlink" href="#tags" title="Permanent link">&para;</a></h3>
+<p>各項目に付けるタグを定義する。</p>
+<p>同名のタグをつけると、自動的にまとめられる。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">tags</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ユーザー情報取得エンドポイント</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+
+<span class="w">      </span><span class="no">...</span>
+</code></pre></div>
+<p><br></p>
+<h3 id="externaldocs">externalDocs フィールド<a class="headerlink" href="#externaldocs" title="Permanent link">&para;</a></h3>
+<p>API を説明するドキュメントのリンクを定義する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">externalDocs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">補足情報はこちら</span>
+<span class="w">  </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://foo.com</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03-api">03. API スキーマ<a class="headerlink" href="#03-api" title="Permanent link">&para;</a></h2>
+<h3 id="api_3">API スキーマとは<a class="headerlink" href="#api_3" title="Permanent link">&para;</a></h3>
+<p>RESTful-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。</p>
+<p><br></p>
+<h3 id="api_4">API スキーマによるバリデーション<a class="headerlink" href="#api_4" title="Permanent link">&para;</a></h3>
+<p>データ型や必須データにより、リクエスト／レスポンスのデータのバリデーションを実行する。</p>
+<p>例えば、API がレスポンス時に以下のような JSON 型データを返信する例を考える。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"Taro</span><span class="nv"> </span><span class="s">Yamada"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">10</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"sports"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"soccer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"baseball"</span><span class="p p-Indicator">],</span>
+<span class="w">  </span><span class="s">"subjects"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"math"</span><span class="p p-Indicator">,</span>
+<span class="p p-Indicator">}</span>
+</code></pre></div>
+<p>ここで、API スキーマを以下のように定義しておき、API からデータをレスポンスするときのバリデーションを実行する。</p>
+<div class="highlight"><pre><span></span><code><span class="p p-Indicator">{</span>
+<span class="w">  </span><span class="s">"$schema"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"https://json-schema.org/draft-04/schema#"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"object"</span><span class="p p-Indicator">,</span>
+<span class="w">  </span><span class="s">"properties"</span><span class="p p-Indicator">:</span>
+<span class="w">    </span><span class="p p-Indicator">{</span>
+<span class="w">      </span><span class="s">"id"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"integer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"minimum"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">1</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"name"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"age"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"integer"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"minimum"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">},</span>
+<span class="w">      </span><span class="s">"sports"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"array"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"items"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">}},</span>
+<span class="w">      </span><span class="s">"subjects"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="s">"type"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">"string"</span><span class="p p-Indicator">},</span>
+<span class="w">    </span><span class="p p-Indicator">},</span>
+<span class="w">  </span><span class="s">"required"</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"id"</span><span class="p p-Indicator">],</span>
+<span class="p p-Indicator">}</span>
 </code></pre></div>
 <blockquote>
 <ul>
-<li><a href="https://protobuf.dev/programming-guides/proto3/">Language Guide (proto 3) | Protocol Buffers Documentation</a></li>
-<li><a href="https://protobuf.dev/programming-guides/proto3/#generated">Language Guide (proto 3) | Protocol Buffers Documentation</a></li>
+<li><a href="https://spec.openapis.org/oas/v3.1.0#data-types">OpenAPI Specification v3.1.0</a></li>
 </ul>
 </blockquote>
 <p><br></p>

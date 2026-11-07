@@ -997,18 +997,6 @@
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer.html</loc>
-         <lastmod>2026-11-07</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_command.html</loc>
-         <lastmod>2026-11-07</lastmod>
-    </url>
-    <url>
-         <loc>https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_protocol_buffer_compiler_go.html</loc>
-         <lastmod>2026-11-07</lastmod>
-    </url>
-    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_yaml.html</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
@@ -1841,6 +1829,10 @@
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification_openapi.html</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc.html</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
@@ -1850,6 +1842,18 @@
     </url>
     <url>
          <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_tools.html</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer.html</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer_command.html</loc>
+         <lastmod>2026-11-07</lastmod>
+    </url>
+    <url>
+         <loc>https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer_compiler_go.html</loc>
          <lastmod>2026-11-07</lastmod>
     </url>
     <url>
