@@ -129,7 +129,9 @@ hide:
 
 - #### <u>GraphQL-API</u>
 
-  > - ##### [GraphQL](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_graphql.html)
+  > - ##### [GraphQL-API](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api.html)
+  > - ##### <u>API 仕様書</u>
+  >   > - ##### [API スキーマ](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_specification_schema.html)
 
 <br>
 

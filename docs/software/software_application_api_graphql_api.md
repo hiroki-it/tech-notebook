@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GraphQL＠GraphQL-API
-description: GraphQL＠GraphQL-APIの知見を記録しています。
+title: 【IT技術の知見】GraphQL-API＠API
+description: GraphQL-API＠APIの知見を記録しています。
 ---
 
-# GraphQL＠GraphQL-API
+# GraphQL-API＠API
 
 ## はじめに
 
@@ -31,10 +31,7 @@ GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアント�
 
 #### ▼ API スキーマ
 
-GraphQL-API が受信する CRUD のデータ型や必須データを定義したもの。受信したデータのバリデーションに使用する。
-
-> - https://gist.github.com/gushernobindsme/d3bf842134765ccc179d616eace1dc80#%E3%82%B9%E3%82%AD%E3%83%BC%E3%83%9E%E3%81%AE%E8%A8%AD%E8%A8%88
-> - [GraphQLサーバーを動かしてみる｜Goで学ぶGraphQLサーバーサイド入門](https://zenn.dev/hsaki/books/golang-graphql/viewer/tutorial)
+> - [【IT技術の知見】API スキーマ＠API仕様書 - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_specification_schema.html)
 
 <br>
 

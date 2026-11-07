@@ -245,7 +245,9 @@ nav:
                   - Go: software/software_application_api_rpc_api_grpc_client_package_go.md
                   - クライアントツール: software/software_application_api_rpc_api_grpc_client_package_tools.md
           - ■ GraphQL-API:
-              - GraphQL: software/software_application_api_graphql_api_graphql.md
+              - GraphQL-API: software/software_application_api_graphql_api.md
+              - ■ API仕様書:
+                  - APIスキーマ: software/software_application_api_graphql_api_specification_schema.md
       - ■ ワークフロー:
           - ■ Argo Workflows:
               - Argo Workflows: software/software_application_workflow_argoworkflow.md
