@@ -1262,22 +1262,20 @@ Service が Pod と紐づいたり、切り離したりした後、kube-procy �
     
     ```
 
-`(2)`
-
-: `KUBE-SVC` ターゲット配下には `KUBE-SEP` ターゲットがいる。
+2. `KUBE-SVC` ターゲット配下には `KUBE-SEP` ターゲットがいる。
 
     `statistic mode random probability`に応じて、パケットを`KUBE-SEP`のターゲットいずれかに振り分ける。
 
-```bash
-# KUBE-SVC
-Chain KUBE-SVC-TCOU7JCQXEZGVUNU (1 references)
+    ```bash
+    # KUBE-SVC
+    Chain KUBE-SVC-TCOU7JCQXEZGVUNU (1 references)
 
-num  target                     prot opt source               destination
-1    KUBE-SEP-K7EZDDI5TWNJA7RX  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ statistic mode random probability 0.50000000000
-2    KUBE-SEP-JTVLMQFBDVPXUWUS  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */
-```
+    num  target                     prot opt source               destination
+    1    KUBE-SEP-K7EZDDI5TWNJA7RX  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ statistic mode random probability 0.50000000000
+    2    KUBE-SEP-JTVLMQFBDVPXUWUS  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */
+    ```
 
-`(3)` `KUBE-SEP` のターゲットに応じて、異なる `DNAT` ターゲットを持つ。
+3. `KUBE-SEP` のターゲットに応じて、異なる `DNAT` ターゲットを持つ。
 
     `DNAT`ターゲットは、Podである。
 
@@ -1285,32 +1283,32 @@ num  target                     prot opt source               destination
 
     ここでは、パケットの宛先IPアドレスを`172.16.10.9`と`172.16.10.42`に変換する。
 
-```bash
-Chain KUBE-SEP-K7EZDDI5TWNJA7RX (1 references)
+    ```bash
+    Chain KUBE-SEP-K7EZDDI5TWNJA7RX (1 references)
 
-num  target          prot  opt  source           destination
-1    KUBE-MARK-MASQ  all   --   172.16.10.42     0.0.0.0/0            /* kube-system/kube-dns:dns */
-2    DNAT            udp   --   0.0.0.0/0        0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.42:53
+    num  target          prot  opt  source           destination
+    1    KUBE-MARK-MASQ  all   --   172.16.10.42     0.0.0.0/0            /* kube-system/kube-dns:dns */
+    2    DNAT            udp   --   0.0.0.0/0        0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.42:53
 
-Chain KUBE-SEP-JTVLMQFBDVPXUWUS (1 references)
-num  target          prot  opt  source           destination
-1    KUBE-MARK-MASQ  all   --   172.16.10.9      0.0.0.0/0            /* kube-system/kube-dns:dns */
-2    DNAT            udp   --    0.0.0.0/0       0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.9:53
-```
+    Chain KUBE-SEP-JTVLMQFBDVPXUWUS (1 references)
+    num  target          prot  opt  source           destination
+    1    KUBE-MARK-MASQ  all   --   172.16.10.9      0.0.0.0/0            /* kube-system/kube-dns:dns */
+    2    DNAT            udp   --    0.0.0.0/0       0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.9:53
+    ```
 
-`(4)` 宛先の Pod の IP アドレスを確認すると、DNAT 処理の変換後の IP アドレスと一致している。
+4. 宛先の Pod の IP アドレスを確認すると、DNAT 処理の変換後の IP アドレスと一致している。
 
-```bash
-$ kubectl get po -n kube-system -o wide -l k8s-app=kube-dns
+    ```bash
+    $ kubectl get po -n kube-system -o wide -l k8s-app=kube-dns
 
-NAME                     READY   STATUS    RESTARTS   AGE    IP             NODE                                NOMINATED NODE   READINESS GATES
-coredns-69c47794-6xnlq   1/1     Running   0          18h    172.16.10.9    aks-nodepool1-19344272-vmss000000   <none>           <none>
-coredns-69c47794-cgn9k   1/1     Running   0          7d9h   172.16.10.42   aks-nodepool1-19344272-vmss000001   <none>           <none>
-```
+    NAME                     READY   STATUS    RESTARTS   AGE    IP             NODE                                NOMINATED NODE   READINESS GATES
+    coredns-69c47794-6xnlq   1/1     Running   0          18h    172.16.10.9    aks-nodepool1-19344272-vmss000000   <none>           <none>
+    coredns-69c47794-cgn9k   1/1     Running   0          7d9h   172.16.10.42   aks-nodepool1-19344272-vmss000001   <none>           <none>
+    ```
 
-> - [Kubernetes の Service (Cluster IP) がどう実装されてるか](https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented)
-> - [kube-proxy入門 - Speaker Deck](https://speakerdeck.com/bells17/kube-proxyru-men?slide=36)
-> - [KubernetesのPodを安全に終了する - Carpe Diem](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
+    > - [Kubernetes の Service (Cluster IP) がどう実装されてるか](https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented)
+    > - [kube-proxy入門 - Speaker Deck](https://speakerdeck.com/bells17/kube-proxyru-men?slide=36)
+    > - [KubernetesのPodを安全に終了する - Carpe Diem](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
 
 <br>
 

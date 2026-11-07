@@ -1032,46 +1032,42 @@ $ istioctl tag set <エイリアス> --revision <エイリアスの実体> --ove
     istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.10.0) 定義するdefaultタグを持つ
     ```
 
-`(3)`
-
-: エイリアス (`istio.io/tag` キーの値) を指定して、リビジョンを書き換える。
+3. エイリアス (`istio.io/tag` キーの値) を指定して、リビジョンを書き換える。
 
     これにより、`istio-revision-tag-default`の`default`タグが指すリビジョンが変更される。
 
-```bash
-$ istioctl tag set default --revision 1-11-0 --overwrite
-```
+    ```bash
+    $ istioctl tag set default --revision 1-11-0 --overwrite
+    ```
 
-```bash
-# MutatingWebhookConfiguration
-$ kubectl get mutatingwebhookconfigurations
+    ```bash
+    # MutatingWebhookConfiguration
+    $ kubectl get mutatingwebhookconfigurations
 
-NAME                                WEBHOOKS   AGE
-istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
-istio-sidecar-injector-1-11-0       1          7m56s # 1.11.0 (今回のアップグレード先)
-istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.11.0) 定義するdefaultタグを持つ
-```
+    NAME                                WEBHOOKS   AGE
+    istio-sidecar-injector-1-10-0       1          7m56s # 1.10.0
+    istio-sidecar-injector-1-11-0       1          7m56s # 1.11.0 (今回のアップグレード先)
+    istio-revision-tag-default          1          7m56s # 現在のリビジョン (1.11.0) 定義するdefaultタグを持つ
+    ```
 
-`(4)`
+4. また、`istioctl tag list` コマンドでも、リビジョンが `1-11-0` になったことを確認できる。
 
-: また、`istioctl tag list` コマンドでも、リビジョンが `1-11-0` になったことを確認できる。
+    ```bash
+    $ istioctl tag list
 
-```bash
-$ istioctl tag list
+    TAG       REVISION  NAMESPACES
+    default   1-11-0     app
+    ```
 
-TAG       REVISION  NAMESPACES
-default   1-11-0     app
-```
+    ```bash
+    $ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
+        | grep -e istio.io/rev: -e istio.io/tag:
 
-```bash
-$ kubectl get mutatingwebhookconfiguration istio-revision-tag-default -o yaml \
-    | grep -e istio.io/rev: -e istio.io/tag:
+    istio.io/rev: 1-11-0
+    istio.io/tag: default
+    ```
 
-istio.io/rev: 1-11-0
-istio.io/tag: default
-```
-
-> - https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
+    > - https://istio.io/v1.13/blog/2021/revision-tags/#stable-revision-tags-in-action
 
 <br>
 

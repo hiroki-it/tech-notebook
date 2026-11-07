@@ -899,87 +899,75 @@ Filesystem     Type      Size  Used Avail Use% Mounted on
 
 #### ▼ AWS EBS ボリュームが複数のパーティションで区切られている場合
 
-`(5)`
-
-: `lsblk` コマンドの結果、AWS EBS ボリュームが複数のパーティションで区切られている場合、この手順が必要になる。
+5. `lsblk` コマンドの結果、AWS EBS ボリュームが複数のパーティションで区切られている場合、この手順が必要になる。
 
     今回、AWS EBSボリュームがパーティションに区切られている。
 
     そのため、`growpart`コマンドでパーティションの番号を指定し、パーティションのサイズを拡張する。パーティションに区切られていなければ、この手順は不要である。
 
-```bash
-# growpart <パーティションのデバイスファイル名> <パーティションの番号>
-$ growpart /dev/xvda 1
-```
+    ```bash
+    # growpart <パーティションのデバイスファイル名> <パーティションの番号>
+    $ growpart /dev/xvda 1
+    ```
 
-`(6)`
+6. あらためて `lsblk` コマンドを実行することで、パーティションのサイズが拡張されていることを確認できる。
 
-: あらためて `lsblk` コマンドを実行することで、パーティションのサイズが拡張されていることを確認できる。
+    ```bash
+    $ lsblk
 
-```bash
-$ lsblk
-
-NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
-xvda    202:0    0  16G  0 disk            # ストレージ (AWS EBSボリューム)
-└─xvda1 202:1    0  16G  0 part /          # パーティション
-...
-```
+    NAME    MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+    xvda    202:0    0  16G  0 disk            # ストレージ (AWS EBSボリューム)
+    └─xvda1 202:1    0  16G  0 part /          # パーティション
+    ...
+    ```
 
 #### ▼ `ext4` タイプの場合
 
-`(5)`
-
-: ファイルシステムのサイズを拡張していく。
+5. ファイルシステムのサイズを拡張していく。
 
     もし、パーティションに紐づくファイルシステムのタイプが`ext4`タイプであった場合、`resize2fs`コマンドでパーティションのデバイスファイル名を指定し、これに紐づくファイルシステムのサイズを拡張する。
 
-```bash
-# 空きサイズの100%を使用して拡張する。
-# sudo resize2fs <パーティションのデバイスファイル名>
-$ sudo resize2fs /dev/xvda1
-```
+    ```bash
+    # 空きサイズの100%を使用して拡張する。
+    # sudo resize2fs <パーティションのデバイスファイル名>
+    $ sudo resize2fs /dev/xvda1
+    ```
 
-`(6)`
+6. あらためて `df` コマンドを実行することで、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
 
-: あらためて `df` コマンドを実行することで、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
+    ```bash
+    $ df -hT
 
-```bash
-$ df -hT
-
-Filesystem  Type  Size  Used  Avail  Use%  Mounted on
-/dev/xvda1  ext4   16G  1.9G    14G   12%  /var/lib     # パーティション
-...
-```
+    Filesystem  Type  Size  Used  Avail  Use%  Mounted on
+    /dev/xvda1  ext4   16G  1.9G    14G   12%  /var/lib     # パーティション
+    ...
+    ```
 
 #### ▼ `xfs` タイプの場合
 
-`(5)`
-
-: ファイルシステムのサイズを拡張していく。
+5. ファイルシステムのサイズを拡張していく。
 
     もし、パーティションに紐づくファイルシステムのタイプが`xfs`タイプであった場合、`xfs_growfs`コマンドでファイルシステムのマウントポイントを指定し、ファイルシステムのサイズを拡張する。
 
     もし、`xfs_growfs`コマンドがない場合は、インストールする。
 
-```bash
-# xfs_growfs -d <ファイルシステムのマウントポイント名>
-$ xfs_growfs -d /var/lib
+    ```bash
+    # xfs_growfs -d <ファイルシステムのマウントポイント名>
+    $ xfs_growfs -d /var/lib
 
-# もし、xfs_growfsコマンドがない場合は、インストールする。
-# yum install xfsprogs
-```
+    # もし、xfs_growfsコマンドがない場合は、インストールする。
+    # yum install xfsprogs
+    ```
 
-`(6)`
+6. あらためて `df` コマンドを実行することで、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
 
-: あらためて `df` コマンドを実行することで、パーティションに紐づくファイルシステムを拡張できたことを確認できる。
+    ```bash
+    $ df -hT
 
-```bash
-$ df -hT
-
-Filesystem     Type  Size  Used  Avail  Use%  Mounted on
-/dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # パーティション
-...
-```
+    Filesystem     Type  Size  Used  Avail  Use%  Mounted on
+    /dev/nvme1n1   xfs    20G  8.0G    13G   40%  /var/lib      # パーティション
+    ...
+    ```
 
 <br>
 

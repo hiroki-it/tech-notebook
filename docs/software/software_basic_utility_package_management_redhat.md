@@ -209,49 +209,43 @@ CentOS 公式リポジトリは、パッケージのバージョンが古い可�
 
 ### PHP のインストール
 
-`(4)`
+4. Remi リポジトリの有効化オプションを永続的に使用できるようにする。
 
-: Remi リポジトリの有効化オプションを永続的に使用できるようにする。
-
-```bash
-# CentOS7の場合
-$ yum install -y yum-utils
-# 永続的に有効化
-$ yum-config-manager --enable remi-php74
+    ```bash
+    # CentOS7の場合
+    $ yum install -y yum-utils
+    # 永続的に有効化
+    $ yum-config-manager --enable remi-php74
 
 
-# CentOS8の場合 (dnf moduleコマンドを使用)
-$ dnf module enable php:remi-7.4
-```
+    # CentOS8の場合 (dnf moduleコマンドを使用)
+    $ dnf module enable php:remi-7.4
+    ```
 
-`(5)`
+5. remi リポジトリを指定して、php、php-mbstring、php-mcrypt をインストールする。Remi リポジトリを経由してインストールしたソフトウェアは `/opt/remi/*` に配置される。
 
-: remi リポジトリを指定して、php、php-mbstring、php-mcrypt をインストールする。Remi リポジトリを経由してインストールしたソフトウェアは `/opt/remi/*` に配置される。
-
-```bash
-# CentOS7の場合
-# 一時的に有効化できるオプションを使用して、明示的にremiを指定
-$ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
+    ```bash
+    # CentOS7の場合
+    # 一時的に有効化できるオプションを使用して、明示的にremiを指定
+    $ yum install -y --enablerepo=remi,remi-php74 php php-mbstring php-mcrypt
 
 
-# CentOS8の場合
-# リポジトリの認識に失敗する場合があるため、enablerepoオプションは有効化しない。
-$ dnf install -y php php-mbstring php-mcrypt
-```
+    # CentOS8の場合
+    # リポジトリの認識に失敗する場合があるため、enablerepoオプションは有効化しない。
+    $ dnf install -y php php-mbstring php-mcrypt
+    ```
 
-`(6)`
+6. 再インストールするときは、reinstall とすること。
 
-: 再インストールするときは、reinstall とすること。
-
-```bash
-# CentOS7の場合
-# 一時的に有効化できるオプションを使用して、明示的にremiを指定
-$ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
+    ```bash
+    # CentOS7の場合
+    # 一時的に有効化できるオプションを使用して、明示的にremiを指定
+    $ yum reinstall --enablerepo=remi,remi-php74 -y php php-mbstring php-mcrypt
 
 
-# CentOS8の場合
-# リポジトリの認識に失敗する場合があるのでオプション無し
-$ dnf reinstall -y php php-mbstring php-mcrypt
-```
+    # CentOS8の場合
+    # リポジトリの認識に失敗する場合があるのでオプション無し
+    $ dnf reinstall -y php php-mbstring php-mcrypt
+    ```
 
 <br>

@@ -1050,29 +1050,25 @@ $ terraform -chdir=<ルートモジュールのディレクトリへの相対パ
 
 ### 初期化する
 
-`(3)`
+3. `local` バックエンドで初期化する。
 
-: `local` バックエンドで初期化する。
-
-```bash
-$ terraform init -reconfigure
-```
+    ```bash
+    $ terraform init -reconfigure
+    ```
 
 ### `tf` ファイルを定義する
 
 #### ▼ `terraform import` コマンドの場合
 
-`(4)`
-
-: `.tfstate` ファイルと差分のない `tf` ファイルを定義する
+4. `.tfstate` ファイルと差分のない `tf` ファイルを定義する
 
     手動で作成する場合は、頑張るしかない。
 
-```terraform
-resource "<resourceタイプ>" "<resourceブロック名>" {
-  ...
-}
-```
+    ```terraform
+    resource "<resourceタイプ>" "<resourceブロック名>" {
+      ...
+    }
+    ```
 
 #### ▼ `import` ブロックの場合
 
@@ -1132,9 +1128,7 @@ resource "aws_instance" "foo" {
 
 #### ▼ `terraform import` コマンドの場合
 
-`(5)`
-
-: `terraform import` コマンドを実行する。
+5. `terraform import` コマンドを実行する。
 
     これにより、`resource`タイプと`resource`ブロック名を指定し、`tfstate`ファイルに実インフラの状態を書き込む。
 
@@ -1146,94 +1140,94 @@ resource "aws_instance" "foo" {
 
     何らかの理由で`terraform import`コマンドを実行し直したい場合は、`terraform state rm`コマンドで`resource`ブロックを削除し、改めて書き込む。
 
-```bash
-# 関数を使用せずに定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>' <実体リソースのARN、ID、名前など>
+    ```bash
+    # 関数を使用せずに定義されている場合
+    $ terraform import \
+        -var-file=foo.tfvars \
+        '<resourceタイプ>.<resourceブロック名>' <実体リソースのARN、ID、名前など>
 
 
-# もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
-$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>'
-$ terraform state rm '<resourceタイプ>.<resourceブロック名>'
-```
+    # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+    $ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>'
+    $ terraform state rm '<resourceタイプ>.<resourceブロック名>'
+    ```
 
-```bash
-# moduleブロックを使用して定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>' <実体リソースのARN、ID、名前など>
-
-
-# もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
-$ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
-$ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
-```
-
-```bash
-# for_each関数で定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <実体リソースのARN、ID、名前など>
+    ```bash
+    # moduleブロックを使用して定義されている場合
+    $ terraform import \
+        -var-file=foo.tfvars \
+        'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>' <実体リソースのARN、ID、名前など>
 
 
-# その他のキー名もimportが必要になる
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <実体リソースのARN、ID、名前など>
+    # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+    $ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
+    $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>'
+    ```
+
+    ```bash
+    # for_each関数で定義されている場合
+    $ terraform import \
+        -var-file=foo.tfvars \
+        '<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <実体リソースのARN、ID、名前など>
 
 
-# もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
-$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
-$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
-$ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
-$ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
-```
-
-```bash
-# count関数で定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[0]' <実体リソースのARN、ID、名前など>
+    # その他のキー名もimportが必要になる
+    $ terraform import \
+        -var-file=foo.tfvars \
+        '<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <実体リソースのARN、ID、名前など>
 
 
-# その他のインデックス番号もimportが必要になる
-$ terraform import \
-    -var-file=foo.tfvars \
-    '<resourceタイプ>.<resourceブロック名>[1]' <実体リソースのARN、ID、名前など>
+    # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+    $ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
+    $ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
+    $ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
+    $ terraform state rm '<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
+    ```
+
+    ```bash
+    # count関数で定義されている場合
+    $ terraform import \
+        -var-file=foo.tfvars \
+        '<resourceタイプ>.<resourceブロック名>[0]' <実体リソースのARN、ID、名前など>
 
 
-# もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
-$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>[0]'
-$ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>[1]'
-$ terraform state rm '<resourceタイプ>.<resourceブロック名>[0]'
-$ terraform state rm '<resourceタイプ>.<resourceブロック名>[1]'
-```
-
-```bash
-# moduleブロックを使用して、for_each関数で定義されている場合
-$ terraform import \
-    -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <実体リソースのARN、ID、名前など>
+    # その他のインデックス番号もimportが必要になる
+    $ terraform import \
+        -var-file=foo.tfvars \
+        '<resourceタイプ>.<resourceブロック名>[1]' <実体リソースのARN、ID、名前など>
 
 
-# その他のキー名もimportが必要になる
-$ terraform import \
-    -var-file=foo.tfvars \
-    'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <実体リソースのARN、ID、名前など>
+    # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+    $ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>[0]'
+    $ terraform state rm --dry-run '<resourceタイプ>.<resourceブロック名>[1]'
+    $ terraform state rm '<resourceタイプ>.<resourceブロック名>[0]'
+    $ terraform state rm '<resourceタイプ>.<resourceブロック名>[1]'
+    ```
+
+    ```bash
+    # moduleブロックを使用して、for_each関数で定義されている場合
+    $ terraform import \
+        -var-file=foo.tfvars \
+        'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]' <実体リソースのARN、ID、名前など>
 
 
-# もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
-$ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
-$ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
-$ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
-$ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
-```
+    # その他のキー名もimportが必要になる
+    $ terraform import \
+        -var-file=foo.tfvars \
+        'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]' <実体リソースのARN、ID、名前など>
 
-> - [Unable to import instances created using "count" within a module · Issue #18810 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471)
-> - [for_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
-> - [terraform import したものを取り消したい #Terraform - Qiita](https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6)
-> - [Terraform import のススメ 〜開発効率化編〜 - LayerX エンジニアブログ](https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import)
+
+    # もし、中途半端な同じリソースがtfstateファイルにある場合は、事前に削除する。
+    $ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
+    $ terraform state rm --dry-run 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
+    $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名1>"]'
+    $ terraform state rm 'module.<moduleブロック名>.<resourceタイプ>.<resourceブロック名>["<キー名2>"]'
+    ```
+
+    > - [Unable to import instances created using "count" within a module · Issue #18810 · hashicorp/terraform · GitHub](https://github.com/hashicorp/terraform/issues/18810#issuecomment-422879471)
+    > - [for_eachで書いた.tfをterraform importする \| DevelopersIO](https://dev.classmethod.jp/articles/terraform_import_for_each/)
+    > - [terraform import したものを取り消したい #Terraform - Qiita](https://qiita.com/yyoshiki41/items/57ad95846fa36b3fc4a6)
+    > - [Terraform import のススメ 〜開発効率化編〜 - LayerX エンジニアブログ](https://tech.layerx.co.jp/entry/improve-iac-development-with-terraform-import)
 
 #### ▼ `import` ブロックの場合
 
@@ -1256,15 +1250,13 @@ Apply complete! Resources: 1 imported, 0 added, 0 changed, 0 destroyed.
 
 ### 差分を解消する (`import` ブロックの場合は不要)
 
-`(6)`
+6. `tfstate` ファイルと実インフラの差分が無くなったら完了である。
 
-: `tfstate` ファイルと実インフラの差分が無くなったら完了である。
+    ```bash
+    $ terraform plan -var-file=foo.tfvars
 
-```bash
-$ terraform plan -var-file=foo.tfvars
-
-No changes. Infrastructure is up-to-date.
-```
+    No changes. Infrastructure is up-to-date.
+    ```
 
 <br>
 

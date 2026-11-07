@@ -85,89 +85,81 @@ Open Policy Agent は、`rego` ファイルの認可スコープに基づいて�
 
 #### ▼ 認可スコープの定義
 
-`(3)`
+3. 認可スコープ定義のロジックを `rego` 形式で作成する。
 
-: 認可スコープ定義のロジックを `rego` 形式で作成する。
+    > - [注目のOpen Policy Agent、その概要とKubernetesでの活用事例 \| 現場で役立つTipsが盛りだくさん! Kubernetesのアレやコレ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17511)
 
-> - [注目のOpen Policy Agent、その概要とKubernetesでの活用事例 \| 現場で役立つTipsが盛りだくさん! Kubernetesのアレやコレ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17511)
+    ```erlang
+    package httpapi.authz
 
-```erlang
-package httpapi.authz
+    # 社員の資格情報をインポートする。
+    import data.subordinates as subord
 
-# 社員の資格情報をインポートする。
-import data.subordinates as subord
+    default allow = false
 
-default allow = false
+    # 一般社員は、自身の給与のみで参照権限を持つ (trueを返却する) 。
+    allow {
+      some username
+      input.method == "GET"
+      input.path = ["finance", "salary", username]
+      input.user == username
+    }
 
-# 一般社員は、自身の給与のみで参照権限を持つ (trueを返却する) 。
-allow {
-  some username
-  input.method == "GET"
-  input.path = ["finance", "salary", username]
-  input.user == username
-}
+    # 管理職は、自身と部下社員の給与で参照権限を持つ (trueを返却する) 。
+    allow {
+      some username
+      input.method == "GET"
+      input.path = ["finance", "salary", username]
+      subord[input.user][_] == username
+    }
+    ```
 
-# 管理職は、自身と部下社員の給与で参照権限を持つ (trueを返却する) 。
-allow {
-  some username
-  input.method == "GET"
-  input.path = ["finance", "salary", username]
-  subord[input.user][_] == username
-}
-```
+4. アプリケーションは、Open Policy Agent に `rego` ファイルを送信し、認可スコープ定義を DB に作成する。
 
-`(4)`
-
-: アプリケーションは、Open Policy Agent に `rego` ファイルを送信し、認可スコープ定義を DB に作成する。
-
-```bash
-$ curl \
-    -X PUT \
-    -H 'Content-Type: text/plain'\
-    --data-binary @httpapi_authz.rego \
-    127.0.0.1:8181/v1/policies/httpapi_authz
-```
+    ```bash
+    $ curl \
+        -X PUT \
+        -H 'Content-Type: text/plain'\
+        --data-binary @httpapi_authz.rego \
+        127.0.0.1:8181/v1/policies/httpapi_authz
+    ```
 
 #### ▼ 認可スコープのリクエスト
 
-`(5)`
-
-: 認可スコープを取得するためのリクエストを `json` 形式で作成する。
+5. 認可スコープを取得するためのリクエストを `json` 形式で作成する。
 
     実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。
 
-```yaml
-# request.json ファイル
-{
-  # リクエストの内容
-  "input": {
-      # GET メソッド
-      "method": "GET",
-      # パス
-      "path": ["finance", "salary", "alice"],
-      # アカウント名
-      "user": "alice",
-    },
-}
-```
+    ```yaml
+    # request.json ファイル
+    {
+      # リクエストの内容
+      "input": {
+          # GET メソッド
+          "method": "GET",
+          # パス
+          "path": ["finance", "salary", "alice"],
+          # アカウント名
+          "user": "alice",
+        },
+    }
+    ```
 
-`(6)`
-
-: アプリケーションは、alice アカウントの参照権限の有無を Open Policy Agent にリクエストを送信する。
+6. アプリケーションは、alice アカウントの参照権限の有無を Open Policy Agent にリクエストを送信する。
 
     Open Policy Agentは、アプリケーションに`true`を返却する。
 
-```bash
-$ curl \
-    -X POST \
-    -H 'Content-Type:application/json' \
-    --data-binary @request.json \
-    127.0.0.1:8181/v1/data/httpapi/authz/allow | jq .
+    ```bash
+    $ curl \
+        -X POST \
+        -H 'Content-Type:application/json' \
+        --data-binary @request.json \
+        127.0.0.1:8181/v1/data/httpapi/authz/allow | jq .
 
-{
-  "result": "true"
-}
-```
+    {
+      "result": "true"
+    }
+    ```
 
 <br>
 

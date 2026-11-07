@@ -579,9 +579,7 @@ $ nslookup example # 実際には、example.fooとなる
 
     キャッシュが無ければ、キャッシュDNSサーバーはドメインレジストラにあるDNSサーバーにドメイン名を問い合わせる。
 
-`(3)-(9)`
-
-: ドメインレジストラにある DNS サーバーは、IP アドレスを検索する。
+3. (3)〜(9) ドメインレジストラにある DNS サーバーは、IP アドレスを検索する。
 
     検索してもIPアドレスが無かった場合、次のDNSサーバーに委任する。
 
@@ -604,19 +602,15 @@ $ nslookup example # 実際には、example.fooとなる
   </tbody>
 </table>
 
-`(10)`
-
-: キャッシュ DNS サーバーは、IP アドレスを NAT ルーターに返却する。
+10. キャッシュ DNS サーバーは、IP アドレスを NAT ルーターに返却する。
 
     この時、IPv4アドレスのネットワーク間変換が起こる。
 
     NATルーターは、IPアドレスをクライアントPCに返却する。
 
-`(11)`
+11. クライアント PC は、返却された IP アドレスを基にして、Web ページにリクエストを送信する。
 
-: クライアント PC は、返却された IP アドレスを基にして、Web ページにリクエストを送信する。
-
-> - [\[初心者向け\]Webサービスを利用する際のDNSからTCPコネクションについて再入門 \| DevelopersIO](https://dev.classmethod.jp/articles/forbeginners-from-dns-to-tcp/)
-> - [JPRS用語辞典｜委任](https://jprs.jp/glossary/index.php?ID=0152)
+    > - [\[初心者向け\]Webサービスを利用する際のDNSからTCPコネクションについて再入門 \| DevelopersIO](https://dev.classmethod.jp/articles/forbeginners-from-dns-to-tcp/)
+    > - [JPRS用語辞典｜委任](https://jprs.jp/glossary/index.php?ID=0152)
 
 <br>

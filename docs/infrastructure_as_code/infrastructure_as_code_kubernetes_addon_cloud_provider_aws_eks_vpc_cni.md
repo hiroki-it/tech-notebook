@@ -634,23 +634,19 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
     ![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
 
-`(3)`
+3. kubelet は、セカンダリープライベート IP アドレスの `ADD`/`DEL` リクエストを、CNI バイナリに送信する。
 
-: kubelet は、セカンダリープライベート IP アドレスの `ADD`/`DEL` リクエストを、CNI バイナリに送信する。
-
-`(4)`
-
-: CNI バイナリは、L-IPAM デーモンのプールから IP アドレスを取得し、Pod にこれを割り当てる。
+4. CNI バイナリは、L-IPAM デーモンのプールから IP アドレスを取得し、Pod にこれを割り当てる。
 
     反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
 
     必要に応じて、
 
-![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
+    ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
-> - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
-> - [amazon-vpc-cni-k8s/docs/cni-proposal.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam)
-> - [CNCF CNI プラグイン #kubernetes - Qiita](https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
+    > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
+    > - [amazon-vpc-cni-k8s/docs/cni-proposal.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam)
+    > - [CNCF CNI プラグイン #kubernetes - Qiita](https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 

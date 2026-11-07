@@ -222,59 +222,55 @@ AWS Load Balancer Controller のセットアップのうち、AWS 側で必要�
 
 <br>
 
-`(4)`
+4. AWS Load Balancer Controller の Pod の ServiceAccount と、これに紐づく IAM ロールを作成する。
 
-: AWS Load Balancer Controller の Pod の ServiceAccount と、これに紐づく IAM ロールを作成する。
+    ```bash
+    $ eksctl create iamserviceaccount \
+        --cluster=foo-eks-cluster \
+        -n kube-system \
+        --name=aws-load-balancer-controller \
+        --attach-policy-arn=arn:aws:iam::<AWSアカウントID>:policy/AWSLoad BalancerControllerIAMPolicy \
+        --override-existing-serviceaccounts \
+        --approve
+    ```
 
-```bash
-$ eksctl create iamserviceaccount \
-    --cluster=foo-eks-cluster \
-    -n kube-system \
-    --name=aws-load-balancer-controller \
-    --attach-policy-arn=arn:aws:iam::<AWSアカウントID>:policy/AWSLoad BalancerControllerIAMPolicy \
-    --override-existing-serviceaccounts \
-    --approve
-```
+    > - https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
 
-> - https://docs.aws.amazon.com/eks/latest/userguide/adot-iam.html
+5. ServiceAccount を作成できたことを確認する。IAM ロールはコンソール画面から確認する。
 
-`(5)`
+    ```bash
+    $ eksctl get iamserviceaccount \
+        --cluster foo-eks-cluster \
+        --name foo-aws-load-balancer-controller \
+        --namespace kube-system
 
-: ServiceAccount を作成できたことを確認する。IAM ロールはコンソール画面から確認する。
+    2022-06-06 13:47:33 [ℹ]  eksctl version 0.96.0
+    2022-06-06 13:47:33 [ℹ]  using region ap-northeast-1
+    NAMESPACE       NAME                                ROLE ARN
+    kube-system     foo-aws-load-balancer-controller    arn:aws:iam::<AWSアカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
+    ```
 
-```bash
-$ eksctl get iamserviceaccount \
-    --cluster foo-eks-cluster \
-    --name foo-aws-load-balancer-controller \
-    --namespace kube-system
+    ```yaml
+    $ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
+    ---
+    # 作成された ServiceAccount
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      annotations:
+        eks.amazonaws.com/role-arn: arn:aws:iam::<AWSアカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
+      creationTimestamp: "2022-05-29T12:59:15Z"
+      labels:
+        app.kubernetes.io/managed-by: eksctl
+      name: foo-aws-load-balancer-controller
+      namespace: kube-system
+      resourceVersion: "2103515"
+      uid: *****
+    secrets:
+      - name: foo-aws-load-balancer-controller-token-****
+    ```
 
-2022-06-06 13:47:33 [ℹ]  eksctl version 0.96.0
-2022-06-06 13:47:33 [ℹ]  using region ap-northeast-1
-NAMESPACE       NAME                                ROLE ARN
-kube-system     foo-aws-load-balancer-controller    arn:aws:iam::<AWSアカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
-```
-
-```yaml
-$ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
----
-# 作成された ServiceAccount
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<AWSアカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
-  creationTimestamp: "2022-05-29T12:59:15Z"
-  labels:
-    app.kubernetes.io/managed-by: eksctl
-  name: foo-aws-load-balancer-controller
-  namespace: kube-system
-  resourceVersion: "2103515"
-  uid: *****
-secrets:
-  - name: foo-aws-load-balancer-controller-token-****
-```
-
-> - [Ingress - AWS Load Balancer Controller \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/)
+    > - [Ingress - AWS Load Balancer Controller \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/ingress-aws/)
 
 <br>
 

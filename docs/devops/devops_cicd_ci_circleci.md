@@ -117,15 +117,13 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
     $ pbcopy < ~/.ssh/github/<秘密鍵名>
     ```
 
-`(3)`
+3. CircleCI の `Enable SSH` ステップに表示された `ssh` コマンドをコピーし、CircleCI コンテナに SSH 公開鍵認証する。
 
-: CircleCI の `Enable SSH` ステップに表示された `ssh` コマンドをコピーし、CircleCI コンテナに SSH 公開鍵認証する。
+    ```bash
+    $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
+    ```
 
-```bash
-$ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
-```
-
-> - https://circleci.com/docs/ja/2.0/add-ssh-key/
+    > - https://circleci.com/docs/ja/2.0/add-ssh-key/
 
 #### ▼ Test Insights
 
