@@ -603,7 +603,82 @@ let adult_names: Vec<&str> = users
 
 <br>
 
-## 07. その他のお作法
+## 07. 実装スタイル
+
+### 構造体とトレイトによるオブジェクトの表現
+
+#### ▼ 通常のオブジェクトの場合
+
+構造体に状態を定義し、`impl トレイト名 for 構造体名` でトレイトが要求するメソッドを明示的に実装する。
+
+```rust
+trait AdultChecker {
+    fn is_adult(&self) -> bool;
+}
+
+// オブジェクト
+struct User {
+    name: String,
+    age: u32,
+}
+
+impl AdultChecker for User {
+    fn is_adult(&self) -> bool {
+        self.age >= 18
+    }
+}
+
+fn main() {
+    let user = User { name: "Alice".to_string(), age: 20 };
+    println!("{}", user.is_adult()); // true
+}
+```
+
+<br>
+
+#### ▼ エラーの場合
+
+独自エラーは、構造体に `Debug`、`Display`、`std::error::Error` トレイトを実装し、`Result` 型の `Err` バリアントから取り出す。
+
+```rust
+use std::error::Error;
+use std::fmt;
+
+#[derive(Debug)]
+struct BadRequestError {
+    status_code: u16,
+}
+
+impl fmt::Display for BadRequestError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "リクエスト形式が不正です")
+    }
+}
+
+impl Error for BadRequestError {}
+
+fn main() {
+    let result: Result<(), BadRequestError> = Err(BadRequestError { status_code: 400 });
+    // Errの中の値は、Resultの型定義によってBadRequestError型とわかる
+    if let Err(error) = result {
+        println!("{}", error.status_code); // 400
+        println!("{}", error);
+    }
+}
+```
+
+> - [Traits: Defining Shared Behavior - The Rust Programming Language](https://doc.rust-lang.org/book/ch10-02-traits.html)
+> - [Error in std::error - Rust](https://doc.rust-lang.org/std/error/trait.Error.html)
+
+<br>
+
+### クラスによるオブジェクトの表現
+
+Rust にはクラスがない。
+
+<br>
+
+## 08. その他のお作法
 
 ### 関数の返り値を意図的に無視
 

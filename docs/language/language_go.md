@@ -565,7 +565,84 @@ func main() {
 
 <br>
 
-## 07. その他のお作法
+## 07. 実装スタイル
+
+### 構造体とインターフェースによるオブジェクトの表現
+
+#### ▼ 通常のオブジェクトの場合
+
+構造体に状態とメソッドを定義し、必要なメソッドを持つことでインターフェースを暗黙的に満たす。
+
+```go
+package main
+
+import "fmt"
+
+type AdultChecker interface {
+	IsAdult() bool
+}
+
+// オブジェクト
+type User struct {
+	Name string
+	age  int
+}
+
+func (u *User) IsAdult() bool {
+	return u.age >= 18
+}
+
+func main() {
+	var user AdultChecker = &User{Name: "Alice", age: 20}
+	fmt.Println(user.IsAdult()) // true
+}
+```
+
+<br>
+
+#### ▼ エラーの場合
+
+独自エラーは、構造体に `Error() string` メソッドを定義して `error` インターフェースを満たし、`errors.As` 関数で対象の型のエラーを取り出す。
+
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+type BadRequestError struct {
+	StatusCode int
+}
+
+func (e *BadRequestError) Error() string {
+	return "リクエスト形式が不正です"
+}
+
+func main() {
+	var err error = &BadRequestError{StatusCode: 400}
+	var badRequest *BadRequestError
+	// errors.Asがラップされたエラーも調べ、該当するエラーをbadRequestに代入する
+	if errors.As(err, &badRequest) {
+		fmt.Println(badRequest.StatusCode) // 400
+		fmt.Println(badRequest.Error())
+	}
+}
+```
+
+> - [A Tour of Go - Interfaces](https://go.dev/tour/methods/9)
+> - [errors package - As](https://pkg.go.dev/errors#As)
+
+<br>
+
+### クラスによるオブジェクトの表現
+
+Go にはクラスがない。
+
+<br>
+
+## 08. その他のお作法
 
 ### 関数の返り値を意図的に無視
 
