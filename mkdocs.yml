@@ -409,10 +409,18 @@ nav:
           - Go: language/language_go.md
           - 設定: language/language_go_conf.md
           - コマンド: language/language_go_command.md
-          - ■ ロジック:
-              - データ: language/language_go_logic_data.md
-              - 関数: language/language_go_logic_function.md
-              - バリデーションロジック: language/language_go_logic_validation.md
+          - ■ 言語機能:
+              - データ・型: language/language_go_feature_data.md
+              - 変数・スコープ: language/language_go_feature_variable_and_scope.md
+              - 関数: language/language_go_feature_function.md
+              - オブジェクト: language/language_go_feature_object.md
+              - モジュール: language/language_go_feature_module.md
+              - 制御構文: language/language_go_feature_control_flow.md
+              - 並行・非同期処理: language/language_go_feature_concurrency.md
+              - エラー処理: language/language_go_feature_error_handling.md
+              - バリデーション: language/language_go_feature_validation.md
+              - テスト: language/language_go_feature_test.md
+              - テンプレート: language/language_go_feature_template.md
           - ■ フレームワーク:
               - Gin: language/language_go_framework_gin.md
           - ■ パッケージ:

@@ -38,11 +38,19 @@ hide:
 
 - #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_go_command.html)
 
-- #### <u>ロジック</u>
+- #### <u>言語機能</u>
 
-  > - ##### [データ](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_data.html)
-  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_function.html)
-  > - ##### [︎バリデーションロジック](https://hiroki-it.github.io/tech-notebook/language/language_go_logic_validation.html)
+  > - ##### [データ・型](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_data.html)
+  > - ##### [変数・スコープ](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_variable_and_scope.html)
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_function.html)
+  > - ##### [オブジェクト](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_object.html)
+  > - ##### [モジュール](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_module.html)
+  > - ##### [制御構文](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_control_flow.html)
+  > - ##### [並行・非同期処理](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_concurrency.html)
+  > - ##### [エラー処理](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_error_handling.html)
+  > - ##### [バリデーション](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_validation.html)
+  > - ##### [テスト](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_test.html)
+  > - ##### [テンプレート](https://hiroki-it.github.io/tech-notebook/language/language_go_feature_template.html)
 
 - #### <u>フレームワーク</u>
 
