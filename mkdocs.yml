@@ -429,15 +429,16 @@ nav:
               - ユーティリティパッケージ: language/language_go_package_utility.md
       - Java: language/language_java.md
       - ■ JavaScript:
-          - ■ プロトタイプベース:
-              - プロトタイプ: language/language_javascript_prototype_based.md
-              - 関数/データ: language/language_javascript_prototype_based_function_data.md
-          - ■ ロジック:
-              - バリデーションロジック: language/language_javascript_logic_validation.md
-              - 非同期処理ロジック: language/language_javascript_logic_asynchronous_process.md
-              - デバッグ: language/language_javascript_logic_debug.md
-              - 認証: language/language_javascript_logic_authentication.md
-              - レンダリング: language/language_javascript_logic_browser_rendering.md
+          - ■ 言語機能:
+              - データ・型: language/language_javascript_feature_data.md
+              - 変数・スコープ: language/language_javascript_feature_variable_and_scope.md
+              - 関数: language/language_javascript_feature_function.md
+              - オブジェクト: language/language_javascript_feature_object.md
+              - モジュール: language/language_javascript_feature_module.md
+              - 制御構文: language/language_javascript_feature_control_flow.md
+              - 並行・非同期処理: language/language_javascript_feature_concurrency.md
+              - バリデーション: language/language_javascript_feature_validation.md
+              - デバッグ: language/language_javascript_feature_debug.md
           - ■ フレームワーク:
               - Nuxt.js: language/language_javascript_framework_nuxtjs.md
               - ■ Vue.js:
@@ -454,6 +455,8 @@ nav:
               - ■ SQLパッケージ:
                   - Prisma: language/language_javascript_package_sql_prisma.md
           - ■ ブラウザ:
+              - Window: language/language_javascript_browser_window.md
+              - ストレージ: language/language_javascript_browser_storage.md
               - レンダリング: language/language_javascript_browser_rendering.md
       - ■ PHP:
           - PHP: language/language_php.md

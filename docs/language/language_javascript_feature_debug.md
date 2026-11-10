@@ -1,9 +1,8 @@
 ---
-title: 【IT技術の知見】デバッグロジック＠JavaScript
-description: デバッグロジック＠JavaScriptを記録しています。
+title: 【IT技術の知見】デバッグ＠JavaScript
 ---
 
-# デバッグロジック＠JavaScript
+# デバッグ＠JavaScript
 
 ## はじめに
 

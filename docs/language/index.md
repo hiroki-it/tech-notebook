@@ -72,18 +72,17 @@ hide:
 
 ### JavaScript
 
-- #### <u>プロトタイプベース</u>
+- #### <u>言語機能</u>
 
-  > - ##### [︎プロトタイプ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based.html)
-  > - ##### [︎関数/データ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_prototype_based_function_data.html)
-
-- #### <u>ロジック</u>
-
-  > - ##### [︎バリデーションロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_validation.html)
-  > - ##### [︎非同期処理ロジック](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_asynchronous_process.html)
-  > - ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_debug.html)
-  > - ##### [認証](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_authentication.html)
-  > - ##### [レンダリング](https://hiroki-it.github.io/tech-notebook/language/language_javascript_logic_browser_rendering.html)
+  > - ##### [データ・型](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_data.html)
+  > - ##### [変数・スコープ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_variable_and_scope.html)
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_function.html)
+  > - ##### [オブジェクト](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_object.html)
+  > - ##### [モジュール](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_module.html)
+  > - ##### [制御構文](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_control_flow.html)
+  > - ##### [並行・非同期処理](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_concurrency.html)
+  > - ##### [バリデーション](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_validation.html)
+  > - ##### [デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_feature_debug.html)
 
 - #### <u>フレームワーク</u>
 
@@ -106,6 +105,8 @@ hide:
 
 - #### <u>ブラウザ</u>
 
+  > - ##### [Window](https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_window.html)
+  > - ##### [ストレージ](https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_storage.html)
   > - ##### [︎レンダリング](https://hiroki-it.github.io/tech-notebook/language/language_javascript_browser_rendering.html)
 
 <br>

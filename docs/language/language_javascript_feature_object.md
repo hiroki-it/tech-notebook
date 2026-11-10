@@ -1,8 +1,8 @@
 ---
-title: 【IT技術の知見】プロトタイプ＠JavaScript
+title: 【IT技術の知見】オブジェクト＠JavaScript
 ---
 
-# プロトタイプ＠JavaScript
+# オブジェクト＠JavaScript
 
 ## はじめに
 
@@ -27,98 +27,6 @@ JavaScript の実行環境にあらかじめ組み込まれたオブジェクト
 ```javascript
 // new演算子を使用してインスタンスを作成する。
 const obj = new Object();
-```
-
-<br>
-
-### Function
-
-関数を作成するオブジェクト。
-
-<br>
-
-### Array
-
-#### ▼ `Array.prototype.entries()` 関数
-
-配列から key と value を取得する。
-
-```javascript
-const array = ["foo", "bar", "baz"];
-
-// key、valueを取得できる。
-const iterator = array.entries();
-
-// for-ofで展開
-for (const value of iterator) {
-  console.log(value);
-}
-
-// [ 0, 'foo' ]
-// [ 1, 'bar' ]
-// [ 2, 'baz' ]
-```
-
-#### ▼ `Array.prototype.map()` 関数
-
-```javascript
-// ここに実装例
-```
-
-#### ▼ `Array.prototype.filter()` 関数
-
-```javascript
-// ここに実装例
-```
-
-#### ▼ `Array.length`
-
-要素数を出力する。
-
-```javascript
-const param = ["foo", "bar", "baz", "qux"];
-
-console.log(param.length);
-
-// 4
-```
-
-<br>
-
-### JSON
-
-#### ▼ `JSON.parse()` 関数
-
-JavaScript から JSON にシリアライズする。
-
-```javascript
-console.log(
-  JSON.stringify({
-    x: 1,
-    y: 5,
-    z: "test",
-  }),
-);
-
-// json形式オブジェクト
-// "{"x":5, "y":5 "z":"test"}"
-```
-
-#### ▼ `stringify()` 関数
-
-JSON から JavaScript にデシリアライズする。
-
-```javascript
-console.log(
-  JSON.parse({
-    x: 1,
-    y: 5,
-    z: "test",
-  }),
-);
-
-// JavaScriptオブジェクト
-// {x:5, y:5 z:"test"}
 ```
 
 <br>
@@ -371,7 +279,7 @@ foo.getValue();
 
 <br>
 
-## 02-02. オブジェクトの操作
+## 03. オブジェクトの操作
 
 ### プロトタイプチェーンによる継承
 
@@ -477,7 +385,7 @@ console.log(result);
 
 <br>
 
-## 02-03. `this` の参照先
+## 04. `this` の参照先
 
 ### 関数としてコールする場合
 

@@ -1,8 +1,8 @@
 ---
-title: 【IT技術の知見】非同期処理ロジック＠JavaScript
+title: 【IT技術の知見】並行・非同期処理＠JavaScript
 ---
 
-# 非同期処理ロジック＠JavaScript
+# 並行・非同期処理＠JavaScript
 
 ## はじめに
 
@@ -114,7 +114,7 @@ const asyncFunc = () => {
 
 <br>
 
-## 02-02. `resolve()` 関数、`reject()` 関数
+## 03. `resolve()` 関数、`reject()` 関数
 
 ### `resolve()` 関数、`reject()` 関数とは
 
@@ -256,7 +256,7 @@ UnhandledPromiseRejectionWarning: Unhandled promise rejection. This error origin
 
 <br>
 
-## 02-03. then-catch-finally
+## 04. then-catch-finally
 
 ### then-catch-finally とは
 
@@ -339,7 +339,7 @@ resolveFunc.then((value) => {
 
 <br>
 
-## 03. async/await
+## 05. async/await
 
 ### async 宣言
 
@@ -562,7 +562,7 @@ console.log(response);
 
 <br>
 
-## 04. JQuery Promise
+## 06. JQuery Promise
 
 ### JQuery Promise とは
 

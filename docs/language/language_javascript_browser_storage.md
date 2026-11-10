@@ -1,9 +1,8 @@
 ---
-title: 【IT技術の知見】認証ロジック＠JavaScript
-description: 認証ロジック＠JavaScriptを記録しています。
+title: 【IT技術の知見】ストレージ＠JavaScript
 ---
 
-# 認証ロジック＠JavaScript
+# ストレージ＠JavaScript
 
 ## はじめに
 

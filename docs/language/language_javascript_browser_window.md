@@ -1,9 +1,8 @@
 ---
-title: 【IT技術の知見】レンダリングロジック＠JavaScript
-description: レンダリングロジック＠JavaScriptを記録しています。
+title: 【IT技術の知見】Window＠JavaScript
 ---
 
-# レンダリングロジック＠JavaScript
+# Window＠JavaScript
 
 ## はじめに
 
@@ -11,7 +10,7 @@ description: レンダリングロジック＠JavaScriptを記録しています
 
 <br>
 
-## Window
+## 01. Window
 
 ### Window とは
 
