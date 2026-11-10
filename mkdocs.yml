@@ -502,7 +502,14 @@ nav:
       - ■ TypeScript:
           - TypeScript: language/language_typescript.md
           - 設定: language/language_typescript_conf.md
-          - ロジック: language/language_typescript_logic.md
+          - ■ 言語機能:
+              - データ・型: language/language_typescript_feature_data.md
+              - 変数・スコープ: language/language_typescript_feature_variable_and_scope.md
+              - 関数: language/language_typescript_feature_function.md
+              - オブジェクト: language/language_typescript_feature_object.md
+              - モジュール: language/language_typescript_feature_module.md
+              - 制御構文: language/language_typescript_feature_control_flow.md
+              - エラー処理: language/language_typescript_feature_error_handling.md
 
   - 🧪 テスト:
       - testing/index.md

@@ -187,6 +187,15 @@ hide:
 
 - #### [TypeScript](https://hiroki-it.github.io/tech-notebook/language/language_typescript.html)
 - #### [設定](https://hiroki-it.github.io/tech-notebook/language/language_typescript_conf.html)
-- #### [ロジック](https://hiroki-it.github.io/tech-notebook/language/language_typescript_logic.html)
+
+- #### <u>言語機能</u>
+
+  > - ##### [データ・型](https://hiroki-it.github.io/tech-notebook/language/language_typescript_feature_data.html)
+  > - ##### [変数・スコープ](https://hiroki-it.github.io/tech-notebook/language/language_typescript_feature_variable_and_scope.html)
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_typescript_feature_function.html)
+  > - ##### [オブジェクト](https://hiroki-it.github.io/tech-notebook/language/language_typescript_feature_object.html)
+  > - ##### [モジュール](https://hiroki-it.github.io/tech-notebook/language/language_typescript_feature_module.html)
+  > - ##### [制御構文](https://hiroki-it.github.io/tech-notebook/language/language_typescript_feature_control_flow.html)
+  > - ##### [エラー処理](https://hiroki-it.github.io/tech-notebook/language/language_typescript_feature_error_handling.html)
 
 <br>
