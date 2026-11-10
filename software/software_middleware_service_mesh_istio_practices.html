@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="プラクティス集＠Istioの知見を記録しています。">
+        <meta name="description" content="プラクティス集の知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -29,18 +29,18 @@
       
       
       <link rel="icon" href="../assets/images/logo_v2.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.1">
     
     
       
-        <title>【IT技術の知見】プラクティス集＠Istio - 俺の技術ノート</title>
+        <title>【IT技術の知見】プラクティス集 - 俺の技術ノート</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#istio" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -120,7 +120,7 @@
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a style="color: white;" href="https://www.linkedin.com/in/h-hasegawa/">
         <span class="twemoji announce-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg></span>
-        <strong> 俺のLinkedin</strong>
+        <strong> 俺のLinkedIn</strong>
     </a>
     &nbsp;&nbsp;&nbsp;&nbsp;
     <a style="color: white;" href="https://speakerdeck.com/hiroki_hasegawa">
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】プラクティス集＠Istio
+              【IT技術の知見】プラクティス集
             
           </span>
         </div>
@@ -740,6 +740,25 @@
         </a>
       </li>
     
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../tags.html" class="md-tabs__link">
+        
+  
+  
+    
+  
+  🏷️ タグ
+
+      </a>
+    </li>
   
 
       
@@ -7460,7 +7479,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         はじめに
@@ -7483,7 +7502,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         少ないコントロールプレーン
@@ -7494,7 +7513,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         冗長化
@@ -7532,6 +7551,45 @@
     <span class="md-ellipsis">
       
         ▼ Job 配下の Pod
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions 上で実行する場合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions 上で実行する場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#githubworkflowstest-istioyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ .github/workflows/test-istio.yml ファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-asdfsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ setup-asdf.sh ファイル
       
     </span>
   </a>
@@ -7606,7 +7664,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 共有入口と占有入口を選ぶ
@@ -7622,7 +7680,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         デフォルトルートにサブセットを指定する
@@ -7633,7 +7691,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio_1" class="md-nav__link">
+  <a href="#istio" class="md-nav__link">
     <span class="md-ellipsis">
       
         Istio リソースのリクエスト可能な範囲を限定する
@@ -7750,7 +7808,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         設計規約
@@ -7762,7 +7820,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ サポート期間
@@ -7773,7 +7831,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ マイナーバージョン単位でアップグレード
@@ -7811,7 +7869,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         インプレース方式
@@ -7823,7 +7881,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ インプレース方式とは
@@ -7834,7 +7892,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 手順
@@ -7850,7 +7908,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         カナリア方式
@@ -7862,7 +7920,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ カナリア方式とは
@@ -7917,69 +7975,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         性能
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        05. CI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. CI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gitlab" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitLab
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GitLab">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gitlab-ciyml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ .gitlab-ci.yml ファイル
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-asdfsh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ setup-asdf.sh ファイル
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -11142,6 +11144,22 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -11165,7 +11183,7 @@
   <span class="md-ellipsis">
     
   
-    ■ ロジック
+    ■ 言語機能
   
 
     
@@ -11181,7 +11199,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ■ ロジック
+    ■ 言語機能
   
 
           </label>
@@ -11194,14 +11212,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_data.html" class="md-nav__link">
+      <a href="../language/language_go_feature_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    データ
+    データ・型
   
 
     
@@ -11222,7 +11240,35 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_function.html" class="md-nav__link">
+      <a href="../language/language_go_feature_variable_and_scope.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    変数・スコープ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_function.html" class="md-nav__link">
         
   
   
@@ -11250,14 +11296,210 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_go_logic_validation.html" class="md-nav__link">
+      <a href="../language/language_go_feature_object.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    バリデーションロジック
+    オブジェクト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_module.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モジュール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_control_flow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    制御構文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_concurrency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    並行・非同期処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_error_handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラー処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バリデーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_test.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_go_feature_template.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テンプレート
   
 
     
@@ -11537,6 +11779,64 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_7" id="__nav_8_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ Java
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ Java
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../language/language_java.html" class="md-nav__link">
         
@@ -11569,6 +11869,104 @@
     
       
         
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_7_2" id="__nav_8_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ 言語機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ 言語機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_java_feature_data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データ・型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
       
         
       
@@ -11636,6 +12034,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -11659,7 +12071,7 @@
   <span class="md-ellipsis">
     
   
-    ■ プロトタイプベース
+    ■ 言語機能
   
 
     
@@ -11675,7 +12087,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ■ プロトタイプベース
+    ■ 言語機能
   
 
           </label>
@@ -11688,14 +12100,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_javascript_prototype_based.html" class="md-nav__link">
+      <a href="../language/language_javascript_feature_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    プロトタイプ
+    データ・型
   
 
     
@@ -11716,14 +12128,210 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_javascript_prototype_based_function_data.html" class="md-nav__link">
+      <a href="../language/language_javascript_feature_variable_and_scope.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    関数/データ
+    変数・スコープ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_feature_function.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    関数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_feature_object.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    オブジェクト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_feature_module.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モジュール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_feature_control_flow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    制御構文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_feature_concurrency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    並行・非同期処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_feature_validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バリデーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_feature_debug.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    デバッグ
   
 
     
@@ -11753,10 +12361,6 @@
   
     
     
-      
-        
-      
-        
       
         
       
@@ -11787,7 +12391,7 @@
   <span class="md-ellipsis">
     
   
-    ■ ロジック
+    ■ フレームワーク
   
 
     
@@ -11800,214 +12404,6 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_8_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_8_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ■ ロジック
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../language/language_javascript_logic_validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    バリデーションロジック
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../language/language_javascript_logic_asynchronous_process.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    非同期処理ロジック
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../language/language_javascript_logic_debug.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    デバッグ
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../language/language_javascript_logic_authentication.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    認証
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../language/language_javascript_logic_browser_rendering.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    レンダリング
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_3" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_8_3" id="__nav_8_8_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ■ フレームワーク
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_8_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -12073,10 +12469,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_3_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_8_8_3_2" id="__nav_8_8_3_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_8_2_2" id="__nav_8_8_2_2_label" tabindex="0">
             
   
   
@@ -12094,8 +12490,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_8_3_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_8_3_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_8_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8_2_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -12223,10 +12619,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_3_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_8_8_3_3" id="__nav_8_8_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_8_2_3" id="__nav_8_8_2_3_label" tabindex="0">
             
   
   
@@ -12244,8 +12640,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_8_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_8_3_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_8_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8_2_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -12357,10 +12753,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_3" >
         
           
-          <label class="md-nav__link" for="__nav_8_8_4" id="__nav_8_8_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_8_3" id="__nav_8_8_3_label" tabindex="0">
             
   
   
@@ -12378,8 +12774,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_8_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_8_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -12497,10 +12893,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_4_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_8_8_4_4" id="__nav_8_8_4_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_8_3_4" id="__nav_8_8_3_4_label" tabindex="0">
             
   
   
@@ -12518,8 +12914,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_8_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_8_4_4">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_8_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8_3_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -12584,6 +12980,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -12597,10 +12997,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_8_4" >
         
           
-          <label class="md-nav__link" for="__nav_8_8_5" id="__nav_8_8_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_8_4" id="__nav_8_8_4_label" tabindex="0">
             
   
   
@@ -12618,8 +13018,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_8_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_8_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_8_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -12628,6 +13028,62 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_browser_window.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Window
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_javascript_browser_storage.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ストレージ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -12681,8 +13137,6 @@
   
     
     
-      
-        
       
         
       
@@ -12840,6 +13294,24 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -12863,7 +13335,7 @@
   <span class="md-ellipsis">
     
   
-    ■ クラスベース
+    ■ 言語機能
   
 
     
@@ -12879,7 +13351,7 @@
             <span class="md-nav__icon md-icon"></span>
             
   
-    ■ クラスベース
+    ■ 言語機能
   
 
           </label>
@@ -12892,14 +13364,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based.html" class="md-nav__link">
+      <a href="../language/language_php_feature_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    クラス
+    データ・型
   
 
     
@@ -12920,14 +13392,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based_function_data.html" class="md-nav__link">
+      <a href="../language/language_php_feature_variable_and_scope.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    関数/データ
+    変数・スコープ
   
 
     
@@ -12948,114 +13420,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_class_based_data_structure.html" class="md-nav__link">
+      <a href="../language/language_php_feature_function.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    データ型
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_5" >
-        
-          
-          <label class="md-nav__link" for="__nav_8_9_5" id="__nav_8_9_5_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    ■ ロジック
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_9_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_9_5">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    ■ ロジック
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../language/language_php_logic_validation.html" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    バリデーションロジック
+    関数
   
 
     
@@ -13076,14 +13448,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_logic_error_and_error_handling.html" class="md-nav__link">
+      <a href="../language/language_php_feature_object.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    エラーとエラーハンドリング
+    オブジェクト
   
 
     
@@ -13104,14 +13476,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_logic_iteration.html" class="md-nav__link">
+      <a href="../language/language_php_feature_module.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    反復ロジック
+    モジュール
   
 
     
@@ -13132,7 +13504,147 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_logic_algorithm.html" class="md-nav__link">
+      <a href="../language/language_php_feature_control_flow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    制御構文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_php_feature_error_handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラー処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_php_feature_validation.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    バリデーション
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_php_feature_input_output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入出力
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_php_feature_regular_expression.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    正規表現
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_php_feature_algorithm.html" class="md-nav__link">
         
   
   
@@ -13160,7 +13672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../language/language_php_logic_debug.html" class="md-nav__link">
+      <a href="../language/language_php_feature_debug.html" class="md-nav__link">
         
   
   
@@ -13215,10 +13727,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_5" >
         
           
-          <label class="md-nav__link" for="__nav_8_9_6" id="__nav_8_9_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_9_5" id="__nav_8_9_5_label" tabindex="0">
             
   
   
@@ -13236,8 +13748,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_9_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_9_6">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_9_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_9_5">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13279,10 +13791,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_6_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_5_1" >
         
           
-          <label class="md-nav__link" for="__nav_8_9_6_1" id="__nav_8_9_6_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_9_5_1" id="__nav_8_9_5_1_label" tabindex="0">
             
   
   
@@ -13300,8 +13812,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_9_6_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_9_6_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_9_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_9_5_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13485,10 +13997,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_6_2" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_5_2" >
         
           
-          <label class="md-nav__link" for="__nav_8_9_6_2" id="__nav_8_9_6_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_9_5_2" id="__nav_8_9_5_2_label" tabindex="0">
             
   
   
@@ -13506,8 +14018,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_9_6_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_9_6_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_9_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_9_5_2">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13617,10 +14129,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_9_6" >
         
           
-          <label class="md-nav__link" for="__nav_8_9_7" id="__nav_8_9_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_9_6" id="__nav_8_9_6_label" tabindex="0">
             
   
   
@@ -13638,8 +14150,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_9_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_9_7">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_9_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_9_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13764,6 +14276,8 @@
       
         
       
+        
+      
     
     
     
@@ -13848,6 +14362,8 @@
       
         
       
+        
+      
     
     
     
@@ -13871,7 +14387,7 @@
   <span class="md-ellipsis">
     
   
-    ■ フレームワーク
+    ■ 言語機能
   
 
     
@@ -13884,6 +14400,126 @@
         
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_10_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_8_10_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ 言語機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_python_feature_function.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    関数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_python_feature_module.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モジュール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_10_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_10_3" id="__nav_8_10_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ フレームワーク
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_10_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_10_3">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -13921,10 +14557,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_10_2_1" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_10_3_1" >
         
           
-          <label class="md-nav__link" for="__nav_8_10_2_1" id="__nav_8_10_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_10_3_1" id="__nav_8_10_3_1_label" tabindex="0">
             
   
   
@@ -13942,8 +14578,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_10_2_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_10_2_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_8_10_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_10_3_1">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -14077,10 +14713,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_10_3" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_10_4" >
         
           
-          <label class="md-nav__link" for="__nav_8_10_3" id="__nav_8_10_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8_10_4" id="__nav_8_10_4_label" tabindex="0">
             
   
   
@@ -14098,8 +14734,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_10_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_8_10_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_10_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_10_4">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -14159,6 +14795,64 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_11" id="__nav_8_11_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ R
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ R
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../language/language_r.html" class="md-nav__link">
         
@@ -14176,6 +14870,136 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_11_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_11_2" id="__nav_8_11_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ 言語機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_11_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_11_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ 言語機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_r_feature_function.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    関数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_r_feature_algorithm.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    アルゴリズム
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -14273,8 +15097,138 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_12_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_12_2" id="__nav_8_12_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ 言語機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_12_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_12_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ 言語機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../language/language_rust_function.html" class="md-nav__link">
+      <a href="../language/language_rust_feature_data.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    データ・型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_variable_and_scope.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    変数・スコープ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_function.html" class="md-nav__link">
         
   
   
@@ -14290,6 +15244,210 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_object.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    オブジェクト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_module.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モジュール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_control_flow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    制御構文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_concurrency.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    並行・非同期処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_error_handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラー処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_input_output.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    入出力
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_rust_feature_test.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    テスト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -14425,15 +15583,83 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_13_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_13_3" id="__nav_8_13_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ 言語機能
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_13_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_13_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ 言語機能
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../language/language_typescript_logic.html" class="md-nav__link">
+      <a href="../language/language_typescript_feature_data.html" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    ロジック
+    データ・型
   
 
     
@@ -14442,6 +15668,182 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_typescript_feature_variable_and_scope.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    変数・スコープ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_typescript_feature_function.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    関数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_typescript_feature_object.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    オブジェクト
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_typescript_feature_module.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    モジュール
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_typescript_feature_control_flow.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    制御構文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language/language_typescript_feature_error_handling.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    エラー処理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -34484,6 +35886,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tags.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    🏷️ タグ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -34513,7 +35942,7 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
         はじめに
@@ -34536,7 +35965,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         少ないコントロールプレーン
@@ -34547,7 +35976,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         冗長化
@@ -34585,6 +36014,45 @@
     <span class="md-ellipsis">
       
         ▼ Job 配下の Pod
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Actions 上で実行する場合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GitHub Actions 上で実行する場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#githubworkflowstest-istioyml" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ .github/workflows/test-istio.yml ファイル
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-asdfsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ setup-asdf.sh ファイル
       
     </span>
   </a>
@@ -34659,7 +36127,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 共有入口と占有入口を選ぶ
@@ -34675,7 +36143,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         デフォルトルートにサブセットを指定する
@@ -34686,7 +36154,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#istio_1" class="md-nav__link">
+  <a href="#istio" class="md-nav__link">
     <span class="md-ellipsis">
       
         Istio リソースのリクエスト可能な範囲を限定する
@@ -34803,7 +36271,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
       
         設計規約
@@ -34815,7 +36283,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ サポート期間
@@ -34826,7 +36294,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ マイナーバージョン単位でアップグレード
@@ -34864,7 +36332,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
       
         インプレース方式
@@ -34876,7 +36344,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ インプレース方式とは
@@ -34887,7 +36355,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ 手順
@@ -34903,7 +36371,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         カナリア方式
@@ -34915,7 +36383,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ カナリア方式とは
@@ -34970,69 +36438,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
       
         性能
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-ci" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        05. CI
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="05. CI">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gitlab" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitLab
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="GitLab">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gitlab-ciyml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ .gitlab-ci.yml ファイル
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#setup-asdfsh" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ setup-asdf.sh ファイル
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -35149,6 +36561,31 @@
                   
 
 
+  <nav class="md-tags" >
+    
+      
+      
+      
+      
+        <a href="../tags.html#tag:istio" class="md-tag">Istio</a>
+      
+    
+      
+      
+      
+      
+        <a href="../tags.html#tag:サービスメッシュ系" class="md-tag">サービスメッシュ系</a>
+      
+    
+      
+      
+      
+      
+        <a href="../tags.html#tag:ミドルウェア" class="md-tag">ミドルウェア</a>
+      
+    
+  </nav>
+
 
   
   
@@ -35174,7 +36611,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月7日 20:39:55 JST">2026-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
   </span>
 
     
@@ -35199,12 +36636,12 @@
   </aside>
 
 
-<h1 id="istio">プラクティス集＠Istio<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h1>
-<h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="_1">プラクティス集<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h2 id="_2">はじめに<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
 <h2 id="01">01. セットアップ<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<h3 id="_2">少ないコントロールプレーン<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_3">少ないコントロールプレーン<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>クラウドプロバイダーで Istio を稼働させる場合、各 AZ や各リージョンにコントロールプレーンを <code>1</code> 個だけセットアップし、できるだけ多くのマイクロサービスのサービスメッシュとなるようにする。</p>
 <blockquote>
 <ul>
@@ -35212,7 +36649,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_3">冗長化<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h3 id="_4">冗長化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>コントロールプレーンの可用性を高めるために、コントロールプレーンを異なる AZ に冗長化させる。</p>
 <blockquote>
 <ul>
@@ -35263,6 +36700,123 @@
 <li><a href="https://youtu.be/2_Nan81j03o?t=1915">https://youtu.be/2_Nan81j03o?t=1915</a></li>
 </ul>
 </blockquote>
+<p><br></p>
+<h3 id="github-actions">GitHub Actions 上で実行する場合<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h3>
+<h4 id="githubworkflowstest-istioyml">▼ <code>.github/workflows/test-istio.yml</code> ファイル<a class="headerlink" href="#githubworkflowstest-istioyml" title="Permanent link">&para;</a></h4>
+<p>GitHub Actions の runner 上で Cluster を作成し、Istio をデプロイする。</p>
+<p>リポジトリに <code>setup-asdf.sh</code>、<code>.tool-versions</code>、Helmfile の設定を配置し、Repository variables に <code>AWS_ACCOUNT_ID</code> と <code>AWS_DEFAULT_REGION</code>、Actions secrets に AWS の資格情報を登録する。</p>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Test Istio</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">master</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">develop</span><span class="p p-Indicator">]</span>
+<span class="w">  </span><span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
+
+<span class="nt">permissions</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">contents</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">read</span>
+
+<span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># ブランチとイベントに応じてHelmfileの実行環境を切り替える</span>
+<span class="w">  </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ (github.head_ref || github.ref_name) == 'master' &amp;&amp; 'prd' || (github.head_ref || github.ref_name) == 'develop' &amp;&amp; 'stg' || 'tes' }}</span>
+<span class="w">  </span><span class="nt">AWS_DEFAULT_REGION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ vars.AWS_DEFAULT_REGION }}</span>
+<span class="w">  </span><span class="nt">AWS_ACCESS_KEY_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.AWS_ACCESS_KEY_ID }}</span>
+<span class="w">  </span><span class="nt">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.AWS_SECRET_ACCESS_KEY }}</span>
+<span class="w">  </span><span class="nt">AWS_SESSION_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.AWS_SESSION_TOKEN }}</span>
+<span class="w">  </span><span class="c1"># 検証するKubernetesとIstioのバージョン</span>
+<span class="w">  </span><span class="nt">K8S_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.24.0"</span>
+<span class="w">  </span><span class="nt">K8S_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.26.0"</span>
+<span class="w">  </span><span class="nt">ISTIO_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.15.3"</span>
+<span class="w">  </span><span class="nt">ISTIO_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.17.5"</span>
+<span class="w">  </span><span class="nt">CLUSTER_NAME</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ci-${{ github.run_id }}-${{ github.run_attempt }}</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">test-istio</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v4</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ github.event.pull_request.head.sha || github.sha }}</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up tools</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">source setup-asdf.sh</span>
+<span class="w">          </span><span class="no"># 後続ステップでもasdfで導入したコマンドを使用する</span>
+<span class="w">          </span><span class="no">echo "$HOME/.asdf/bin" &gt;&gt; "$GITHUB_PATH"</span>
+<span class="w">          </span><span class="no">echo "$HOME/.asdf/shims" &gt;&gt; "$GITHUB_PATH"</span>
+<span class="w">          </span><span class="no">curl -fsSL https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash</span>
+<span class="w">          </span><span class="no">k3d version</span>
+<span class="w">          </span><span class="no">curl -fsSLO "https://dl.k8s.io/release/v${K8S_NEXT_VERSION}/bin/linux/amd64/kubectl"</span>
+<span class="w">          </span><span class="no">chmod +x kubectl</span>
+<span class="w">          </span><span class="no">sudo mv kubectl /usr/local/bin/kubectl</span>
+<span class="w">          </span><span class="no">kubectl version --client</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Set up k3d registry configuration</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">AWS_ACCOUNT_ID</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ vars.AWS_ACCOUNT_ID }}</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"</span>
+<span class="w">          </span><span class="no">cat &lt;&lt;EOF &gt; k3d-config.yaml</span>
+<span class="w">          </span><span class="no">apiVersion: k3d.io/v1alpha5</span>
+<span class="w">          </span><span class="no">kind: Simple</span>
+<span class="w">          </span><span class="no">registries:</span>
+<span class="w">            </span><span class="no">config: |</span>
+<span class="w">              </span><span class="no">mirrors:</span>
+<span class="w">                </span><span class="no">${AWS_ECR}:</span>
+<span class="w">                  </span><span class="no">endpoint:</span>
+<span class="w">                    </span><span class="no">- "https://${AWS_ECR}"</span>
+<span class="w">              </span><span class="no">configs:</span>
+<span class="w">                </span><span class="no">${AWS_ECR}:</span>
+<span class="w">                  </span><span class="no">auth:</span>
+<span class="w">                    </span><span class="no">username: AWS</span>
+<span class="w">                    </span><span class="no">password: $(aws ecr get-login-password --region "$AWS_DEFAULT_REGION")</span>
+<span class="w">          </span><span class="no">EOF</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Create cluster</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no"># GitHub-hosted runnerのDockerを使用し、同じジョブ内でClusterを検証する</span>
+<span class="w">          </span><span class="no">k3d cluster create --config k3d-config.yaml "$CLUSTER_NAME" \</span>
+<span class="w">            </span><span class="no">--image "rancher/k3s:v${K8S_NEXT_VERSION}-k3s1" --agents 2 || \</span>
+<span class="w">          </span><span class="no">k3d cluster create --config k3d-config.yaml "$CLUSTER_NAME" \</span>
+<span class="w">            </span><span class="no">--image "rancher/k3s:v${K8S_NEXT_VERSION}-rc1-k3s1" --agents 2</span>
+<span class="w">          </span><span class="no">kubectl label node "k3d-${CLUSTER_NAME}-agent-0" node.kubernetes.io/nodetype=ingress --overwrite</span>
+<span class="w">          </span><span class="no">kubectl label node "k3d-${CLUSTER_NAME}-agent-1" node.kubernetes.io/nodetype=system --overwrite</span>
+<span class="w">          </span><span class="no">k3d cluster list</span>
+<span class="w">          </span><span class="no">kubectl get node --show-labels</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deploy and verify Istio</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">          </span><span class="no">kubectl apply -f "https://raw.githubusercontent.com/istio/istio/${ISTIO_NEXT_VERSION}/manifests/charts/base/crds/crd-all.gen.yaml"</span>
+<span class="w">          </span><span class="no">kubectl create ns istio-ingress</span>
+<span class="w">          </span><span class="no">kubectl label ns istio-ingress istio.io/rev=default</span>
+<span class="w">          </span><span class="no">kubectl create ns istio-system</span>
+<span class="w">          </span><span class="no">kubectl get ns -L istio.io/rev</span>
+<span class="w">          </span><span class="no">helmfile -e "$ENV" -f "helmfile_istiod_${ISTIO_NEXT_VERSION//./-}.yaml" apply --skip-crds --skip-diff-on-install</span>
+<span class="w">          </span><span class="no">helmfile -e "$ENV" -f helmfile_istio-base.yaml apply --skip-diff-on-install</span>
+<span class="w">          </span><span class="no">helmfile -e "$ENV" -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install</span>
+<span class="w">          </span><span class="no">istioctl version</span>
+<span class="w">          </span><span class="no">istioctl proxy-status</span>
+<span class="w">          </span><span class="no">kubectl get all -n istio-ingress</span>
+<span class="w">          </span><span class="no">kubectl get all -n istio-system</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Delete cluster</span>
+<span class="w">        </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster delete "$CLUSTER_NAME"</span>
+</code></pre></div>
+<h4 id="setup-asdfsh">▼ <code>setup-asdf.sh</code> ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1"># asdfをインストールする</span>
+git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>--branch<span class="w"> </span>v0.14.1<span class="w"> </span>https://github.com/asdf-vm/asdf.git<span class="w"> </span>~/.asdf
+<span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_DIR</span><span class="o">=</span>~/.asdf
+<span class="nb">source</span><span class="w"> </span><span class="s2">"</span><span class="nv">$ASDF_DIR</span><span class="s2">/asdf.sh"</span>
+
+<span class="c1"># コマンドをインストールする</span>
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helm<span class="w"> </span>https://github.com/Antiarchitect/asdf-helm.git
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helmfile<span class="w"> </span>https://github.com/feniix/asdf-helmfile.git
+asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>istioctl<span class="w"> </span>https://github.com/virtualstaticvoid/asdf-istioctl.git
+asdf<span class="w"> </span>install
+asdf<span class="w"> </span>list
+
+<span class="c1"># 正しいバージョンをインストールできていることを確認する</span>
+helm<span class="w"> </span>version
+helmfile<span class="w"> </span>version
+istioctl<span class="w"> </span>version
+</code></pre></div>
 <p><br></p>
 <h2 id="02">02. トラフィック管理<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="istio-ingress-gateway">Istio Ingress Gateway について<a class="headerlink" href="#istio-ingress-gateway" title="Permanent link">&para;</a></h3>
@@ -35323,12 +36877,12 @@
 <li><a href="https://lab.mo-t.com/blog/k8s-update-load-balancer">https://lab.mo-t.com/blog/k8s-update-load-balancer</a></li>
 </ul>
 </blockquote>
-<h4 id="_4">▼ 共有入口と占有入口を選ぶ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h4 id="_5">▼ 共有入口と占有入口を選ぶ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>Istio Ingress Gateway を複数の Namespace で共有する共有入口パターンと、特定の Namespace が占有する占有入口パターンがある。</p>
 <p>入口の責任範囲を分割する必要がない場合は共有し、流入経路や管理の責任範囲を分けたい場合は Namespace ごとに配置する。</p>
 <p>占有入口パターンでは、問題の原因を切り分けやすくなる一方で、Istio Ingress Gateway の管理が煩雑になる。</p>
 <p><br></p>
-<h3 id="_5">デフォルトルートにサブセットを指定する<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h3 id="_6">デフォルトルートにサブセットを指定する<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>複数のサブセットを定義する場合でも、デフォルトルートでは特定のサブセットを指定する。</p>
 <p>これにより、個別のルーティング条件に一致しない通信も、特定のバージョンの Pod にルーティングできる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
@@ -35352,7 +36906,7 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="istio_1">Istio リソースのリクエスト可能な範囲を限定する<a class="headerlink" href="#istio_1" title="Permanent link">&para;</a></h3>
+<h3 id="istio">Istio リソースのリクエスト可能な範囲を限定する<a class="headerlink" href="#istio" title="Permanent link">&para;</a></h3>
 <p>Istio リソースを同じ Namespace 内だけに公開する場合、<code>.spec.exportTo</code> キーでは『<code>.</code> (ドット) 』を設定する。</p>
 <p>これにより、Istiod が設定を同じ Namespace のプロキシだけに配布する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">networking.istio.io/v1alpha3</span>
@@ -35459,8 +37013,8 @@
 </blockquote>
 <p><br></p>
 <h2 id="03">03. アップグレード<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="_6">設計規約<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<h4 id="_7">▼ サポート期間<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h3 id="_7">設計規約<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<h4 id="_8">▼ サポート期間<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>Istio では、マイナーバージョンごとのアップグレードを推奨しており、またマイナーバージョンのサポートが半年ごとに終了する。</p>
 <p>実質的に半年ごとにアップグレード工数が発生する。</p>
 <blockquote>
@@ -35468,7 +37022,7 @@
 <li><a href="https://istio.io/latest/docs/releases/supported-releases/#support-status-of-istio-releases">Istio / Supported Releases</a></li>
 </ul>
 </blockquote>
-<h4 id="_8">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<h4 id="_9">▼ マイナーバージョン単位でアップグレード<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>Istio の開発プロジェクトでは、マイナーバージョンを <code>1</code> 個ずつ新しくするアップグレードしか検証していない。</p>
 <p>そのため、マイナーバージョンを <code>2</code> 個以上跨いだアップグレードを推奨していない。</p>
 <blockquote>
@@ -35494,10 +37048,10 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_9">インプレース方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h4 id="_10">▼ インプレース方式とは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<h3 id="_10">インプレース方式<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h4 id="_11">▼ インプレース方式とは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p>既存の Istiod コントロールプレーンと Istio Ingress Gateway の両方をインプレース方式でアップグレードする。</p>
-<h4 id="_11">▼ 手順<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h4 id="_12">▼ 手順<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>CRD を更新する。</p>
@@ -35524,8 +37078,8 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_12">カナリア方式<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<h4 id="_13">▼ カナリア方式とは<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<h3 id="_13">カナリア方式<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">▼ カナリア方式とは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <blockquote>
 <ul>
 <li><a href="https://hiroki-hasegawa.hatenablog.jp/entry/2023/02/26/202548">【Istio⛵️】Istioを安全にアップグレードするカナリア方式とその仕組み - 好きな技術を布教したい 😗</a></li>
@@ -35582,167 +37136,13 @@ $<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </
 </ol>
 <p><br></p>
 <h2 id="04">04. アーキテクチャ特性<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_14">性能<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h3 id="_15">性能<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>リクエストが istio-proxy を経由する分だけレイテンシーが増加し、また istio-proxy ごとに CPU やメモリを消費するため、性能が劣化する。</p>
 <blockquote>
 <ul>
 <li><a href="https://lib.jimmysong.io/blog/performance-and-scalability/">https://lib.jimmysong.io/blog/performance-and-scalability/</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="05-ci">05. CI<a class="headerlink" href="#05-ci" title="Permanent link">&para;</a></h2>
-<h3 id="gitlab">GitLab<a class="headerlink" href="#gitlab" title="Permanent link">&para;</a></h3>
-<h4 id="gitlab-ciyml">▼ <code>.gitlab-ci.yml</code> ファイル<a class="headerlink" href="#gitlab-ciyml" title="Permanent link">&para;</a></h4>
-<p>CI 上で Cluster を作成し、Istio をデプロイする。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ブランチ名に応じて、CI で使用する実行環境名を切り替える</span>
-<span class="nt">workflow</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># master ブランチにて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == 'master'</span>
-<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"prd"</span>
-<span class="w">    </span><span class="c1"># develop ブランチにて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_COMMIT_REF_NAME == 'develop'</span>
-<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"stg"</span>
-<span class="w">    </span><span class="c1"># MR にて、任意の方法でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == 'merge_request_event'</span>
-<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"tes"</span>
-<span class="w">    </span><span class="c1"># 上記以外で、web から手動でパイプラインを実行した場合</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">if</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$CI_PIPELINE_SOURCE == 'web'</span>
-<span class="w">      </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">ENV</span><span class="p">:</span><span class="w"> </span><span class="s">"tes"</span>
-
-<span class="nt">variables</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># EKS は K8s のマイナーバージョンを公開していないため、".0"と仮定して処理する</span>
-<span class="w">  </span><span class="c1"># 現在の EKS の K8s バージョン</span>
-<span class="w">  </span><span class="nt">K8S_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.24.0"</span>
-<span class="w">  </span><span class="c1"># アップグレード後の EKS の K8s バージョン</span>
-<span class="w">  </span><span class="nt">K8S_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.26.0"</span>
-
-<span class="w">  </span><span class="c1"># 現在の Istio のバージョン</span>
-<span class="w">  </span><span class="nt">ISTIO_CURRENT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.15.3"</span>
-<span class="w">  </span><span class="c1"># アップグレード後の Istio のバージョン</span>
-<span class="w">  </span><span class="nt">ISTIO_NEXT_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">"1.17.5"</span>
-
-<span class="nt">stages</span><span class="p">:</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-
-<span class="c1"># K3D の設定ファイルをセットアップする</span>
-<span class="nt">setup_k3d_config</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon/aws-cli</span>
-<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">cat &lt;&lt;EOF &gt; k3d-config.yaml</span>
-<span class="w">      </span><span class="no">apiVersion: k3d.io/v1alpha5</span>
-<span class="w">      </span><span class="no">kind: Simple</span>
-<span class="w">      </span><span class="no">registries:</span>
-<span class="w">        </span><span class="no">config: |</span>
-<span class="w">          </span><span class="no">mirrors:</span>
-<span class="w">            </span><span class="no">&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com:</span>
-<span class="w">              </span><span class="no">endpoint:</span>
-<span class="w">                </span><span class="no">- "http://&lt;AWSアカウントID&gt;.dkr.ecr.ap-northeast-1.amazonaws.com"</span>
-<span class="w">          </span><span class="no">configs:</span>
-<span class="w">            </span><span class="no">${AWS_ECR}:</span>
-<span class="w">              </span><span class="no">auth:</span>
-<span class="w">                </span><span class="no">username: AWS</span>
-<span class="w">                </span><span class="no">password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})</span>
-<span class="w">      </span><span class="no">EOF</span>
-
-<span class="c1"># 指定したバージョンの Istio を検証する</span>
-<span class="nt">test_istio</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">stage</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">test</span>
-<span class="w">  </span><span class="nt">image</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker</span>
-<span class="w">  </span><span class="nt">variables</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># K3D を使用することで Docker in Docker となるため、そのための環境変数を設定する</span>
-<span class="w">    </span><span class="c1"># @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300</span>
-<span class="w">    </span><span class="nt">DOCKER_DRIVER</span><span class="p">:</span><span class="w"> </span><span class="s">"overlay2"</span>
-<span class="w">    </span><span class="nt">DOCKER_HOST</span><span class="p">:</span><span class="w"> </span><span class="s">"tcp://docker:2375"</span>
-<span class="w">    </span><span class="nt">DOCKER_TLS_CERTDIR</span><span class="p">:</span><span class="w"> </span><span class="s">""</span>
-<span class="w">  </span><span class="nt">services</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:dind</span>
-<span class="w">      </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"--tls=false"</span><span class="p p-Indicator">]</span>
-<span class="w">  </span><span class="c1"># K3D Cluster は異なる Job に持ち越せないので、事前処理として実行する</span>
-<span class="w">  </span><span class="nt">before_script</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apk --update add bash curl git</span>
-<span class="w">    </span><span class="c1"># スクリプトで asdf をセットアップする</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">source setup-asdf.sh</span>
-<span class="w">    </span><span class="c1"># K3D をインストールする</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh</span>
-<span class="w">      </span><span class="no">k3d version</span>
-<span class="w">    </span><span class="c1"># kubectl コマンドをインストールする</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">curl -kLO https://dl.k8s.io/release/v"${K8S_NEXT_VERSION}"/bin/linux/amd64/kubectl</span>
-<span class="w">      </span><span class="no">chmod +x ./kubectl</span>
-<span class="w">      </span><span class="no">mv ./kubectl /usr/local/bin/kubectl</span>
-<span class="w">      </span><span class="no">kubectl version</span>
-<span class="w">    </span><span class="c1"># Cluster を作成する</span>
-<span class="w">    </span><span class="c1"># registries.yaml ファイルを volume で配置する</span>
-<span class="w">    </span><span class="c1"># もし該当のバージョンのイメージがなければ、rc 版を使用する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2 || \</span>
-<span class="w">        </span><span class="no">k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2</span>
-<span class="w">    </span><span class="c1"># Node にラベル付けする</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress --overwrite</span>
-<span class="w">      </span><span class="no">kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodetype=system --overwrite</span>
-<span class="w">    </span><span class="c1"># 動作を確認する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster list</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get node --show-labels</span>
-<span class="w">  </span><span class="c1"># Istio のインストールは、Helm を使った Istio のアップグレード手順に則る</span>
-<span class="w">  </span><span class="c1"># @see https://istio.io/latest/docs/setup/upgrade/helm/</span>
-<span class="w">  </span><span class="nt">script</span><span class="p">:</span>
-<span class="w">    </span><span class="c1"># CRD をインストールする</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl apply -f https://raw.githubusercontent.com/istio/istio/"${ISTIO_NEXT_VERSION}"/manifests/charts/base/crds/crd-all.gen.yaml</span>
-<span class="w">    </span><span class="c1"># Namespace を作成する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="w">      </span><span class="no">kubectl create ns istio-ingress</span>
-<span class="w">      </span><span class="no">kubectl label ns istio-ingress istio.io/rev=default</span>
-<span class="w">      </span><span class="no">kubectl create ns istio-system</span>
-<span class="w">    </span><span class="c1"># Namespace のラベルを確認する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get ns -L istio.io/rev</span>
-<span class="w">    </span><span class="c1"># istiod チャートを Apply する</span>
-<span class="w">    </span><span class="c1"># ブルー/グリーンデプロイ時に新旧 Istiod を並行稼働させるために、helmfile.yaml にリビジョンをつける</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e "${ENV}" -f helmfile_istiod_"${ISTIO_NEXT_VERSION//\./-}".yaml apply --skip-crds --skip-diff-on-install</span>
-<span class="w">    </span><span class="c1"># istio-base チャートを Apply する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e "${ENV}" -f helmfile_istio-base.yaml apply --skip-diff-on-install</span>
-<span class="w">    </span><span class="c1"># istio-ingressgateway チャートを Apply する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">helmfile -e "${ENV}" -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install</span>
-<span class="w">    </span><span class="c1"># 動作を確認する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl version</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">istioctl proxy-status</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get all -n istio-ingress</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubectl get all -n istio-system</span>
-<span class="w">    </span><span class="c1"># Cluster を削除する</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">k3d cluster delete $CI_PIPELINE_ID</span>
-</code></pre></div>
-<h4 id="setup-asdfsh">▼ <code>setup-asdf.sh</code> ファイル<a class="headerlink" href="#setup-asdfsh" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-
-<span class="c1"># asdfをインストールする</span>
-git<span class="w"> </span>clone<span class="w"> </span>--depth<span class="w"> </span><span class="m">1</span><span class="w"> </span>https://github.com/asdf-vm/asdf.git<span class="w"> </span>~/.asdf
-<span class="nb">echo</span><span class="w"> </span><span class="s1">'. "$HOME/.asdf/asdf.sh"'</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<span class="nb">export</span><span class="w"> </span><span class="nv">ASDF_DIR</span><span class="o">=</span>~/.asdf
-<span class="nb">source</span><span class="w"> </span>~/.bashrc
-
-<span class="c1"># コマンドをインストールする</span>
-asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helm<span class="w"> </span>https://github.com/Antiarchitect/asdf-helm.git
-asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>helmfile<span class="w"> </span>https://github.com/feniix/asdf-helmfile.git
-asdf<span class="w"> </span>plugin<span class="w"> </span>add<span class="w"> </span>istioctl<span class="w"> </span>https://github.com/virtualstaticvoid/asdf-istioctl.git
-asdf<span class="w"> </span>install
-asdf<span class="w"> </span>list
-
-<span class="c1"># 正しいバージョンをインストールできていることを確認する</span>
-helm<span class="w"> </span>version
-helmfile<span class="w"> </span>version
-istioctl<span class="w"> </span>version
-</code></pre></div>
 <p><br></p>
 
   
@@ -35808,7 +37208,7 @@ istioctl<span class="w"> </span>version
     
     
     
-    <a href="https://www.linkedin.com/in/h-hasegawa/" target="_blank" rel="noopener" title="俺のLinkedin" class="md-social__link">
+    <a href="https://www.linkedin.com/in/h-hasegawa/" target="_blank" rel="noopener" title="俺のLinkedIn" class="md-social__link">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zM102.2 96a38.5 38.5 0 1 1 0 77 38.5 38.5 0 1 1 0-77m282.1 320h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
     </a>
   
@@ -35845,10 +37245,10 @@ istioctl<span class="w"> </span>version
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "toc.follow", "content.tabs.link"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.path", "navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.tracking", "navigation.indexes", "search.suggest", "toc.follow", "content.tabs.link"], "search": "../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version": "\u30d0\u30fc\u30b8\u30e7\u30f3\u5207\u308a\u66ff\u3048"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
