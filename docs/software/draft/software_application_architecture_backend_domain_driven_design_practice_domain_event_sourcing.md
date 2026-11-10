@@ -1351,24 +1351,33 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
     ```typescript title="TypeScript の場合の実装例"
     // 現在の実装（ステートソーシング）
-    export class BookRecommendationDomainService {
-      constructor(private reviewRepository: IReviewRepository) {}
 
-      private async getTrustworthyReviews(bookId: BookId): Promise<Review[]> {
+    export interface BookRecommendationDomainService {
+      calculateTopRecommendedBooks(
+        bookId: BookId,
+        maxCount?: number,
+      ): Promise<string[]>;
+    }
+    export function createBookRecommendationDomainService(
+      reviewRepository: IReviewRepository,
+    ): BookRecommendationDomainService {
+      async function getTrustworthyReviews(bookId: BookId): Promise<Review[]> {
         // 特定の BookID に紐づくすべてのレビューを取得
-        const bookReviews = await this.reviewRepository.findAllByBookId(bookId);
+        const bookReviews = await reviewRepository.findAllByBookId(bookId);
 
         // 信頼性の閾値に基づいて信頼できるレビューのみをフィルタリング
         return bookReviews.filter((review) => review.isTrustworthy());
       }
 
-      async calculateTopRecommendedBooks(
+      async function calculateTopRecommendedBooks(
         bookId: BookId,
         maxCount: number = 3,
       ): Promise<string[]> {
         // 信頼できるレビューを取得してRecommendedBookを集計
-        // ...
+        // 集計処理の実装は省略
+        throw new Error("推薦書籍の集計処理は未実装です");
       }
+      return {calculateTopRecommendedBooks};
     }
     ```
 

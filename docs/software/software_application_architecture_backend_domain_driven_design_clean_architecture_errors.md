@@ -9,6 +9,8 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
+TypeScript の例では、生成関数が標準の `Error` に識別用の `name` や追加情報を設定する。独自のエラーはクラスとして定義せず、`error instanceof Error` と `name` の組み合わせで判別する。
+
 <br>
 
 ## 01. 上位層への例外伝播
@@ -55,21 +57,15 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class BadRequestError extends Error {
-      private readonly _name: string;
-      private readonly _statusCode: number;
-
-      constructor() {
-        // エラーメッセージ
-        super("リクエスト形式が不正です");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "BadRequestError";
-        // ステータスコード
-        this._statusCode = 400;
-      }
+    export interface BadRequestError extends Error {
+      readonly name: "BadRequestError";
+      readonly statusCode: 400;
+    }
+    export function createBadRequestError(): BadRequestError {
+      return Object.assign(new Error("リクエスト形式が不正です"), {
+        name: "BadRequestError" as const,
+        statusCode: 400 as const,
+      });
     }
     ```
 
@@ -122,21 +118,15 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UnauthorizedError extends Error {
-      private readonly _name: string;
-      private readonly _statusCode: number;
-
-      constructor() {
-        // エラーメッセージ
-        super("認証されていません");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "UnauthorizedError";
-        // ステータスコード
-        this._statusCode = 401;
-      }
+    export interface UnauthorizedError extends Error {
+      readonly name: "UnauthorizedError";
+      readonly statusCode: 401;
+    }
+    export function createUnauthorizedError(): UnauthorizedError {
+      return Object.assign(new Error("認証されていません"), {
+        name: "UnauthorizedError" as const,
+        statusCode: 401 as const,
+      });
     }
     ```
 
@@ -189,21 +179,15 @@ description: エラー＠クリーンアーキテクチャの知見を記録し�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class ForbiddenError extends Error {
-      private readonly _name: string;
-      private readonly _statusCode: number;
-
-      constructor() {
-        // エラーメッセージ
-        super("認可されていません");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "ForbiddenError";
-        // ステータスコード
-        this._statusCode = 403;
-      }
+    export interface ForbiddenError extends Error {
+      readonly name: "ForbiddenError";
+      readonly statusCode: 403;
+    }
+    export function createForbiddenError(): ForbiddenError {
+      return Object.assign(new Error("認可されていません"), {
+        name: "ForbiddenError" as const,
+        statusCode: 403 as const,
+      });
     }
     ```
 
@@ -337,76 +321,81 @@ API クライアント向けのエラーレスポンスには、クライアン�
 
     ```typescript title="TypeScript の場合の実装例"
     // ドメイン層：ドメインルールに違反した場合、ドメイン例外をスローする
-    export class FooName {
-      constructor(private readonly value: string) {
-        if (value.length > 20) {
-          throw new FooNameLengthExceededError(value);
-        }
+
+    export interface FooName {
+      readonly value: string;
+    }
+    export function createFooName(value: string): FooName {
+      const state: {value: string} = {value};
+
+      if (value.length > 20) {
+        throw createFooNameLengthExceededError(value);
       }
+
+      return state;
     }
 
     // ユースケース層：ユースケースの処理に失敗した場合、ユースケース例外をスローする
-    export async function changeFooName({ id, name }: { id: string; name: string }) {
+    export async function changeFooName({id, name}: {id: string; name: string}) {
       const foo = await fooRepository.findById(id);
       if (!foo) {
-        throw new FooNotFoundError();
+        throw createFooNotFoundError();
       }
 
-      foo.changeName(new FooName(name));
+      foo.changeName(createFooName(name));
 
       await fooRepository.save(foo);
     }
 
     // インターフェース層：UIクライアント向けのエラーレスポンス
-    export class UiNotFoundErrorResponse extends Response {
-      constructor(error: FooNotFoundError) {
-        super(
-          JSON.stringify({
-            error: { title: "404 Not Found", message: error.message },
-          }),
-          { status: 404, headers: { "Content-Type": "application/json" } },
-        );
-      }
+    export function createUiNotFoundErrorResponse(error: Error): Response {
+      return new Response(
+        JSON.stringify({
+          error: {title: "404 Not Found", message: error.message},
+        }),
+        {status: 404, headers: {"Content-Type": "application/json"}},
+      );
     }
 
     // インターフェース層：APIクライアント向けのエラーレスポンス
-    export class ApiNotFoundErrorResponse extends Response {
-      constructor(error: FooNotFoundError) {
-        super(
-          JSON.stringify({
-            title: "404 Not Found",
-            message: error.message,
-            code: "NOT_FOUND",
-          }),
-          { status: 404, headers: { "Content-Type": "application/json" } },
-        );
-      }
+    export function createApiNotFoundErrorResponse(error: Error): Response {
+      return new Response(
+        JSON.stringify({
+          title: "404 Not Found",
+          message: error.message,
+          code: "NOT_FOUND",
+        }),
+        {status: 404, headers: {"Content-Type": "application/json"}},
+      );
     }
 
-    export class ApiBadRequestErrorResponse extends Response {
-      constructor(error: FooNameLengthExceededError) {
-        super(
-          JSON.stringify({
-            title: "400 Bad Request",
-            message: error.message,
-            code: "BAD_REQUEST",
-          }),
-          { status: 400, headers: { "Content-Type": "application/json" } },
-        );
-      }
+    export function createApiBadRequestErrorResponse(error: Error): Response {
+      return new Response(
+        JSON.stringify({
+          title: "400 Bad Request",
+          message: error.message,
+          code: "BAD_REQUEST",
+        }),
+        {status: 400, headers: {"Content-Type": "application/json"}},
+      );
     }
 
     // インターフェース層：APIクライアント向けのコントローラー
-    try {
-      await changeFooName({ id, name });
-    } catch (error) {
-      if (error instanceof FooNotFoundError) {
-        throw new ApiNotFoundErrorResponse(error);
+    export async function handleChangeFooName(
+      id: string,
+      name: string,
+    ): Promise<void> {
+      try {
+        await changeFooName({id, name});
+      } catch (error) {
+        if (error instanceof Error && error.name === "FooNotFoundError") {
+          throw createApiNotFoundErrorResponse(error);
+        }
+        if (error instanceof Error && error.name === "FooNameLengthExceededError") {
+          throw createApiBadRequestErrorResponse(error);
+        }
+        throw error;
       }
-      if (error instanceof FooNameLengthExceededError) {
-        throw new ApiBadRequestErrorResponse(error);
-      }
-      throw error;
     }
     ```
 
@@ -543,18 +532,13 @@ Foo ドメインオブジェクトが存在しない。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooNotFoundError extends Error {
-      private readonly _name: string;
-
-      constructor() {
-        // エラーメッセージ
-        super("Fooドメインオブジェクトが存在しません");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "FooNotFoundError";
-      }
+    export interface FooNotFoundError extends Error {
+      readonly name: "FooNotFoundError";
+    }
+    export function createFooNotFoundError(): FooNotFoundError {
+      return Object.assign(new Error("Fooドメインオブジェクトが存在しません"), {
+        name: "FooNotFoundError" as const,
+      });
     }
     ```
 
@@ -613,18 +597,14 @@ Foo ドメインオブジェクトの登録上限を超えている。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooRegisterFailedError extends Error {
-      private readonly _name: string;
-
-      constructor() {
-        // エラーメッセージ
-        super("Fooドメインオブジェクトの登録に失敗しました");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "FooRegisterFailedError";
-      }
+    export interface FooRegisterFailedError extends Error {
+      readonly name: "FooRegisterFailedError";
+    }
+    export function createFooRegisterFailedError(): FooRegisterFailedError {
+      return Object.assign(
+        new Error("Fooドメインオブジェクトの登録に失敗しました"),
+        {name: "FooRegisterFailedError" as const},
+      );
     }
     ```
 
@@ -701,20 +681,20 @@ Foo ドメインオブジェクトの登録上限を超えている。
 
     ```typescript title="TypeScript の場合の実装例"
     // 登録系ユースケース
-    export async function registerFoo({ name }: { name: string }) {
+    export async function registerFoo({name}: {name: string}) {
       try {
-        await fooRepository.save(new Foo(new FooName(name)));
+        await fooRepository.save(createFoo(createFooName(name)));
       } catch (error) {
-        throw new FooRegisterFailedError();
+        throw createFooRegisterFailedError();
       }
     }
 
     // 削除系ユースケース
-    export async function deleteFoo({ id }: { id: string }) {
+    export async function deleteFoo({id}: {id: string}) {
       try {
         await fooRepository.delete(id);
       } catch (error) {
-        throw new FooDeleteFailedError();
+        throw createFooDeleteFailedError();
       }
     }
     ```
@@ -788,21 +768,17 @@ Foo 名が許可された最大文字数を超えている。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooNameLengthExceededError extends Error {
-      private readonly _name: string;
-      private readonly _maxLength: number;
-
-      constructor(fooName: string) {
-        // エラーメッセージ
-        super(`Foo名は20文字以内にしてください`);
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "FooNameLengthExceededError";
-        // ドメインルール
-        this._maxLength = 20;
-      }
+    export interface FooNameLengthExceededError extends Error {
+      readonly name: "FooNameLengthExceededError";
+      readonly maxLength: 20;
+    }
+    export function createFooNameLengthExceededError(
+      fooName: string,
+    ): FooNameLengthExceededError {
+      return Object.assign(new Error(`Foo名は20文字以内にしてください`), {
+        name: "FooNameLengthExceededError" as const,
+        maxLength: 20 as const,
+      });
     }
     ```
 
@@ -852,18 +828,13 @@ Foo 名が空である。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooNameRequiredError extends Error {
-      private readonly _name: string;
-
-      constructor() {
-        // エラーメッセージ
-        super("Foo名は必須です");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "FooNameRequiredError";
-      }
+    export interface FooNameRequiredError extends Error {
+      readonly name: "FooNameRequiredError";
+    }
+    export function createFooNameRequiredError(): FooNameRequiredError {
+      return Object.assign(new Error("Foo名は必須です"), {
+        name: "FooNameRequiredError" as const,
+      });
     }
     ```
 
@@ -922,18 +893,23 @@ Foo 名が空である。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooName {
-      constructor(private readonly value: string) {
-        // 必須のドメインルール
-        if (value.length === 0) {
-          throw new FooNameRequiredError();
-        }
+    export interface FooName {
+      readonly value: string;
+    }
+    export function createFooName(value: string): FooName {
+      const state: {value: string} = {value};
 
-        // 最大文字数のドメインルール
-        if (value.length > 20) {
-          throw new FooNameLengthExceededError(value);
-        }
+      // 必須のドメインルール
+      if (value.length === 0) {
+        throw createFooNameRequiredError();
       }
+
+      // 最大文字数のドメインルール
+      if (value.length > 20) {
+        throw createFooNameLengthExceededError(value);
+      }
+
+      return state;
     }
     ```
 
@@ -992,18 +968,13 @@ Foo 名が空である。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UniqueConstraintError extends Error {
-      private readonly _name: string;
-
-      constructor() {
-        // エラーメッセージ
-        super("プライマリーキー制約に違反しました");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "UniqueConstraintError";
-      }
+    export interface UniqueConstraintError extends Error {
+      readonly name: "UniqueConstraintError";
+    }
+    export function createUniqueConstraintError(): UniqueConstraintError {
+      return Object.assign(new Error("プライマリーキー制約に違反しました"), {
+        name: "UniqueConstraintError" as const,
+      });
     }
     ```
 
@@ -1054,18 +1025,13 @@ DB 接続に失敗した。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class DatabaseConnectionError extends Error {
-      private readonly _name: string;
-
-      constructor() {
-        // エラーメッセージ
-        super("DB接続に失敗しました");
-
-        Object.setPrototypeOf(this, new.target.prototype);
-
-        // エラー名
-        this._name = "DatabaseConnectionError";
-      }
+    export interface DatabaseConnectionError extends Error {
+      readonly name: "DatabaseConnectionError";
+    }
+    export function createDatabaseConnectionError(): DatabaseConnectionError {
+      return Object.assign(new Error("DB接続に失敗しました"), {
+        name: "DatabaseConnectionError" as const,
+      });
     }
     ```
 
@@ -1129,23 +1095,25 @@ DB 接続に失敗した。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    try {
-      await fooRepository.save(foo);
-    } catch (error) {
-      // 制約違反の場合、重複を表すユースケース例外に詰め替える
-      if (error instanceof UniqueConstraintError) {
-        throw new FooAlreadyExistsError();
-      }
+    async function saveFooWithRetry(foo: Foo): Promise<void> {
+      try {
+        await fooRepository.save(foo);
+      } catch (error) {
+        // 制約違反の場合、重複を表すユースケース例外に詰め替える
+        if (error instanceof Error && error.name === "UniqueConstraintError") {
+          throw createFooAlreadyExistsError();
+        }
 
-      // 一時的な障害の場合、再試行する
-      if (
-        error instanceof DatabaseConnectionError ||
-        error instanceof QueryTimeoutError
-      ) {
-        return await retry(() => fooRepository.save(foo));
-      }
+        // 一時的な障害の場合、再試行する
+        if (
+          (error instanceof Error && error.name === "DatabaseConnectionError") ||
+          (error instanceof Error && error.name === "QueryTimeoutError")
+        ) {
+          return await retry(() => fooRepository.save(foo));
+        }
 
-      throw error;
+        throw error;
+      }
     }
     ```
 

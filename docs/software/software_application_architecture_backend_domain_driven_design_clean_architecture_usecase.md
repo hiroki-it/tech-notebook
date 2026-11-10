@@ -145,37 +145,56 @@ description: ユースケース層＠クリーンアーキテクチャの知見�
 
     ```typescript title="TypeScript の場合の実装例"
     // UIクライアント向けのインターラクター
-    export class UiFooInteractor {
-      constructor(private readonly fooRepository: FooRepository) {}
 
+    export interface UiFooInteractor {
+      registerFoo({userId, name}: {userId: string; name: string}): Promise<Foo>;
+    }
+    export function createUiFooInteractor(
+      fooRepository: FooRepository,
+    ): UiFooInteractor {
       // ログイン中のユーザーを所有者として登録する
-      async registerFoo({ userId, name }: { userId: string; name: string }) {
-        const foo = Foo.create({ ownerId: userId, name: new FooName(name) });
+      async function registerFoo({userId, name}: {userId: string; name: string}) {
+        const foo = createFoo({ownerId: userId, name: createFooName(name)});
 
-        await this.fooRepository.save(foo);
+        await fooRepository.save(foo);
 
         return foo;
       }
+      return {registerFoo};
     }
 
     // APIクライアント向けのインターラクター
-    export class ApiFooInteractor {
-      constructor(private readonly fooRepository: FooRepository) {}
 
+    export interface ApiFooInteractor {
+      registerFoo({
+        apiTokenOwnerId,
+        name,
+      }: {
+        apiTokenOwnerId: string;
+        name: string;
+      }): Promise<Foo>;
+    }
+    export function createApiFooInteractor(
+      fooRepository: FooRepository,
+    ): ApiFooInteractor {
       // APIトークンの所有者として登録し、APIクライアント向けのレスポンスモデルを返す
-      async registerFoo({
+      async function registerFoo({
         apiTokenOwnerId,
         name,
       }: {
         apiTokenOwnerId: string;
         name: string;
       }) {
-        const foo = Foo.create({ ownerId: apiTokenOwnerId, name: new FooName(name) });
+        const foo = createFoo({
+          ownerId: apiTokenOwnerId,
+          name: createFooName(name),
+        });
 
-        await this.fooRepository.save(foo);
+        await fooRepository.save(foo);
 
-        return FooApiResponseModel.from(foo);
+        return createFooApiResponseModel(foo);
       }
+      return {registerFoo};
     }
     ```
 
@@ -406,20 +425,26 @@ flowchart TB
 
     ```typescript title="TypeScript の場合の実装例"
     /**
-     * Foo作成インターラクタークラス
-     * ※ユースケースごとにクラスを定義する方法
+     * Foo作成インターラクター
+     * ※ユースケースごとに生成関数を定義する方法
      */
-    export class FooCreateInteractor {
-      constructor(private readonly fooRepository: FooRepository) {}
 
-      async registerFoo(
+    export interface FooCreateInteractor {
+      registerFoo(
+        registerFooRequest: RegisterFooRequest,
+      ): Promise<RegisterFooResponse>;
+    }
+    export function createFooCreateInteractor(
+      fooRepository: FooRepository,
+    ): FooCreateInteractor {
+      async function registerFoo(
         registerFooRequest: RegisterFooRequest,
       ): Promise<RegisterFooResponse> {
         // トランザクション処理を実行
         const foo = await db.transaction(async (): Promise<Foo> => {
           // 重複チェック (READ処理) を実行
-          const duplicateFoo = await this.fooRepository.findById(
-            new FooId(registerFooRequest.id),
+          const duplicateFoo = await fooRepository.findById(
+            createFooId(registerFooRequest.id),
           );
 
           if (duplicateFoo !== null) {
@@ -427,18 +452,19 @@ flowchart TB
           }
 
           // CREATE処理を実行
-          const foo = new Foo(
-            new FooId(registerFooRequest.id),
-            new Bar(registerFooRequest.bar),
-            new Baz(registerFooRequest.baz),
+          const foo = createFoo(
+            createFooId(registerFooRequest.id),
+            createBar(registerFooRequest.bar),
+            createBaz(registerFooRequest.baz),
           );
-          await this.fooRepository.create(foo);
+          await fooRepository.create(foo);
 
           return foo;
         });
 
-        return new RegisterFooResponse(foo);
+        return createRegisterFooResponse(foo);
       }
+      return {registerFoo};
     }
     ```
 
@@ -626,20 +652,29 @@ flowchart TB
 
     ```typescript title="TypeScript の場合の実装例"
     /**
-     * Fooインターラクタークラス
-     * ※CRUD全てのユースケースを、1個のクラスを定義する方法
+     * Fooインターラクター
+     * ※CRUD全てのユースケースを1個のオブジェクトにまとめる方法
      */
-    export class FooInteractor {
-      constructor(private readonly fooRepository: FooRepository) {}
 
-      async registerFoo(
+    export interface FooInteractor {
+      registerFoo(
+        registerFooRequest: RegisterFooRequest,
+      ): Promise<RegisterFooResponse>;
+      getFoo(getFooRequest: GetFooRequest): Promise<GetFooResponse>;
+      changeFoo(changeFooRequest: ChangeFooRequest): Promise<ChangeFooResponse>;
+      deleteFoo(deleteFooRequest: DeleteFooRequest): Promise<DeleteFooResponse>;
+    }
+    export function createFooInteractor(
+      fooRepository: FooRepository,
+    ): FooInteractor {
+      async function registerFoo(
         registerFooRequest: RegisterFooRequest,
       ): Promise<RegisterFooResponse> {
         // トランザクション処理を実行
         const foo = await db.transaction(async (): Promise<Foo> => {
           // 重複チェック (READ処理) を実行
-          const duplicateFoo = await this.fooRepository.findById(
-            new FooId(registerFooRequest.id),
+          const duplicateFoo = await fooRepository.findById(
+            createFooId(registerFooRequest.id),
           );
 
           if (duplicateFoo !== null) {
@@ -647,40 +682,38 @@ flowchart TB
           }
 
           // CREATE処理を実行
-          const foo = new Foo(
-            new FooId(registerFooRequest.id),
-            new Bar(registerFooRequest.bar),
-            new Baz(registerFooRequest.baz),
+          const foo = createFoo(
+            createFooId(registerFooRequest.id),
+            createBar(registerFooRequest.bar),
+            createBaz(registerFooRequest.baz),
           );
-          await this.fooRepository.create(foo);
+          await fooRepository.create(foo);
 
           return foo;
         });
 
-        return new RegisterFooResponse(foo);
+        return createRegisterFooResponse(foo);
       }
 
-      async getFoo(getFooRequest: GetFooRequest): Promise<GetFooResponse> {
+      async function getFoo(getFooRequest: GetFooRequest): Promise<GetFooResponse> {
         // READ処理を実行
-        const foo = await this.fooRepository.findById(
-          new FooId(getFooRequest.id),
-        );
+        const foo = await fooRepository.findById(createFooId(getFooRequest.id));
 
         if (foo === null) {
           throw new Error("Foo is not found.");
         }
 
-        return new GetFooResponse(foo);
+        return createGetFooResponse(foo);
       }
 
-      async changeFoo(
+      async function changeFoo(
         changeFooRequest: ChangeFooRequest,
       ): Promise<ChangeFooResponse> {
         // トランザクション処理を実行
         const foo = await db.transaction(async (): Promise<Foo> => {
           // 存在チェック (READ処理) を実行
-          const existingFoo = await this.fooRepository.findById(
-            new FooId(changeFooRequest.id),
+          const existingFoo = await fooRepository.findById(
+            createFooId(changeFooRequest.id),
           );
 
           if (existingFoo === null) {
@@ -688,27 +721,27 @@ flowchart TB
           }
 
           // UPDATE処理を実行
-          const foo = new Foo(
-            new FooId(changeFooRequest.id),
-            new Bar(changeFooRequest.bar),
-            new Baz(changeFooRequest.baz),
+          const foo = createFoo(
+            createFooId(changeFooRequest.id),
+            createBar(changeFooRequest.bar),
+            createBaz(changeFooRequest.baz),
           );
-          await this.fooRepository.update(foo);
+          await fooRepository.update(foo);
 
           return foo;
         });
 
-        return new ChangeFooResponse(foo);
+        return createChangeFooResponse(foo);
       }
 
-      async deleteFoo(
+      async function deleteFoo(
         deleteFooRequest: DeleteFooRequest,
       ): Promise<DeleteFooResponse> {
         // トランザクション処理を実行
         await db.transaction(async (): Promise<void> => {
           // 存在チェック (READ処理) を実行
-          const existingFoo = await this.fooRepository.findById(
-            new FooId(deleteFooRequest.id),
+          const existingFoo = await fooRepository.findById(
+            createFooId(deleteFooRequest.id),
           );
 
           if (existingFoo === null) {
@@ -716,11 +749,12 @@ flowchart TB
           }
 
           // DELETE処理を実行
-          await this.fooRepository.delete(new FooId(deleteFooRequest.id));
+          await fooRepository.delete(createFooId(deleteFooRequest.id));
         });
 
-        return new DeleteFooResponse();
+        return createDeleteFooResponse();
       }
+      return {registerFoo, getFoo, changeFoo, deleteFoo};
     }
     ```
 
@@ -957,15 +991,19 @@ flowchart TB
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooCreateRequest {
-      private readonly fooId: number;
+    export interface FooCreateRequest {
+      readonly fooId: number;
 
-      private readonly fooName: string;
-
-      constructor(fooId: number, fooName: string) {
-        this.fooId = fooId;
-        this.fooName = fooName;
-      }
+      readonly fooName: string;
+    }
+    export function createFooCreateRequest(
+      fooId: number,
+      fooName: string,
+    ): FooCreateRequest {
+      return {
+        fooId,
+        fooName,
+      };
     }
     ```
 
@@ -1032,18 +1070,16 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooIndexResponse {
-      private readonly foos: Foo[];
-
-      constructor(foos: Foo[]) {
-        this.foos = foos;
-      }
-
-      toArray(): Record<string, unknown> {
+    export interface FooIndexResponse {
+      toArray(): Record<string, unknown>;
+    }
+    export function createFooIndexResponse(foos: Foo[]): FooIndexResponse {
+      function toArray(): Record<string, unknown> {
         return {
-          foos: this.foos,
+          foos,
         };
       }
+      return {toArray};
     }
     ```
 
@@ -1104,22 +1140,20 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooCreateResponse {
-      private readonly fooId: number;
-
-      private readonly fooName: string;
-
-      constructor(fooId: number, fooName: string) {
-        this.fooId = fooId;
-        this.fooName = fooName;
-      }
-
-      toArray(): Record<string, unknown> {
+    export interface FooCreateResponse {
+      toArray(): Record<string, unknown>;
+    }
+    export function createFooCreateResponse(
+      fooId: number,
+      fooName: string,
+    ): FooCreateResponse {
+      function toArray(): Record<string, unknown> {
         return {
-          id: this.fooId,
-          name: this.fooName,
+          id: fooId,
+          name: fooName,
         };
       }
+      return {toArray};
     }
     ```
 
@@ -1195,16 +1229,14 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class NotifyFooService {
-      private readonly message: Message;
-
-      constructor(message: Message) {
-        this.message = message;
-      }
-
-      async notify(): Promise<void> {
+    export interface NotifyFooService {
+      notify(): Promise<void>;
+    }
+    export function createNotifyFooService(message: Message): NotifyFooService {
+      async function notify(): Promise<void> {
         // SlackのAPIにメッセージを送信する処理
       }
+      return {notify};
     }
     ```
 
@@ -1251,12 +1283,16 @@ JSON レスポンス関数が配列構造を引数に受け付けるため、こ
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooInteractor {
-      async foo(): Promise<void> {
-        const message = new Message(/* メッセージに関するデータを渡す */);
-        const notifyFooService = new NotifyFooService(message);
+    export interface FooInteractor {
+      foo(): Promise<void>;
+    }
+    export function createFooInteractor(): FooInteractor {
+      async function foo(): Promise<void> {
+        const message = createMessage(/* メッセージに関するデータを渡す */);
+        const notifyFooService = createNotifyFooService(message);
         await notifyFooService.notify();
       }
+      return {foo};
     }
     ```
 

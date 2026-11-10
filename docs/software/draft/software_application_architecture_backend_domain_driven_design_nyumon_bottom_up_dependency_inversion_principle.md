@@ -9,6 +9,8 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
+TypeScript の例では、インターフェースで依存先の契約を定義し、生成関数の引数で依存先を受け取る。IoC コンテナには生成関数を登録し、実行時に存在しないインターフェースの代わりにシンボルを登録キーに使う。
+
 <br>
 
 ## サンプルコード
@@ -52,8 +54,11 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class ObjectA {
-      private objectB?: ObjectB;
+    interface ObjectA {
+      readonly objectB?: ObjectB;
+    }
+    function createObjectA(): ObjectA {
+      return {objectB: undefined};
     }
     ```
 
@@ -95,10 +100,15 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
       find: (id: UserId) => Promise<User | null>;
     };
 
-    export class UserRepository implements IUserRepository {
-      async find(id: UserId): Promise<User | null> {
-        // 中略
+    export interface UserRepository extends IUserRepository {
+      find(id: UserId): Promise<User | null>;
+    }
+    export function createUserRepository(): UserRepository {
+      async function find(id: UserId): Promise<User | null> {
+        // 永続化先への問い合わせは省略
+        throw new Error("リポジトリの検索処理は未実装です");
       }
+      return {find};
     }
     ```
 
@@ -148,14 +158,13 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly repository: UserRepository;
-
-      constructor(repository: UserRepository) {
-        this.repository = repository;
-      }
-
-      // 中略
+    export interface UserApplicationService {
+      readonly repository: UserRepository;
+    }
+    export function createUserApplicationService(
+      repository: UserRepository,
+    ): UserApplicationService {
+      return {repository};
     }
     ```
 
@@ -202,14 +211,13 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly repository: IUserRepository;
-
-      constructor(repository: IUserRepository) {
-        this.repository = repository;
-      }
-
-      // 中略
+    export interface UserApplicationService {
+      readonly repository: IUserRepository;
+    }
+    export function createUserApplicationService(
+      repository: IUserRepository,
+    ): UserApplicationService {
+      return {repository};
     }
     ```
 
@@ -254,10 +262,15 @@ description: ７章＠ドメイン駆動設計入門ボトムアップの知見�
       find: (id: UserId) => Promise<User | null>;
     };
 
-    export class UserRepository implements IUserRepository {
-      async find(id: UserId): Promise<User | null> {
-        // 中略
+    export interface UserRepository extends IUserRepository {
+      find(id: UserId): Promise<User | null>;
+    }
+    export function createUserRepository(): UserRepository {
+      async function find(id: UserId): Promise<User | null> {
+        // 永続化先への問い合わせは省略
+        throw new Error("リポジトリの検索処理は未実装です");
       }
+      return {find};
     }
     ```
 
@@ -314,15 +327,14 @@ A を満たす。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
+    export interface UserApplicationService {
       // 上位レベル（≒ 上位レイヤー）が抽象に依存する
-      private readonly repository: IUserRepository;
-
-      constructor(repository: IUserRepository) {
-        this.repository = repository;
-      }
-
-      // 中略
+      readonly repository: IUserRepository;
+    }
+    export function createUserApplicationService(
+      repository: IUserRepository,
+    ): UserApplicationService {
+      return {repository};
     }
     ```
 
@@ -370,10 +382,16 @@ A と B を満たす。
 
     // 下位レベル（≒ 下位レイヤー）が抽象に依存する
     // 実装の詳細が抽象に依存する
-    export class UserRepository implements IUserRepository {
-      async find(id: UserId): Promise<User | null> {
-        // 中略
+
+    export interface UserRepository extends IUserRepository {
+      find(id: UserId): Promise<User | null>;
+    }
+    export function createUserRepository(): UserRepository {
+      async function find(id: UserId): Promise<User | null> {
+        // 永続化先への問い合わせは省略
+        throw new Error("リポジトリの検索処理は未実装です");
       }
+      return {find};
     }
     ```
 
@@ -430,15 +448,15 @@ A と B を満たす。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly userRepository: IUserRepository;
+    export interface UserApplicationService {
+      readonly userRepository: IUserRepository;
+    }
+    export function createUserApplicationService(): UserApplicationService {
+      // テスト時はインメモリ実装リポジトリを呼び出すようにハードコーディングしてしまう
 
-      constructor() {
-        // テスト時はインメモリ実装リポジトリを呼び出すようにハードコーディングしてしまう
-        this.userRepository = new InMemoryUserRepository();
-      }
-
-      // 中略
+      return {
+        userRepository: createInMemoryUserRepository(),
+      };
     }
     ```
 
@@ -483,15 +501,15 @@ A と B を満たす。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly userRepository: IUserRepository;
+    export interface UserApplicationService {
+      readonly userRepository: IUserRepository;
+    }
+    export function createUserApplicationService(): UserApplicationService {
+      // 実環境では実装リポジトリを呼び出すように書き換えないといけない
 
-      constructor() {
-        // 実環境では実装リポジトリを呼び出すように書き換えないといけない
-        this.userRepository = new UserRepository();
-      }
-
-      // 中略
+      return {
+        userRepository: createUserRepository(),
+      };
     }
     ```
 
@@ -547,15 +565,16 @@ ServiceLocator パターンによって、オブジェクトの呼び出しを�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly userRepository: IUserRepository;
+    export interface UserApplicationService {
+      findById(id: UserId): Promise<User | null>;
+    }
 
-      // コンストラクタの引数はない
-      constructor() {
-        // IUserRepositoryを呼び出しているが、内部的にはServiceLocatorオブジェクトで登録したオブジェクトを呼び出している
-        this.userRepository =
-          ServiceLocator.resolve<IUserRepository>(IUserRepository);
-      }
+    export function createUserApplicationService(): UserApplicationService {
+      // 依存先を内部で取得するため、呼び出し側には必要な依存関係が見えない
+      const userRepository = serviceLocator.resolve<IUserRepository>(
+        tokens.IUserRepository,
+      );
+      return {findById: (id) => userRepository.find(id)};
     }
     ```
 
@@ -596,13 +615,11 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-
-    // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
-    ServiceLocator.registerClass<IUserRepository>(
-      IUserRepository,
-      InMemoryUserRepository
+    // インターフェースは実行時に存在しないため、シンボルを登録キーにする
+    serviceLocator.register<IUserRepository>(
+      tokens.IUserRepository,
+      createInMemoryUserRepository(),
     );
-
     ```
 
 === "PHP"
@@ -629,8 +646,10 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
-    ServiceLocator.registerClass<IUserRepository>(IUserRepository, UserRepository);
+    serviceLocator.register<IUserRepository>(
+      tokens.IUserRepository,
+      createUserRepository(),
+    );
     ```
 
 === "PHP"
@@ -715,23 +734,25 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
     import {IUserRepository} from "./domain/IUserRepository";
     import {ICircleRepository} from "./domain/ICircleRepository";
     import {
-      InMemoryUserRepository,
-      UserRepository,
+      createInMemoryUserRepository,
+      createUserRepository,
     } from "./infrastructure/userRepository";
     import {
-      InMemoryCircleRepository,
-      CircleRepository,
+      createInMemoryCircleRepository,
+      createCircleRepository,
     } from "./infrastructure/circleRepository";
-    import {ServiceLocator} from "./serviceLocator";
+    import {serviceLocator} from "./serviceLocator";
 
     type RepositoriesMap = {
       token: symbol;
       implementation: unknown;
     };
 
-    const tokens = {
+    export const tokens = {
       IUserRepository: Symbol("IUserRepository"),
       ICircleRepository: Symbol("ICircleRepository"),
+      IFooRepository: Symbol("IFooRepository"),
+      UserApplicationService: Symbol("UserApplicationService"),
       // 中略
     } as const;
 
@@ -742,21 +763,21 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
       {
         token: tokens.IUserRepository,
         implementation: inMemory
-          ? new InMemoryUserRepository()
-          : new UserRepository(),
+          ? createInMemoryUserRepository()
+          : createUserRepository(),
       },
       {
         token: tokens.ICircleRepository,
         implementation: inMemory
-          ? new InMemoryCircleRepository()
-          : new CircleRepository(),
+          ? createInMemoryCircleRepository()
+          : createCircleRepository(),
       },
       // 中略
     ];
 
     // ServiceLocatorオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
     for (const {token, implementation} of repositoriesMap) {
-      ServiceLocator.register(token, implementation);
+      serviceLocator.register(token, implementation);
     }
     ```
 
@@ -843,24 +864,30 @@ ServiceLocator オブジェクトには、呼び出しの紐づけを事前に�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class ServiceLocator {
-      private static registry = new Map<symbol, unknown>();
-
-      // インターフェースリポジトリと実装リポジトリの対応関係を登録する
-      static register<T>(token: symbol, implementation: T): void {
-        this.registry.set(token, implementation);
-      }
-
-      // 登録済みの実装リポジトリのインスタンスを返却する
-      // インスタンスは事前に作成されている
-      static resolve<T>(token: symbol): T {
-        return this.registry.get(token) as T;
-      }
-
-      static clear(): void {
-        this.registry.clear();
-      }
+    export interface ServiceLocator {
+      register<T>(token: symbol, implementation: T): void;
+      resolve<T>(token: symbol): T;
+      clear(): void;
     }
+
+    export function createServiceLocator(): ServiceLocator {
+      const registry = new Map<symbol, unknown>();
+      return {
+        register<T>(token: symbol, implementation: T): void {
+          registry.set(token, implementation);
+        },
+        resolve<T>(token: symbol): T {
+          if (!registry.has(token))
+            throw new Error(`Service not found: ${String(token)}`);
+          return registry.get(token) as T;
+        },
+        clear() {
+          registry.clear();
+        },
+      };
+    }
+
+    export const serviceLocator = createServiceLocator();
     ```
 
 === "PHP"
@@ -915,13 +942,16 @@ UserApplicationService を外から見ても、UserRepository に依存するこ
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly userRepository: IUserRepository;
+    export interface UserApplicationService {
+      findById(id: UserId): Promise<User | null>;
+    }
 
-      constructor() {
-        this.userRepository =
-          ServiceLocator.resolve<IUserRepository>(IUserRepository);
-      }
+    export function createUserApplicationService(): UserApplicationService {
+      // 依存先を内部で取得するため、呼び出し側には必要な依存関係が見えない
+      const userRepository = serviceLocator.resolve<IUserRepository>(
+        tokens.IUserRepository,
+      );
+      return {findById: (id) => userRepository.find(id)};
     }
     ```
 
@@ -963,12 +993,12 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import {UserApplicationService} from "./userApplicationService";
+    import {createUserApplicationService} from "./userApplicationService";
 
     // UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。
-    const userApplicationService = new UserApplicationService();
+    const userApplicationService = createUserApplicationService();
 
-    userApplicationService.findById(1);
+    userApplicationService.findById(createUserId("1"));
     ```
 
 === "PHP"
@@ -1008,16 +1038,19 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly userRepository: IUserRepository;
-      private readonly fooRepository: IFooRepository;
+    export interface UserApplicationService {
+      findById(id: UserId): Promise<User | null>;
+    }
 
-      constructor() {
-        this.userRepository =
-          ServiceLocator.resolve<IUserRepository>(IUserRepository);
-        // repositoriesMapに対応関係をまだ登録していないが、ビルドの段階ではエラーにならない
-        this.fooRepository = ServiceLocator.resolve<IFooRepository>(IFooRepository);
-      }
+    export function createUserApplicationService(): UserApplicationService {
+      const userRepository = serviceLocator.resolve<IUserRepository>(
+        tokens.IUserRepository,
+      );
+      // このキーが未登録でもビルドは成功し、生成関数の実行時にエラーになる
+      const fooRepository = serviceLocator.resolve<IFooRepository>(
+        tokens.IFooRepository,
+      );
+      return {findById: (id) => userRepository.find(id)};
     }
     ```
 
@@ -1069,8 +1102,11 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const userRepository = new InMemoryUserRepository();
-    const userApplicationService = new UserApplicationService(userRepository);
+    const userRepository = createInMemoryUserRepository();
+    const userApplicationService = createUserApplicationService(
+      userRepository,
+      createInMemoryCircleRepository(),
+    );
     ```
 
 === "PHP"
@@ -1109,20 +1145,18 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserApplicationService {
-      private readonly userRepository: IUserRepository;
-      private readonly circleRepository: ICircleRepository;
+    export interface UserApplicationService {
+      findById(id: UserId): Promise<User | null>;
+    }
 
-      // コンストラクタを使用して依存させている
-      constructor(
-        userRepository: IUserRepository,
-        circleRepository: ICircleRepository
-      ) {
-        this.userRepository = userRepository;
-        this.circleRepository = circleRepository;
-      }
-
-      // set(...) の実装は省略
+    export function createUserApplicationService(
+      userRepository: IUserRepository,
+      circleRepository: ICircleRepository,
+    ): UserApplicationService {
+      return {
+        findById: (id) => userRepository.find(id),
+        // circleRepositoryを使う他の処理は省略
+      };
     }
     ```
 
@@ -1188,17 +1222,27 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // IoCコンテナオブジェクト
-    const serviceCollection = new ServiceCollection();
+    // 生成関数を登録するIoCコンテナ
+    const container = createIocContainer();
+    container.register<IUserRepository>(
+      tokens.IUserRepository,
+      createInMemoryUserRepository,
+    );
+    container.register<ICircleRepository>(
+      tokens.ICircleRepository,
+      createInMemoryCircleRepository,
+    );
 
-    // IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
-    serviceCollection.addTransient<IUserRepository, InMemoryUserRepository();
-    // UserApplicationServiceのコンストラクタにIUserRepositoryを渡すように実装しておかないと、ここでエラーになる
-    serviceCollection.addTransient<UserApplicationService>();
-
-    // IoCコンテナオブジェクトからuserApplicationServiceを取得する
-    const provider = serviceCollection.buildServiceProvider();
-    const userApplicationService = provider.getService<UserApplicationService>();
+    // 必要な依存先を引数で渡す。引数が不足するとコンパイルエラーになる
+    container.register<UserApplicationService>(tokens.UserApplicationService, () =>
+      createUserApplicationService(
+        container.resolve<IUserRepository>(tokens.IUserRepository),
+        container.resolve<ICircleRepository>(tokens.ICircleRepository),
+      ),
+    );
+    const userApplicationService = container.resolve<UserApplicationService>(
+      tokens.UserApplicationService,
+    );
     ```
 
 === "PHP"
@@ -1286,23 +1330,25 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
     import {IUserRepository} from "./domain/IUserRepository";
     import {ICircleRepository} from "./domain/ICircleRepository";
     import {
-      InMemoryUserRepository,
-      UserRepository,
+      createInMemoryUserRepository,
+      createUserRepository,
     } from "./infrastructure/userRepository";
     import {
-      InMemoryCircleRepository,
-      CircleRepository,
+      createInMemoryCircleRepository,
+      createCircleRepository,
     } from "./infrastructure/circleRepository";
-    import {IocContainer} from "./iocContainer";
+    import {createIocContainer} from "./iocContainer";
 
     type RepositoriesMap = {
       token: symbol;
-      implementation: unknown;
+      implementation: () => unknown;
     };
 
-    const tokens = {
+    export const tokens = {
       IUserRepository: Symbol("IUserRepository"),
       ICircleRepository: Symbol("ICircleRepository"),
+      IFooRepository: Symbol("IFooRepository"),
+      UserApplicationService: Symbol("UserApplicationService"),
       // 中略
     } as const;
 
@@ -1312,19 +1358,23 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
     const repositoriesMap: RepositoriesMap[] = [
       {
         token: tokens.IUserRepository,
-        implementation: inMemory ? InMemoryUserRepository : UserRepository,
+        implementation: inMemory
+          ? createInMemoryUserRepository
+          : createUserRepository,
       },
       {
         token: tokens.ICircleRepository,
-        implementation: inMemory ? InMemoryCircleRepository : CircleRepository,
+        implementation: inMemory
+          ? createInMemoryCircleRepository
+          : createCircleRepository,
       },
       // 中略
     ];
 
     // IoCコンテナオブジェクトにインターフェースリポジトリと実装リポジトリの対応関係を登録する
-    const iocContainer = new IocContainer();
+    export const container = createIocContainer();
     for (const {token, implementation} of repositoriesMap) {
-      iocContainer.register(token, implementation);
+      container.register(token, implementation);
     }
     ```
 
@@ -1422,27 +1472,31 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // IoCコンテナ
-    type Constructor<T> = new (...args: any[]) => T;
+    // クラスのコンストラクタに代わり、引数なしの生成関数を登録する
+    type Factory<T> = () => T;
 
-    export class IocContainer {
-      private registry = new Map<symbol, Constructor<any>>();
+    export interface IocContainer {
+      register<T>(token: symbol, factory: Factory<T>): void;
+      resolve<T>(token: symbol): T;
+      clear(): void;
+    }
 
-      // インターフェースリポジトリと実装リポジトリの対応関係を登録する
-      register<T>(token: symbol, implementation: Constructor<T>): void {
-        this.registry.set(token, implementation);
-      }
-
-      // 登録済みの実装リポジトリのインスタンスを返却する
-      // インスタンスは事前に作成したものではなく、新しく作成される
-      resolve<T>(token: symbol): T {
-        const implementation = this.registry.get(token);
-        return new implementation() as T;
-      }
-
-      clear(): void {
-        this.registry.clear();
-      }
+    export function createIocContainer(): IocContainer {
+      const factories = new Map<symbol, Factory<unknown>>();
+      return {
+        register<T>(token: symbol, factory: Factory<T>): void {
+          factories.set(token, factory);
+        },
+        resolve<T>(token: symbol): T {
+          const factory = factories.get(token);
+          if (!factory) throw new Error(`Factory not found: ${String(token)}`);
+          // 解決するたびに、新しいオブジェクトを作る
+          return factory() as T;
+        },
+        clear() {
+          factories.clear();
+        },
+      };
     }
     ```
 
@@ -1507,21 +1561,26 @@ IoC コンテナオブジェクトでインスタンスを作成し、これを�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // IoC Containerとコンストラクタインジェクションの場合
+    import type {ICircleRepository} from "./domain/ICircleRepository";
+    // IoC Containerと生成関数によるインジェクションの場合
 
-    import { container } from "./repositories";
-    import { tokens } from "./iocContainer";
-    import type { IUserRepository } from "./domain/IUserRepository";
-    import { UserApplicationService } from "./userApplicationService";
+    import {container, tokens} from "./repositories";
+    import {IUserRepository} from "./domain/IUserRepository";
+    import {createUserApplicationService} from "./userApplicationService";
 
     // IoCコンテナからuserRepositoryインスタンスを取得する
-    const userRepository = container.resolve<IUserRepository>(tokens.IUserRepository);
+    const userRepository = container.resolve<IUserRepository>(
+      tokens.IUserRepository,
+    );
 
-    // コンストラクタに注入する
+    // 生成関数に注入する
     // 引数にリポジトリや他の依存する新しいリポジトリを渡さないとビルド段階でエラーになる
-    const userApplicationService = new UserApplicationService(userRepository /* 他の依存するリポジトリは省略 */);
+    const userApplicationService = createUserApplicationService(
+      userRepository,
+      container.resolve<ICircleRepository>(tokens.ICircleRepository),
+    );
 
-    userApplicationService.findById("1");
+    userApplicationService.findById(createUserId("1"));
     ```
 
 === "PHP"
@@ -1574,13 +1633,13 @@ ServiceLocator オブジェクトからインスタンスを取り出せない�
     ```typescript title="TypeScript の場合の実装例"
     // ServiceLocatorオブジェクトの場合
 
-    import {UserApplicationService} from "./userApplicationService";
+    import {createUserApplicationService} from "./userApplicationService";
 
     // UserApplicationServiceを外から見ても、UserRepositoryに依存することはわからない。
     // UserApplicationServiceにIUserRepositoryを渡し忘れても、ビルド段階ではエラーにならない
-    const userApplicationService = new UserApplicationService();
+    const userApplicationService = createUserApplicationService();
 
-    userApplicationService.findById(1);
+    userApplicationService.findById(createUserId("1"));
     ```
 
 === "PHP"

@@ -127,11 +127,14 @@ SSO の場合を選んだユーザーの場合、ID プロバイダーから取�
     ```typescript
     const ATOM_FORMAT = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$/;
 
-    export class FormatValidator {
+    export interface FormatValidator {
+      validateFormat(dateTime: unknown): boolean;
+    }
+    export function createFormatValidator(): FormatValidator {
       /**
        * 日時データのフォーマットを検証する
        */
-      public validateFormat(dateTime: unknown): boolean {
+      function validateFormat(dateTime: unknown): boolean {
         if (typeof dateTime !== "string" || dateTime === "") {
           return false;
         }
@@ -142,6 +145,7 @@ SSO の場合を選んだユーザーの場合、ID プロバイダーから取�
 
         return true;
       }
+      return {validateFormat};
     }
     ```
 
@@ -222,11 +226,14 @@ SSO の場合を選んだユーザーの場合、ID プロバイダーから取�
       validate(value: unknown): boolean;
     }
 
-    export class UrlValidator {
+    export interface UrlValidator {
+      validateFormat(key: string, value: unknown, validator: Validatable): unknown;
+    }
+    export function createUrlValidator(): UrlValidator {
       /**
        * URLクエリストリングの値を検証し、不正ならデフォルト値を返す。
        */
-      public validateFormat(
+      function validateFormat(
         key: string,
         value: unknown,
         validator: Validatable,
@@ -248,6 +255,7 @@ SSO の場合を選んだユーザーの場合、ID プロバイダーから取�
 
         return value;
       }
+      return {validateFormat};
     }
     ```
 

@@ -213,10 +213,10 @@ description: インフラストラクチャ層＠クリーンアーキテクチ�
 === "TypeScript"
 
     ```typescript
-    import { FooCriteria } from "@/Domain/Foo/Criterion/FooCriteria";
-    import { Foo } from "@/Domain/Foo/Entities/Foo";
-    import { FooId } from "@/Domain/Foo/Ids/FooId";
-    import { Repository } from "@/Domain/Repository";
+    import {FooCriteria} from "@/Domain/Foo/Criterion/FooCriteria";
+    import {Foo} from "@/Domain/Foo/Entities/Foo";
+    import {FooId} from "@/Domain/Foo/Ids/FooId";
+    import {Repository} from "@/Domain/Repository";
 
     export interface FooRepository extends Repository {
       findById(fooId: FooId): Promise<Foo | null>;
@@ -321,20 +321,22 @@ DB に対する書き込み操作をする。
 === "TypeScript"
 
     ```typescript
-    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
-    import type { Database } from "@/Infrastructure/Database";
+    import {DogToy} from "@/Domain/Dog/Entities/DogToy";
+    import {Database} from "@/Infrastructure/Database";
 
     /**
      * 犬用おもちゃリポジトリ
      */
-    export class DogToyRepository {
-      constructor(private readonly db: Database) {}
 
+    export interface DogToyRepository {
+      create(dogToy: DogToy): Promise<void>;
+    }
+    export function createDogToyRepository(db: Database): DogToyRepository {
       /**
        * ドメインモデルを作成する
        */
-      public async create(dogToy: DogToy): Promise<void> {
-        await this.db.execute(
+      async function create(dogToy: DogToy): Promise<void> {
+        await db.execute(
           "INSERT INTO dog_toy_table (name, type, price, color) VALUES (?, ?, ?, ?)",
           [
             // ルートエンティティの要素をカラム値として設定する。
@@ -346,6 +348,7 @@ DB に対する書き込み操作をする。
           ],
         );
       }
+      return {create};
     }
     ```
 
@@ -424,20 +427,22 @@ DB に対する書き込み操作をする。
 === "TypeScript"
 
     ```typescript
-    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
-    import type { Database } from "@/Infrastructure/Database";
+    import {DogToy} from "@/Domain/Dog/Entities/DogToy";
+    import {Database} from "@/Infrastructure/Database";
 
     /**
      * 犬用おもちゃリポジトリ
      */
-    export class DogToyRepository {
-      constructor(private readonly db: Database) {}
 
+    export interface DogToyRepository {
+      update(dogToy: DogToy): Promise<void>;
+    }
+    export function createDogToyRepository(db: Database): DogToyRepository {
       /**
        * ドメインモデルを更新する
        */
-      public async update(dogToy: DogToy): Promise<void> {
-        await this.db.execute(
+      async function update(dogToy: DogToy): Promise<void> {
+        await db.execute(
           "UPDATE dog_toy_table SET name = ?, type = ?, price = ?, color = ? WHERE id = ?",
           [
             // ルートエンティティの要素をカラム値として設定する。
@@ -449,6 +454,7 @@ DB に対する書き込み操作をする。
           ],
         );
       }
+      return {update};
     }
     ```
 
@@ -526,26 +532,29 @@ DB に対する書き込み操作をする。
 === "TypeScript"
 
     ```typescript
-    import { FlagConstant } from "@/Constants/FlagConstant";
-    import { ToyId } from "@/Domain/Foo/Ids/ToyId";
-    import type { Database } from "@/Infrastructure/Database";
+    import {FlagConstant} from "@/Constants/FlagConstant";
+    import {ToyId} from "@/Domain/Foo/Ids/ToyId";
+    import {Database} from "@/Infrastructure/Database";
 
     /**
      * 犬用おもちゃリポジトリ
      */
-    export class DogToyRepository {
-      constructor(private readonly db: Database) {}
 
+    export interface DogToyRepository {
+      delete(toyId: ToyId): Promise<void>;
+    }
+    export function createDogToyRepository(db: Database): DogToyRepository {
       /**
        * ドメインモデルを削除する
        */
-      public async delete(toyId: ToyId): Promise<void> {
-        await this.db.execute(
+      async function deleteEntity(toyId: ToyId): Promise<void> {
+        await db.execute(
           // 論理削除
           "UPDATE dog_toy_table SET is_deleted = ? WHERE id = ?",
           [FlagConstant.IS_ON, toyId.value()],
         );
       }
+      return {delete: deleteEntity};
     }
     ```
 
@@ -693,16 +702,16 @@ DB に対する読み出し操作をする。
 === "TypeScript"
 
     ```typescript
-    import { FlagConstant } from "@/Constants/FlagConstant";
-    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
+    import {FlagConstant} from "@/Constants/FlagConstant";
+    import {DogToy, createDogToy} from "@/Domain/Dog/Entities/DogToy";
     import {
-      ColorVO,
-      DogId,
-      DogName,
-      DogToyType,
-      PriceVO,
+      createColorVO,
+      createDogId,
+      createDogName,
+      createDogToyType,
+      createPriceVO,
     } from "@/Domain/Dog/Values";
-    import type { Database } from "@/Infrastructure/Database";
+    import {Database} from "@/Infrastructure/Database";
 
     type DogToyRecord = {
       dog_toy_id: number;
@@ -715,13 +724,15 @@ DB に対する読み出し操作をする。
     /**
      * 犬用おもちゃリポジトリ
      */
-    export class DogToyRepository {
-      constructor(private readonly db: Database) {}
 
+    export interface DogToyRepository {
+      findAll(): Promise<DogToy[]>;
+    }
+    export function createDogToyRepository(db: Database): DogToyRepository {
       /**
        * ドメインモデルを全て取得する
        */
-      public async findAll(): Promise<DogToy[]> {
+      async function findAll(): Promise<DogToy[]> {
         // SQLを設定する。
         const query = `
           SELECT
@@ -735,28 +746,26 @@ DB に対する読み出し操作をする。
           WHERE dog_toy.is_deleted = ?`;
 
         // Read処理を実行する。
-        const entities = await this.db.query<DogToyRecord>(query, [
-          FlagConstant.IS_OFF,
-        ]);
+        const entities = await db.query<DogToyRecord>(query, [FlagConstant.IS_OFF]);
 
         // 取得したエンティティをドメインモデルに変換する。
-        return entities.map((entity) => this.toDogToy(entity));
+        return entities.map((entity) => toDogToy(entity));
       }
-
       /**
        * ドメインモデルに変換する
        */
-      private toDogToy(entity: DogToyRecord): DogToy {
-        const dogToy = new DogToy(
-          new DogId(entity.dog_toy_id),
-          new DogName(entity.dog_toy_name),
-          new DogToyType(entity.dog_toy_type),
-          new PriceVO(entity.dog_toy_price),
-          new ColorVO(entity.dog_toy_color),
+      function toDogToy(entity: DogToyRecord): DogToy {
+        const dogToy = createDogToy(
+          createDogId(entity.dog_toy_id),
+          createDogName(entity.dog_toy_name),
+          createDogToyType(entity.dog_toy_type),
+          createPriceVO(entity.dog_toy_price),
+          createColorVO(entity.dog_toy_color),
         );
 
         return dogToy;
       }
+      return {findAll};
     }
     ```
 
@@ -896,9 +905,9 @@ DB に対する読み出し操作をする。
 === "TypeScript"
 
     ```typescript
-    import { DogToy } from "@/Domain/Dog/Entities/DogToy";
-    import { DogCombo } from "@/Domain/Foo/Entities/DogCombo";
-    import { DogFood } from "@/Domain/Foo/Entities/DogFood";
+    import {createDogToy} from "@/Domain/Dog/Entities/DogToy";
+    import {DogCombo, createDogCombo} from "@/Domain/Foo/Entities/DogCombo";
+    import {createDogFood} from "@/Domain/Foo/Entities/DogFood";
 
     type DogComboData = {
       dog_toy_id: number;
@@ -916,28 +925,26 @@ DB に対する読み出し操作をする。
     /**
      * 犬用コンボファクトリ
      */
-    export class DogComboFactory {
-      /**
-       * 新たな集約を作成する
-       */
-      public static createDogCombo(data: DogComboData): DogCombo {
-        return new DogCombo(
-          new DogToy(
-            data.dog_toy_id,
-            data.dog_toy_name,
-            data.dog_toy_type,
-            data.dog_toy_price,
-            data.dog_toy_color,
-          ),
-          new DogFood(
-            data.dog_food_id,
-            data.dog_food_name,
-            data.dog_food_type,
-            data.dog_food_price,
-            data.dog_food_flavor,
-          ),
-        );
-      }
+    /**
+     * 新たな集約を作成する
+     */
+    export function createDogComboFromData(data: DogComboData): DogCombo {
+      return createDogCombo(
+        createDogToy(
+          data.dog_toy_id,
+          data.dog_toy_name,
+          data.dog_toy_type,
+          data.dog_toy_price,
+          data.dog_toy_color,
+        ),
+        createDogFood(
+          data.dog_food_id,
+          data.dog_food_name,
+          data.dog_food_type,
+          data.dog_food_price,
+          data.dog_food_flavor,
+        ),
+      );
     }
     ```
 

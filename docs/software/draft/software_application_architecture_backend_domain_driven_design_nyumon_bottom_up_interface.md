@@ -94,17 +94,21 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 
     ```typescript title="TypeScript の場合の実装例"
     import {Request, Response} from "express";
-    import {UserRegisterDto} from "../../application/dto/UserRegisterDto";
+    import {createUserRegisterDto} from "../../application/dto/UserRegisterDto";
     import {IUserApplicationService} from "../../application/UserApplicationService";
 
-    export class UserController {
-      constructor(private readonly service: IUserApplicationService) {}
-
-      async register(req: Request, res: Response): Promise<void> {
-        const dto = new UserRegisterDto(req.body.name, req.body.email);
-        await this.service.register(dto);
+    export interface UserController {
+      register(req: Request, res: Response): Promise<void>;
+    }
+    export function createUserController(
+      service: IUserApplicationService,
+    ): UserController {
+      async function register(req: Request, res: Response): Promise<void> {
+        const dto = createUserRegisterDto(req.body.name, req.body.email);
+        await service.register(dto);
         res.status(200).json({message: "User registered successfully"});
       }
+      return {register};
     }
     ```
 
@@ -157,11 +161,16 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class UserRegisterDto {
-      constructor(
-        public readonly name: string,
-        public readonly email: string,
-      ) {}
+    export interface UserRegisterDto {
+      readonly name: string;
+
+      readonly email: string;
+    }
+    export function createUserRegisterDto(
+      name: string,
+      email: string,
+    ): UserRegisterDto {
+      return {name, email};
     }
     ```
 
@@ -212,10 +221,14 @@ UserRepository／InMemoryUserRepository # インフラストラクチャ層
       register(dto: UserRegisterDto): Promise<void>;
     }
 
-    export class UserApplicationService implements IUserApplicationService {
-      async register(dto: UserRegisterDto): Promise<void> {
+    export interface UserApplicationService extends IUserApplicationService {
+      register(dto: UserRegisterDto): Promise<void>;
+    }
+    export function createUserApplicationService(): UserApplicationService {
+      async function register(dto: UserRegisterDto): Promise<void> {
         // ここでUserRepositoryを実行する
       }
+      return {register};
     }
     ```
 

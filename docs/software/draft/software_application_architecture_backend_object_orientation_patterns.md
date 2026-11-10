@@ -50,7 +50,7 @@ description: デザインパターン＠オブジェクト指向の知見を記�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    app.command = new LoginCommand(browser, credentials);
+    app.command = createLoginCommand(browser, credentials);
 
     // コマンド経由で、ブラウザでログインさせてトークンを保存させる
     app.run();

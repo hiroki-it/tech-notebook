@@ -625,19 +625,33 @@ flowchart LR
 
     ```typescript
     /** カタログコンテキストの書籍モデル */
-    class Book {
-      constructor(
-        /** 書籍の一意の識別子 */
-        public isbn: string,
-        /** 書籍のタイトル */
-        public title: string,
-        /** 書籍の著者 */
-        public author: string,
-        /** 書籍の説明 */
-        public description: string,
-        /** 書籍の販売価格 */
-        public price: number,
-      ) {}
+
+    interface Book {
+      /** 書籍の一意の識別子 */
+      isbn: string;
+      /** 書籍のタイトル */
+      title: string;
+      /** 書籍の著者 */
+      author: string;
+      /** 書籍の説明 */
+      description: string;
+      /** 書籍の販売価格 */
+      price: number;
+    }
+    function createBook(
+      isbn: string,
+      title: string,
+      author: string,
+      description: string,
+      price: number,
+    ): Book {
+      return {
+        isbn,
+        title,
+        author,
+        description,
+        price,
+      };
     }
     ```
 
@@ -702,19 +716,33 @@ flowchart LR
 
     ```typescript
     /** 在庫コンテキストの書籍モデル */
-    class Book {
-      constructor(
-        /** 書籍の一意の識別子 */
-        public isbn: string,
-        /** 書籍のタイトル */
-        public title: string,
-        /** 書籍の在庫数 */
-        public quantityAvailable: number,
-        /** 保管場所 */
-        public location: string,
-        /** 書籍の在庫ステータス */
-        public status: "IN_STOCK" | "OUT_OF_STOCK",
-      ) {}
+
+    interface Book {
+      /** 書籍の一意の識別子 */
+      isbn: string;
+      /** 書籍のタイトル */
+      title: string;
+      /** 書籍の在庫数 */
+      quantityAvailable: number;
+      /** 保管場所 */
+      location: string;
+      /** 書籍の在庫ステータス */
+      status: "IN_STOCK" | "OUT_OF_STOCK";
+    }
+    function createBook(
+      isbn: string,
+      title: string,
+      quantityAvailable: number,
+      location: string,
+      status: "IN_STOCK" | "OUT_OF_STOCK",
+    ): Book {
+      return {
+        isbn,
+        title,
+        quantityAvailable,
+        location,
+        status,
+      };
     }
     ```
 

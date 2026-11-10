@@ -58,19 +58,41 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Book {
-      constructor(
-        public bookId: BookId, // ID値オブジェクト
-        public title: Title, // タイトル値オブジェクト
-        public author: Author, // 著者値オブジェクト
-        public price: Price, // 価格値オブジェクト
+    interface Book {
+      bookId: BookId;
+      // ID値オブジェクト
+      title: Title;
+      // タイトル値オブジェクト
+      author: Author;
+      // 著者値オブジェクト
+      price: Price;
+      // 価格値オブジェクト
 
-        // いろんな集約
-        public reviews: Review[], // レビューエンティティ（本来は別集約にすべき)
-        public publisher: Publisher, // 出版社エンティティ（本来は別集約にすべき)
-        public stock: Stock, // 在庫エンティティ（本来は別集約にすべき)
-      ) {}
-      // (省略) 本に関するあらゆる操作がここに混在する可能性がある
+      // いろんな集約
+      reviews: Review[];
+      // レビューエンティティ（本来は別集約にすべき)
+      publisher: Publisher;
+      // 出版社エンティティ（本来は別集約にすべき)
+      stock: Stock;
+    }
+    function createBook(
+      bookId: BookId,
+      title: Title,
+      author: Author,
+      price: Price,
+      reviews: Review[],
+      publisher: Publisher,
+      stock: Stock,
+    ): Book {
+      return {
+        bookId,
+        title,
+        author,
+        price,
+        reviews,
+        publisher,
+        stock,
+      };
     }
     ```
 
@@ -146,20 +168,59 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
     ```typescript title="TypeScript の場合の実装例"
     // アンチパターン: 集約が他の集約を直接コールする
-    class Book {
-      constructor(
-        public bookId: BookId,
-        public title: Title,
-        public price: Price,
-        public reviews: Review[], // Review集約のインスタンスを直接保持
-      ) {}
+
+    interface Book {
+      bookId: BookId;
+
+      title: Title;
+
+      price: Price;
+
+      reviews: Review[];
+      antiPatternMethod(): void;
+    }
+    function createBook(
+      bookId: BookId,
+      title: Title,
+      price: Price,
+      reviews: Review[],
+    ): Book {
+      const state: {bookId: BookId; title: Title; price: Price; reviews: Review[]} =
+        {bookId, title, price, reviews};
 
       // Book集約からReview集約に関わる操作
-      antiPatternMethod() {
-        if (this.reviews.length > 0) {
-          this.reviews[0].updateRating(new Rating(4));
+      function antiPatternMethod() {
+        if (state.reviews.length > 0) {
+          state.reviews[0].updateRating(createRating(4));
         }
       }
+      return {
+        get bookId() {
+          return state.bookId;
+        },
+        set bookId(value: BookId) {
+          state.bookId = value;
+        },
+        get title() {
+          return state.title;
+        },
+        set title(value: Title) {
+          state.title = value;
+        },
+        get price() {
+          return state.price;
+        },
+        set price(value: Price) {
+          state.price = value;
+        },
+        get reviews() {
+          return state.reviews;
+        },
+        set reviews(value: Review[]) {
+          state.reviews = value;
+        },
+        antiPatternMethod,
+      };
     }
     ```
 
@@ -214,15 +275,31 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Review {
-      constructor(
-        public reviewId: ReviewId, // ID値オブジェクト
-        public bookId: BookId,
-        public name: Name, // 投稿者名値オブジェクト
-        public rating: Rating, // 評価値オブジェクト
-        public comment: Comment, // コメント値オブジェクト（任意）
-      ) {}
-      // (省略)
+    interface Review {
+      reviewId: ReviewId;
+      // ID値オブジェクト
+      bookId: BookId;
+
+      name: Name;
+      // 投稿者名値オブジェクト
+      rating: Rating;
+      // 評価値オブジェクト
+      comment: Comment;
+    }
+    function createReview(
+      reviewId: ReviewId,
+      bookId: BookId,
+      name: Name,
+      rating: Rating,
+      comment: Comment,
+    ): Review {
+      return {
+        reviewId,
+        bookId,
+        name,
+        rating,
+        comment,
+      };
     }
     ```
 
@@ -267,14 +344,22 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Book {
-      constructor(
-        public bookId: BookId,
-        public title: Title,
-        public price: Price,
-        public reviewIds: ReviewId[], // Review集約のID （値オブジェクト）のリストを保持
-      ) {}
-      // (省略)
+    interface Book {
+      bookId: BookId;
+
+      title: Title;
+
+      price: Price;
+
+      reviewIds: ReviewId[];
+    }
+    function createBook(
+      bookId: BookId,
+      title: Title,
+      price: Price,
+      reviewIds: ReviewId[],
+    ): Book {
+      return {bookId, title, price, reviewIds};
     }
     ```
 
@@ -331,19 +416,24 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
     ```typescript title="TypeScript の場合の実装例"
     // 冒頭の悪い例
-    class Book {
-      constructor(
-        public bookId: BookId,
-        public title: Title,
-        public reviews: Review[], // publicになっているため外部から直接アクセス可能
-        // ...
-      ) {}
 
-      // (省略) 本に関するあらゆる操作がここに混在する可能性がある
+    interface Book {
+      bookId: BookId;
+
+      title: Title;
+
+      reviews: Review[];
+    }
+    function createBook(bookId: BookId, title: Title, reviews: Review[]): Book {
+      return {
+        bookId,
+        title,
+        reviews,
+      };
     }
 
     // この構造だと外部コードは以下のようなアクセスが可能になる
-    const book = new Book(bookId, title, reviews /* 他の引数は省略 */);
+    const book = createBook(bookId, title, reviews /* 他の引数は省略 */);
 
     // book.reviewsを直接参照できる
     const firstReview = book.reviews[0];
@@ -447,41 +537,54 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
     ```typescript title="TypeScript の場合の実装例"
     // 書籍の基本情報に焦点を当てた集約
-    class Book {
-      constructor(
-        private readonly bookId: BookId,
-        private readonly title: Title,
-        private readonly author: Author,
-        private price: Price,
-      ) {}
+
+    interface Book {
+      changePrice(newPrice: Price): void;
+    }
+    function createBook(
+      bookId: BookId,
+      title: Title,
+      author: Author,
+      price: Price,
+    ): Book {
+      const state: {bookId: BookId; title: Title; author: Author; price: Price} = {
+        bookId,
+        title,
+        author,
+        price,
+      };
 
       // 価格変更のメソッド
-      changePrice(newPrice: Price): void {
-        this.price = newPrice;
+      function changePrice(newPrice: Price): void {
+        state.price = newPrice;
       }
+      return {changePrice};
     }
 
     // レビュー管理に焦点を当てた集約
-    class Review {
-      constructor(
-        private readonly reviewId: ReviewId,
-        private readonly bookId: BookId,
-        private readonly rating: Rating,
-        private readonly comment?: Comment,
-      ) {}
 
+    interface Review {
+      extractRecommendedBooks(): string[];
+    }
+    function createReview(
+      reviewId: ReviewId,
+      bookId: BookId,
+      rating: Rating,
+      comment?: Comment,
+    ): Review {
       // 推薦書籍抽出のロジックを集約内にカプセル化
-      extractRecommendedBooks(): string[] {
-        if (!this.comment) return [];
+      function extractRecommendedBooks(): string[] {
+        if (!comment) return [];
 
         // 推薦本を抽出する正規表現パターン（実装の詳細は集約内に隠蔽）
         // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
         const pattern =
           /[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/g;
 
-        const matches = this.comment.extractMatches(pattern);
+        const matches = comment.extractMatches(pattern);
         return Array.from(new Set(matches));
       }
+      return {extractRecommendedBooks};
     }
 
     // デメテルの法則に従った使用例
@@ -579,22 +682,43 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Book {
-      constructor(
-        public bookId: BookId,
-        // ...
-      ) {}
+    interface Book {
+      reviews: Review[];
 
-      public reviews: Review[]; // レビューを直接含める
+      bookId: BookId;
+      addReview(review: Review): void;
+    }
+    function createBook(bookId: BookId): Book {
+      const state: {reviews: Review[]; bookId: BookId} = {
+        reviews: [],
+        bookId,
+      };
+
+      // レビューを直接含める
 
       // レビューを追加するメソッド
-      addReview(review: Review): void {
+      function addReview(review: Review): void {
         // レビュー数の制約を集約内で強制できる
-        if (this.reviews.length >= 100) {
+        if (state.reviews.length >= 100) {
           throw new Error("レビュー数が上限に達しています");
         }
-        this.reviews.push(review);
+        state.reviews.push(review);
       }
+      return {
+        get reviews() {
+          return state.reviews;
+        },
+        set reviews(value: Review[]) {
+          state.reviews = value;
+        },
+        get bookId() {
+          return state.bookId;
+        },
+        set bookId(value: BookId) {
+          state.bookId = value;
+        },
+        addReview,
+      };
     }
     ```
 
@@ -695,38 +819,56 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
 
     ```typescript title="TypeScript の場合の実装例"
     // Book集約 - 基本情報管理に特化
-    class Book {
-      constructor(
-        private readonly bookId: BookId,
-        private readonly title: Title,
-        private readonly author: Author,
-        private price: Price
-      ) {}
+
+    interface Book {
+      changePrice(newPrice: Price): void;
+    }
+    function createBook(
+      bookId: BookId,
+      title: Title,
+      author: Author,
+      price: Price,
+    ): Book {
+      const state: {bookId: BookId; title: Title; author: Author; price: Price} = {
+        bookId,
+        title,
+        author,
+        price,
+      };
 
       // 書籍の基本情報に関する機能のみを提供
-      changePrice(newPrice: Price): void {
-        this.price = newPrice;
+      function changePrice(newPrice: Price): void {
+        state.price = newPrice;
       }
+      return {changePrice};
     }
 
     // Review集約 - レビュー分析という差別化ロジックに特化
-    class Review {
-      constructor(
-        private readonly reviewId: ReviewId,
-        private readonly bookId: BookId, // 書籍IDで参照
-        private readonly rating: Rating,
-        private readonly comment?: Comment
-      ) {}
 
+    interface Review {
+      extractRecommendedBooks(): string[];
+    }
+    function createReview(
+      reviewId: ReviewId,
+      bookId: BookId,
+      rating: Rating,
+      comment?: Comment,
+    ): Review {
       // 差別化ロジック: レビューからの推薦書籍抽出
-      extractRecommendedBooks(): string[] {
+      function extractRecommendedBooks(): string[] {
         // レビューからの推薦書籍抽出ロジック
         // これは競合他社にはない独自の機能
+        throw new Error("推薦書籍抽出の実装は省略");
       }
+      return {extractRecommendedBooks};
     }
 
     // レビュー作成時に整合性を確認
-    function createReview(bookId: string, rating: number, comment?: string): Promise<void> {
+    async function registerReview(
+      bookId: string,
+      rating: number,
+      comment?: string,
+    ): Promise<void> {
       // 書籍の存在確認
       const book = await bookRepository.findById(bookId); // DBから書籍を取得
       if (!book) {
@@ -967,110 +1109,129 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
     import {ReviewId} from "./ReviewId/ReviewId";
     import {ReviewIdentity} from "./ReviewIdentity/ReviewIdentity";
 
-    export class Review {
-      private constructor(
-        private readonly _identity: ReviewIdentity,
-        private readonly _bookId: BookId,
-        private _name: Name,
-        private _rating: Rating,
-        private _comment?: Comment,
-      ) {}
-
-      static create(
-        identity: ReviewIdentity,
-        bookId: BookId,
-        name: Name,
-        rating: Rating,
-        comment?: Comment,
-      ): Review {
-        return new Review(identity, bookId, name, rating, comment);
-      }
-
-      static reconstruct(
-        identity: ReviewIdentity,
-        bookId: BookId,
-        name: Name,
-        rating: Rating,
-        comment?: Comment,
-      ): Review {
-        return new Review(identity, bookId, name, rating, comment);
-      }
+    export function reconstructReview(
+      identity: ReviewIdentity,
+      bookId: BookId,
+      name: Name,
+      rating: Rating,
+      comment?: Comment,
+    ): Review {
+      return createReview(identity, bookId, name, rating, comment);
+    }
+    export interface Review {
+      readonly identity: ReviewIdentity;
+      isTrustworthy(threshold?: number): boolean;
+      extractRecommendedBooks(): string[];
+      equals(other: Review): boolean;
+      updateName(name: Name): void;
+      updateRating(rating: Rating): void;
+      editComment(comment: Comment): void;
+      readonly reviewId: ReviewId;
+      readonly bookId: BookId;
+      readonly name: Name;
+      readonly rating: Rating;
+      readonly comment: Comment | undefined;
+    }
+    export function createReview(
+      _identity: ReviewIdentity,
+      _bookId: BookId,
+      _name: Name,
+      _rating: Rating,
+      _comment?: Comment,
+    ): Review {
+      const state: {
+        _identity: ReviewIdentity;
+        _bookId: BookId;
+        _name: Name;
+        _rating: Rating;
+        _comment?: Comment;
+      } = {
+        _identity,
+        _bookId,
+        _name,
+        _rating,
+        _comment,
+      };
 
       /**
        * このレビューが信頼できるかを判断
        * @param threshold 信頼性閾値（0.0～1.0）
        * @returns 信頼できる場合はtrue
        */
-      isTrustworthy(threshold: number = 0.6): boolean {
+      function isTrustworthy(threshold: number = 0.6): boolean {
         // コメントがない場合は評価のみで判断
-        if (!this._comment) {
-          return this._rating.getQualityFactor() >= threshold;
+        if (!state._comment) {
+          return state._rating.getQualityFactor() >= threshold;
         }
 
         // 評価とコメントの係数を組み合わせる
-        const ratingFactor = this._rating.getQualityFactor();
-        const commentFactor = this._comment.getQualityFactor();
+        const ratingFactor = state._rating.getQualityFactor();
+        const commentFactor = state._comment.getQualityFactor();
 
         // 評価の重みを0.7、コメントの重みを0.3とする
         const combinedFactor = ratingFactor * 0.7 + commentFactor * 0.3;
         return combinedFactor >= threshold;
       }
-
       /**
        * コメントから推薦本を抽出する
        * @returns 推薦本のタイトル配列
        */
-      extractRecommendedBooks(): string[] {
-        if (!this._comment) return [];
+      function extractRecommendedBooks(): string[] {
+        if (!state._comment) return [];
 
         // 書籍名の後30文字以内に推薦キーワードがあるものを抽出
         const pattern =
           /[『『]([^』』]+)[』』][^。]{0,30}(?:読む|読んだ|学ぶ|学んだ|必要|推奨|おすすめ|良い|いい|理解)/g;
 
-        const matches = this._comment.extractMatches(pattern);
+        const matches = state._comment.extractMatches(pattern);
         return Array.from(new Set(matches));
       }
-
       /**
        * 別のレビューと同一かどうかを判定
        * @param other 比較対象のレビュー
        * @returns 同一の場合はtrue
        */
-      equals(other: Review): boolean {
-        return this._identity.equals(other._identity);
+      function equals(other: Review): boolean {
+        return state._identity.equals(other.identity);
       }
 
-      get reviewId(): ReviewId {
-        return this._identity.reviewId;
+      function updateName(name: Name): void {
+        state._name = name;
       }
 
-      get bookId(): BookId {
-        return this._bookId;
+      function updateRating(rating: Rating): void {
+        state._rating = rating;
       }
 
-      get name(): Name {
-        return this._name;
+      function editComment(comment: Comment): void {
+        state._comment = comment;
       }
-
-      get rating(): Rating {
-        return this._rating;
-      }
-
-      get comment(): Comment | undefined {
-        return this._comment;
-      }
-
-      updateName(name: Name): void {
-        this._name = name;
-      }
-
-      updateRating(rating: Rating): void {
-        this._rating = rating;
-      }
-
-      editComment(comment: Comment): void {
-        this._comment = comment;
-      }
+      return {
+        get identity() {
+          return state._identity;
+        },
+        isTrustworthy,
+        extractRecommendedBooks,
+        equals,
+        updateName,
+        updateRating,
+        editComment,
+        get reviewId() {
+          return state._identity.reviewId;
+        },
+        get bookId() {
+          return state._bookId;
+        },
+        get name() {
+          return state._name;
+        },
+        get rating() {
+          return state._rating;
+        },
+        get comment() {
+          return state._comment;
+        },
+      };
     }
     ```
 
@@ -1277,48 +1438,55 @@ description: 11章＠ドメイン駆動設計実践入門の知見を記録し�
     import {Price} from "./Price/Price";
     import {Title} from "./Title/Title";
 
-    export class Book {
-      constructor(
-        private readonly _identity: BookIdentity,
-        private _price: Price,
-      ) {}
-
-      static create(identity: BookIdentity, price: Price): Book {
-        return new Book(identity, price);
-      }
-
-      static reconstruct(identity: BookIdentity, price: Price): Book {
-        return new Book(identity, price);
-      }
+    export function reconstructBook(identity: BookIdentity, price: Price): Book {
+      return createBook(identity, price);
+    }
+    export interface Book {
+      readonly identity: BookIdentity;
+      equals(other: Book): boolean;
+      changePrice(price: Price): void;
+      readonly bookId: BookId;
+      readonly title: Title;
+      readonly author: Author;
+      readonly price: Price;
+    }
+    export function createBook(_identity: BookIdentity, _price: Price): Book {
+      const state: {_identity: BookIdentity; _price: Price} = {
+        _identity,
+        _price,
+      };
 
       /**
        * 別の書籍と同一かどうかを判定
        * @param other 比較対象の書籍
        * @returns 同一の場合はtrue
        */
-      equals(other: Book): boolean {
-        return this._identity.equals(other._identity);
+      function equals(other: Book): boolean {
+        return state._identity.equals(other.identity);
       }
 
-      get bookId(): BookId {
-        return this._identity.bookId;
+      function changePrice(price: Price): void {
+        state._price = price;
       }
-
-      get title(): Title {
-        return this._identity.title;
-      }
-
-      get author(): Author {
-        return this._identity.author;
-      }
-
-      get price(): Price {
-        return this._price;
-      }
-
-      changePrice(price: Price): void {
-        this._price = price;
-      }
+      return {
+        get identity() {
+          return state._identity;
+        },
+        equals,
+        changePrice,
+        get bookId() {
+          return state._identity.bookId;
+        },
+        get title() {
+          return state._identity.title;
+        },
+        get author() {
+          return state._identity.author;
+        },
+        get price() {
+          return state._price;
+        },
+      };
     }
     ```
 
@@ -1415,28 +1583,28 @@ npx jest src/Domain/models/Review/Review.test.ts
 - レビュアーのコメント編集（`"editComment"`）
 
 ```typescript title="TypeScript の場合の実装例"
-import {BookId} from "../Book/BookId/BookId";
-import {Comment} from "./Comment/Comment";
-import {Name} from "./Name/Name";
-import {Rating} from "./Rating/Rating";
-import {Review} from "./Review";
-import {ReviewId} from "./ReviewId/ReviewId";
-import {ReviewIdentity} from "./ReviewIdentity/ReviewIdentity";
+import {createBookId} from "../Book/BookId/BookId";
+import {createComment} from "./Comment/Comment";
+import {createName} from "./Name/Name";
+import {createRating} from "./Rating/Rating";
+import {createReview, reconstructReview} from "./Review";
+import {createReviewId} from "./ReviewId/ReviewId";
+import {createReviewIdentity} from "./ReviewIdentity/ReviewIdentity";
 
 describe("Review", () => {
-  const reviewId = new ReviewId();
-  const reviewIdentity = new ReviewIdentity(reviewId);
-  const bookId = new BookId("9784798126708");
-  const name = new Name("山田太郎");
-  const rating = new Rating(4);
-  const comment = new Comment(
+  const reviewId = createReviewId();
+  const reviewIdentity = createReviewIdentity(reviewId);
+  const bookId = createBookId("9784798126708");
+  const name = createName("山田太郎");
+  const rating = createRating(4);
+  const comment = createComment(
     "とても面白かったです。『実践ドメイン駆動設計』を読んだ後にこの本を読むと理解しやすいです。",
   );
 
   // 正常系
   describe("create", () => {
     it("レビューを正しく作成できる", () => {
-      const review = Review.create(
+      const review = createReview(
         reviewIdentity,
         bookId,
         name,
@@ -1454,7 +1622,7 @@ describe("Review", () => {
   // 正常系
   describe("reconstruct", () => {
     it("レビューを正しく再構築できる", () => {
-      const review = Review.reconstruct(
+      const review = reconstructReview(
         reviewIdentity,
         bookId,
         name,
@@ -1473,14 +1641,14 @@ describe("Review", () => {
   describe("equals", () => {
     // 正常系
     it("同一のレビューは等しいと判定される", () => {
-      const review1 = Review.create(
+      const review1 = createReview(
         reviewIdentity,
         bookId,
         name,
         rating,
         comment,
       );
-      const review2 = Review.create(
+      const review2 = createReview(
         reviewIdentity,
         bookId,
         name,
@@ -1492,16 +1660,16 @@ describe("Review", () => {
 
     // 正常系
     it("異なるレビューは等しくないと判定される", () => {
-      const review1 = Review.create(
+      const review1 = createReview(
         reviewIdentity,
         bookId,
         name,
         rating,
         comment,
       );
-      const newReviewId = new ReviewId();
-      const newReviewIdentity = new ReviewIdentity(newReviewId);
-      const review2 = Review.create(
+      const newReviewId = createReviewId();
+      const newReviewIdentity = createReviewIdentity(newReviewId);
+      const review2 = createReview(
         newReviewIdentity,
         bookId,
         name,
@@ -1514,7 +1682,7 @@ describe("Review", () => {
 
   describe("isTrustworthy", () => {
     it("コメントありの場合、評価とコメントの品質を組み合わせて信頼性を判断する", () => {
-      const review = Review.create(
+      const review = createReview(
         reviewIdentity,
         bookId,
         name,
@@ -1536,7 +1704,7 @@ describe("Review", () => {
     });
 
     it("コメントなしの場合、評価の品質のみで信頼性を判断する", () => {
-      const review = Review.create(reviewIdentity, bookId, name, rating);
+      const review = createReview(reviewIdentity, bookId, name, rating);
 
       // プライベート関数をモンキーパッチし、仮の返却値を返却させるように内部実装を差し替える
       jest.spyOn(review.rating, "getQualityFactor").mockReturnValue(0.5);
@@ -1551,18 +1719,18 @@ describe("Review", () => {
 
   describe("extractRecommendedBooks", () => {
     it("コメントがない場合は空の配列を返す", () => {
-      const review = Review.create(reviewIdentity, bookId, name, rating);
+      const review = createReview(reviewIdentity, bookId, name, rating);
       const recommendedBooks = review.extractRecommendedBooks();
       expect(recommendedBooks).toEqual([]);
     });
 
     it("コメントからパターンに一致する複数の推薦本を抽出できる", () => {
       // 複数の推薦本を含むコメント - パターンに確実に一致するよう調整
-      const commentWithMultipleBooks = new Comment(
+      const commentWithMultipleBooks = createComment(
         "『実践ドメイン駆動設計』を読んだ後に読むと理解しやすいです。また、前提知識として『エリック・エヴァンスのドメイン駆動設計』が必要です。",
       );
 
-      const review = Review.create(
+      const review = createReview(
         reviewIdentity,
         bookId,
         name,
@@ -1581,11 +1749,11 @@ describe("Review", () => {
 
     it("重複する推薦本は一度だけカウントされる", () => {
       // 同じ推薦本が複数のパターンに一致するコメント - パターンに確実に一致するよう調整
-      const commentWithDuplicates = new Comment(
+      const commentWithDuplicates = createComment(
         "『実践ドメイン駆動設計』を読んだ後に読むと理解しやすいです。『実践ドメイン駆動設計』を先に読むことを推奨します。",
       );
 
-      const review = Review.create(
+      const review = createReview(
         reviewIdentity,
         bookId,
         name,
@@ -1600,14 +1768,14 @@ describe("Review", () => {
 
   describe("updateName", () => {
     it("名前を変更できる", () => {
-      const review = Review.create(
+      const review = createReview(
         reviewIdentity,
         bookId,
         name,
         rating,
         comment,
       );
-      const newName = new Name("佐藤花子");
+      const newName = createName("佐藤花子");
       review.updateName(newName);
       expect(review.name.equals(newName)).toBeTruthy();
     });
@@ -1615,14 +1783,14 @@ describe("Review", () => {
 
   describe("updateRating", () => {
     it("評価を変更できる", () => {
-      const review = Review.create(
+      const review = createReview(
         reviewIdentity,
         bookId,
         name,
         rating,
         comment,
       );
-      const newRating = new Rating(5);
+      const newRating = createRating(5);
       review.updateRating(newRating);
       expect(review.rating.equals(newRating)).toBeTruthy();
     });
@@ -1630,14 +1798,14 @@ describe("Review", () => {
 
   describe("editComment", () => {
     it("コメントを変更できる", () => {
-      const review = Review.create(
+      const review = createReview(
         reviewIdentity,
         bookId,
         name,
         rating,
         comment,
       );
-      const newComment = new Comment("新しいコメントです。");
+      const newComment = createComment("新しいコメントです。");
       review.editComment(newComment);
       expect(review.comment?.equals(newComment)).toBeTruthy();
     });
@@ -1661,27 +1829,27 @@ npx jest src/Domain/models/Book/Book.test.ts
 - 書籍価格の変更（`"changePrice"`）
 
 ```typescript title="TypeScript の場合の実装例"
-import {Author} from "./Author/Author";
-import {Book} from "./Book";
-import {BookId} from "./BookId/BookId";
-import {BookIdentity} from "./BookIdentity/BookIdentity";
-import {Price} from "./Price/Price";
-import {Title} from "./Title/Title";
+import {createAuthor} from "./Author/Author";
+import {createBook, reconstructBook} from "./Book";
+import {createBookId} from "./BookId/BookId";
+import {createBookIdentity} from "./BookIdentity/BookIdentity";
+import {createPrice} from "./Price/Price";
+import {createTitle} from "./Title/Title";
 
 describe("Book", () => {
   // テスト用の値オブジェクトを作成
-  const bookId = new BookId("9784798126708");
-  const title = new Title("エリック・エヴァンスのドメイン駆動設計入門");
-  const author = new Author("エリック・エヴァンス");
-  const price = new Price({amount: 5720, currency: "JPY"});
-  const newPrice = new Price({amount: 5200, currency: "JPY"});
+  const bookId = createBookId("9784798126708");
+  const title = createTitle("エリック・エヴァンスのドメイン駆動設計入門");
+  const author = createAuthor("エリック・エヴァンス");
+  const price = createPrice({amount: 5720, currency: "JPY"});
+  const newPrice = createPrice({amount: 5200, currency: "JPY"});
 
   // BookIdentityインスタンスを作成
-  const bookIdentity = new BookIdentity(bookId, title, author);
+  const bookIdentity = createBookIdentity(bookId, title, author);
 
   describe("create", () => {
     it("書籍を正しく作成できる", () => {
-      const book = Book.create(bookIdentity, price);
+      const book = createBook(bookIdentity, price);
       expect(book.bookId).toBe(bookId);
       expect(book.title).toBe(title);
       expect(book.author).toBe(author);
@@ -1691,7 +1859,7 @@ describe("Book", () => {
 
   describe("reconstruct", () => {
     it("書籍を正しく再構築できる", () => {
-      const book = Book.reconstruct(bookIdentity, price);
+      const book = reconstructBook(bookIdentity, price);
       expect(book.bookId).toBe(bookId);
       expect(book.title).toBe(title);
       expect(book.author).toBe(author);
@@ -1701,23 +1869,23 @@ describe("Book", () => {
 
   describe("equals", () => {
     it("同じBookIdentityを持つ書籍は等価と判定される", () => {
-      const book1 = Book.create(bookIdentity, price);
-      const book2 = Book.create(bookIdentity, newPrice);
+      const book1 = createBook(bookIdentity, price);
+      const book2 = createBook(bookIdentity, newPrice);
       expect(book1.equals(book2)).toBeTruthy();
     });
 
     it("異なるBookIdentityを持つ書籍は等価でないと判定される", () => {
-      const book1 = Book.create(bookIdentity, price);
-      const newBookId = new BookId("9784167158058");
-      const newBookIdentity = new BookIdentity(newBookId, title, author);
-      const book2 = Book.create(newBookIdentity, price);
+      const book1 = createBook(bookIdentity, price);
+      const newBookId = createBookId("9784167158058");
+      const newBookIdentity = createBookIdentity(newBookId, title, author);
+      const book2 = createBook(newBookIdentity, price);
       expect(book1.equals(book2)).toBeFalsy();
     });
   });
 
   describe("changePrice", () => {
     it("価格を変更できる", () => {
-      const book = Book.create(bookIdentity, price);
+      const book = createBook(bookIdentity, price);
 
       // 価格変更前の検証
       expect(book.price).toBe(price);

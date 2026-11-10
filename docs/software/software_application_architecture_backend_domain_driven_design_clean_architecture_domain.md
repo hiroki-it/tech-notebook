@@ -9,6 +9,8 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
+TypeScript の例では、インターフェースで型を定義し、生成関数でドメインオブジェクトを作る。非公開の状態はクロージャーに保持し、共通の処理は関数やオブジェクトの合成で共有する。
+
 <br>
 
 ## 01. ドメイン層
@@ -109,48 +111,42 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
     /**
      * 色の区分オブジェクト
      */
-    export class ColorType {
-      static readonly RED = 1;
-      static readonly BLUE = 2;
 
-      /**
-       * 『ColorType.定数名』で、定義の値へアクセスする
-       */
-      private static readonly set: Record<number, { name: string }> = {
-        [ColorType.RED]: { name: "レッド" },
-        [ColorType.BLUE]: { name: "ブルー" },
+    export const COLORTYPE_RED = 1;
+
+    export const COLORTYPE_BLUE = 2;
+    /**
+     * 色の区分値と表示名の対応を定義する
+     */
+    const COLORTYPE_SET: Record<number, {name: string}> = {
+      [COLORTYPE_RED]: {name: "レッド"},
+      [COLORTYPE_BLUE]: {name: "ブルー"},
+    };
+    export interface ColorType {
+      value(): number;
+      name(): string;
+    }
+    export function createColorType(initialValue: number): ColorType {
+      const state: {_value: number; _name: string} = {
+        _value: initialValue,
+        _name: COLORTYPE_SET[initialValue].name,
       };
 
-      /**
-       * 値
-       */
-      private readonly _value: number;
-
-      /**
-       * 色名
-       */
-      private readonly _name: string;
-
-      // インスタンス化の時に、『色の区分値』を受け取る。
-      constructor(value: number) {
-        // valueに応じて、色名をnameデータにセットする。
-        this._value = value;
-        this._name = ColorType.set[value].name;
-      }
+      // initialValueに応じて、色名をnameデータにセットする。
 
       /**
        * 値を返却する
        */
-      value(): number {
-        return this._value;
+      function value(): number {
+        return state._value;
       }
-
       /**
        * 色名を返却する
        */
-      name(): string {
-        return this._name;
+      function name(): string {
+        return state._name;
       }
+      return {value, name};
     }
     ```
 
@@ -264,45 +260,41 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
     /**
      * 性別の区分オブジェクト
      */
-    export class SexType {
-      static readonly MAN = 1;
-      static readonly WOMAN = 2;
-      static readonly UNKNOWN = 3;
 
-      private static readonly set: Record<number, { name: string }> = {
-        [SexType.MAN]: { name: "男性" },
-        [SexType.WOMAN]: { name: "女性" },
-        [SexType.UNKNOWN]: { name: "不明" },
+    export const SEXTYPE_MAN = 1;
+
+    export const SEXTYPE_WOMAN = 2;
+
+    export const SEXTYPE_UNKNOWN = 3;
+
+    const SEXTYPE_SET: Record<number, {name: string}> = {
+      [SEXTYPE_MAN]: {name: "男性"},
+      [SEXTYPE_WOMAN]: {name: "女性"},
+      [SEXTYPE_UNKNOWN]: {name: "不明"},
+    };
+    export interface SexType {
+      value(): number;
+      name(): string;
+    }
+    export function createSexType(initialValue: number): SexType {
+      const state: {_value: number; _name: string} = {
+        _value: initialValue,
+        _name: SEXTYPE_SET[initialValue].name,
       };
-
-      /**
-       * 値
-       */
-      private readonly _value: number;
-
-      /**
-       * 名前
-       */
-      private readonly _name: string;
-
-      constructor(value: number) {
-        this._value = value;
-        this._name = SexType.set[value].name;
-      }
 
       /**
        * 値を返却する
        */
-      value(): number {
-        return this._value;
+      function value(): number {
+        return state._value;
       }
-
       /**
        * 名前を返却する
        */
-      name(): string {
-        return this._name;
+      function name(): string {
+        return state._name;
       }
+      return {value, name};
     }
     ```
 
@@ -441,78 +433,76 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
     /**
      * 年月日の区分オブジェクト
      */
-    export class YmdType extends Type {
-      static readonly MEIJI = 1; // 明治
-      static readonly TAISHO = 2; // 大正
-      static readonly SHOWA = 3; // 昭和
-      static readonly HEISEI = 4; // 平成
-      static readonly REIWA = 5; // 令和
-      static readonly SEIREKI = 9; // 西暦
 
-      private static readonly set: Record<number, { name: string }> = {
-        [YmdType.MEIJI]: { name: "明治" },
-        [YmdType.TAISHO]: { name: "大正" },
-        [YmdType.SHOWA]: { name: "昭和" },
-        [YmdType.HEISEI]: { name: "平成" },
-        [YmdType.REIWA]: { name: "令和" },
-        [YmdType.SEIREKI]: { name: "西暦" },
+    export const YMDTYPE_MEIJI = 1;
+    // 明治
+    export const YMDTYPE_TAISHO = 2;
+    // 大正
+    export const YMDTYPE_SHOWA = 3;
+    // 昭和
+    export const YMDTYPE_HEISEI = 4;
+    // 平成
+    export const YMDTYPE_REIWA = 5;
+    // 令和
+    export const YMDTYPE_SEIREKI = 9;
+    // 西暦
+    const YMDTYPE_SET: Record<number, {name: string}> = {
+      [YMDTYPE_MEIJI]: {name: "明治"},
+      [YMDTYPE_TAISHO]: {name: "大正"},
+      [YMDTYPE_SHOWA]: {name: "昭和"},
+      [YMDTYPE_HEISEI]: {name: "平成"},
+      [YMDTYPE_REIWA]: {name: "令和"},
+      [YMDTYPE_SEIREKI]: {name: "西暦"},
+    };
+
+    const YMDTYPE_YMD: Record<
+      number,
+      Record<"start" | "end", {year: number; month: number; day: number}>
+    > = {
+      [YMDTYPE_MEIJI]: {
+        start: {year: 1868, month: 1, day: 25},
+        end: {year: 1912, month: 7, day: 29},
+      },
+      [YMDTYPE_TAISHO]: {
+        start: {year: 1912, month: 7, day: 30},
+        end: {year: 1926, month: 12, day: 24},
+      },
+      [YMDTYPE_SHOWA]: {
+        start: {year: 1926, month: 12, day: 25},
+        end: {year: 1989, month: 1, day: 7},
+      },
+      [YMDTYPE_HEISEI]: {
+        start: {year: 1989, month: 1, day: 8},
+        end: {year: 2019, month: 4, day: 30},
+      },
+      [YMDTYPE_REIWA]: {
+        start: {year: 2019, month: 5, day: 1},
+        end: {year: 9999, month: 12, day: 31},
+      },
+    };
+    export interface YmdType {
+      value(): number;
+      name(): string;
+    }
+    export function createYmdType(initialValue: number): YmdType {
+      const state: {_value: number; _name: string} = {
+        _value: initialValue,
+        _name: YMDTYPE_SET[initialValue].name,
       };
-
-      private static readonly ymd: Record<
-        number,
-        Record<"start" | "end", { year: number; month: number; day: number }>
-      > = {
-        [YmdType.MEIJI]: {
-          start: { year: 1868, month: 1, day: 25 },
-          end: { year: 1912, month: 7, day: 29 },
-        },
-        [YmdType.TAISHO]: {
-          start: { year: 1912, month: 7, day: 30 },
-          end: { year: 1926, month: 12, day: 24 },
-        },
-        [YmdType.SHOWA]: {
-          start: { year: 1926, month: 12, day: 25 },
-          end: { year: 1989, month: 1, day: 7 },
-        },
-        [YmdType.HEISEI]: {
-          start: { year: 1989, month: 1, day: 8 },
-          end: { year: 2019, month: 4, day: 30 },
-        },
-        [YmdType.REIWA]: {
-          start: { year: 2019, month: 5, day: 1 },
-          end: { year: 9999, month: 12, day: 31 },
-        },
-      };
-
-      /**
-       * 値
-       */
-      private readonly _value: number;
-
-      /**
-       * 年号名
-       */
-      private readonly _name: string;
 
       /**
        * 値を返却する
        */
-      value(): number {
-        return this._value;
+      function value(): number {
+        return state._value;
       }
-
-      constructor(value: number) {
-        super();
-        this._value = value;
-        this._name = YmdType.set[value].name;
-      }
-
       /**
        * 年号名を返却する
        */
-      name(): string {
-        return this._name;
+      function name(): string {
+        return state._name;
       }
+      return {value, name};
     }
     ```
 
@@ -656,17 +646,21 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class CheckDuplicateFooService {
-      constructor(private readonly fooRepository: FooRepository) {}
-
+    export interface CheckDuplicateFooService {
+      exists(foo: Foo): Promise<boolean>;
+    }
+    export function createCheckDuplicateFooService(
+      fooRepository: FooRepository,
+    ): CheckDuplicateFooService {
       /**
        * エンティティがすでに存在しているか否かを判定する
        */
-      async exists(foo: Foo): Promise<boolean> {
-        const found = await this.fooRepository.findByName(foo.name());
+      async function exists(foo: Foo): Promise<boolean> {
+        const found = await fooRepository.findByName(foo.name());
 
         return found !== null;
       }
+      return {exists};
     }
     ```
 
@@ -768,17 +762,21 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class AuthorizeFooService {
-      constructor(private readonly fooRepository: FooRepository) {}
-
+    export interface AuthorizeFooService {
+      canUpdateById(fooId: FooId, userId: UserId): Promise<boolean>;
+    }
+    export function createAuthorizeFooService(
+      fooRepository: FooRepository,
+    ): AuthorizeFooService {
       /**
        * 更新処理を実行できるかを検証する
        */
-      async canUpdateById(fooId: FooId, userId: UserId): Promise<boolean> {
-        const foo = await this.fooRepository.findById(fooId);
+      async function canUpdateById(fooId: FooId, userId: UserId): Promise<boolean> {
+        const foo = await fooRepository.findById(fooId);
 
         return foo.userId.equals(userId);
       }
+      return {canUpdateById};
     }
     ```
 
@@ -837,7 +835,12 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooException extends Error {}
+    export interface FooException extends Error {
+      readonly name: "FooException";
+    }
+    export function createFooException(message: string): FooException {
+      return Object.assign(new Error(message), {name: "FooException" as const});
+    }
     ```
 
 === "PHP"
@@ -911,11 +914,14 @@ boolean 値関数 (`isFoo()` 関数) のように、仕様を満たしている�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooSpecification {
+    export interface FooSpecification {
+      isSatisfiedBy(entity: Entity): boolean;
+    }
+    export function createFooSpecification(): FooSpecification {
       /**
        * ドメインルールを判定する
        */
-      isSatisfiedBy(entity: Entity): boolean {
+      function isSatisfiedBy(entity: Entity): boolean {
         // 複数の仕様を組み合わせる条件
         if (!entity.isX) return false;
         if (!entity.isY) return false;
@@ -923,6 +929,7 @@ boolean 値関数 (`isFoo()` 関数) のように、仕様を満たしている�
 
         return true;
       }
+      return {isSatisfiedBy};
     }
     ```
 
@@ -994,34 +1001,15 @@ Specification パターンを検索条件オブジェクトとして使った場
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export class FooCriteria {
-      private id?: number;
+    export interface FooCriteria {
+      readonly id?: number;
+      readonly name?: string;
+      readonly email?: string;
+    }
 
-      private name?: string;
-
-      private email?: string;
-
-      /**
-       * クエリ検索条件オブジェクトを作成する
-       */
-      static build(array: { id?: number; name?: string; email?: string }): FooCriteria {
-        // 自身をインスタンス化。
-        const criteria = new FooCriteria();
-
-        if (array.id !== undefined) {
-          criteria.id = array.id;
-        }
-
-        if (array.name !== undefined) {
-          criteria.name = array.name;
-        }
-
-        if (array.email !== undefined) {
-          criteria.email = array.email;
-        }
-
-        return criteria;
-      }
+    // 検索条件をデータとして受け取り、新しいオブジェクトを返す
+    export function createFooCriteria(values: FooCriteria): FooCriteria {
+      return {...values};
     }
     ```
 
@@ -1118,22 +1106,22 @@ Specification パターンを検索条件オブジェクトとして使った場
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { UserId } from "@/domain/user/ids/userId";
-    import { UserName } from "@/domain/user/valueObjects/userName";
+    import {UserId} from "@/domain/user/ids/userId";
+    import {UserName} from "@/domain/user/valueObjects/userName";
 
-    export class User {
-      constructor(
-        private readonly userId: UserId,
-        private readonly _userName: UserName,
-      ) {}
-
-      id(): UserId {
-        return this.userId;
+    export interface User {
+      id(): UserId;
+      userName(): UserName;
+    }
+    export function createUser(userId: UserId, _userName: UserName): User {
+      function id(): UserId {
+        return userId;
       }
 
-      userName(): UserName {
-        return this._userName;
+      function userName(): UserName {
+        return _userName;
       }
+      return {id, userName};
     }
     ```
 
@@ -1266,47 +1254,35 @@ Specification パターンを検索条件オブジェクトとして使った場
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { Entity } from "@/domain/entity";
-    import { ToyName } from "@/domain/foo/valueObjects/toyName";
-    import { Number } from "@/domain/foo/valueObjects/number";
-    import { PriceVO } from "@/domain/foo/valueObjects/priceVO";
-    import { ColorVO } from "@/domain/foo/valueObjects/colorVO";
+    import type {Id} from "@/domain/id";
+    import {Entity, createEntity} from "@/domain/entity";
+    import {ToyName} from "@/domain/foo/valueObjects/toyName";
+    import {Number} from "@/domain/foo/valueObjects/number";
+    import {PriceVO} from "@/domain/foo/valueObjects/priceVO";
+    import {ColorVO} from "@/domain/foo/valueObjects/colorVO";
 
     /**
      * 犬用おもちゃのエンティティ
      */
-    export class DogToy extends Entity {
-      constructor(
-        /**
-         * 犬用おもちゃタイプ
-         */
-        private readonly type: ToyType,
-        /**
-         * 犬用おもちゃ商品名
-         */
-        private readonly name: ToyName,
-        /**
-         * 数量
-         */
-        private readonly number: Number,
-        /**
-         * 価格の値オブジェクト
-         */
-        private readonly priceVO: PriceVO,
-        /**
-         * 色の値オブジェクト
-         */
-        private readonly colorVO: ColorVO,
-      ) {
-        super();
-      }
 
+    export interface DogToy extends Entity {
+      nameWithColor(): string;
+    }
+    export function createDogToy(
+      id: Id,
+      type: ToyType,
+      name: ToyName,
+      number: Number,
+      priceVO: PriceVO,
+      colorVO: ColorVO,
+    ): DogToy {
       /**
        * 犬用おもちゃ名 (色) を返却する
        */
-      nameWithColor(): string {
-        return `${this.name.value()} (${this.colorVO.name()}) `;
+      function nameWithColor(): string {
+        return `${name.value()} (${colorVO.name()}) `;
       }
+      return {...createEntity("DogToy", id), nameWithColor};
     }
     ```
 
@@ -1400,7 +1376,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 すべてのエンティティに等価性のバリデーション関数を持たせると可読性が低い。
 
-そこで、すべてのエンティティに等価性バリデーション用の `equals()` 関数を持たせることをやめ、継承元の抽象クラスのエンティティにこれを定義するとよい。
+そこで、等価性バリデーション用の `equals()` 関数を共通化するとよい。TypeScript の例では、エンティティの種類と識別子を受け取る `createEntity()` で共通の処理を作り、個別のエンティティに組み込む。
 
 === "Go"
 
@@ -1427,31 +1403,20 @@ Specification パターンを検索条件オブジェクトとして使った場
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    /**
-     * エンティティ抽象クラス
-     */
-    export abstract class Entity {
-      /**
-       * IDクラス
-       */
-      protected _id!: Id;
+    /** エンティティの識別子と種類を公開する契約 */
+    export interface Entity {
+      readonly kind: string;
+      id(): Id;
+      equals(other: Entity): boolean;
+    }
 
-      /**
-       * エンティティの等価性を検証する
-       */
-      equals(entity: Entity): boolean {
-        return (
-          (entity instanceof this.constructor || this instanceof entity.constructor) && // エンティティのデータ型の等価性
-          this._id.equals(entity.id()) // IDオブジェクトの等価性
-        );
-      }
-
-      /**
-       * IDクラスを返却する
-       */
-      id(): Id {
-        return this._id;
-      }
+    // クラスの継承に代わり、共通の等価性判定を生成関数で提供する
+    export function createEntity(kind: string, entityId: Id): Entity {
+      return {
+        kind,
+        id: () => entityId,
+        equals: (other) => kind === other.kind && entityId.equals(other.id()),
+      };
     }
     ```
 
@@ -1643,54 +1608,58 @@ abstract class Id
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
+    import {ValueObject, createValueObject} from "@/domain/valueObject";
+
     /**
      * 金額の値オブジェクト
      */
-    export class MoneyVO extends ValueObject {
-      /**
-       * 金額
-       */
-      private readonly _amount: number;
 
-      constructor(amount: number = 0.0) {
-        super();
-        this._amount = amount;
-      }
-
+    export interface MoneyVO extends ValueObject<{amount: number}> {
+      amount(): number;
+      unit(): string;
+      add(price: MoneyVO): MoneyVO;
+      subtract(price: MoneyVO): MoneyVO;
+      multiply(price: MoneyVO): MoneyVO;
+    }
+    export function createMoneyVO(initialAmount: number = 0.0): MoneyVO {
       /**
        * 金額を返却する
        */
-      amount(): number {
-        return this._amount;
+      function amount(): number {
+        return initialAmount;
       }
-
       /**
        * 単位を返却する
        */
-      unit(): string {
+      function unit(): string {
         return "円";
       }
-
       /**
        * 足し算の結果を返却する
        */
-      add(price: MoneyVO): MoneyVO {
-        return new MoneyVO(this._amount + price._amount);
+      function add(price: MoneyVO): MoneyVO {
+        return createMoneyVO(initialAmount + price.amount());
       }
-
       /**
        * 引き算の結果を返却する
        */
-      subtract(price: MoneyVO): MoneyVO {
-        return new MoneyVO(this._amount - price._amount);
+      function subtract(price: MoneyVO): MoneyVO {
+        return createMoneyVO(initialAmount - price.amount());
       }
-
       /**
        * 掛け算の結果を返却する
        */
-      multiply(price: MoneyVO): MoneyVO {
-        return new MoneyVO(this._amount * price._amount);
+      function multiply(price: MoneyVO): MoneyVO {
+        return createMoneyVO(initialAmount * price.amount());
       }
+      return {
+        ...createValueObject({amount: initialAmount}),
+        amount,
+        unit,
+        add,
+        subtract,
+        multiply,
+      };
     }
     ```
 
@@ -1811,53 +1780,58 @@ abstract class Id
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
+    import {ValueObject, createValueObject} from "@/domain/valueObject";
+
     /**
      * 所要時間の値オブジェクト
      */
-    export class RequiredTime extends ValueObject {
-      /**
-       * 判定値、歩行速度の目安、車速度の目安を定数で定義する。
-       */
-      static readonly JUDGMENT_MINUTE = 21;
-      static readonly WALKING_SPEED_PER_MINUTE = 80;
-      static readonly CAR_SPEED_PER_MINUTE = 400;
+    /**
+     * 判定値、歩行速度の目安、車速度の目安を定数で定義する。
+     */
+    export const REQUIREDTIME_JUDGMENT_MINUTE = 21;
 
-      /**
-       * 距離
-       */
-      private readonly distance: number;
+    export const REQUIREDTIME_WALKING_SPEED_PER_MINUTE = 80;
 
-      constructor(distance: number) {
-        super();
-        this.distance = distance;
-      }
-
+    export const REQUIREDTIME_CAR_SPEED_PER_MINUTE = 400;
+    export interface RequiredTime extends ValueObject<{distance: number}> {
+      isMinuteByWalking(): boolean;
+      minuteByWalking(): number;
+      minuteByCar(): number;
+    }
+    export function createRequiredTime(distance: number): RequiredTime {
       /**
        * 徒歩または車のどちらを使用するかを判定する
        */
-      isMinuteByWalking(): boolean {
-        if ((this.distance * 1000) / RequiredTime.WALKING_SPEED_PER_MINUTE < RequiredTime.JUDGMENT_MINUTE) {
+      function isMinuteByWalking(): boolean {
+        if (
+          (distance * 1000) / REQUIREDTIME_WALKING_SPEED_PER_MINUTE <
+          REQUIREDTIME_JUDGMENT_MINUTE
+        ) {
           return true;
         }
 
         return false;
       }
-
       /**
        * 徒歩での所要時間を計算する
        */
-      minuteByWalking(): number {
-        const minute = (this.distance * 1000) / RequiredTime.WALKING_SPEED_PER_MINUTE;
+      function minuteByWalking(): number {
+        const minute = (distance * 1000) / REQUIREDTIME_WALKING_SPEED_PER_MINUTE;
         return Math.ceil(minute);
       }
-
       /**
        * 車での所要時間を計算する
        */
-      minuteByCar(): number {
-        const minute = (this.distance * 1000) / RequiredTime.CAR_SPEED_PER_MINUTE;
+      function minuteByCar(): number {
+        const minute = (distance * 1000) / REQUIREDTIME_CAR_SPEED_PER_MINUTE;
         return Math.ceil(minute);
       }
+      return {
+        ...createValueObject({distance}),
+        isMinuteByWalking,
+        minuteByWalking,
+        minuteByCar,
+      };
     }
     ```
 
@@ -1976,50 +1950,46 @@ abstract class Id
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
+    import {ValueObject, createValueObject} from "@/domain/valueObject";
+
     /**
      * 住所の値オブジェクト
      */
-    export class Address extends ValueObject {
-      /**
-       * 住所の文字数上限
-       */
-      static readonly ADDRESS_MAX_LENGTH = 512;
-
-      /**
-       * 郵便番号
-       */
-      private readonly _zip: string;
-
-      /**
-       * 住所 (番地など)
-       */
-      private readonly _address: string;
-
-      /**
-       * 市区町村
-       */
-      private readonly city: string;
-
-      constructor(city: string, zip: string, address: string, kana: string) {
-        super();
-        this.city = city;
-        this._zip = zip;
-        this._address = address;
-      }
-
+    /**
+     * 住所の文字数上限
+     */
+    export const ADDRESS_ADDRESS_MAX_LENGTH = 512;
+    export interface Address extends ValueObject<{
+      city: string;
+      zip: string;
+      address: string;
+    }> {
+      zip(): string;
+      address(): string;
+    }
+    export function createAddress(
+      city: string,
+      initialZip: string,
+      initialAddress: string,
+      kana: string,
+    ): Address {
       /**
        * 郵便番号を作成し、返却する
        */
-      zip(): string {
-        return `〒${this._zip.substring(0, 3)}-${this._zip.substring(3)}`;
+      function zip(): string {
+        return `〒${initialZip.substring(0, 3)}-${initialZip.substring(3)}`;
       }
-
       /**
        * 住所を作成し、返却する
        */
-      address(): string {
-        return `${this.city}${this._address}`;
+      function address(): string {
+        return `${city}${initialAddress}`;
       }
+      return {
+        ...createValueObject({city, zip: initialZip, address: initialAddress}),
+        zip,
+        address,
+      };
     }
     ```
 
@@ -2138,57 +2108,49 @@ abstract class Id
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
+    import {ValueObject, createValueObject} from "@/domain/valueObject";
+
     /**
      * 氏名クラスの値オブジェクト
      */
-    export class Name extends ValueObject {
-      /**
-       * 名前の文字数上限下限
-       */
-      static readonly MIN_NAME_LENGTH = 1;
-      static readonly MAX_NAME_LENGTH = 64;
+    /**
+     * 名前の文字数上限下限
+     */
+    export const NAME_MIN_NAME_LENGTH = 1;
 
-      /**
-       * 姓
-       */
-      private readonly lastName: string;
-
-      /**
-       * 名
-       */
-      private readonly firstName: string;
-
-      /**
-       * セイ
-       */
-      private readonly lastKanaName: string;
-
-      /**
-       * メイ
-       */
-      private readonly firstKanaName: string;
-
-      constructor(lastName: string, firstName: string, lastKanaName: string, firstKanaName: string) {
-        super();
-        this.lastName = lastName;
-        this.firstName = firstName;
-        this.lastKanaName = lastKanaName;
-        this.firstKanaName = firstKanaName;
-      }
-
+    export const NAME_MAX_NAME_LENGTH = 64;
+    export interface Name extends ValueObject<{
+      lastName: string;
+      firstName: string;
+      lastKanaName: string;
+      firstKanaName: string;
+    }> {
+      fullName(): string;
+      fullKanaName(): string;
+    }
+    export function createName(
+      lastName: string,
+      firstName: string,
+      lastKanaName: string,
+      firstKanaName: string,
+    ): Name {
       /**
        * 氏名を作成する
        */
-      fullName(): string {
-        return this.lastName + this.firstName;
+      function fullName(): string {
+        return lastName + firstName;
       }
-
       /**
        * カナ氏名を作成する
        */
-      fullKanaName(): string {
-        return this.lastKanaName + this.firstKanaName;
+      function fullKanaName(): string {
+        return lastKanaName + firstKanaName;
       }
+      return {
+        ...createValueObject({lastName, firstName, lastKanaName, firstKanaName}),
+        fullName,
+        fullKanaName,
+      };
     }
     ```
 
@@ -2292,25 +2254,20 @@ abstract class Id
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    /**
-     * 値オブジェクト
-     */
-    export class FooVO extends ValueObject {
-      private readonly propertyA: unknown = null;
+    import {ValueObject, createValueObject} from "@/domain/valueObject";
 
-      private readonly propertyB: unknown = null;
+    export interface FooVO extends ValueObject<{
+      propertyA: unknown;
+      propertyB: unknown;
+      propertyC: unknown;
+    }> {}
 
-      private readonly propertyC: unknown = null;
-
-      /**
-       * FooVO constructor.
-       */
-      constructor(propertyA: unknown, propertyB: unknown, propertyC: unknown) {
-        super();
-        this.propertyA = propertyA;
-        this.propertyB = propertyB;
-        this.propertyC = propertyC;
-      }
+    export function createFooVO(
+      propertyA: unknown,
+      propertyB: unknown,
+      propertyC: unknown,
+    ): FooVO {
+      return createValueObject({propertyA, propertyB, propertyC});
     }
     ```
 
@@ -2368,7 +2325,7 @@ Test01 クラスインスタンスの `$property01` データに値を設定す�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const test01 = new Test01();
+    const test01 = createTest01();
 
     test01.setProperty01("データ01の値");
 
@@ -2408,9 +2365,9 @@ Test02 クラスインスタンスの `$property02` データに値を設定す�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    let test02 = new Test02("データ02の値");
+    let test02 = createTest02("データ02の値");
 
-    test02 = new Test02("新しいデータ02の値");
+    test02 = createTest02("新しいデータ02の値");
     ```
 
 === "PHP"
@@ -2564,22 +2521,23 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
     /**
      * 連絡先メールアドレスの値オブジェクト
      */
-    export class ContactMail extends ValueObject {
-      constructor(private readonly _value: string) {
-        super();
-      }
 
-      value(): string {
-        return this._value;
+    export interface ContactMail {
+      value(): string;
+      equals(VO: ContactMail): boolean;
+    }
+    export function createContactMail(_value: string): ContactMail {
+      function value(): string {
+        return _value;
       }
-
       /**
        * 値オブジェクトの等価性を検証する
        */
-      equals(VO: ContactMail): boolean {
+      function equals(VO: ContactMail): boolean {
         // 単一の属性を対象とする。
-        return this.value() === VO.value();
+        return value() === VO.value();
       }
+      return {value, equals};
     }
     ```
 
@@ -2656,38 +2614,28 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    /**
-     * 支払情報の値オブジェクト
-     */
-    export class PaymentInfoVO extends ValueObject {
-      constructor(
-        /**
-         * 支払い方法
-         */
-        private readonly paymentType: PaymentType,
-        /**
-         * 連絡先メールアドレス
-         */
-        private readonly contactMail: ContactMail,
-        /**
-         * 金額
-         */
-        private readonly price: Money,
-      ) {
-        super();
-      }
+    /** 支払情報の値オブジェクト */
+    export interface PaymentInfoVO {
+      readonly paymentType: PaymentType;
+      readonly contactMail: ContactMail;
+      readonly price: Money;
+      equals(other: PaymentInfoVO): boolean;
+    }
 
-      /**
-       * 値オブジェクトの等価性を検証する
-       */
-      equals(VO: PaymentInfoVO): boolean {
-        // 複数の属性を対象とする。
-        return (
-          this.paymentType.value() === VO.paymentType.value() &&
-          this.contactMail.value() === VO.contactMail.value() &&
-          this.price.value() === VO.price.value()
-        );
-      }
+    export function createPaymentInfoVO(
+      paymentType: PaymentType,
+      contactMail: ContactMail,
+      price: Money,
+    ): PaymentInfoVO {
+      return {
+        paymentType,
+        contactMail,
+        price,
+        equals: (other) =>
+          paymentType.value() === other.paymentType.value() &&
+          contactMail.value() === other.contactMail.value() &&
+          price.value() === other.price.value(),
+      };
     }
     ```
 
@@ -2740,7 +2688,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 すべての値オブジェクトに等価性のバリデーション関数を持たせると可読性が低い。
 
-そこで、継承元の抽象クラスの値オブジェクトに定義するとよい。
+そこで、属性の比較処理を共通化するとよい。TypeScript の例では、`createValueObject()` が返すオブジェクトを個別の値オブジェクトに組み込み、`equals()` を共有する。
 
 そのときは、保持している属性を反復的に検証できるよう実装するとよい。
 
@@ -2770,23 +2718,32 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    /**
-     * 値オブジェクト抽象クラス
-     */
-    export abstract class ValueObject {
-      /**
-       * 値オブジェクトの等価性を検証する
-       */
-      equals(VO: ValueObject): boolean {
-        // 全ての属性を反復的に検証する
-        for (const key of Object.keys(this) as (keyof this)[]) {
-          if (this[key] !== (VO as this)[key]) {
-            return false;
-          }
-        }
+    /** 比較対象の属性を公開する値オブジェクトの契約 */
+    export interface ValueObject<T extends object> {
+      readonly attributes: Readonly<T>;
+      equals(other: ValueObject<T>): boolean;
+    }
 
-        return true;
-      }
+    export function createValueObject<T extends object>(
+      attributes: T,
+    ): ValueObject<T> {
+      const values = Object.freeze({...attributes});
+
+      return {
+        attributes: values,
+        equals(other) {
+          const keys = Object.keys(values) as (keyof T)[];
+          // 関数を比較せず、全ての属性を浅く比較する
+          return (
+            keys.length === Object.keys(other.attributes).length &&
+            keys.every(
+              (key) =>
+                Object.prototype.hasOwnProperty.call(other.attributes, key) &&
+                values[key] === other.attributes[key],
+            )
+          );
+        },
+      };
     }
     ```
 
@@ -2880,47 +2837,38 @@ EC サイトであれは、業務フローに沿って、以下のルートエ�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { Id } from "@/domain/id";
-    import { DogToy } from "@/domain/dog/entities/dogToy";
-    import { DogFood } from "@/domain/dog/entities/dogFood";
+    import {Id} from "@/domain/id";
+    import {DogToy} from "@/domain/dog/entities/dogToy";
+    import {DogFood} from "@/domain/dog/entities/dogFood";
 
     /**
      * 犬用注文エンティティ
      */
-    export class DogOrder {
-      /**
-       * 犬用商品コンボID
-       */
-      private id?: Id;
 
-      /**
-       * 犬用おもちゃ
-       */
-      private readonly dogToy: DogToy;
-
-      /**
-       * 犬用えさ
-       */
-      private readonly dogFood: DogFood;
-
-      constructor(dogToy: DogToy, dogFood: DogFood) {
-        this.dogToy = dogToy;
-        this.dogFood = dogFood;
-      }
+    export interface DogOrder {
+      getDogToy(): DogToy;
+      getDogFood(): DogFood;
+    }
+    export function createDogOrder(dogToy: DogToy, dogFood: DogFood): DogOrder {
+      const state: {id?: Id; dogToy: DogToy; dogFood: DogFood} = {
+        id: undefined,
+        dogToy,
+        dogFood,
+      };
 
       /**
        * 犬用おもちゃを返却する
        */
-      getDogToy(): DogToy {
-        return this.dogToy;
+      function getDogToy(): DogToy {
+        return state.dogToy;
       }
-
       /**
        * 犬用えさを返却する
        */
-      getDogFood(): DogFood {
-        return this.dogFood;
+      function getDogFood(): DogFood {
+        return state.dogFood;
       }
+      return {getDogToy, getDogFood};
     }
     ```
 

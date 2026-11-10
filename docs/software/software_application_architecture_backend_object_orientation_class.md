@@ -9,6 +9,8 @@ description: クラス＠オブジェクト指向の知見を記録していま�
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
+TypeScript の例では、インターフェースと生成関数でオブジェクトを実装する。クラスの継承や抽象クラスに対応する例は、オブジェクトの合成と関数の受け渡しで同じ役割を実現する。
+
 <br>
 
 ## 01. has-one、has-many (状態として保持する関係性)
@@ -66,14 +68,13 @@ User は UserName を状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { UserName } from "~/domain/user/valueObject/UserName";
+    import {UserName} from "~/domain/user/valueObject/UserName";
 
-    export class User {
-      private readonly name: UserName; // 状態として保持
-
-      constructor(name: UserName) {
-        this.name = name;
-      }
+    export interface User {
+      readonly name: UserName;
+    }
+    export function createUser(name: UserName): User {
+      return {name};
     }
     ```
 
@@ -112,8 +113,8 @@ User は UserName を状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const name = new UserName();
-    const user = new User(name); // 集約の関係
+    const name = createUserName();
+    const user = createUser(name); // 集約の関係
     ```
 
 === "PHP"
@@ -154,24 +155,26 @@ User は UserName を状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { Tire1, Tire2, Tire3, Tire4 } from "~/domain/car/entity";
+    import {Tire1, Tire2, Tire3, Tire4} from "~/domain/car/entity";
 
-    class Car {
-      private readonly tire1: Tire1;
+    interface Car {
+      readonly tire1: Tire1;
 
-      private readonly tire2: Tire2;
+      readonly tire2: Tire2;
 
-      private readonly tire3: Tire3;
+      readonly tire3: Tire3;
 
-      private readonly tire4: Tire4;
+      readonly tire4: Tire4;
+    }
+    function createCar(t1: Tire1, t2: Tire2, t3: Tire3, t4: Tire4): Car {
+      // Tireオブジェクトを状態として保持
 
-      constructor(t1: Tire1, t2: Tire2, t3: Tire3, t4: Tire4) {
-        // Tireクラスのインスタンスを状態として保持
-        this.tire1 = t1;
-        this.tire2 = t2;
-        this.tire3 = t3;
-        this.tire4 = t4;
-      }
+      return {
+        tire1: t1,
+        tire2: t2,
+        tire3: t3,
+        tire4: t4,
+      };
     }
     ```
 
@@ -226,14 +229,14 @@ User は UserName を状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // Tireクラスをインスタンス化
-    const tire1 = new Tire1();
-    const tire2 = new Tire2();
-    const tire3 = new Tire3();
-    const tire4 = new Tire4();
+    // Tireオブジェクトを生成
+    const tire1 = createTire1();
+    const tire2 = createTire2();
+    const tire3 = createTire3();
+    const tire4 = createTire4();
 
-    // Tireクラスのインスタンスの作成、Carによって制限されない。
-    const car = new Car(tire1, tire2, tire3, tire4);
+    // Tireオブジェクトの作成、Carによって制限されない。
+    const car = createCar(tire1, tire2, tire3, tire4);
     ```
 
 === "PHP"
@@ -286,16 +289,21 @@ User クラスは UserName クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { UserName } from "~/domain/user/valueObject/UserName";
+    import {UserName, createUserName} from "~/domain/user/valueObject/UserName";
 
-    export class User {
-      private name?: UserName; // 状態として保持
+    export interface User {
+      method(): string;
+    }
+    export function createUser(): User {
+      const state: {name?: UserName} = {name: undefined};
 
-      method(): string {
-        this.name = new UserName(); // 合成の関係
+      // 状態として保持
+      function method(): string {
+        state.name = createUserName(); // 合成の関係
 
-        return "Hello! " + this.name.getName();
+        return "Hello! " + state.name.getName();
       }
+      return {method};
     }
     ```
 
@@ -335,7 +343,7 @@ User クラスは UserName クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const user = new User();
+    const user = createUser();
     ```
 
 === "PHP"
@@ -364,13 +372,13 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Car {
-      private readonly lock: Lock;
+    interface Car {
+      readonly lock: Lock;
+    }
+    function createCar(): Car {
+      // Lockオブジェクトを状態として保持。
 
-      constructor() {
-        // Lockクラスのインスタンスを状態として保持。
-        this.lock = new Lock();
-      }
+      return {lock: createLock()};
     }
     ```
 
@@ -405,8 +413,8 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // Carクラスのインスタンスの中で、Lockクラスがインスタンス化される。
-    const car = new Car();
+    // Carオブジェクトの中で、Lockオブジェクトが生成される。
+    const car = createCar();
     ```
 
 === "PHP"
@@ -478,35 +486,28 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // 親クラス
-    class Goods {
-      // 商品名データ
-      private name: string = "";
+    // 共通の処理を提供するオブジェクト
 
-      // 商品価格データ
-      private price: number = 0;
-
-      // コンストラクタ。商品名と商品価格を設定する
-      constructor(name: string, price: number) {
-        this.name = name;
-        this.price = price;
-      }
-
+    interface Goods {
+      printPrice(): void;
+      getName(): string;
+      getPrice(): number;
+    }
+    function createGoods(name: string, price: number): Goods {
       // ★★★★★★注目★★★★★★
       // 商品名と価格を表示する関数
-      printPrice(): void {
-        console.log(this.name + "の価格: ￥" + this.price + "<br>");
+      function printPrice(): void {
+        console.log(name + "の価格: ￥" + price + "<br>");
       }
-
       // 商品名のゲッター
-      getName(): string {
-        return this.name;
+      function getName(): string {
+        return name;
       }
-
       // 商品価格のゲッター
-      getPrice(): number {
-        return this.price;
+      function getPrice(): number {
+        return price;
       }
+      return {printPrice, getName, getPrice};
     }
     ```
 
@@ -577,15 +578,18 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // 子クラス
-    class GoodsWithTax extends Goods {
-      // ★★★★★★注目★★★★★★
-      // printPrice関数をOverride
-      override printPrice(): void {
-        // 商品価格の税込み価格を計算し、表示
-        const priceWithTax = Math.round(this.getPrice() * 1.08); // (1)
-        console.log(this.getName() + "の税込み価格: ￥" + priceWithTax + "<br>"); // (2)
-      }
+    // 共通の処理を持つオブジェクトに、税込み表示の関数を組み合わせる
+    interface GoodsWithTax extends Goods {}
+
+    function createGoodsWithTax(name: string, price: number): GoodsWithTax {
+      const goods = createGoods(name, price);
+      return {
+        ...goods,
+        printPrice() {
+          const priceWithTax = Math.round(goods.getPrice() * 1.08);
+          console.log(goods.getName() + "の税込み価格: ￥" + priceWithTax + "<br>");
+        },
+      };
     }
     ```
 
@@ -719,21 +723,22 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // 抽象クラス。型として提供したいものを定義する。
-    abstract class ShainManagement {
-      // 定数の定義
-      static readonly TIME_TO_ARRIVE = "09:00:00";
-      static readonly TIME_TO_LEAVE = "18:00:00";
+    // インターフェースとコールバックで共通処理と業務固有の処理を分ける。
+    // 定数の定義
+    const SHAINMANAGEMENT_TIME_TO_ARRIVE = "09:00:00";
 
-      // 抽象関数。
-      // 処理内容を子クラスでOverrideしなければならない。
-      abstract toWork(): void;
-
+    const SHAINMANAGEMENT_TIME_TO_LEAVE = "18:00:00";
+    interface ShainManagement {
+      toWork(): void;
+      toArrive(): string;
+      toLeave(): string;
+    }
+    function createShainManagement(toWork: () => void): ShainManagement {
       // 具象関数。出勤時刻を表示。もし遅刻していたら、代わりに差分を表示。
-      // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
-      toArrive(): string {
+      // 生成するオブジェクトに共通の処理として組み込む。
+      function toArrive(): string {
         const nowTime = new Date();
-        const arriveTime = todayAt(ShainManagement.TIME_TO_ARRIVE);
+        const arriveTime = todayAt(SHAINMANAGEMENT_TIME_TO_ARRIVE);
 
         // 出社時間より遅かった場合、遅刻と表示する。
         if (nowTime > arriveTime) {
@@ -742,15 +747,15 @@ Car クラスは Lock クラスを状態として保持する。
 
         return `${formatTime(nowTime)} に出勤しました。`;
       }
-
       // 具象関数。退社時間と残業時間を表示。
-      // 子クラスへそのまま継承される。子クラスでオーバーライドしなくても良い。
-      toLeave(): string {
+      // 生成するオブジェクトに共通の処理として組み込む。
+      function toLeave(): string {
         const nowTime = new Date();
-        const leaveTime = todayAt(ShainManagement.TIME_TO_LEAVE);
+        const leaveTime = todayAt(SHAINMANAGEMENT_TIME_TO_LEAVE);
 
         return `${formatTime(nowTime)}に退社しました。${formatDuration(nowTime.getTime() - leaveTime.getTime())} の残業です。`;
       }
+      return {toWork, toArrive, toLeave};
     }
 
     // 本日の指定時刻を返却する
@@ -845,12 +850,11 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // 子クラス
-    class EngineerShainManagement extends ShainManagement {
-      // 鋳型となった抽象クラスの抽象関数はOverrideしなければならない。
-      toWork(): void {
-        // 処理内容
-      }
+    // 業務固有の関数を共通の生成関数へ渡す
+    function createEngineerShainManagement(): ShainManagement {
+      return createShainManagement(() => {
+        // エンジニアの業務処理
+      });
     }
     ```
 
@@ -915,7 +919,7 @@ Car クラスは Lock クラスを状態として保持する。
 
     ```typescript title="TypeScript の場合の実装例"
     interface Animal {
-      // インターフェイスでは、実装を伴う関数や状態の宣言はできない
+      // インターフェースは型を定義する。関数の実装や値の初期化は行わない
       eat(): void;
       sleep(): void;
       mating(): void;
@@ -960,19 +964,25 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Mammal implements Animal {
-      // 実装クラスが正常に動作するために最低限必要な関数の実装を強制する。
-      eat(): void {
+    interface Mammal extends Animal {
+      eat(): void;
+      sleep(): void;
+      mating(): void;
+    }
+    function createMammal(): Mammal {
+      // Animalの契約を満たす関数を実装する。
+      function eat(): void {
         // 食べる
       }
 
-      sleep(): void {
+      function sleep(): void {
         // 眠る
       }
 
-      mating(): void {
+      function mating(): void {
         // 交尾する
       }
+      return {eat, sleep, mating};
     }
     ```
 
@@ -1096,13 +1106,18 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // 継承元クラス
-    class Foo {
-      private value1: unknown = null;
+    // 共通の処理を提供するオブジェクト
 
-      getValue(): unknown {
-        return this.value1;
+    interface Foo {
+      getValue(): unknown;
+    }
+    function createFoo(): Foo {
+      const state: {value1: unknown} = {value1: null};
+
+      function getValue(): unknown {
+        return state.value1;
       }
+      return {getValue};
     }
     ```
 
@@ -1140,13 +1155,25 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // 継承先クラス
-    class SubFoo extends Foo {
-      public subValue: unknown = null;
+    // 共通のオブジェクトを合成する
+    interface SubFoo extends Foo {
+      subValue: unknown;
+      getSubValue(): unknown;
+    }
 
-      getSubValue(): unknown {
-        return this.subValue;
-      }
+    function createSubFoo(): SubFoo {
+      const foo = createFoo();
+      let subValue: unknown = null;
+      return {
+        ...foo,
+        get subValue() {
+          return subValue;
+        },
+        set subValue(value: unknown) {
+          subValue = value;
+        },
+        getSubValue: () => subValue,
+      };
     }
     ```
 
@@ -1180,10 +1207,9 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const subFoo = new SubFoo();
+    const subFoo = createSubFoo();
 
-    // SubFooクラスにはgetValue()は無い。
-    // 継承元まで辿り、Fooクラスから関数がコールされる (クラスチェーン) 。
+    // createFooで作った関数を、合成したオブジェクトから呼び出す
     console.log(subFoo.getValue());
     ```
 
@@ -1216,10 +1242,14 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    abstract class Foo {
-      foo(): void {
+    interface Foo {
+      foo(): void;
+    }
+    function createFoo(): Foo {
+      function foo(): void {
         // 処理内容;
       }
+      return {foo};
     }
     ```
 
@@ -1253,11 +1283,19 @@ Car クラスは Lock クラスを状態として保持する。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class SubFoo extends Foo {
-      subFoo(): void {
-        // 継承元の関数を参照。
-        super.foo();
-      }
+    interface SubFoo extends Foo {
+      subFoo(): void;
+    }
+
+    function createSubFoo(): SubFoo {
+      const base = createFoo();
+      return {
+        ...base,
+        subFoo() {
+          // 共通の関数を明示的に呼び出す
+          base.foo();
+        },
+      };
     }
     ```
 
@@ -1340,12 +1378,17 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { UserName } from "~/domain/user/valueObject/UserName";
+    import {UserName} from "~/domain/user/valueObject/UserName";
 
-    export class User {
-      method(name: UserName): string { // 依存の関係
+    export interface User {
+      method(name: UserName): string;
+    }
+    export function createUser(): User {
+      function method(name: UserName): string {
+        // 依存の関係
         return "Hello! " + name.getName();
       }
+      return {method};
     }
     ```
 
@@ -1406,10 +1449,10 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const supplier = new Supplier();
+    const supplier = createSupplier();
 
-    // 依存されるSupplierクラスをClientクラスに注入
-    const client = new Client(supplier);
+    // 依存されるSupplierオブジェクトをClientオブジェクトに注入
+    const client = createClient(supplier);
     ```
 
 === "PHP"
@@ -1444,14 +1487,13 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { UserName } from "~/domain/user/valueObject/UserName";
+    import {UserName} from "~/domain/user/valueObject/UserName";
 
-    export class User {
-      private readonly name: UserName;
-
-      constructor(name: UserName) {
-        this.name = name;
-      }
+    export interface User {
+      readonly name: UserName;
+    }
+    export function createUser(name: UserName): User {
+      return {name};
     }
     ```
 
@@ -1485,8 +1527,8 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const name = new UserName();
-    const user = new User(name); // インジェクション
+    const name = createUserName();
+    const user = createUser(name); // インジェクション
     ```
 
 === "PHP"
@@ -1519,10 +1561,10 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const supplier = new Supplier();
-    const client = new Client();
+    const supplier = createSupplier();
+    const client = createClient();
 
-    // ClientクラスはSupplierクラスに依存している。
+    // ClientオブジェクトはSupplierオブジェクトに依存している。
     client.setSupplier(supplier);
     ```
 
@@ -1559,14 +1601,18 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { UserName } from "~/domain/user/valueObject/UserName";
+    import {UserName} from "~/domain/user/valueObject/UserName";
 
-    export class User {
-      private name?: UserName;
+    export interface User {
+      setUserName(name: UserName): void;
+    }
+    export function createUser(): User {
+      const state: {name?: UserName} = {name: undefined};
 
-      setUserName(name: UserName): void {
-        this.name = name;
+      function setUserName(name: UserName): void {
+        state.name = name;
       }
+      return {setUserName};
     }
     ```
 
@@ -1601,8 +1647,8 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const user = new User();
-    const name = new UserName();
+    const user = createUser();
+    const name = createUserName();
     user.setUserName(name); // インジェクション
     ```
 
@@ -1643,14 +1689,18 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { UserName } from "~/domain/user/valueObject/UserName";
+    import {UserName} from "~/domain/user/valueObject/UserName";
 
-    export class User {
-      method(name: UserName): void {
+    export interface User {
+      method(name: UserName): void;
+    }
+    export function createUser(): User {
+      function method(name: UserName): void {
         const userName = name.getName();
 
         // 何らかの処理
       }
+      return {method};
     }
     ```
 
@@ -1685,8 +1735,8 @@ User は UserName に依存している。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    const user = new User();
-    const name = new UserName();
+    const user = createUser();
+    const name = createUserName();
     user.method(name); // インジェクション
     ```
 
@@ -1756,35 +1806,34 @@ DI コンテナを使用した場合 (PHP では Pimple パッケージ)
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    import { User } from "~/domain/user/entity/User";
-    import { UserName } from "~/domain/user/valueObject/UserName";
+    import {createUser} from "~/domain/user/entity/User";
+    import {UserName, createUserName} from "~/domain/user/valueObject/UserName";
 
     type Factory = (container: Container) => unknown;
 
-    export class Container {
-      private readonly factories = new Map<string, Factory>();
+    export interface Container {
+      get<T>(id: string): T;
+    }
 
-      private readonly instances = new Map<string, unknown>();
+    export function createContainer(): Container {
+      const factories = new Map<string, Factory>();
+      const instances = new Map<string, unknown>();
+      const container: Container = {
+        get<T>(id: string): T {
+          if (!instances.has(id)) {
+            const factory = factories.get(id);
+            if (!factory) throw new Error(`Factory not found: ${id}`);
+            instances.set(id, factory(container));
+          }
+          return instances.get(id) as T;
+        },
+      };
 
-      constructor() {
-        // UserNameクラスの準備
-        this.factories.set("user_name", (container: Container): UserName => {
-          return new UserName("Hiroki");
-        });
-
-        // UserクラスにUserNameクラスを注入
-        this.factories.set("user", (container: Container): User => {
-          return new User(container.get<UserName>("user_name"));
-        });
-      }
-
-      get<T>(id: string): T {
-        if (!this.instances.has(id)) {
-          this.instances.set(id, this.factories.get(id)!(this));
-        }
-
-        return this.instances.get(id) as T;
-      }
+      factories.set("user_name", () => createUserName("Hiroki"));
+      factories.set("user", (container) =>
+        createUser(container.get<UserName>("user_name")),
+      );
+      return container;
     }
     ```
 
@@ -1829,7 +1878,7 @@ DI コンテナを使用した場合 (PHP では Pimple パッケージ)
 
     ```typescript title="TypeScript の場合の実装例"
     // autoload.ts で、IoCコンテナ自体のインスタンスを事前に作成。
-    export const container = new Container();
+    export const container = createContainer();
     ```
 
 === "PHP"
@@ -1857,10 +1906,10 @@ DI コンテナを使用した場合 (PHP では Pimple パッケージ)
 
     ```typescript title="TypeScript の場合の実装例"
     // IoCコンテナの読み出し
-    import { container } from "./autoload";
-    import { User } from "~/domain/user/entity/User";
+    import {container} from "./autoload";
+    import {User} from "~/domain/user/entity/User";
 
-    // クラス名を宣言してインスタンスを作成。
+    // 戻り値の型を指定してオブジェクトを取得する。
     const user = container.get<User>("user");
     ```
 
@@ -1901,14 +1950,16 @@ Service Locator パターンはアンチパターンである。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Sample {
-      private readonly logger: unknown;
-      private readonly notification: unknown;
+    interface Sample {
+      readonly logger: unknown;
 
-      constructor(container: Record<string, unknown>) {
-        this.logger = container["foo.logger"];
-        this.notification = container["bar.notification"];
-      }
+      readonly notification: unknown;
+    }
+    function createSample(container: Record<string, unknown>): Sample {
+      return {
+        logger: container["foo.logger"],
+        notification: container["bar.notification"],
+      };
     }
     ```
 
@@ -1940,8 +1991,10 @@ Service Locator パターンはアンチパターンである。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // IoCコンテナ自体をインジェクションしてしまうと、不要なインスタンスにも依存してしまう。
-    const sample = new Sample(container);
+    const sample = createSample({
+      "foo.logger": logger,
+      "bar.notification": notification,
+    });
     ```
 
 === "PHP"
@@ -2076,10 +2129,15 @@ ModuleA と ModuleB は、データ結合の関係にある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class ModuleA { // コールされる側
-      methodA(a: number, b: number, c: string): string {
+    interface ModuleA {
+      methodA(a: number, b: number, c: string): string;
+    }
+    function createModuleA(): ModuleA {
+      // コールされる側
+      function methodA(a: number, b: number, c: string): string {
         return `${a} + ${b}` + c;
       }
+      return {methodA};
     }
     ```
 
@@ -2111,11 +2169,16 @@ ModuleA と ModuleB は、データ結合の関係にある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class ModuleB { // コールする側
-      methodB(): void {
-        const moduleA = new ModuleA();
+    interface ModuleB {
+      methodB(): void;
+    }
+    function createModuleB(): ModuleB {
+      // コールする側
+      function methodB(): void {
+        const moduleA = createModuleA();
         const result = moduleA.methodA(1, 2, "です."); // スカラ型データを渡すだけ
       }
+      return {methodB};
     }
     ```
 
@@ -2163,19 +2226,18 @@ Factory クラスのインスタンスと、これをコールするほかのイ
     /**
      * コールされる側
      *
-     * 距離に応じて、移動手段のオブジェクトを作り分けるファクトリクラス
+     * 距離に応じて、移動手段のオブジェクトを作り分ける生成関数
      */
-    class TransportationMethodsFactory {
-      static createInstance(distance: number): Car | Walking {
-        const walking = new Walking(distance);
-        const car = new Car(distance);
 
-        if (walking.needsWalking()) {
-          return walking;
-        }
+    function createTransportationMethod(distance: number): Car | Walking {
+      const walking = createWalking(distance);
+      const car = createCar(distance);
 
-        return car;
+      if (walking.needsWalking()) {
+        return walking;
       }
+
+      return car;
     }
     ```
 
@@ -2230,16 +2292,14 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Shared {
-      private readonly value: number;
-
-      constructor(value: number) {
-        this.value = value;
+    interface Shared {
+      getValue(): number;
+    }
+    function createShared(value: number): Shared {
+      function getValue(): number {
+        return value;
       }
-
-      getValue(): number {
-        return this.value;
-      }
+      return {getValue};
     }
     ```
 
@@ -2281,14 +2341,18 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class ModuleA {
-      methodA(): number {
-        const shared = new Shared(1);
+    interface ModuleA {
+      methodA(): number;
+    }
+    function createModuleA(): ModuleA {
+      function methodA(): number {
+        const shared = createShared(1);
 
-        const moduleB = new ModuleB();
+        const moduleB = createModuleB();
 
         return moduleB.methodB(shared); // 1
       }
+      return {methodA};
     }
     ```
 
@@ -2323,10 +2387,14 @@ ModuleA と ModuleB は、スタンプ結合の関係にある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class ModuleB {
-      methodB(shared: Shared): number {
+    interface ModuleB {
+      methodB(shared: Shared): number;
+    }
+    function createModuleB(): ModuleB {
+      function methodB(shared: Shared): number {
         return shared.getValue(); // 1
       }
+      return {methodB};
     }
     ```
 

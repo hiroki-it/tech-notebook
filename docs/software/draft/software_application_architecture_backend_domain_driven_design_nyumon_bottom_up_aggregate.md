@@ -87,14 +87,12 @@ UserName の状態を変更するときは、User に UserName を渡さない�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    // 誤った方法
-    // これをできないように実装するべき
-    const user = new User();
-    user.name = userName;
+    // 誤った方法：名前を直接書き換える
+    // nameを読み取り専用として公開すれば、この代入はコンパイルエラーになる
+    user.name = createUserName("NewName");
 
-    // 正しい方法
-    const userName = new UserName("NewName");
-    const user = new User(new UserName("OldName"));
+    // 正しい方法：ドメインの操作を通して名前を変更する
+    user.changeName(createUserName("NewName"));
     ```
 
 === "PHP"
@@ -183,27 +181,28 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      private readonly id: CircleId;
-      private owner: User;
-      // MembersはUserの配列
-      private members: User[];
+    interface Circle {
+      join(member: User): void;
+    }
+    function createCircle(id: CircleId, owner: User): Circle {
+      const state: {id: CircleId; owner: User; members: User[]} = {
+        id,
+        owner,
+        members: [],
+      };
 
-      constructor(id: CircleId, owner: User) {
-        this.id = id;
-        this.owner = owner;
-        this.members = []; // ここ
-      }
+      // ここ
 
-      public join(member: User): void {
+      function join(member: User): void {
         if (!member) {
           throw new Error("ArgumentNullException: member");
         }
-        if (this.members.length >= 29) {
-          throw new CircleFullException(this.id);
+        if (state.members.length >= 29) {
+          throw createCircleFullException(state.id);
         }
-        this.members.push(member); // ここ
+        state.members.push(member); // ここ
       }
+      return {join};
     }
     ```
 
@@ -344,17 +343,14 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
     const prisma = new PrismaClient();
 
-    class Circle {
-      private readonly id: CircleId;
-
-      constructor(id: CircleId) {
-        this.id = id;
-      }
-
-      public async getMembers(): Promise<User[]> {
+    interface Circle {
+      getMembers(): Promise<User[]>;
+    }
+    function createCircle(id: CircleId): Circle {
+      async function getMembers(): Promise<User[]> {
         // Membersを介さずにCircleがUserを直接操作できてしまう
         const circle = await prisma.circle.findUnique({
-          where: {id: this.id.value},
+          where: {id: id.value},
           include: {
             circleMembers: {
               include: {
@@ -365,13 +361,14 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
         });
 
         if (!circle) {
-          throw new Error(`Circle not found: ${this.id.value}`);
+          throw new Error(`Circle not found: ${id.value}`);
         }
 
-        return circle.circleMembers.map(
-          (cm) => new User(new UserId(cm.user.id), new UserName(cm.user.name)),
+        return circle.circleMembers.map((cm) =>
+          createUser(createUserId(cm.user.id), createUserName(cm.user.name)),
         );
       }
+      return {getMembers};
     }
     ```
 
@@ -438,8 +435,8 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    if (circle.members.count >= 29) {
-      throw new CircleFullException(this.id);
+    if (circle.members.length >= 29) {
+      throw createCircleFullException(circleId);
     }
     ```
 
@@ -490,29 +487,28 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      private readonly id: CircleId;
-      private members: User[];
-
-      constructor(id: CircleId) {
-        this.id = id;
-        this.members = [];
-      }
+    interface Circle {
+      isFull(): boolean;
+      join(user: User): void;
+    }
+    function createCircle(id: CircleId): Circle {
+      const state: {id: CircleId; members: User[]} = {id, members: []};
 
       // CircleがMembersの数を検証するべきである
-      public isFull(): boolean {
-        return this.members.length >= 29;
+      function isFull(): boolean {
+        return state.members.length >= 29;
       }
 
-      public join(user: User): void {
+      function join(user: User): void {
         if (!user) {
           throw new Error("ArgumentNullException: user");
         }
-        if (this.isFull()) {
-          throw new CircleFullException(this.id);
+        if (isFull()) {
+          throw createCircleFullException(state.id);
         }
-        this.members.push(user);
+        state.members.push(user);
       }
+      return {isFull, join};
     }
     ```
 
@@ -567,7 +563,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
     ```typescript title="TypeScript の場合の実装例"
     if (circle.isFull()) {
-      throw new CircleFullException(circleId);
+      throw createCircleFullException(circleId);
     }
     ```
 
@@ -605,17 +601,17 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      private members: User[];
-
-      constructor() {
-        this.members = [];
-      }
+    interface Circle {
+      isFull(): boolean;
+    }
+    function createCircle(): Circle {
+      const state: {members: User[]} = {members: []};
 
       // 上限数の仕様が変わったので、49に変更するような場面もある
-      public isFull(): boolean {
-        return this.members.length >= 49;
+      function isFull(): boolean {
+        return state.members.length >= 49;
       }
+      return {isFull};
     }
     ```
 
@@ -682,20 +678,22 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class EFUserRepository implements IUserRepository {
-      constructor(private readonly prisma: PrismaClient) {}
-
-      public async save(user: User): Promise<void> {
+    interface EFUserRepository extends IUserRepository {
+      save(user: User): Promise<void>;
+    }
+    function createEFUserRepository(prisma: PrismaClient): EFUserRepository {
+      async function save(user: User): Promise<void> {
         const userDataModel = {
           // データを永続化したいが、idやnameがプライベートだとここで取り出せずにエラーになってしまう
           id: user.id.value,
           name: user.name.value,
         };
 
-        await this.prisma.user.create({
+        await prisma.user.create({
           data: userDataModel,
         });
       }
+      return {save};
     }
     ```
 
@@ -795,26 +793,27 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class UserDataModelBuilder implements IUserNotification {
-      // ドメインオブジェクトをプロパティに設定する
-      private id!: UserId;
-      private name!: UserName;
+    interface UserDataModelBuilder extends IUserNotification {
+      build(): UserDataModel;
+    }
 
-      public id(id: UserId): void {
-        this.id = id;
-      }
-
-      public name(name: UserName): void {
-        this.name = name;
-      }
-
-      // ドメインオブジェクトをデータモデルに変換する
-      public build(): UserDataModel {
-        return new UserDataModel({
-          id: this.id.value,
-          name: this.name.value,
-        });
-      }
+    function createUserDataModelBuilder(): UserDataModelBuilder {
+      let userId: UserId | undefined;
+      let userName: UserName | undefined;
+      return {
+        id(id) {
+          userId = id;
+        },
+        name(name) {
+          userName = name;
+        },
+        build() {
+          if (!userId || !userName) {
+            throw new Error("ユーザのIDと名前を通知してください");
+          }
+          return createUserDataModel({id: userId.value, name: userName.value});
+        },
+      };
     }
     ```
 
@@ -877,20 +876,16 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class User {
-      private readonly id: UserId;
-      private name: UserName;
-
-      constructor(id: UserId, name: UserName) {
-        this.id = id;
-        this.name = name;
-      }
-
-      public notify(note: IUserNotification): void {
+    interface User {
+      notify(note: IUserNotification): void;
+    }
+    function createUser(id: UserId, name: UserName): User {
+      function notify(note: IUserNotification): void {
         // ドメインオブジェクトを実装データモデルに渡す
-        note.id(this.id);
-        note.name(this.name);
+        note.id(id);
+        note.name(name);
       }
+      return {notify};
     }
     ```
 
@@ -958,23 +953,25 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class EFUserRepository implements IUserRepository {
-      constructor(private readonly prisma: PrismaClient) {}
-
-      public async save(user: User): Promise<void> {
-        const userDataModelBuilder = new UserDataModelBuilder();
+    interface EFUserRepository extends IUserRepository {
+      save(user: User): Promise<void>;
+    }
+    function createEFUserRepository(prisma: PrismaClient): EFUserRepository {
+      async function save(user: User): Promise<void> {
+        const userDataModelBuilder = createUserDataModelBuilder();
         user.notify(userDataModelBuilder);
 
         const userDataModel = userDataModelBuilder.build();
 
         // 実装データモデルをORMに渡す
-        await this.prisma.user.create({
+        await prisma.user.create({
           data: {
             id: userDataModel.id,
             name: userDataModel.name,
           },
         });
       }
+      return {save};
     }
     ```
 
@@ -1062,19 +1059,19 @@ Circle では、User を Members 配列で保持することで、Circle から 
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      private members: User[];
+    interface Circle {
+      changeMemberName(id: UserId, name: UserName): void;
+    }
+    function createCircle(): Circle {
+      const state: {members: User[]} = {members: []};
 
-      constructor() {
-        this.members = [];
-      }
-
-      public changeMemberName(id: UserId, name: UserName): void {
-        const target = this.members.find((x) => x.id.equals(id));
+      function changeMemberName(id: UserId, name: UserName): void {
+        const target = state.members.find((x) => x.id.equals(id));
         if (target) {
           target.changeName(name);
         }
       }
+      return {changeMemberName};
     }
     ```
 
@@ -1161,13 +1158,14 @@ CircleRepository で User を永続化しようとしている。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class CircleRepository implements ICircleRepository {
-      constructor(private readonly prisma: PrismaClient) {}
-
-      public async save(circle: Circle): Promise<void> {
+    interface CircleRepository extends ICircleRepository {
+      save(circle: Circle): Promise<void>;
+    }
+    function createCircleRepository(prisma: PrismaClient): CircleRepository {
+      async function save(circle: Circle): Promise<void> {
         // Userを永続化
         for (const user of circle.members) {
-          await this.prisma.user.update({
+          await prisma.user.update({
             where: {id: user.id.value},
             data: {
               name: user.name.value,
@@ -1176,7 +1174,7 @@ CircleRepository で User を永続化しようとしている。
         }
 
         // Circleを永続化
-        await this.prisma.circle.update({
+        await prisma.circle.update({
           where: {id: circle.id.value},
           data: {
             name: circle.name.value,
@@ -1184,6 +1182,7 @@ CircleRepository で User を永続化しようとしている。
           },
         });
       }
+      return {save};
     }
     ```
 
@@ -1269,26 +1268,30 @@ CircleRepository で User を永続化しようとしている。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      public readonly id: CircleId;
-      private name: CircleName;
-
-      // UserではなくUserIdを配列で保持する
-      private members: UserId[];
-
-      constructor(id: CircleId, name: CircleName, members: UserId[] = []) {
-        this.id = id;
-        this.name = name;
-        this.members = members;
+    interface Circle {
+      readonly id: CircleId;
+      getName(): CircleName;
+      getMembers(): UserId[];
+    }
+    function createCircle(
+      id: CircleId,
+      name: CircleName,
+      members: UserId[] = [],
+    ): Circle {
+      function getName(): CircleName {
+        return name;
       }
 
-      public getName(): CircleName {
-        return this.name;
+      function getMembers(): UserId[] {
+        return [...members];
       }
-
-      public getMembers(): UserId[] {
-        return [...this.members];
-      }
+      return {
+        get id() {
+          return id;
+        },
+        getName,
+        getMembers,
+      };
     }
     ```
 
@@ -1388,35 +1391,37 @@ UserId を使用するようにしたメリットはほかにもある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class CircleApplicationService {
-      constructor(
-        private readonly circleRepository: ICircleRepository,
-        private readonly circleService: CircleService,
-        private readonly prisma: PrismaClient,
-      ) {}
+    interface CircleApplicationService {
+      update(command: CircleUpdateCommand): Promise<void>;
+    }
+    function createCircleApplicationService(
+      circleRepository: ICircleRepository,
+      circleService: CircleService,
+      prisma: PrismaClient,
+    ): CircleApplicationService {
+      async function update(command: CircleUpdateCommand): Promise<void> {
+        const id = createCircleId(command.id);
 
-      public async update(command: CircleUpdateCommand): Promise<void> {
-        const id = new CircleId(command.id);
-
-        const circle = await this.circleRepository.find(id);
+        const circle = await circleRepository.find(id);
         if (!circle) {
-          throw new CircleNotFoundException(id);
+          throw createCircleNotFoundException(id);
         }
 
         if (command.name !== null && command.name !== undefined) {
-          const name = new CircleName(command.name);
+          const name = createCircleName(command.name);
           circle.changeName(name);
 
-          if (await this.circleService.exists(circle)) {
-            throw new CanNotRegisterCircleException(
+          if (await circleService.exists(circle)) {
+            throw createCanNotRegisterCircleException(
               circle,
               "サークルは既に存在しています。",
             );
           }
         }
 
-        await this.circleRepository.save(circle);
+        await circleRepository.save(circle);
       }
+      return {update};
     }
     ```
 
@@ -1522,43 +1527,41 @@ UserId を使用するようにしたメリットはほかにもある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      private name: CircleName;
-      private owner: UserId;
-      private members: UserId[];
-      public readonly id: CircleId;
-
-      constructor(
-        id: CircleId,
-        name: CircleName,
-        owner: UserId,
-        members: UserId[],
-      ) {
-        if (!id) {
-          throw new Error("ArgumentNullException: id");
-        }
-        if (!name) {
-          throw new Error("ArgumentNullException: name");
-        }
-        if (!owner) {
-          throw new Error("ArgumentNullException: owner");
-        }
-        if (!members) {
-          throw new Error("ArgumentNullException: members");
-        }
-
-        this.id = id;
-        this.name = name;
-        this.owner = owner;
-        this.members = members;
+    interface Circle {
+      readonly id: CircleId;
+      notify(note: ICircleNotification): void;
+    }
+    function createCircle(
+      id: CircleId,
+      name: CircleName,
+      owner: UserId,
+      members: UserId[],
+    ): Circle {
+      if (!id) {
+        throw new Error("ArgumentNullException: id");
+      }
+      if (!name) {
+        throw new Error("ArgumentNullException: name");
+      }
+      if (!owner) {
+        throw new Error("ArgumentNullException: owner");
+      }
+      if (!members) {
+        throw new Error("ArgumentNullException: members");
       }
 
-      public notify(note: ICircleNotification): void {
-        note.id(this.id);
-        note.name(this.name);
-        note.owner(this.owner);
-        note.members(this.members);
+      function notify(note: ICircleNotification): void {
+        note.id(id);
+        note.name(name);
+        note.owner(owner);
+        note.members(members);
       }
+      return {
+        get id() {
+          return id;
+        },
+        notify,
+      };
     }
     ```
 
@@ -1690,24 +1693,25 @@ UserId を使用するようにしたメリットはほかにもある。
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class CircleApplicationService {
-      constructor(
-        private readonly prisma: PrismaClient,
-        private readonly circleRepository: ICircleRepository,
-        private readonly userRepository: IUserRepository,
-      ) {}
-
-      public async join(command: CircleJoinCommand): Promise<void> {
+    interface CircleApplicationService {
+      join(command: CircleJoinCommand): Promise<void>;
+    }
+    function createCircleApplicationService(
+      prisma: PrismaClient,
+      circleRepository: ICircleRepository,
+      userRepository: IUserRepository,
+    ): CircleApplicationService {
+      async function join(command: CircleJoinCommand): Promise<void> {
         // トランザクション処理を実行
-        await this.prisma.$transaction(async (tx) => {
-          const circleRepository = new CircleRepository(tx);
-          const userRepository = new UserRepository(tx);
+        await prisma.$transaction(async (tx) => {
+          const circleRepository = createCircleRepository(tx);
+          const userRepository = createUserRepository(tx);
 
           // READ処理
           const circle = await circleRepository.find(
-            new CircleId(command.circleId),
+            createCircleId(command.circleId),
           );
-          const user = await userRepository.find(new UserId(command.userId));
+          const user = await userRepository.find(createUserId(command.userId));
 
           if (!circle || !user) {
             throw new Error("Circle or User not found.");
@@ -1719,6 +1723,7 @@ UserId を使用するようにしたメリットはほかにもある。
           await circleRepository.save(circle);
         });
       }
+      return {join};
     }
     ```
 
@@ -1816,18 +1821,14 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      private owner: User;
-      private members: User[];
-
-      constructor(owner: User, members: User[] = []) {
-        this.owner = owner;
-        this.members = members;
+    interface Circle {
+      isFull(): boolean;
+    }
+    function createCircle(owner: User, members: User[] = []): Circle {
+      function isFull(): boolean {
+        return members.length >= 29;
       }
-
-      public isFull(): boolean {
-        return this.members.length >= 29;
-      }
+      return {isFull};
     }
     ```
 
@@ -1887,22 +1888,19 @@ isFull 関数は、『サークルに所属するユーザの最大数はサー�
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    class Circle {
-      private owner: User;
-      private members: User[];
-
-      constructor(owner: User, members: User[] = []) {
-        this.owner = owner;
-        this.members = members;
+    interface Circle {
+      isFull(): boolean;
+      countMembers(): number;
+    }
+    function createCircle(owner: User, members: User[] = []): Circle {
+      function isFull(): boolean {
+        return countMembers() >= 30;
       }
 
-      public isFull(): boolean {
-        return this.countMembers() >= 30;
+      function countMembers(): number {
+        return members.length + 1;
       }
-
-      public countMembers(): number {
-        return this.members.length + 1;
-      }
+      return {isFull, countMembers};
     }
     ```
 

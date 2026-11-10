@@ -112,9 +112,9 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
 
     ```typescript title="TypeScript の場合の実装例"
     import {Pool} from "mysql2/promise";
-    import {User} from "../domain/user";
-    import {UserId} from "../domain/userId";
-    import {UserName} from "../domain/userName";
+    import {User, createUser} from "../domain/user";
+    import {UserId, createUserId} from "../domain/userId";
+    import {createUserName} from "../domain/userName";
 
     // 依存性注入
     export type UserRepositoryDI = Readonly<{
@@ -135,7 +135,7 @@ description: ５章＠ドメイン駆動設計入門ボトムアップの知見�
         throw new Error("User not found");
       }
 
-      return new User(UserId.from(row.id), new UserName(row.name));
+      return createUser(createUserId(row.id), createUserName(row.name));
     };
 
     export const save = async (
@@ -285,9 +285,9 @@ ORM のデータモデルをエンティティそのままに使用する場合�
 
 ```typescript title="TypeScript の場合の実装例"
 import {PrismaClient} from "@prisma/client";
-import {User} from "../domain/user";
-import {UserId} from "../domain/userId";
-import {UserName} from "../domain/userName";
+import {User, createUser} from "../domain/user";
+import {UserId, createUserId} from "../domain/userId";
+import {createUserName} from "../domain/userName";
 
 // 依存性注入
 export type UserRepositoryDI = Readonly<{
@@ -307,7 +307,7 @@ export const findById = async (
   }
 
   // 取得時はORMのデータモデルをエンティティに変換する
-  return new User(UserId.from(record.id), new UserName(record.name));
+  return createUser(createUserId(record.id), createUserName(record.name));
 };
 
 export const save = async (
