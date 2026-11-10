@@ -498,7 +498,17 @@ nav:
       - R: language/language_r.md
       - ■ Rust:
           - Rust: language/language_rust.md
-          - 関数: language/language_rust_function.md
+          - ■ 言語機能:
+              - データ・型: language/language_rust_feature_data.md
+              - 変数・スコープ: language/language_rust_feature_variable_and_scope.md
+              - 関数: language/language_rust_feature_function.md
+              - オブジェクト: language/language_rust_feature_object.md
+              - モジュール: language/language_rust_feature_module.md
+              - 制御構文: language/language_rust_feature_control_flow.md
+              - 並行・非同期処理: language/language_rust_feature_concurrency.md
+              - エラー処理: language/language_rust_feature_error_handling.md
+              - 入出力: language/language_rust_feature_input_output.md
+              - テスト: language/language_rust_feature_test.md
       - ■ TypeScript:
           - TypeScript: language/language_typescript.md
           - 設定: language/language_typescript_conf.md

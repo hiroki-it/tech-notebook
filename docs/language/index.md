@@ -179,7 +179,18 @@ hide:
 
 - #### [Rust](https://hiroki-it.github.io/tech-notebook/language/language_rust.html)
 
-- #### [関数](https://hiroki-it.github.io/tech-notebook/language/language_rust_function.html)
+- #### <u>言語機能</u>
+
+  > - ##### [データ・型](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_data.html)
+  > - ##### [変数・スコープ](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_variable_and_scope.html)
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_function.html)
+  > - ##### [オブジェクト](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_object.html)
+  > - ##### [モジュール](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_module.html)
+  > - ##### [制御構文](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_control_flow.html)
+  > - ##### [並行・非同期処理](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_concurrency.html)
+  > - ##### [エラー処理](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_error_handling.html)
+  > - ##### [入出力](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_input_output.html)
+  > - ##### [テスト](https://hiroki-it.github.io/tech-notebook/language/language_rust_feature_test.html)
 
 <br>
 
