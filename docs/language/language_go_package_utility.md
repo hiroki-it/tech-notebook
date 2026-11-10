@@ -270,32 +270,48 @@ $ godoc -http=:8080
 
 ## princjef/gomarkdoc
 
-### CI 上で実行する
+### セットアップ
 
-CI 上で `gomarkdoc` コマンドを実行する。
+#### ▼ GitHub Actions 上で実行する場合
+
+GitHub Actions で `gomarkdoc` コマンドを実行する。ブランチでの実行を想定する。
 
 差分があれば、CI を失敗させる。
 
 ```yaml
-variables:
-  GO_VERSION: "1.19.13"
+name: Check Go documentation
 
-stages:
-  - test
+on:
+  push:
+  workflow_dispatch:
 
-go_doc:
-  stage: test
-  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
-  script:
-    - go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
-    - gomarkdoc ./... --config .gomarkdoc.yml
-    - |
-      DIFF=$(git diff origin/${CI_COMMIT_BRANCH} --name-only --relative ./)
-      echo $DIFF
-      if [ -n "$DIFF" ] ; then
-        echo "ローカルマシンでgomarkdocを実行し、ドキュメントを更新してください"
-        exit 1
-      fi
+permissions:
+  contents: read
+
+jobs:
+  go-doc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.19.13"
+      - name: Generate documentation
+        run: |
+          go install github.com/princjef/gomarkdoc/cmd/gomarkdoc@latest
+          gomarkdoc ./... --config .gomarkdoc.yml
+      - name: Check documentation changes
+        env:
+          COMMIT_BRANCH: ${{ github.ref_type == 'branch' && github.ref_name || '' }}
+        run: |
+          DIFF=$(git diff "origin/${COMMIT_BRANCH}" --name-only --relative ./)
+          echo "$DIFF"
+          if [ -n "$DIFF" ]; then
+            echo "ローカルマシンでgomarkdocを実行し、ドキュメントを更新してください"
+            exit 1
+          fi
 ```
 
 <br>

@@ -19,94 +19,48 @@ description: PR Agent＠LLMの知見を記録しています。
 
 ## 02. セットアップ
 
-### GitLab
+### GitHub Actions 上で実行する場合
 
-```yaml
-workflow:
-  rules:
-    - if: $CI_COMMIT_TAG
-    - if: $CI_COMMIT_BRANCH
-    # もし workflow のルールを設定している場合、merge_request_event をルールの条件としないと、ワークフローが起動しない
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-
-stages:
-  - build
-  - test
-  - pr_agent
-
-pr_agent:
-  stage: pr_agent
-  image:
-    name: pr-agent:latest
-    entrypoint: [""]
-  variables:
-    # Cross-region-inference に対応するために us を指定する
-    # 対応不要の場合は ap-northeast-1 でもよい
-    AWS_REGION_NAME: "us-east-1"
-  before_script:
-    # もし AWS Bedlock を使用する場合は、資格情報を取得する
-  script:
-    - cd /app
-    - echo "Running PR Agent action step"
-    - export MR_URL="$CI_MERGE_REQUEST_PROJECT_URL/merge_requests/$CI_MERGE_REQUEST_IID"
-    - echo "MR_URL=$MR_URL"
-    - export gitlab__url=$CI_SERVER_PROTOCOL://$CI_SERVER_FQDN
-    - export gitlab__PERSONAL_ACCESS_TOKEN=$GITLAB_PERSONAL_ACCESS_TOKEN
-    - export config__git_provider="gitlab"
-    - python -m pr_agent.cli --pr_url="$MR_URL" describe
-    - python -m pr_agent.cli --pr_url="$MR_URL" review
-    - python -m pr_agent.cli --pr_url="$MR_URL" improve
-  allow_failure: true
-  rules:
-    # merge_request_event の時に Job を発火させないと、PR Agent は MR の情報を取得できずにエラーになってしまう
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-```
-
-> - https://github.com/qodo-ai/pr-agent/blob/main/docs/docs/installation/gitlab.md
-
-<br>
-
-### GitHub Actions
-
-`.github/workflows/pr-agent.yml` に配置し、Actions secrets に `OPENAI_KEY` を登録する。PR の作成・更新時に自動レビューし、PR の会話欄で `/review`、`/describe`、`/improve` とコメントして再実行できる。自動レビューは同じリポジトリ内の PR を対象とし、コメントからの実行はリポジトリの所有者・メンバー・コラボレーターに限定する。
+`.github/workflows/pr-agent.yml` に配置し、PR の作成・更新時に `describe`、`review`、`improve` を順に実行する。処理が失敗しても、ワークフロー全体は失敗させない。
 
 ```yaml
 name: PR Agent
 
 on:
   pull_request:
-    types: [opened, reopened, ready_for_review, synchronize]
-  issue_comment:
-    types: [created]
+    types: [opened, reopened, synchronize]
 
-permissions: {}
+permissions:
+  contents: read
+  pull-requests: write
 
 jobs:
   pr-agent:
-    # Bot、自動レビュー対象外のfork、通常のIssueへのコメントは処理しない。
-    if: >-
-      github.event.sender.type != 'Bot' &&
-      ((github.event_name == 'pull_request' &&
-        github.event.pull_request.head.repo.full_name == github.repository) ||
-       (github.event_name == 'issue_comment' && github.event.issue.pull_request &&
-        startsWith(github.event.comment.body, '/') &&
-        contains(fromJSON('["OWNER","MEMBER","COLLABORATOR"]'),
-                 github.event.comment.author_association)))
     runs-on: ubuntu-latest
-    timeout-minutes: 15
-    permissions:
-      contents: read
-      issues: write
-      pull-requests: write
+    continue-on-error: true
+    container:
+      image: pr-agent:latest
+    env:
+      # Cross-region-inferenceに対応する場合はusを指定する
+      AWS_REGION_NAME: us-east-1
+      config__git_provider: github
+      github__user_token: ${{ secrets.GITHUB_TOKEN }}
+      OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
     steps:
-      # PRの取得とコメント投稿はActionが行うため、checkoutは不要。
-      - uses: the-pr-agent/pr-agent@main
+      # Bedrockを使用する場合は、ここでAWSの資格情報を取得する
+      - name: Describe, review, and improve PR
         env:
-          OPENAI_KEY: ${{ secrets.OPENAI_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          cd /app
+          echo "Running PR Agent action step"
+          echo "PR_URL=$PR_URL"
+          python -m pr_agent.cli --pr_url="$PR_URL" describe
+          python -m pr_agent.cli --pr_url="$PR_URL" review
+          python -m pr_agent.cli --pr_url="$PR_URL" improve
 ```
 
-`@main` は公式の導入例に合わせている。運用時は、動作を確認したコミット SHA に固定して更新を管理できる。Bedrock を使う場合は、後述の `.pr_agent.toml` のモデル設定に加え、AWS の認証とリージョンを設定する。
+`pr-agent:latest` は PR Agent とモデル設定を含むイメージを用意する想定である。OpenAI を使う場合は Actions secrets に `OPENAI_KEY` を登録し、Bedrock を使う場合は AWS の認証とモデル設定を用意する。
 
 > - [PR-Agent GitHub Integration](https://github.com/qodo-ai/pr-agent/blob/main/docs/docs/installation/github.md)
 

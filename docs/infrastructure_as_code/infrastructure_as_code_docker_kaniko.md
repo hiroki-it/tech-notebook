@@ -30,9 +30,11 @@ description: Kaniko＠Dockerの知見を記録しています。
 
 <br>
 
-## 02. Pod 上で実行する場合
+## 02. セットアップ
 
-### Amazon ECR
+### Pod 上で実行する場合
+
+#### ▼ Amazon ECR
 
 ```yaml
 apiVersion: v1
@@ -62,11 +64,11 @@ spec:
 
 <br>
 
-## 03. GitLab 上で実行する場合
+### GitHub Actions 上で実行する場合
 
-### DockerHub
+#### ▼ DockerHub
 
-DockerHub の資格情報は、エンコードしたうえで、あらかじめ GitLab CI の変数 (`DOCKERHUB_TOKEN`) に設定しておく。
+DockerHub の資格情報をエンコードして Actions secrets の `DOCKERHUB_TOKEN` に登録し、Repository variables の `DOCKERHUB_IMAGE` にイメージ名（例：`example/kaniko`）を設定する。
 
 ```bash
 $ echo -n USER:PASSWORD | base64
@@ -75,63 +77,120 @@ $ echo -n USER:PASSWORD | base64
 ```
 
 ```yaml
-stages:
-  - build
+name: Build image for DockerHub
 
-build:
-  stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  script:
-    - echo '{\"auths\":{\"https://index.docker.io/v2/\":{\"auth\":\"${DOCKERHUB_TOKEN}\"}}}' > /kaniko/.docker/config.json
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination IMAGE_NAME:TAG
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push with Kaniko
+        env:
+          DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+          DOCKERHUB_IMAGE: ${{ vars.DOCKERHUB_IMAGE }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/kaniko-config"
+          printf '{"auths":{"https://index.docker.io/v1/":{"auth":"%s"}}}\n' \
+            "$DOCKERHUB_TOKEN" > "$RUNNER_TEMP/kaniko-config/config.json"
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            -v "$RUNNER_TEMP/kaniko-config:/kaniko/.docker:ro" \
+            gcr.io/kaniko-project/executor:debug \
+            --context dir:///workspace \
+            --dockerfile /workspace/Dockerfile \
+            --destination "$DOCKERHUB_IMAGE:TAG"
 ```
 
-> - [GitLab CI で kaniko を使って Docker Image をビルドしてみる #GitLab-CI - Qiita](https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#docker-hub)
+> - [Kaniko - Pushing to Docker Hub](https://github.com/GoogleContainerTools/kaniko#pushing-to-docker-hub)
 
 <br>
 
-### Amazon ECR
+#### ▼ Amazon ECR
 
-AWS の資格情報は、あらかじめ GitLab CI の変数 (`AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY`) に設定しておく。
+AWS の資格情報を Actions secrets の `AWS_ACCESS_KEY_ID`、`AWS_SECRET_ACCESS_KEY` に登録し、Repository variables の `ECR_URL` に既存のイメージリポジトリ URL を設定する。
 
 ```yaml
-build:
-  stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  variables:
-    ECR_URL: ****.dkr.ecr.ap-northeast-1.amazonaws.com/kaniko
-  script:
-    - echo '{\"credsStore\":\"ecr-login\"}' > /kaniko/.docker/config.json
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination ${ECR_URL}:TAG
+name: Build image for Amazon ECR
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push with Kaniko
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ap-northeast-1
+          ECR_URL: ${{ vars.ECR_URL }}
+        run: |
+          mkdir -p "$RUNNER_TEMP/kaniko-config"
+          printf '%s\n' '{"credsStore":"ecr-login"}' > "$RUNNER_TEMP/kaniko-config/config.json"
+          docker run --rm \
+            -e AWS_ACCESS_KEY_ID \
+            -e AWS_SECRET_ACCESS_KEY \
+            -e AWS_REGION \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            -v "$RUNNER_TEMP/kaniko-config:/kaniko/.docker:ro" \
+            gcr.io/kaniko-project/executor:debug \
+            --context dir:///workspace \
+            --dockerfile /workspace/Dockerfile \
+            --destination "$ECR_URL:TAG"
 ```
 
-> - [GitLab CI で kaniko を使って Docker Image をビルドしてみる #GitLab-CI - Qiita](https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#aws-ecr)
+> - [Kaniko - Pushing to Amazon ECR](https://github.com/GoogleContainerTools/kaniko#pushing-to-amazon-ecr)
 
 <br>
 
-### Google Container Registry
+#### ▼ Google Container Registry
 
-Google Cloud の資格情報ファイルは、あらかじめ GitLab CI の変数 (`GOOGLE_APPLICATION_CREDENTIALS`) に設定しておく。
+サービスアカウントキーの JSON を Actions secrets の `GCP_SERVICE_ACCOUNT_KEY` に登録し、Repository variables の `PROJECT_ID` にプロジェクト ID を設定する。
 
 ```yaml
-build:
-  stage: build
-  image:
-    name: gcr.io/kaniko-project/executor:debug
-    entrypoint: [""]
-  variables:
-    GOOGLE_APPLICATION_CREDENTIALS: /tmp/gcloud-service-key.json
-  before_script:
-    - mkdir /tmp
-    - echo ${Google Cloud_TOKEN} > /tmp/gcloud-service-key.json
-  script:
-    - /kaniko/executor --context $CI_PROJECT_DIR --dockerfile $CI_PROJECT_DIR/Dockerfile --destination "asia.gcr.io/${PROJECT_ID}/image_name:TAG"
+name: Build image for Google Container Registry
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build and push with Kaniko
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          PROJECT_ID: ${{ vars.PROJECT_ID }}
+        run: |
+          printf '%s\n' "$GCP_SERVICE_ACCOUNT_KEY" > "$RUNNER_TEMP/gcloud-service-key.json"
+          docker run --rm \
+            -e GOOGLE_APPLICATION_CREDENTIALS=/kaniko/gcloud-service-key.json \
+            -v "$GITHUB_WORKSPACE:/workspace" \
+            -v "$RUNNER_TEMP/gcloud-service-key.json:/kaniko/gcloud-service-key.json:ro" \
+            gcr.io/kaniko-project/executor:debug \
+            --context dir:///workspace \
+            --dockerfile /workspace/Dockerfile \
+            --destination "asia.gcr.io/$PROJECT_ID/image_name:TAG"
 ```
 
-> - [GitLab CI で kaniko を使って Docker Image をビルドしてみる #GitLab-CI - Qiita](https://qiita.com/Aruneko/items/7d4474444ff92b76aa88#gcp-gcr)
+> - [Kaniko - Pushing to GCR](https://github.com/GoogleContainerTools/kaniko#pushing-to-google-gcr)
 
 <br>

@@ -84,6 +84,133 @@ spec:
 
 <br>
 
+### GitHub Actions 上で実行する場合
+
+#### ▼ `.github/workflows/test-istio.yml` ファイル
+
+GitHub Actions の runner 上で Cluster を作成し、Istio をデプロイする。
+
+リポジトリに `setup-asdf.sh`、`.tool-versions`、Helmfile の設定を配置し、Repository variables に `AWS_ACCOUNT_ID` と `AWS_DEFAULT_REGION`、Actions secrets に AWS の資格情報を登録する。
+
+```yaml
+name: Test Istio
+
+on:
+  push:
+    branches: [master, develop]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # ブランチとイベントに応じてHelmfileの実行環境を切り替える
+  ENV: ${{ (github.head_ref || github.ref_name) == 'master' && 'prd' || (github.head_ref || github.ref_name) == 'develop' && 'stg' || 'tes' }}
+  AWS_DEFAULT_REGION: ${{ vars.AWS_DEFAULT_REGION }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
+  # 検証するKubernetesとIstioのバージョン
+  K8S_CURRENT_VERSION: "1.24.0"
+  K8S_NEXT_VERSION: "1.26.0"
+  ISTIO_CURRENT_VERSION: "1.15.3"
+  ISTIO_NEXT_VERSION: "1.17.5"
+  CLUSTER_NAME: ci-${{ github.run_id }}-${{ github.run_attempt }}
+
+jobs:
+  test-istio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Set up tools
+        run: |
+          source setup-asdf.sh
+          # 後続ステップでもasdfで導入したコマンドを使用する
+          echo "$HOME/.asdf/bin" >> "$GITHUB_PATH"
+          echo "$HOME/.asdf/shims" >> "$GITHUB_PATH"
+          curl -fsSL https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
+          k3d version
+          curl -fsSLO "https://dl.k8s.io/release/v${K8S_NEXT_VERSION}/bin/linux/amd64/kubectl"
+          chmod +x kubectl
+          sudo mv kubectl /usr/local/bin/kubectl
+          kubectl version --client
+      - name: Set up k3d registry configuration
+        env:
+          AWS_ACCOUNT_ID: ${{ vars.AWS_ACCOUNT_ID }}
+        run: |
+          AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
+          cat <<EOF > k3d-config.yaml
+          apiVersion: k3d.io/v1alpha5
+          kind: Simple
+          registries:
+            config: |
+              mirrors:
+                ${AWS_ECR}:
+                  endpoint:
+                    - "https://${AWS_ECR}"
+              configs:
+                ${AWS_ECR}:
+                  auth:
+                    username: AWS
+                    password: $(aws ecr get-login-password --region "$AWS_DEFAULT_REGION")
+          EOF
+      - name: Create cluster
+        run: |
+          # GitHub-hosted runnerのDockerを使用し、同じジョブ内でClusterを検証する
+          k3d cluster create --config k3d-config.yaml "$CLUSTER_NAME" \
+            --image "rancher/k3s:v${K8S_NEXT_VERSION}-k3s1" --agents 2 || \
+          k3d cluster create --config k3d-config.yaml "$CLUSTER_NAME" \
+            --image "rancher/k3s:v${K8S_NEXT_VERSION}-rc1-k3s1" --agents 2
+          kubectl label node "k3d-${CLUSTER_NAME}-agent-0" node.kubernetes.io/nodetype=ingress --overwrite
+          kubectl label node "k3d-${CLUSTER_NAME}-agent-1" node.kubernetes.io/nodetype=system --overwrite
+          k3d cluster list
+          kubectl get node --show-labels
+      - name: Deploy and verify Istio
+        run: |
+          kubectl apply -f "https://raw.githubusercontent.com/istio/istio/${ISTIO_NEXT_VERSION}/manifests/charts/base/crds/crd-all.gen.yaml"
+          kubectl create ns istio-ingress
+          kubectl label ns istio-ingress istio.io/rev=default
+          kubectl create ns istio-system
+          kubectl get ns -L istio.io/rev
+          helmfile -e "$ENV" -f "helmfile_istiod_${ISTIO_NEXT_VERSION//./-}.yaml" apply --skip-crds --skip-diff-on-install
+          helmfile -e "$ENV" -f helmfile_istio-base.yaml apply --skip-diff-on-install
+          helmfile -e "$ENV" -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install
+          istioctl version
+          istioctl proxy-status
+          kubectl get all -n istio-ingress
+          kubectl get all -n istio-system
+      - name: Delete cluster
+        run: k3d cluster delete "$CLUSTER_NAME"
+```
+
+#### ▼ `setup-asdf.sh` ファイル
+
+```bash
+#!/bin/bash
+
+# asdfをインストールする
+git clone --depth 1 --branch v0.14.1 https://github.com/asdf-vm/asdf.git ~/.asdf
+export ASDF_DIR=~/.asdf
+source "$ASDF_DIR/asdf.sh"
+
+# コマンドをインストールする
+asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
+asdf plugin add helmfile https://github.com/feniix/asdf-helmfile.git
+asdf plugin add istioctl https://github.com/virtualstaticvoid/asdf-istioctl.git
+asdf install
+asdf list
+
+# 正しいバージョンをインストールできていることを確認する
+helm version
+helmfile version
+istioctl version
+```
+
+<br>
+
 ## 02. トラフィック管理
 
 ### Istio Ingress Gateway について
@@ -464,169 +591,5 @@ Istio Ingress Gateway でダウンタイムが発生すると、アプリへの�
 リクエストが istio-proxy を経由する分だけレイテンシーが増加し、また istio-proxy ごとに CPU やメモリを消費するため、性能が劣化する。
 
 > - https://lib.jimmysong.io/blog/performance-and-scalability/
-
-<br>
-
-## 05. CI
-
-### GitLab
-
-#### ▼ `.gitlab-ci.yml` ファイル
-
-CI 上で Cluster を作成し、Istio をデプロイする。
-
-```yaml
-# ブランチ名に応じて、CI で使用する実行環境名を切り替える
-workflow:
-  rules:
-    # master ブランチにて、任意の方法でパイプラインを実行した場合
-    - if: $CI_COMMIT_REF_NAME == 'master'
-      variables:
-        ENV: "prd"
-    # develop ブランチにて、任意の方法でパイプラインを実行した場合
-    - if: $CI_COMMIT_REF_NAME == 'develop'
-      variables:
-        ENV: "stg"
-    # MR にて、任意の方法でパイプラインを実行した場合
-    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
-      variables:
-        ENV: "tes"
-    # 上記以外で、web から手動でパイプラインを実行した場合
-    - if: $CI_PIPELINE_SOURCE == 'web'
-      variables:
-        ENV: "tes"
-
-variables:
-  # EKS は K8s のマイナーバージョンを公開していないため、".0"と仮定して処理する
-  # 現在の EKS の K8s バージョン
-  K8S_CURRENT_VERSION: "1.24.0"
-  # アップグレード後の EKS の K8s バージョン
-  K8S_NEXT_VERSION: "1.26.0"
-
-  # 現在の Istio のバージョン
-  ISTIO_CURRENT_VERSION: "1.15.3"
-  # アップグレード後の Istio のバージョン
-  ISTIO_NEXT_VERSION: "1.17.5"
-
-stages:
-  - build
-  - test
-
-# K3D の設定ファイルをセットアップする
-setup_k3d_config:
-  stage: build
-  image: amazon/aws-cli
-  script:
-    - AWS_ECR="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com"
-    - |
-      cat <<EOF > k3d-config.yaml
-      apiVersion: k3d.io/v1alpha5
-      kind: Simple
-      registries:
-        config: |
-          mirrors:
-            <AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com:
-              endpoint:
-                - "http://<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com"
-          configs:
-            ${AWS_ECR}:
-              auth:
-                username: AWS
-                password: $(aws ecr get-login-password --region ${AWS_DEFAULT_REGION})
-      EOF
-
-# 指定したバージョンの Istio を検証する
-test_istio:
-  stage: test
-  image:
-    name: docker
-  variables:
-    # K3D を使用することで Docker in Docker となるため、そのための環境変数を設定する
-    # @see https://gitlab.com/gitlab-org/gitlab-runner/-/issues/27300
-    DOCKER_DRIVER: "overlay2"
-    DOCKER_HOST: "tcp://docker:2375"
-    DOCKER_TLS_CERTDIR: ""
-  services:
-    - name: docker:dind
-      command: ["--tls=false"]
-  # K3D Cluster は異なる Job に持ち越せないので、事前処理として実行する
-  before_script:
-    - apk --update add bash curl git
-    # スクリプトで asdf をセットアップする
-    - source setup-asdf.sh
-    # K3D をインストールする
-    - |
-      curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | sh
-      k3d version
-    # kubectl コマンドをインストールする
-    - |
-      curl -kLO https://dl.k8s.io/release/v"${K8S_NEXT_VERSION}"/bin/linux/amd64/kubectl
-      chmod +x ./kubectl
-      mv ./kubectl /usr/local/bin/kubectl
-      kubectl version
-    # Cluster を作成する
-    # registries.yaml ファイルを volume で配置する
-    # もし該当のバージョンのイメージがなければ、rc 版を使用する
-    - |
-      k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-k3s1 --agents 2 || \
-        k3d cluster create --config k3d-config.yaml "${CI_PIPELINE_ID}" --image rancher/k3s:v"${K8S_NEXT_VERSION}"-rc1-k3s1 --agents 2
-    # Node にラベル付けする
-    - |
-      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-0 node.kubernetes.io/nodetype=ingress --overwrite
-      kubectl label node k3d-"${CI_PIPELINE_ID}"-agent-1 node.kubernetes.io/nodetype=system --overwrite
-    # 動作を確認する
-    - k3d cluster list
-    - kubectl get node --show-labels
-  # Istio のインストールは、Helm を使った Istio のアップグレード手順に則る
-  # @see https://istio.io/latest/docs/setup/upgrade/helm/
-  script:
-    # CRD をインストールする
-    - kubectl apply -f https://raw.githubusercontent.com/istio/istio/"${ISTIO_NEXT_VERSION}"/manifests/charts/base/crds/crd-all.gen.yaml
-    # Namespace を作成する
-    - |
-      kubectl create ns istio-ingress
-      kubectl label ns istio-ingress istio.io/rev=default
-      kubectl create ns istio-system
-    # Namespace のラベルを確認する
-    - kubectl get ns -L istio.io/rev
-    # istiod チャートを Apply する
-    # ブルー/グリーンデプロイ時に新旧 Istiod を並行稼働させるために、helmfile.yaml にリビジョンをつける
-    - helmfile -e "${ENV}" -f helmfile_istiod_"${ISTIO_NEXT_VERSION//\./-}".yaml apply --skip-crds --skip-diff-on-install
-    # istio-base チャートを Apply する
-    - helmfile -e "${ENV}" -f helmfile_istio-base.yaml apply --skip-diff-on-install
-    # istio-ingressgateway チャートを Apply する
-    - helmfile -e "${ENV}" -f helmfile_istio-ingressgateway.yaml apply --skip-diff-on-install
-    # 動作を確認する
-    - istioctl version
-    - istioctl proxy-status
-    - kubectl get all -n istio-ingress
-    - kubectl get all -n istio-system
-    # Cluster を削除する
-    - k3d cluster delete $CI_PIPELINE_ID
-```
-
-#### ▼ `setup-asdf.sh` ファイル
-
-```bash
-#!/bin/bash
-
-# asdfをインストールする
-git clone --depth 1 https://github.com/asdf-vm/asdf.git ~/.asdf
-echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bashrc
-export ASDF_DIR=~/.asdf
-source ~/.bashrc
-
-# コマンドをインストールする
-asdf plugin add helm https://github.com/Antiarchitect/asdf-helm.git
-asdf plugin add helmfile https://github.com/feniix/asdf-helmfile.git
-asdf plugin add istioctl https://github.com/virtualstaticvoid/asdf-istioctl.git
-asdf install
-asdf list
-
-# 正しいバージョンをインストールできていることを確認する
-helm version
-helmfile version
-istioctl version
-```
 
 <br>

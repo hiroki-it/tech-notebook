@@ -56,79 +56,54 @@ formatters:
 
 <br>
 
-## 02. CI への導入
+## 02. セットアップ
 
-### GitLab CI
+### GitHub Actions 上で実行する場合
 
-```yaml
-variables:
-  GO_VERSION: "<Goのバージョン>"
-  # golangci-lint のイメージレイヤーから、使用している Go バージョンを確認する必要がある
-  # @see https://hub.docker.com/layers/golangci/golangci-lint/v1.50-alpine/images/sha256-9f44001cd4ce1e9749f2f1fb63adb76787b7dfcc77cb7b54e65e74ddac4132d8?context=explore
-  GOLANGCI_LINT: "<golangci-lintのバージョン>"
-
-stages:
-  - build
-  - test
-
-go_build:
-  stage: build
-  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golang:${GO_VERSION}
-  script:
-    # バージョンを確認する
-    - go version
-    - go mod tidy
-    # go mod tidy で差分があれば、CI を失敗させる
-    - git diff --exit-code
-
-go_lint:
-  stage: test
-  image: ${CI_DEPENDENCY_PROXY_DIRECT_GROUP_IMAGE_PREFIX}/golangci/golangci-lint:<必要なGoのバージョンを含むイメージ>-alpine
-  script:
-    - go version
-    # 有効化している静的解析の一覧を表示する
-    # GitLab CI では色が無効になってしまうため、有効化する
-    - golangci-lint linters --color always
-    # 静的解析を実行する
-    # GitLab CI では色が無効になってしまうため、有効化する
-    - golangci-lint run --color always --timeout 5m
-```
-
-<br>
-
-### GitHub Actions
-
-`.github/workflows/golangci-lint.yml` に配置する。Go のバージョンは `go.mod` に合わせ、既存の `.golangci.yml` を使って静的解析する。
+`.github/workflows/golangci-lint.yml` に配置する。Go と golangci-lint のバージョンを指定し、既存の `.golangci.yml` を使って静的解析する。
 
 ```yaml
 name: Go lint
 
 on:
   push:
-  pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  lint:
+  go-build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
         with:
-          go-version-file: go.mod
+          go-version: "<Goのバージョン>"
       - name: Check module files
         run: |
+          go version
           go mod tidy
-          # モジュール定義に変更が必要な場合はCIを失敗させる。
-          git diff --exit-code -- go.mod go.sum
-      - uses: golangci/golangci-lint-action@v9
-        with:
-          # .golangci.ymlのversion: "2"に対応するv2系を使う。
-          version: v2.3.4
-          args: --timeout=5m
+          # 差分があればCIを失敗させる
+          git diff --exit-code
+  go-lint:
+    needs: go-build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run golangci-lint
+        env:
+          # 必要なGoバージョンを含むイメージを指定する
+          GOLANGCI_LINT_IMAGE: golangci/golangci-lint:<必要なGoのバージョンを含むイメージ>-alpine
+        run: |
+          docker run --rm \
+            -v "$GITHUB_WORKSPACE:/app" \
+            -w /app \
+            "$GOLANGCI_LINT_IMAGE" sh -ec '
+              go version
+              golangci-lint linters --color always
+              golangci-lint run --color always --timeout 5m
+            '
 ```
 
 golangci-lint を更新する場合は、プロジェクトの Go バージョンと設定ファイルの互換性も確認する。

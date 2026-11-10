@@ -27,68 +27,7 @@ $ sudo apt-get update && sudo apt-get install packer
 
 <br>
 
-### CI による自動化
-
-#### ▼ GitLab CI
-
-```yaml
-variables:
-  AWS_DEFAULT_REGION: "ap-northeast-1"
-  AWS_ACCOUNT_ID: "*****"
-  AWS_IAM_ROLE: "gitlab-ci-packer"
-
-stages:
-  - build
-
-build_ami:
-  stage: build
-  # CI の実行環境
-  image: docker:19.03.0
-  # サービスコンテナ
-  services:
-    - name: docker:19.03.0-dind
-  variables:
-    GIT_SUBMODULE_STRATEGY: "recursive"
-  id_tokens:
-    GITLAB_OIDC_TOKEN:
-      aud: <GitLabのURL>
-  before_script:
-    - apt-get update && apt-get install -y git jq awscli
-    # 資格情報を取得する
-    - |
-      echo "sleeping random seconds (<15s)"
-      sleep $(( $RANDOM % 15 ))
-      count=0
-      backoff=1
-      until STS=($(aws sts assume-role-with-web-identity \
-      --role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/${AWS_IAM_ROLE} \
-      --role-session-name ""<任意のセッション名>" \
-      --web-identity-token $GITLAB_OIDC_TOKEN \
-      --duration-seconds 1800 \
-      --query 'Credentials.[AccessKeyId,SecretAccessKey,SessionToken]' \
-      --output text)) || (( count++ >= 5 )); do echo "Retrying: $backoff"; sleep $backoff; (( backoff*=2 )); done
-      export AWS_ACCESS_KEY_ID="${STS[0]}"
-      export AWS_SECRET_ACCESS_KEY="${STS[1]}"
-      export AWS_SESSION_TOKEN="${STS[2]}"
-      aws sts get-caller-identity
-  script:
-    - export SOURCE_IMAGE_ID=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 --region ${AWS_DEFAULT_REGION} --query 'Parameters[0].Value' --output text)
-    - echo "source ami-id: $SOURCE_IMAGE_ID"
-    # Packer を実行する
-    - packer init template.pkr.hcl
-    - packer build template.pkr.hcl
-    - AMI_NAME="foo-$(date "+%Y-%m-%d")"
-    - AMI_ID=$(aws ec2 describe-images --region ${AWS_DEFAULT_REGION} --owners self --filters "Name=name,Values=${AMI_NAME}" --query 'Images[*][ImageId]' --output text)
-    - SOURCE_IMAGE_NAME=$(git tag -l $CI_COMMIT_TAG -n | awk '{print $2}' | jq -r .image_name)
-    - echo $SOURCE_IMAGE_NAME
-  rules:
-    - if: $CI_COMMIT_TAG
-    - when: manual
-```
-
-> - [Calling AMI public parameters in Parameter Store - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/parameter-store-public-parameters-ami.html)
-
-#### ▼ GitHub Actions
+### GitHub Actions 上で実行する場合
 
 `.github/workflows/packer.yml` に配置し、手動実行またはタグの push で AMI を作成する。Repository variables に `AWS_ACCOUNT_ID` を登録し、AWS 側には `sts.amazonaws.com` を audience とする GitHub OIDC プロバイダーと `github-actions-packer` IAM ロールを用意する。ロールの信頼ポリシーで対象リポジトリ・ブランチ・タグを制限し、AMI 作成に必要な権限を付与する。
 
@@ -98,7 +37,7 @@ name: Build AMI
 on:
   workflow_dispatch:
   push:
-    tags: ["v*"]
+    tags: ["**"]
 
 permissions:
   contents: read
@@ -111,30 +50,41 @@ env:
 jobs:
   build-ami:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
+          fetch-depth: 0
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::${{ vars.AWS_ACCOUNT_ID }}:role/github-actions-packer
           aws-region: ${{ env.AWS_REGION }}
+          role-duration-seconds: 1800
+          retry-max-attempts: 6
       - uses: hashicorp/setup-packer@v3
         with:
           version: "1.14.0"
       - name: Resolve source AMI
         run: |
+          aws sts get-caller-identity
           SOURCE_IMAGE_ID=$(aws ssm get-parameter \
             --name /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-6.1-x86_64 \
             --query 'Parameter.Value' --output text)
+          echo "source ami-id: $SOURCE_IMAGE_ID"
           # Packerの実行ステップにAMI IDを渡す。
           echo "SOURCE_IMAGE_ID=$SOURCE_IMAGE_ID" >> "$GITHUB_ENV"
       - name: Build AMI
         run: |
           packer init template.pkr.hcl
-          packer validate template.pkr.hcl
           packer build template.pkr.hcl
+      - name: Inspect built AMI and tag annotation
+        env:
+          COMMIT_TAG: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+        run: |
+          AMI_NAME="foo-$(date "+%Y-%m-%d")"
+          AMI_ID=$(aws ec2 describe-images --region "$AWS_REGION" --owners self --filters "Name=name,Values=${AMI_NAME}" --query 'Images[*][ImageId]' --output text)
+          SOURCE_IMAGE_NAME=$(git tag -l $COMMIT_TAG -n | awk '{print $2}' | jq -r .image_name)
+          echo "$SOURCE_IMAGE_NAME"
 ```
 
 `template.pkr.hcl` は `env("SOURCE_IMAGE_ID")` で取得した AMI ID を参照する想定である。テンプレートが異なる変数名を使う場合は、それに合わせて渡し方を変更する。

@@ -28,7 +28,19 @@ command: |
 
 ### Updatecli
 
-マイクロサービスリポジトリの CI で Updatecli を実行し、Helm チャートリポジトリの yaml を更新する。
+GitHub Actions のタグ push 時に Updatecli を実行し、タグ名で Helm チャートリポジトリの yaml を更新する。
+
+実行ステップでは、タグの場合のみ `IMAGE_TAG` にタグ名を設定する。
+
+```yaml
+- name: Update image tag
+  if: github.ref_type == 'tag'
+  env:
+    IMAGE_TAG: ${{ github.ref_type == 'tag' && github.ref_name || '' }}
+  run: updatecli apply --config updatecli.yaml
+```
+
+`updatecli.yaml` を以下のように設定する。
 
 ```yaml
 name: Update image tag on values.yaml
@@ -45,7 +57,7 @@ sources:
   imageTag:
     kind: shell
     spec:
-      command: echo "{{ env "CI_COMMIT_TAG" }}"
+      command: echo "{{ env "IMAGE_TAG" }}"
 
 # 変更対象
 targets:
@@ -66,8 +78,8 @@ actions:
     spec:
       automerge: false
       description: |
-        values.yamlのイメージタグを `{{ env "CI_COMMIT_TAG" }}` に更新しました
-      title: "Update image tag to {{ env "CI_COMMIT_TAG" }} on values.yaml"
+        values.yamlのイメージタグを `{{ env "IMAGE_TAG" }}` に更新しました
+      title: 'Update image tag to {{ env "IMAGE_TAG" }} on values.yaml'
 ```
 
 > - [GitHub - updatecli/updatecli: A Declarative Update Policy Engine · GitHub](https://github.com/updatecli/updatecli)
