@@ -91,6 +91,7 @@ extra_css:
 # MkDocsのフック
 hooks:
   - hooks/ordered_list_start.py
+  - hooks/tag_index.py
 
 # 標準プラグイン
 markdown_extensions:
