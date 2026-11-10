@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】デバッグロジック＠PHP
-description: デバッグロジック＠PHPの知見を記録しています。
+title: 【IT技術の知見】デバッグ＠PHP
+description: デバッグ＠PHPの知見を記録しています。
 ---
 
-# デバッグロジック＠PHP
+# デバッグ＠PHP
 
 ## はじめに
 

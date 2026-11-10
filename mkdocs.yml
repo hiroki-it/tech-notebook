@@ -459,16 +459,19 @@ nav:
           - PHP: language/language_php.md
           - 設定: language/language_php_conf.md
           - コマンド: language/language_php_command.md
-          - ■ クラスベース:
-              - クラス: language/language_php_class_based.md
-              - 関数/データ: language/language_php_class_based_function_data.md
-              - データ型: language/language_php_class_based_data_structure.md
-          - ■ ロジック:
-              - バリデーションロジック: language/language_php_logic_validation.md
-              - エラーとエラーハンドリング: language/language_php_logic_error_and_error_handling.md
-              - 反復ロジック: language/language_php_logic_iteration.md
-              - アルゴリズム: language/language_php_logic_algorithm.md
-              - デバッグ: language/language_php_logic_debug.md
+          - ■ 言語機能:
+              - データ・型: language/language_php_feature_data.md
+              - 変数・スコープ: language/language_php_feature_variable_and_scope.md
+              - 関数: language/language_php_feature_function.md
+              - オブジェクト: language/language_php_feature_object.md
+              - モジュール: language/language_php_feature_module.md
+              - 制御構文: language/language_php_feature_control_flow.md
+              - エラー処理: language/language_php_feature_error_handling.md
+              - バリデーション: language/language_php_feature_validation.md
+              - 入出力: language/language_php_feature_input_output.md
+              - 正規表現: language/language_php_feature_regular_expression.md
+              - アルゴリズム: language/language_php_feature_algorithm.md
+              - デバッグ: language/language_php_feature_debug.md
           - ■ フレームワーク:
               - ■ Laravel:
                   - コンポーネント: language/language_php_framework_laravel_component.md

@@ -118,19 +118,20 @@ hide:
 
 - #### [︎コマンド](https://hiroki-it.github.io/tech-notebook/language/language_php_command.html)
 
-- #### <u>クラスベース</u>
+- #### <u>言語機能</u>
 
-  > - ##### [︎クラス](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based.html)
-  > - ##### [︎関数/データ](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_function_data.html)
-  > - ##### [︎データ型](https://hiroki-it.github.io/tech-notebook/language/language_php_class_based_data_structure.html)
-
-- #### <u>ロジック</u>
-
-  > - ##### [︎バリデーションロジック](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html)
-  > - ##### [︎エラーとエラーハンドリング](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_error_and_error_handling.html)
-  > - ##### [︎反復ロジック](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_iteration.html)
-  > - ##### [︎アルゴリズム](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_algorithm.html)
-  > - ##### [︎デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_debug.html)
+  > - ##### [データ・型](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_data.html)
+  > - ##### [変数・スコープ](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_variable_and_scope.html)
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_function.html)
+  > - ##### [オブジェクト](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_object.html)
+  > - ##### [モジュール](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_module.html)
+  > - ##### [制御構文](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_control_flow.html)
+  > - ##### [エラー処理](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_error_handling.html)
+  > - ##### [バリデーション](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_validation.html)
+  > - ##### [入出力](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_input_output.html)
+  > - ##### [正規表現](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_regular_expression.html)
+  > - ##### [アルゴリズム](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_algorithm.html)
+  > - ##### [デバッグ](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_debug.html)
 
 - #### <u>フレームワーク</u>
 

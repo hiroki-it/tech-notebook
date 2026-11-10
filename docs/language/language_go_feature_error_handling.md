@@ -278,7 +278,7 @@ func GracefulShutdown() {
 
 例外スローの意義は、以下の参考にせよ。
 
-> - [【IT技術の知見】バリデーションロジック＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_logic_validation.html)
+> - [【IT技術の知見】バリデーションロジック＠PHP - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/language/language_php_feature_validation.html)
 
 #### ▼ Go には例外がない
 

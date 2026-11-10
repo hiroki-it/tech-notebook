@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】バリデーションロジック＠PHP
-description: バリデーションロジック＠PHPの知見を記録しています。
+title: 【IT技術の知見】制御構文＠PHP
+description: 制御構文＠PHPの知見を記録しています。
 ---
 
-# バリデーションロジック＠PHP
+# 制御構文＠PHP
 
 ## はじめに
 
@@ -11,87 +11,7 @@ description: バリデーションロジック＠PHPの知見を記録してい�
 
 <br>
 
-## 01. バリデーション
-
-### バリデーションの必要性の有無
-
-#### ▼ 不要な場合
-
-DB から読み込んだ後に直接的に表示する値の場合、DB で Null にならないように制約をかけられる。
-
-そのため、値が想定通りの状態になっているかをあらためてバリデーションする必要はない。
-
-#### ▼ 必要な場合
-
-DB からの値を直接的に表示する場合と異なり、新しく作られる値を使用する場合、その値が想定外の状態になっている可能性がある。
-
-そのため、値が想定通りの状態になっているかをバリデーションする必要がある。
-
-<br>
-
-### バリデーションパターンとバリデーション関数の対応
-
-✅：`TRUE` になる。
-
-空欄：`FALSE` になる。
-
-<table>
-  <thead>
-    <tr>
-      <th style="text-align:center">バリデーションパターン</th>
-      <th style="text-align:center"><code>isset($var)</code>、<code>!is_null($var)</code></th>
-      <th style="text-align:center"><code>if($var)</code>、<code>!empty($var)</code></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="text-align:center"><strong><code>null</code></strong></td>
-      <td style="text-align:center"></td>
-      <td style="text-align:center"></td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><strong><code>0</code></strong></td>
-      <td style="text-align:center">✅</td>
-      <td style="text-align:center"></td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><strong><code>1</code></strong></td>
-      <td style="text-align:center">✅</td>
-      <td style="text-align:center">✅</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><strong><code>&quot;&quot;</code></strong> (空文字)</td>
-      <td style="text-align:center">✅</td>
-      <td style="text-align:center"></td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><strong><code>&quot;あ&quot;</code></strong></td>
-      <td style="text-align:center">✅</td>
-      <td style="text-align:center">✅</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><strong><code>array(0)</code></strong></td>
-      <td style="text-align:center">✅</td>
-      <td style="text-align:center"></td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><strong><code>array(1)</code></strong></td>
-      <td style="text-align:center">✅</td>
-      <td style="text-align:center">✅</td>
-    </tr>
-    <tr>
-      <td style="text-align:center"><strong>使いどころ</strong></td>
-      <td style="text-align:center"><code>null</code> のみをバリデーションしたい場合</td>
-      <td style="text-align:center"><code>null</code>、<code>0</code>、<code>&quot;&quot;</code>、<code>[]</code> をバリデーションしたい場合</td>
-    </tr>
-  </tbody>
-</table>
-
-> - [PHP isset, empty, is_null の違い早見表 #PHP - Qiita](https://qiita.com/shinichi-takii/items/00aed26f96cf6bb3fe62)
-
-<br>
-
-## 02. 条件式
+## 01. 条件式
 
 ### if-elseif-else 、switch-case-break
 
@@ -474,63 +394,453 @@ function leapYear(int $year): string
 
 <br>
 
-## 02-02. インスタンスのバリデーション
+## 02. 反復対象のデータ
 
-### 等価演算子
+### 配列
 
-#### ▼ イコールが `2` 個の場合
+#### ▼ 走査 (スキャン)
 
-同じオブジェクトから別々に作られたインスタンスであっても、『同じもの』として認識される。
+配列内の要素を順に調べていくことを『走査 (スキャン) 』という。
+
+例えば、`foreach` は、配列内のすべての要素を走査する処理である。
+
+下図では、連想配列が表現されている。
+
+![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/配列の走査.png)
+
+#### ▼ 内部ポインタと配列の関係
+
+『内部ポインタ』とは、PHP の配列で、参照したい要素を位置で指定するためのカーソルのこと。
 
 ```injectablephp
 <?php
 
-class Example {};
+$array = ['あ', 'い', 'う'];
 
-if(new Example == new Example){
-    echo "同じです";
-} else { echo "異なります"; }
+// 内部ポインタが現在指定している要素を出力。
+echo current($array); // あ
 
-// 実行結果
-// 同じです
+// 内部ポインタを1つ進め、要素を出力。
+echo next($array); // い
+
+// 内部ポインタを1つ戻し、要素を出力。
+echo prev($array); // あ
+
+// 内部ポインタを最後まで進め、要素を出力。
+echo end($array); // う
+
+// 内部ポインタを最初まで戻し、要素を出力
+echo reset($array); // あ
 ```
 
-#### ▼ イコールが `3` 個の場合
+<br>
 
-同じオブジェクトから別々に作られたインスタンスであっても、『異なるもの』として認識される。
+## 03. foreach
+
+### 文法
+
+#### ▼ 基本
+
+配列を走査する。
 
 ```injectablephp
 <?php
 
-class Example {};
-
-if (new Example === new Example) {
-    echo "同じです";
-} else {
-    echo "異なります";
+$array = [1, 2, 3, 4];
+foreach ($array as &$value) {
+    $value = $value * 2;
+    echo $value;
 }
-
-// 実行結果
-// 異なります
 ```
 
-同じインスタンスの場合のみ、『同じもの』として認識される。
+#### ▼ 制御文
+
+![流れ図_foreach文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_foreach文.png)
 
 ```injectablephp
 <?php
 
-class Example {};
+$a = [1, -1, 2];
+$sum = 0;
 
-$a = $b = new Example;
+foreach ($a as $foo) {
+    if ($foo > 0) {
+        $sum += $foo;
+    }
+}
+```
 
-if ($a === $b) {
-    echo "同じです";
-} else {
-    echo "異なります";
+<br>
+
+### 一次元配列の走査
+
+#### ▼ 配列関数
+
+複雑な走査をするために、ビルトイン関数が用意されている。
+
+> - [PHP: 配列 関数 - Manual](https://www.php.net/manual/ja/ref.array.php)
+
+#### ▼ 配列の値へのアクセス
+
+単に配列を作るのみでなく、要素にアクセスするためにも使われる。
+
+```injectablephp
+<?php
+
+class Foo
+{
+     /**
+     * オプションを調べて、文字列を返却します。
+     */
+    public function printOption(array $options): string
+    {
+        $result = '何も設定されていません。';
+
+        // $options配列には、OptionA,B,Cエンティティのいずれかが格納されていると想定
+        foreach ($options as $option) {
+
+            if ($option->name() == 'オプションA') {
+                $result = 'オプションAが設定されています。';
+            }
+
+            if ($option->name() == 'オプションB') {
+                $result = 'オプションBが設定されています。';
+            }
+
+            if ($option->name() == 'オプションC') {
+                $result = 'オプションCが設定されています。';
+            }
+
+            return $result;
+        }
+
+        return $result;
+    }
+}
+```
+
+#### ▼ 配列の各値を加算代入
+
+```injectablephp
+<?php
+
+// 以下の引数が渡されると想定
+// ($K, $A) = (4, [1, 2, 3, 4, 1, 1, 3])
+
+function iteration(int $K, array $A): void
+{
+    $topesNumber = 0;
+
+    $currentLength = 0;
+
+    for ($i = 0; $i < count($A); $i++) {
+
+        // 前回の走査に今回のものを加算する。
+        $currentLength += $A[$i];
+
+        if ($currentLength >= $K) {
+            // 加算代入
+            $topesNumber++;
+
+            // 長さを元に戻す。
+            $currentLength = 0;
+        }
+    }
 }
 
-// 実行結果
-// 同じです
+```
+
+#### ▼ 配列の値を固定
+
+```injectablephp
+<?php
+
+// 以下の引数が渡されると想定
+// ($M, $A) = (6, [3, 4, 5, 5, 2])
+
+function iteration(int $M, array $A): int {
+
+    $count = 0;
+
+    foreach ($A as $key => $value) {
+
+        // vを固定して、以降のvと比較する。
+        for ($i = $key; $i < count($A); $i++) {
+            if($value <= $A[$i]){
+                // 加算代入
+                $count++;
+            }
+        }
+    }
+
+    return $count;
+}
+```
+
+<br>
+
+### 多次元配列の走査
+
+#### ▼ 二次元配列を一次元配列に変換
+
+コールバック関数の使用が必要になる。
+
+`call_user_func_array()` 関数の第一引数に、コールバック関数の `array_merge()` 関数の文字列を渡し、第二引数に 2 次元配列を渡す。
+
+その結果、平坦になって 1 次元配列になる。
+
+例えば、不要なインデックス (0) で入れ子になっている場合に役に立つ。
+
+```injectablephp
+<?php
+
+$twoDimension = [
+  [
+    'date'  => '2015/11/1',
+    'score' => 100,
+    'color' => 'red',
+  ],
+  [
+    'date'  => '2015/11/2',
+    'score' => 75,
+    'color' => 'blue',
+  ]
+];
+
+$oneDimension = call_user_func_array(
+  'array_merge',
+  // 二次元配列
+  $twoDimension
+);
+```
+
+#### ▼ 多次元配列でキー名から値を取得
+
+例えば、以下のような多次元配列があったとする。
+
+配列の score キーから値を取り出し、1 次元配列を作成する。
+
+```injectablephp
+<?php
+
+$twoDimension = [
+  [
+    'date'  => '2015/11/1',
+    'score' => 100,
+    'color' => 'red',
+  ],
+  [
+    'date'  => '2015/11/2',
+    'score' => 75,
+    'color' => 'blue',
+  ]
+];
+
+// この配列のscoreキーから値を取り出し、一次元配列を作成する。
+$oneDimension = array_column($twoDimension, 'score');
+
+// Array
+// (
+//     [0] => 100
+//     [1] => 75
+// )
+```
+
+<br>
+
+## 04. while
+
+### 文法
+
+#### ▼ 基本
+
+配列の走査を含む反復処理を実行する。
+
+ただし、配列の走査は、`while` ではなく `foreach` を使用する。
+
+また、`for` とは異なり、反復回数が決まっていない場合に使用する。
+
+```injectablephp
+<?php
+
+$count = 0;
+// 反復回数が決まっていないため、満たせたらbreakで停止する。
+while(true) {
+
+    if($count == 10){
+        break;
+    }
+
+    $count++;
+}
+
+echo $count;
+```
+
+#### ▼ 制御文
+
+![流れ図_while文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_while文.png)
+
+```injectablephp
+<?php
+
+$a = [1, -1, 2];
+$sum = 0;
+
+$i = 0;
+while (true) {
+
+    // 全て走査したら停止
+    if($i == count($a)) {
+        break;
+    }
+
+    $foo = $a[$i];
+
+    if($foo > 0) {
+        $sum += $foo;
+    }
+
+    // 代入加算
+    $i ++;
+}
+```
+
+<br>
+
+### 無限ループ
+
+#### ▼ 無限ループとは
+
+反復処理では、何らかの状態になったときは反復処理を終えなければならない。
+
+しかし、終えられないと、無限ループが発生してしまう。
+
+<br>
+
+## 05. for
+
+### 文法
+
+#### ▼ 基本
+
+配列の走査を含む反復処理を実行する。
+
+ただし、配列の走査は、`for` ではなく `foreach` を使用する。
+
+また、`while` とは異なり、反復回数が決まっている場合に使用する。
+
+```injectablephp
+<?php
+
+// 10回反復することが決まっている。
+for($i = 1; $i <= 10; $i++){
+    $count++;
+}
+
+echo $count;
+```
+
+#### ▼ 制御文
+
+![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_for文.png)
+
+```injectablephp
+<?php
+
+$a = [1, -1, 2];
+$sum = 0;
+
+for ($i = 0; $i < 2; $i++) {
+    $foo = $a[$i];
+    if ($foo > 0) {
+        $sum += $foo;
+    }
+}
+
+echo $sum;
+
+// 1
+```
+
+<br>
+
+## 06. 反復回数の変更
+
+### continue
+
+#### ▼ continue とは
+
+反復処理の現在のループをスキップし、次のループを開始する。
+
+```injectablephp
+<?php
+
+$array = [1, 2, 3, 4, 5];
+
+foreach ($array as $key => $value) {
+
+    // キーが偶数の組をスキップする。
+    if (!($key % 2 == 0)) {
+        continue;
+    }
+
+    echo $value . 'は奇数です' . "\n";
+}
+
+// 1は奇数です
+// 3は奇数です
+// 5は奇数です
+```
+
+#### ▼ array_walk を使用した代替法
+
+反復処理のループを `continue` でスキップするときと同じ動作を、配列を処理する関数のコールバック関数の早期リターンで実現できる。
+
+`continue` を使用するより、こちらのほうがよい。
+
+```injectablephp
+<?php
+
+$array = [1, 2, 3, 4, 5];
+
+array_walk($array, function (int $value, int $key): void {
+
+    // キーが偶数の組をスキップする。
+    if (!($key % 2 == 0)) {
+        return; // continueと同じ動作を早期リターンで実現する。
+    }
+
+    echo $value . 'は奇数です' . "\n";
+});
+
+// 1は奇数です
+// 3は奇数です
+// 5は奇数です
+```
+
+<br>
+
+### break
+
+#### ▼ break とは
+
+反復処理の現在のループを停止し、以降のループも実行しない。
+
+```injectablephp
+<?php
+
+$array = [1, 2, 3, 4, '', 5];
+
+foreach ($array as $value) {
+
+    // 空の値で繰り返しを停止する。
+    if (empty($value)) {
+        break;
+    }
+
+    echo $value;
+}
 ```
 
 <br>

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】クラス＠PHP
-description: クラス＠PHPの知見を記録しています。
+title: 【IT技術の知見】モジュール＠PHP
+description: モジュール＠PHPの知見を記録しています。
 ---
 
-# クラス＠PHP
+# モジュール＠PHP
 
 ## はじめに
 
@@ -11,92 +11,7 @@ description: クラス＠PHPの知見を記録しています。
 
 <br>
 
-## 01. 継承
-
-### Trait
-
-#### ▼ Trait とは
-
-![Trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Trait.png)
-
-再利用したい関数や状態を部品化し、必要に応じてクラスに取り込む。
-
-Trait を使用するときは、クラス内で Trait を use 宣言する。
-
-Trait 自体は不完全なクラスであり、インスタンス化できない。
-
-また、親クラスでトレイトを読み込むと、子クラスでもトレイトを使用できる。
-
-```injectablephp title="PHP の場合の実装例"
-<?php
-
-trait FooTrait
-{
-    public function foo(): void
-    {
-        echo "Hello World";
-    }
-}
-
-class Foo
-{
-    use FooTrait;
-}
-
-$foo = new Foo();
-$foo->foo(); // Hello World
-
-class Bar extends Foo {}
-
-$bar = new Bar();
-$bar->foo(); // Hello World
-```
-
-#### ▼ マジック関数を禁止する Trait
-
-マジック関数を使用すると、処理が多くなるため、性能が悪くなる。
-
-そこで、各クラスで trait を使用して、マジック関数をコールしたときに、開発者向けにエラーを発生させる。
-
-マジックゲッター関数とマジックセッター関数がコールされることを禁止する。
-
-```injectablephp title="PHP の場合の実装例"
-<?php
-
-declare(strict_types=1);
-
-namespace App\Traits;
-
-/**
- * 使用制限マジック関数トレイト
- */
-trait UnsupportedMagicMethodTrait
-{
-    /**
-     * 性能の観点から、マジックゲッター関数の使用を制限する
-     *
-     * @throws \Exception
-     */
-    public function __get(string $name): mixed
-    {
-        throw new \Exception("This method is not supported");
-    }
-
-    /**
-     * 性能の観点から、マジックセッター関数の使用を制限する
-     *
-     * @throws \Exception
-     */
-    public function __set(string $name, mixed $value): void
-    {
-        throw new \Exception("This method is not supported");
-    }
-}
-```
-
-<br>
-
-## 02. 外部ファイルの読み出し
+## 01. 外部ファイルの読み出し
 
 ### `require_once()` 関数による、クラス、非クラスの関数の読み出し
 

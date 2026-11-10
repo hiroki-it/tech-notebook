@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】データ型＠PHP
-description: データ型＠PHPの知見を記録しています。
+title: 【IT技術の知見】データ・型＠PHP
+description: データ・型＠PHPの知見を記録しています。
 ---
 
-# データ型＠PHP
+# データ・型＠PHP
 
 ## はじめに
 
