@@ -9,7 +9,7 @@ description: TypeScriptの知見を記録しています。
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
-<br>
+<br>01. TypeScript とは
 
 ## 01. TypeScript とは
 
@@ -993,7 +993,151 @@ const myEnv: Env = {
 
 <br>
 
-## 06. パッケージ
+## 06. プログラミングパラダイム
+
+### オブジェクト指向型
+
+オブジェクトは内部に状態を持つ。
+
+副作用はあってもなくてもよい。
+
+状態・振る舞いが結合している。
+
+ほかのプログラミングパラダイムと共存できる。
+
+```typescript
+interface User {
+  readonly name: string;
+  isAdult(): boolean;
+}
+
+function createUser(name: string, age: number): User {
+  return {
+    name,
+    // 振る舞い
+    isAdult(): boolean {
+      return age >= 18;
+    },
+  };
+}
+
+const user = createUser("Alice", 20);
+console.log(user.isAdult()); // true
+```
+
+<br>
+
+### 関数型
+
+振る舞いは状態を持たず、外部から状態を受け取る。
+
+副作用を起こさず、同じ入力に対して同じ出力を返す。
+
+状態・振る舞いが分離している。
+
+ほかのプログラミングパラダイムと共存できる。
+
+```typescript
+interface User {
+  readonly name: string;
+  readonly age: number;
+}
+
+// 振る舞い
+function isAdult(user: User): boolean {
+  return user.age >= 18;
+}
+
+// データを作成し、関数へ渡す
+const user: User = {name: "Alice", age: 20};
+console.log(isAdult(user)); // true
+```
+
+<br>
+
+## 07. 実装スタイル
+
+### インターフェースによるオブジェクトの表現
+
+#### ▼ 通常のオブジェクトの場合
+
+インターフェースで型を定義し、生成関数が返すオブジェクトに状態と振る舞いを持たせる。
+
+```typescript
+interface User {
+  readonly name: string;
+  isAdult(): boolean;
+}
+
+function createUser(name: string, age: number): User {
+  return {
+    name,
+    isAdult(): boolean {
+      return age >= 18;
+    },
+  };
+}
+
+const user = createUser("Alice", 20);
+console.log(user.isAdult()); // true
+```
+
+#### ▼ エラーの場合
+
+独自エラーは、`instanceof` で実行時の判別と型の絞り込みを行えるよう、標準の `Error` を継承するクラスで定義する。
+
+```typescript
+class BadRequestError extends Error {
+  override readonly name = "BadRequestError";
+  readonly statusCode = 400;
+
+  constructor() {
+    super("リクエスト形式が不正です");
+  }
+}
+
+try {
+  throw new BadRequestError();
+} catch (error: unknown) {
+  // ここではerrorの型はunknown
+  // instanceofが実行時の判別と型の絞り込みを行ってくれる
+  if (error instanceof BadRequestError) {
+    // この分岐ではBadRequestError型に絞り込まれる
+    console.log(error.statusCode); // 400
+    console.log(error.message);
+  } else {
+    throw error;
+  }
+}
+```
+
+> - [TypeScript Handbook - instanceof narrowing](https://www.typescriptlang.org/docs/handbook/2/narrowing.html#instanceof-narrowing)
+> - [Google TypeScript Style Guide - Exception handling](https://google.github.io/styleguide/tsguide.html#exception-handling)
+> - [Error - Custom error types - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error#custom_error_types)
+
+### クラスによるオブジェクトの表現
+
+クラスで状態と振る舞いを定義し、`new` でオブジェクトを生成する。
+
+```typescript
+class User {
+  constructor(
+    public readonly name: string,
+    private readonly age: number,
+  ) {}
+
+  isAdult(): boolean {
+    return this.age >= 18;
+  }
+}
+
+const user = new User("Alice", 20);
+console.log(user.isAdult()); // true
+```
+
+<br>
+
+## 08. パッケージ
 
 ### import
 

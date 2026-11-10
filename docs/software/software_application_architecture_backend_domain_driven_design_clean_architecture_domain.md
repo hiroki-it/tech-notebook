@@ -9,7 +9,7 @@ description: ドメイン層＠クリーンアーキテクチャの知見を記�
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 
-TypeScript の例では、インターフェースで型を定義し、生成関数でドメインオブジェクトを作る。非公開の状態はクロージャーに保持し、共通の処理は関数やオブジェクトの合成で共有する。
+TypeScript の例では、インターフェースで型を定義し、生成関数でドメインオブジェクトを作る。非公開の状態はクロージャーに保持し、共通の処理は関数やオブジェクトの合成で共有する。独自エラーには `Error` を継承するクラスを使う。
 
 <br>
 
@@ -835,11 +835,12 @@ TypeScript の例では、インターフェースで型を定義し、生成関
 === "TypeScript"
 
     ```typescript title="TypeScript の場合の実装例"
-    export interface FooException extends Error {
-      readonly name: "FooException";
-    }
-    export function createFooException(message: string): FooException {
-      return Object.assign(new Error(message), {name: "FooException" as const});
+    export class FooException extends Error {
+      override readonly name = "FooException";
+
+      constructor(message: string) {
+        super(message);
+      }
     }
     ```
 

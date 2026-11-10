@@ -202,14 +202,14 @@ description: 13章＠ドメイン駆動設計入門ボトムアップの知見�
         const circleUpperLimit = premiumUserNumber < 10 ? 30 : 50;
 
         if (circle.countMembers() >= circleUpperLimit) {
-          throw createCircleFullException(circleId);
+          throw new CircleFullException(circleId);
         }
 
         const memberId = createUserId(command.userId);
         const member = await userRepository.find(memberId);
 
         if (!member) {
-          throw createUserNotFoundException(
+          throw new UserNotFoundException(
             memberId,
             "ユーザが見つかりませんでした。",
           );

@@ -198,7 +198,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
           throw new Error("ArgumentNullException: member");
         }
         if (state.members.length >= 29) {
-          throw createCircleFullException(state.id);
+          throw new CircleFullException(state.id);
         }
         state.members.push(member); // ここ
       }
@@ -436,7 +436,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
     ```typescript title="TypeScript の場合の実装例"
     if (circle.members.length >= 29) {
-      throw createCircleFullException(circleId);
+      throw new CircleFullException(circleId);
     }
     ```
 
@@ -504,7 +504,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
           throw new Error("ArgumentNullException: user");
         }
         if (isFull()) {
-          throw createCircleFullException(state.id);
+          throw new CircleFullException(state.id);
         }
         state.members.push(user);
       }
@@ -563,7 +563,7 @@ Circle が Members の数を検証しないといけないはずが、Circle 内
 
     ```typescript title="TypeScript の場合の実装例"
     if (circle.isFull()) {
-      throw createCircleFullException(circleId);
+      throw new CircleFullException(circleId);
     }
     ```
 
@@ -1404,7 +1404,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
         const circle = await circleRepository.find(id);
         if (!circle) {
-          throw createCircleNotFoundException(id);
+          throw new CircleNotFoundException(id);
         }
 
         if (command.name !== null && command.name !== undefined) {
@@ -1412,7 +1412,7 @@ UserId を使用するようにしたメリットはほかにもある。
           circle.changeName(name);
 
           if (await circleService.exists(circle)) {
-            throw createCanNotRegisterCircleException(
+            throw new CanNotRegisterCircleException(
               circle,
               "サークルは既に存在しています。",
             );
