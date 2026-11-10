@@ -162,6 +162,11 @@ hide:
 
 - #### [︎Python](https://hiroki-it.github.io/tech-notebook/language/language_python.html)
 
+- #### <u>言語機能</u>
+
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_python_feature_function.html)
+  > - ##### [モジュール](https://hiroki-it.github.io/tech-notebook/language/language_python_feature_module.html)
+
 - #### <u>フレームワーク</u>
 
   > - ##### <u>Flask</u>

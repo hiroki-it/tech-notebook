@@ -494,6 +494,9 @@ nav:
               - ユーティリティパッケージ: language/language_php_package_utility.md
       - ■ Python:
           - Python: language/language_python.md
+          - ■ 言語機能:
+              - 関数: language/language_python_feature_function.md
+              - モジュール: language/language_python_feature_module.md
           - ■ フレームワーク:
               - ■ Flask:
                   - コンポーネント: language/language_python_framework_flask_component.md
