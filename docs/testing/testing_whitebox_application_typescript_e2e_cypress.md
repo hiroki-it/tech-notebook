@@ -204,6 +204,240 @@ describe("画面名", () => {
 
 <br>
 
+### パフォーマンス改善
+
+#### ▼ データベースの初期化に DELETE を使う
+
+テストケースごとにデータベースを空にする場合、件数の少ないテストデータでは、テーブルを作り直す `TRUNCATE` より行を削除する `DELETE` の方が速い。
+
+```typescript
+// テストデータを投入する前に、全テーブルの行を削除する
+async function deleteAllRows() {
+  const tables = await prisma.$queryRaw<{ TABLE_NAME: string }[]>`
+    SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME != '_prisma_migrations'
+  `;
+
+  // SET FOREIGN_KEY_CHECKS はコネクション単位の設定のため、同一トランザクションで実行する
+  await prisma.$transaction([
+    prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0`,
+    // TRUNCATE ではなく DELETE で行を削除する
+    ...tables.map(({ TABLE_NAME }) =>
+      prisma.$executeRawUnsafe(`DELETE FROM \`${TABLE_NAME}\``)
+    ),
+    prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 1`,
+  ]);
+}
+
+export async function resetTestDb() {
+  await deleteAllRows();
+  await dbSeed();
+}
+
+// cypress.config.ts
+setupNodeEvents: (on, config) => {
+  on("task", {
+    resetTestDb: async () => {
+      await resetTestDb();
+      return null;
+    },
+  });
+},
+
+// テストスイート
+beforeEach(() => {
+  // テストケースごとにデータベースを初期化する
+  cy.task("resetTestDb");
+});
+```
+
+#### ▼ 初期データのパスワードハッシュをキャッシュする
+
+初期データのパスワードは固定のため、重いハッシュ計算をテストケースごとに行わず、プロセス内でキャッシュする。
+
+```typescript
+// パスワードごとに、ハッシュ計算の結果を保持する
+const hashedPasswordCache = new Map<string, Promise<string>>();
+
+function getHashedPassword(password: string) {
+  // 2回目以降は、キャッシュしたハッシュを返す
+  const cached = hashedPasswordCache.get(password);
+  if (cached) return cached;
+  const hashedPassword = hashPassword(password);
+  hashedPasswordCache.set(password, hashedPassword);
+  return hashedPassword;
+}
+
+export async function dbSeed() {
+  await prisma.user.create({
+    data: {
+      email: user1.email,
+      // 毎回ハッシュ計算せず、キャッシュを使う
+      hashedPassword: await getHashedPassword(user1.password),
+    },
+  });
+}
+
+// テストスイート（resetTestDb タスクの中で dbSeed を実行する）
+beforeEach(() => {
+  cy.task("resetTestDb");
+});
+```
+
+#### ▼ 認証アーティファクトを cy.session で使い回す
+
+画面操作でログインせず、`cy.request` でログインして得た認証アーティファクトを `cy.session` で保存し、テストケース間で使い回す。
+
+```typescript
+// cypress/support/commands.ts
+Cypress.Commands.add("login", () => {
+  // 初回だけログインし、2回目以降は保存した認証アーティファクトを復元する
+  cy.session([user.email], () => {
+    // 画面を操作せず、リクエストでログインする
+    cy.request({
+      method: "POST",
+      url: "/signin",
+      form: true,
+      body: { email: user.email, password: user.password },
+    });
+    cy.getCookie("__session").should("exist");
+  });
+});
+```
+
+#### ▼ ハイドレーションの完了を検知して待つ
+
+固定時間の `cy.wait` ではなく、ハイドレーションの完了時にアプリケーションが付与する目印を待つ。
+
+```typescript
+// アプリケーション側（ルートコンポーネント）
+useEffect(() => {
+  // ハイドレーションが完了したら、目印を付ける
+  document.documentElement.dataset.hydrated = "true";
+}, []);
+
+// Cypress 側
+Cypress.Commands.add("waitForHydration", () => {
+  // 目印が付くまで待つ
+  cy.get("html[data-hydrated=true]");
+});
+
+// テストスイート
+cy.visit("/");
+// 固定時間の cy.wait の代わりに使う
+cy.waitForHydration();
+```
+
+#### ▼ タイムアウトを短くする
+
+タイムアウトが長すぎると失敗したテストケースが長時間待ち続けるため、CI 環境でも余裕のある範囲で短くする。
+
+```typescript
+// cypress.config.ts
+export default defineConfig({
+  e2e: {
+    // 300秒などの長い値ではなく、30〜60秒にする
+    defaultCommandTimeout: 30000,
+    execTimeout: 60000,
+    taskTimeout: 60000,
+    pageLoadTimeout: 60000,
+    responseTimeout: 60000,
+    requestTimeout: 30000,
+  },
+});
+```
+
+#### ▼ テストファイルをジョブに分けて並列実行する
+
+テストファイルをディレクトリ単位で別々の CI ジョブに分け、並列に実行する。
+
+```yaml
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      # ディレクトリごとにジョブを作り、並列に実行する
+      matrix:
+        spec: [auth, project]
+    steps:
+      - uses: actions/checkout@v4
+      # ジョブごとに、担当するディレクトリのテストファイルだけを実行する
+      - run: npx cypress run --spec "cypress/e2e/${{ matrix.spec }}/*"
+```
+
+#### ▼ 動画とスクリーンショットをリトライ時だけ記録する
+
+初回の実行では動画とスクリーンショットを記録せず、リトライ時だけ記録することで、動画のエンコード時間を省く。
+
+```yaml
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: npx cypress run
+        env:
+          # 再実行（2回目以降）のときだけ true になる
+          CYPRESS_CI_VIDEO: ${{ github.run_attempt > 1 }}
+```
+
+```typescript
+// cypress.config.ts
+export default defineConfig({
+  // 動画を記録するときも圧縮する
+  videoCompression: 10,
+  e2e: {
+    setupNodeEvents: (on, config) => {
+      return {
+        ...config,
+        // 環境変数が true のときだけ、動画とスクリーンショットを記録する
+        video: process.env.CYPRESS_CI_VIDEO === "true",
+        screenshotOnRunFailure: process.env.CYPRESS_CI_VIDEO === "true",
+      };
+    },
+  },
+});
+```
+
+#### ▼ 本番用にビルドしたアプリケーションに対して実行する
+
+開発用サーバーではなく、本番用にビルドしたアプリケーションを起動してテストを実行する。
+
+```json
+{
+  "scripts": {
+    // テストの前に、本番用にビルドする
+    "pretest:e2e:run": "npm run build",
+    // ビルドしたアプリケーションを起動してから、テストを実行する
+    "test:e2e:run": "start-server-and-test start http://localhost:8811 \"npx cypress run\""
+  }
+}
+```
+
+#### ▼ Cypress 本体と依存パッケージをキャッシュする
+
+CI ジョブごとに Cypress 本体と依存パッケージをダウンロードし直さないよう、キャッシュする。
+
+```yaml
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        with:
+          # Cypress 本体と依存パッケージをキャッシュする
+          path: |
+            ~/.cache/Cypress
+            node_modules
+          # 依存パッケージが変わったときだけ、キャッシュを作り直す
+          key: ${{ runner.os }}-cypress-${{ hashFiles('yarn.lock') }}
+      - run: yarn install --frozen-lockfile
+```
+
+<br>
+
+
 ## 04. 事前処理
 
 ### cypress.config.ts
