@@ -178,6 +178,11 @@ hide:
 
 - #### [︎R](https://hiroki-it.github.io/tech-notebook/language/language_r.html)
 
+- #### <u>言語機能</u>
+
+  > - ##### [関数](https://hiroki-it.github.io/tech-notebook/language/language_r_feature_function.html)
+  > - ##### [アルゴリズム](https://hiroki-it.github.io/tech-notebook/language/language_r_feature_algorithm.html)
+
 <br>
 
 ### Rust

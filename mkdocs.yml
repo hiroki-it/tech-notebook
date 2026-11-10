@@ -501,7 +501,11 @@ nav:
                   - パッケージ: language/language_python_framework_flask_package.md
           - ■ パッケージ:
               - パッケージ管理: language/language_python_package_management.md
-      - R: language/language_r.md
+      - ■ R:
+          - R: language/language_r.md
+          - ■ 言語機能:
+              - 関数: language/language_r_feature_function.md
+              - アルゴリズム: language/language_r_feature_algorithm.md
       - ■ Rust:
           - Rust: language/language_rust.md
           - ■ 言語機能:
