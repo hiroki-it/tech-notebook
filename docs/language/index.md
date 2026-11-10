@@ -68,6 +68,10 @@ hide:
 
 - #### [Java](https://hiroki-it.github.io/tech-notebook/language/language_java.html)
 
+- #### <u>言語機能</u>
+
+  > - ##### [データ・型](https://hiroki-it.github.io/tech-notebook/language/language_java_feature_data.html)
+
 <br>
 
 ### JavaScript

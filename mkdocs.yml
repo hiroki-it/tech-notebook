@@ -427,7 +427,10 @@ nav:
               - ビルトインパッケージ: language/language_go_package_builtin.md
               - SQLパッケージ: language/language_go_package_sql.md
               - ユーティリティパッケージ: language/language_go_package_utility.md
-      - Java: language/language_java.md
+      - ■ Java:
+          - Java: language/language_java.md
+          - ■ 言語機能:
+              - データ・型: language/language_java_feature_data.md
       - ■ JavaScript:
           - ■ 言語機能:
               - データ・型: language/language_javascript_feature_data.md
