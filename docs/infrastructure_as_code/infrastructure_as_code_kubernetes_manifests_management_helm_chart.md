@@ -565,7 +565,7 @@ tolerations:
 
 `values.yaml` ファイルの各設定値で要求するデータ型を設定する。
 
-```yaml
+```json
 {
   "$schema": "https://json-schema.org/draft-07/schema#",
   "properties":

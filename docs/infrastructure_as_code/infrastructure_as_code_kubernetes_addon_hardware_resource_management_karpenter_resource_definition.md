@@ -299,7 +299,7 @@ spec:
 
 ここで挿入するタグと、AWS IAM ポリシーの条件で指定するタグと一致させる必要がある。
 
-```yaml
+```json
 {
   "Statement": [
 
@@ -307,7 +307,7 @@ spec:
             "Action": "ec2:RunInstances",
             "Condition": {
                 "StringEquals": {
-                    # Karpenter の EC2NodeClass で挿入した起動テンプレートのタグを指定する
+                    // Karpenter の EC2NodeClass で挿入した起動テンプレートのタグを指定する
                     "ec2:ResourceTag/karpenter.sh/discovery": [
                         "foo-cluster",
                     ]

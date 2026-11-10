@@ -68,7 +68,7 @@ GoogleCloud リソース自体のアカウントである。
 
 サービスアカウントの資格情報である。
 
-```yaml
+```json
 {
   "type": "service_account",
   "project_id": "<プロジェクトID>",

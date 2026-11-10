@@ -167,10 +167,10 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 リポジトリへ事前に配置するのではなく、CI/CD パイプライン上で動的に作成するようにしたほうがよい。
 
-```yaml
+```json
 [
   {
-    "imageUri": "<イメージリポジトリURL>", # <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
+    "imageUri": "<イメージリポジトリURL>", // <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "name": "<コンテナ名>",
   },
 ]
@@ -251,7 +251,7 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
 
 このとき、`taskdef.json` ファイルのコンテナイメージ名を `<IMAGE1_NAME>` としておくと、`imageDetail.json` ファイルの値を元にして、新バージョンタグを含むイメージリポジトリ URL が自動的に代入される。
 
-```yaml
+```json
 {
   "family": "<Amazon ECSタスク定義名>",
   "requiresCompatibilities": ["FARGATE"],
@@ -268,30 +268,30 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
         "essential": "true",
         "portMappings": [
             {
-              # コンテナポート
+              // コンテナポート
               "containerPort": 80,
-              # Amazon ECS のホストのポート
+              // Amazon ECS のホストのポート
               "hostPort": 80,
               "protocol": "tcp",
             },
           ],
         "secrets": [
-            # データ永続化用の DB の接続情報
+            // データ永続化用の DB の接続情報
             {"name": "DB_HOST", "valueFrom": "/ecs/DB_HOST"},
             {"name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE"},
             {"name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD"},
             {"name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME"},
-            # セッションキャッシュ用のインメモリ DB の接続情報
+            // セッションキャッシュ用のインメモリ DB の接続情報
             {"name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST"},
             {"name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD"},
             {"name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT"},
           ],
         "logConfiguration": {
-            # ログドライバー
+            // ログドライバー
             "logDriver": "awslogs",
             "options": {
                 "awslogs-group": "<ログストリーム名>",
-                # スタックトレースのログを紐付けられるように、日付で区切るようにする。
+                // スタックトレースのログを紐付けられるように、日付で区切るようにする。
                 "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
                 "awslogs-region": "ap-northeast-1",
                 "awslogs-stream-prefix": "<ログストリーム名の接頭辞>",

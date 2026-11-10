@@ -980,33 +980,33 @@ istio-proxy は、マイクロサービスへのアクセスログ (インバウ
 
 ログ収集ツール (例：FluentBit、Fluentd など) を DaemonSet パターンやサイドカーモードで配置し、Node や Pod 内コンテナの標準出力に出力されたログを監視バックエンドへ送信できるようにする必要がある。
 
-```yaml
-# istio-proxy コンテナのアクセスログ
+```json
+// istio-proxy コンテナのアクセスログ
 {
-  # 相互 TLS 認証の場合の宛先コンテナ名
+  // 相互 TLS 認証の場合の宛先コンテナ名
   "authority": "foo-downstream:<ポート番号>",
   "bytes_received": 158,
   "bytes_sent": 224,
   "connection_termination_details": null,
-  # istio-proxy コンテナにとっての送信元
+  // istio-proxy コンテナにとっての送信元
   "downstream_local_address": "*.*.*.*:50010",
   "downstream_remote_address": "*.*.*.*:50011",
-  # 送信元から宛先へリクエストを送信し、レスポンスを処理し終えるまでにかかった時間
-  # 送信元でタイムアウト時間が超過した場合は、Envoy はその時間の直前にプロキシをやめるため、Duration はタイムアウト時間とおおよそ同じになる
+  // 送信元から宛先へリクエストを送信し、レスポンスを処理し終えるまでにかかった時間
+  // 送信元でタイムアウト時間が超過した場合は、Envoy はその時間の直前にプロキシをやめるため、Duration はタイムアウト時間とおおよそ同じになる
   "duration": 12,
   "method": null,
   "path": null,
   "protocol": null,
   "request_id": null,
   "requested_server_name": null,
-  # 宛先からのレスポンスのステータスコード
+  // 宛先からのレスポンスのステータスコード
   "response_code": 200,
   "response_code_details": null,
-  # ステータスコードの補足情報
+  // ステータスコードの補足情報
   "response_flags": "-",
   "route_name": null,
   "start_time": "2023-04-12T06:11:46.996Z",
-  # istio-proxy コンテナにとっての宛先
+  // istio-proxy コンテナにとっての宛先
   "upstream_cluster": "outbound|50000||foo-pod.foo-namespace.svc.cluster.local",
   "upstream_host": "*.*.*.*:50000",
   "upstream_local_address": "*.*.*.*:50001",
@@ -1166,7 +1166,7 @@ config:
 
 istio-proxy コンテナは、デフォルトで以下のようなスパンを作成する。
 
-```yaml
+```json
 {
   "batches":
     [
@@ -1205,7 +1205,7 @@ istio-proxy コンテナは、デフォルトで以下のようなスパンを�
                     "parentSpanId": "61d22fad2b80d1dd",
                     "traceState": "",
                     "name": "proxy./ratings/0",
-                    # 送信元 istio-proxy コンテナまたは宛先 istio-proxy コンテナ
+                    // 送信元 istio-proxy コンテナまたは宛先 istio-proxy コンテナ
                     "kind": "SPAN_KIND_CLIENT",
                     "startTimeUnixNano": 1745220839492363000,
                     "endTimeUnixNano": 1745220839934638800,

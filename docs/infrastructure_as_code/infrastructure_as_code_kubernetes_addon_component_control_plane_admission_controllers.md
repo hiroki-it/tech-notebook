@@ -230,13 +230,13 @@ admission-controller アドオンと webhook サーバーの間で送受信す�
 
 > - [v1 package - k8s.io/api/admission/v1 - Go Packages](https://pkg.go.dev/k8s.io/api@v0.24.3/admission/v1#AdmissionReview)
 
-```yaml
+```json
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
-  # AdmissionRequest
+  // AdmissionRequest
   "request": {},
-  # AdmissionResponse
+  // AdmissionResponse
   "response": {},
 }
 ```
@@ -249,11 +249,11 @@ admission-controller アドオンと webhook サーバーの間で送受信す�
 
 kube-apiserver は、特定のリクエストを受信すると、webhook サーバーに AdmissionReview 内の AdmissionRequest にリクエストパラメーターを格納し、リクエストとして送信する。
 
-```yaml
+```json
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
-  # AdmissionRequest
+  // AdmissionRequest
   "request": {
     "uid": "705ab4f5-6393-11e8-b7cc-42010a800002",
     "kind": {
@@ -261,15 +261,15 @@ kube-apiserver は、特定のリクエストを受信すると、webhook サー
       "version": "v1",
       "kind": "Scale"
     },
-    # 変更される Kubernetes リソースの種類を表す。
+    // 変更される Kubernetes リソースの種類を表す。
     "resource": {
       "group": "apps",
       "version": "v1",
       "resource": "deployments"
     },
-    # kube-apiserver の操作の種類を表す。
+    // kube-apiserver の操作の種類を表す。
     "operation": "CREATE",
-    # 認証／認可されたユーザーを表す。
+    // 認証／認可されたユーザーを表す。
     "userInfo": {
       "username": "admin",
       "uid": "014fbff9a07c",
@@ -284,13 +284,13 @@ kube-apiserver は、特定のリクエストを受信すると、webhook サー
         ]
       }
     },
-    # 認証／認可された操作の種類を表す。
+    // 認証／認可された操作の種類を表す。
     "options": {
       "apiVersion": "meta.k8s.io/v1",
       "kind": "CreateOptions"
     },
-    # ドライランモードで実行されていることを表す。
-    # etcd に永続化されない。
+    // ドライランモードで実行されていることを表す。
+    // etcd に永続化されない。
     "dryRun": "false"
   }
 
@@ -308,32 +308,32 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
 
 マニフェストの patch 処理の定義方法は、JSON Patch ツールに依存している。
 
-```yaml
+```json
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
-  # AdmissionResponse
+  // AdmissionResponse
   "response": {
       "uid": "<value from request.uid>",
-      # 宛先の webhook サーバーが受信したか否かを表す。
+      // 宛先の webhook サーバーが受信したか否かを表す。
       "allowed": "true",
-      # Path による Patch 処理を行う。
+      // Path による Patch 処理を行う。
       "patchType": "JSONPatch",
-      # Patch 処理の対象となる Kubernetes リソースと処理内容を表す。base64 方式でエンコードされている。
+      // Patch 処理の対象となる Kubernetes リソースと処理内容を表す。base64 方式でエンコードされている。
       "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0=",
     },
 }
 ```
 
-```yaml
-# patch キーを base64 方式でデコードした場合
+```json
+// patch キーを base64 方式でデコードした場合
 [
   {
-    # 追加処理を実行する。
+    // 追加処理を実行する。
     "op": "add",
-    # .spec.replicas キーをターゲットとする。
+    // .spec.replicas キーをターゲットとする。
     "path": "/spec/replicas",
-    # 値は 3 とする。
+    // 値は 3 とする。
     "value": 3,
   },
 ]
@@ -358,14 +358,14 @@ kube-apiserver は、mutating-admission ステップと同じ AdmissionReview �
 
 webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデーションの結果を格納し、レスポンスとして返信する。
 
-```yaml
+```json
 {
   "apiVersion": "admission.k8s.io/v1",
   "kind": "AdmissionReview",
-  # AdmissionResponse
+  // AdmissionResponse
   "response": {
       "uid": "<value from request.uid>",
-      # 宛先の webhook サーバーが受信したか否かを表す。
+      // 宛先の webhook サーバーが受信したか否かを表す。
       "allowed": "true",
       "status":
         {

@@ -288,7 +288,7 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 
 そのため、関数を取得するためのステートメントを設定する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -400,7 +400,7 @@ Amazon CloudFront のビューワーリクエスト、オリジンリクエス�
 
 AWS Lambda@Edge を実行するためには、最低限、以下の認可スコープが必要である。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":

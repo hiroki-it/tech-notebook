@@ -385,7 +385,7 @@ Amazon API Gateway と AWS Lambda の間で、リクエスト／レスポンス�
 
 Amazon API Gateway 側でプロキシ統合を有効化すると、Amazon API Gateway を経由したクライアントからのリクエストは、ハンドラ関数の event オブジェクトの JSON 型データにマッピングされる。
 
-```yaml
+```json
 {
   "resource": "Resource path",
   "path": "Path parameter",
@@ -446,7 +446,7 @@ Amazon API Gateway は、AWS Lambda からのレスポンスを、以下の JSON
 
 これ以外の構造の JSON 型データを送信すると、Amazon API Gateway で『`Internal Server Error`』のエラーが起こる。
 
-```yaml
+```json
 {
   "isBase64Encoded": "true",
   "statusCode": httpStatusCode,

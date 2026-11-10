@@ -80,13 +80,15 @@ Istiod コントロールプレーンは、Gateway の設定値を Envoy のリ�
 
 なお、Kubernetes の Gateway も Envoy のリスナーと同等である。
 
-```yaml
+```bash
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+  -it foo-pod \
+  -n foo-namespace \
+  -c istio-proxy \
+  -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+```
 
+```yaml
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
@@ -386,13 +388,15 @@ Istiod コントロールプレーンは、Gateway の設定値を Envoy のリ�
 
 なお、Kubernetes の Gateway も Envoy のリスナーと同等である。
 
-```yaml
+```bash
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+  -it foo-pod \
+  -n foo-namespace \
+  -c istio-proxy \
+  -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_listeners}" | yq -P
+```
 
+```yaml
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ListenersConfigDump.DynamicListener
@@ -439,13 +443,15 @@ configs:
 
 Istiod コントロールプレーンは、VirtualService の設定値を Envoy のルートに変換する。
 
-```yaml
+```bash
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P
+  -it foo-pod \
+  -n foo-namespace \
+  -c istio-proxy \
+  -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_route_configs}" | yq -P
+```
 
+```yaml
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.RoutesConfigDump.DynamicRouteConfig
@@ -692,13 +698,15 @@ Istiod コントロールプレーンは、DestinationRule の設定値を Envoy
 
 サービスメッシュ外の宛先では、ServiceEntry の `.spec.endpoints` や WorkloadEntry で宛先 IP アドレスを定義できる。
 
-```yaml
+```bash
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
+  -it foo-pod \
+  -n foo-namespace \
+  -c istio-proxy \
+  -- bash -c "curl http://127.0.0.1:15000/config_dump?resource={dynamic_active_clusters}" | yq -P
+```
 
+```yaml
 ---
 configs:
   - "@type": type.googleapis.com/envoy.admin.v3.ClustersConfigDump.DynamicCluster
@@ -722,13 +730,15 @@ configs:
   ...
 ```
 
-```yaml
+```bash
 $ kubectl exec \
-    -it foo-pod \
-    -n foo-namespace \
-    -c istio-proxy \
-    -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P
+  -it foo-pod \
+  -n foo-namespace \
+  -c istio-proxy \
+  -- bash -c "curl http://127.0.0.1:15000/config_dump?include_eds" | yq -P
+```
 
+```yaml
 ---
 configs:
   # エンドポイント

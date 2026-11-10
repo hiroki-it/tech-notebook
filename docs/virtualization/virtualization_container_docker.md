@@ -249,14 +249,14 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
 
 `labels` キーで文字列リストを設定すると、属性キーを付与できる。
 
-```yaml
+```json
 {
   "log-driver": "json-file",
-  # ドライバーのオプション
+  // ドライバーのオプション
   "log-opts": {
       "max-size": "10m",
       "max-file": "3",
-      # JSON に付与する属性キー
+      // JSON に付与する属性キー
       "labels": "app,env",
     },
 }
@@ -293,10 +293,10 @@ Amazon ECS コンテナの awsfirelens ドライバーは、fluentd ドライバ
 
 標準出力/標準エラー出力に出力されたログを Amazon CloudWatch-API に送信する。
 
-```yaml
+```json
 {
   "log-driver": "awslogs",
-  # ドライバーのオプション
+  // ドライバーのオプション
   "log-opts": {"awslogs-region": "us-east-1"},
 }
 ```
@@ -307,10 +307,10 @@ Amazon ECS コンテナの awsfirelens ドライバーは、fluentd ドライバ
 
 標準出力/標準エラー出力に出力されたログを、Google Cloud Logging の API にフォワーディングする。
 
-```yaml
+```json
 {
   "log-driver": "gcplogs",
-  # ドライバーのオプション
+  // ドライバーのオプション
   "log-opts": {"gcp-meta-name": "example-instance-12345"},
 }
 ```

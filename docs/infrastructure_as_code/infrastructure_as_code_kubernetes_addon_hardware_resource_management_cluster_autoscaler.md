@@ -121,8 +121,11 @@ cluster-autoacler のステータスが設定される。
 
 動作確認に使用できる。
 
-```yaml
+```bash
 $ kubectl get configmap -n kube-system cluster-autoscaler-status -o yaml
+```
+
+```yaml
 ---
 apiVersion: v1
 kind: ConfigMap

@@ -493,13 +493,13 @@ ID トークンには、アプリケーション間で共有しているクラ�
 
 Keycloak は、このセッション ID でログアウトすべきクライアントを判定し、認証処理を実行する。
 
-```yaml
+```json
 {
   "id": "edfd2bf0-1f2d-4875-a4b1-2752caa07ee1-1606363972255",
   "expiration": 1606364002,
   "resource": "kc-tomcat",
   "action": "LOGOUT",
-  # アプリケーション間で共有しているクライアントのセッション ID
+  // アプリケーション間で共有しているクライアントのセッション ID
   "adapterSessionIds": ["FC60BED115518DFB043EDDB77F0E0A8E"],
   "notBefore": 0,
   "keycloakSessionIds": ["ac04ef9d-7793-481c-a5c7-5750560e3c14"],

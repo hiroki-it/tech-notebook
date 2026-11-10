@@ -23,13 +23,13 @@ description: 設定ファイル＠Terraformの知見を記録しています。
 
 `tfstate` ファイル間では、Terraform やプロバイダーのバージョンに差が開きすぎると、互換性がなくなる。
 
-```yaml
+```json
 {
   "version": 4,
   "terraform_version": "1.0.0",
   "serial": 3,
   "lineage": "*****-*****-*****-*****-*****",
-  "outputs": { # output ブロックの apply で追加される。
+  "outputs": { // output ブロックの apply で追加される。
     "foo_ids": {
       "value": "*****",
       "type": "string"
@@ -37,11 +37,11 @@ description: 設定ファイル＠Terraformの知見を記録しています。
   },
   "resources": [
     {
-      "mode": "data", # data ブロックの apply で追加される。
-      "type": "aws_caller_identity", # resource タイプ
-      "name": "current", # リソース名
+      "mode": "data", // data ブロックの apply で追加される。
+      "type": "aws_caller_identity", // resource タイプ
+      "name": "current", // リソース名
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [ # 設定値
+      "instances": [ // 設定値
         {
           "schema_version": 0,
           "attributes": {
@@ -56,12 +56,12 @@ description: 設定ファイル＠Terraformの知見を記録しています。
       ]
     },
     {
-      "module": "module.ec2", # module ブロックの場合に追加される。
-      "mode": "managed", # import や、resource ブロックの apply で追加される。
-      "type": "aws_instance", # resource タイプ
-      "name": "bastion", # リソース名
+      "module": "module.ec2", // module ブロックの場合に追加される。
+      "mode": "managed", // import や、resource ブロックの apply で追加される。
+      "type": "aws_instance", // resource タイプ
+      "name": "bastion", // リソース名
       "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
-      "instances": [ # 設定値
+      "instances": [ // 設定値
         {
           "schema_version": 0,
           "attributes": {

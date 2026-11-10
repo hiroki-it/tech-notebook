@@ -79,7 +79,7 @@ description: テレメトリー間の紐付け＠Datadog
 
 分散トレースのクライアントパッケージを導入したコンテナの環境変数で値を設定する。
 
-```yaml
+```json
 {
   "environment":
     [

@@ -134,7 +134,7 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 }
 ```
 
-```yaml
+```json
 {
   "insertId": "42",
   "jsonPayload":

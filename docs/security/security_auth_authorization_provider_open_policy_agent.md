@@ -68,8 +68,8 @@ Open Policy Agent は、`rego` ファイルの認可スコープに基づいて�
 
     > - [注目のOpen Policy Agent、その概要とKubernetesでの活用事例 \| 現場で役立つTipsが盛りだくさん! Kubernetesのアレやコレ \| Think IT（シンクイット）](https://thinkit.co.jp/article/17511)
 
-    ```yaml
-    # subordinates.json ファイル
+    ```json
+    // subordinates.json ファイル
     {"alice": ["bob"], "bob": [], "charlie": ["david"], "david": []}
     ```
 
@@ -130,16 +130,16 @@ Open Policy Agent は、`rego` ファイルの認可スコープに基づいて�
 
     実際は、aliceというアカウントがデータを参照できるかどうかを取得するために、アプリケーションがリクエストを作成する。
 
-    ```yaml
-    # request.json ファイル
+    ```json
+    // request.json ファイル
     {
-      # リクエストの内容
+      // リクエストの内容
       "input": {
-          # GET メソッド
+          // GET メソッド
           "method": "GET",
-          # パス
+          // パス
           "path": ["finance", "salary", "alice"],
-          # アカウント名
+          // アカウント名
           "user": "alice",
         },
     }

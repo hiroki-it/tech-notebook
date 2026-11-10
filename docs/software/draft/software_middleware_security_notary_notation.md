@@ -39,7 +39,7 @@ AWS Signer を使用するために、信頼ポリシーを読み込む。
 $ notation policy import aws/signer_policy.json
 ```
 
-```yaml
+```json
 {
   "version": "1.0",
   "trustPolicies":

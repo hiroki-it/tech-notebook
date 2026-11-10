@@ -27,7 +27,7 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 #### ▼ AWS Lambda
 
-```yaml
+```json
 {
   "StartAt": "Call AWS Lambda",
   "States":
@@ -89,7 +89,7 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 > - [Creating a Step Functions API using API Gateway - AWS Step Functions](https://docs.aws.amazon.com/step-functions/latest/dg/tutorial-api-gateway.html)
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -107,7 +107,7 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 以下がレスポンスされれば、Amazon API Gateway が Step Functions をコールできたことになる。
 
-```yaml
+```json
 {
   "executionArn": "arn:aws:states:ap-northeast-1:<AWSアカウントID>:execution:prd-foo-doing-state-machine:*****",
   "startDate": 1.638244285498E9,

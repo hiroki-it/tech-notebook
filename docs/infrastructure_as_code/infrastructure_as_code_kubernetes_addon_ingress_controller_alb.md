@@ -250,8 +250,11 @@ AWS Load Balancer Controller のセットアップのうち、AWS 側で必要�
     kube-system     foo-aws-load-balancer-controller    arn:aws:iam::<AWSアカウントID>:role/eksctl-foo-eks-cluster-addon-i-Role1-****
     ```
 
-    ```yaml
+    ```bash
     $ kubectl get serviceaccount -n kube-system foo-aws-load-balancer-controller -o yaml
+    ```
+
+    ```yaml
     ---
     # 作成された ServiceAccount
     apiVersion: v1
@@ -341,7 +344,7 @@ AWS Load Balancer Controller のセットアップのうち、Kubernetes 側で�
 
     そのため、CoreDNSが正常に稼働しているか否かを確認する。
 
-    ```yaml
+    ```json
     {
       "level": "error",
       "ts": "*****.*****",

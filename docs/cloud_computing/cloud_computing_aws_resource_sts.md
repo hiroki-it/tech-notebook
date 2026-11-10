@@ -37,7 +37,7 @@ AssumeRole (権限委譲) によって、ユーザーの AWS IAM ロールを動
 
 このときに使用するユーザーは、AWS IAM ユーザーではなく、AWS リソースやフェデレーテッドユーザーでもよい。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -48,7 +48,7 @@ AssumeRole (権限委譲) によって、ユーザーの AWS IAM ロールを動
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {
-            # 完全一致
+            // 完全一致
             "StringEquals": {"sts:ExternalId": "<適当な文字列>"},
           },
       },
@@ -122,7 +122,7 @@ STS のエンドポイントから一時的な資格情報が発行される。
 
 資格情報の失効時間に合わせて、STS はこの `json` ファイルを定期的に更新する。
 
-```yaml
+```json
 {
   "Credentials":
     {
@@ -271,7 +271,7 @@ OIDC または Web ID フェデレーションによる認証／認可を使用�
 
 Cognito を ID プロバイダーとして使用するように、信頼されたエンティティを設定する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -280,7 +280,7 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
       "Principal": {"Federated": "cognito-identity.amazonaws.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
-          # 完全一致
+          // 完全一致
           "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
           "ForAnyValue:StringLike":
             {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
@@ -299,7 +299,7 @@ Amazon EKS を ID プロバイダーとして使用するように、`Federated`
 
 また、`Condition` キーで特定の ServiceAccount を指定できるようにする。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -313,7 +313,7 @@ Amazon EKS を ID プロバイダーとして使用するように、`Federated`
           },
         "Action": "sts:AssumeRoleWithWebIdentity",
         "Condition": {
-            # 完全一致
+            // 完全一致
             "StringEquals":
               {
                 "<Amazon EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
@@ -410,7 +410,7 @@ AWS IAM ロールの信頼されたエンティティに、AWS OIDC で発行さ
 
 フェデレーテッドユーザーは任意の IP プロバイダーで発行する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -419,7 +419,7 @@ AWS IAM ロールの信頼されたエンティティに、AWS OIDC で発行さ
       "Principal": {"Federated": "cognito-identity.amazonaws.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
-          # 完全一致
+          // 完全一致
           "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
           "ForAnyValue:StringLike":
             {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
@@ -434,7 +434,7 @@ AWS IAM ロールの信頼されたエンティティに、AWS OIDC で発行さ
 
 AWS IAM ロールの信頼されたエンティティに、外部 OIDC サービスで発行されたユーザーを設定する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -443,7 +443,7 @@ AWS IAM ロールの信頼されたエンティティに、外部 OIDC サービ
       "Principal": {"Federated": "accounts.google.com"},
       "Action": "sts:AssumeRoleWithWebIdentity",
       "Condition": {
-          # 完全一致
+          // 完全一致
           "StringEquals": {"accounts.google.com:aud": "*****"},
           "ForAnyValue:StringLike":
             {"accounts.google.com:amr": "unauthenticated"},
@@ -458,7 +458,7 @@ AWS IAM ロールの信頼されたエンティティに、外部 OIDC サービ
 
 AWS IAM ロールの信頼されたエンティティに、AWS SAML で発行されたユーザーを設定する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -471,7 +471,7 @@ AWS IAM ロールの信頼されたエンティティに、AWS SAML で発行さ
           },
         "Action": "sts:AssumeRole",
         "Condition": {
-            # 完全一致
+            // 完全一致
             "StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"},
           },
       },

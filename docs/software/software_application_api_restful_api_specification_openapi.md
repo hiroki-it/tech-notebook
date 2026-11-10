@@ -662,7 +662,7 @@ RESTful-API が受信する CRUD のデータ型や必須データを定義し�
 
 例えば、API がレスポンス時に以下のような JSON 型データを返信する例を考える。
 
-```yaml
+```json
 {
   "id": 1,
   "name": "Taro Yamada",
@@ -674,7 +674,7 @@ RESTful-API が受信する CRUD のデータ型や必須データを定義し�
 
 ここで、API スキーマを以下のように定義しておき、API からデータをレスポンスするときのバリデーションを実行する。
 
-```yaml
+```json
 {
   "$schema": "https://json-schema.org/draft-04/schema#",
   "type": "object",

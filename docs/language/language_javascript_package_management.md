@@ -32,7 +32,7 @@ $ yum install -y nodejs
 
 パッケージの作成者名を設定する。
 
-```yaml
+```json
 {
   "author":
     {
@@ -49,7 +49,7 @@ $ yum install -y nodejs
 
 不具合の報告先の URL を設定する。
 
-```yaml
+```json
 {"bugs": {"url": "https://github.com/hiroki-hasegawa/foo/issues"}}
 ```
 
@@ -63,7 +63,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 `npm install` コマンドの実行時に `--production` オプションを有効化すると、`dependencies` キーが使用される。
 
-```yaml
+```json
 {
   "dependencies":
     {
@@ -78,7 +78,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 #### ▼ description
 
-```yaml
+```json
 {"description": "This is foo package"}
 ```
 
@@ -90,7 +90,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 `npm install` コマンドの実行時に `--production` オプションを有効化しないと、`devDependencies` キーが使用される。
 
-```yaml
+```json
 {
   "devDependencies":
     {
@@ -109,7 +109,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 `doc` キーでドキュメントのパス、`lib` でパッケージのパスを指定する。
 
-```yaml
+```json
 {"directories": {"doc": "foo/doc", "lib": "foo/lib"}}
 ```
 
@@ -123,7 +123,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 > - [package.jsonに"engines"を設定すると「このバージョンのNode.jsでしか動かない」を表明できる #JavaScript - Qiita](https://qiita.com/suin/items/994458418c737cc9c3e8)
 
-```yaml
+```json
 {"engines": {"node": "1.0.0", "npm": "1.0.0"}}
 ```
 
@@ -133,7 +133,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 > - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#homepage)
 
-```yaml
+```json
 {"homepage": "https://example.com"}
 ```
 
@@ -143,7 +143,7 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 > - [package.json \| npm Docs](https://docs.npmjs.com/cli/v7/configuring-npm/package-json#main)
 
-```yaml
+```json
 {"main": "index.js"}
 ```
 
@@ -153,7 +153,7 @@ npm パッケージ名を設定する。
 
 すべての npm パッケージのなかで、一意の名前である必要がある。
 
-```yaml
+```json
 {"name": "foo"}
 ```
 
@@ -161,7 +161,7 @@ npm パッケージ名を設定する。
 
 #### ▼ repository
 
-```yaml
+```json
 {
   "repository":
     {"type": "git", "url": "https://github.com/hiroki-hasegawa/foo.git"},
@@ -174,7 +174,7 @@ npm パッケージ名を設定する。
 
 汎用コマンドとエイリアスを設定する。`npm run <エイリアス>` コマンドで実行できる。
 
-```yaml
+```json
 {"scripts": {"foo": "npm install"}}
 ```
 
@@ -184,7 +184,7 @@ npm パッケージ名を設定する。
 
 パッケージのバージョンを設定する。
 
-```yaml
+```json
 {"version": "<バージョンタグ>"}
 ```
 
@@ -300,11 +300,11 @@ $ npm run <エイリアス>
 
 補足として、実行するコマンドのなかで、再び `npm run` コマンドも定義できる。
 
-```yaml
+```json
 {
-  # コマンド
+  // コマンド
   "scripts": {
-      # "<エイリアス>": "<実行するコマンド>",
+      // "<エイリアス>": "<実行するコマンド>",
       "dev": "npm run development",
       "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
       "watch": "npm run development -- --watch",

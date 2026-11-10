@@ -36,7 +36,7 @@ dependencies {
 
 #### ▼ ログ構造
 
-```yaml
+```json
 {
   "@timestamp": "2025-04-15T13:37:54.062939378Z",
   "@version": "1",

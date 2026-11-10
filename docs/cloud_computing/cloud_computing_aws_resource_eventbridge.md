@@ -69,7 +69,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 イベントパターンに定義しないキーは任意のデータと見なされる。
 
-```yaml
+```json
 {
   "version": "0",
   "id": "*****",
@@ -79,15 +79,15 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
   "time": "2021-01-01T00:00:00Z",
   "region": "us-west-1",
   "resources": ["<イベントを起こしたリソースのARN>"],
-  # その時々のイベントごとに異なるデータ
+  // その時々のイベントごとに異なるデータ
   "detail": {},
 }
-# Amazon SNS のデータ
+// Amazon SNS のデータ
 ```
 
 AWS Amplify の指定した ID のアプリケーションが `AWS Amplify Deployment Status Change` イベントを送信し、イベントの `jobStatus` が `SUCCEED`/`FAILED` だった場合、これを送信する。
 
-```yaml
+```json
 {
   "detail": {"appId": ["foo", "bar"], "jobStatus": ["SUCCEED", "FAILED"]},
   "detail-type": ["AWS Amplify Deployment Status Change"],
@@ -132,7 +132,7 @@ exports.handler = async (event) => {
 
 対象の AWS リソースで任意のイベントが発生したときに、Amazon EventBridge から AWS Lambda に送信するように設定する。
 
-```yaml
+```json
 {"source": "aws.amplify"}
 ```
 
@@ -140,7 +140,7 @@ AWS リソースで意図的にイベントを起こし、AWS Lambda のログ�
 
 `detail` キーにイベントが割り当てられている。
 
-```yaml
+```json
 {
   "event":
     {
@@ -181,7 +181,7 @@ AWS Amplify で発生したイベントの JSON を変数として取り出す�
 
 ここでは、以下の AWS Amplify のイベントを受信したとする。
 
-```yaml
+```json
 {
   "event":
     {
@@ -210,7 +210,7 @@ JSON のキー名が変数名として動作する。
 
 ここでは、`detail` キーを指定する。
 
-```yaml
+```json
 {
   "appId": "$.detail.appId",
   "branchName": "$.detail.branchName",
@@ -226,7 +226,7 @@ JSON のキー名が変数名として動作する。
 
 Slack に送信するメッセージの作成ツールは、以下のリンクを参考にせよ。
 
-```yaml
+```json
 {
   "channel": "foo",
   "text": "AWS Amplifyデプロイ完了通知",

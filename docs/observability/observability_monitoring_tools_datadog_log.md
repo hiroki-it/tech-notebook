@@ -127,7 +127,7 @@ Node エージェントは、Kubernetes のメトリクスに加えて、istiod 
 
 > - https://docs.datadoghq.com/logs/log_collection/javascript/#results
 
-```yaml
+```json
 {
   "content":
     {
@@ -141,7 +141,7 @@ Node エージェントは、Kubernetes のメトリクスに加えて、istiod 
           "network": {"client": {"ip": "18.180.199.160"}},
           "service": "prd-foo-ssg",
           "session_id": "*****",
-          `#コンソールログのステータス`
+          `//コンソールログのステータス`
           "status": "error",
           "view": {"referrer": "", "url": "https://example.com/"},
         },
@@ -411,7 +411,7 @@ Datadog に送信されたログのメッセージから値を抽出し、構造
 
 Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセスログの構造化ログを受信する例を考える。
 
-```yaml
+```json
 {
   "content":
     {
@@ -463,7 +463,7 @@ Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセ�
 
 例えば、リクエストに関する属性値を `http` 属性内の各属性に割り当て直す。
 
-```yaml
+```json
 {
   "content":
     {
@@ -561,7 +561,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これにより、構造化ログの各属性に値が割り当てられる。
 
-```yaml
+```json
 {
   "date_access": 12345,
   "http":
@@ -592,7 +592,7 @@ CRITICAL @http.status_code:[500 TO 599]
 
 補足として、`http.status_category` 属性以外は元の構造化ログと同じため、省略している。
 
-```yaml
+```json
 {"http": {status_category: "info"}, ...}
 ```
 
@@ -657,7 +657,7 @@ Laravel から、以下のような非構造化ログを受信する例を考え
 
 非構造化ログのため、ログは基底構造化ログの `message` 属性に割り当てられる。
 
-```yaml
+```json
 {
   "content":
     {
@@ -688,9 +688,9 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 これにより、非構造化ログは以下のように構造化され、構造化ログに付与される。
 
-```yaml
+```json
 {
-  "date": 1630454400000, # エポック形式 (UNIX 時間)
+  "date": 1630454400000, // エポック形式 (UNIX 時間)
   "log_status": "INFO",
 }
 ```
@@ -699,7 +699,7 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 
 AWS WAF から以下のような構造化ログを受信する例を考える。
 
-```yaml
+```json
 {
   "timestamp": 1639459445119,
   "formatVersion": 1,
@@ -760,7 +760,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 
 これにより、`webaclId` 属性の非構造化ログは以下のように構造化され、構造化ログに付与される。
 
-```yaml
+```json
 {"wafacl_name": "prd-foo-alb-waf"}
 ```
 
@@ -784,7 +784,7 @@ Rule .*\/webacl\/%{data:wafacl_name}\/.*
 
 非構造化ログのため、ログは基底構造化ログの `message` 属性に割り当てられる。
 
-```yaml
+```json
 {
   "content":
     {
@@ -807,7 +807,7 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 
 これにより、構造化ログの各属性に値が割り当てられる。
 
-```yaml
+```json
 {
   "date": 1609502400000,
   "http":
@@ -820,7 +820,7 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 
 `http.url` 属性からパスパラメーターやクエリパラメーターを検出し、`http.url_details` 属性として新しく付与する。
 
-```yaml
+```json
 {
   "date": 1609502400000,
   "http":
@@ -839,7 +839,7 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 
 Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセスログの構造化ログを受信する例を考える。
 
-```yaml
+```json
 {
   "content":
     {
@@ -899,7 +899,7 @@ baz-apigateway @aws.invoked_function_arn:"arn:aws:lambda:ap-northeast-1:<AWSア�
 
 補足として、`service` 属性以外は元の構造化ログと同じため、省略している。
 
-```yaml
+```json
 {
   "content": {
 
@@ -944,7 +944,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これにより、構造化ログの各属性に値が割り当てられる。
 
-```yaml
+```json
 {
   "date_access": 12345,
   "http":
@@ -966,7 +966,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 これにより、構造化ログの各属性に値が割り当てられる。
 
-```yaml
+```json
 {
   ...
 
@@ -1005,7 +1005,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 
 ログパイプラインを経て、以下のような構造化ログが作成されているとする。
 
-```yaml
+```json
 {
   "date": 1609502400000,
   "http":
@@ -1030,7 +1030,7 @@ https://example.com%{http.url}
 
 これにより、以下の構造化ログが得られる。
 
-```yaml
+```json
 {
   "date": 1609502400000,
 

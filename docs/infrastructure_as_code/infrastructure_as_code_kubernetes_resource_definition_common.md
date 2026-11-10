@@ -572,8 +572,11 @@ $ kubectl get deployment foo-deployment -o yaml --show-managed-fields
 
 もし、特定のキーが管理下にあるか否かを調べる場合、`grep` コマンドと組み合わせる。
 
-```yaml
+```bash
 $ kubectl get deployment foo-deployment -o yaml --show-managed-fields | grep -e manager -e f:<マニフェストのキー>
+```
+
+```yaml
 ---
 apiVersion: apps/v1
 kind: Deployment

@@ -355,7 +355,7 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 
 アプリケーションから Amazon CloudWatch Logs にログを送信するために、Amazon ECS タスクロールにカスタマー管理ポリシーを紐付ける。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -371,7 +371,7 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 
 パラメーターストアから変数を取得するために、Amazon ECS タスクロールにインラインポリシーを紐付ける。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -391,7 +391,7 @@ AWS 管理ポリシーである『`AmazonECSTaskExecutionRolePolicy`』が紐付
 
 Amazon ECS タスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -415,7 +415,7 @@ Amazon ECS タスク内のコンテナがリソースにリクエストを送信
 
 datadog エージェントが Amazon ECS クラスターやコンテナにリクエストを送信できるように、Amazon ECS タスク実行ロールにカスタマー管理ポリシーを紐付ける。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -969,7 +969,7 @@ exit ${EXIT_STATUS}
 
 注意点として、実行 IAM ユーザーを作成し、Amazon ECS タスクを起動できる必要最低限の認可スコープを紐付ける。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -1104,7 +1104,7 @@ AWS Systems Manager を使用してコンテナに接続する場合、コンテ
 
     これにより、Amazon ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。
 
-    ```yaml
+    ```json
     {
       "Version": "2012-10-17",
       "Statement":
@@ -1126,7 +1126,7 @@ AWS Systems Manager を使用してコンテナに接続する場合、コンテ
 
 4. Amazon ECS Exec の実行ユーザーに、IAM ポリシーを付与する。
 
-    ```yaml
+    ```json
     {
       "Version": "2012-10-17",
       "Statement":

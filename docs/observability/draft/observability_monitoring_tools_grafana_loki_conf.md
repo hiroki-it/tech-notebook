@@ -170,7 +170,7 @@ groups:
           summary: High error rate
 ```
 
-```yaml
+```json
 {
   "timestamp": "2025-05-13T09:00:00Z",
   "level": "error",

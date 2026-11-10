@@ -463,10 +463,13 @@ $ istioctl proxy-config all foo-pod \
 
 Envoy で、起動時に読み込まれる設定を取得する。
 
-```yaml
+```bash
 $ istioctl proxy-config bootstrap foo-pod \
--n foo-namespace \
--o yaml | yq
+  -n foo-namespace \
+  -o yaml | yq
+```
+
+```yaml
 ---
 bootstrap:
   admin:
@@ -536,12 +539,15 @@ baz-service.baz-namespace.svc.cluster.local   50003                        v1   
 
 `yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
-```yaml
+```bash
 $ istioctl proxy-config cluster foo-pod \
--n foo-namespace \
--o yaml \
---fqdn bar-service.bar-namespace.svc.cluster.local \
-| yq
+  -n foo-namespace \
+  -o yaml \
+  --fqdn bar-service.bar-namespace.svc.cluster.local \
+  | yq
+```
+
+```yaml
 ---
 # クラスター名
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
@@ -618,12 +624,15 @@ unix://./etc/istio/proxy/XDS                         HEALTHY     OK             
 
 `yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
-```yaml
+```bash
 $ istioctl proxy-config endpoints foo-pod \
-    -n foo-namespace \
-    --cluster "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local" \
-    -o yaml \
-    | yq
+  -n foo-namespace \
+  --cluster "outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local" \
+  -o yaml \
+  | yq
+```
+
+```yaml
 ---
 # クラスター名
 - name: outbound|50002|v1|bar-service.bar-namespace.svc.cluster.local
@@ -747,12 +756,15 @@ NAME                         DOMAINS                                     MATCH  
 
 `yaml` 形式で取得すれば、より詳細な設定値を確認できる。
 
-```yaml
+```bash
 $ istioctl proxy-config routes foo-pod \
-    -n foo-namespace \
-    --name 50001 \
-    -o yaml \
-    | yq
+  -n foo-namespace \
+  --name 50001 \
+  -o yaml \
+  | yq
+```
+
+```yaml
 ---
 # ルート名
 - name: '50001'

@@ -41,7 +41,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 
 例えば、以下の形式と変数で定義したとする。
 
-```yaml
+```json
 {
   "access_log_type": "%ACCESS_LOG_TYPE%",
   "bytes_received": "%BYTES_RECEIVED%",
@@ -67,7 +67,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
 
 これにより、以下のアクセスログを出力する。
 
-```yaml
+```json
 {
   "access_log_type": "DownstreamEnd",
   "bytes_received": 0,
@@ -432,7 +432,7 @@ Envoy はスパンを記録し、設定した収集エージェントに送信�
 
 `x-envoy-decorator-operation` ヘッダーの値を変更することで上書きできる。
 
-```yaml
+```json
 {
   "route_config":
     {

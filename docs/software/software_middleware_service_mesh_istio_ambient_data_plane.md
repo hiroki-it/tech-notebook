@@ -192,8 +192,11 @@ ztunnel へのリダイレクトの仕組みは一度リプレイスされてい
 
 実体は、Gateway-API で作成された istio-proxy を含む Pod である。
 
-```yaml
+```bash
 $ istioctl experimental waypoint generate
+```
+
+```yaml
 ---
 apiVersion: gateway.networking.k8s.io/v1
 kind: Gateway

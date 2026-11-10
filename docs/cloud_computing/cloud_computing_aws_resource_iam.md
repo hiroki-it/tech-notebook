@@ -91,7 +91,7 @@ AWS IAM ロールにインラインポリシーを紐付ける。
 
 このロールを持つユーザーは、ユーザーアカウントのすべての AWS Certificate Manager のサーバー証明書を一覧表示できるようになる。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -103,7 +103,7 @@ AWS IAM ロールにインラインポリシーを紐付ける。
 
 このロールを持つユーザーは、すべての AWS リソースに、任意のアクションを実行できる。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}],
@@ -124,7 +124,7 @@ AWS IAM ロールにインラインポリシーを紐付ける。
 
 この AWS IAM ポリシーには、他の AWS リソースに対する認可スコープも含まれている。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -160,7 +160,7 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、IaC ツール (例：Terraform) では必要になる。
 
-```yaml
+```json
 {
   "rules":
     [
@@ -196,7 +196,7 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 例えば、以下の信頼ポリシーを任意のロールに紐付けしたとする。その場合、`Principal` の `ecs-tasks` が信頼されたエンティティと見なされ、ECS タスクにロールを紐付けできるようになる。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -216,7 +216,7 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 その場合、`Principal` の AWS IAM ユーザーが信頼されたエンティティと見なされ、ロールを紐付けできるようになる。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -227,7 +227,7 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {
-            # 完全一致
+            // 完全一致
             "StringEquals": {"sts:ExternalId": "<適当な文字列>"},
           },
       },
@@ -247,20 +247,20 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 ### 構造
 
-```yaml
+```json
 {
-  # Sid
+  // Sid
   "Sid": "foo",
-  # Version
+  // Version
   "Version": "2012-10-17",
-  # Statement (AWS IAM ステートメント)
+  // Statement (AWS IAM ステートメント)
   "Statement": [
       {
-        # 許可する
+        // 許可する
         "Effect": "Allow",
-        # SSM の API への GetParameters のコールを指定する
+        // SSM の API への GetParameters のコールを指定する
         "Action": ["ssm:GetParameters"],
-        # 任意の AWS ソースを対象とする
+        // 任意の AWS ソースを対象とする
         "Resource": "*",
       },
     ],
@@ -338,7 +338,7 @@ ARN で AWS リソースの識別子を設定する。
 
 リージョンのグループには、`aws`、`aws-cn` (中国系ネットワーク) 、`aws-us-gov` (政府系ネットワーク) がある。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -358,7 +358,7 @@ ARN で AWS リソースの識別子を設定する。
 
 AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設定する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -369,7 +369,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {
-            # 完全一致
+            // 完全一致
             "StringEqual": {"sts:ExternalId": "foo"},
           },
       },
@@ -377,7 +377,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 }
 ```
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -388,9 +388,9 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {
-            # OR 条件
+            // OR 条件
             "StringEqual": {
-                # リスト型にすることで OR 上限になる
+                // リスト型にすることで OR 上限になる
                 "sts:ExternalId": ["foo", "bar"],
               },
           },
@@ -399,7 +399,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 }
 ```
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -410,7 +410,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
           {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
         "Action": "sts:AssumeRole",
         "Condition": {
-            # 部分一致 (ワイルドカードを使用できる)
+            // 部分一致 (ワイルドカードを使用できる)
             "StringLike": {"sts:ExternalId": "foo-*"},
           },
       },
@@ -423,15 +423,15 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 
 タグを条件として使用できる。
 
-```yaml
+```json
 {"Version": "2012-10-17", "Statement": [
       {
         "Effect": "Allow",
-        # EC2 を起動する
+        // EC2 を起動する
         "Action": "ec2:RunInstances",
         "Resource": "arn:aws:ec2:*:account-id:launch-template/*",
         "Condition": {
-            # 特定のタグを持つ起動テンプレートのみを指定できる
+            // 特定のタグを持つ起動テンプレートのみを指定できる
             "StringEquals": {"ec2:ResourceTag/foo": "foo"},
           },
       },

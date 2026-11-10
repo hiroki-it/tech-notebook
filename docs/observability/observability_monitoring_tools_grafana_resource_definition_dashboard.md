@@ -105,7 +105,7 @@ data:
 default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 ```
 
-```yaml
+```json
 {
   "annotations":
     {
@@ -130,8 +130,8 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "panels": [
       {
         "datasource": null,
-        # 全体の横幅は 24
-        # パネルで分割する場合、w 値を割る
+        // 全体の横幅は 24
+        // パネルで分割する場合、w 値を割る
         "gridPos": {"h": 36, "w": 24, "x": 0, "y": 0},
         "id": 3,
         "links": [],
@@ -155,7 +155,7 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "refresh": "",
   "schemaVersion": 30,
   "style": "dark",
-  # リポジトリ名やリポジトリ URL をタグにつける
+  // リポジトリ名やリポジトリ URL をタグにつける
   "tags": ["<リポジトリ名>", "github.com/example"],
   "templating": {"list": []},
   "time": {"from": "now-6h", "to": "now"},
@@ -244,13 +244,13 @@ Istio 関連のコミュニティダッシュボードを使用する場合は�
 
 反対に、`gnetId` セクションが `null` になっているものは、ユーザー定義のダッシュボードである。
 
-```yaml
+```json
 {"gnetId": 1}
 ```
 
 また、コミュニティダッシュボードのバージョンは `description` セクションから確認できる。
 
-```yaml
+```json
 {"description": "Foo Dashboard version 1.0.0"}
 ```
 
@@ -264,7 +264,7 @@ Kubernetes で稼働する Prometheus と Grafana のバージョンに応じた
 
 ただし、Prometheus のほうのバージョンは気にしなくて良さそう (よくある Prometheus の `5.0.0` なんてバージョンは存在しない)。
 
-```yaml
+```json
 {
   "__requires": [
     {
@@ -753,7 +753,7 @@ Istio の Pod からデータポイントを収集する。
 
 ### id
 
-```yaml
+```json
 {"id": null}
 ```
 
@@ -765,7 +765,7 @@ Istio の Pod からデータポイントを収集する。
 
 ダッシュボードの URL は、`<UID>-<ダッシュボードのタイトルになる。>`
 
-```yaml
+```json
 {"uid": "cLV5GDCkz"}
 ```
 
@@ -777,7 +777,7 @@ Istio の Pod からデータポイントを収集する。
 
 ダッシュボードの URL がハッシュ値になってしまうため、英語のほうがいい。
 
-```yaml
+```json
 {"title": "foo dashboard"}
 ```
 
@@ -789,7 +789,7 @@ Istio の Pod からデータポイントを収集する。
 
 これと区別できるように、本リポジトリのダッシュボードには `<リポジトリ名>.git` やリポジトリ URL というタグをつけるとよい。
 
-```yaml
+```json
 {"tags": ["<リポジトリ名>.git", "github.com/example"]}
 ```
 
@@ -797,7 +797,7 @@ Istio の Pod からデータポイントを収集する。
 
 ### style
 
-```yaml
+```json
 {"style": "dark"}
 ```
 
@@ -809,7 +809,7 @@ Istio の Pod からデータポイントを収集する。
 
 コミュニティダッシュボードによっては、バージョン表記がない。
 
-```yaml
+```json
 {"description": "Foo Dashboard version 1.0.0"}
 ```
 
@@ -821,7 +821,7 @@ Istio の Pod からデータポイントを収集する。
 
 反対に、null であればユーザー定義のダッシュボードである。
 
-```yaml
+```json
 {"gnetId": 1}
 ```
 
@@ -829,7 +829,7 @@ Istio の Pod からデータポイントを収集する。
 
 ### timezone
 
-```yaml
+```json
 {"timezone": "browser"}
 ```
 
@@ -839,7 +839,7 @@ Istio の Pod からデータポイントを収集する。
 
 ダッシュボードを GUI から編集可能かを設定する。
 
-```yaml
+```json
 {"editable": "false"}
 ```
 
@@ -847,7 +847,7 @@ Istio の Pod からデータポイントを収集する。
 
 ### graphTooltip
 
-```yaml
+```json
 {"graphTooltip": 1}
 ```
 
@@ -873,15 +873,15 @@ PromQL を定義する。
 
 ラベル変数を使用する場合は、`templating` セクションでその定義が必要である。
 
-```yaml
+```json
 {
-  # panels セクション
+  // panels セクション
   "panels": [
       {
-        # styles セクション
+        // styles セクション
         "styles": [
             {
-              # 表の列名
+              // 表の列名
               "alias": "Namespace",
               "colorMode": null,
               "colors": [],
@@ -890,7 +890,7 @@ PromQL を定義する。
               "link": "true",
               "linkTargetBlank": "false",
               "linkTooltip": "Drill down to pods",
-              # 他のダッシュボードへのリンク
+              // 他のダッシュボードへのリンク
               "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell",
               "pattern": "namespace",
               "thresholds": [],
@@ -898,7 +898,7 @@ PromQL を定義する。
               "unit": "short",
             },
             {
-              # 表の列名
+              // 表の列名
               "alias": "Workloads",
               "colorMode": null,
               "colors": [],
@@ -907,7 +907,7 @@ PromQL を定義する。
               "link": "true",
               "linkTargetBlank": "false",
               "linkTooltip": "Drill down to workloads",
-              # 他のダッシュボードへのリンク
+              // 他のダッシュボードへのリンク
               "linkUrl": "/d/*****/k8s-resources-workloads-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
               "pattern": "Value #B",
               "thresholds": [],
@@ -915,7 +915,7 @@ PromQL を定義する。
               "unit": "short",
             },
             {
-              # 表の列名
+              // 表の列名
               "alias": "Pods",
               "colorMode": null,
               "colors": [],
@@ -924,7 +924,7 @@ PromQL を定義する。
               "link": "true",
               "linkTargetBlank": "false",
               "linkTooltip": "Drill down to pods",
-              # 他のダッシュボードへのリンク
+              // 他のダッシュボードへのリンク
               "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
               "pattern": "Value #A",
               "thresholds": [],
@@ -953,7 +953,7 @@ PromQL を定義する。
 
 ### time
 
-```yaml
+```json
 {"time": {"from": "now-6h", "to": "now"}}
 ```
 
@@ -963,7 +963,7 @@ PromQL を定義する。
 
 ダッシュボードのデフォルトの時間間隔を設定する。
 
-```yaml
+```json
 {"timepicker": {"time_options": [], "refresh_intervals": []}}
 ```
 
@@ -981,7 +981,7 @@ templating セクションを有効化する。
 
 デフォルト値は `true` である。
 
-```yaml
+```json
 {"templating": {"enable": "true"}}
 ```
 
@@ -997,120 +997,120 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 例えば、`cluster` ラベル値でフィルタリングする場合、パネル上の PromQL でも `<メトリクス>{cluster=\"$cluster\"}` と定義しなければならない。
 
-```yaml
+```json
 {
-  # templating セクション
+  // templating セクション
   "templating": {
-      # list セクション
+      // list セクション
       "list": [
-          # データソース値のプルダウン
+          // データソース値のプルダウン
           {
-            # デフォルトのフィルタリング値
-            # プルダウンの値を変更すれば、current 値も動的に変わる
+            // デフォルトのフィルタリング値
+            // プルダウンの値を変更すれば、current 値も動的に変わる
             "current": {
-                # 固定できるように true としておく
+                // 固定できるように true としておく
                 "selected": "true",
-                # デフォルトのデータソースのフィルタリング値を Prometheus とする
+                // デフォルトのデータソースのフィルタリング値を Prometheus とする
                 "text": "Prometheus",
                 "value": "Prometheus",
               },
             "description": null,
             "error": null,
-            # プルダウンを常に表示できるように 0 (false) とする
+            // プルダウンを常に表示できるように 0 (false) とする
             "hide": 0,
-            # multi オプションを無効化しているため、All のチェックボックスは無効化する
+            // multi オプションを無効化しているため、All のチェックボックスは無効化する
             "includeAll": "false",
             "label": null,
             "multi": "false",
-            # データソース名。変数名としても使用できるようになる。
+            // データソース名。変数名としても使用できるようになる。
             "name": "datasource",
             "options": [],
-            # 最初のデータソースは Prometheus とする。
+            // 最初のデータソースは Prometheus とする。
             "query": "prometheus",
             "refresh": 1,
             "regex": "",
             "skipUrlSync": "false",
-            # 変数タイプを設定する。
+            // 変数タイプを設定する。
             "type": "datasource",
           },
-          # cluster ラベル値のプルダウン
+          // cluster ラベル値のプルダウン
           {
             "allValue": null,
-            # プルダウンが選ばれていない時のデフォルト値を設定する
+            // プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトの cluster ラベルのフィルタリング値を null とする
+                // デフォルトの cluster ラベルのフィルタリング値を null とする
                 "isNone": "true",
-                # ラベルが選ばれない限り表示されないため、 false としておく
+                // ラベルが選ばれない限り表示されないため、 false としておく
                 "selected": "false",
                 "text": "None",
                 "value": "",
               },
-            # データソースの指定時に、それを変数として取得する
+            // データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
             "error": null,
             "hide": 0,
-            # multi オプションを無効化しているため、All のチェックボックスは無効化する
+            // multi オプションを無効化しているため、All のチェックボックスは無効化する
             "includeAll": "false",
             "label": null,
-            # cluster は 1 つだけ選ぶようにする
+            // cluster は 1 つだけ選ぶようにする
             "multi": "false",
-            # ラベル名。変数名としても使用できるようになる。
+            // ラベル名。変数名としても使用できるようになる。
             "name": "cluster",
             "options": [],
             "query": {
-                # メトリクスと、それから取得するラベルを設定する。
-                # 指定したデータソースの時に、kube_pod_info メトリクスが cluster ラベルを持っている必要がある。
+                // メトリクスと、それから取得するラベルを設定する。
+                // 指定したデータソースの時に、kube_pod_info メトリクスが cluster ラベルを持っている必要がある。
                 "query": "label_values(kube_pod_info, cluster)",
-                # query<小文字から始まる任意の識別子>で事前定義しておくこともできる。
-                # query を採用する場合、query 以降の文字列は、"^[a-z][a-zA-Z0-9_]*$"の正規表現内の文字列にする必要がある。
+                // query<小文字から始まる任意の識別子>で事前定義しておくこともできる。
+                // query を採用する場合、query 以降の文字列は、"^[a-z][a-zA-Z0-9_]*$"の正規表現内の文字列にする必要がある。
                 "refId": "Prometheus-cluster-Variable-Query",
               },
             "refresh": 2,
-            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
-            # アルファベットの昇順にする。
+            // アルファベットの昇順にする。
             "sort": 1,
             "tagValuesQuery": "",
             "tagsQuery": "",
             "type": "query",
             "useTags": "false",
           },
-          # namespace ラベル値のプルダウン
+          // namespace ラベル値のプルダウン
           {
             "allValue": null,
-            # プルダウンが選ばれていない時のデフォルト値を設定する
+            // プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトでは全てのラベル値を選択する
-                # multi ラベルの場合は、配列とする
+                // デフォルトでは全てのラベル値を選択する
+                // multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
-            # データソースの指定時に、それを変数として取得する
+            // データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
             "error": null,
             "hide": 0,
-            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
-            # 全ての値の中から複数選択して選べるようにする。
+            // 全ての値の中から複数選択して選べるようにする。
             "multi": "true",
             "name": "namespace",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
+                // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)',
                 "refId": "Prometheus-namespace-Variable-Query",
               },
             "refresh": 2,
-            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1119,38 +1119,38 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # deployment ラベル値のプルダウン
+          // deployment ラベル値のプルダウン
           {
             "allValue": null,
-            # プルダウンが選ばれていない時のデフォルト値を設定する
+            // プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトでは全てのラベル値を選択する
-                # multi ラベルの場合は、配列とする
+                // デフォルトでは全てのラベル値を選択する
+                // multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
-            # データソースの指定時に、それを変数として取得する
+            // データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
             "error": null,
             "hide": 0,
-            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
-            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            // 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": "true",
             "name": "service",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_deployment_status_condition トリクスが各種ラベルを持っている必要がある。
+                // 指定したデータソースの時に、kube_deployment_status_condition トリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_deployment_status_condition{cluster=\"$cluster\", namespace=\"$namespace\"}, deployment)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
-            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1159,38 +1159,38 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # service ラベル値のプルダウン
+          // service ラベル値のプルダウン
           {
             "allValue": null,
-            # プルダウンが選ばれていない時のデフォルト値を設定する
+            // プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトでは全てのラベル値を選択する
-                # multi ラベルの場合は、配列とする
+                // デフォルトでは全てのラベル値を選択する
+                // multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
-            # データソースの指定時に、それを変数として取得する
+            // データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
             "error": null,
             "hide": 0,
-            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
-            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            // 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": "true",
             "name": "service",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_service_info メトリクスが各種ラベルを持っている必要がある。
+                // 指定したデータソースの時に、kube_service_info メトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_service_info{cluster=\"$cluster\", namespace=\"$namespace\"}, serviec)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
-            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1199,38 +1199,38 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # pod ラベル値のプルダウン
+          // pod ラベル値のプルダウン
           {
             "allValue": null,
-            # プルダウンが選ばれていない時のデフォルト値を設定する
+            // プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトでは全てのラベル値を選択する
-                # multi ラベルの場合は、配列とする
+                // デフォルトでは全てのラベル値を選択する
+                // multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
-            # データソースの指定時に、それを変数として取得する
+            // データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
             "error": null,
             "hide": 0,
-            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
-            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            // 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": "true",
             "name": "pod",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
+                // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
                 "query": 'label_values(kube_pod_info{cluster=\"$cluster\", namespace=\"$namespace\"}, pod)',
                 "refId": "Prometheus-pod-Variable-Query",
               },
             "refresh": 2,
-            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1239,18 +1239,18 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # label_eks_amazonaws_com_nodegroup ラベル値のプルダウン
+          // label_eks_amazonaws_com_nodegroup ラベル値のプルダウン
           {
             "allValue": null,
             "current": {},
             "datasource": "$datasource",
-            # kube-state-metrics で、--metric-labels-allowlist=nodes=[*] を設定しておく
+            // kube-state-metrics で、--metric-labels-allowlist=nodes=[*] を設定しておく
             "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
             "hide": 0,
-            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
-            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            // 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": "true",
             "name": "nodegroup",
             "options": [],
@@ -1265,39 +1265,39 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # node ラベル値のプルダウン
+          // node ラベル値のプルダウン
           {
             "allValue": null,
-            # プルダウンが選ばれていない時のデフォルト値を設定する
+            // プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトでは全てのラベルを表示する
-                # multi ラベルの場合は、配列とする
+                // デフォルトでは全てのラベルを表示する
+                // multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
-            # データソースの指定時に、それを変数として取得する
+            // データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
             "error": null,
             "hide": 0,
-            # multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
             "includeAll": "true",
             "label": null,
-            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            // 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": "true",
             "name": "namespace",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_node_labels メトリクスが各種ラベルを持っている必要がある。
-                # label_eks_amazonaws_com_nodegroup ラベルの値はプルダウンですでに取得しており、変数として使用する。
+                // 指定したデータソースの時に、kube_node_labels メトリクスが各種ラベルを持っている必要がある。
+                // label_eks_amazonaws_com_nodegroup ラベルの値はプルダウンですでに取得しており、変数として使用する。
                 "query": 'label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\"$nodegroup\"}, node)',
                 "refId": "Prometheus-node-Variable-Query",
               },
             "refresh": 2,
-            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1306,39 +1306,39 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
             "type": "query",
             "useTags": "false",
           },
-          # container ラベル値のプルダウン
+          // container ラベル値のプルダウン
           {
             "allValue": null,
-            # プルダウンが選ばれていない時のデフォルト値を設定する
+            // プルダウンが選ばれていない時のデフォルト値を設定する
             "current": {
-                # デフォルトでは全てのラベルを表示する
-                # multi ラベルの場合は、配列とする
+                // デフォルトでは全てのラベルを表示する
+                // multi ラベルの場合は、配列とする
                 "selected": "true",
                 "text": ["All"],
                 "value": ["$__all"],
               },
-            # データソースの指定時に、それを変数として取得する
+            // データソースの指定時に、それを変数として取得する
             "datasource": "$datasource",
             "definition": "",
             "description": null,
             "error": null,
             "hide": 0,
-            # multi オプションを無効化しているため、All のチェックボックスは無効化する
+            // multi オプションを無効化しているため、All のチェックボックスは無効化する
             "includeAll": "false",
             "label": null,
-            # 全ての値の中から複数のラベル値を選択して選べるようにする。
+            // 全ての値の中から複数のラベル値を選択して選べるようにする。
             "multi": "true",
             "name": "container",
             "options": [],
             "query": {
-                # 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
-                # node ラベルの値はプルダウンですでに取得しており、変数として使用する。
+                // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
+                // node ラベルの値はプルダウンですでに取得しており、変数として使用する。
                 "query": 'label_values(kube_pod_container_info{cluster=\"$cluster\",instance=\"$node\",pod=\"$pod\"}, container)',
                 "refId": "Prometheus-container-Variable-Query",
               },
             "refresh": 2,
-            # もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            # ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
             "regex": "",
             "skipUrlSync": "false",
             "sort": 1,
@@ -1358,9 +1358,9 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 そのうえで `panel` セクションに `cluster` ラベルを定義すると、メトリクスを `cluster` ラベルでフィルタリングできるようになる。
 
-```yaml
+```json
 {
-  # panels セクション
+  // panels セクション
   "panels": [
     {
       "targets":
@@ -1379,7 +1379,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 ### annotations
 
-```yaml
+```json
 {"annotations": {"list": []}}
 ```
 
@@ -1389,7 +1389,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 自動更新間隔を設定する。
 
-```yaml
+```json
 {"refresh": "5s"}
 ```
 
@@ -1397,7 +1397,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 ### schemaVersion
 
-```yaml
+```json
 {"schemaVersion": 17}
 ```
 
@@ -1405,7 +1405,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 ### version
 
-```yaml
+```json
 {"version": 0}
 ```
 
@@ -1413,7 +1413,7 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 
 ### links
 
-```yaml
+```json
 {"links": []}
 ```
 

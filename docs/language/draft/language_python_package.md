@@ -98,7 +98,7 @@ log.info("<メッセージ>")
 
 #### ▼ ログ構造
 
-```yaml
+```json
 {
   "text": "Do something successfully",
   "record":

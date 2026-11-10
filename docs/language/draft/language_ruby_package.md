@@ -26,7 +26,7 @@ gem "semantic_logger", "~> 4.16.1"
 
 #### ▼ ログ構造
 
-```yaml
+```json
 {
   "host": "foo-fb5d575bc-65k2b",
   "application": "Foo Logger",

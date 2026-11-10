@@ -502,7 +502,7 @@ ECR に紐付けられる、コンテナイメージの有効期間を定義す�
 
 コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、Terraform などの IaC ツールでは必要になる。
 
-```yaml
+```json
 {
   "rules":
     [
@@ -827,7 +827,7 @@ global_ip_addresses = [
 
 また事前に、指定した送信元 IP アドレス以外を拒否するカスタマー管理ポリシーを定義する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement": {
@@ -897,7 +897,7 @@ resource "aws_iam_user_policy_attachment" "aws_cli_command_executor_s3_read_only
 
 事前に、ECS タスクのための信頼ポリシーを定義する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -941,7 +941,7 @@ resource "aws_iam_role" "ecs_task" {
 
 事前に、Lambda@Edge のための信頼ポリシーを定義する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -982,7 +982,7 @@ resource "aws_iam_role" "lambda_execute" {
 
 事前に、ECS タスクに必要最低限の権限を与えるインラインポリシーを定義する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -1034,7 +1034,7 @@ resource "aws_iam_role_policy_attachment" "ecs_task_execution" {
 
 事前に、ECS タスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -1662,7 +1662,7 @@ ALB のアクセスログを送信するバケット内には、自動的に『/
 
 > - [Access logs for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-logging-bucket-permissions)
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -1700,7 +1700,7 @@ NLB のアクセスログを送信するバケット内には、自動的に『`
 
 そのため、『`arn:aws:s3:::<バケット名>/*`』の部分を最小権限として、『`arn:aws:s3:::<バケット名>/AWSLogs/<AWSアカウントID>/;*`』にしてもよい。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -1712,7 +1712,7 @@ NLB のアクセスログを送信するバケット内には、自動的に『`
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::<バケット名>/*",
         "Condition": {
-            # 完全一致
+            // 完全一致
             "StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"},
           },
       },

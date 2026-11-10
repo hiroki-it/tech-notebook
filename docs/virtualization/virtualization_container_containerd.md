@@ -102,7 +102,7 @@ Containerd は、テキスト形式ログを作成する。
 
 Docker は、`json` 形式をログを作成する。
 
-```yaml
+```json
 {
 　"log":"2021/12/17 08:03:23 [INFO] start worker processes",
 　"stream":"stdout",

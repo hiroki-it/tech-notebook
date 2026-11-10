@@ -118,7 +118,7 @@ ApplicationSet リソースの Reconciliation を実行する。
 
 ### ログ
 
-```yaml
+```json
 {
   "grpc.method": "Watch",
   "grpc.request.claims": "<アカウントの情報>",

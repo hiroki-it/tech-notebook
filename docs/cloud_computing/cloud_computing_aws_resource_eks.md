@@ -708,7 +708,7 @@ Amazon EKS を SSO の ID プロバイダーとして使用することで、IAM
 
 2. IRSA で使用する AWS IAM ロールの信頼されたエンティティに、Amazon EKS Cluster の OIDC プロバイダーURL やユーザー名 (`system:serviceaccount:<Namespac名>:<ServiceAccount名>`) を設定する。
 
-    ```yaml
+    ```json
     {"Version": "2012-10-17", "Statement": [
           {
             "Sid": "",
@@ -717,10 +717,10 @@ Amazon EKS を SSO の ID プロバイダーとして使用することで、IAM
               {
                 "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<Amazon EKS ClusterのOIDCプロバイダーURL>",
               },
-            # AssumeRoleWithWebIdentity を使用する
+            // AssumeRoleWithWebIdentity を使用する
             "Action": "sts:AssumeRoleWithWebIdentity",
             "Condition": {
-                # 完全一致
+                // 完全一致
                 "StringEquals":
                   {
                     "<Amazon EKS ClusterのOIDCプロバイダーURL>:sub":
@@ -1410,7 +1410,7 @@ Amazon EC2 ワーカーNode の最適化 AMI ではない AWS AMI のこと。
 
 Amazon EC2 ワーカーNode の kubelet を設定する。
 
-```yaml
+```json
 {
   "kind": "KubeletConfiguration",
   "apiVersion": "kubelet.config.k8s.io/v1beta1",
@@ -1435,7 +1435,7 @@ Amazon EC2 ワーカーNode の kubelet を設定する。
   "protectKernelDefaults": "true",
   "serializeImagePulls": "false",
   "serverTLSBootstrap": "true",
-  # 暗号スイート
+  // 暗号スイート
   "tlsCipherSuites":
     [
       "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
@@ -1893,8 +1893,11 @@ Fargate ワーカーNode 内のログをフォワーディングするうえで�
 
     > - https://blog.mmmcorp.co.jp/blog/2021/08/11/post-1704/
 
-    ```yaml
+    ```bash
     $ kubectl apply -f config-map.yaml
+    ```
+
+    ```yaml
     ---
     apiVersion: v1
     kind: ConfigMap

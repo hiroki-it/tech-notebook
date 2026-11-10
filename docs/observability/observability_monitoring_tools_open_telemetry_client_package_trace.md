@@ -377,16 +377,16 @@ func newSampler() sdktrace.Sampler {
 
 ルートスパンの構造である。
 
-```yaml
+```json
 {
   "name": "hello",
   "context": {
-      # ルートスパンのトレース ID
+      // ルートスパンのトレース ID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # ルートスパンのスパン ID
+      // ルートスパンのスパン ID
       "span_id": "0x051581bf3cb55c13",
     },
-  # ルートスパンのため、親スパンのスパン ID がない
+  // ルートスパンのため、親スパンのスパン ID がない
   "parent_id": null,
   "start_time": "2022-04-29T18:52:58.114201Z",
   "end_time": "2022-04-29T18:52:58.114687Z",
@@ -408,16 +408,16 @@ func newSampler() sdktrace.Sampler {
 
 １つ目の親スパンの構造である。
 
-```yaml
+```json
 {
   "name": "hello-greetings",
   "context": {
-      # ルートスパンのトレース ID
+      // ルートスパンのトレース ID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # 親スパン X のスパン ID
+      // 親スパン X のスパン ID
       "span_id": "0x5fb397be34d26b51",
     },
-  # 親スパン X のスパン ID (ルートスパンのスパン ID と一致する)
+  // 親スパン X のスパン ID (ルートスパンのスパン ID と一致する)
   "parent_id": "0x051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114304Z",
   "end_time": "2022-04-29T22:52:58.114561Z",
@@ -444,16 +444,16 @@ func newSampler() sdktrace.Sampler {
 
 ２つ目の親スパンの構造である。
 
-```yaml
+```json
 {
   "name": "hello-salutations",
   "context": {
-      # ルートスパンのトレース ID
+      // ルートスパンのトレース ID
       "trace_id": "0x5b8aa5a2d2c872e8321cf37308d69df2",
-      # 親スパン Y のスパン ID
+      // 親スパン Y のスパン ID
       "span_id": "0x93564f51e1abe1c2",
     },
-  # 親スパン Y のスパン ID (ルートスパンのスパン ID と一致する)
+  // 親スパン Y のスパン ID (ルートスパンのスパン ID と一致する)
   "parent_id": "0x051581bf3cb55c13",
   "start_time": "2022-04-29T18:52:58.114492Z",
   "end_time": "2022-04-29T18:52:58.114631Z",
@@ -1444,7 +1444,7 @@ func NewTracerProvider() {
 
 分散トレースの監視バックエンド (例：X-Ray) 上では、キー名は `otel.resource.<属性名>` になる。
 
-```yaml
+```json
 {
   "service.name": "<マイクロサービス名>",
   "service.version": "<バージョンタグ>",
@@ -1459,7 +1459,7 @@ func NewTracerProvider() {
 
 デフォルトで、さまざまな属性を持っている。
 
-```yaml
+```json
 {
   "db.rows_affected": "<処理したレコード数>"
   "db.sql.table": "<テーブル名>",

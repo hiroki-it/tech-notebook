@@ -262,7 +262,7 @@ module "s3_foo" {
 
 これは、東京リージョンのアカウント ID である。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -285,7 +285,7 @@ module "s3_foo" {
 
 補足として 2022/08/31 時点で、オリジンアクセスアイデンティティを識別情報として使用する方法は非推奨になり、オリジンアクセスコントロールが推奨になった。
 
-```yaml
+```json
 {
   "Version": "2008-10-17",
   "Id": "PolicyForCloudFrontPrivateContent",
@@ -324,7 +324,7 @@ module "s3_foo" {
 
 このポリシーには、Amazon S3 への認可スコープのほか、Amazon CloudWatch Logs にログを作成するための認可スコープが設定されている。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -347,7 +347,7 @@ module "s3_foo" {
 
 パブリックネットワーク上の特定の IP アドレスからのリクエストを許可したい場合、その IP アドレスをポリシーに設定する必要がある。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Id": "S3PolicyId1",
@@ -384,13 +384,13 @@ module "s3_foo" {
 
 クライアント側 (例：Amazon API Gateway を介したブラウザ) では `Origin` ヘッダーは、デフォルトで『プロトコル + ドメイン + ポート番号』に設定されるため、特に対処する必要はない。
 
-```yaml
-# 任意のドメインを許可する
+```json
+// 任意のドメインを許可する
 [{"AllowedOrigins": ["*"]}]
 ```
 
-```yaml
-# 特定のドメインを許可する
+```json
+// 特定のドメインを許可する
 [{"AllowedOrigins": ["https://example.jp"]}]
 ```
 

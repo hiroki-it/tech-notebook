@@ -992,8 +992,8 @@ $ aws ec2 modify-instance-attribute \
     file://example.json
 ```
 
-```yaml
-# example.json ファイル
+```json
+// example.json ファイル
 [{"DeviceName": "/dev/sda1", "Ebs": {"DeleteOnTermination": "false"}}]
 ```
 

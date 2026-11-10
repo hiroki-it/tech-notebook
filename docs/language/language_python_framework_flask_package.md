@@ -219,7 +219,7 @@ oidc = OpenIDConnect(app)
 
 資格情報を JSON ファイルで定義する。
 
-```yaml
+```json
 {
   "web":
     {

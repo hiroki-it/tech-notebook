@@ -279,18 +279,18 @@ fields @log, @timestamp, @message
 
 マイクロサービスの処理情報を持つ。
 
-```yaml
+```json
 {
-  # スパンのトレース ID
+  // スパンのトレース ID
   "trace_id": "1-581cf771-a006649127e371903a2de979",
-  # スパンのスパン ID
+  // スパンのスパン ID
   "id": "70de5b6f19ff9a0a",
   "name": "example.com",
   "start_time": 1.478293361271E9,
   "end_time": 1.478293361449E9,
   "service": {...},
   "user": {...},
-  # アプリケーションを実行している AWS リソースの種類 (例：EC2、Amazon ECS、Elastic Beanstalk)
+  // アプリケーションを実行している AWS リソースの種類 (例：EC2、Amazon ECS、Elastic Beanstalk)
   "origin": {...},
   "parent_id": {...},
   "http": {...},
@@ -308,16 +308,16 @@ fields @log, @timestamp, @message
 
 セグメントの構造やデータ型を定義したもの。
 
-```yaml
+```json
 {
-  # スキーマ URL
+  // スキーマ URL
   "$schema": "http://json-schema.org/draft-04/schema#",
   "description": "Segment document schema",
-  # スキーマのバージョン
+  // スキーマのバージョン
   "version": "1.0.0",
-  # 構造
+  // 構造
   "type": "object",
-  # データ型
+  // データ型
   "properties": {
     "trace_id": {
       "type": "string",
@@ -367,7 +367,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 例えば、サブセグメント ID であれば `<サブセグメントごとのユニークID>` になる。
 
-```yaml
+```json
 {
   "subsegments":
     [
@@ -402,7 +402,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 スパンの HTTP リクエストの情報を持つ。
 
-```yaml
+```json
 {
   "http":
     {
@@ -422,9 +422,9 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 スパンの作成元の AWS リソース情報を持つ。
 
-```yaml
+```json
 {
-  # AWS リソース情報
+  // AWS リソース情報
   "aws": {
       "elastic_beanstalk":
         {
@@ -445,7 +445,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
             "arn": "arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group",
           },
         ],
-      # X-Ray のクライアントパッケージ情報
+      // X-Ray のクライアントパッケージ情報
       "xray":
         {
           "auto_instrumentation": false,
@@ -460,13 +460,13 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 ### エラー系
 
-```yaml
+```json
 {
-  # 400 系ステータスの場合
+  // 400 系ステータスの場合
   "error": false,
-  # 500 系ステータスの場合,
+  // 500 系ステータスの場合,
   "fault": true,
-  # 429 ステータスの場合
+  // 429 ステータスの場合
   "throttle": false,
 }
 ```
@@ -479,7 +479,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 マイクロサービスが実行した SQL の情報を持つ。
 
-```yaml
+```json
 {
   "sql":
     {

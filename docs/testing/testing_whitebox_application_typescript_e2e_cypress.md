@@ -508,8 +508,8 @@ setupNodeEvents: (on, config) => {
 
 `fixtures/expected/foo.json` ファイル（期待値データ）の値と同じになる可能性がある。
 
-```yaml
-# 初期データ
+```json
+// 初期データ
 {
   "users":
     {
@@ -538,7 +538,7 @@ setupNodeEvents: (on, config) => {
 
 `fixtures/foo/data.json` ファイル（初期データ）の値と同じになる可能性がある。
 
-```yaml
+```json
 {
   "users":
     {

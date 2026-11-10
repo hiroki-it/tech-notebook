@@ -110,8 +110,8 @@ Google Cloud CLI による Google Cloud リソースへのアクセスを認証�
 $ gcloud auth application-default login
 ```
 
-```yaml
-# application_default_credentials.json ファイル
+```json
+// application_default_credentials.json ファイル
 {
   "client_id": "***.apps.googleusercontent.com",
   "client_secret": "***",

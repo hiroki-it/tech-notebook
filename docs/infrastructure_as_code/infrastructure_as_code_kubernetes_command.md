@@ -1065,8 +1065,11 @@ baz-node   Ready    worker                 17h   v1.22.0   *.*.*.*         <none
 
 正規表現と同様に、一部の文字列ではエスケープする必要がある。
 
-```yaml
+```bash
 $ kubectl get secret <Secret名> -o yaml
+```
+
+```yaml
 ---
 apiVersion: v1
 kind: Secret

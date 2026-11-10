@@ -328,7 +328,7 @@ AWS WAF マネージドルールを採用している場合、マネージドル
 
 もし、Count アクションが実行されていれば、`excludedRules` キーにその旨とルール ID が格納される。
 
-```yaml
+```json
 {
   "ruleGroupList":
     [

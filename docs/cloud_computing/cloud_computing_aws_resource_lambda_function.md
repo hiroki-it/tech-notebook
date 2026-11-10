@@ -323,7 +323,7 @@ AWS Lambda のエラーレスポンスのステータスコードについては
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/golang-exceptions.html#go-exceptions-createfunction
 
-```yaml
+```json
 {"errorMessage": "<エラーメッセージ>", "errorType": "<エラータイプ>"}
 ```
 
@@ -827,7 +827,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 注意点として、一部のキーは省略している。
 
-```yaml
+```json
 {
   "Records":
     [

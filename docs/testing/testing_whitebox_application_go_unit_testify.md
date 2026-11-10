@@ -221,7 +221,7 @@ type MockedAmplifyAPI struct {
 func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
-	optFns ...func(*aws_amplify.Options)
+	optFns ...func(*aws_amplify.Options),
 	) (*aws_amplify.GetBranchOutput, error) {
 
 	// On()関数で設定された値を受け取る
@@ -470,7 +470,7 @@ type MockedAmplifyAPI struct {
 func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
-	optFns ...func(*aws_amplify.Options)
+	optFns ...func(*aws_amplify.Options),
 	) (*aws_amplify.GetBranchOutput, error) {
 
 	// On()関数で設定された値を受け取る
@@ -576,7 +576,7 @@ type MockedAmplifyAPI struct {
 func (m *MockedAmplifyAPI) GetBranch(
 	ctx context.Context,
 	params *aws_amplify.GetBranchInput,
-	optFns ...func(*aws_amplify.Options)
+	optFns ...func(*aws_amplify.Options),
 	) (*aws_amplify.GetBranchOutput, error) {
 
 	// On()関数で設定された値を受け取る

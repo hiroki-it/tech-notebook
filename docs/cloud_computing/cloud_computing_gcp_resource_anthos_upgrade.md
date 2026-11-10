@@ -32,8 +32,11 @@ Anthos Cluster のアップグレード時、データプレーンのワーカ�
 
 2. Anthos GKE Cluster の現在のバージョンを確認する。
 
-    ```yaml
+    ```bash
     $ kubectl get cluster -A -o yaml
+    ```
+
+    ```yaml
     ---
     apiVersion: baremetal.cluster.gke.io/v1
     kind: Cluster
@@ -120,8 +123,11 @@ Anthos Cluster のアップグレード時、データプレーンのワーカ�
 
     Anthos GKE Clusterのバージョンがアップグレードされたことを確認する。
 
-    ```yaml
+    ```bash
     $ kubectl get cluster -A -o yaml
+    ```
+
+    ```yaml
     ---
     apiVersion: baremetal.cluster.gke.io/v1
     kind: Cluster
@@ -314,8 +320,11 @@ Anthos Service Mesh のアップグレードでは、何らかの事情でこれ
     ingress    Active    2d18h   1130
     ```
 
-    ```yaml
+    ```bash
     $ kubectl get namespace app -o yaml
+    ```
+
+    ```yaml
     ---
     apiVersion: v1
     kind: Namespace
@@ -332,8 +341,11 @@ Anthos Service Mesh のアップグレードでは、何らかの事情でこれ
     app    Active    2d18h   1130
     ```
 
-    ```yaml
+    ```bash
     $ kubectl get namespace app -o yaml
+    ```
+
+    ```yaml
     ---
     apiVersion: v1
     kind: Namespace
@@ -433,10 +445,13 @@ Anthos Service Mesh のアップグレードでは、何らかの事情でこれ
 
     ソースコードは、anthos-service-mesh-packagesリポジトリから拝借する。
 
-    ```yaml
+    ```bash
     $ kubectl diff -f ./asm/istio/istiod-service.yaml
 
     $ kubectl apply -f ./asm/istio/istiod-service.yaml
+    ```
+
+    ```yaml
     ---
     # https://github.com/GoogleCloudPlatform/anthos-service-mesh-packages/blob/main/asm/istio/istiod-service.yaml
     apiVersion: v1

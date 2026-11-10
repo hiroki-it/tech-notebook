@@ -602,7 +602,7 @@ istio-proxy コンテナのアクセスログではない。
 $ pilot-discovery discovery --log_as_json
 ```
 
-```yaml
+```json
 {
   "level": "info",
   "time": "2025-04-21T07:07:32.114867Z",

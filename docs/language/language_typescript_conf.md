@@ -15,7 +15,7 @@ description: 設定＠TypeScriptの知見を記録しています。
 
 ### exclude
 
-```yaml
+```json
 {"exclude": ["<ファイル名>"]}
 ```
 
@@ -25,7 +25,7 @@ description: 設定＠TypeScriptの知見を記録しています。
 
 ### include
 
-```yaml
+```json
 {"include": ["<ファイル名>"]}
 ```
 
@@ -35,7 +35,7 @@ description: 設定＠TypeScriptの知見を記録しています。
 
 ### compilerOptions
 
-```yaml
+```json
 {
   "compilerOptions": {
   "lib": [ "DOM", "DOM.Iterable", "ES2019" ],
@@ -45,7 +45,7 @@ description: 設定＠TypeScriptの知見を記録しています。
   "jsx": "react-jsx",
   "module": "CommonJS",
   "moduleResolution": "node",
-  # any 型を禁止にする
+  // any 型を禁止にする
   "noImplicitAny": true,
   "resolveJsonModule": true,
   "target": "ES2019",

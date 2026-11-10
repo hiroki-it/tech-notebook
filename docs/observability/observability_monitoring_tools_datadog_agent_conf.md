@@ -152,7 +152,7 @@ Amazon ECS タスクのコンテナ定義にて、DockerHub の URL を直接的
 
 datadog エージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
-```yaml
+```json
 [{"name": "datadog", "image": "datadog/agent:latest"}]
 ```
 
@@ -164,7 +164,7 @@ Amazon ECS タスクのコンテナ定義で、ECR パブリックギャラリ�
 
 datadog エージェントにデフォルトで内蔵されている設定をそのまま使用する場合は、こちらを採用する。
 
-```yaml
+```json
 [{"name": "datadog", "image": "public.ecr.aws/datadog/agent:latest"}]
 ```
 
@@ -185,7 +185,7 @@ FROM data/agent:latest
 # 何らかのインストール
 ```
 
-```yaml
+```json
 [
   {
     "name": "datadog",
@@ -210,14 +210,14 @@ Datadog が提供する datadog イメージによって作成されるコンテ
 
 #### ▼ コンテナ定義
 
-```yaml
+```json
 [
   {
     ,
-    # bar コンテナ
+    // bar コンテナ
   },
   {
-    # datadog コンテナ (サイドカー)
+    // datadog コンテナ (サイドカー)
     "name": "datadog",
     "image": "datadog/agent:latest",
     "essential": "false",
@@ -252,11 +252,11 @@ Datadog が提供する datadog イメージによって作成されるコンテ
       ],
     "secrets": [{ "name": "DD_API_KEY", "valueFrom": "/prd-foo/DD_API_KEY" }],
     "dockerLabels": {
-        # Amazon ECS コンテナに対する env タグ
+        // Amazon ECS コンテナに対する env タグ
         "com.datadoghq.tags.env": "prd",
-        # Amazon ECS コンテナに対する service タグ
+        // Amazon ECS コンテナに対する service タグ
         "com.datadoghq.tags.service": "foo",
-        # Amazon ECS コンテナに対する version タグ
+        // Amazon ECS コンテナに対する version タグ
         "com.datadoghq.tags.version": "<バージョンタグ>",
       },
   },
@@ -267,7 +267,7 @@ Datadog が提供する datadog イメージによって作成されるコンテ
 
 datadog コンテナがコンテナからメトリクスの元になるデータポイントを収集できるように、Amazon ECS タスク実行ロールにポリシーを追加する必要がある。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":

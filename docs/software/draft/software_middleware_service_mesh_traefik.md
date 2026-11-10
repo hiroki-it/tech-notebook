@@ -59,9 +59,9 @@ Traefik 自身の起動、設定の読み込み、エラーなどに関するロ
 
 #### ▼ アクセスログ
 
-```yaml
+```json
 {
-  # JSON 形式
+  // JSON 形式
   "jsonPayload": {
       "Duration": 5446226,
       "TLSVersion": "1.3",
@@ -75,7 +75,7 @@ Traefik 自身の起動、設定の読み込み、エラーなどに関するロ
       "RequestAddr": "foo.example.com",
       "ClientPort": "25475",
       "Overhead": 80788,
-      # クライアントにレスポンスするステータスコード
+      // クライアントにレスポンスするステータスコード
       "DownstreamStatus": 200,
       "StartLocal": "2023-05-26T18:53:47.017774671Z",
       "RequestCount": 583106,

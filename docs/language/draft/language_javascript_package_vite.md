@@ -75,7 +75,7 @@ export default defineConfig({
 
 開発環境または本番環境のいずれかでしか使用しないオプションは、`package.json` ファイルの `scripts` キーで設定する。
 
-```yaml
+```json
 {
   "scripts":
     {

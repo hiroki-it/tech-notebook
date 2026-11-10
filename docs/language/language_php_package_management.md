@@ -50,14 +50,14 @@ $ php -r "unlink('composer-setup.php');"
 
 `require()` 関数を使用せずに、クラスの名前空間を `use` で指定するのみでファイルを読み込めるようになる。
 
-```yaml
+```json
 {
 
     ...
 
     "autoload": {
         "psr-4": {
-            # "<名前空間>": "<パス>",
+            // "<名前空間>": "<パス>",
             "App\\": "app/",
             "Database\\Factories\\Infrastructure\\DTO\\": "database/factories/production",
             "Database\\Seeders\\": "database/seeds/production"
@@ -80,7 +80,7 @@ $ php -r "unlink('composer-setup.php');"
 
 Composer コマンドにあるオプションのデフォルト値を設定する。
 
-```yaml
+```json
 {
 
     ...
@@ -179,15 +179,15 @@ Composer コマンドにあるオプションのデフォルト値を設定す�
 
 コマンドのエイリアスを設定する。
 
-```yaml
+```json
 {
 
     ...
 
     "scripts": {
-        # エイリアス
+        // エイリアス
         "post-autoload-dump": [
-            # 実行するコマンド
+            // 実行するコマンド
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi"
         ],
@@ -212,7 +212,7 @@ Composer のバージョンを設定する。
 
 インストールされている composer と齟齬がないようにする。
 
-```yaml
+```json
 {
     ...
 
@@ -356,7 +356,7 @@ $ composer dump-autoload
 
 また、`autoload` プロパティに登録されているパスが誤っていないかも確認したほうがよい。
 
-```yaml
+```json
 {"autoload": {"psr-4": {}}}
 ```
 

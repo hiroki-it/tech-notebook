@@ -27,7 +27,7 @@ description: JSON：JavaScript Object Notation＠データ記述型言語の知�
 
 JSON のキー名はローワーキャメルケースにする。
 
-```yaml
+```json
 {"propertyName": "propertyValue"}
 ```
 
@@ -37,7 +37,7 @@ JSON のキー名はローワーキャメルケースにする。
 
 ### 配列
 
-```yaml
+```json
 {"account": 200, "fruit": ["banana", "apple"]}
 ```
 
@@ -45,7 +45,7 @@ JSON のキー名はローワーキャメルケースにする。
 
 ### オブジェクト
 
-```yaml
+```json
 {"account": 200, "fruit": {"banana": "BANANA", "apple": "APPLE"}}
 ```
 
@@ -59,7 +59,7 @@ JSON にはコメントアウトを定義できない。
 
 アプリ側で、JSON の `_comment` キーを無視するような処理を実装する。
 
-```yaml
+```json
 {
   "_comment": "金額",
   "account": 200,

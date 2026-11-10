@@ -80,7 +80,7 @@ $ claude --allow-dangerously-skip-permissions
 
 `~/.claude/setting.json` に設定を実装する。
 
-```yaml
+```json
 {
   "env":
     {

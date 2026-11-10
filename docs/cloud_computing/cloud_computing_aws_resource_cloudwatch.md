@@ -107,11 +107,11 @@ Amazon CloudWatch Logs 上で構造化ログのログイベントを自動的に
 
 Amazon CloudWatch Logs に送る構造化ログには、`metrics` オブジェクトを定義する必要がある。
 
-```yaml
-# 構造化ログ
+```json
+// 構造化ログ
 {
   "message": "hello world"
-  # metrics オブジェクト
+  // metrics オブジェクト
   "metrics": [
     {
       "namespace": "MyApp"
@@ -655,13 +655,13 @@ cloudwatch エージェント全体を設定する。
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-Agent-Configuration-File-Details.html#Amazon CloudWatch-Agent-Configuration-File-Agentsection
 
-```yaml
+```json
 {
   "agent": {
-      `# プロセスのユーザー名を設定する。`
+      `// プロセスのユーザー名を設定する。`
       "run_as_user": "cwagent",
       "metrics_collection_interval": 60,
-      `# 別の AWS アカウントにログを送信する場合に、必要な認可スコープを付与した AWS IAM ロール`
+      `// 別の AWS アカウントにログを送信する場合に、必要な認可スコープを付与した AWS IAM ロール`
       "credentials": "arn:aws:iam::<AWSアカウントID>:role/<AWS IAMロール名>",
     }}
 ```
@@ -674,24 +674,24 @@ AWS リソースが標準で収集しないカスタムメトリクスの元に�
 
 実装しなかった場合、何も設定されない。
 
-```yaml
+```json
 {
   "agent": {"run_as_user": "cwagent"},
-  # メトリクス
+  // メトリクス
   "metrics": {
-      # メトリクスの集約とする名前空間のユーザー定義名
-      # デフォルトで CWAgent になる。
+      // メトリクスの集約とする名前空間のユーザー定義名
+      // デフォルトで CWAgent になる。
       "namespace": "CWAgent",
-      # メトリクスの集約とするディメンション
+      // メトリクスの集約とするディメンション
       "aggregation_dimensions": [
           [
-            # インスタンス ID
+            // インスタンス ID
             "InstanceId",
-            # パーティションに紐づくファイルシステムのパス
+            // パーティションに紐づくファイルシステムのパス
             "path",
           ],
         ],
-      # ディメンションのユーザー定義名
+      // ディメンションのユーザー定義名
       "append_dimensions":
         {
           "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
@@ -699,30 +699,30 @@ AWS リソースが標準で収集しないカスタムメトリクスの元に�
           "InstanceId": "${aws:InstanceId}",
           "InstanceType": "${aws:InstanceType}",
         },
-      # メモリ上のバッファーの保管時間
+      // メモリ上のバッファーの保管時間
       "force_flush_interval": 60,
-      # 収集対象のカスタムメトリクスの一覧 (collectd パッケージまたは StatsD パッケージを使用する場合)
+      // 収集対象のカスタムメトリクスの一覧 (collectd パッケージまたは StatsD パッケージを使用する場合)
       "metrics_collected": {
-          # collectd パッケージの使用を宣言する。必ず設定する必要がある。
+          // collectd パッケージの使用を宣言する。必ず設定する必要がある。
           "collectd": {"metrics_aggregation_interval": 60},
-          # ストレージ系
+          // ストレージ系
           "disk": {
               "measurement": [
-                  # ディスク使用率メトリクス
+                  // ディスク使用率メトリクス
                   "used_percent",
                 ],
               "metrics_collection_interval": 60,
-              # マウントポイントを設定する。
+              // マウントポイントを設定する。
               "resources": ["*"],
             },
-          # メモリ系
+          // メモリ系
           "mem": {
-              # 計測
+              // 計測
               "measurement": [
-                  # メモリ使用率メトリクス
+                  // メモリ使用率メトリクス
                   "mem_used_percent",
                 ],
-              # 計測間隔
+              // 計測間隔
               "metrics_collection_interval": 60,
             },
         },
@@ -737,22 +737,22 @@ AWS リソースが標準で収集しないカスタムメトリクスの元に�
 
 ログの収集について設定する。
 
-```yaml
+```json
 {
   "agent": {"run_as_user": "cwagent"},
-  # ログ
+  // ログ
   "logs": {
-      # メモリ上のバッファーの保管時間
+      // メモリ上のバッファーの保管時間
       "force_flush_interval": 60,
       "logs_collected": {"files": {
-              # 収集対象のログの一覧
+              // 収集対象のログの一覧
               "collect_list": [
                   {
-                    # 収集対象のログのディレクトリ
+                    // 収集対象のログのディレクトリ
                     "file_path": "/var/log/nginx/error.log",
-                    # Amazon CloudWatch Logs 上でのロググループ名
+                    // Amazon CloudWatch Logs 上でのロググループ名
                     "log_group_name": "/foo-www/var/log/nginx/error_log",
-                    # Amazon CloudWatch Logs 上でのログストリーム名
+                    // Amazon CloudWatch Logs 上でのログストリーム名
                     "log_stream_name": "{instance_id}",
                   },
                   {

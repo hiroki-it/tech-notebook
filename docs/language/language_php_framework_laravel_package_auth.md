@@ -918,7 +918,7 @@ OAuth では、以下のトークン付与タイプを実装できる。
 
 2. アクセストークンを含む JSON 型データを受信する。
 
-    ```yaml
+    ```json
     {"token_type": "Bearer", "expires_in": 31536000, "access_token": "*****"}
     ```
 

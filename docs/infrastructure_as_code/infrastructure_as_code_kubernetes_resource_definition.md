@@ -6128,17 +6128,23 @@ spec:
 
 もし、Amazon EKS を使用している場合、加えて `/var/run/secrets/eks.amazonaws.com/serviceaccount/token` ファイルにもトークンの文字列が記載されている。
 
-```yaml
+```bash
 [root@<foo-pod:/] $ cat /var/run/secrets/kubernetes.io/serviceaccount/token | base64 -d; echo
+```
 
+```json
 {
   "alg":"RS256",
   "kid":"*****"
 }
+```
 
+```bash
 # Amazon EKS を使用している場合
 [root@<foo-pod:/] $ cat /var/run/secrets/eks.amazonaws.com/serviceaccount/token | base64 -d; echo
+```
 
+```json
 {
   "alg":"RS256",
   "kid":"*****"

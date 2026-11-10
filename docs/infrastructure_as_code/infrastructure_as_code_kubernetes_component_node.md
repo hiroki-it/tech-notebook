@@ -356,7 +356,7 @@ $ kubelet \
 
 kubelet を設定する。
 
-```yaml
+```json
 {
   "kind": "KubeletConfiguration",
   "apiVersion": "kubelet.config.k8s.io/v1beta1",
@@ -381,7 +381,7 @@ kubelet を設定する。
   "protectKernelDefaults": "true",
   "serializeImagePulls": "false",
   "serverTLSBootstrap": "true",
-  # 暗号スイート
+  // 暗号スイート
   "tlsCipherSuites":
     [
       "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
@@ -393,9 +393,9 @@ kubelet を設定する。
       "TLS_RSA_WITH_AES_256_GCM_SHA384",
       "TLS_RSA_WITH_AES_128_GCM_SHA256",
     ],
-  # コンテナのログローテーションの閾値
+  // コンテナのログローテーションの閾値
   "containerLogMaxSize": "100Mi",
-  # コンテナのログの最大世代数
+  // コンテナのログの最大世代数
   "containerLogMaxFiles": 2,
 }
 ```

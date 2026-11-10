@@ -29,13 +29,13 @@ $ brew install jq
 
 以降で使用する JSON 型データを以下の通りとする。
 
-```yaml title=".json"
+```json title=".json"
 {"foo": "FOO", "bar": "BAR", "baz": [{"qux": "QUX"}, {"quux": "QUUX"}]}
 ```
 
-```yaml
-# list.json ファイル
-# 配列内のオブジェクトごとに、foo キーの値が異なる。
+```json
+// list.json ファイル
+// 配列内のオブジェクトごとに、foo キーの値が異なる。
 [
   {"foo": "FOO", "bar": "BAR", "baz": "BAZ"},
   {"foo": "BAR", "bar": "BAZ", "baz": "FOO"},

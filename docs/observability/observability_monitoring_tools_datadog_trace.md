@@ -130,26 +130,26 @@ Datadog で、分散トレースは複数のスパンの配列データとして
 
 Datadog で、スパンは JSON 型データとして定義される。アプリケーション内のクライアントパッケージで、指定された JSON 型のスパンが作成され、スパンは datadog-API に送信される。
 
-```yaml
+```json
 [
   [
     {
-      "duration": 123, # 処理の所要時間
-      "error": 0, # エラーの有無
+      "duration": 123, // 処理の所要時間
+      "error": 0, // エラーの有無
       "meta": {
-          "env": "prd", # タグ
+          "env": "prd", // タグ
         },
       "metrics": {
-          "baz-sum": 123, # マイクロサービスのメトリクス
+          "baz-sum": 123, // マイクロサービスのメトリクス
         },
-      "name": "laravel.request", # スパン名
-      "parent_id": 123, # 親スパン ID
-      "resource": "/foo", # アクセスされたリソース
-      "service": "laravel", # マイクロサービス名
-      "span_id": 123456789, # スパン ID
-      "start": 0, # 処理開始時間
-      "trace_id": 123456789, # トレース ID
-      "type": "web", # マイクロサービスのタイプ
+      "name": "laravel.request", // スパン名
+      "parent_id": 123, // 親スパン ID
+      "resource": "/foo", // アクセスされたリソース
+      "service": "laravel", // マイクロサービス名
+      "span_id": 123456789, // スパン ID
+      "start": 0, // 処理開始時間
+      "trace_id": 123456789, // トレース ID
+      "type": "web", // マイクロサービスのタイプ
     },
   ],
 ]
@@ -165,7 +165,7 @@ Datadog で、スパンは JSON 型データとして定義される。アプリ
 
 PHP 用のクライアントパッケージで laravel 内からタグを収集した例
 
-```yaml
+```json
 {
     "env": "prd",
     "http": {

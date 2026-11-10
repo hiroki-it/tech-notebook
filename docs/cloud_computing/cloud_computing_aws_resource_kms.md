@@ -66,7 +66,7 @@ description: AWS KMS＠AWSリソースの知見を記録しています。
 
 AWS KMS のリクエスト制限を設定する。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":

@@ -622,7 +622,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 
 コピーされる側のバケットのバケットポリシーでアクセスを許可すれば、異なるアカウント間でもコピーできる。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -633,7 +633,7 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
         "Action": "s3:PutObject",
         "Resource": "arn:aws:s3:::foo-bucket/*",
         "Condition": {
-            # 完全一致
+            // 完全一致
             "StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"},
           },
       },
@@ -679,7 +679,7 @@ $ SQS_QUEUE_URL=$(aws sqs get-queue-url --queue-name <キュー名>)
 $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 ```
 
-```yaml
+```json
 {
   "Messages":
     [
@@ -793,10 +793,12 @@ $ amazon-ssm-agent \
 
 特定のパスで始まるすべての変数をパラメーターストアから取得する。
 
-```yaml
+```bash
 # パスのないパラメーターの場合
 $ aws ssm get-parameters-by-path --path "/"
+```
 
+```json
 {
     "Parameters": [
         {
@@ -813,10 +815,12 @@ $ aws ssm get-parameters-by-path --path "/"
  }
 ```
 
-```yaml
+```bash
 # 『/FOO』で始まるパラメーターの場合
 $ aws ssm get-parameters-by-path --path "/FOO"
+```
 
+```json
 {
     "Parameters": [
         {
@@ -913,7 +917,7 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 
 特定の送信元 IP アドレスを制限するポリシーを AWS IAM ユーザーに紐付けることにより、その AWS IAM ユーザーが AWS CLI の実行するときに、社外から実行できないように制限をかけられる。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":

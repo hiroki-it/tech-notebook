@@ -152,7 +152,7 @@ Inputs
 
 開発環境でパイプラインの動作を確認するために役立つ。
 
-```yaml
+```json
 {"message": "dummy"}
 ```
 
@@ -438,7 +438,7 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 
 その場合、構造化されて以下のようなログとなる。
 
-```yaml
+```json
 {
   "time": "2021-12-17T08:03:23.918838346+09:00",
   "record":
@@ -1049,7 +1049,7 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
 
 例えば、`log` キーのみを送信する場合、『`log`』と設定する。
 
-```yaml
+```json
 {
   "container_id": "*****",
   "container_name": "foo",

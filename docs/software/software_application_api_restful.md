@@ -550,7 +550,7 @@ DELETE メソッドでは、メッセージのみを 200 レスポンスとし�
 
 正常系レスポンスの場合、オブジェクトデータへのステータスコードの割り当ては不要である。
 
-```yaml
+```json
 {"name": "Taro Yamada"}
 ```
 
@@ -558,7 +558,7 @@ DELETE メソッドでは、メッセージのみを 200 レスポンスとし�
 
 JSON の場合、階層構造にすると、データサイズが増えてしまう。
 
-```yaml
+```json
 {
   "name": "Taro Yamada",
   "age": 10,
@@ -572,7 +572,7 @@ JSON の場合、階層構造にすると、データサイズが増えてしま
 
 > - https://www.amazon.co.jp/Web-API-The-Good-Parts/dp/4873116864
 
-```yaml
+```json
 {
   "name": "Taro Yamada",
   "age": 10,
@@ -646,7 +646,7 @@ CSV ファイルダウンロード機能では、データを CSV ファイル�
   </tbody>
 </table>
 
-```yaml
+```json
 {
   "code": 400,
   "errors": ["〇〇は必ず入力してください。", "□□は必ず入力してください。"],

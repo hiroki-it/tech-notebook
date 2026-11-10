@@ -1462,7 +1462,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 ここで拡張子を json にしてしまうと、integer 型の出力を json の構文エラーとして扱われてしまう。
 
-```yaml
+```json
 {
   "Version": "2012-10-17",
   "Statement":
@@ -1525,7 +1525,7 @@ resource "aws_s3_bucket_policy" "alb" {
 
 Amazon ECS タスク定義のうち、コンテナを定義する部分のこと。
 
-```yaml
+```json
 {
   "ipcMode": null,
   "executionRoleArn": "<ecsTaskExecutionRoleのARN>",
@@ -1549,29 +1549,29 @@ integer 型を通常変数として渡せるように、拡張子を json では
 
 これにより、同じ時間に発生したログを 1 つのログとしてまとめられるため、スタックトレースが見やすくなる。
 
-```yaml
+```json
 [
   {
-    # コンテナ名
+    // コンテナ名
     "name": "laravel",
-    # ECR の URL。タグを指定しない場合は latest が割り当てられる。
+    // ECR の URL。タグを指定しない場合は latest が割り当てられる。
     "image": "${laravel_ecr_repository_url}",
     "essential": "true",
     "portMappings": [
         {
-          # Amazon ECS のコンテナのポート番号
+          // Amazon ECS のコンテナのポート番号
           "containerPort":
             80
-            # Amazon ECS のホストのポート番号 ,
+            // Amazon ECS のホストのポート番号 ,
           "hostPort": 80,
           "protocol": "tcp",
         },
       ],
     "secrets": [
         {
-          # アプリケーションの環境変数名
+          // アプリケーションの環境変数名
           "name": "DB_HOST",
-          # AWS Systems Manager のパラメーター名
+          // AWS Systems Manager のパラメーター名
           "valueFrom": "/prd-foo/DB_HOST",
         },
         {"name": "DB_DATABASE", "valueFrom": "/prd-foo/DB_DATABASE"},
@@ -1582,16 +1582,16 @@ integer 型を通常変数として渡せるように、拡張子を json では
         {"name": "REDIS_PORT", "valueFrom": "/prd-foo/REDIS_PORT"},
       ],
     "logConfiguration": {
-        # ログドライバー
+        // ログドライバー
         "logDriver": "awslogs",
         "options": {
-            # ロググループ名
+            // ロググループ名
             "awslogs-group": "/prd-foo/laravel/log",
-            # スタックトレースのグループ化 (同時刻ログのグループ化)
+            // スタックトレースのグループ化 (同時刻ログのグループ化)
             "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
-            # リージョン
+            // リージョン
             "awslogs-region": "ap-northeast-1",
-            # ログストリーム名の接頭辞
+            // ログストリーム名の接頭辞
             "awslogs-stream-prefix": "/container",
           },
       },
