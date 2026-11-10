@@ -532,7 +532,7 @@ func (u *User) IsAdult() bool {
 
 ### 関数型
 
-振る舞いは状態をもたず、外部から状態を注入する。
+振る舞いは状態を持たず、外部から状態を持つオブジェクトを受け取る。
 
 副作用をなくす必要がある（同じ入力であれば、出力も同じである）。
 
@@ -545,6 +545,7 @@ package main
 
 import "fmt"
 
+// オブジェクト
 type User struct {
     Name string
     Age  int

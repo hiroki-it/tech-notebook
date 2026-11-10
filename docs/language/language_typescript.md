@@ -1029,7 +1029,7 @@ console.log(user.isAdult()); // true
 
 ### 関数型
 
-振る舞いは状態を持たず、外部から状態を受け取る。
+振る舞いは状態を持たず、外部から状態を持つオブジェクトを受け取る。
 
 副作用を起こさず、同じ入力に対して同じ出力を返す。
 
@@ -1038,6 +1038,7 @@ console.log(user.isAdult()); // true
 ほかのプログラミングパラダイムと共存できる。
 
 ```typescript
+// オブジェクト
 interface User {
   readonly name: string;
   readonly age: number;

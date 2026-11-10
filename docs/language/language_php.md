@@ -142,7 +142,7 @@ echo $user->isAdult() ? "true" : "false"; // true
 
 ### 関数型
 
-振る舞いは状態をもたず、外部から状態を注入する。
+振る舞いは状態を持たず、外部から状態を持つオブジェクトを受け取る。
 
 副作用をなくす必要がある（同じ入力であれば、出力も同じである）。
 
@@ -153,15 +153,15 @@ echo $user->isAdult() ? "true" : "false"; // true
 ```injectablephp
 <?php
 
-// オブジェクトの状態を設定する
-$user = [
+// オブジェクト
+$user = (object) [
     "name" => "Alice",
     "age" => 20,
 ];
 
 // 振る舞い
-function isAdult(array $user): bool {
-    return $user["age"] >= 18;
+function isAdult(stdClass $user): bool {
+    return $user->age >= 18;
 }
 
 echo isAdult($user) ? "true" : "false"; // true
