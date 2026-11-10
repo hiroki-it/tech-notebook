@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】RESTful-API＠API
-description: RESTful-API＠APIの知見を記録しています。
+title: 【IT技術の知見】RESTful-API
+description: RESTful-APIの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "RESTful-API"
 ---
 
-# RESTful-API＠API
+# RESTful-API
 
 ## はじめに
 

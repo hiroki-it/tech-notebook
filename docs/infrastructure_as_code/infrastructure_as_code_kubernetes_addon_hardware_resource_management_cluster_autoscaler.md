@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】cluster-autoscaler＠ハードウェアリソース管理系
-description: cluster-autoscaler＠ハードウェアリソース管理系の知見を記録しています。
+title: 【IT技術の知見】cluster-autoscaler
+description: cluster-autoscalerの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ハードウェアリソース管理系"
 ---
 
-# cluster-autoscaler＠ハードウェアリソース管理系
+# cluster-autoscaler
 
 ## はじめに
 

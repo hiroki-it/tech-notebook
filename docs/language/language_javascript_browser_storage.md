@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】ストレージ＠JavaScript
+title: 【IT技術の知見】ストレージ
+tags:
+  - "言語"
+  - "JavaScript"
+  - "ブラウザ"
 ---
 
-# ストレージ＠JavaScript
+# ストレージ
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】変数・スコープ＠TypeScript
-description: 変数・スコープ＠TypeScriptの知見を記録しています。
+title: 【IT技術の知見】変数・スコープ
+description: 変数・スコープの知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
+  - "言語機能"
 ---
 
-# 変数・スコープ＠TypeScript
+# 変数・スコープ
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Project＠Google Cloudリソース
-description: Project＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Project
+description: Projectの知見を記録しています。
 ---
 
-# Project＠Google Cloud リソース
+# Project
 
 ## はじめに
 

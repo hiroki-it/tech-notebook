@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】コンポーネント＠Laravel
-description: 認証／認可＠Laravelの知見を記録しています。
+title: 【IT技術の知見】コンポーネント
+description: 認証／認可の知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
+  - "フレームワーク"
+  - "Laravel"
 ---
 
-# コンポーネント＠Laravel
+# コンポーネント
 
 ## はじめに
 

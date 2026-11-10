@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】FireLens＠AWSリソース
-description: FireLens＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】FireLens
+description: FireLensの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# FireLens＠AWS リソース
+# FireLens
 
 ## はじめに
 

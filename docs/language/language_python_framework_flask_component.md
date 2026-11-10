@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】コンポーネント＠Flask
-description: コンポーネント＠Flaskの知見を記録しています。
+title: 【IT技術の知見】コンポーネント
+description: コンポーネントの知見を記録しています。
+tags:
+  - "言語"
+  - "Python"
+  - "フレームワーク"
+  - "Flask"
 ---
 
-# コンポーネント＠Flask
+# コンポーネント
 
 ## はじめに
 

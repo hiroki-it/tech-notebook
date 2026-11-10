@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】ConfigMap系＠Grafana
-description: ConfigMap系＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】ConfigMap系
+description: ConfigMap系の知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Grafana"
+  - "リソース定義"
 ---
 
-# ConfigMap 系＠Grafana
+# ConfigMap 系
 
 ## はじめに
 

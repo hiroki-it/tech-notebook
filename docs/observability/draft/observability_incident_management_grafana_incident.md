@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana Incident＠インシデント管理ツール
-description: Grafana Incident＠インシデント管理ツールの知見を記録しています。
+title: 【IT技術の知見】Grafana Incident
+description: Grafana Incidentの知見を記録しています。
 ---
 
-# Grafana Incident＠インシデント管理ツール
+# Grafana Incident
 
 ## はじめに
 

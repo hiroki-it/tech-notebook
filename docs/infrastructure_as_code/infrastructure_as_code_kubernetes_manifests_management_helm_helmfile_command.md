@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】コマンド＠Helmfile
-description: コマンド＠Helmfileの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "マニフェスト管理"
+  - "Helm"
+  - "Helmfile"
 ---
 
-# コマンド＠Helmfile
+# コマンド
 
 ## はじめに
 

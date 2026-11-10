@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠VictoriaMetrics
-description: コマンド＠VictoriaMetricsの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "時系列DB系"
+  - "VictoriaMetrics"
 ---
 
-# コマンド＠VictoriaMetrics
+# コマンド
 
 ## はじめに
 

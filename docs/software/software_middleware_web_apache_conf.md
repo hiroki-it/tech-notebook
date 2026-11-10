@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】apache.conf@Apache
-description: apache.conf@Apacheの知見を記録しています。
+title: 【IT技術の知見】apache.conf
+description: apache.confの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "Web系"
+  - "Apache"
 ---
 
-# apache.conf@Apache
+# apache.conf
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Google Cloud Storage Bucket＠Google Cloudリソース
-description: Google Cloud Storage Bucket＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Google Cloud Storage Bucket
+description: Google Cloud Storage Bucketの知見を記録しています。
 ---
 
-# Google Cloud Storage Bucket＠Google Cloud
+# Google Cloud Storage Bucket
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Composition API＠Vue.js
-description: Composition API＠Vue.jsの知見を記録しています。
+title: 【IT技術の知見】Composition API
+description: Composition APIの知見を記録しています。
 ---
 
-# Composition API＠Vue.js
+# Composition API
 
 ## はじめに
 

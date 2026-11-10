@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】分散トレース＠Datadog
-description: 分散トレース＠Datadogの知見を記録しています。
+title: 【IT技術の知見】分散トレース
+description: 分散トレースの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Datadog"
+  - "テレメトリー"
 ---
 
-# 分散トレース＠Datadog
+# 分散トレース
 
 ## はじめに
 

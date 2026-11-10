@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】JavaScript＠gRPCクライアントパッケージ
-description: JavaScript＠gRPCクライアントパッケージの知見を記録しています。
+title: 【IT技術の知見】JavaScript
+description: JavaScriptの知見を記録しています。
 ---
 
-# JavaScript＠gRPC クライアントパッケージ
+# JavaScript
 
 ## はじめに
 

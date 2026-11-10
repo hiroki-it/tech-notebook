@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】JSONクエリ＠JSON
-description: JSONクエリ＠JSONの知見を記録しています。
+title: 【IT技術の知見】JSONクエリ
+description: JSONクエリの知見を記録しています。
+tags:
+  - "言語"
+  - "データ記述言語"
+  - "JSON"
 ---
 
-# JSON クエリ＠JSON
+# JSON クエリ
 
 ## はじめに
 

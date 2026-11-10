@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】リソース定義＠Karpenter
-description: リソース定義＠Karpenterの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ハードウェアリソース管理系"
+  - "Karpenter"
 ---
 
-# リソース定義＠Karpenter
+# リソース定義
 
 ## はじめに
 

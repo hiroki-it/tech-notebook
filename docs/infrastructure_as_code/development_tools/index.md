@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "K8sアプリ"
 ---
 
 # セクションの目次

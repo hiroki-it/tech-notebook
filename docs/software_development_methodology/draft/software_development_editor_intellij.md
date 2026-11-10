@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】IntelliJ＠エディター
-description: IntelliJ＠エディターの知見を記録しています。
+title: 【IT技術の知見】IntelliJ
+description: IntelliJの知見を記録しています。
 ---
 
-# IntelliJ＠エディター
+# IntelliJ
 
 ## はじめに
 

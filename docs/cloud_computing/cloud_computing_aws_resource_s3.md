@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon S3＠AWSリソース
-description: Amazon S3＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon S3
+description: Amazon S3の知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon S3＠AWS リソース
+# Amazon S3
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS DynamoDB＠AWSリソース
-description: AWS DynamoDB＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS DynamoDB
+description: AWS DynamoDBの知見を記録しています。
 ---
 
-# AWS DynamoDB＠AWS リソース
+# AWS DynamoDB
 
 ## はじめに
 

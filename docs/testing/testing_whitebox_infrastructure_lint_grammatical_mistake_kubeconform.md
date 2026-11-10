@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】 kubeconform＠API仕様違反テスト
-description: kubeconform＠API仕様違反テストの知見を記録しています。
+title: 【IT技術の知見】 kubeconform
+description: kubeconformの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "インフラ"
+  - "静的解析"
+  - "文法違反テスト"
 ---
 
-# kubeconform＠API 仕様違反テスト
+# kubeconform
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】X-Ray＠AWS
-description: X-Ray＠AWSの知見を記録しています。
+title: 【IT技術の知見】X-Ray
+description: X-Rayの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# X-Ray＠AWS
+# X-Ray
 
 ## はじめに
 

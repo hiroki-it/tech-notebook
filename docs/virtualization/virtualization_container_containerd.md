@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Containerd＠仮想化
-description: Containerd＠仮想化の知見を記録しています。
+title: 【IT技術の知見】Containerd
+description: Containerdの知見を記録しています。
+tags:
+  - "仮想化"
+  - "コンテナ型仮想化"
+  - "Containerd"
 ---
 
-# Containerd＠仮想化
+# Containerd
 
 ## はじめに
 

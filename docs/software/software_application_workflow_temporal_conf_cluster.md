@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Clusterスコープ設定ファイル＠Temporal
-description: Clusterスコープ設定ファイル＠Temporalの知見を記録しています。
+title: 【IT技術の知見】Clusterスコープ設定ファイル
+description: Clusterスコープ設定ファイルの知見を記録しています。
+tags:
+  - "アプリ"
+  - "ワークフロー"
+  - "Temporal"
+  - "設定ファイル"
 ---
 
-# Cluster スコープ設定ファイル＠Temporal
+# Cluster スコープ設定ファイル
 
 ## はじめに
 

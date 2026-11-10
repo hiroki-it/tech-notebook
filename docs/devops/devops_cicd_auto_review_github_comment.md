@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】github-comment＠自動レビューツール
-description: github-comment＠自動レビューツールの知見を記録しています。
+title: 【IT技術の知見】github-comment
+description: github-commentの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "自動レビューツール"
 ---
 
-# github-comment＠自動レビューツール
+# github-comment
 
 ## はじめに
 

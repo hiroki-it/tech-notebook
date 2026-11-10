@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】ルール＠Codex
-description: ルール＠Codexの知見を記録しています。
+title: 【IT技術の知見】ルール
+description: ルールの知見を記録しています。
 ---
 
-# ルール＠Codex
+# ルール
 
 ## はじめに
 

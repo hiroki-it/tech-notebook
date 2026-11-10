@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】ER図＠RDB
-description: ER図＠RDBの知見を記録しています。
+title: 【IT技術の知見】ER図
+description: ER図の知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
 ---
 
-# ER 図＠RDB
+# ER 図
 
 ## データモデルパターン
 

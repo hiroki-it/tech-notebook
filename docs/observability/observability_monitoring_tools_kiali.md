@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Kiali＠監視ツール
-description: Kiali＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】Kiali
+description: Kialiの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Kiali"
 ---
 
-# Kiali＠監視ツール
+# Kiali
 
 ## はじめに
 

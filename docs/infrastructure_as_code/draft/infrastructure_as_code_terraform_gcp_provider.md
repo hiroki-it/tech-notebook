@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GCPプロバイダー＠Terraform
-description: GCPプロバイダー＠Terraformの知見を記録しています。
+title: 【IT技術の知見】GCPプロバイダー
+description: GCPプロバイダーの知見を記録しています。
 ---
 
-# GCP プロバイダー＠Terraform
+# GCP プロバイダー
 
 ## はじめに
 

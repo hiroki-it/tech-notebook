@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】アップグレード＠Anthos
-description: アップグレード＠Anthosの知見を記録しています。
+title: 【IT技術の知見】アップグレード
+description: アップグレードの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "Google Cloud"
+  - "Google Cloudリソース"
+  - "Anthos"
 ---
 
-# アップグレード＠Anthos
+# アップグレード
 
 ## はじめに
 

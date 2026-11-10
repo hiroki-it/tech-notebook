@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】CloudTrail＠AWSリソース
-description: CloudTrail＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】CloudTrail
+description: CloudTrailの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# CloudTrail＠AWS リソース
+# CloudTrail
 
 ## はじめに
 

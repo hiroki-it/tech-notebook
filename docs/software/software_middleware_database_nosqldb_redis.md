@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Redis＠NoSQL
-description: Redis＠NoSQLの知見を記録しています。
+title: 【IT技術の知見】Redis
+description: Redisの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "NoSQL DB系"
+  - "Redis"
 ---
 
-# Redis＠NoSQL
+# Redis
 
 ## はじめに
 

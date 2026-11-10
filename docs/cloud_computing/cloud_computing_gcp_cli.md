@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Google Cloud CLI＠Google Cloudリソース
-description: Google Cloud CLI＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Google Cloud CLI
+description: Google Cloud CLIの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "Google Cloud"
 ---
 
-# Google Cloud CLI＠Google Cloud リソース
+# Google Cloud CLI
 
 ## はじめに
 

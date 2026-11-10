@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Reactパッケージ＠JavaScript
-description: Reactパッケージ＠JavaScriptの知見を記録しています。
+title: 【IT技術の知見】Reactパッケージ
+description: Reactパッケージの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "パッケージ"
 ---
 
-# React パッケージ＠JavaScript
+# React パッケージ
 
 ## はじめに
 

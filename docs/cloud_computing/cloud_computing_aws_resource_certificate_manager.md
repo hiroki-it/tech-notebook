@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Certificate Manager＠AWSリソース
-description: Certificate Manager＠AWSリソースを記録しています。
+title: 【IT技術の知見】Certificate Manager
+description: Certificate Managerを記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Certificate Manager＠AWS リソース
+# Certificate Manager
 
 ## はじめに
 

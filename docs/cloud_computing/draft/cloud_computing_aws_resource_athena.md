@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS Athena＠AWSリソース
-description: AWS Athena＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS Athena
+description: AWS Athenaの知見を記録しています。
 ---
 
-# AWS Athena＠AWS リソース
+# AWS Athena
 
 ## はじめに
 

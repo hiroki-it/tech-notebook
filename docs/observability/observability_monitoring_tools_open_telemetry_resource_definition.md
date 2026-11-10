@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】リソース定義＠OpenTelemetry
-description: リソース定義＠OpenTelemetryの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "OpenTelemetry"
 ---
 
-# リソース定義＠OpenTelemetry
+# リソース定義
 
 ## はじめに
 

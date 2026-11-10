@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS KMS＠AWSリソース
-description: AWS KMS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS KMS
+description: AWS KMSの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AWS KMS＠AWS リソース
+# AWS KMS
 
 ## はじめに
 

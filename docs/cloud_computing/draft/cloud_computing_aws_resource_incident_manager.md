@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Incident Management＠AWS
-description: Incident Management＠AWSの知見を記録しています。
+title: 【IT技術の知見】Incident Management
+description: Incident Managementの知見を記録しています。
 ---
 
-# Incident Management＠AWS リソース
+# Incident Management
 
 ## はじめに
 

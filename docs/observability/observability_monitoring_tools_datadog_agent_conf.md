@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】datadogエージェントの設定＠Datadog
-description: datadogエージェントの設定＠Datadogの知見を記録しています。
+title: 【IT技術の知見】datadogエージェントの設定
+description: datadogエージェントの設定の知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Datadog"
 ---
 
-# datadog エージェントの設定＠Datadog
+# datadog エージェントの設定
 
 ## はじめに
 

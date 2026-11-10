@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠Nginx
-description: 設定ファイル＠Nginxの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "Web系"
+  - "Nginx"
 ---
 
-# 設定ファイル＠Nginx
+# 設定ファイル
 
 ## はじめに
 

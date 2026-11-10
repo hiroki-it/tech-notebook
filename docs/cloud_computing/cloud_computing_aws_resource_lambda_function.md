@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】AWS Lambda関数＠AWS Lambda
-description: AWS Lambda関数＠AWS Lambdaの知見を記録しています。
+title: 【IT技術の知見】AWS Lambda関数
+description: AWS Lambda関数の知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
+  - "Lambda"
 ---
 
-# AWS Lambda 関数＠AWS Lambda
+# AWS Lambda 関数
 
 ## はじめに
 

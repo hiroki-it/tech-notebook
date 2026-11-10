@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Bun＠JavaScriptランタイム
-description: Bun＠JavaScriptランタイムの知見を記録しています。
+title: 【IT技術の知見】Bun
+description: Bunの知見を記録しています。
 ---
 
-# Bun＠JavaScript ランタイム
+# Bun
 
 ## はじめに
 

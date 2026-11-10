@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "開発手法"
 ---
 
 # セクションの目次

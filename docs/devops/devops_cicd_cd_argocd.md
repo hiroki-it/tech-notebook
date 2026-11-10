@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】ArgoCD＠CDツール
-description: ArgoCD＠CDツールの知見を記録しています。
+title: 【IT技術の知見】ArgoCD
+description: ArgoCDの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CDツール"
+  - "ArgoCD"
 ---
 
-# ArgoCD＠CD ツール
+# ArgoCD
 
 ## はじめに
 

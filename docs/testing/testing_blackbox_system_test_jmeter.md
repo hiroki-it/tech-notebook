@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】JMeter＠システムテスト
-description: JMeter＠システムテストの知見を記録しています。
+title: 【IT技術の知見】JMeter
+description: JMeterの知見を記録しています。
+tags:
+  - "テスト"
+  - "ブラックボックステスト"
+  - "システムテスト"
 ---
 
-# JMeter＠システムテスト
+# JMeter
 
 ## はじめに
 

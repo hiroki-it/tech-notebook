@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS Amplify＠AWSリソース
-description: AWS Amplify＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS Amplify
+description: AWS Amplifyの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AWS Amplify＠AWS リソース
+# AWS Amplify
 
 ## はじめに
 

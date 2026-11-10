@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠OAuth2 Proxy
-description: 設定ファイル＠OAuth2 Proxyの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "セキュリティ系"
+  - "OAuth2 Proxy"
 ---
 
-# 設定ファイル＠OAuth2 Proxy
+# 設定ファイル
 
 ## はじめに
 

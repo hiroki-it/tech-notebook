@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Telepresence＠デバッグ系
-description: Telepresence＠デバッグ系の知見を記録しています。
+title: 【IT技術の知見】Telepresence
+description: Telepresenceの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "デバッグ系"
 ---
 
-# Telepresence＠デバッグ系
+# Telepresence
 
 ## はじめに
 

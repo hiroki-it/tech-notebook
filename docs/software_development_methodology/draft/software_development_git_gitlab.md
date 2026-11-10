@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】GitLab＠Git
-description: GitLab＠Gitの知見を記録しています。
+title: 【IT技術の知見】GitLab
+description: GitLabの知見を記録しています。
 ---
 
-# GitLab＠Git
+# GitLab
 
 ## はじめに
 

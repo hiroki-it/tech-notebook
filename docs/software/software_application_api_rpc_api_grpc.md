@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】gRPC＠RPC-API
-description: gRPC＠RPC-APIの知見を記録しています。
+title: 【IT技術の知見】gRPC
+description: gRPCの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "RPC-API"
 ---
 
-# gRPC＠RPC-API
+# gRPC
 
 ## はじめに
 

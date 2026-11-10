@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】ロジック＠Custom Controller
-description: ロジック＠Custom Controllerの知見を記録しています。
+title: 【IT技術の知見】ロジック
+description: ロジックの知見を記録しています。
+tags:
+  - "K8s"
+  - "カスタムリソース"
 ---
 
-# ロジック＠Custom Controller
+# ロジック
 
 ## はじめに
 

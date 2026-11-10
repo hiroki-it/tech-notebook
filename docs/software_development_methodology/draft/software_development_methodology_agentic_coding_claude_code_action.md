@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Claude Code Action＠Claude Code
-description: Claude Code Action＠Claude Codeの知見を記録しています。
+title: 【IT技術の知見】Claude Code Action
+description: Claude Code Actionの知見を記録しています。
 ---
 
-# Claude Code Action＠Claude Code
+# Claude Code Action
 
 ## はじめに
 

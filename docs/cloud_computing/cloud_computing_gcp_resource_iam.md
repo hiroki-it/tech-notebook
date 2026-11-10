@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】IAM＠Google Cloudリソース
-description: IAM＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】IAM
+description: IAMの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "Google Cloud"
+  - "Google Cloudリソース"
 ---
 
-# IAM＠Google Cloud リソース
+# IAM
 
 ## はじめに
 

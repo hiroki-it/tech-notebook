@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】コンポーネント＠FastAPI
-description: コンポーネント＠FastAPIの知見を記録しています。
+title: 【IT技術の知見】コンポーネント
+description: コンポーネントの知見を記録しています。
 ---
 
-# コンポーネント＠FastAPI
+# コンポーネント
 
 ## はじめに
 

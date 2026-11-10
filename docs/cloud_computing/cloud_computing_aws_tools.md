@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】ツール＠AWS
-description: ツール＠AWSの知見を記録しています。
+title: 【IT技術の知見】ツール
+description: ツールの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
 ---
 
-# ツール＠AWS
+# ツール
 
 ## はじめに
 

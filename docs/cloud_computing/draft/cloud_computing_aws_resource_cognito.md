@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】AWS Cognito＠AWSリソース
-description: AWS Cognito＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS Cognito
+description: AWS Cognitoの知見を記録しています。
 ---
 
-# AWS Cognito＠AWS リソース
+# AWS Cognito
 
 ## はじめに
 

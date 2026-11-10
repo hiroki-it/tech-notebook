@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】VictoriaMetrics＠TSDB
-description: VictoriaMetrics＠TSDBの知見を記録しています。
+title: 【IT技術の知見】VictoriaMetrics
+description: VictoriaMetricsの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "時系列DB系"
+  - "VictoriaMetrics"
 ---
 
-# VictoriaMetrics＠TSDB
+# VictoriaMetrics
 
 ## はじめに
 

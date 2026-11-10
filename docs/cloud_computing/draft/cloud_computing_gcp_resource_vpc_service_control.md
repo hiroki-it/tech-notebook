@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】VPCServiceControl＠Google Cloudリソース
-description: VPCServiceControl＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】VPCServiceControl
+description: VPCServiceControlの知見を記録しています。
 ---
 
-# VPCServiceControl＠Google Cloud リソース
+# VPCServiceControl
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Custom Controller＠カスタムリソース
-description: Custom Controller＠カスタムリソースの知見を記録しています。
+title: 【IT技術の知見】Custom Controller
+description: Custom Controllerの知見を記録しています。
+tags:
+  - "K8s"
+  - "カスタムリソース"
 ---
 
-# Custom Controller＠カスタムリソース
+# Custom Controller
 
 ## はじめに
 

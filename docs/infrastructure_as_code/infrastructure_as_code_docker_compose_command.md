@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Docker compose
-description: コマンド＠Docker composeの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Docker Compose"
 ---
 
-# コマンド＠Docker compose
+# コマンド
 
 ## はじめに
 

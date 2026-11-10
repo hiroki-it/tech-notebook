@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Karpenter＠ハードウェアリソース管理系
-description: Karpenter＠ハードウェアリソース管理系の知見を記録しています。
+title: 【IT技術の知見】Karpenter
+description: Karpenterの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ハードウェアリソース管理系"
+  - "Karpenter"
 ---
 
-# Karpenter＠ハードウェアリソース管理系
+# Karpenter
 
 ## はじめに
 

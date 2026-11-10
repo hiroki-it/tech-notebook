@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Helmfile＠Helm
-description: Helmfile＠Helmの知見を記録しています。
+title: 【IT技術の知見】Helmfile
+description: Helmfileの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "マニフェスト管理"
+  - "Helm"
+  - "Helmfile"
 ---
 
-# Helmfile＠Helm
+# Helmfile
 
 ## はじめに
 

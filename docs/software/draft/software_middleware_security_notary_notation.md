@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Notary Notation＠セキュリティ系ミドルウェア
-description: Notation＠セキュリティ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Notary Notation
+description: Notationの知見を記録しています。
 ---
 
-# Notary Notation＠セキュリティ系ミドルウェア
+# Notary Notation
 
 ## はじめに
 

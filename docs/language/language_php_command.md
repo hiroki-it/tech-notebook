@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】コマンド＠PHP
-description: コマンド＠PHPの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
 ---
 
-# コマンド＠PHP
+# コマンド
 
 ## はじめに
 

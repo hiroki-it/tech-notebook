@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana Loki＠Grafana
-description: Grafana Loki＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】Grafana Loki
+description: Grafana Lokiの知見を記録しています。
 ---
 
-# Grafana Loki＠Grafana
+# Grafana Loki
 
 ## はじめに
 

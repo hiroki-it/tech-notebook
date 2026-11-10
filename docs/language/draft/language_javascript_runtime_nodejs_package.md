@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】パッケージ＠Node.js
-description: パッケージ＠Node.jsの知見を記録しています。
+title: 【IT技術の知見】パッケージ
+description: パッケージの知見を記録しています。
 ---
 
-# パッケージ＠Node.js
+# パッケージ
 
 ## はじめに
 

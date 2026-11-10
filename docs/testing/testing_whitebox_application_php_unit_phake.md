@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Phake＠PHPユニットテスト
-description: Phake＠PHPユニットテストの知見を記録しています。
+title: 【IT技術の知見】Phake
+description: Phakeの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "アプリ (PHP)"
+  - "ユニットテスト"
 ---
 
-# Phake＠PHP ユニットテスト
+# Phake
 
 ## はじめに
 

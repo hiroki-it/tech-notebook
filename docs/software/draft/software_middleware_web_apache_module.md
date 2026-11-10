@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】モジュール＠Apache
-description: モジュール＠Apacheの知見を記録しています。
+title: 【IT技術の知見】モジュール
+description: モジュールの知見を記録しています。
 ---
 
-# モジュール＠Apache
+# モジュール
 
 ## はじめに
 

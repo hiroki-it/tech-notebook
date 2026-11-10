@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Traefik＠サービスメッシュ系ミドルウェア
-description: Traefik＠サービスメッシュ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Traefik
+description: Traefikの知見を記録しています。
 ---
 
-# Traefik＠サービスメッシュ系ミドルウェア
+# Traefik
 
 ## はじめに
 

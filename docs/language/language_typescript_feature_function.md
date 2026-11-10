@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】関数＠TypeScript
-description: 関数＠TypeScriptの知見を記録しています。
+title: 【IT技術の知見】関数
+description: 関数の知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
+  - "言語機能"
 ---
 
-# 関数＠TypeScript
+# 関数
 
 ## はじめに
 

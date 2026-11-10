@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】L2＠OSI参照モデル
-description: L2＠OSI参照モデルの知見を記録しています。
+title: 【IT技術の知見】L2
+description: L2の知見を記録しています。
+tags:
+  - "ネットワーク"
+  - "OSI参照モデル"
 ---
 
-# L2＠OSI 参照モデル
+# L2
 
 ## はじめに
 

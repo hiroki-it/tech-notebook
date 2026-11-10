@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠ArgoCD
-description: コマンド＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CDツール"
+  - "ArgoCD"
 ---
 
-# コマンド＠ArgoCD
+# コマンド
 
 ## はじめに
 

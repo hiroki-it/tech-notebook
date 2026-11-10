@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】L1＠OSI参照モデル
-description: L1＠OSI参照モデルの知見を記録しています。
+title: 【IT技術の知見】L1
+description: L1の知見を記録しています。
+tags:
+  - "ネットワーク"
+  - "OSI参照モデル"
 ---
 
-# L1＠OSI 参照モデル
+# L1
 
 ## はじめに
 

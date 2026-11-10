@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】 Playbook＠Ansible
-description: Playbook＠Ansibleの知見を記録しています。
+title: 【IT技術の知見】 Playbook
+description: Playbookの知見を記録しています。
+tags:
+  - "IaC"
+  - "手続き型"
+  - "Ansible"
 ---
 
-# Playbook＠Ansible
+# Playbook
 
 ## はじめに
 

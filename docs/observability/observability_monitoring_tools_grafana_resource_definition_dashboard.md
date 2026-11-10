@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】ダッシュボード＠Grafana
-description: ダッシュボード＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】ダッシュボード
+description: ダッシュボードの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Grafana"
+  - "リソース定義"
 ---
 
-# ダッシュボード＠Grafana
+# ダッシュボード
 
 ## はじめに
 

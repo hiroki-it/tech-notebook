@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】SQLパッケージ＠PHP
-description: SQLパッケージ＠PHPの知見を記録しています。
+title: 【IT技術の知見】SQLパッケージ
+description: SQLパッケージの知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
+  - "パッケージ"
 ---
 
-# SQL パッケージ＠PHP
+# SQL パッケージ
 
 ## はじめに
 

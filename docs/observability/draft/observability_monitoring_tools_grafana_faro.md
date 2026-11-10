@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana Faro＠Grafana
-description: Grafana Faro＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】Grafana Faro
+description: Grafana Faroの知見を記録しています。
 ---
 
-# Grafana Faro＠Grafana
+# Grafana Faro
 
 ## はじめに
 

@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】オブジェクト＠JavaScript
+title: 【IT技術の知見】オブジェクト
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# オブジェクト＠JavaScript
+# オブジェクト
 
 ## はじめに
 

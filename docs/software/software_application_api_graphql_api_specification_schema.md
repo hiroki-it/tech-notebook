@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】API スキーマ＠API仕様書
-description: API スキーマ＠API仕様書の知見を記録しています。
+title: 【IT技術の知見】API スキーマ
+description: API スキーマの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "GraphQL-API"
+  - "API仕様書"
 ---
 
-# API スキーマ＠GraphQL-API
+# API スキーマ
 
 ## はじめに
 

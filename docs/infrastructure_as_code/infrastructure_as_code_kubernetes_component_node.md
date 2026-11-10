@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Nodeコンポーネント＠Kubernetes
-description: Nodeコンポーネント＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】Nodeコンポーネント
+description: Nodeコンポーネントの知見を記録しています。
+tags:
+  - "K8s"
+  - "Kubernetes"
 ---
 
-# Node コンポーネント＠Kubernetes
+# Node コンポーネント
 
 ## はじめに
 

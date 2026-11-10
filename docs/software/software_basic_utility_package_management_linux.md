@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Linux系＠管理ユーティリティ
-description: Linux系＠管理ユーティリティの知見を記録しています。
+title: 【IT技術の知見】Linux系
+description: Linux系の知見を記録しています。
+tags:
+  - "OS"
+  - "ユーティリティ"
+  - "パッケージ管理ユーティリティ"
 ---
 
-# Linux 系＠管理ユーティリティ
+# Linux 系
 
 ## 01. apk
 

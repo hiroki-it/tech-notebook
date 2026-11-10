@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Vuex＠Vue.js
-description: Vuex＠Vue.jsの知見を記録しています。
+title: 【IT技術の知見】Vuex
+description: Vuexの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "フレームワーク"
+  - "Vue.js"
 ---
 
-# Vuex＠Vue.js
+# Vuex
 
 ## はじめに
 

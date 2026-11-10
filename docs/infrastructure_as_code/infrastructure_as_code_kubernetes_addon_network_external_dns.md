@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】ExternalDNS＠ネットワーク系
-description: ExternalDNS＠ネットワーク系の知見を記録しています。
+title: 【IT技術の知見】ExternalDNS
+description: ExternalDNSの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ネットワーク系"
 ---
 
-# ExternalDNS＠ネットワーク系
+# ExternalDNS
 
 ## はじめに
 

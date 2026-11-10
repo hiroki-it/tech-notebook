@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】JSON：JavaScript Object Notation＠データ記述型言語
-description: JSON：JavaScript Object Notation＠データ記述型言語の知見を記録しています。
+title: 【IT技術の知見】JSON：JavaScript Object Notation
+description: JSON：JavaScript Object Notationの知見を記録しています。
+tags:
+  - "言語"
+  - "データ記述言語"
+  - "JSON"
 ---
 
-# JSON：JavaScript Object Notation＠データ記述型言語
+# JSON：JavaScript Object Notation
 
 ## はじめに
 

@@ -1,9 +1,15 @@
 ---
-title: 【IT 技術の知見】ConfigMap 系＠リソース定義
-description: ConfigMap 系＠リソース定義の知見を記録しています。
+title: 【IT 技術の知見】ConfigMap 系
+description: ConfigMap 系の知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Istio"
+  - "リソース"
+  - "リソース定義"
 ---
 
-# ConfigMap 系＠リソース定義
+# ConfigMap 系
 
 ## はじめに
 

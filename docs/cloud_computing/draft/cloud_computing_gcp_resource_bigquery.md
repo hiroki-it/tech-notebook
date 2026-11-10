@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】BigQuery＠Google Cloudリソース
-description: BigQuery＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】BigQuery
+description: BigQueryの知見を記録しています。
 ---
 
-# BigQuery＠Google Cloud リソース
+# BigQuery
 
 ## はじめに
 

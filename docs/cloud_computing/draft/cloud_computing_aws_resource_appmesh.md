@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】App Mesh＠AWS
-description: App Mesh＠AWSの知見を記録しています。
+title: 【IT技術の知見】App Mesh
+description: App Meshの知見を記録しています。
 ---
 
-# App Mesh＠AWS
+# App Mesh
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon Route 53＠AWSリソース
-description: Amazon Route 53＠AWSリソース
+title: 【IT技術の知見】Amazon Route 53
+description: Amazon Route 53
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon Route 53＠AWS リソース
+# Amazon Route 53
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】YAML：YAML Ain't a Markup Language＠データ記述型言語
-description: YAML：YAML Ain't a Markup Language＠データ記述型言語の知見を記録しています。
+title: 【IT技術の知見】YAML：YAML Ain't a Markup Language
+description: YAML：YAML Ain't a Markup Languageの知見を記録しています。
+tags:
+  - "言語"
+  - "データ記述言語"
+  - "YAML"
 ---
 
-# YAML：YAML Ain't a Markup Language＠データ記述型言語
+# YAML：YAML Ain't a Markup Language
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Amazon Aurora＠AWSリソース
-description: Amazon Aurora＠AWSリソース
+title: 【IT技術の知見】Amazon Aurora
+description: Amazon Aurora
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
+  - "RDS"
 ---
 
-# Amazon Aurora＠AWS リソース
+# Amazon Aurora
 
 ## はじめに
 

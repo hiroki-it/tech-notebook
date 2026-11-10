@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】メトリクス＠Prometheus
-description: メトリクス＠Prometheus
+title: 【IT技術の知見】メトリクス
+description: メトリクス
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
+  - "メトリクス"
 ---
 
-# メトリクス＠Prometheus
+# メトリクス
 
 ## はじめに
 

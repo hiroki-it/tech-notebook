@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】ストレージ＠Docker
-description: ストレージ＠Dockerの知見を記録しています。
+title: 【IT技術の知見】ストレージ
+description: ストレージの知見を記録しています。
+tags:
+  - "仮想化"
+  - "コンテナ型仮想化"
+  - "Docker"
 ---
 
-# ストレージ＠Docker
+# ストレージ
 
 ## はじめに
 

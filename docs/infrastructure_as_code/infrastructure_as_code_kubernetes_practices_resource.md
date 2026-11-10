@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】プラクティス集＠Kubernetesリソース
-description: プラクティス集＠Kubernetesリソースの知見を記録しています。
+title: 【IT技術の知見】プラクティス集
+description: プラクティス集の知見を記録しています。
+tags:
+  - "K8s"
+  - "プラクティス集"
 ---
 
-# プラクティス集＠Kubernetes リソース
+# プラクティス集
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】SecretsストアCSIドライバー＠Secret系
-description: SecretsストアCSIドライバー＠Secret系の知見を記録しています。
+title: 【IT技術の知見】SecretsストアCSIドライバー
+description: SecretsストアCSIドライバーの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Secret系"
+  - "SecretsストアCSIドライバー"
 ---
 
-# Secrets ストア CSI ドライバー＠Secret 系
+# Secrets ストア CSI ドライバー
 
 ## はじめに
 

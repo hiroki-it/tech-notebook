@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】関数＠Go
-description: 関数＠Goの知見を記録しています。
+title: 【IT技術の知見】関数
+description: 関数の知見を記録しています。
+tags:
+  - "言語"
+  - "Go"
+  - "言語機能"
 ---
 
-# 関数＠Go
+# 関数
 
 ## はじめに
 

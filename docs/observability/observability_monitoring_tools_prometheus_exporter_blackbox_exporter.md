@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Blackbox Exporter＠Prometheus
-description: Blackbox Exporter＠Prometheus
+title: 【IT技術の知見】Blackbox Exporter
+description: Blackbox Exporter
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
+  - "Exporter"
 ---
 
-# Blackbox Exporter＠Prometheus
+# Blackbox Exporter
 
 ## はじめに
 

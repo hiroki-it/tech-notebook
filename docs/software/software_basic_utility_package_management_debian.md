@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Debian系＠管理ユーティリティ
-description: Debian系＠管理ユーティリティの知見を記録しています。
+title: 【IT技術の知見】Debian系
+description: Debian系の知見を記録しています。
+tags:
+  - "OS"
+  - "ユーティリティ"
+  - "パッケージ管理ユーティリティ"
 ---
 
-# Debian 系＠管理ユーティリティ
+# Debian 系
 
 ## はじめに
 

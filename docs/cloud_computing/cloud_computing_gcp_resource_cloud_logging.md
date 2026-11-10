@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Cloud Logging＠Google Cloudリソース
-description: Cloud Logging＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Cloud Logging
+description: Cloud Loggingの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "Google Cloud"
+  - "Google Cloudリソース"
 ---
 
-# Cloud Logging＠Google Cloud リソース
+# Cloud Logging
 
 ## はじめに
 

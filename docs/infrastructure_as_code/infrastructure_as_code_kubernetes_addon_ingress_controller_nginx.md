@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Nginx Ingress Controller＠Ingress Controller
-description: Nginx Ingress Controller＠Ingress Controllerの知見を記録しています。
+title: 【IT技術の知見】Nginx Ingress Controller
+description: Nginx Ingress Controllerの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Ingress Controller系"
+  - "Nginx Ingress Controller"
 ---
 
-# Nginx Ingress Controller＠Ingress Controller
+# Nginx Ingress Controller
 
 ## はじめに
 

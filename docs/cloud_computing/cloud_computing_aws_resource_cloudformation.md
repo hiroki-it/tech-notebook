@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】CloudFormation＠AWSリソース
-description: CloudFormation＠AWSの知見を記録しています。
+title: 【IT技術の知見】CloudFormation
+description: CloudFormationの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# CloudFormation＠AWS リソース
+# CloudFormation
 
 ## はじめに
 

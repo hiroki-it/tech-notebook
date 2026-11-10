@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】DDL＠SQL
-description: DDL＠SQLの知見を記録しています。
+title: 【IT技術の知見】DDL
+description: DDLの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "MySQL"
+  - "SQL"
 ---
 
-# DDL＠SQL
+# DDL
 
 ## はじめに
 

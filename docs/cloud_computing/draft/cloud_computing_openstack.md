@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenStack＠クラウドコンピューティング
-description: OpenStack＠クラウドコンピューティングの知見を記録しています。
+title: 【IT技術の知見】OpenStack
+description: OpenStackの知見を記録しています。
 ---
 
-# OpenStack＠クラウドコンピューティング
+# OpenStack
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】CNI＠ネットワーク系
-description: CNI＠ネットワーク系の知見を記録しています。
+title: 【IT技術の知見】CNI
+description: CNIの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ネットワーク系"
 ---
 
-# CNI＠ネットワーク系
+# CNI
 
 ## はじめに
 

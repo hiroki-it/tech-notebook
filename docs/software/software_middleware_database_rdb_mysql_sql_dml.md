@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】DML＠SQL
-description: DML＠SQLの知見を記録しています。
+title: 【IT技術の知見】DML
+description: DMLの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "MySQL"
+  - "SQL"
 ---
 
-# DML＠SQL
+# DML
 
 ## はじめに
 

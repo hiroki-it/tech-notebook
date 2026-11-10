@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】GitHub Actions＠CIツール
-description: GitHub Actions＠CIツールの知見を記録しています。
+title: 【IT技術の知見】GitHub Actions
+description: GitHub Actionsの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
 ---
 
-# GitHub Actions＠CI ツール
+# GitHub Actions
 
 ## はじめに
 

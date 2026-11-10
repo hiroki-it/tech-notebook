@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Orbs＠CircleCI
-description: Orbs＠CircleCIの知見を記録しています。
+title: 【IT技術の知見】Orbs
+description: Orbsの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
+  - "CircleCI"
 ---
 
-# Orbs＠CircleCI
+# Orbs
 
 ## はじめに
 

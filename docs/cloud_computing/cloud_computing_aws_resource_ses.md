@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon SES＠AWSリソース
-description: Amazon SES＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon SES
+description: Amazon SESの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon SES＠AWS リソース
+# Amazon SES
 
 ## はじめに
 

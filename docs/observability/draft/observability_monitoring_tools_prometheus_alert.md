@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】アラート＠Prometheus
-description: アラート＠Prometheusの知見を記録しています。
+title: 【IT技術の知見】アラート
+description: アラートの知見を記録しています。
 ---
 
-# アラート＠Prometheus
+# アラート
 
 ## はじめに
 

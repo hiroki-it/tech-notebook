@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PrometheusOperator＠Prometheus
-description: PrometheusOperator＠Prometheusの知見を記録しています。
+title: 【IT技術の知見】PrometheusOperator
+description: PrometheusOperatorの知見を記録しています。
 ---
 
-# PrometheusOperator＠Prometheus
+# PrometheusOperator
 
 ## はじめに
 

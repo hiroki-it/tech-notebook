@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】cluster-proportional-autoscaler＠ハードウェアリソース管理系
-description: cluster-proportional-autoscaler＠ハードウェアリソース管理系の知見を記録しています。
+title: 【IT技術の知見】cluster-proportional-autoscaler
+description: cluster-proportional-autoscalerの知見を記録しています。
 ---
 
-# cluster-proportional-autoscaler＠ハードウェアリソース管理系
+# cluster-proportional-autoscaler
 
 ## はじめに
 

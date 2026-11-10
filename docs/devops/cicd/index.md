@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "CI/CD"
 ---
 
 # セクションの目次

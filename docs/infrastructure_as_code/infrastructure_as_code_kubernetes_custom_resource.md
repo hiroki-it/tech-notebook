@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】カスタムリソース＠Kubernetes
-description: カスタムリソース＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】カスタムリソース
+description: カスタムリソースの知見を記録しています。
+tags:
+  - "K8s"
+  - "カスタムリソース"
 ---
 
-# カスタムリソース＠Kubernetes
+# カスタムリソース
 
 ## はじめに
 

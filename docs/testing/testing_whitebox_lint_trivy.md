@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】 trivy＠脆弱性診断
-description: trivy＠脆弱性診断の知見を記録しています。
+title: 【IT技術の知見】 trivy
+description: trivyの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "アプリ/インフラ両方"
+  - "脆弱性診断"
 ---
 
-# trivy＠脆弱性診断
+# trivy
 
 ## はじめに
 

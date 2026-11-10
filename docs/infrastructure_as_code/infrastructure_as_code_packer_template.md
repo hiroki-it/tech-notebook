@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】テンプレート＠Packer
-description: テンプレート＠Packerの知見を記録しています。
+title: 【IT技術の知見】テンプレート
+description: テンプレートの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Packer"
 ---
 
-# テンプレート＠Packer
+# テンプレート
 
 ## はじめに
 

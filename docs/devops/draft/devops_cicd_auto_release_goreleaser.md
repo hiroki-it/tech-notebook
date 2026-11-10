@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】goreleaser＠自動リリースツール
-description: goreleaser＠自動リリースツールの知見を記録しています。
+title: 【IT技術の知見】goreleaser
+description: goreleaserの知見を記録しています。
 ---
 
-# goreleaser＠自動リリースツール
+# goreleaser
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】PR Agent＠LLM
-description: PR Agent＠LLMの知見を記録しています。
+title: 【IT技術の知見】PR Agent
+description: PR Agentの知見を記録しています。
+tags:
+  - "LLM"
+  - "PR Agent"
 ---
 
-# PR Agent＠LLM
+# PR Agent
 
 ## はじめに
 

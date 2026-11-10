@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Vagrant
-description: コマンド＠Vagrantの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Vagrant"
 ---
 
-# コマンド＠Vagrant
+# コマンド
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Nginx＠Web系ミドルウェア
-description: Nginx＠Web系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Nginx
+description: Nginxの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "Web系"
+  - "Nginx"
 ---
 
-# Nginx＠Web 系ミドルウェア
+# Nginx
 
 ## はじめに
 

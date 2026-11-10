@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】DB仕様書＠RDB
-description: DB仕様書＠RESTful-DBの知見を記録しています。
+title: 【IT技術の知見】DB仕様書
+description: DB仕様書の知見を記録しています。
 ---
 
-# DB 仕様書＠RDB
+# DB 仕様書
 
 ## はじめに
 

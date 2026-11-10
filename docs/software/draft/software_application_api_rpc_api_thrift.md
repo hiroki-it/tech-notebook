@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Thrift＠RPC-API
-description: Thrift＠RPC-APIの知見を記録しています。
+title: 【IT技術の知見】Thrift
+description: Thriftの知見を記録しています。
 ---
 
-# Thrift＠RPC-API
+# Thrift
 
 ## はじめに
 

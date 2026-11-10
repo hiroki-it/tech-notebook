@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】HTTP＠L5 ~ L7
-description: HTTP＠L5 ~ L7の知見を記録しています。
+title: 【IT技術の知見】HTTP
+description: HTTPの知見を記録しています。
+tags:
+  - "ネットワーク"
+  - "OSI参照モデル"
+  - "L5 ~ L7"
 ---
 
-# HTTP＠L5 ~ L7
+# HTTP
 
 ## はじめに
 

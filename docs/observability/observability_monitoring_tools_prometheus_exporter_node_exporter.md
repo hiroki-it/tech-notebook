@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Node Exporter＠Prometheus
-description: Node Exporter＠Prometheus
+title: 【IT技術の知見】Node Exporter
+description: Node Exporter
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
+  - "Exporter"
 ---
 
-# Node Exporter＠Prometheus
+# Node Exporter
 
 ## はじめに
 

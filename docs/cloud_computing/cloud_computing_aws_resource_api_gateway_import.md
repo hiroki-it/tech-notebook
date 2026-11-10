@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS
-description: Amazon API Gatewayへのymlインポート＠AWSの知見を記録しています。
+title: 【IT技術の知見】Amazon API Gatewayへのymlインポート
+description: Amazon API Gatewayへのymlインポートの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
+  - "API Gateway"
 ---
 
-# Amazon API Gateway への yml インポート＠AWS
+# Amazon API Gateway への yml インポート
 
 ## はじめに
 

@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "言語"
 ---
 
 # セクションの目次

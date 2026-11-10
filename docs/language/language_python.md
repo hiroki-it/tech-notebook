@@ -1,6 +1,9 @@
 ---
 title: 【IT技術の知見】Python
 description: Pythonの知見を記録しています。
+tags:
+  - "言語"
+  - "Python"
 ---
 
 # Python

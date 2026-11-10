@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】 goldilocks＠ベストプラクティス違反
-description: goldilocks＠ベストプラクティス違反の知見を記録しています。
+title: 【IT技術の知見】 goldilocks
+description: goldilocksの知見を記録しています。
 ---
 
-# goldilocks＠ベストプラクティス違反
+# goldilocks
 
 ## はじめに
 

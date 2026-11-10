@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】テレメトリー間の紐付け＠Datadog
-description: テレメトリー間の紐付け＠Datadog
+title: 【IT技術の知見】テレメトリー間の紐付け
+description: テレメトリー間の紐付け
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Datadog"
+  - "テレメトリー"
 ---
 
-# テレメトリー間の紐付け＠Datadog
+# テレメトリー間の紐付け
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Temporal＠ワークフロー
-description: Temporal＠ワークフローの知見を記録しています。
+title: 【IT技術の知見】Temporal
+description: Temporalの知見を記録しています。
+tags:
+  - "アプリ"
+  - "ワークフロー"
+  - "Temporal"
 ---
 
-# Temporal＠ワークフロー
+# Temporal
 
 ## はじめに
 

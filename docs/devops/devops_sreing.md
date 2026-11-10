@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】SREing：Site Reliability＠DevOps
-description: SREing：Site Reliability Engineering＠DevOpsの知見を記録しています。
+title: 【IT技術の知見】SREing：Site Reliability
+description: SREing：Site Reliability Engineeringの知見を記録しています。
+tags:
+  - "DevOps"
+  - "SREing"
 ---
 
-# SREing：Site Reliability Engineering＠DevOps
+# SREing：Site Reliability Engineering
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】独自プロバイダー＠Terraform
-description: 独自プロバイダー＠Terraformの知見を記録しています。
+title: 【IT技術の知見】独自プロバイダー
+description: 独自プロバイダーの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
+  - "プロバイダー"
 ---
 
-# 独自プロバイダー＠Terraform
+# 独自プロバイダー
 
 ## はじめに
 

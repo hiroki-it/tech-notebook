@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】Python＠OpenTelemetryクライアントパッケージ
-description: Python＠OpenTelemetryクライアントパッケージの知見を記録しています。
+title: 【IT技術の知見】Python
+description: Pythonの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "OpenTelemetry"
+  - "計装"
+  - "分散トレース"
 ---
 
-# Python＠OpenTelemetry クライアントパッケージ
+# Python
 
 ## はじめに
 

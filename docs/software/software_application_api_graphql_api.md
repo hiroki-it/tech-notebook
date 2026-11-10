@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】GraphQL-API＠API
-description: GraphQL-API＠APIの知見を記録しています。
+title: 【IT技術の知見】GraphQL-API
+description: GraphQL-APIの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "GraphQL-API"
 ---
 
-# GraphQL-API＠API
+# GraphQL-API
 
 ## はじめに
 

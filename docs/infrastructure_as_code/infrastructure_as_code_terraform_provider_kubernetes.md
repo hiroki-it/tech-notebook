@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Kubernetesプロバイダー＠Terraform
-description: Kubernetesプロバイダー＠Terraformの知見を記録しています。
+title: 【IT技術の知見】Kubernetesプロバイダー
+description: Kubernetesプロバイダーの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
+  - "プロバイダー"
 ---
 
-# Kubernetes プロバイダー＠Terraform
+# Kubernetes プロバイダー
 
 ## はじめに
 

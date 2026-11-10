@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】プラクティス集＠Kustomize
-description: プラクティス集＠Kustomizeの知見を記録しています。
+title: 【IT技術の知見】プラクティス集
+description: プラクティス集の知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "マニフェスト管理"
+  - "Kustomize"
 ---
 
-# プラクティス集＠Kustomize
+# プラクティス集
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】EMQX＠メッセージング系ミドルウェア
-description: EMQX＠メッセージング系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】EMQX
+description: EMQXの知見を記録しています。
 ---
 
-# EMQX＠メッセージング系ミドルウェア
+# EMQX
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon ECS＠AWSリソース
-description: Amazon ECS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon ECS
+description: Amazon ECSの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon ECS＠AWS リソース
+# Amazon ECS
 
 ## はじめに
 

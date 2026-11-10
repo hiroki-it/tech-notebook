@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Platform Engineering＠DevOps
-description: Platform Engineering＠DevOpsの知見を記録しています。
+title: 【IT技術の知見】Platform Engineering
+description: Platform Engineeringの知見を記録しています。
+tags:
+  - "DevOps"
+  - "Platform Engineering"
 ---
 
-# Platform Engineering＠DevOps
+# Platform Engineering
 
 ## はじめに
 

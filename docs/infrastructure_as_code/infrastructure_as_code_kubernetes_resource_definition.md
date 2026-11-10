@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】リソース定義＠Kubernetes
-description: リソース定義＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
+tags:
+  - "K8s"
+  - "Kubernetesリソース"
+  - "リソース定義"
 ---
 
-# リソース定義＠Kubernetes
+# リソース定義
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】L3＠OSI参照モデル
-description: L3＠OSI参照モデルの知見を記録しています。
+title: 【IT技術の知見】L3
+description: L3の知見を記録しています。
+tags:
+  - "ネットワーク"
+  - "OSI参照モデル"
+  - "L3"
 ---
 
-# L3＠OSI 参照モデル
+# L3
 
 ## はじめに
 

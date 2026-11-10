@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】CQRS：Command Query Responsibility Segregation＠アーキテクチャ
-description: CQRS：Command Query Responsibility Segregation＠アーキテクチャの知見を記録しています。
+title: 【IT技術の知見】CQRS：Command Query Responsibility Segregation
+description: CQRS：Command Query Responsibility Segregationの知見を記録しています。
+tags:
+  - "アプリ"
+  - "バックエンドアーキテクチャ"
 ---
 
-# CQRS：Command Query Responsibility Segregation＠アーキテクチャ
+# CQRS：Command Query Responsibility Segregation
 
 ## はじめに
 

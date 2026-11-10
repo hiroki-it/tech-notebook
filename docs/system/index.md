@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "システム"
 ---
 
 # セクションの目次

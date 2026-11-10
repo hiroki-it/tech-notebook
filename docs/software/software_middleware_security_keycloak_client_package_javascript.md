@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】JavaScript＠Keycloakクライアント
-description: JavaScript＠Keycloakクライアントの知見を記録しています。
+title: 【IT技術の知見】JavaScript
+description: JavaScriptの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "セキュリティ系"
+  - "Keycloak"
+  - "クライアントパッケージ"
 ---
 
-# JavaScript＠Keycloak クライアント
+# JavaScript
 
 ## はじめに
 

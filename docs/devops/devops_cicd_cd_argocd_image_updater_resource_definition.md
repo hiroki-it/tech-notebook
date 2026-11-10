@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Image Updater＠ArgoCD
-description: Image Updater＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】Image Updater
+description: Image Updaterの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CDツール"
+  - "ArgoCD"
 ---
 
-# Image Updater＠ArgoCD
+# Image Updater
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】goreleaser＠CDツール
-description: goreleaser＠CDツールの知見を記録しています。
+title: 【IT技術の知見】goreleaser
+description: goreleaserの知見を記録しています。
 ---
 
-# goreleaser＠CD ツール
+# goreleaser
 
 ## はじめに
 

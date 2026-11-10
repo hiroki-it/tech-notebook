@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon Redshift＠AWSリソース
-description: Amazon Redshift＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon Redshift
+description: Amazon Redshiftの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon Redshift＠AWS リソース
+# Amazon Redshift
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】STS＠AWSリソース
-description: STS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】STS
+description: STSの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# STS＠AWS リソース
+# STS
 
 ## はじめに
 

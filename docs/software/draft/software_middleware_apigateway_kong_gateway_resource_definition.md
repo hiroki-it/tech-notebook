@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kong Gateway＠Kong
-description: Kong Gateway＠Kongの知見を記録しています。
+title: 【IT技術の知見】Kong Gateway
+description: Kong Gatewayの知見を記録しています。
 ---
 
-# Kong Gateway＠Kong
+# Kong Gateway
 
 ## はじめに
 

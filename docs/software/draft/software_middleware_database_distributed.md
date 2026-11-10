@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】分散DB＠DB系ミドルウェア
-description: 分散DB＠DB系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】分散DB
+description: 分散DBの知見を記録しています。
 ---
 
-# 分散 DB＠DB 系ミドルウェア
+# 分散 DB
 
 ## はじめに
 

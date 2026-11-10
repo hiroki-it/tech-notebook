@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】リソース定義＠AWS Load Balancer Controller
-description: リソース定義＠AWS Load Balancer Controllerの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Ingress Controller系"
+  - "AWS Load Balancer Controller"
 ---
 
-# リソース定義＠AWS Load Balancer Controller
+# リソース定義
 
 ## はじめに
 

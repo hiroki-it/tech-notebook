@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Nuxt.js＠フレームワーク
-description: Nuxt.js＠フレームワークの知見を記録しています。
+title: 【IT技術の知見】Nuxt.js
+description: Nuxt.jsの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "フレームワーク"
 ---
 
-# Nuxt.js＠フレームワーク
+# Nuxt.js
 
 ## はじめに
 

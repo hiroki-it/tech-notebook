@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Istio
-description: コマンド＠Istioの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Istio"
 ---
 
-# コマンド＠Istio
+# コマンド
 
 ## はじめに
 

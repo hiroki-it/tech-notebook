@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】Go＠OpenTelemetryクライアントパッケージ
-description: Go＠OpenTelemetryクライアントパッケージの知見を記録しています。
+title: 【IT技術の知見】Go
+description: Goの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "OpenTelemetry"
+  - "計装"
+  - "分散トレース"
 ---
 
-# Go＠OpenTelemetry クライアントパッケージ
+# Go
 
 ## はじめに
 

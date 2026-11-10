@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】データ・型＠JavaScript
+title: 【IT技術の知見】データ・型
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# データ・型＠JavaScript
+# データ・型
 
 ## はじめに
 

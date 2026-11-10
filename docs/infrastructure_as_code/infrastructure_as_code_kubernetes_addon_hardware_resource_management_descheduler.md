@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】descheduler＠ハードウェアリソース管理系
-description: descheduler＠ハードウェアリソース管理系の知見を記録しています。
+title: 【IT技術の知見】descheduler
+description: deschedulerの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ハードウェアリソース管理系"
 ---
 
-# descheduler＠ハードウェアリソース管理系
+# descheduler
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】コマンド＠Knative
-description: コマンド＠Knativeの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
 ---
 
-# コマンド＠Knative
+# コマンド
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Ingress Controller＠Ingress Controller系
-description: Ingress Controller＠Ingress Controller系の知見を記録しています。
+title: 【IT技術の知見】Ingress Controller
+description: Ingress Controllerの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Ingress Controller系"
 ---
 
-# Ingress Controller＠Ingress Controller 系
+# Ingress Controller
 
 ## はじめに
 

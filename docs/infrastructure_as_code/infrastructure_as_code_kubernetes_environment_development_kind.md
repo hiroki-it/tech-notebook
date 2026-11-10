@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Kind＠開発環境
-description: Kind＠開発環境の知見を記録しています。
+title: 【IT技術の知見】Kind
+description: Kindの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "開発環境"
+  - "Kind"
 ---
 
-# Kind＠開発環境
+# Kind
 
 ## はじめに
 

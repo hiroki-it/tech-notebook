@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Kubernetes＠IaC
-description: Kubernetes＠IaCの知見を記録しています。
+title: 【IT技術の知見】Kubernetes
+description: Kubernetesの知見を記録しています。
+tags:
+  - "K8s"
+  - "Kubernetes"
 ---
 
-# Kubernetes＠IaC
+# Kubernetes
 
 ## はじめに
 

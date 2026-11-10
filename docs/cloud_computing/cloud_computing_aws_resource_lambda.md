@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】AWS Lambda＠AWSリソース
-description: AWS Lambda＠AWSリソース
+title: 【IT技術の知見】AWS Lambda
+description: AWS Lambda
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
+  - "Lambda"
 ---
 
-# AWS Lambda＠AWS リソース
+# AWS Lambda
 
 ## はじめに
 

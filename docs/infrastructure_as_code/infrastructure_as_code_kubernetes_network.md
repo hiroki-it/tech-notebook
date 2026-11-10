@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】ネットワーク＠Kubernetes
-description: ネットワーク＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】ネットワーク
+description: ネットワークの知見を記録しています。
+tags:
+  - "K8s"
+  - "Kubernetes"
 ---
 
-# ネットワーク＠Kubernetes
+# ネットワーク
 
 ## はじめに
 

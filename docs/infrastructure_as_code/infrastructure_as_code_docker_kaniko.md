@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Kaniko＠Docker
-description: Kaniko＠Dockerの知見を記録しています。
+title: 【IT技術の知見】Kaniko
+description: Kanikoの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Kaniko"
 ---
 
-# Kaniko＠Docker
+# Kaniko
 
 ## はじめに
 

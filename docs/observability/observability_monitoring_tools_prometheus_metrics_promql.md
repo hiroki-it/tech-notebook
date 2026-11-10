@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】PromQL＠メトリクス
-description: PromQL＠メトリクス
+title: 【IT技術の知見】PromQL
+description: PromQL
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
+  - "メトリクス"
 ---
 
-# PromQL＠メトリクス
+# PromQL
 
 ## はじめに
 

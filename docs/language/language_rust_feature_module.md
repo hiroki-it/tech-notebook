@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】モジュール＠Rust
-description: モジュール＠Rustの知見を記録しています。
+title: 【IT技術の知見】モジュール
+description: モジュールの知見を記録しています。
+tags:
+  - "言語"
+  - "Rust"
+  - "言語機能"
 ---
 
-# モジュール＠Rust
+# モジュール
 
 ## はじめに
 

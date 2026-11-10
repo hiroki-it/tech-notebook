@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】パッケージ管理＠Python
-description: パッケージ管理＠Pythonの知見を記録しています。
+title: 【IT技術の知見】パッケージ管理
+description: パッケージ管理の知見を記録しています。
+tags:
+  - "言語"
+  - "Python"
+  - "パッケージ"
 ---
 
-# パッケージ管理＠Python
+# パッケージ管理
 
 ## はじめに
 

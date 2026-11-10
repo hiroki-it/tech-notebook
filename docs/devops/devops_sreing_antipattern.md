@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】アンチパターン＠SREing
-description: アンチパターン＠SREingの知見を記録しています。
+title: 【IT技術の知見】アンチパターン
+description: アンチパターンの知見を記録しています。
+tags:
+  - "DevOps"
+  - "SREing"
 ---
 
-# アンチパターン＠SREing
+# アンチパターン
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】GitLab CI＠CIツール
-description: GitLab CI＠CIツールの知見を記録しています。
+title: 【IT技術の知見】GitLab CI
+description: GitLab CIの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
 ---
 
-# GitLab CI＠CI ツール
+# GitLab CI
 
 ## はじめに
 

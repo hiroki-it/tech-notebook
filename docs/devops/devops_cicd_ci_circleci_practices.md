@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】プラクティス集＠CircleCI
-description: プラクティス集＠CircleCIの知見を記録しています。
+title: 【IT技術の知見】プラクティス集
+description: プラクティス集の知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
+  - "CircleCI"
 ---
 
-# プラクティス集＠CircleCI
+# プラクティス集
 
 ## はじめに
 

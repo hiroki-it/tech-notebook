@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Webスコープ設定ファイル＠Temporal
-description: Webスコープ設定ファイル＠Temporalの知見を記録しています。
+title: 【IT技術の知見】Webスコープ設定ファイル
+description: Webスコープ設定ファイルの知見を記録しています。
+tags:
+  - "アプリ"
+  - "ワークフロー"
+  - "Temporal"
+  - "設定ファイル"
 ---
 
-# Web スコープ設定ファイル＠Temporal
+# Web スコープ設定ファイル
 
 ## はじめに
 

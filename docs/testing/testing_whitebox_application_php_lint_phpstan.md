@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】PHPStan＠静的解析
-description: PHPStan＠静的解析の知見を記録しています。
+title: 【IT技術の知見】PHPStan
+description: PHPStanの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "アプリ (PHP)"
+  - "静的解析"
 ---
 
-# PHPStan＠静的解析
+# PHPStan
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】helmプラグイン＠コマンド
-description: helmプラグイン＠コマンドの知見を記録しています。
+title: 【IT技術の知見】helmプラグイン
+description: helmプラグインの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "マニフェスト管理"
+  - "Helm"
+  - "コマンド"
 ---
 
-# helm プラグイン＠コマンド
+# helm プラグイン
 
 ## はじめに
 

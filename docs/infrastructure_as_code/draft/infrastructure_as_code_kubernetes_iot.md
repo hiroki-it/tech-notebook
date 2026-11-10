@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】IOT＠Kubernetes
-description: IOT＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】IOT
+description: IOTの知見を記録しています。
 ---
 
-# IOT＠Kubernetes
+# IOT
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】プラクティス集＠ArgoCD
-description: プラクティス集＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】プラクティス集
+description: プラクティス集の知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CDツール"
+  - "ArgoCD"
 ---
 
-# プラクティス集＠ArgoCD
+# プラクティス集
 
 ## はじめに
 

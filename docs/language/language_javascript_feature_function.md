@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】関数＠JavaScript
+title: 【IT技術の知見】関数
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# 関数＠JavaScript
+# 関数
 
 ## はじめに
 

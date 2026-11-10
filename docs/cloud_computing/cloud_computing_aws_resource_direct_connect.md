@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Direct Connect＠AWSリソース
-description: Direct Connect＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Direct Connect
+description: Direct Connectの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Direct Connect＠AWS リソース
+# Direct Connect
 
 ## はじめに
 

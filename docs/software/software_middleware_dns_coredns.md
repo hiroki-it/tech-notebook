@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】CoreDNS＠DNS系ミドルウェア
-description: CoreDNS＠DNS系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】CoreDNS
+description: CoreDNSの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "DNS系"
+  - "CoreDNS"
 ---
 
-# CoreDNS＠DNS 系ミドルウェア
+# CoreDNS
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠Kaniko
-description: 設定ファイル＠Kanikoの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Kaniko"
 ---
 
-# 設定ファイル＠Kaniko
+# 設定ファイル
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】BuildKit＠Docker
-description: BuildKit＠Dockerの知見を記録しています。
+title: 【IT技術の知見】BuildKit
+description: BuildKitの知見を記録しています。
 ---
 
-# BuildKit＠Docker
+# BuildKit
 
 ## はじめに
 

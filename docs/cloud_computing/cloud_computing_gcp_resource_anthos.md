@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Anthos＠Google Cloud Google Cloudリソース
-description: Anthos＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Anthos
+description: Anthosの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "Google Cloud"
+  - "Google Cloudリソース"
+  - "Anthos"
 ---
 
-# Anthos＠Google Cloud リソース
+# Anthos
 
 ## はじめに
 

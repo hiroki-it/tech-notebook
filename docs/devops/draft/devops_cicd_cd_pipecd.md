@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PipeCD＠CDツール
-description: PipeCD＠CDツールの知見を記録しています。
+title: 【IT技術の知見】PipeCD
+description: PipeCDの知見を記録しています。
 ---
 
-# PipeCD＠CD ツール
+# PipeCD
 
 ## はじめに
 

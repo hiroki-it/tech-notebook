@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Kustomize
-description: コマンド＠Kustomizeの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "マニフェスト管理"
+  - "Kustomize"
 ---
 
-# コマンド＠Kustomize
+# コマンド
 
 ## はじめに
 

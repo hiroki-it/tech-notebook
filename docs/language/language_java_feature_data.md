@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】データ・型＠Java
-description: データ・型＠Javaの知見を記録しています。
+title: 【IT技術の知見】データ・型
+description: データ・型の知見を記録しています。
+tags:
+  - "言語"
+  - "Java"
+  - "言語機能"
 ---
 
-# データ・型＠Java
+# データ・型
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】スキル＠Codex
-description: スキル＠Codexの知見を記録しています。
+title: 【IT技術の知見】スキル
+description: スキルの知見を記録しています。
+tags:
+  - "LLM"
+  - "Codex"
 ---
 
-# スキル＠Codex
+# スキル
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】設定ファイル＠FluentBit
-description: 設定ファイル＠FluentBitの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "FluentBit/Fluentd"
+  - "FluentBit"
 ---
 
-# 設定ファイル＠FluentBit
+# 設定ファイル
 
 ## はじめに
 

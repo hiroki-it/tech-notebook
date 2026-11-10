@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】IstioOperator＠Istio
-description: IstioOperator＠Istioの知見を記録しています。
+title: 【IT技術の知見】IstioOperator
+description: IstioOperatorの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Istio"
+  - "IstioOperator"
 ---
 
-# IstioOperator＠Istio
+# IstioOperator
 
 ## はじめに
 

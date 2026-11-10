@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】コマンド＠Remix
-description: コマンド＠Remixの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "フレームワーク"
+  - "Remix"
 ---
 
-# コマンド＠Remix
+# コマンド
 
 ## はじめに
 

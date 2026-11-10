@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Claude Code Actions＠LLM
-description: Claude Code Actions＠LLMの知見を記録しています。
+title: 【IT技術の知見】Claude Code Actions
+description: Claude Code Actionsの知見を記録しています。
+tags:
+  - "LLM"
+  - "Claude Code"
 ---
 
-# Claude Code Actions＠LLM
+# Claude Code Actions
 
 ## はじめに
 

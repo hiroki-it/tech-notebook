@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Minikube＠開発環境
-description: Minikube＠開発環境の知見を記録しています。
+title: 【IT技術の知見】Minikube
+description: Minikubeの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "開発環境"
+  - "Minikube"
 ---
 
-# Minikube＠開発環境
+# Minikube
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon EFS＠AWSリソース
-description: Amazon EFS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon EFS
+description: Amazon EFSの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon EFS＠AWS リソース
+# Amazon EFS
 
 ## はじめに
 

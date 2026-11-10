@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Cilium@ネットワーク系
-description: Cilium@ネットワーク系の知見を記録しています。
+title: 【IT技術の知見】Cilium
+description: Ciliumの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ネットワーク系"
 ---
 
-# Cilium@ネットワーク系
+# Cilium
 
 ## はじめに
 

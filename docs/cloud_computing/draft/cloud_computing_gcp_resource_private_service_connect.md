@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】PrivateServiceConnect＠Google Cloudリソース
-description: PrivateServiceConnect＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】PrivateServiceConnect
+description: PrivateServiceConnectの知見を記録しています。
 ---
 
-# PrivateServiceConnect＠Google Cloud リソース
+# PrivateServiceConnect
 
 ## はじめに
 

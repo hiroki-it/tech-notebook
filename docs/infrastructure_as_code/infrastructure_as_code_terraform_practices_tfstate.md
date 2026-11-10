@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】tfstateファイルの分割＠プラクティス集
-description: tfstateファイルの分割＠プラクティス集の知見を記録しています。
+title: 【IT技術の知見】tfstateファイルの分割
+description: tfstateファイルの分割の知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
+  - "プラクティス集"
 ---
 
-# `tfstate` ファイルの分割＠プラクティス集
+# `tfstate` ファイルの分割
 
 ## はじめに
 

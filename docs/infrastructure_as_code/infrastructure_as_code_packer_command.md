@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Packer
-description: コマンド＠Packerの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Packer"
 ---
 
-# コマンド＠Packer
+# コマンド
 
 ## はじめに
 

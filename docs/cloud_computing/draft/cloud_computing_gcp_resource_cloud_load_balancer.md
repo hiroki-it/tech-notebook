@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Load Balancer＠Google Cloudリソース
-description: Load Balancer＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Load Balancer
+description: Load Balancerの知見を記録しています。
 ---
 
-# Load Balancer＠Google Cloud
+# Load Balancer
 
 ## はじめに
 

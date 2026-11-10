@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS Systems Manager (新SSM) ＠AWSリソース
-description: AWS Systems Manager (新SSM) ＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS Systems Manager (新SSM)
+description: AWS Systems Manager (新SSM)の知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AWS Systems Manager (新 SSM) ＠AWS リソース
+# AWS Systems Manager (新 SSM)
 
 ## はじめに
 

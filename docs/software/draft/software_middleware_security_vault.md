@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Vault＠セキュリティ系ミドルウェア
-description: Vault＠セキュリティ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Vault
+description: Vaultの知見を記録しています。
 ---
 
-# Vault＠セキュリティ系ミドルウェア
+# Vault
 
 ## はじめに
 

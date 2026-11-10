@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Devin＠エージェンティックコーディング
-description: Devin＠エージェンティックコーディングの知見を記録しています。
+title: 【IT技術の知見】Devin
+description: Devinの知見を記録しています。
 ---
 
-# Devin＠エージェンティックコーディング
+# Devin
 
 ## はじめに
 

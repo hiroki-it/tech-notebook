@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon SQS＠AWSリソース
-description: Amazon SQS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon SQS
+description: Amazon SQSの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon SQS＠AWS リソース
+# Amazon SQS
 
 ## はじめに
 

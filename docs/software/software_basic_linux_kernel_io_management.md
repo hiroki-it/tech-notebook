@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】I/O (入出力) 管理＠Linuxカーネル
-description: I/O (入出力) 管理＠Linuxカーネルの知見を記録しています。
+title: 【IT技術の知見】I/O (入出力) 管理
+description: I/O (入出力) 管理の知見を記録しています。
+tags:
+  - "OS"
+  - "Linuxカーネル"
 ---
 
-# I/O (入出力) 管理＠Linux カーネル
+# I/O (入出力) 管理
 
 ## はじめに
 

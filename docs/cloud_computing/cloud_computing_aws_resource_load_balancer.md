@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】LB＠AWSリソース
-description: LB＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】LB
+description: LBの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# LB＠AWS リソース
+# LB
 
 ## はじめに
 

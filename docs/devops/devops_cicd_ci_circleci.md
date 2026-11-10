@@ -1,6 +1,10 @@
 ---
-title: 【IT技術の知見】CircleCI＠CIツール
-description: CircleCI＠CIツールの知見を記録しています。
+title: 【IT技術の知見】CircleCI
+description: CircleCIの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
+  - "CircleCI"
 ---
 
 # CircleCI

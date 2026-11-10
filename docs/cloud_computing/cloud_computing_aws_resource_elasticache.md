@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon ElastiCache＠AWSリソース
-description: Amazon ElastiCache＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon ElastiCache
+description: Amazon ElastiCacheの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon ElastiCache＠AWS リソース
+# Amazon ElastiCache
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS IAM＠AWSリソース
-description: AWS IAM＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS IAM
+description: AWS IAMの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AWS IAM＠AWS リソース
+# AWS IAM
 
 ## はじめに
 

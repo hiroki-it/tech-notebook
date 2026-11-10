@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Capistrano＠CIツール
-description: Capistrano＠CIツールの知見を記録しています。
+title: 【IT技術の知見】Capistrano
+description: Capistranoの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
 ---
 
-# Capistrano＠CI ツール
+# Capistrano
 
 ## はじめに
 

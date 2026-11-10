@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】Protocol Buffer＠API仕様書
-description: Protocol Buffer＠API仕様書の知見を記録しています。
+title: 【IT技術の知見】Protocol Buffer
+description: Protocol Bufferの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "RPC-API"
+  - "API仕様書"
+  - "Protocol Buffer"
 ---
 
-# Protocol Buffer＠RPC-API
+# Protocol Buffer
 
 ## はじめに
 

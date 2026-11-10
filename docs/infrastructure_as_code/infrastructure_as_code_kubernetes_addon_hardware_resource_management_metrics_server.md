@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】metrics-server＠ハードウェアリソース管理系
-description: metrics-server＠ハードウェアリソース管理系の知見を記録しています。
+title: 【IT技術の知見】metrics-server
+description: metrics-serverの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "ハードウェアリソース管理系"
 ---
 
-# metrics-server＠ハードウェアリソース管理系
+# metrics-server
 
 ## はじめに
 

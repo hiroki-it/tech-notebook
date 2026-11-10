@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AutoScaling＠AWSリソース
-description: AutoScaling＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AutoScaling
+description: AutoScalingの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AutoScaling＠AWS リソース
+# AutoScaling
 
 ## はじめに
 

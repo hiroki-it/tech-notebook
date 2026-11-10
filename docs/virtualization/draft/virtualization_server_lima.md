@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Lima＠仮想化
-description: Lima＠仮想化の知見を記録しています。
+title: 【IT技術の知見】Lima
+description: Limaの知見を記録しています。
 ---
 
-# Lima＠仮想化
+# Lima
 
 ## はじめに
 

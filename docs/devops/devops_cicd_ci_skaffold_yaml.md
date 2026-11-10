@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】skaffold.yaml＠Skaffold
-description: skaffold.yaml＠Skaffoldの知見を記録しています。
+title: 【IT技術の知見】skaffold.yaml
+description: skaffold.yamlの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
+  - "Skaffold"
 ---
 
-# skaffold.yaml＠Skaffold
+# skaffold.yaml
 
 ## はじめに
 

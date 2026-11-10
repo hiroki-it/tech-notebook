@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Googleサーチコンソール＠監視ツール
-description: Googleサーチコンソール＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】Googleサーチコンソール
+description: Googleサーチコンソールの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Googleアプリ"
 ---
 
-# Google サーチコンソール＠監視ツール
+# Google サーチコンソール
 
 ## はじめに
 

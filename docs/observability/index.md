@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "可観測性"
 ---
 
 # セクションの目次

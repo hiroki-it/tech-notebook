@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Docker Swarm＠仮想化
-description: Docker Swarm＠仮想化の知見を記録しています。
+title: 【IT技術の知見】Docker Swarm
+description: Docker Swarmの知見を記録しています。
 ---
 
-# Docker Swarm＠仮想化
+# Docker Swarm
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】TCP＠L4
-description: TCP＠L4の知見を記録しています。
+title: 【IT技術の知見】TCP
+description: TCPの知見を記録しています。
+tags:
+  - "ネットワーク"
+  - "OSI参照モデル"
+  - "L4"
 ---
 
-# TCP＠L4
+# TCP
 
 ## はじめに
 

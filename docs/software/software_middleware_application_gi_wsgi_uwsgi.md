@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】uWSGI＠アプリケーション系ミドルウェア
-description: uWSGI＠アプリケーション系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】uWSGI
+description: uWSGIの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "アプリケーション系"
+  - "uWSGI"
 ---
 
-# uWSGI＠アプリケーション系ミドルウェア
+# uWSGI
 
 ## はじめに
 

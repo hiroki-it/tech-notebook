@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kubeadm＠Kubernetesオーケストレーションツール
-description: Kubeadm＠Kubernetesオーケストレーションツールの知見を記録しています。
+title: 【IT技術の知見】Kubeadm
+description: Kubeadmの知見を記録しています。
 ---
 
-# Kubeadm＠Kubernetes オーケストレーションツール
+# Kubeadm
 
 ## はじめに
 

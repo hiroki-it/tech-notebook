@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Repmgr＠PostgreSQL
-description: Repmgr＠PostgreSQLの知見を記録しています。
+title: 【IT技術の知見】Repmgr
+description: Repmgrの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "PostgreSQL"
 ---
 
-# Repmgr＠PostgreSQL
+# Repmgr
 
 ## はじめに
 

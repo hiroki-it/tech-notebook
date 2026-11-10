@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Websocket-API＠API
-description: Websocket-API＠APIの知見を記録しています。
+title: 【IT技術の知見】Websocket-API
+description: Websocket-APIの知見を記録しています。
 ---
 
-# Websocket-API＠API
+# Websocket-API
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Eloquent ORM＠Laravel
-description: Eloquent ORM＠Laravelの知見を記録しています。
+title: 【IT技術の知見】Eloquent ORM
+description: Eloquent ORMの知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
+  - "フレームワーク"
+  - "Laravel"
 ---
 
-# Eloquent ORM＠Laravel
+# Eloquent ORM
 
 ## はじめに
 

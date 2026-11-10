@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon CloudFront＠AWSリソース
-description: Amazon CloudFront＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon CloudFront
+description: Amazon CloudFrontの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon CloudFront＠AWS リソース
+# Amazon CloudFront
 
 ## はじめに
 

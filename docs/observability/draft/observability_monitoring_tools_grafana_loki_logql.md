@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】LogQL＠Grafana Loki
-description: LogQL＠Grafana Lokiの知見を記録しています。
+title: 【IT技術の知見】LogQL
+description: LogQLの知見を記録しています。
 ---
 
-# LogQL＠Grafana Loki
+# LogQL
 
 ## はじめに
 

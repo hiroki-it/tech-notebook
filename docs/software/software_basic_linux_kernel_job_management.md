@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】ジョブ管理＠Linuxカーネル
-description: ジョブ管理＠Linuxカーネルの知見を記録しています。
+title: 【IT技術の知見】ジョブ管理
+description: ジョブ管理の知見を記録しています。
+tags:
+  - "OS"
+  - "Linuxカーネル"
 ---
 
-# ジョブ管理＠Linux カーネル
+# ジョブ管理
 
 ## はじめに
 

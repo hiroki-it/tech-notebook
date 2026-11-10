@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Istio Ingress Controller＠Ingress Controller
-description: Istio Ingress Controller＠Ingress Controllerの知見を記録しています。
+title: 【IT技術の知見】Istio Ingress Controller
+description: Istio Ingress Controllerの知見を記録しています。
 ---
 
-# Istio Ingress Controller＠Ingress Controller
+# Istio Ingress Controller
 
 ## はじめに
 

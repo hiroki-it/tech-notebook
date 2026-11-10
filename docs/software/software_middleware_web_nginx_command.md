@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Nginx
-description: コマンド＠Nginxの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "Web系"
+  - "Nginx"
 ---
 
-# コマンド＠Nginx
+# コマンド
 
 ## はじめに
 

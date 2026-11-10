@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】コマンド＠FluentBit
-description: コマンド＠FluentBitの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "FluentBit/Fluentd"
+  - "FluentBit"
 ---
 
-# コマンド＠FluentBit
+# コマンド
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】PgBouncer＠接続プールプロキシ系ミドルウェア
-description: PgBouncer＠接続プールプロキシ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】PgBouncer
+description: PgBouncerの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "接続プールプロキシ系"
+  - "PgBouncer"
 ---
 
-# PgBouncer＠接続プールプロキシ系ミドルウェア
+# PgBouncer
 
 ## はじめに
 

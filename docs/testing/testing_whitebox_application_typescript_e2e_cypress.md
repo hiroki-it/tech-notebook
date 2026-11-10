@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Cypress＠E2Eテスト
-description: Cypress＠E2Eテストの知見を記録しています。
+title: 【IT技術の知見】Cypress
+description: Cypressの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "アプリ (TypeScript)"
+  - "E2Eテスト"
 ---
 
-# Cypress＠E2E テスト
+# Cypress
 
 ## はじめに
 

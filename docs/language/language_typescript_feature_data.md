@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】データ・型＠TypeScript
-description: データ・型＠TypeScriptの知見を記録しています。
+title: 【IT技術の知見】データ・型
+description: データ・型の知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
+  - "言語機能"
 ---
 
-# データ・型＠TypeScript
+# データ・型
 
 ## はじめに
 

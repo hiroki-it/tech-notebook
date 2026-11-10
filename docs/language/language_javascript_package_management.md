@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】パッケージ＠JavaScript
+title: 【IT技術の知見】パッケージ
+tags:
+  - "言語"
+  - "JavaScript"
+  - "パッケージ"
 ---
 
-# パッケージ管理＠JavaScript
+# パッケージ管理
 
 ## はじめに
 

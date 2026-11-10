@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】OpenTelemetry Collector＠監視ツール
-description: OpenTelemetry Collector＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】OpenTelemetry Collector
+description: OpenTelemetry Collectorの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "OpenTelemetry"
+  - "OpenTelemetry Collector"
 ---
 
-# OpenTelemetry Collector＠監視ツール
+# OpenTelemetry Collector
 
 ## はじめに
 

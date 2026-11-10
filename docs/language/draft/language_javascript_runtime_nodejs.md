@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Node.js＠JavaScriptランタイム
-description: Node.js＠JavaScriptランタイムの知見を記録しています。
+title: 【IT技術の知見】Node.js
+description: Node.jsの知見を記録しています。
 ---
 
-# Node.js＠JavaScript ランタイム
+# Node.js
 
 ## はじめに
 

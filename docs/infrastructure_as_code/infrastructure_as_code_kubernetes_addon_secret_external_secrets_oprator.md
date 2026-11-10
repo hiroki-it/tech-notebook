@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】External Secrets Operator＠Secret系
-description: External Secrets Operator＠Secret系の知見を記録しています。
+title: 【IT技術の知見】External Secrets Operator
+description: External Secrets Operatorの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Secret系"
+  - "External Secrets Operator"
 ---
 
-# External Secrets Operator＠Secret 系
+# External Secrets Operator
 
 ## はじめに
 

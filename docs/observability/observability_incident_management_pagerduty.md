@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】PagerDuty＠インシデント管理ツール
-description: PagerDuty＠インシデント管理ツールの知見を記録しています。
+title: 【IT技術の知見】PagerDuty
+description: PagerDutyの知見を記録しています。
+tags:
+  - "可観測性"
+  - "インシデント管理ツール"
 ---
 
-# PagerDuty＠インシデント管理ツール
+# PagerDuty
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Kubernetesリソース＠Kubernetes
-description: Kubernetesリソース＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】Kubernetesリソース
+description: Kubernetesリソースの知見を記録しています。
+tags:
+  - "K8s"
+  - "Kubernetesリソース"
 ---
 
-# Kubernetes リソース＠Kubernetes
+# Kubernetes リソース
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】AWS EBS CSIドライバー＠Amazon EKSアドオン
-description: AWS EBS CSIドライバー＠Amazon EKSアドオンの知見を記録しています。
+title: 【IT技術の知見】AWS EBS CSIドライバー
+description: AWS EBS CSIドライバーの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Amazon EKS系"
 ---
 
-# AWS EBS CSI ドライバー＠Amazon EKS アドオン
+# AWS EBS CSI ドライバー
 
 ## はじめに
 

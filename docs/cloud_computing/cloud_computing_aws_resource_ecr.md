@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon ECR＠AWSリソース
-description: Amazon ECR＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon ECR
+description: Amazon ECRの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon ECR＠AWS リソース
+# Amazon ECR
 
 ## はじめに
 

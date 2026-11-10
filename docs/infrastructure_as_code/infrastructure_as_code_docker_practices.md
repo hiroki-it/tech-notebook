@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】プラクティス集＠Docker
-description: プラクティス集＠Dockerの知見を記録しています。
+title: 【IT技術の知見】プラクティス集
+description: プラクティス集の知見を記録しています。
+tags:
+  - "IaC"
+  - "手続き型"
+  - "Docker"
 ---
 
-# プラクティス集＠Docker
+# プラクティス集
 
 ## はじめに
 

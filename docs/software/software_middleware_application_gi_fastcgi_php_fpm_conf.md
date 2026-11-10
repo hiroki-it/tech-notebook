@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠PHP-FPM
-description: 設定ファイル＠PHP-FPMの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "アプリケーション系"
+  - "PHP-FPM"
 ---
 
-# 設定ファイル＠PHP-FPM
+# 設定ファイル
 
 ## はじめに
 

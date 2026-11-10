@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Step Functions＠AWSリソース
-description: Step Functions＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Step Functions
+description: Step Functionsの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Step Functions＠AWS リソース
+# Step Functions
 
 ## はじめに
 

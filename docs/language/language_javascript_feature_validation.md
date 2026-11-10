@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】バリデーション＠JavaScript
+title: 【IT技術の知見】バリデーション
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# バリデーション＠JavaScript
+# バリデーション
 
 ## はじめに
 

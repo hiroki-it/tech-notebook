@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】並行・非同期処理＠JavaScript
+title: 【IT技術の知見】並行・非同期処理
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# 並行・非同期処理＠JavaScript
+# 並行・非同期処理
 
 ## はじめに
 

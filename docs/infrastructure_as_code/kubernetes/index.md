@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "K8s"
 ---
 
 # セクションの目次

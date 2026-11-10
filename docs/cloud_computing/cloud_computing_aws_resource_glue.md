@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Glue＠AWSリソース
-description: Glue＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Glue
+description: Glueの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Glue＠AWS リソース
+# Glue
 
 ## はじめに
 

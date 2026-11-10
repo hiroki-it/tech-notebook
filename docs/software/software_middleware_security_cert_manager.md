@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Cert Manager＠セキュリティ系ミドルウェア
-description: Cert Manager＠セキュリティ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Cert Manager
+description: Cert Managerの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "セキュリティ系"
+  - "Cert Manager"
 ---
 
-# Cert Manager＠セキュリティ系ミドルウェア
+# Cert Manager
 
 ## はじめに
 

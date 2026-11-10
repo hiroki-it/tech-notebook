@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】モジュール＠JavaScript
+title: 【IT技術の知見】モジュール
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# モジュール＠JavaScript
+# モジュール
 
 ## はじめに
 

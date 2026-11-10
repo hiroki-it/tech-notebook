@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】モジュール＠TypeScript
-description: モジュール＠TypeScriptの知見を記録しています。
+title: 【IT技術の知見】モジュール
+description: モジュールの知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
+  - "言語機能"
 ---
 
-# モジュール＠TypeScript
+# モジュール
 
 ## はじめに
 

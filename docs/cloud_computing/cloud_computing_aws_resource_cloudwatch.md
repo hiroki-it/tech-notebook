@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon CloudWatch＠AWSリソース
-description: Amazon CloudWatch＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon CloudWatch
+description: Amazon CloudWatchの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon CloudWatch＠AWS リソース
+# Amazon CloudWatch
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】kube-state-metrics＠Prometheus
-description: kube-state-metrics＠Prometheus
+title: 【IT技術の知見】kube-state-metrics
+description: kube-state-metrics
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
+  - "Exporter"
 ---
 
-# kube-state-metrics＠Prometheus
+# kube-state-metrics
 
 ## はじめに
 

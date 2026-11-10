@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Kustomize＠マニフェスト管理
-description: Kustomize＠マニフェスト管理の知見を記録しています。
+title: 【IT技術の知見】Kustomize
+description: Kustomizeの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "マニフェスト管理"
+  - "Kustomize"
 ---
 
-# Kustomize＠マニフェスト管理
+# Kustomize
 
 ## はじめに
 

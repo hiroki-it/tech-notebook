@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】プラクティス集＠Terraform
-description: プラクティス集＠Terraformの知見を記録しています。
+title: 【IT技術の知見】プラクティス集
+description: プラクティス集の知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
+  - "プラクティス集"
 ---
 
-# プラクティス集＠Terraform
+# プラクティス集
 
 ## はじめに
 

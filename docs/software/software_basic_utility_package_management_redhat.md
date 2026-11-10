@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】RedHat系＠管理ユーティリティ
-description: RedHat系＠管理ユーティリティの知見を記録しています。
+title: 【IT技術の知見】RedHat系
+description: RedHat系の知見を記録しています。
+tags:
+  - "OS"
+  - "ユーティリティ"
+  - "パッケージ管理ユーティリティ"
 ---
 
-# RedHat 系＠管理ユーティリティ
+# RedHat 系
 
 ## はじめに
 

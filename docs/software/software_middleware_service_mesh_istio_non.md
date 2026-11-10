@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Istioを採用しない場合との比較＠Istio
-description: Istioを採用しない場合との比較＠Istioの知見を記録しています。
+title: 【IT技術の知見】Istioを採用しない場合との比較
+description: Istioを採用しない場合との比較の知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Istio"
 ---
 
-# Istio を採用しない場合との比較＠Istio
+# Istio を採用しない場合との比較
 
 ## はじめに
 

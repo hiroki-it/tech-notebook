@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "K8sアドオン"
 ---
 
 # セクションの目次

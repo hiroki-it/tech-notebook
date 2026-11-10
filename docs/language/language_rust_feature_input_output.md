@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】入出力＠Rust
-description: 入出力＠Rustの知見を記録しています。
+title: 【IT技術の知見】入出力
+description: 入出力の知見を記録しています。
+tags:
+  - "言語"
+  - "Rust"
+  - "言語機能"
 ---
 
-# 入出力＠Rust
+# 入出力
 
 ## はじめに
 

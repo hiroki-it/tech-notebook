@@ -1,6 +1,9 @@
 ---
 title: 【IT技術の知見】TypeScript
 description: TypeScriptの知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
 ---
 
 # TypeScript

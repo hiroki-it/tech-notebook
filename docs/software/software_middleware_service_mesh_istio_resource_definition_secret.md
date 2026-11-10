@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】Secret系＠リソース定義
-description: Secret系＠リソース定義の知見を記録しています。
+title: 【IT技術の知見】Secret系
+description: Secret系の知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Istio"
+  - "リソース"
+  - "リソース定義"
 ---
 
-# Secret 系＠リソース定義
+# Secret 系
 
 ## はじめに
 

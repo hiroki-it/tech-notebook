@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "アプリ"
 ---
 
 # セクションの目次

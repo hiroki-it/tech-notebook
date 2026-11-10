@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Certificate Manager＠Google Cloudリソース
-description: Certificate Manager＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Certificate Manager
+description: Certificate Managerの知見を記録しています。
 ---
 
-# Certificate Manager＠Google Cloud リソース
+# Certificate Manager
 
 ## はじめに
 

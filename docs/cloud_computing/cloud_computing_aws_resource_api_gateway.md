@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Amazon API Gateway＠AWSリソース
-description: Amazon API Gateway＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon API Gateway
+description: Amazon API Gatewayの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
+  - "API Gateway"
 ---
 
-# Amazon API Gateway＠AWS リソース
+# Amazon API Gateway
 
 ## はじめに
 

@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】 polaris＠ベストプラクティス違反
-description: polaris＠ベストプラクティス違反の知見を記録しています。
+title: 【IT技術の知見】 polaris
+description: polarisの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "インフラ"
+  - "静的解析"
+  - "ベストプラクティス違反テスト"
 ---
 
-# polaris＠ベストプラクティス違反
+# polaris
 
 ## はじめに
 

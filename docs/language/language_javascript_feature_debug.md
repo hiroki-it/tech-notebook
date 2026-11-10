@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】デバッグ＠JavaScript
+title: 【IT技術の知見】デバッグ
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# デバッグ＠JavaScript
+# デバッグ
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Control Tower＠AWSリソース
-description: Control Tower＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Control Tower
+description: Control Towerの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Control Tower＠AWS リソース
+# Control Tower
 
 ## はじめに
 

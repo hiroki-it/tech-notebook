@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "OS"
 ---
 
 # セクションの目次

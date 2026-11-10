@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】 pluto＠バージョンテスト
-description: pluto＠バージョンテストの知見を記録しています。
+title: 【IT技術の知見】 pluto
+description: plutoの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "インフラ"
+  - "静的解析"
+  - "バージョンテスト"
 ---
 
-# pluto＠バージョンテスト
+# pluto
 
 ## はじめに
 

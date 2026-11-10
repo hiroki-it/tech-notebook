@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】OpenFeature＠機能フラグ
-description: OpenFeature＠機能フラグの知見を記録しています。
+title: 【IT技術の知見】OpenFeature
+description: OpenFeatureの知見を記録しています。
 ---
 
-# OpenFeature＠機能フラグ
+# OpenFeature
 
 ## はじめに
 

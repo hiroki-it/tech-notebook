@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】API＠Envoy
-description: API＠Envoyの知見を記録しています。
+title: 【IT技術の知見】API
+description: APIの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Envoy"
 ---
 
-# API＠Envoy
+# API
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】RDBMS＠DB系ミドルウェア
-description: RDBMS＠DB系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】RDBMS
+description: RDBMSの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "RDBMS"
 ---
 
-# RDBMS＠DB 系ミドルウェア
+# RDBMS
 
 ## はじめに
 

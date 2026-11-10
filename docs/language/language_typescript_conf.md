@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】設定＠TypeScript
-description: 設定＠TypeScriptの知見を記録しています。
+title: 【IT技術の知見】設定
+description: 設定の知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
 ---
 
-# 設定＠TypeScript
+# 設定
 
 ## はじめに
 

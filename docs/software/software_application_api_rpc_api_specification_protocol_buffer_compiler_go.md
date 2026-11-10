@@ -1,9 +1,16 @@
 ---
-title: 【IT技術の知見】Goプラグイン＠Protocol Bufferコンパイラー
-description: Goプラグイン＠Protocol Bufferコンパイラーの知見を記録しています。
+title: 【IT技術の知見】Goプラグイン
+description: Goプラグインの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "RPC-API"
+  - "API仕様書"
+  - "Protocol Buffer"
+  - "Protocol Bufferコンパイラー"
 ---
 
-# Go プラグイン＠Protocol Buffer コンパイラー
+# Go プラグイン
 
 ## はじめに
 

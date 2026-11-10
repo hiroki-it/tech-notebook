@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Dagger＠CIツール
-description: Dagger＠CIツールの知見を記録しています。
+title: 【IT技術の知見】Dagger
+description: Daggerの知見を記録しています。
 ---
 
-# Dagger＠CI ツール
+# Dagger
 
 ## はじめに
 

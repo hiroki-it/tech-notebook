@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS Chatbot＠AWSリソース
-description: AWS Chatbot＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS Chatbot
+description: AWS Chatbotの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AWS Chatbot＠AWS リソース
+# AWS Chatbot
 
 ## はじめに
 

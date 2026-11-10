@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana Tempo＠Grafana
-description: Grafana Tempo＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】Grafana Tempo
+description: Grafana Tempoの知見を記録しています。
 ---
 
-# Grafana Tempo＠Grafana
+# Grafana Tempo
 
 ## はじめに
 

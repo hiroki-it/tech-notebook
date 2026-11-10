@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】YAMLクエリ＠クエリロジック
-description: YAMLクエリ＠クエリロジックの知見を記録しています。
+title: 【IT技術の知見】YAMLクエリ
+description: YAMLクエリの知見を記録しています。
 ---
 
-# YAML クエリ＠クエリロジック
+# YAML クエリ
 
 ## はじめに
 

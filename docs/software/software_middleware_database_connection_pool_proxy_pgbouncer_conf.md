@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠PgBouncer
-description: 設定ファイル＠PgBouncerの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "接続プールプロキシ系"
+  - "PgBouncer"
 ---
 
-# 設定ファイル＠PgBouncer
+# 設定ファイル
 
 ## はじめに
 

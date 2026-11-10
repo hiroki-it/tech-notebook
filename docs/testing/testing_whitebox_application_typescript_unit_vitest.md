@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Vitest＠JavaScriptユニットテスト
-description: Vitest＠JavaScriptユニットテストの知見を記録しています。
+title: 【IT技術の知見】Vitest
+description: Vitestの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "アプリ (TypeScript)"
+  - "ユニットテスト"
 ---
 
-# Vitest＠JavaScript ユニットテスト
+# Vitest
 
 ## はじめに
 

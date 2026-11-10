@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】Window＠JavaScript
+title: 【IT技術の知見】Window
+tags:
+  - "言語"
+  - "JavaScript"
+  - "ブラウザ"
 ---
 
-# Window＠JavaScript
+# Window
 
 ## はじめに
 

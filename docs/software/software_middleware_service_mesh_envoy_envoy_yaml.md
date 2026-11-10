@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】envoy.yaml＠Envoy
-description: envoy.yaml＠Envoyの知見を記録しています。
+title: 【IT技術の知見】envoy.yaml
+description: envoy.yamlの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Envoy"
 ---
 
-# envoy.yaml＠Envoy
+# envoy.yaml
 
 ## はじめに
 

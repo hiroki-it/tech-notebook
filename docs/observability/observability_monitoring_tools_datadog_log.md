@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】ログ＠Datadog
-description: ログ＠Datadogの知見を記録しています。
+title: 【IT技術の知見】ログ
+description: ログの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Datadog"
+  - "テレメトリー"
 ---
 
-# ログ＠Datadog
+# ログ
 
 ## はじめに
 

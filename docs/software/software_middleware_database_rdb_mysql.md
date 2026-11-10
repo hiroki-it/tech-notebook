@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】MySQL＠RDB
-description: MySQL＠RDBの知見を記録しています。
+title: 【IT技術の知見】MySQL
+description: MySQLの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "MySQL"
 ---
 
-# MySQL＠RDB
+# MySQL
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Cloud Monitoring＠Google Cloudリソース
-description: Cloud Monitoring＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Cloud Monitoring
+description: Cloud Monitoringの知見を記録しています。
 ---
 
-# Cloud Monitoring＠Google Cloud
+# Cloud Monitoring
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】計装＠OpenTelemetry
-description: 計装＠OpenTelemetryの知見を記録しています。
+title: 【IT技術の知見】計装
+description: 計装の知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "OpenTelemetry"
+  - "計装"
 ---
 
-# 計装＠OpenTelemetry
+# 計装
 
 本サイトにつきまして、[【IT技術の知見】はじめに - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/) をご認識のほど宜しくお願いいたします。
 

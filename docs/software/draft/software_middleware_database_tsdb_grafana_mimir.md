@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana Mimir＠Grafana
-description: Grafana Mimir＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】Grafana Mimir
+description: Grafana Mimirの知見を記録しています。
 ---
 
-# Grafana Mimir＠Grafana
+# Grafana Mimir
 
 ## はじめに
 

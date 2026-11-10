@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS WAF＠AWSリソース
-description: AWS WAF＠AWSリソース
+title: 【IT技術の知見】AWS WAF
+description: AWS WAF
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AWS WAF＠AWS リソース
+# AWS WAF
 
 ## はじめに
 

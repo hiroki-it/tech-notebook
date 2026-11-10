@@ -1,9 +1,13 @@
 ---
 titlIe: 【IT技術の知見】ACID＠RDBMS
-description: ACID＠RDBMSの知見を記録しています。
+description: ACIDの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "RDBMS"
 ---
 
-# ACID＠RDBMS
+# ACID
 
 ## はじめに
 

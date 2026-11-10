@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠CoreDNS
-description: 設定ファイル＠CoreDNSの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "DNS系"
+  - "CoreDNS"
 ---
 
-# 設定ファイル＠CoreDNS
+# 設定ファイル
 
 ## はじめに
 

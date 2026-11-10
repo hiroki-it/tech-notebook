@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】コマンド＠Kubernetes
-description: コマンド＠Kubernetesの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "K8s"
+  - "Kubernetes"
 ---
 
-# コマンド＠Kubernetes
+# コマンド
 
 ## はじめに
 

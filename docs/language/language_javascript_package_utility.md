@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】ユーティリティパッケージ＠JavaScript
-description: ユーティリティパッケージ＠JavaScriptの知見を記録しています。
+title: 【IT技術の知見】ユーティリティパッケージ
+description: ユーティリティパッケージの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "パッケージ"
 ---
 
-# ユーティリティパッケージ＠JavaScript
+# ユーティリティパッケージ
 
 ## はじめに
 

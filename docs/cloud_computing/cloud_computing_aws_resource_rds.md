@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Amazon RDS＠AWSリソース
-description: Amazon RDS＠AWSリソース
+title: 【IT技術の知見】Amazon RDS
+description: Amazon RDS
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
+  - "RDS"
 ---
 
-# Amazon RDS＠AWS リソース
+# Amazon RDS
 
 ## はじめに
 

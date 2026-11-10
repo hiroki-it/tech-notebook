@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon VPC＠AWSリソース
-description: Amazon VPC＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon VPC
+description: Amazon VPCの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon VPC＠AWS リソース
+# Amazon VPC
 
 ## はじめに
 

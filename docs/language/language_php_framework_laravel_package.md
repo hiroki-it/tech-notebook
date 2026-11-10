@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】専用パッケージ＠Laravel
-description: 専用パッケージ＠Laravelの知見を記録しています。
+title: 【IT技術の知見】専用パッケージ
+description: 専用パッケージの知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
+  - "フレームワーク"
+  - "Laravel"
 ---
 
-# 専用パッケージ＠Laravel
+# 専用パッケージ
 
 ## 01. Laravel Mix パッケージ
 

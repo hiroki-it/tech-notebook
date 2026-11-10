@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェア
-description: PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】PHP-FPM：PHP FastCGI Process Manager
+description: PHP-FPM：PHP FastCGI Process Managerの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "アプリケーション系"
+  - "PHP-FPM"
 ---
 
-# PHP-FPM：PHP FastCGI Process Manager＠アプリケーション系ミドルウェア
+# PHP-FPM：PHP FastCGI Process Manager
 
 ## はじめに
 

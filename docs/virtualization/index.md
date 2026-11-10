@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "仮想化"
 ---
 
 # セクションの目次

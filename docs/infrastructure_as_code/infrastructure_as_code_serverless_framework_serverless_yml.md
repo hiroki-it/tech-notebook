@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】serverless.yml＠Serverless Framework
-description: serverless.yml＠Serverless Frameworkの知見を記録しています。
+title: 【IT技術の知見】serverless.yml
+description: serverless.ymlの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Serverless Framework"
 ---
 
-# serverless.yml＠Serverless Framework
+# serverless.yml
 
 ## はじめに
 

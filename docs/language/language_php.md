@@ -1,6 +1,9 @@
 ---
 title: 【IT技術の知見】PHP
 description: PHPの知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
 ---
 
 # PHP

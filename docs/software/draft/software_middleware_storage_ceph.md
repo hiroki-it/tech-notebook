@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Ceph＠ストレージ系ミドルウェア
-description: Ceph＠ストレージ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Ceph
+description: Cephの知見を記録しています。
 ---
 
-# Ceph＠ストレージ系ミドルウェア
+# Ceph
 
 ## はじめに
 

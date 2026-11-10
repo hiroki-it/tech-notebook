@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】メモリ管理＠Linuxカーネル
-description: メモリ管理＠Linuxカーネルの知見を記録しています。
+title: 【IT技術の知見】メモリ管理
+description: メモリ管理の知見を記録しています。
+tags:
+  - "OS"
+  - "Linuxカーネル"
 ---
 
-# メモリ管理＠Linux カーネル
+# メモリ管理
 
 ## はじめに
 

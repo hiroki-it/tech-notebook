@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】OpenAPI＠API仕様書
-description: OpenAPI＠API仕様書の知見を記録しています。
+title: 【IT技術の知見】OpenAPI
+description: OpenAPIの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "RESTful-API"
+  - "API仕様書"
 ---
 
-# OpenAPI＠RESTful-API
+# OpenAPI
 
 ## はじめに
 

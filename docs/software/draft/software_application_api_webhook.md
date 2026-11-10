@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Webhook-API＠API
-description: Webhook-API＠APIの知見を記録しています。
+title: 【IT技術の知見】Webhook-API
+description: Webhook-APIの知見を記録しています。
 ---
 
-# Webhook-API＠API
+# Webhook-API
 
 ## はじめに
 

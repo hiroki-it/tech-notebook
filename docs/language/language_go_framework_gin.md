@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Gin＠フレームワーク
-description: Gin＠フレームワークの知見を記録しています。
+title: 【IT技術の知見】Gin
+description: Ginの知見を記録しています。
+tags:
+  - "言語"
+  - "Go"
+  - "フレームワーク"
 ---
 
-# Gin＠フレームワーク
+# Gin
 
 ## はじめに
 

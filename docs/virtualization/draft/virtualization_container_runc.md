@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】runC＠コンテナ型仮想化
-description: runC＠コンテナ型仮想化の知見を記録しています。
+title: 【IT技術の知見】runC
+description: runCの知見を記録しています。
 ---
 
-# runC＠コンテナ型仮想化
+# runC
 
 ## はじめに
 

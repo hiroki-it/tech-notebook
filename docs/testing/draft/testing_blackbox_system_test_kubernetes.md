@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Kubernetes＠システムテスト
-description: Kubernetes＠システムテストの知見を記録しています。
+title: 【IT技術の知見】Kubernetes
+description: Kubernetesの知見を記録しています。
 ---
 
-# Kubernetes＠システムテスト
+# Kubernetes
 
 ## はじめに
 

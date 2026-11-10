@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠Prometheus
-description: 設定ファイル＠Prometheus
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイル
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
 ---
 
-# 設定ファイル＠Prometheus
+# 設定ファイル
 
 ## はじめに
 

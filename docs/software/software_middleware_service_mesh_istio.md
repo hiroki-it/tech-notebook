@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Istio＠サービスメッシュ系ミドルウェア
-description: Istio＠サービスメッシュ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Istio
+description: Istioの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "サービスメッシュ系"
+  - "Istio"
 ---
 
-# Istio＠サービスメッシュ系ミドルウェア
+# Istio
 
 ## はじめに
 

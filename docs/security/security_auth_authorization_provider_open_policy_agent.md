@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Open Policy Agent＠認可プロバイダー
-description: Open Policy Agent＠認可プロバイダーの知見を記録しています。
+title: 【IT技術の知見】Open Policy Agent
+description: Open Policy Agentの知見を記録しています。
+tags:
+  - "セキュリティ"
+  - "認証／認可"
+  - "認可"
+  - "認可プロバイダー"
 ---
 
-# Open Policy Agent＠認可プロバイダー
+# Open Policy Agent
 
 ## はじめに
 

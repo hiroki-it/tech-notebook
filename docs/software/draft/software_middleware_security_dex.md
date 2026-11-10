@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Dex＠セキュリティ系ミドルウェア
-description: Dex＠セキュリティ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Dex
+description: Dexの知見を記録しています。
 ---
 
-# Dex＠セキュリティ系ミドルウェア
+# Dex
 
 ## はじめに
 

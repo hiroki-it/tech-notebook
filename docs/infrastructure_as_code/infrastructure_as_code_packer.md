@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Packer＠IaC
-description: Packer＠IaCの知見を記録しています。
+title: 【IT技術の知見】Packer
+description: Packerの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Packer"
 ---
 
-# Packer＠IaC
+# Packer
 
 ## はじめに
 

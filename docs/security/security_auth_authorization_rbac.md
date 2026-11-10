@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】RBAC＠認可
-description: RBAC＠認可の知見を記録しています。
+title: 【IT技術の知見】RBAC
+description: RBACの知見を記録しています。
+tags:
+  - "セキュリティ"
+  - "認証／認可"
+  - "認可"
 ---
 
-# RBAC＠認可
+# RBAC
 
 ## はじめに
 

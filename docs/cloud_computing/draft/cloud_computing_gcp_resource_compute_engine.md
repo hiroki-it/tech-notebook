@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Compute Engine＠Google Cloudリソース
-description: Compute Engine＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Compute Engine
+description: Compute Engineの知見を記録しています。
 ---
 
-# Compute Engine＠Google Cloud
+# Compute Engine
 
 ## はじめに
 

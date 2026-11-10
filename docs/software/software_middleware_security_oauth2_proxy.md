@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】OAuth2 Proxy＠セキュリティ系ミドルウェア
-description: OAuth2 Proxy＠セキュリティ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】OAuth2 Proxy
+description: OAuth2 Proxyの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "セキュリティ系"
+  - "OAuth2 Proxy"
 ---
 
-# OAuth2 Proxy＠セキュリティ系ミドルウェア
+# OAuth2 Proxy
 
 ## はじめに
 

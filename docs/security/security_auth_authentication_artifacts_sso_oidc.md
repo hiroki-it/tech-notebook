@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】OIDC＠SSO
-description: OIDC＠SSOの知見を記録しています。
+title: 【IT技術の知見】OIDC
+description: OIDCの知見を記録しています。
+tags:
+  - "セキュリティ"
+  - "認証／認可"
+  - "認証"
+  - "認証アーティファクトによる分類"
+  - "SSO"
 ---
 
-# OIDC＠SSO
+# OIDC
 
 ## はじめに
 

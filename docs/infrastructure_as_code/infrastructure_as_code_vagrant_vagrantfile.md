@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Vagrantfile＠Vagrant
-description: Vagrantfile＠Vagrantの知見を記録しています。
+title: 【IT技術の知見】Vagrantfile
+description: Vagrantfileの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Vagrant"
 ---
 
-# Vagrantfile＠Vagrant
+# Vagrantfile
 
 ## はじめに
 

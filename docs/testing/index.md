@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "テスト"
 ---
 
 # セクションの目次

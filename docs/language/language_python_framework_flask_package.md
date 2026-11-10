@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】パッケージ＠Flask
-description: パッケージ＠Flaskの知見を記録しています。
+title: 【IT技術の知見】パッケージ
+description: パッケージの知見を記録しています。
+tags:
+  - "言語"
+  - "Python"
+  - "フレームワーク"
+  - "Flask"
 ---
 
-# パッケージ＠Flask
+# パッケージ
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Amazon VPC CNI＠Amazon EKSアドオン
-description: Amazon VPC CNI＠Amazon EKSアドオンの知見を記録しています。
+title: 【IT技術の知見】Amazon VPC CNI
+description: Amazon VPC CNIの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Amazon EKS系"
 ---
 
-# Amazon VPC CNI＠Amazon EKS アドオン
+# Amazon VPC CNI
 
 ## はじめに
 

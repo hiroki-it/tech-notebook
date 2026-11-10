@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】エラー処理＠TypeScript
-description: エラー処理＠TypeScriptの知見を記録しています。
+title: 【IT技術の知見】エラー処理
+description: エラー処理の知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
+  - "言語機能"
 ---
 
-# エラー処理＠TypeScript
+# エラー処理
 
 ## はじめに
 

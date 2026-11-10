@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】CI/CDパイプライン＠Terraform
-description: CI/CDパイプライン＠Terraformの知見を記録しています。
+title: 【IT技術の知見】CI/CDパイプライン
+description: CI/CDパイプラインの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
 ---
 
-# CI/CD パイプライン＠Terraform
+# CI/CD パイプライン
 
 ## はじめに
 

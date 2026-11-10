@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "DevOps"
 ---
 
 # セクションの目次

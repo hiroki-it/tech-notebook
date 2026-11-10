@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Openobserve＠監視ツール
-description: Openobserve＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】Openobserve
+description: Openobserveの知見を記録しています。
 ---
 
-# Openobserve＠監視ツール
+# Openobserve
 
 ## はじめに
 

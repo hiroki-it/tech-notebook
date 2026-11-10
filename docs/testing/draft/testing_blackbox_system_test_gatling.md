@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Gatling＠システムテスト
-description: Gatling＠システムテストの知見を記録しています。
+title: 【IT技術の知見】Gatling
+description: Gatlingの知見を記録しています。
 ---
 
-# Gatling＠システムテスト
+# Gatling
 
 ## はじめに
 

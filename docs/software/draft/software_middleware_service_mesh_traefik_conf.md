@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設定ファイル＠Traefik
-description: 設定ファイル＠Traefikの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
 ---
 
-# 設定ファイル＠Traefik
+# 設定ファイル
 
 ## はじめに
 

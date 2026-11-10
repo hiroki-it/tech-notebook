@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】admission-controllers＠コントロールプレーン系
-description: admission-controllers＠コントロールプレーン系の知見を記録しています。
+title: 【IT技術の知見】admission-controllers
+description: admission-controllersの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "コントロールプレーン系"
 ---
 
-# admission-controllers＠コントロールプレーン系
+# admission-controllers
 
 ## はじめに
 

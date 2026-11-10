@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Terratest＠ユニットテスト
-description: Terratest＠ユニットテストの知見を記録しています。
+title: 【IT技術の知見】Terratest
+description: Terratestの知見を記録しています。
 ---
 
-# Terratest＠ユニットテスト
+# Terratest
 
 ## はじめに
 

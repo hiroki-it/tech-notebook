@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】設定ファイル＠PostgreSQL
-description: 設定ファイル＠PostgreSQLの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "PostgreSQL"
 ---
 
-# 設定ファイル＠PostgreSQL
+# 設定ファイル
 
 ## はじめに
 

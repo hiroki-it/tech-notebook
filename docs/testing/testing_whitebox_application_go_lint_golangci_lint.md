@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】golangci-lint＠静的解析
-description: golangci-lint＠静的解析の知見を記録しています。
+title: 【IT技術の知見】golangci-lint
+description: golangci-lintの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "アプリ (Go)"
+  - "静的解析"
 ---
 
-# golangci-lint＠静的解析
+# golangci-lint
 
 ## はじめに
 

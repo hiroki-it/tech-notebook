@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】制御構文＠TypeScript
-description: 制御構文＠TypeScriptの知見を記録しています。
+title: 【IT技術の知見】制御構文
+description: 制御構文の知見を記録しています。
+tags:
+  - "言語"
+  - "TypeScript"
+  - "言語機能"
 ---
 
-# 制御構文＠TypeScript
+# 制御構文
 
 ## はじめに
 

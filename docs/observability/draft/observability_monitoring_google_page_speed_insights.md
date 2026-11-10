@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Googleページスピードインサイト＠監視ツール
-description: Googleページスピードインサイト＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】Googleページスピードインサイト
+description: Googleページスピードインサイトの知見を記録しています。
 ---
 
-# Google ページスピードインサイト＠監視ツール
+# Google ページスピードインサイト
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】App Engine＠Google Cloudリソース
-description: App Engine＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】App Engine
+description: App Engineの知見を記録しています。
 ---
 
-# App Engine＠Google Cloud リソース
+# App Engine
 
 ## はじめに
 

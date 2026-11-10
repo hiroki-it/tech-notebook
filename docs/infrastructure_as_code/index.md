@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "IaC"
 ---
 
 # セクションの目次

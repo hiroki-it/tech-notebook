@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】入出力＠PHP
-description: 入出力＠PHPの知見を記録しています。
+title: 【IT技術の知見】入出力
+description: 入出力の知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
+  - "言語機能"
 ---
 
-# 入出力＠PHP
+# 入出力
 
 ## はじめに
 

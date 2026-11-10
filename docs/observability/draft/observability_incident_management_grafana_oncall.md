@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana OnCall＠インシデント管理ツール
-description: Grafana OnCall＠インシデント管理ツールの知見を記録しています。
+title: 【IT技術の知見】Grafana OnCall
+description: Grafana OnCallの知見を記録しています。
 ---
 
-# Grafana OnCall＠インシデント管理ツール
+# Grafana OnCall
 
 ## はじめに
 

@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+tags:
+  - "LLM"
 ---
 
 # セクションの目次

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon EC2＠AWSリソース
-description: Amazon EC2＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon EC2
+description: Amazon EC2の知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon EC2＠AWS リソース
+# Amazon EC2
 
 ## はじめに
 

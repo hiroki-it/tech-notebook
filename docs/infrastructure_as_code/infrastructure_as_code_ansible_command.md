@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Ansible
-description: コマンド＠Ansibleの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "IaC"
+  - "手続き型"
+  - "Ansible"
 ---
 
-# コマンド＠Ansible
+# コマンド
 
 ## はじめに
 

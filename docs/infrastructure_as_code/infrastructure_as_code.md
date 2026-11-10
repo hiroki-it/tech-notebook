@@ -1,6 +1,8 @@
 ---
 title: 【IT技術の知見】IaC：Infrastructure as Code
 description: IaC：Infrastructure as Codeの知見を記録しています。
+tags:
+  - "IaC"
 ---
 
 # IaC：Infrastructure as Code

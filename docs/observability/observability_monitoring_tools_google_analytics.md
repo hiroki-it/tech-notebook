@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Googleアナリティクス＠監視ツール
-description: Googleアナリティクス＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】Googleアナリティクス
+description: Googleアナリティクスの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Googleアプリ"
 ---
 
-# Google アナリティクス＠監視ツール
+# Google アナリティクス
 
 ## はじめに
 

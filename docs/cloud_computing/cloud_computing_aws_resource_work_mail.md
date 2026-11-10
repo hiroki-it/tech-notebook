@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】WorkMail＠AWSリソース
-description: WorkMail＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】WorkMail
+description: WorkMailの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# WorkMail＠AWS リソース
+# WorkMail
 
 ## はじめに
 

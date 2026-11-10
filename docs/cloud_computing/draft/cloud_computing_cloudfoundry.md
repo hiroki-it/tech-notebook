@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Cloud Foundry＠クラウドコンピューティング
-description: Cloud Foundry＠クラウドコンピューティングの知見を記録しています。
+title: 【IT技術の知見】Cloud Foundry
+description: Cloud Foundryの知見を記録しています。
 ---
 
-# Cloud Foundry＠クラウドコンピューティング
+# Cloud Foundry
 
 ## はじめに
 

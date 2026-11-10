@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS Secrets Manager＠AWSリソース
-description: AWS Secrets Manager＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】AWS Secrets Manager
+description: AWS Secrets Managerの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# AWS Secrets Manager＠AWS リソース
+# AWS Secrets Manager
 
 ## はじめに
 

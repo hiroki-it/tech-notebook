@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】リソース定義＠ArgoCD
-description: リソース定義＠ArgoCDの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CDツール"
+  - "ArgoCD"
+  - "リソース定義"
 ---
 
-# リソース定義＠ArgoCD
+# リソース定義
 
 ## はじめに
 

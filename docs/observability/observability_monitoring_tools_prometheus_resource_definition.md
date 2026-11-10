@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】リソース定義＠Prometheus
-description: リソース定義＠Prometheusの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
 ---
 
-# リソース定義＠Prometheus
+# リソース定義
 
 ## はじめに
 

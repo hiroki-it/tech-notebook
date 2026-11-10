@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】tfnotify＠自動レビューツール
-description: tfnotify＠自動レビューツールの知見を記録しています。
+title: 【IT技術の知見】tfnotify
+description: tfnotifyの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "自動レビューツール"
 ---
 
-# tfnotify＠自動レビューツール
+# tfnotify
 
 ## はじめに
 

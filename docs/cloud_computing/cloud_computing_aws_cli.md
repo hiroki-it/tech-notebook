@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】AWS CLI＠AWS
-description: AWS CLI＠AWSの知見を記録しています。
+title: 【IT技術の知見】AWS CLI
+description: AWS CLIの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
 ---
 
-# AWS CLI＠AWS
+# AWS CLI
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Cloud Pub/Sub＠Google Cloudリソース
-description: Cloud Pub/Sub＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Cloud Pub/Sub
+description: Cloud Pub/Subの知見を記録しています。
 ---
 
-# Cloud Pub/Sub＠Google Cloud
+# Cloud Pub/Sub
 
 ## はじめに
 

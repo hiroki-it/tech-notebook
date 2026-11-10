@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Playwright＠E2Eテスト
-description: Playwright＠E2Eテストの知見を記録しています。
+title: 【IT技術の知見】Playwright
+description: Playwrightの知見を記録しています。
 ---
 
-# Playwright＠E2E テスト
+# Playwright
 
 ## はじめに
 

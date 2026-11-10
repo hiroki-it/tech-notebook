@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】HAProxy＠ロードバランサー系ミドルウェア
-description: HAProxy＠ロードバランサー系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】HAProxy
+description: HAProxyの知見を記録しています。
 ---
 
-# HAProxy＠ロードバランサー系ミドルウェア
+# HAProxy
 
 ## はじめに
 

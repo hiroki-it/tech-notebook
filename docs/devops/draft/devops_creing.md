@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CREing：Customer Reliability＠DevOps
-description: CREing：Customer Reliability Engineering＠DevOpsの知見を記録しています。
+title: 【IT技術の知見】CREing：Customer Reliability
+description: CREing：Customer Reliability Engineeringの知見を記録しています。
 ---
 
-# CREing：Customer Reliability Engineering＠DevOps
+# CREing：Customer Reliability Engineering
 
 ## はじめに
 

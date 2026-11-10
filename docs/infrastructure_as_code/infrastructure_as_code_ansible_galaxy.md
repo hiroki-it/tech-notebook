@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】 Ansible Galaxy＠Ansible
-description: Ansible Galaxy＠Ansibleの知見を記録しています。
+title: 【IT技術の知見】 Ansible Galaxy
+description: Ansible Galaxyの知見を記録しています。
+tags:
+  - "IaC"
+  - "手続き型"
+  - "Ansible"
 ---
 
-# Ansible Galaxy＠Ansible
+# Ansible Galaxy
 
 ## はじめに
 

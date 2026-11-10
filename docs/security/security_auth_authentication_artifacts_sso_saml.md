@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】SAML＠SSO
-description: SAML＠SSOの知見を記録しています。
+title: 【IT技術の知見】SAML
+description: SAMLの知見を記録しています。
+tags:
+  - "セキュリティ"
+  - "認証／認可"
+  - "認証"
+  - "認証アーティファクトによる分類"
+  - "SSO"
 ---
 
-# SAML＠SSO
+# SAML
 
 ## はじめに
 

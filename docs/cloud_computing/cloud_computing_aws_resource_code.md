@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Code兄弟＠AWSリソース
-description: Code兄弟＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Code兄弟
+description: Code兄弟の知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Code 兄弟＠AWS リソース
+# Code 兄弟
 
 ## はじめに
 

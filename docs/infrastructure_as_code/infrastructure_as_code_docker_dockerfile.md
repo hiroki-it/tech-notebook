@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Dockerfile＠Docker
-description: Dockerfile＠Dockerの知見を記録しています。
+title: 【IT技術の知見】Dockerfile
+description: Dockerfileの知見を記録しています。
+tags:
+  - "IaC"
+  - "手続き型"
+  - "Docker"
 ---
 
-# Dockerfile＠Docker
+# Dockerfile
 
 ## はじめに
 

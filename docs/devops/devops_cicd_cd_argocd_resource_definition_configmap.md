@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】ConfigMap系＠リソース定義
-description: ConfigMap系＠リソース定義の知見を記録しています。
+title: 【IT技術の知見】ConfigMap系
+description: ConfigMap系の知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CDツール"
+  - "ArgoCD"
+  - "リソース定義"
 ---
 
-# ConfigMap 系＠リソース定義
+# ConfigMap 系
 
 ## はじめに
 

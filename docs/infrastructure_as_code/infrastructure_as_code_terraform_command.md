@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Terraform
-description: コマンド＠Terraformの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
 ---
 
-# コマンド＠Terraform
+# コマンド
 
 ## はじめに
 

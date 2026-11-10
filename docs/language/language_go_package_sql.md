@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】SQLパッケージ＠Go
-description: SQLパッケージ＠Goの知見を記録しています。
+title: 【IT技術の知見】SQLパッケージ
+description: SQLパッケージの知見を記録しています。
+tags:
+  - "言語"
+  - "Go"
+  - "パッケージ"
 ---
 
-# SQL パッケージ＠Go
+# SQL パッケージ
 
 ## はじめに
 

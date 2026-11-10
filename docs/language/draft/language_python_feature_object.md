@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】オブジェクト＠Python
-description: オブジェクト＠Pythonの知見を記録しています。
+title: 【IT技術の知見】オブジェクト
+description: オブジェクトの知見を記録しています。
 ---
 
-# オブジェクト＠Python
+# オブジェクト
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Backup＠AWSリソース
-description: Backup＠AWSの知見を記録しています。
+title: 【IT技術の知見】Backup
+description: Backupの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Backup＠AWS
+# Backup
 
 ## はじめに
 

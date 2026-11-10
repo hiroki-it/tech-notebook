@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Artifact Registry＠Google Cloudリソース
-description: Artifact Registry＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Artifact Registry
+description: Artifact Registryの知見を記録しています。
 ---
 
-# Artifact Registry＠Google Cloud リソース
+# Artifact Registry
 
 ## はじめに
 

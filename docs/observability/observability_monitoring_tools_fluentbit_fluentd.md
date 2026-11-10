@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】FluentBit/Fluentd＠監視ツール
-description: FluentBit/Fluentd＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】FluentBit/Fluentd
+description: FluentBit/Fluentdの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "FluentBit/Fluentd"
 ---
 
-# FluentBit/Fluentd＠監視ツール
+# FluentBit/Fluentd
 
 ## はじめに
 

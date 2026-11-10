@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】vue-router＠Vue.js
-description: vue-router＠Vue.jsの知見を記録しています。
+title: 【IT技術の知見】vue-router
+description: vue-routerの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "フレームワーク"
+  - "Vue.js"
 ---
 
-# vue-router＠Vue.js
+# vue-router
 
 ## はじめに
 

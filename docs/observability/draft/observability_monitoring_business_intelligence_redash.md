@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Redash＠BIツール
-description: Redash＠BIツールの知見を記録しています。
+title: 【IT技術の知見】Redash
+description: Redashの知見を記録しています。
 ---
 
-# Redash＠BI ツール
+# Redash
 
 ## はじめに
 

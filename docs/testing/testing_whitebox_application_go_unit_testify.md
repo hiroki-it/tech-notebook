@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】testify＠Goユニットテスト
-description: testify＠Goユニットテストの知見を記録しています。
+title: 【IT技術の知見】testify
+description: testifyの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "アプリ (Go)"
+  - "ユニットテスト"
 ---
 
-# testify＠Go ユニットテスト
+# testify
 
 ## はじめに
 

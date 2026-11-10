@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】コンポーネント＠Symfony
-description: コンポーネント＠Symfonyの知見を記録しています。
+title: 【IT技術の知見】コンポーネント
+description: コンポーネントの知見を記録しています。
+tags:
+  - "言語"
+  - "PHP"
+  - "フレームワーク"
+  - "Symfony"
 ---
 
-# Doctrine ORM＠Symfony
+# Doctrine ORM
 
 ## はじめに
 

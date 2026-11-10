@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】IPアドレス＠L3
-description: IPアドレス＠L3の知見を記録しています。
+title: 【IT技術の知見】IPアドレス
+description: IPアドレスの知見を記録しています。
+tags:
+  - "ネットワーク"
+  - "OSI参照モデル"
+  - "L3"
 ---
 
-# IP アドレス＠L3
+# IP アドレス
 
 ## はじめに
 

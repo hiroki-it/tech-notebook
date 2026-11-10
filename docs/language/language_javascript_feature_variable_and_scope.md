@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】変数・スコープ＠JavaScript
+title: 【IT技術の知見】変数・スコープ
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# 変数・スコープ＠JavaScript
+# 変数・スコープ
 
 ## はじめに
 

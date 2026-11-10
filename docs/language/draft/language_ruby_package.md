@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】パッケージ＠Ruby
-description: パッケージ＠Rubyの知見を記録しています。
+title: 【IT技術の知見】パッケージ
+description: パッケージの知見を記録しています。
 ---
 
-# パッケージ＠Ruby
+# パッケージ
 
 ## はじめに
 

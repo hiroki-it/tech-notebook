@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】CloudEvents＠パブリッシュ／サブスクライブ方式
-description: CloudEvents＠パブリッシュ／サブスクライブ方式の知見を記録しています。
+title: 【IT技術の知見】CloudEvents
+description: CloudEventsの知見を記録しています。
 ---
 
-# CloudEvents＠パブリッシュ／サブスクライブ方式
+# CloudEvents
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】HTTP認証＠認証
-description: HTTP認証＠認証の知見を記録しています。
+title: 【IT技術の知見】HTTP認証
+description: HTTP認証の知見を記録しています。
+tags:
+  - "セキュリティ"
+  - "認証／認可"
+  - "認証"
 ---
 
-# HTTP 認証＠認証
+# HTTP 認証
 
 ## はじめに
 

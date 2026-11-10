@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon EventBridge＠AWSリソース
-description: Amazon EventBridge＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon EventBridge
+description: Amazon EventBridgeの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon EventBridge＠AWS リソース
+# Amazon EventBridge
 
 ## はじめに
 

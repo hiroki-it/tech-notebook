@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】プラクティス集＠K8s Cluster
-description: プラクティス集＠K8s Clusterの知見を記録しています。
+title: 【IT技術の知見】プラクティス集
+description: プラクティス集の知見を記録しています。
+tags:
+  - "K8s"
+  - "プラクティス集"
 ---
 
-# プラクティス集＠K8s Cluster
+# プラクティス集
 
 ## はじめに
 

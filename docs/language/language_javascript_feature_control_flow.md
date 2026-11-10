@@ -1,8 +1,12 @@
 ---
-title: 【IT技術の知見】制御構文＠JavaScript
+title: 【IT技術の知見】制御構文
+tags:
+  - "言語"
+  - "JavaScript"
+  - "言語機能"
 ---
 
-# 制御構文＠JavaScript
+# 制御構文
 
 ## はじめに
 

@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】VirtualBox＠仮想化
-description: VirtualBox＠仮想化の知見を記録しています。
+title: 【IT技術の知見】VirtualBox
+description: VirtualBoxの知見を記録しています。
 ---
 
-# VirtualBox＠仮想化
+# VirtualBox
 
 ## はじめに
 

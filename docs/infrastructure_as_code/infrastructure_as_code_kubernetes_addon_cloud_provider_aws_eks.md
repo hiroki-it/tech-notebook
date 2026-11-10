@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Amazon EKSアドオン＠クラウドプロバイダー系
-description: Amazon EKSアドオン＠クラウドプロバイダー系の知見を記録しています。
+title: 【IT技術の知見】Amazon EKSアドオン
+description: Amazon EKSアドオンの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Amazon EKS系"
 ---
 
-# Amazon EKS アドオン＠クラウドプロバイダー系
+# Amazon EKS アドオン
 
 ## はじめに
 

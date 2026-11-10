@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Skaffold
-description: コマンド＠Skaffoldの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CIツール"
+  - "Skaffold"
 ---
 
-# コマンド＠Skaffold
+# コマンド
 
 ## はじめに
 

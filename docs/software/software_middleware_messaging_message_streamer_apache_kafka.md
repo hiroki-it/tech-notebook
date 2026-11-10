@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Apache Kafka＠ストリーマー系ミドルウェア
-description: Apache Kafka＠ストリーマー系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Apache Kafka
+description: Apache Kafkaの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "メッセージング系"
 ---
 
-# Apache Kafka＠ストリーマー系ミドルウェア
+# Apache Kafka
 
 ## はじめに
 

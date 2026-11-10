@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】コマンド＠Minikube
-description: コマンド＠Minikubeの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "開発環境"
+  - "Minikube"
 ---
 
-# コマンド＠Minikube
+# コマンド
 
 ## はじめに
 

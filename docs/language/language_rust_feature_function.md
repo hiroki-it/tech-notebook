@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】関数＠Rust
-description: 関数＠Rustの知見を記録しています。
+title: 【IT技術の知見】関数
+description: 関数の知見を記録しています。
+tags:
+  - "言語"
+  - "Rust"
+  - "言語機能"
 ---
 
-# 関数＠Rust
+# 関数
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】AWS Load Balancer Controller＠Ingress Controller
-description: AWS Load Balancer Controller＠Ingress Controllerの知見を記録しています。
+title: 【IT技術の知見】AWS Load Balancer Controller
+description: AWS Load Balancer Controllerの知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Ingress Controller系"
+  - "AWS Load Balancer Controller"
 ---
 
-# AWS Load Balancer Controller＠Ingress Controller
+# AWS Load Balancer Controller
 
 ## はじめに
 

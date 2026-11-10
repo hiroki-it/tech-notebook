@@ -1,6 +1,8 @@
 ---
 title: 【IT技術の知見】DevOps
 description: DevOpsの知見を記録しています。
+tags:
+  - "DevOps"
 ---
 
 # DevOps

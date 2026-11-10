@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】設定ファイル＠OpenTelemetry Collector
-description: 設定ファイル＠OpenTelemetry Collectorの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "OpenTelemetry"
+  - "OpenTelemetry Collector"
 ---
 
-# 設定ファイル＠OpenTelemetry Collector
+# 設定ファイル
 
 ## はじめに
 

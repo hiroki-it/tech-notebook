@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Grafana Alloy＠Grafana
-description: Grafana Alloy＠Grafanaの知見を記録しています。
+title: 【IT技術の知見】Grafana Alloy
+description: Grafana Alloyの知見を記録しています。
 ---
 
-# Grafana Alloy＠Grafana
+# Grafana Alloy
 
 ## はじめに
 

@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】Rust＠言語
-description: Rust＠言語の知見を記録しています。
+title: 【IT技術の知見】Rust
+description: Rustの知見を記録しています。
+tags:
+  - "言語"
+  - "Rust"
 ---
 
-# Rust＠言語
+# Rust
 
 ## はじめに
 

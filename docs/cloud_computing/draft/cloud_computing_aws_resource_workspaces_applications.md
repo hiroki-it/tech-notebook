@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】WorkSpaces Applications＠AWS
-description: WorkSpaces Applications＠AWSの知見を記録しています。
+title: 【IT技術の知見】WorkSpaces Applications
+description: WorkSpaces Applicationsの知見を記録しています。
 ---
 
-# WorkSpaces Applications＠AWS
+# WorkSpaces Applications
 
 ## はじめに
 

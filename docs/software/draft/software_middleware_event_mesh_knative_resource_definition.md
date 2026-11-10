@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】リソース定義＠Knative
-description: リソース定義＠Knativeの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
 ---
 
-# リソース定義＠Knative
+# リソース定義
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】AWSプロバイダー＠Terraform
-description: AWSプロバイダー＠Terraformの知見を記録しています。
+title: 【IT技術の知見】AWSプロバイダー
+description: AWSプロバイダーの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
+  - "プロバイダー"
 ---
 
-# AWS プロバイダー＠Terraform
+# AWS プロバイダー
 
 ## はじめに
 

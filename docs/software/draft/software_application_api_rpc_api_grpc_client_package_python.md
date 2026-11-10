@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Python＠gRPCクライアントパッケージ
-description: Python＠gRPCクライアントパッケージの知見を記録しています。
+title: 【IT技術の知見】Python
+description: Pythonの知見を記録しています。
 ---
 
-# Python＠gRPC クライアントパッケージ
+# Python
 
 ## はじめに
 

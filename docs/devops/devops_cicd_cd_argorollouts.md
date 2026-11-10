@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Argo Rollouts＠CDツール
-description: Argo Rollouts＠CDツールの知見を記録しています。
+title: 【IT技術の知見】Argo Rollouts
+description: Argo Rolloutsの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "CDツール"
+  - "Argo Rollouts"
 ---
 
-# Argo Rollouts＠CD ツール
+# Argo Rollouts
 
 ## はじめに
 

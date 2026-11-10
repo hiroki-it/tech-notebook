@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Helm＠マニフェスト管理
-description: Helm＠マニフェスト管理の知見を記録しています。
+title: 【IT技術の知見】Helm
+description: Helmの知見を記録しています。
+tags:
+  - "K8sアプリ"
+  - "マニフェスト管理"
+  - "Helm"
 ---
 
-# Helm＠マニフェスト管理
+# Helm
 
 ## はじめに
 

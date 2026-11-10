@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Google Cloud Run Functions＠Google Cloudリソース
-description: Google Cloud Run Functions＠Google Cloudリソースの知見を記録しています。
+title: 【IT技術の知見】Google Cloud Run Functions
+description: Google Cloud Run Functionsの知見を記録しています。
 ---
 
-# Google Cloud Run Functions＠Google Cloud
+# Google Cloud Run Functions
 
 ## はじめに
 

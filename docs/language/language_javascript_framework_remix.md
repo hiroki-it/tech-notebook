@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Remix＠フレームワーク
-description: Remix＠フレームワークの知見を記録しています。
+title: 【IT技術の知見】Remix
+description: Remixの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "フレームワーク"
+  - "Remix"
 ---
 
-# Remix＠フレームワーク
+# Remix
 
 ## はじめに
 

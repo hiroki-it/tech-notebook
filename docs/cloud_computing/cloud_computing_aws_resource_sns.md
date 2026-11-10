@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Amazon SNS＠AWSリソース
-description: Amazon SNS＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Amazon SNS
+description: Amazon SNSの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Amazon SNS＠AWS リソース
+# Amazon SNS
 
 ## はじめに
 

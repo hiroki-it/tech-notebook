@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Jaeger＠監視ツール
-description: Jaeger＠監視ツールの知見を記録しています。
+title: 【IT技術の知見】Jaeger
+description: Jaegerの知見を記録しています。
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Jaeger"
 ---
 
-# Jaeger＠監視ツール
+# Jaeger
 
 ## はじめに
 

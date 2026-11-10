@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】NF＠AWSリソース
-description: NF＠AWSリソース
+title: 【IT技術の知見】NF
+description: NF
 ---
 
-# NF＠AWS リソース
+# NF
 
 ## はじめに
 

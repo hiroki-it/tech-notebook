@@ -138,6 +138,7 @@ markdown_extensions:
 
 # 外部プラグイン
 plugins:
+  - tags
   #  - git-committers:
   #      repository: hiroki-it/tech-notebook
   #      branch: main
@@ -1050,3 +1051,5 @@ nav:
           - ■ Git:
               - コマンド: software_development_methodology/software_development_git_command.md
               - GitHub: software_development_methodology/software_development_git_github.md
+
+  - 🏷️ タグ: tags.md

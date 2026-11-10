@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】L4＠OSI参照モデル
-description: L4＠OSI参照モデルの知見を記録しています。
+title: 【IT技術の知見】L4
+description: L4の知見を記録しています。
+tags:
+  - "ネットワーク"
+  - "OSI参照モデル"
+  - "L4"
 ---
 
-# `L4`＠OSI 参照モデル
+# `L4`
 
 ## はじめに
 

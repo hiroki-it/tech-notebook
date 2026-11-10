@@ -1,6 +1,9 @@
 ---
 title: 【IT技術の知見】TSDB
 description: TSDBの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "時系列DB系"
 ---
 
 # TSDB

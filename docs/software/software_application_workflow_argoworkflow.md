@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Argo Workflows＠ワークフロー
-description: Argo Workflows＠ワークフローの知見を記録しています。
+title: 【IT技術の知見】Argo Workflows
+description: Argo Workflowsの知見を記録しています。
+tags:
+  - "アプリ"
+  - "ワークフロー"
+  - "Argo Workflows"
 ---
 
-# Argo Workflows＠ワークフロー
+# Argo Workflows
 
 ## はじめに
 

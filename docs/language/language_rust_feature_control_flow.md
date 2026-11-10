@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】制御構文＠Rust
-description: 制御構文＠Rustの知見を記録しています。
+title: 【IT技術の知見】制御構文
+description: 制御構文の知見を記録しています。
+tags:
+  - "言語"
+  - "Rust"
+  - "言語機能"
 ---
 
-# 制御構文＠Rust
+# 制御構文
 
 ## はじめに
 

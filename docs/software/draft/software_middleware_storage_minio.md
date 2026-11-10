@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Minio＠ストレージ系ミドルウェア
-description: Minio＠ストレージ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Minio
+description: Minioの知見を記録しています。
 ---
 
-# Minio＠ストレージ系ミドルウェア
+# Minio
 
 ## はじめに
 

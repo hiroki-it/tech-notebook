@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Prometheus＠監視ツール
-description: Prometheus＠監視ツール
+title: 【IT技術の知見】Prometheus
+description: Prometheus
+tags:
+  - "可観測性"
+  - "監視ツール"
+  - "Prometheus"
 ---
 
-# Prometheus＠監視ツール
+# Prometheus
 
 ## はじめに
 

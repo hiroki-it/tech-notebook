@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】Prisma＠SQLパッケージ
-description: Prisma＠SQLパッケージの知見を記録しています。
+title: 【IT技術の知見】Prisma
+description: Prismaの知見を記録しています。
+tags:
+  - "言語"
+  - "JavaScript"
+  - "パッケージ"
+  - "SQLパッケージ"
 ---
 
-# Prisma＠SQL パッケージ
+# Prisma
 
 ## はじめに
 

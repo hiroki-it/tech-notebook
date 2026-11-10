@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】リソース定義＠SecretsストアCSIドライバー
-description: リソース定義＠SecretsストアCSIドライバーの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
+tags:
+  - "K8sアドオン"
+  - "Secret系"
+  - "SecretsストアCSIドライバー"
 ---
 
-# リソース定義＠Secrets ストア CSI ドライバー
+# リソース定義
 
 ## はじめに
 

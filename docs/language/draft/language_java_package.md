@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】パッケージ＠Java
-description: パッケージ＠Javaの知見を記録しています。
+title: 【IT技術の知見】パッケージ
+description: パッケージの知見を記録しています。
 ---
 
-# パッケージ＠Java
+# パッケージ
 
 ## はじめに
 

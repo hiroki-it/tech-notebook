@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】GitHub＠Git
-description: GitHub＠Gitの知見を記録しています。
+title: 【IT技術の知見】GitHub
+description: GitHubの知見を記録しています。
+tags:
+  - "開発手法"
+  - "バージョン管理"
+  - "Git"
 ---
 
-# GitHub＠Git
+# GitHub
 
 ## はじめに
 

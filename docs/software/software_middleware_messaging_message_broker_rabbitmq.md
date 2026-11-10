@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】RabbitMQ＠メッセージング系ミドルウェア
-description: RabbitMQ＠メッセージング系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】RabbitMQ
+description: RabbitMQの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "メッセージング系"
 ---
 
-# RabbitMQ＠メッセージング系ミドルウェア
+# RabbitMQ
 
 ## はじめに
 

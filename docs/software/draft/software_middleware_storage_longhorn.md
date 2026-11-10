@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】Longhorn＠ストレージ系ミドルウェア
-description: Longhorn＠ストレージ系ミドルウェアの知見を記録しています。
+title: 【IT技術の知見】Longhorn
+description: Longhornの知見を記録しています。
 ---
 
-# Longhorn＠ストレージ系ミドルウェア
+# Longhorn
 
 ## はじめに
 

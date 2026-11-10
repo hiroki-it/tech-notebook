@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Global Accelerator＠AWSリソース
-description: Global Accelerator＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Global Accelerator
+description: Global Acceleratorの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Global Accelerator＠AWS リソース
+# Global Accelerator
 
 ## はじめに
 

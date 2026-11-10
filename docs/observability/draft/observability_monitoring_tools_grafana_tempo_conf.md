@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】設定ファイル＠Grafana Tempo
-description: 設定ファイル＠Grafana Tempoの知見を記録しています。
+title: 【IT技術の知見】設定ファイル
+description: 設定ファイルの知見を記録しています。
 ---
 
-# 設定ファイル＠Grafana Tempo
+# 設定ファイル
 
 ## はじめに
 

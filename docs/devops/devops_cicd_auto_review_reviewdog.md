@@ -1,9 +1,12 @@
 ---
-title: 【IT技術の知見】reviewdog＠自動レビューツール
-description: reviewdog＠自動レビューツールの知見を記録しています。
+title: 【IT技術の知見】reviewdog
+description: reviewdogの知見を記録しています。
+tags:
+  - "CI/CD"
+  - "自動レビューツール"
 ---
 
-# reviewdog＠自動レビューツール
+# reviewdog
 
 ## はじめに
 

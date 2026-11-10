@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】モジュール＠Terraform
-description: モジュール＠Terraformの知見を記録しています。
+title: 【IT技術の知見】モジュール
+description: モジュールの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Terraform"
+  - "tfファイル"
 ---
 
-# モジュール＠Terraform
+# モジュール
 
 ## はじめに
 

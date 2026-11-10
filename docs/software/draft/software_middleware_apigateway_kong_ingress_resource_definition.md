@@ -1,9 +1,9 @@
 ---
-title: 【IT技術の知見】リソース定義＠Kong Ingress
-description: リソース定義＠Kong Ingressの知見を記録しています。
+title: 【IT技術の知見】リソース定義
+description: リソース定義の知見を記録しています。
 ---
 
-# リソース定義＠Kong Ingress
+# リソース定義
 
 ## はじめに
 

@@ -1,9 +1,15 @@
 ---
-title: 【IT技術の知見】コマンド＠Protocol Buffer
-description: コマンド＠Protocol Bufferの知見を記録しています。
+title: 【IT技術の知見】コマンド
+description: コマンドの知見を記録しています。
+tags:
+  - "アプリ"
+  - "API"
+  - "RPC-API"
+  - "API仕様書"
+  - "Protocol Buffer"
 ---
 
-# コマンド＠Protocol Buffer
+# コマンド
 
 ## はじめに
 

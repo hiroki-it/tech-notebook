@@ -1,6 +1,10 @@
 ---
-title: 【IT技術の知見】 Ansible＠IaC
-description: Ansible＠IaCの知見を記録しています。
+title: 【IT技術の知見】 Ansible
+description: Ansibleの知見を記録しています。
+tags:
+  - "IaC"
+  - "手続き型"
+  - "Ansible"
 ---
 
 # Ansible

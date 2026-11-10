@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】Kinesis＠AWSリソース
-description: Kinesis＠AWSリソースの知見を記録しています。
+title: 【IT技術の知見】Kinesis
+description: Kinesisの知見を記録しています。
+tags:
+  - "3大クラウド"
+  - "AWS"
+  - "AWSリソース"
 ---
 
-# Kinesis＠AWS リソース
+# Kinesis
 
 ## はじめに
 

@@ -1,9 +1,11 @@
 ---
-title: 【IT技術の知見】CPU＠ハードウェア
-description: CPU＠ハードウェアの知見を記録しています。
+title: 【IT技術の知見】CPU
+description: CPUの知見を記録しています。
+tags:
+  - "ハードウェア"
 ---
 
-# CPU＠ハードウェア
+# CPU
 
 ## はじめに
 

@@ -1,9 +1,14 @@
 ---
-title: 【IT技術の知見】DCL＠SQL
-description: DCL＠SQLの知見を記録しています。
+title: 【IT技術の知見】DCL
+description: DCLの知見を記録しています。
+tags:
+  - "ミドルウェア"
+  - "リレーショナルDB系"
+  - "MySQL"
+  - "SQL"
 ---
 
-# DCL＠SQL
+# DCL
 
 ## はじめに
 

@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】モジュール＠Python
-description: モジュール＠Pythonの知見を記録しています。
+title: 【IT技術の知見】モジュール
+description: モジュールの知見を記録しています。
+tags:
+  - "言語"
+  - "Python"
+  - "言語機能"
 ---
 
-# モジュール＠Python
+# モジュール
 
 ## はじめに
 

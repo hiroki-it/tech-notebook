@@ -1,9 +1,13 @@
 ---
-title: 【IT技術の知見】docker-compose.yml＠Docker compose
-description: docker-compose.yml＠Docker composeの知見を記録しています。
+title: 【IT技術の知見】docker-compose.yml
+description: docker-compose.ymlの知見を記録しています。
+tags:
+  - "IaC"
+  - "宣言型"
+  - "Docker Compose"
 ---
 
-# docker-compose.yml＠Docker compose
+# docker-compose.yml
 
 ## はじめに
 

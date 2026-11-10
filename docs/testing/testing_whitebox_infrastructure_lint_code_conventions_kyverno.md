@@ -1,9 +1,16 @@
 ---
-title: 【IT技術の知見】Kyverno＠コード規約違反
-description: Kyverno＠コード規約違反の知見を記録しています。
+title: 【IT技術の知見】Kyverno
+description: Kyvernoの知見を記録しています。
+tags:
+  - "テスト"
+  - "ホワイトボックステスト"
+  - "インフラ"
+  - "静的解析"
+  - "コード規約違反テスト"
+  - "Kyverno"
 ---
 
-# Kyverno＠コード規約違反
+# Kyverno
 
 ## はじめに
 
