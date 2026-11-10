@@ -356,6 +356,27 @@ v2 系では `linters-settings` は `linters.settings` に移動した。
 
 `gofmt` や `goimports` などのフォーマッターは、`linters.enable` ではなく `formatters.enable` に設定する。
 
+```yaml
+# v2系の.golangci.yml
+version: "2"
+linters:
+  enable:
+    - govet
+  settings:
+    govet:
+      enable:
+        - shadow
+  exclusions:
+    rules:
+      - path: _test\.go
+        linters:
+          - govet
+formatters:
+  enable:
+    - gofmt
+    - goimports
+```
+
 <br>
 
 ## 04. コマンド

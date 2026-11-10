@@ -15,6 +15,24 @@ description: PHPUnit＠PHPユニットテストの知見を記録しています
 
 ユニットテストと機能テストに必要な機能を提供し、テストを実行する。
 
+```php
+<?php
+// tests/Unit/UserTest.php
+
+use PHPUnit\Framework\TestCase;
+
+final class UserTest extends TestCase
+{
+    public function testIsAdult(): void
+    {
+        $isAdult = static fn (int $age): bool => $age >= 18;
+
+        self::assertTrue($isAdult(18));
+        self::assertFalse($isAdult(17));
+    }
+}
+```
+
 <br>
 
 ## 02. コマンド
@@ -77,6 +95,16 @@ PHPUnit の設定する。
 デフォルトの設定では、あらかじめルートディレクトリに `tests` ディレクトリを配置し、これを `Units` ディレクトリまたは `Feature` ディレクトリに分割しておく。
 
 また、`Test` で終了する php ファイルを作成しておく必要がある。
+
+```text
+.
+├── phpunit.xml
+└── tests/
+    ├── Unit/
+    │   └── UserTest.php
+    └── Feature/
+        └── UserRegistrationTest.php
+```
 
 > - http://phpunit.readthedocs.io/ja/latest/configuration.html
 

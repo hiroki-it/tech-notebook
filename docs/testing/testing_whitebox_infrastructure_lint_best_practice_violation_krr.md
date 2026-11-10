@@ -34,6 +34,17 @@ krr では、CPU の `.spec.containers[*].resources.limits` キー値の設定�
 
 これにより、コンテナがハードウェアリソース不足を起こす可能性が高くなるためである。
 
+```yaml
+# Podのspec.containers内の設定例（数値は例示）
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    # CPUの上限を設定せず、メモリの上限だけを設定する
+    memory: "128Mi"
+```
+
 > - [For the Love of God, Stop Using CPU Limits on Kubernetes (Updated) — Robusta Blog](https://home.robusta.dev/blog/stop-using-cpu-limits)
 > - https://medium.com/omio-engineering/cpu-limits-and-aggressive-throttling-in-kubernetes-c5b20bd8a718
 > - https://blog.netdata.cloud/kubernetes-throttling-doesnt-have-to-suck-let-us-help/

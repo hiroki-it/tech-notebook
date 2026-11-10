@@ -34,6 +34,10 @@ description: 静的解析＠インフラのホワイトボックステストの�
 
 - jsonlint
 
+```bash
+$ jsonlint config.json
+```
+
 > - [GitHub - zaach/jsonlint: A JSON parser and validator with a CLI. · GitHub](https://github.com/zaach/jsonlint)
 
 <br>
@@ -52,6 +56,11 @@ Kubernetes リソースのスキーマ (カスタムリソースであれば CRD
 
 - kubeconform (新 kubeval)
 
+```bash
+# マニフェストのスキーマを検証して、結果の集計を表示する
+$ kubeconform -strict -summary ./manifests
+```
+
 > - [Top Kubernetes YAML Validation Tools \| Kubevious.io](https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools)
 
 #### ▼ コード規約違反テスト
@@ -59,6 +68,11 @@ Kubernetes リソースのスキーマ (カスタムリソースであれば CRD
 ユーザー定義のコード規約に基づいて、マニフェストのコード規約違反を検証する。
 
 - confest
+
+```bash
+# policiesディレクトリのRegoルールで検証する
+$ conftest test ./manifests/deployment.yaml --policy ./policies
+```
 
 #### ▼ ベストプラクティス違反テスト
 
@@ -72,6 +86,10 @@ Kubernetes リソースのスキーマ (カスタムリソースであれば CRD
 - krr (効率性)
 - goldilocks (効率性)
 - polaris
+
+```bash
+$ kube-score score ./manifests/deployment.yaml
+```
 
 > - [Top Kubernetes YAML Validation Tools \| Kubevious.io](https://kubevious.io/blog/post/top-kubernetes-yaml-validation-tools)
 > - [GitHub - kubevious/cli: Kubevious CLI - Prevent Kubernetes disasters at the early stages · GitHub](https://github.com/kubevious/cli#-key-capabilities)
@@ -121,14 +139,29 @@ Kubernetes リソースのスキーマ (カスタムリソースであれば CRD
 
 - `terraform validate` コマンド
 
+```bash
+# バックエンドに接続せず、検証に必要なプロバイダーとモジュールを準備する
+$ terraform init -backend=false
+$ terraform validate
+```
+
 #### ▼ 脆弱性診断
 
 - tfsec
 - trivy
 
+```bash
+$ trivy config ./terraform
+```
+
 #### ▼ ベストプラクティス違反テスト
 
 - tflint
+
+```bash
+$ tflint --init
+$ tflint
+```
 
 #### ▼ 未 IaC 化テスト
 
@@ -147,6 +180,10 @@ Kubernetes リソースのスキーマ (カスタムリソースであれば CRD
 チャートの公式ルールに基づいて、構造の誤りを検出する。
 
 - `helm lint` コマンド
+
+```bash
+$ helm lint ./chart --values ./chart/values.yaml
+```
 
 #### ▼ バージョンテスト
 
@@ -168,10 +205,19 @@ Helm チャートのバージョンを検証する。
 
 - hadolint
 
+```bash
+# イメージのビルドに使用するDockerfileを検査する
+$ hadolint Dockerfile
+```
+
 #### ▼ 脆弱性診断
 
 - dockle
 - trivy
+
+```bash
+$ trivy image nginx:1.28
+```
 
 > - https://snyk.io/learn/container-security/container-scanning/
 > - [コンテナの静的・動的スキャン \| コンテナをセキュアに運用するために考えること \| Think IT（シンクイット）](https://thinkit.co.jp/article/17525)

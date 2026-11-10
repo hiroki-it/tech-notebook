@@ -165,11 +165,25 @@ description: Goのテストツール＠アプリケーションのホワイト�
 
 `go` コマンドが提供するホワイトボックス機能のこと。
 
+```bash
+# 現在のモジュール配下の全パッケージでテストを実行する
+$ go test ./...
+```
+
 <br>
 
 ### 網羅率
 
 網羅率はパッケージを単位として解析される。
+
+```bash
+# パッケージごとの網羅率を表示し、計測結果を保存する
+$ go test -coverprofile=coverage.out ./...
+# 関数ごとの網羅率を表示する
+$ go tool cover -func=coverage.out
+# ブラウザで行ごとの実行状況を確認する
+$ go tool cover -html=coverage.out
+```
 
 <br>
 
@@ -181,11 +195,55 @@ description: Goのテストツール＠アプリケーションのホワイト�
 
 テストファイルのパッケージ名が、同じディレクトリ配下にある実際の処理ファイルのパッケージ名と同じ場合、それはホワイトボックステストになる。
 
+```go
+// user/user.go
+package user
+
+func isAdult(age int) bool {
+	return age >= 18
+}
+
+func IsAdult(age int) bool {
+	return isAdult(age)
+}
+```
+
+```go
+// user/user_test.go
+package user
+
+import "testing"
+
+func TestIsAdult(t *testing.T) {
+	// 同じパッケージなので、非公開の関数も呼び出せる
+	if !isAdult(18) {
+		t.Fatal("18歳は成人として判定されるはず")
+	}
+}
+```
+
 #### ▼ ブラックボックス風のホワイトテスト
 
 テストファイルのパッケージ名が、同じディレクトリ配下にある実際の処理ファイルに『`_test`』を加えたパッケージ名の場合、それはブラックボックステスト風のホワイトテストになる。
 
 補足として、Go では 1 つのディレクトリ内に 1 つのパッケージ名しか宣言できないが、ブラックボックステストのために『`_test`』を加えることは許されている。
+
+```go
+// user/user_external_test.go（go.modのmoduleをexample.com/appとする）
+package user_test
+
+import (
+	"testing"
+	"example.com/app/user"
+)
+
+func TestIsAdult(t *testing.T) {
+	// 別のパッケージなので、公開されている関数を呼び出す
+	if !user.IsAdult(18) {
+		t.Fatal("18歳は成人として判定されるはず")
+	}
+}
+```
 
 > - [Medium](https://medium.com/tech-at-wildlife-studios/testing-golang-code-our-approach-at-wildlife-6f41e489ff36)
 

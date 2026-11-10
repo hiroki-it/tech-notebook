@@ -15,6 +15,23 @@ description: Cypress＠E2Eテストの知見を記録しています。
 
 E2E テストに必要な機能を提供し、テストを実行する。
 
+```typescript
+// cypress/e2e/users.cy.ts
+describe("ユーザー一覧画面", () => {
+  it("ユーザー一覧の見出しを表示できる", () => {
+    // 起動済みのアプリケーションにアクセスする
+    cy.visit("http://localhost:3000/users");
+    // 画面の表示内容を検証する
+    cy.get("h1").should("have.text", "ユーザー一覧");
+  });
+});
+```
+
+```bash
+# 指定したファイルのテストを実行する
+$ npx cypress run --spec "cypress/e2e/users.cy.ts"
+```
+
 <br>
 
 ## 02. 文法
@@ -142,6 +159,14 @@ describe("<パブリックな関数名>", async () => {
 | `<リソース名>.cy.ts`（単数形） | 単一リソースの詳細表示・作成・編集・削除 |
 | `<リソース名>s.cy.ts`（複数形） | 一覧表示・検索・フィルタリング |
 
+```text
+cypress/
+└── e2e/
+    ├── user.cy.ts      # ユーザーの詳細表示・作成・編集・削除
+    ├── users.cy.ts     # ユーザーの一覧表示・検索・フィルタリング
+    ├── project.cy.ts   # プロジェクトの詳細表示・作成・編集・削除
+    └── projects.cy.ts  # プロジェクトの一覧表示・検索・フィルタリング
+```
 
 #### ▼ テストケースの命名
 

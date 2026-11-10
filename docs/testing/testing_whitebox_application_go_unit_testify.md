@@ -369,6 +369,14 @@ func Test_Mock(t *testing.T) {
 
 モック構造体に渡した引数を保持する。
 
+```go
+// mock.Argumentsから位置と型を指定して値を取り出す
+arguments := mock.Arguments{1, "Alice", nil}
+id := arguments.Int(0)       // 1
+name := arguments.String(1)  // "Alice"
+err := arguments.Error(2)    // nil
+```
+
 > - [mock package - github.com/stretchr/testify/mock - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/mock#Arguments)
 
 #### ▼ Get
@@ -705,6 +713,14 @@ func (suite *FooSuite) TestMethod() {
 
 ポインタのメモリアドレス値は一致していなくてもよい。
 
+```go
+// テスト関数内で使用する（tは*testing.T）
+expected := int64(20)
+actual := int64(20)
+assert.Exactly(t, expected, actual)
+// assert.Exactly(t, expected, int(20)) は型が異なるため失敗する
+```
+
 > - [assert package - github.com/stretchr/testify/assert - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Assertions.Exactly)
 > - https://bayashi.net/diary/2023/0426
 
@@ -714,6 +730,18 @@ func (suite *FooSuite) TestMethod() {
 
 ポインタのメモリアドレス値は一致していなくてもよい。
 
+```go
+// テスト関数内で使用する（tは*testing.T）
+type User struct {
+	Name string
+}
+
+expected := &User{Name: "Alice"}
+actual := &User{Name: "Alice"}
+// 別々のポインタでも、参照先の値が一致すれば成功する
+assert.Equal(t, expected, actual)
+```
+
 > - [assert package - github.com/stretchr/testify/assert - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Equal)
 > - https://bayashi.net/diary/2023/0426
 
@@ -722,6 +750,18 @@ func (suite *FooSuite) TestMethod() {
 期待値と実際値 (メモリアドレス値) の整合性を検証する。
 
 ポインタのメモリアドレス値が同じであれば、結果的に値とデータ型も同じになる。
+
+```go
+// テスト関数内で使用する（tは*testing.T）
+type User struct {
+	Name string
+}
+
+expected := &User{Name: "Alice"}
+actual := expected
+assert.Same(t, expected, actual)
+// assert.Same(t, expected, &User{Name: "Alice"}) は別のポインタのため失敗する
+```
 
 > - [assert package - github.com/stretchr/testify/assert - Go Packages](https://pkg.go.dev/github.com/stretchr/testify@v1.9.0/assert#Same)
 > - https://bayashi.net/diary/2023/0426

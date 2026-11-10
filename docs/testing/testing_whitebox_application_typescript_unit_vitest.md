@@ -15,6 +15,24 @@ description: Vitest＠JavaScriptユニットテストの知見を記録してい
 
 ユニットテストと機能テストに必要な機能を提供し、テストも実行する。
 
+```typescript
+// user.test.ts
+import {expect, test} from "vitest";
+
+function isAdult(age: number): boolean {
+  return age >= 18;
+}
+
+test("18歳以上であれば成人として判定する", () => {
+  expect(isAdult(18)).toBe(true);
+  expect(isAdult(17)).toBe(false);
+});
+```
+
+```bash
+$ npx vitest run user.test.ts
+```
+
 <br>
 
 ## 02. ユニットテストの設計
@@ -331,6 +349,13 @@ Vitest は TypeScript を直接トランスパイルするため、型を検証�
 例えば、TypeScript のテストコードで、関数に渡す型がまちがっていてもエラーにならない。
 
 Vitest の思想では、テストコードの型検証はエディタやビルド時に実施するべきであり、テストコードの実行時には型検証は済んでいるものという考えがある。
+
+```bash
+# tsconfig.jsonのincludeにテストファイルを含めて、型を検証する
+$ npx tsc --noEmit
+# 型検証とは別に、テストを実行する
+$ npx vitest run
+```
 
 > - [Features \| Vite](https://vite.dev/guide/features.html#transpile-only)
 
