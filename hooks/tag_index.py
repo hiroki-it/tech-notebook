@@ -1,3 +1,5 @@
+"""MkDocsのビルド時に、タグ一覧を数字・アルファベット・五十音順に並べ、頭文字ごとの見出しを生成するフック。"""
+
 import json
 import re
 import unicodedata

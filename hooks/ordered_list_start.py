@@ -1,3 +1,5 @@
+"""MkDocsの設定読み込み時に、番号付きリストを記載した開始番号で表示するように設定するフック。"""
+
 from mdx_truly_sane_lists.mdx_truly_sane_lists import TrulySaneOListProcessor
 
 
