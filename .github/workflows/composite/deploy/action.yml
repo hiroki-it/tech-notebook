@@ -1,0 +1,27 @@
+name: Deploy MkDocs
+description: ビルド済みの成果物を再ビルドせずにGitHub Pagesへ公開する。
+
+runs:
+  using: composite
+  steps:
+    - name: Setup git
+      shell: bash
+      run: |
+        git config --local user.email "hasegawafeedshop@gmail.com"
+        git config --local user.name "github-actions"
+        git config pull.rebase false
+    - name: Download site
+      uses: actions/download-artifact@v4
+      with:
+        name: mkdocs-site
+        path: site/
+    - name: Deploy MkDocs
+      shell: bash
+      run: |
+        python - <<'PY'
+        from mkdocs.commands.gh_deploy import gh_deploy
+        from mkdocs.config import load_config
+
+        # ビルド済みの成果物を再ビルドせずに公開する。
+        gh_deploy(load_config(), force=True)
+        PY

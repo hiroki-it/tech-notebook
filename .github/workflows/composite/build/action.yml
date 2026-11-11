@@ -1,0 +1,17 @@
+name: Build MkDocs
+description: MkDocsでサイトを生成し、mainでは公開用の成果物を保存する。
+
+runs:
+  using: composite
+  steps:
+    - name: Build MkDocs
+      shell: bash
+      run: mkdocs build
+    - name: Upload site
+      if: github.ref == 'refs/heads/main'
+      uses: actions/upload-artifact@v4
+      with:
+        name: mkdocs-site
+        path: site/
+        include-hidden-files: true
+        if-no-files-found: error

@@ -1,0 +1,45 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - main
+      - renovate/**
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Pip install
+        uses: ./.github/workflows/composite/pip-install
+      - name: Build MkDocs
+        uses: ./.github/workflows/composite/build
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Pip install
+        uses: ./.github/workflows/composite/pip-install
+      - name: Test hooks
+        uses: ./.github/workflows/composite/test
+
+  deploy:
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Pip install
+        uses: ./.github/workflows/composite/pip-install
+      - name: Deploy MkDocs
+        uses: ./.github/workflows/composite/deploy
