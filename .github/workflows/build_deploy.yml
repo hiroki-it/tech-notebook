@@ -6,7 +6,11 @@ on:
       - main
 
 jobs:
+  test:
+    uses: ./.github/workflows/test.yml
+
   build_deploy:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,8 +24,6 @@ jobs:
           git config pull.rebase false
       - name: Pip install
         uses: ./.github/workflows/composite/pip-install
-      - name: Test hooks
-        run: python -m unittest discover -s hooks -p "*_test.py" -v
       - name: Deploy MkDocs
         run: |
           mkdocs gh-deploy --force
