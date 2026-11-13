@@ -14718,10 +14718,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#string-str" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        String と &amp;str
+        型によるコピーと所有権の移動
       
     </span>
   </a>
@@ -14729,10 +14729,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#as_deref" class="md-nav__link">
+  <a href="#string-str" class="md-nav__link">
     <span class="md-ellipsis">
       
-        as_deref
+        String と &amp;str
       
     </span>
   </a>
@@ -35597,10 +35597,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#string-str" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        String と &amp;str
+        型によるコピーと所有権の移動
       
     </span>
   </a>
@@ -35608,10 +35608,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#as_deref" class="md-nav__link">
+  <a href="#string-str" class="md-nav__link">
     <span class="md-ellipsis">
       
-        as_deref
+        String と &amp;str
       
     </span>
   </a>
@@ -35823,7 +35823,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月13日 16:50:17 JST">2026-11-13</span>
   </span>
 
     
@@ -35885,7 +35885,7 @@
 <span class="n">resolve_origin</span><span class="p">(</span><span class="nb">None</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">creds</span><span class="p">);</span>
 <span class="n">creds</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
 </code></pre></div>
-<p><code>&amp;</code> を付けずに渡すと所有権が移動 (move) し、呼び出し元ではその変数を使えなくなる。</p>
+<p>以下の例では、<code>Credentials</code> の値を <code>&amp;</code> を付けずに渡すと所有権が移動 (move) し、呼び出し元ではその変数を使えなくなる。</p>
 <div class="highlight"><pre><span></span><code><span class="c1">// 借用しない場合</span>
 
 <span class="c1">// 引数の型に &amp; を付けないため、引数 creds が Credentials の値の所有権を持つ</span>
@@ -35904,6 +35904,41 @@
 <span class="n">creds</span><span class="p">.</span><span class="n">save</span><span class="p">(</span><span class="o">&amp;</span><span class="n">path</span><span class="p">)</span><span class="o">?</span><span class="p">;</span>
 </code></pre></div>
 <p><br></p>
+<h3 id="_4">型によるコピーと所有権の移動<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>整数などのプリミティブ型では、内部的に <code>Copy</code> の実装に基づいて値が暗黙的にコピーされるため、借用せずに代入や関数へ値を渡しても、元の変数を引き続き使える。</p>
+<p>借用が暗黙的に行われるわけではなく、コピー元とコピー先がそれぞれ独立した値を所有する。</p>
+<p>関数へ渡した後も元の変数を使うための方法を、型ごとに以下に示す。</p>
+<table>
+<thead>
+<tr>
+<th>型の例</th>
+<th>関数へ渡した後も元の変数を使うには</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>整数型の <code>i32</code> や <code>u64</code>、浮動小数点型の <code>f32</code> や <code>f64</code>、<code>bool</code>、<code>char</code></td>
+<td>そのまま渡せる</td>
+</tr>
+<tr>
+<td>配列の <code>[i32; 3]</code>、タプルの <code>(i32, bool)</code>、<code>Option&lt;i32&gt;</code></td>
+<td>そのまま渡せる</td>
+</tr>
+<tr>
+<td>共有参照の <code>&amp;T</code> や <code>&amp;str</code></td>
+<td>そのまま渡せる</td>
+</tr>
+<tr>
+<td><code>String</code>、<code>Vec&lt;T&gt;</code>、<code>Box&lt;T&gt;</code></td>
+<td>借用するか、複製できる場合は明示的に複製して渡す</td>
+</tr>
+<tr>
+<td>自作の構造体や列挙型</td>
+<td>借用して渡す。そのまま渡せるかは型の定義による</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
 <h3 id="string-str"><code>String</code> と <code>&amp;str</code><a class="headerlink" href="#string-str" title="Permanent link">&para;</a></h3>
 <p><code>String</code> は自分で所有する伸縮可能な文字列で、<code>&amp;str</code> は他の場所にある文字列を借りて見ているだけの参照である。</p>
 <p>引数は <code>&amp;str</code> で受け取り、新しく作った文字列は <code>String</code> で返すことが多い。</p>
@@ -35911,15 +35946,6 @@
 <span class="k">fn</span><span class="w"> </span><span class="nf">resolve_origin</span><span class="p">(</span><span class="n">url</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;&amp;</span><span class="kt">str</span><span class="o">&gt;</span><span class="p">,</span><span class="w"> </span><span class="n">creds</span><span class="p">:</span><span class="w"> </span><span class="kp">&amp;</span><span class="nc">Credentials</span><span class="p">)</span><span class="w"> </span><span class="p">-&gt;</span><span class="w"> </span><span class="nb">Result</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="c1">// ...</span>
 <span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="as_deref"><code>as_deref</code><a class="headerlink" href="#as_deref" title="Permanent link">&para;</a></h3>
-<p><code>as_deref</code> メソッドは、<code>Option&lt;String&gt;</code> を <code>Option&lt;&amp;str&gt;</code> に変換する。</p>
-<p>中身の所有権を移動させずに、借用の形で関数へ渡せる。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 所有権を持つ文字列を Option で包む</span>
-<span class="kd">let</span><span class="w"> </span><span class="n">url</span><span class="p">:</span><span class="w"> </span><span class="nb">Option</span><span class="o">&lt;</span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">Some</span><span class="p">(</span><span class="s">"https://example.com"</span><span class="p">.</span><span class="n">to_string</span><span class="p">());</span>
-<span class="c1">// Option&lt;String&gt; を Option&lt;&amp;str&gt; に変換して渡す</span>
-<span class="n">resolve_origin</span><span class="p">(</span><span class="n">url</span><span class="p">.</span><span class="n">as_deref</span><span class="p">(),</span><span class="w"> </span><span class="o">&amp;</span><span class="n">creds</span><span class="p">);</span>
 </code></pre></div>
 <p><br></p>
 <h2 id="03">03. ライフタイム<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
