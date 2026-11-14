@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. AWS Chatbot とは
+## 01. 概要
+
 
 SNS を経由して、Amazon CloudWatch からの通知をチャットアプリケーションにフォワーディングする AWS リソース。
 
@@ -23,11 +24,15 @@ SNS を経由して、Amazon CloudWatch からの通知をチャットアプリ�
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### コンソール画面の場合
+## 03. セットアップ
 
-#### ▼ Slack 通知の場合
+### Terraformによる構築
+
+## 04. チャットクライアントとの連携
+
+### ▼ Slack 通知の場合
 
 クライアントを Slack とした場合の設定を以下に示す。
 
@@ -54,7 +59,7 @@ SNS を経由して、Amazon CloudWatch からの通知をチャットアプリ�
   </tbody>
 </table>
 
-#### ▼ サポート対象のイベント
+### ▼ サポート対象のイベント
 
 AWS リソースのイベントを、Amazon EventBridge (Amazon CloudWatch イベント) を使用して、AWS Chatbot にフォワーディングできるが、すべての AWS リソースをサポートしているわけではない。
 

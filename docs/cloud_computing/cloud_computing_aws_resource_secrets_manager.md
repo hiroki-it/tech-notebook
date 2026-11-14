@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. AWS Secrets Manager とは
+## 01. 概要
+
 
 変数やファイルをキーバリュー型で永続化する。
 
@@ -27,9 +28,11 @@ Kubernetes のシークレットの概念が取り入れられている。
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
+## 02. 仕組み
 
-## 2-02. セットアップ (Terraform の場合)
+## 03. セットアップ
+
+### Terraformによる構築
 
 ```terraform
 resource "aws_secretsmanager_secret" "foo" {
@@ -46,7 +49,7 @@ resource "aws_secretsmanager_secret_version" "foo" {
 }
 ```
 
-### 設定項目
+## 04. シークレットの管理とアクセス制御
 
 <table>
   <thead>

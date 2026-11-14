@@ -15,9 +15,8 @@ tags:
 
 <br>
 
-## 01. AWS KMS
+## 01. 概要
 
-### AWS KMS とは
 
 暗号化キーを管理する。
 
@@ -25,7 +24,9 @@ tags:
 
 <br>
 
-### AWS マネージド型
+## 02. 仕組み
+
+### AWS マネージド型のキー管理
 
 暗号化キーを使用する AWS リソースが、ユーザーに代わって暗号化キーを管理する。
 
@@ -37,7 +38,7 @@ tags:
 
 <br>
 
-### セルフマネージド型
+### セルフマネージド型のキー管理
 
 ユーザーが暗号化キーを管理する。
 
@@ -48,9 +49,11 @@ tags:
 
 <br>
 
-## 02. セットアップ (セルフマネージド型の場合)
+## 03. セットアップ
 
-### マルチリージョン
+### Terraformによる構築
+
+## 04. マルチリージョンキー
 
 複数のリージョンで横断的に使用できる暗号化キーを作成できる。
 
@@ -66,7 +69,7 @@ tags:
 
 <br>
 
-### キーポリシー
+## 05. キーポリシーによるリクエスト制限
 
 AWS KMS のリクエスト制限を設定する。
 
@@ -101,16 +104,16 @@ AWS KMS のリクエスト制限を設定する。
 
 <br>
 
-### 暗号化設定
+## 06. 暗号化方式とキーマテリアル
 
-#### ▼ キータイプ
+### ▼ キータイプ
 
 暗号化キーを対称型 (ペアは不要) または非対称 (パブリックとプライベートのペアが必要) とするかを設定する。
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks)
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#asymmetric-keys-concept)
 
-#### ▼ オリジン
+### ▼ オリジン
 
 - AWS KMS が作成したキーマテリアル (`AWS_KMS`)
 - インポートしたキーマテリアル (`EXTERNAL`)
@@ -119,7 +122,7 @@ AWS KMS のリクエスト制限を設定する。
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin)
 
-#### ▼ キーの仕様
+### ▼ キーの仕様
 
 - 対称暗号化キー (`SYMMETRIC_DEFAULT`)
 - RSA キーペア (`RSA_2048`、`RSA_3072`、`RSA_4096`)
@@ -128,7 +131,7 @@ AWS KMS のリクエスト制限を設定する。
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec)
 
-#### ▼ キーの用途
+### ▼ キーの用途
 
 暗号化キーの用途タイプを設定する。
 
@@ -140,7 +143,7 @@ AWS KMS のリクエスト制限を設定する。
 
 <br>
 
-### キー自動更新
+## 07. キーマテリアルの自動更新
 
 暗号化キーのキーマテリアルを一定期間で自動的に更新する。
 
@@ -150,7 +153,7 @@ AWS KMS のリクエスト制限を設定する。
 
 <br>
 
-### キーポリシー
+## 08. キーポリシーの設定
 
 AWS KMS にポリシーを設定する。
 

@@ -15,9 +15,8 @@ tags:
 
 <br>
 
-## 01. X-Ray とは
+## 01. 概要
 
-### 仕組み
 
 分散トレースの監視バックエンドかつ監視フロントエンドとして機能する。
 
@@ -26,6 +25,8 @@ tags:
 サービスメッシュツール (例：Amazon VPC Lattice、Istio) によって、X-Ray デーモンまたは OpenTelemetry Collector のいずれに送信すればよいのかが異なる。
 
 <br>
+
+## 02. 仕組み
 
 ### 計装パッケージ
 
@@ -50,9 +51,28 @@ Amazon EKS で DamonSet として稼働させる。
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
+## 03. セットアップ
 
-### サンプリング
+### Terraformによる構築
+
+```terraform
+resource "aws_xray_group" "environment" {
+
+  group_name        = "foo-prd"
+
+  filter_expression = <<EOF
+(annotation.otel_resource_system_name = "foo") AND (annotation.otel_resource_environment = "prd")
+EOF
+
+  insights_configuration {
+    insights_enabled = true
+  }
+}
+```
+
+<br>
+
+## 04. トレースのサンプリング
 
 <table>
   <thead>
@@ -79,7 +99,7 @@ Amazon EKS で DamonSet として稼働させる。
 
 > - [Configuring sampling rules - AWS X-Ray](https://docs.aws.amazon.com/xray/latest/devguide/xray-console-sampling.html)
 
-### 暗号化
+## 05. トレースデータの暗号化
 
 <table>
   <thead>
@@ -96,7 +116,7 @@ Amazon EKS で DamonSet として稼働させる。
   </tbody>
 </table>
 
-#### ▼ グループ
+### ▼ グループ
 
 <table>
   <thead>
@@ -123,26 +143,7 @@ Amazon EKS で DamonSet として稼働させる。
 
 <br>
 
-## 02. セットアップ (Terraform の場合)
-
-```terraform
-resource "aws_xray_group" "environment" {
-
-  group_name        = "foo-prd"
-
-  filter_expression = <<EOF
-(annotation.otel_resource_system_name = "foo") AND (annotation.otel_resource_environment = "prd")
-EOF
-
-  insights_configuration {
-    insights_enabled = true
-  }
-}
-```
-
-<br>
-
-## 03. トラブルシューティング
+## 06. トレースの検索とテレメトリーの関連付け
 
 ### フィルター式
 
@@ -273,7 +274,7 @@ fields @log, @timestamp, @message
 
 <br>
 
-## 04. スパン
+## 07. セグメントとサブセグメント
 
 ### セグメント
 
@@ -502,7 +503,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 <br>
 
-## 05. OpenTelemetry と X-Ray の対応関係
+## 08. OpenTelemetry とのデータ対応
 
 ### OpenTelemetry と X-Ray
 
@@ -846,7 +847,7 @@ func newTracerProvider(exporter sdktrace.SpanExporter) *sdktrace.TracerProvider 
 
 <br>
 
-## 06. AWS Lambda の場合
+## 09. Lambda 関数の計装
 
 ### 初期化
 

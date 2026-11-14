@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Code 兄弟サービス
+## 01. 概要
+
 
 ### Code 兄弟サービス
 
@@ -41,7 +42,13 @@ CodeCommit は、他のコード管理サービスで代用できる。
 
 <br>
 
-## 02. CodeBuild
+## 02. 仕組み
+
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. CodeBuild によるビルド
 
 ### `buildspec.yml` ファイル
 
@@ -98,7 +105,7 @@ artifacts:
 
 <br>
 
-## 03. CodeDeploy (オンプレミスのサーバーの場合)
+## 05. CodeDeploy によるオンプレミスへのデプロイ
 
 ### 利用できるデプロイメント手法
 
@@ -121,7 +128,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 <br>
 
-## 04. CodeDeploy (Amazon EC2 の場合)
+## 06. CodeDeploy による EC2 へのデプロイ
 
 ### 利用できるデプロイメント手法
 
@@ -143,7 +150,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 <br>
 
-## 04-02. CodeDeploy (AWS Lambda の場合)
+## 07. CodeDeploy による Lambda へのデプロイ
 
 ### 利用できるデプロイメント手法
 
@@ -153,7 +160,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 <br>
 
-## 04-03. CodeDeploy (Amazon ECS の場合)
+## 08. CodeDeploy による ECS へのデプロイ
 
 ### 利用できるデプロイメント手法
 
@@ -311,7 +318,7 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
 
 <br>
 
-## 04-04. CodeDeploy と他の AWS リソースとの連携
+## 09. CodeDeploy と他のリソースとの連携
 
 ### AutoScaling グループ
 

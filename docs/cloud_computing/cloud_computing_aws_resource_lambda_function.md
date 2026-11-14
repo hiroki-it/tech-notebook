@@ -16,9 +16,8 @@ tags:
 
 <br>
 
-## 01. ハンドラ関数
+## 01. 概要
 
-### ハンドラ関数とは
 
 自身から起動することはなく、外部から要求されて実行される関数のこと。
 
@@ -26,7 +25,9 @@ tags:
 
 <br>
 
-### AWS Lambda ハンドラ関数
+## 02. 仕組み
+
+### Lambda によるハンドラの呼び出し
 
 #### ▼ 非同期ハンドラ関数 (Async handlers)
 
@@ -172,7 +173,11 @@ AWS Lambda で関数を作成すると、Amazon CloudWatch Logs のロググル�
 
 <br>
 
-## 02. Go による実装
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. Go によるハンドラ実装
 
 ### aws-lambda-go
 
@@ -405,7 +410,7 @@ Amazon CloudWatch Logs にてこれを確認する。
 
 <br>
 
-## 02-02. 関数例
+## 05. Go によるイベント通知
 
 ### AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API
 
@@ -413,7 +418,7 @@ Amazon CloudWatch Logs にてこれを確認する。
 
 <br>
 
-## 03. JavaScript による実装
+## 06. JavaScript によるハンドラ実装
 
 ### デフォルトで使用できるパッケージ
 
@@ -489,9 +494,7 @@ exports.handler = async (event) => {
 
 <br>
 
-## 03-02. 関数例
-
-### AWS Amplify ➡️ Amazon EventBridge ➡️ AWS Lambda ➡️ Slack-API
+## 07. JavaScript によるイベント通知
 
 AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを AWS Lambda にフォワーディングする。AWS Lambda では、メッセージを構成し、Slack-API に送信する。
 
@@ -706,7 +709,7 @@ const postMessageToSlack = (message) => {
 
 <br>
 
-### Amazon API Gateway ➡️ AWS Lambda ➡️ Amazon S3
+## 08. API Gateway 経由での S3 への保管
 
 Amazon API Gateway でリクエストを受信し、それに応じて特定のデータを Amazon S3 に保管する。
 
@@ -763,7 +766,7 @@ exports.handler = (event, context, callback) => {
 
 <br>
 
-### Amazon CloudFront ➡️ AWS Lambda@Edge ➡️ Amazon S3
+## 09. Lambda@Edge による S3 オリジンの選択
 
 ![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
 
@@ -905,15 +908,15 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 <br>
 
-## 04. Python による実装
+## 10. Python によるハンドラ実装
 
 <br>
 
-## 04-02. 関数例
+### RDS への接続例
 
-### AWS Lambda ➡️ Amazon RDS
+#### AWS Lambda ➡️ Amazon RDS
 
-#### ▼ 自動起動
+##### ▼ 自動起動
 
 ```python
 import boto3
@@ -948,7 +951,7 @@ def lambda_handler(event, context):
         }
 ```
 
-#### ▼ 自動停止
+##### ▼ 自動停止
 
 ```python
 import boto3

@@ -15,9 +15,8 @@ tags:
 
 <br>
 
-## 01. Amazon Redshift
+## 01. 概要
 
-### Amazon Redshift とは
 
 データウェアハウスとして働く。
 
@@ -28,10 +27,15 @@ DB よりも柔軟性の高い保管形式で、データレイク (例：Amazon
 
 <br>
 
-### 高速処理
+## 02. 仕組み
+
+### 並列処理による高速化
 
 Apache Spark を使用して、大きなサイズのデータを高速に並列処理できる。
 
 > - [NEW – Amazon Redshift と Apache Spark の統合 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/new-amazon-redshift-integration-with-apache-spark/)
 
 <br>
+## 03. セットアップ
+
+### Terraformによる構築

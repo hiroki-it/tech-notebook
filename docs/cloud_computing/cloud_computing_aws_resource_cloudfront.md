@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Amazon CloudFront とは
+## 01. 概要
+
 
 CDN (グローバルなキャッシュサーバー) かつクラウドリバースプロキシサーバーとして働く。
 
@@ -33,11 +34,73 @@ VPC の外側 (パブリックネットワーク) に配置されている。
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### Distributions
 
-#### ▼ Distributions
+### Point Of Presence
+
+Amazon CloudFront は世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
+
+> - [コンテンツ配信ネットワークの主な機能 – パフォーマンス、セキュリティ – Amazon CloudFront](https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc)
+
+<br>
+
+### Amazon CloudFront DNS
+
+Amazon CloudFront のドメイン (`<発行されたランダム文字列>.cloudfront.net`) の正引きに応じて、エッジサーバーの IP アドレスを返却する。
+
+Amazon CloudFront のドメインは、Amazon Route 53 の DNS レコードとして登録する。
+
+![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
+
+> - [AWS テクニカルトレーナーと学ぶ Amazon CloudFront ~ エッジロケーションを使った通信の仕組み - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name)
+> - [How CloudFront delivers content - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)
+
+<br>
+
+### エッジサーバー
+
+#### ▼ エッジサーバーとは
+
+地理的にクライアントからもっとも近い場所にあるキャッシュサーバーである。
+
+> - [Amazon CloudFront \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atclncf/service/00040/101700001/)
+> - [AWS テクニカルトレーナーと学ぶ Amazon CloudFront ~ エッジロケーションを使った通信の仕組み - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name)
+
+#### ▼ 全エッジサーバーの IP アドレス
+
+Amazon CloudFront には、エッジロケーションの数だけエッジサーバーがあり、各サーバーに IP アドレスが割り当てられている。
+
+以下のコマンドで、すべてのエッジサーバーの IP アドレスを確認できる。
+
+```bash
+$ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
+    | jq ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
+```
+
+もしくは、以下のリンクを直接的に参考し、『`"service": "CLOUDFRONT"`』となっている部分を探す。
+
+> - https://ip-ranges.amazonaws.com/ip-ranges.json
+
+#### ▼ 使用中サーバーの IP アドレス
+
+Amazon CloudFront には、エッジロケーションがあり、各ロケーションにサーバーがある。
+
+以下のコマンドで、エッジロケーションにある使用中サーバーの IP アドレスを確認できる。
+
+```bash
+$ nslookup <発行されたランダム文字列>.cloudfront.net
+```
+
+<br>
+
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. ディストリビューションの設定
+
+### ▼ Distributions
 
 <table>
   <thead>
@@ -83,7 +146,7 @@ VPC の外側 (パブリックネットワーク) に配置されている。
 
 > - [WordPressで構築されているウェブサイトにCloudFrontを立てて高速化＆セキュリティ強化② \| ソフトウェア開発のギークフィード](https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/)
 
-#### ▼ General
+### ▼ General
 
 <table>
   <thead>
@@ -132,7 +195,7 @@ VPC の外側 (パブリックネットワーク) に配置されている。
   </tbody>
 </table>
 
-#### ▼ Origin and Origin Groups
+### ▼ Origin and Origin Groups
 
 <table>
   <thead>
@@ -176,7 +239,7 @@ VPC の外側 (パブリックネットワーク) に配置されている。
   </tbody>
 </table>
 
-#### ▼ Behavior
+### ▼ Behavior
 
 <table>
   <thead>
@@ -240,7 +303,7 @@ VPC の外側 (パブリックネットワーク) に配置されている。
   </tbody>
 </table>
 
-#### ▼ オリジンに対するリクエストの構造
+### ▼ オリジンに対するリクエストの構造
 
 Amazon CloudFront からオリジンに送信されるリクエストの構造例を以下に示す。
 
@@ -279,7 +342,7 @@ CloudFront-Viewer-Country: JP
 CloudFront-Forwarded-Proto: https
 ```
 
-#### ▼ Amazon CloudFront とオリジン間の HTTPS プロトコル
+### ▼ Amazon CloudFront とオリジン間の HTTPS プロトコル
 
 Amazon CloudFront とオリジン間で HTTPS プロトコルを使用する場合、両方にサーバー証明書を割り当てる必要がある。
 
@@ -291,78 +354,19 @@ CLoudFront からオリジンに `Host` ヘッダーをルーティングしな�
 
 <br>
 
-### Reports & analytics
+## 05. リクエストの集計と分析
 
-#### ▼ Cache statistics
+### ▼ Cache statistics
 
 リクエストに関連するさまざまなデータを、日付別に集計したものを確認できる。
 
-#### ▼ Popular objects
+### ▼ Popular objects
 
 リクエストに関連するさまざまなデータを、オブジェクト別に集計したものを確認できる。
 
 <br>
 
-## 03. Amazon CloudFront の仕組み
-
-### Point Of Presence
-
-Amazon CloudFront は世界中に配置される『Point Of Presence (エッジロケーション+中間層キャッシュ) 』にデプロイされる。
-
-> - [コンテンツ配信ネットワークの主な機能 – パフォーマンス、セキュリティ – Amazon CloudFront](https://aws.amazon.com/jp/cloudfront/features/?whats-new-cloudfront.sort-by=item.additionalFields.postDateTime&whats-new-cloudfront.sort-order=desc)
-
-<br>
-
-### Amazon CloudFront DNS
-
-Amazon CloudFront のドメイン (`<発行されたランダム文字列>.cloudfront.net`) の正引きに応じて、エッジサーバーの IP アドレスを返却する。
-
-Amazon CloudFront のドメインは、Amazon Route 53 の DNS レコードとして登録する。
-
-![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
-
-> - [AWS テクニカルトレーナーと学ぶ Amazon CloudFront ~ エッジロケーションを使った通信の仕組み - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name)
-> - [How CloudFront delivers content - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)
-
-<br>
-
-### エッジサーバー
-
-#### ▼ エッジサーバーとは
-
-地理的にクライアントからもっとも近い場所にあるキャッシュサーバーである。
-
-> - [Amazon CloudFront \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atclncf/service/00040/101700001/)
-> - [AWS テクニカルトレーナーと学ぶ Amazon CloudFront ~ エッジロケーションを使った通信の仕組み - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name)
-
-#### ▼ 全エッジサーバーの IP アドレス
-
-Amazon CloudFront には、エッジロケーションの数だけエッジサーバーがあり、各サーバーに IP アドレスが割り当てられている。
-
-以下のコマンドで、すべてのエッジサーバーの IP アドレスを確認できる。
-
-```bash
-$ curl -X GET https://ip-ranges.amazonaws.com/ip-ranges.json \
-    | jq ".prefixes[]| select(.service=="CLOUDFRONT") | .ip_prefix"
-```
-
-もしくは、以下のリンクを直接的に参考し、『`"service": "CLOUDFRONT"`』となっている部分を探す。
-
-> - https://ip-ranges.amazonaws.com/ip-ranges.json
-
-#### ▼ 使用中サーバーの IP アドレス
-
-Amazon CloudFront には、エッジロケーションがあり、各ロケーションにサーバーがある。
-
-以下のコマンドで、エッジロケーションにある使用中サーバーの IP アドレスを確認できる。
-
-```bash
-$ nslookup <発行されたランダム文字列>.cloudfront.net
-```
-
-<br>
-
-## 04. キャッシュ
+## 06. キャッシュの生成と有効期限
 
 ### オリジンリクエストの可否、キャッシュ作成の有無の決まり方
 
@@ -530,7 +534,7 @@ GoogleAnalytics のキーはブラウザから Ajax で Google に送信され�
 
 <br>
 
-## 04-02. ヒット率の向上
+## 07. キャッシュヒット率の改善と無効化
 
 ### ヘッダーキャッシュによるヒット率向上
 
@@ -619,7 +623,7 @@ Amazon CloudFront に関するエラーページが表示された場合、不�
 
 <br>
 
-## 05. カスタムエラーページ
+## 08. カスタムエラーページ
 
 ### カスタムエラーページとは
 

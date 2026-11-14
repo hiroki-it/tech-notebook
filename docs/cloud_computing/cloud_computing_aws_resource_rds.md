@@ -16,74 +16,14 @@ tags:
 
 <br>
 
-## 01. Amazon RDS とは
+## 01. 概要
+
 
 AWS が提供するマネージドな RDB であり、DB エンジンとして Aurora、MySQL、MariaDB、PostgreSQL、Oracle、SQL Server、Db2 を選べる。
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
-
-## 2-02. セットアップ (Terraform の場合)
-
-```terraform
-resource "aws_db_instance" "this" {
-  identifier                  = "foo-rds"
-  engine                      = "mysql"
-  engine_version              = "8.0"
-  instance_class              = "db.t3.micro"
-  allocated_storage           = 20
-  username                    = "admin"
-  manage_master_user_password = true
-  skip_final_snapshot         = true
-}
-```
-
-### 他の DB エンジンの比較
-
-#### ▼ DBMS に対応する RDB
-
-<table>
-  <thead>
-    <tr>
-      <th>DBMS</th>
-      <th>RDB</th>
-      <th>互換性</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Amazon Aurora MySQL</td>
-      <td>Amazon RDS</td>
-      <td>MySQL/PostgreSQL</td>
-    </tr>
-    <tr>
-      <td>MariaDB</td>
-      <td>Amazon RDS</td>
-      <td>MariaDB</td>
-    </tr>
-    <tr>
-      <td>MySQL</td>
-      <td>Amazon RDS</td>
-      <td>MySQL</td>
-    </tr>
-    <tr>
-      <td>PostgreSQL</td>
-      <td>Amazon RDS</td>
-      <td>PostgreSQL</td>
-    </tr>
-  </tbody>
-</table>
-
-#### ▼ 機能の違い
-
-RDB が Amazon Aurora か Amazon RDS かで機能に差があり、Amazon Aurora のほうが耐障害性や可用性が高い。
-
-ただし、その分費用が高いことに注意する。
-
-> - https://www.ragate.co.jp/blog/articles/10234
-
-<br>
+## 02. 仕組み
 
 ### OS の隠蔽
 
@@ -121,7 +61,70 @@ SHOW VARIABLES LIKE '%version%';
 
 <br>
 
-## 04. メンテナンスウインドウ
+## 03. セットアップ
+
+### Terraformによる構築
+
+```terraform
+resource "aws_db_instance" "this" {
+  identifier                  = "foo-rds"
+  engine                      = "mysql"
+  engine_version              = "8.0"
+  instance_class              = "db.t3.micro"
+  allocated_storage           = 20
+  username                    = "admin"
+  manage_master_user_password = true
+  skip_final_snapshot         = true
+}
+```
+
+## 04. DB エンジンの選択
+
+### ▼ DBMS に対応する RDB
+
+<table>
+  <thead>
+    <tr>
+      <th>DBMS</th>
+      <th>RDB</th>
+      <th>互換性</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Aurora MySQL</td>
+      <td>Amazon RDS</td>
+      <td>MySQL/PostgreSQL</td>
+    </tr>
+    <tr>
+      <td>MariaDB</td>
+      <td>Amazon RDS</td>
+      <td>MariaDB</td>
+    </tr>
+    <tr>
+      <td>MySQL</td>
+      <td>Amazon RDS</td>
+      <td>MySQL</td>
+    </tr>
+    <tr>
+      <td>PostgreSQL</td>
+      <td>Amazon RDS</td>
+      <td>PostgreSQL</td>
+    </tr>
+  </tbody>
+</table>
+
+### ▼ 機能の違い
+
+RDB が Amazon Aurora か Amazon RDS かで機能に差があり、Amazon Aurora のほうが耐障害性や可用性が高い。
+
+ただし、その分費用が高いことに注意する。
+
+> - https://www.ragate.co.jp/blog/articles/10234
+
+<br>
+
+## 05. メンテナンスウインドウ
 
 ### メンテナンスウインドウ
 
@@ -255,7 +258,7 @@ $ aws rds modify-db-instance \
 
 <br>
 
-## 05. ダウンタイム
+## 06. 設定変更によるダウンタイム
 
 ### ダウンタイムの発生条件
 
@@ -320,7 +323,7 @@ $ aws rds modify-db-instance \
 
 <br>
 
-## 06. フェイルオーバー
+## 07. フェイルオーバー
 
 ### Amazon RDS のフェイルオーバーとは
 
@@ -352,7 +355,7 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 <br>
 
-## 07. イベント
+## 08. イベント通知
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうがよい。
 
@@ -360,7 +363,7 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 <br>
 
-## 08. Amazon RDS プロキシ
+## 09. DB 接続のプロキシ
 
 ### Amazon RDS プロキシとは
 

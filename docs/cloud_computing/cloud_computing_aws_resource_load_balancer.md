@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. LB
+## 01. 概要
+
 
 ロードバランシングしたいプロトコルに合わせて、使用するロードバランサーを選択する。
 
@@ -78,9 +79,11 @@ tags:
 
 <br>
 
-## 02. ALB：Application Load Balancer
+## 02. 仕組み
 
-### ALB とは
+### ALB の仕組み
+
+#### ALB とは
 
 クラウドリバースプロキシサーバー、かつクラウド `L7` ロードバランサーとして働く。
 
@@ -92,111 +95,78 @@ Amazon EC2 へのリクエストをバランスよく分配することで、サ
 
 <br>
 
-## 02-02. セットアップ
+### ALB インスタンス
 
-### コンソール画面の場合
+#### ▼ ALB インスタンスとは
 
-#### ▼ 設定項目と説明
+ALB の実体で、各 ALB インスタンスが異なるグローバル IP アドレスを持つ。
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>リスナー</td>
-      <td>ALB に割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサーとして、これらの通信をターゲットグループにルーティングする。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>スキーム</td>
-      <td>パブリックネットワークからのリクエストを待ち受けるか、あるいはプライベートネットワークからのリクエストを待ち受けるかを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>セキュリティポリシー</td>
-      <td>リクエストの送信者が使用する SSL/TLS プロトコルや暗号化方式のバージョンに合わせて、ALB が受信できるこれらのバージョンを設定する。</td>
-      <td>・リクエストの送信者には、ブラウザ、API にリクエストを送信する外部サービス、フォワーディング元の AWS リソース (例：CloudFront など) などを含む。<br>・- <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies</a></td>
-    </tr>
-    <tr>
-      <td>ルール</td>
-      <td>リクエストのルーティングのロジックを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>ターゲットグループ</td>
-      <td>ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。</td>
-      <td>ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックが OK になっているターゲットにルーティングされる。</td>
-    </tr>
-    <tr>
-      <td>ヘルスチェック</td>
-      <td>ターゲットグループに所属するプロトコルとアプリケーションのポート番号を指定して、定期的にリクエストを送信する。</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+複数の AZ にルーティングするように ALB を設定した場合、各 AZ に ALB インスタンスが 1 つずつ配置される。
 
-#### ▼ ターゲットグループ
+![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb-instance.png)
 
-<table>
-  <thead>
-    <tr>
-      <th>ターゲットの指定方法</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Amazon EC2 インスタンス</td>
-      <td>ターゲットは Amazon EC2 である必要がある。</td>
-    </tr>
-    <tr>
-      <td>IP アドレス</td>
-      <td>ターゲットのパブリック IP アドレスは静的である必要がある。</td>
-    </tr>
-    <tr>
-      <td>Lambda</td>
-      <td>ターゲットは Lambda である必要がある。</td>
-    </tr>
-  </tbody>
-</table>
+> - [マルチAZ構成で単一AZの障害の影響を受けるのは何故か？ - プログラマでありたい](https://blog.takuros.net/entry/2019/08/27/075726)
+
+#### ▼ 割り当てられる IP アドレス
+
+ALB に割り当てられる IP アドレスには、Amazon VPC のものが適用される。
+
+そのため、Amazon EC2 のセキュリティグループでは、Amazon VPC の CIDR ブロックを許可するように設定する必要がある。
+
+#### ▼ オートスケーリング
+
+単一障害点にならないように、負荷が高まると ALB インスタンスが増えるように自動スケールアウトする仕組みを持つ。
+
+#### ▼ `500` 系ステータスの原因
+
+> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
+
+#### ▼ ALB のセキュリティグループ
+
+Amazon Route 53 からルーティングされるパブリック IP アドレスを受信できるようにしておく必要がある。
+
+パブリックネットワークに公開するサイトであれば、IP アドレスはすべての範囲 (`0.0.0.0/0` と ` ::/0`) にする。
+
+社内向けのサイトであれば、社内のプライベート IP アドレスのみ (`*.*.*.*/32`) を許可する。
 
 <br>
 
-### ルールの設定例
+### CLB の仕組み
 
-<table>
-  <thead>
-    <tr>
-      <th>ユースケース</th>
-      <th>ポート</th>
-      <th>IF</th>
-      <th>THEN</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>リクエストが <code>80</code> 番ポートを指定したときに、<code>443</code> 番ポートにリダイレクトしたい。</td>
-      <td><code>80</code></td>
-      <td>それ以外の場合はルーティングされないリクエスト</td>
-      <td>ルーティング先：<code>https://#{host}:443/#{path}?#{query}</code><br>ステータスコード：<code>HTTP_301</code></td>
-    </tr>
-    <tr>
-      <td>リクエストが <code>443</code> 番ポートを指定したときに、ターゲットグループにフォワーディングしたい。</td>
-      <td><code>443</code></td>
-      <td>それ以外の場合はルーティングされないリクエスト</td>
-      <td>特定のターゲットグループ</td>
-    </tr>
-  </tbody>
-</table>
+キューを持ち、クラウド `L4`/`L7` ロードバランサーとして働く。
+
+ALB、NLB、ではもともと実装されていたキューを廃止した経緯がある。
+
+> - [Elastic Load Balancing 容量のトラブルシューティング \| AWS re:Post](https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting)
+> - https://stackoverflow.com/a/49421971
 
 <br>
 
-### Terraform の場合
+### NLB の仕組み
+
+クラウド `L4` ロードバランサーとして働く。
+
+固定 IP アドレスを設定できる。
+
+そのため、ドメインを指定できず、IP アドレスを指定しないといけない HTTP リクエストを送信できないような通信元にも対応している。
+
+この場合、NLB で受信した HTTP リクエストを ALB（internal タイプ）へ送信するようにするとよい。
+
+```mermaid
+flowchart LR
+    Route53
+    NLB
+    ALB[internal ALB]
+    EKS
+
+    Route53 --> NLB --> ALB --> EKS
+```
+
+<br>
+
+## 03. セットアップ
+
+### Terraformによる構築 (ALB)
 
 #### ▼ Amazon EKS に紐づける ALB
 
@@ -373,13 +343,115 @@ module "alb_eks_maintenance" {
 
 <br>
 
-### AWS Load Balancer Controller の場合
+### AWS Load Balancer Controller による構築
 
 <br>
 
-### 設計パターン
+## 04. ALB のリスナーとターゲットグループ
 
-#### ▼ 同じドメインを設け、パスで複数の BFF に振り分ける場合
+### ▼ 設定項目と説明
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リスナー</td>
+      <td>ALB に割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサーとして、これらの通信をターゲットグループにルーティングする。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>スキーム</td>
+      <td>パブリックネットワークからのリクエストを待ち受けるか、あるいはプライベートネットワークからのリクエストを待ち受けるかを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>セキュリティポリシー</td>
+      <td>リクエストの送信者が使用する SSL/TLS プロトコルや暗号化方式のバージョンに合わせて、ALB が受信できるこれらのバージョンを設定する。</td>
+      <td>・リクエストの送信者には、ブラウザ、API にリクエストを送信する外部サービス、フォワーディング元の AWS リソース (例：CloudFront など) などを含む。<br>・- <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies</a></td>
+    </tr>
+    <tr>
+      <td>ルール</td>
+      <td>リクエストのルーティングのロジックを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ターゲットグループ</td>
+      <td>ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。</td>
+      <td>ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックが OK になっているターゲットにルーティングされる。</td>
+    </tr>
+    <tr>
+      <td>ヘルスチェック</td>
+      <td>ターゲットグループに所属するプロトコルとアプリケーションのポート番号を指定して、定期的にリクエストを送信する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+### ▼ ターゲットグループ
+
+<table>
+  <thead>
+    <tr>
+      <th>ターゲットの指定方法</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EC2 インスタンス</td>
+      <td>ターゲットは Amazon EC2 である必要がある。</td>
+    </tr>
+    <tr>
+      <td>IP アドレス</td>
+      <td>ターゲットのパブリック IP アドレスは静的である必要がある。</td>
+    </tr>
+    <tr>
+      <td>Lambda</td>
+      <td>ターゲットは Lambda である必要がある。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+## 05. ALB のリクエスト転送ルール
+
+<table>
+  <thead>
+    <tr>
+      <th>ユースケース</th>
+      <th>ポート</th>
+      <th>IF</th>
+      <th>THEN</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>リクエストが <code>80</code> 番ポートを指定したときに、<code>443</code> 番ポートにリダイレクトしたい。</td>
+      <td><code>80</code></td>
+      <td>それ以外の場合はルーティングされないリクエスト</td>
+      <td>ルーティング先：<code>https://#{host}:443/#{path}?#{query}</code><br>ステータスコード：<code>HTTP_301</code></td>
+    </tr>
+    <tr>
+      <td>リクエストが <code>443</code> 番ポートを指定したときに、ターゲットグループにフォワーディングしたい。</td>
+      <td><code>443</code></td>
+      <td>それ以外の場合はルーティングされないリクエスト</td>
+      <td>特定のターゲットグループ</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+## 06. ALB の構成パターン
+
+### ▼ 同じドメインを設け、パスで複数の BFF に振り分ける場合
 
 `1` 個のドメインと ALB を共有し、ALB がリクエストのパスに応じて各 BFF の Service に振り分ける。
 
@@ -402,7 +474,7 @@ flowchart LR
     alb -- "/app2/*" --> svcB
 ```
 
-#### ▼ 異なるドメインを設け、通信経路を分ける場合
+### ▼ 異なるドメインを設け、通信経路を分ける場合
 
 BFF ごとにドメインと ALB を設け、リクエストを BFF ごとに別々の経路で各 Service にルーティングする。
 
@@ -433,45 +505,9 @@ flowchart LR
 
 <br>
 
-### ALB インスタンス
+## 07. 常時 SSL のアプリケーションへのルーティング
 
-#### ▼ ALB インスタンスとは
-
-ALB の実体で、各 ALB インスタンスが異なるグローバル IP アドレスを持つ。
-
-複数の AZ にルーティングするように ALB を設定した場合、各 AZ に ALB インスタンスが 1 つずつ配置される。
-
-![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb-instance.png)
-
-> - [マルチAZ構成で単一AZの障害の影響を受けるのは何故か？ - プログラマでありたい](https://blog.takuros.net/entry/2019/08/27/075726)
-
-#### ▼ 割り当てられる IP アドレス
-
-ALB に割り当てられる IP アドレスには、Amazon VPC のものが適用される。
-
-そのため、Amazon EC2 のセキュリティグループでは、Amazon VPC の CIDR ブロックを許可するように設定する必要がある。
-
-#### ▼ オートスケーリング
-
-単一障害点にならないように、負荷が高まると ALB インスタンスが増えるように自動スケールアウトする仕組みを持つ。
-
-#### ▼ `500` 系ステータスの原因
-
-> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/
-
-#### ▼ ALB のセキュリティグループ
-
-Amazon Route 53 からルーティングされるパブリック IP アドレスを受信できるようにしておく必要がある。
-
-パブリックネットワークに公開するサイトであれば、IP アドレスはすべての範囲 (`0.0.0.0/0` と ` ::/0`) にする。
-
-社内向けのサイトであれば、社内のプライベート IP アドレスのみ (`*.*.*.*/32`) を許可する。
-
-<br>
-
-### 常時 SSL のアプリケーションへのルーティング
-
-#### ▼ 問題
+### ▼ 問題
 
 アプリケーションが常時 SSL になっているアプリケーション (例：WordPress) の場合、ALB からアプリケーションに HTTP プロトコルでルーティングすると、HTTPS プロトコルへのリダイレクトループが発生してしまう。
 
@@ -479,7 +515,7 @@ Amazon Route 53 からルーティングされるパブリック IP アドレス
 
 > - https://cloudpack.media/525
 
-#### ▼ Web サーバーにおける対処方法
+### ▼ Web サーバーにおける対処方法
 
 ALB を経由したリクエストには、リクエストヘッダーに `X-Forwarded-Proto` ヘッダーが付与される。
 
@@ -495,7 +531,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 > - [AWS 上の WordPress が HTTPS で正常に表示されない場合の対処 \| DriftwoodJP](https://www.d-wood.com/blog/2017/11/29_9354.html)
 
-#### ▼ アプリケーションにおける対処方法
+### ▼ アプリケーションにおける対処方法
 
 ![ALBからEC2に対するリクエストのプロトコルをHTTPSプロトコルと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png)
 
@@ -519,25 +555,25 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 <br>
 
-### 負荷分散方式
+## 08. 負荷分散方式
 
-#### ▼ 負荷分散方式とは
+### ▼ 負荷分散方式とは
 
 ターゲットに対するリクエストフォワーディング時の負荷分散方式を設定する。
 
 > - [What is an Application Load Balancer? - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview)
 
-#### ▼ ラウンドロビン方式
+### ▼ ラウンドロビン方式
 
 受信したリクエストを、ターゲットに均等にルーティングする。
 
-#### ▼ 最小未処理リクエスト方式 (ファステスト)
+### ▼ 最小未処理リクエスト方式 (ファステスト)
 
 受信したリクエストを、未処理のリクエスト数がもっとも少ないターゲットにルーティングする。
 
 > - [ロードバランサ - ロードバランシングの種類](https://www.infraexpert.com/study/loadbalancer4.html)
 
-#### ▼ スロースタート方式
+### ▼ スロースタート方式
 
 受信したリクエストをルーティングするときに、スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で負荷分散を実施する。
 
@@ -548,9 +584,9 @@ if (isset($_SERVER["HTTP_X_FORWARDED_PROTO"])
 
 <br>
 
-### アクセスログ
+## 09. アクセスログ
 
-#### ▼ HTTPS リクエストの場合
+### ▼ HTTPS リクエストの場合
 
 HTTPS リクエストのアクセスログのフォーマットは以下の通りである。
 
@@ -595,48 +631,15 @@ TID_123456
 
 <br>
 
-### L7 防御
+## 10. WAF によるリクエスト検査
 
 AWS WAF をアタッチし、L7 を防御する。
 
 <br>
 
-## 03. CLB: Classic Load Balancer
+## 11. NLB の通信制御
 
-キューを持ち、クラウド `L4`/`L7` ロードバランサーとして働く。
-
-ALB、NLB、ではもともと実装されていたキューを廃止した経緯がある。
-
-> - [Elastic Load Balancing 容量のトラブルシューティング \| AWS re:Post](https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting)
-> - https://stackoverflow.com/a/49421971
-
-<br>
-
-## 04. NLB：Network Load Balancer
-
-クラウド `L4` ロードバランサーとして働く。
-
-固定 IP アドレスを設定できる。
-
-そのため、ドメインを指定できず、IP アドレスを指定しないといけない HTTP リクエストを送信できないような通信元にも対応している。
-
-この場合、NLB で受信した HTTP リクエストを ALB（internal タイプ）へ送信するようにするとよい。
-
-```mermaid
-flowchart LR
-    Route53
-    NLB
-    ALB[internal ALB]
-    EKS
-
-    Route53 --> NLB --> ALB --> EKS
-```
-
-<br>
-
-### セットアップ
-
-#### ▼ L3/L4 防御
+### ▼ L3/L4 防御
 
 Amazon EC2 Security Group をアタッチし、L3/L4（IP アドレス、プロトコル、ポート番号） を防御する。
 

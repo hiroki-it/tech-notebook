@@ -16,7 +16,7 @@ tags:
 
 <br>
 
-## 01. Amazon Aurora とは
+## 01. 概要
 
 Amazon RDS をよりマネージドにした AWS リソースである。
 
@@ -24,192 +24,69 @@ Amazon RDS をよりマネージドにした AWS リソースである。
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
+## 02. 仕組み
 
-## 2-02. セットアップ (Terraform の場合)
+### DB クラスター
 
-```terraform
-resource "aws_rds_cluster" "foo" {
-  cluster_identifier          = "foo-cluster"
-  engine                      = "aurora-mysql"
-  engine_version              = "8.0.mysql_aurora.3.05.2"
-  database_name               = "foo"
-  master_username             = "admin"
-  manage_master_user_password = true
-  db_subnet_group_name        = aws_db_subnet_group.foo.name
-  vpc_security_group_ids      = [aws_security_group.foo.id]
-}
+#### Amazon Aurora の DB クラスターとは
 
-resource "aws_rds_cluster_instance" "foo" {
-  count              = 2
-  identifier         = "foo-instance-${count.index}"
-  cluster_identifier = aws_rds_cluster.foo.id
-  instance_class     = "db.r6g.large"
-  engine             = aws_rds_cluster.foo.engine
-  engine_version     = aws_rds_cluster.foo.engine_version
-}
-```
+DB エンジンに Amazon Aurora を選択した場合にのみ使用できる。
 
-### DB エンジン
+Amazon Aurora の DB インスタンスとクラスターボリュームから構成されている。
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>エンジンタイプ</td>
-      <td>ミドルウェアの DBMS の種類を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>エディション</td>
-      <td>エンジンバージョンで Amazon Aurora を選択した場合の互換性を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>エンジンバージョン</td>
-      <td>DB エンジンのバージョンを設定する。DB クラスター内のすべての DB インスタンスに適用される。</td>
-      <td>・Amazon Aurora であれば、<code>SELECT AURORA_VERSION()</code> を使用して、エンジンバージョンを確認できる。</td>
-    </tr>
-  </tbody>
-</table>
+コンピューティングとして動作する Amazon Aurora の DB インスタンスと、ストレージとして動作するクラスターボリュームが分離されているため、Amazon Aurora の DB インスタンスが誤ってすべて削除されてしまったとしても、データを守れる。
 
-#### ▼ Amazon Aurora の DB クラスター
+また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
-ベストプラクティスについては、以下のリンクを参考にせよ。
+![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster.png)
+
+> - [High availability for Amazon Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html)
+
+<br>
+
+### DB インスタンス
+
+#### Amazon Aurora の DB インスタンスとは
+
+コンピューティング機能を持ち、クラスターボリュームを操作できる。
+
+<br>
+
+#### Amazon Aurora の DB インスタンスの種類
 
 <table>
   <thead>
     <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
+      <th></th>
+      <th>プライマリーインスタンス</th>
+      <th>リードレプリカ</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>レプリケーション</td>
-      <td>単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。</td>
-      <td>フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、Amazon Aurora の DB クラスターをクローンできないなどのデメリットもある。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms</a></td>
+      <td>ロール</td>
+      <td>読み出し/書き込みインスタンス</td>
+      <td>読み出しオンリーインスタンス</td>
     </tr>
     <tr>
-      <td>Amazon Aurora の DB クラスター識別子</td>
-      <td>Amazon Aurora の DB クラスター名を設定する。</td>
-      <td>インスタンス名は、最初に設定できず、Amazon RDS の作成後に設定できる。</td>
+      <td>CRUD 制限</td>
+      <td>制限なし。アカウントの認可スコープに依存する。</td>
+      <td>アカウントの認可スコープに関係なく、READ しか実行できない。</td>
     </tr>
     <tr>
-      <td>VPC とサブネットグループ</td>
-      <td>Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。</td>
-      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" alt="subnet_component-type"></td>
+      <td>エンドポイント</td>
+      <td>Amazon Aurora の各 DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
+      <td>Amazon Aurora の各 Amazon Aurora の DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
     </tr>
     <tr>
-      <td>パラメーターグループ</td>
-      <td>グローバルオプションを設定する。</td>
-      <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、すべてのインスタンスに同じパラメーターループを設定する必要があるため、クラスターパラメーターを使用すればよい。各パラメーターに適用タイプ (dynamic/static) があり、dynamic タイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定するとよい。<br>・<code>time_zone=Asia/Tokyo</code><br>・<code>character_set_client=utf8mb4</code><br>・<code>character_set_connection=utf8mb4</code><br>・<code>character_set_database=utf8mb4</code><br>・<code>character_set_results=utf8mb4</code><br>・<code>character_set_server=utf8mb4</code><br>・<code>server_audit_logging=1</code> (監査ログを Amazon CloudWatch に送信するか否か) <br>・<code>server_audit_logs_upload=1</code><br>・<code>general_log=1</code> (通常クエリログを Amazon CloudWatch に送信するか否か) <br>・<code>slow_query_log=1</code> (スロークエリログを Amazon CloudWatch に送信するか否か) <br>・<code>long_query_time=3</code> (スロークエリと見なす最短秒数)</td>
-    </tr>
-    <tr>
-      <td>DB 認証</td>
-      <td>DB に接続するための認証方法を設定する。</td>
-      <td>Amazon Aurora の各 DB インスタンスに異なる DB 認証を設定できるが、すべての Amazon Aurora の DB インスタンスに同じ認証方法を設定すべきであるため、Amazon Aurora の DB クラスターでこれを設定すればよい。</td>
-    </tr>
-    <tr>
-      <td>マスタユーザー名</td>
-      <td>DB の root 権限の実行ユーザーを設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>マスターパスワード</td>
-      <td>DB の root 権限の実行ユーザーのパスワードを設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>暗号化キー</td>
-      <td>AWS KMS を使用して、データを暗号化して保管する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>バックアップ保管期間</td>
-      <td>Amazon Aurora の DB クラスター がバックアップを保管する期間を設定する。</td>
-      <td><code>7</code> 日間にしておく。</td>
-    </tr>
-    <tr>
-      <td>ログのエクスポート</td>
-      <td>Amazon CloudWatch Logs に送信するデータエンジン (例：MySQL) のログを設定する。DB エンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。</td>
-      <td>すべてのログを選択するとよい。</td>
-    </tr>
-    <tr>
-      <td>セキュリティグループ</td>
-      <td>Amazon Aurora の DB クラスターのセキュリティグループを設定する。</td>
-      <td>コンピューティングからのリクエストのみを許可するように、これらのプライベート IP アドレス (<code>*.*.*.*/32</code>) を設定する。</td>
-    </tr>
-    <tr>
-      <td>認証機関</td>
-      <td>Amazon Aurora の DB クラスターに紐づけるサーバー証明書を署名するルート認証局を設定する。</td>
-      <td>アプリケーションが Amazon Aurora の DB クラスターに HTTPS で通信する場合に必要である。</td>
-    </tr>
-    <tr>
-      <td>削除保護</td>
-      <td>Amazon Aurora の DB クラスターの削除を防ぐ。</td>
-      <td>Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
+      <td>データ同期</td>
+      <td>Amazon Aurora の DB クラスターに対するデータ変更を受けつける。</td>
+      <td>読み出し/書き込みインスタンスのデータの変更が同期される。</td>
     </tr>
   </tbody>
 </table>
 
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
-> - [Using SSL/TLS to encrypt a connection to a DB instance or cluster - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html)
-
-#### ▼ Amazon Aurora の DB インスタンス
-
-ベストプラクティスについては、以下のリンクを参考にせよ。
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>インスタンスクラス</td>
-      <td>Amazon Aurora の DB インスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
-      <td>バースト可能クラスを選択するとよい。補足として、Amazon Aurora の DB サイズは自動的にスケーリングするため、設定する必要がない。</td>
-    </tr>
-    <tr>
-      <td>パブリックアクセス</td>
-      <td>Amazon Aurora の DB インスタンスに IP アドレスを割り当てるか否かを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>キャパシティタイプ</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>マルチ AZ 配置</td>
-      <td>プライマリーインスタンスとは別に、リードレプリカをマルチ AZ 配置で追加するか否かを設定する。</td>
-      <td>後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。</td>
-    </tr>
-    <tr>
-      <td>最初の DB 名</td>
-      <td>Amazon Aurora の DB インスタンスに自動的に作成される DB 名を設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>マイナーバージョンの自動アップグレード</td>
-      <td>Amazon Aurora の DB インスタンスの DB エンジンのバージョンを自動的に更新するかを設定する。</td>
-      <td>開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。</td>
-    </tr>
-  </tbody>
-</table>
-
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
+<br>
 
 ### OS の隠蔽
 
@@ -248,305 +125,112 @@ SHOW VARIABLES LIKE '%version%';
 
 <br>
 
-## 02-02. 踏み台サーバーをパブリックサブネットに置く場合の接続方法
+## 03. セットアップ
 
-### SSH 公開鍵認証を使用する場合
+### Terraformによる構築
 
-#### ▼ この方法について
+```terraform
+resource "aws_rds_cluster" "foo" {
+  cluster_identifier          = "foo-cluster"
+  engine                      = "aurora-mysql"
+  engine_version              = "8.0.mysql_aurora.3.05.2"
+  database_name               = "foo"
+  master_username             = "admin"
+  manage_master_user_password = true
+  db_subnet_group_name        = aws_db_subnet_group.foo.name
+  vpc_security_group_ids      = [aws_security_group.foo.id]
+}
 
-SSH 公開鍵認証を使用する場合、ユーザーが自前で DB 接続者を管理する必要がある。
-
-この場合、踏み台サーバー (Amazon EC2) をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。
-
-#### ▼ セットアップ
-
-```bash
-$ ssh -o serveraliveinterval=60 -f -N -L 3306:<Amazon Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバー (Amazon EC2) のホスト> -p 22
+resource "aws_rds_cluster_instance" "foo" {
+  count              = 2
+  identifier         = "foo-instance-${count.index}"
+  cluster_identifier = aws_rds_cluster.foo.id
+  instance_class     = "db.r6g.large"
+  engine             = aws_rds_cluster.foo.engine
+  engine_version     = aws_rds_cluster.foo.engine_version
+}
 ```
 
-> - [Auroraへの接続にはSSM Session Managerを利用したリモートホストへのポートフォワーディングがおすすめという話 #AWS - Qiita](https://qiita.com/shimi7o/items/732e91126ab4a06162a7)
 
-<br>
+### コンソールの場合
 
-## 02-03. 踏み台サーバーをプライベートサブネットに置く場合の接続方法
-
-### AWS SSM Session Manager を使用した SSH セッション
-
-#### ▼ この方法について
-
-この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。
-
-> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh)
-
-<br>
-
-### AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)
-
-#### ▼ この方法について
-
-AWS SSM Session Manager の認証を使用する場合、AWS IAM で DB 接続者を管理する。
-
-この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。
-
-> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding)
-
-#### ▼ 前提条件
-
-事前に、踏み台サーバー (Amazon EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。
-
-以下のツールをインストールすること
-
-- AWS CLI (セットアップ時点で最新のもの)
-- [Session Manager プラグイン](https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html) (使用中の PC の OS に合わせること)
-
-#### ▼ セットアップ
-
-ローカル PC の任意のポート番号を使用して、ポートフォワーディングする。
-
-ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。
-
-```bash
-# ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)
-$ aws ssm start-session --target <踏み台サーバー (Amazon EC2) インスタンスID> \
-    --document-name AWS-StartPortForwardingSessionToRemoteHost \
-    --parameters '{"host":["<Amazon Auroraのリーダーエンドポイント>"],"portNumber":["<Amazon Auroraのポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
-```
-
-別ターミナルを開き、Amazon Aurora の DB にログインする。
-
-AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。
-
-```bash
-$ docker exec -it <DBコンテナ名> bash
-
-bash# mysql -h host.docker.internal -P <前の手順で設定したローカルPCの好きなポート番号> -u <ユーザー名> -p<パスワード> <DB名>
-
-mysql> SHOW TABLES;
-+-------------------------------+
-| Tables_in_<DB名>              |
-+-------------------------------+
-...
-```
-
-> - [SSM Session Managerを使ってポートフォワードする \| DevelopersIO](https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1)
-> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding)
-> - [Install the Session Manager plugin on macOS - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html)
-
-<br>
-
-## 02-04. 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法
-
-### 踏み台 Pod とは
-
-これは、Amazon EKS を使用している場合に使用できる。
-
-DB に接続したい場合、ポートフォワーディング用の踏み台 Pod を Amazon EKS 内に作成する。
-
-Helm チャートを作成しておくと、簡単にセットアップできる。
-
-> - [アプリ開発者のための kubectl 講座](https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84)
-
-<br>
-
-### troubleshooting リポジトリ
-
-```yaml
-troubleshooting/
-├── README.md
-├── .gitignore
-├── chart/
-│   ├── Chart.yaml
-│   ├── templates
-│   │   └── deployment.yaml
-│   │
-│   ├── .helmignore
-│   ├── values.example.yaml
-│   └── values.yaml
-└── helmfile.yaml
-```
-
-`.gitignore` ファイルでは、`values.example.yaml` ファイルのコピーから作成される `values.yaml` ファイルのバージョン管理を無視するように実装する。
-
-```ignore
-**/**/values.yaml
-```
-
-<br>
-
-### values.example.yaml
-
-`.env` ファイルのように、バージョン管理しない `values.example.yaml` ファイルを用意しておく。
-
-各開発者がローカル PC で `values.example.yaml` ファイルから `values.yaml` ファイルを作成する。
-
-```bash
-$ cp chart/values.example.yaml values.yaml
-```
-
-```yaml
-name: port-forward-for-aws-aurora
-
-remote:
-  # Amazon Aurora のリーダーエンドポイントを設定する
-  host: <ここに自分で値を設定する>
-  # Amazon Aurora のポート番号を設定する
-  port: <ここに自分で値を設定する>
-```
-
-#### ▼ pod.yaml
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{.Values.name}}
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      name: {{.Values.name}}
-  template:
-    metadata:
-      labels:
-        name: {{.Values.name}}
-    spec:
-      containers:
-        - name: {{.Values.name}}
-          image: marcnuri/port-forward:latest
-          ports:
-            - containerPort: 443
-          env:
-            - name: LOCAL_PORT
-              value: "443"
-            - name: REMOTE_HOST
-              value: {{.Values.remote.host}}
-            - name: REMOTE_PORT
-              value: {{.Values.remote.port | quote}}
-```
-
-```bash
-$ helmfile -f helmfile.yaml diff
-
-$ helmfile -f helmfile.yaml apply
-```
-
-> - [marcnuri/port-forward - Docker Image](https://hub.docker.com/r/marcnuri/port-forward)
-
-#### ▼ コマンド
-
-ローカル PC の好きなポート番号を使用して、Amazon Aurora にポートフォワーディングを実行する。
-
-ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。
-
-```bash
-$ kubectl port-forward deployment/port-forwarding-for-aws-aurora -n <Namespace名> <ローカルPCの好きなポート番号>:443
-```
-
-別ターミナルを開き、Amazon Aurora の DB にログインする。
-
-AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。
-
-```bash
-$ docker exec -it <DBコンテナ名> bash
-
-bash# mysql -h host.docker.internal -P <前の手順で設定したローカルPCの好きなポート番号> -u <ユーザー名> -p<パスワード> <DB名>
-
-mysql> SHOW TABLES;
-+-------------------------------+
-| Tables_in_<DB名>              |
-+-------------------------------+
-...
-```
-
-> - [アプリ開発者のための kubectl 講座](https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84)
-
-<br>
-
-## 02-05. Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法
-
-ECS Exec を有効化した Amazon ECS Fargate のタスクを踏み台にして、AWS Systems Manager Session Manager の `AWS-StartPortForwardingSessionToRemoteHost` ドキュメントでローカル PC から Amazon Aurora にポートフォワーディングする。
-
-> - [ECS Fargateを踏み台にポートフォワードしてVPC内のRDSに接続する](https://zenn.dev/quiver/articles/1458e453118254)
-
-<br>
-
-## 03. Amazon Aurora の DB クラスター
-
-### Amazon Aurora の DB クラスターとは
-
-DB エンジンに Amazon Aurora を選択した場合にのみ使用できる。
-
-Amazon Aurora の DB インスタンスとクラスターボリュームから構成されている。
-
-コンピューティングとして動作する Amazon Aurora の DB インスタンスと、ストレージとして動作するクラスターボリュームが分離されているため、Amazon Aurora の DB インスタンスが誤ってすべて削除されてしまったとしても、データを守れる。
-
-また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
-
-![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster.png)
-
-> - [High availability for Amazon Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html)
-
-<br>
-
-### 空の Amazon Aurora の DB クラスター
-
-#### ▼ 空の Amazon Aurora の DB クラスターとは
-
-コンソール画面で、Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスを削除すると、Amazon Aurora の DB クラスターも自動的に削除される。
-
-一方で、AWS-API をコールしてすべての Amazon Aurora の DB インスタンスを削除する場合、Amazon Aurora の DB クラスターは自動的に削除されずに、空の状態になる。
-
-例えば、Terraform を使用して Amazon Aurora の DB クラスターを作成するときに、インスタンスの作成に失敗すると Amazon Aurora の DB クラスターが空になる。
-
-これは、Terraform が AWS-API をコールして作成しているためである。
-
-> - [Deleting Aurora DB clusters and DB instances - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster)
-
-<br>
-
-## 04. Amazon Aurora の DB インスタンス
-
-### Amazon Aurora の DB インスタンスとは
-
-コンピューティング機能を持ち、クラスターボリュームを操作できる。
-
-<br>
-
-### Amazon Aurora の DB インスタンスの種類
+#### DB エンジンと DB クラスター・DB インスタンスの設定
 
 <table>
   <thead>
     <tr>
-      <th></th>
-      <th>プライマリーインスタンス</th>
-      <th>リードレプリカ</th>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>ロール</td>
-      <td>読み出し/書き込みインスタンス</td>
-      <td>読み出しオンリーインスタンス</td>
+      <td>エンジンタイプ</td>
+      <td>ミドルウェアの DBMS の種類を設定する。</td>
+      <td></td>
     </tr>
     <tr>
-      <td>CRUD 制限</td>
-      <td>制限なし。アカウントの認可スコープに依存する。</td>
-      <td>アカウントの認可スコープに関係なく、READ しか実行できない。</td>
-    </tr>
-    <tr>
-      <td>エンドポイント</td>
-      <td>Amazon Aurora の各 DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
-      <td>Amazon Aurora の各 Amazon Aurora の DB インスタンスに、リージョンのイニシャルに合わせたエンドポイントが割り振られる。</td>
-    </tr>
-    <tr>
-      <td>データ同期</td>
-      <td>Amazon Aurora の DB クラスターに対するデータ変更を受けつける。</td>
-      <td>読み出し/書き込みインスタンスのデータの変更が同期される。</td>
+      <td>エディション</td>
+      <td>エンジンバージョンで Amazon Aurora を選択した場合の互換性を設定する。</td>
+      <td></td>
     </tr>
   </tbody>
 </table>
 
-<br>
+##### ▼ Amazon Aurora の DB クラスター
+
+ベストプラクティスについては、以下のリンクを参考にせよ。
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Aurora の DB クラスター識別子</td>
+      <td>Amazon Aurora の DB クラスター名を設定する。</td>
+      <td>インスタンス名は、最初に設定できず、Amazon RDS の作成後に設定できる。</td>
+    </tr>
+  </tbody>
+</table>
+
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
+> - [Using SSL/TLS to encrypt a connection to a DB instance or cluster - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html)
+
+##### ▼ Amazon Aurora の DB インスタンス
+
+ベストプラクティスについては、以下のリンクを参考にせよ。
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>キャパシティタイプ</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>最初の DB 名</td>
+      <td>Amazon Aurora の DB インスタンスに自動的に作成される DB 名を設定</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
+
+## 04. DB への接続
 
 ### エンドポイント
 
@@ -599,19 +283,284 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 <br>
 
-### DB エンジンのログ
+### 踏み台サーバーをパブリックサブネットに置く場合の接続方法
 
-#### ▼ スロークエリログ
+#### SSH 公開鍵認証を使用する場合
+
+##### ▼ この方法について
+
+SSH 公開鍵認証を使用する場合、ユーザーが自前で DB 接続者を管理する必要がある。
+
+この場合、踏み台サーバー (Amazon EC2) をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。
+
+##### ▼ セットアップ
+
+```bash
+$ ssh -o serveraliveinterval=60 -f -N -L 3306:<Amazon Auroraのリーダーエンドポイント>:3306 -i "~/.ssh/foo.pem" <踏み台サーバーの実行ユーザー>@<踏み台サーバー (Amazon EC2) のホスト> -p 22
+```
+
+> - [Auroraへの接続にはSSM Session Managerを利用したリモートホストへのポートフォワーディングがおすすめという話 #AWS - Qiita](https://qiita.com/shimi7o/items/732e91126ab4a06162a7)
+
+<br>
+
+### 踏み台サーバーをプライベートサブネットに置く場合の接続方法
+
+#### AWS SSM Session Manager を使用した SSH セッション
+
+##### ▼ この方法について
+
+この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。
+
+> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh)
+
+<br>
+
+#### AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)
+
+##### ▼ この方法について
+
+AWS SSM Session Manager の認証を使用する場合、AWS IAM で DB 接続者を管理する。
+
+この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。
+
+> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding)
+
+##### ▼ 前提条件
+
+事前に、踏み台サーバー (Amazon EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。
+
+以下のツールをインストールすること
+
+- AWS CLI (セットアップ時点で最新のもの)
+- [Session Manager プラグイン](https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html) (使用中の PC の OS に合わせること)
+
+##### ▼ セットアップ
+
+ローカル PC の任意のポート番号を使用して、ポートフォワーディングする。
+
+ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。
+
+```bash
+# ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)
+$ aws ssm start-session --target <踏み台サーバー (Amazon EC2) インスタンスID> \
+    --document-name AWS-StartPortForwardingSessionToRemoteHost \
+    --parameters '{"host":["<Amazon Auroraのリーダーエンドポイント>"],"portNumber":["<Amazon Auroraのポート番号>"], "localPortNumber":["<ローカルPCのポート番号>"]}'
+```
+
+別ターミナルを開き、Amazon Aurora の DB にログインする。
+
+AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。
+
+```bash
+$ docker exec -it <DBコンテナ名> bash
+
+bash# mysql -h host.docker.internal -P <前の手順で設定したローカルPCの好きなポート番号> -u <ユーザー名> -p<パスワード> <DB名>
+
+mysql> SHOW TABLES;
++-------------------------------+
+| Tables_in_<DB名>              |
++-------------------------------+
+...
+```
+
+> - [SSM Session Managerを使ってポートフォワードする \| DevelopersIO](https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1)
+> - [Start a session - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding)
+> - [Install the Session Manager plugin on macOS - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html)
+
+<br>
+
+### 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法
+
+#### 踏み台 Pod とは
+
+これは、Amazon EKS を使用している場合に使用できる。
+
+DB に接続したい場合、ポートフォワーディング用の踏み台 Pod を Amazon EKS 内に作成する。
+
+Helm チャートを作成しておくと、簡単にセットアップできる。
+
+> - [アプリ開発者のための kubectl 講座](https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84)
+
+<br>
+
+#### troubleshooting リポジトリ
+
+```yaml
+troubleshooting/
+├── README.md
+├── .gitignore
+├── chart/
+│   ├── Chart.yaml
+│   ├── templates
+│   │   └── deployment.yaml
+│   │
+│   ├── .helmignore
+│   ├── values.example.yaml
+│   └── values.yaml
+└── helmfile.yaml
+```
+
+`.gitignore` ファイルでは、`values.example.yaml` ファイルのコピーから作成される `values.yaml` ファイルのバージョン管理を無視するように実装する。
+
+```ignore
+**/**/values.yaml
+```
+
+<br>
+
+#### values.example.yaml
+
+`.env` ファイルのように、バージョン管理しない `values.example.yaml` ファイルを用意しておく。
+
+各開発者がローカル PC で `values.example.yaml` ファイルから `values.yaml` ファイルを作成する。
+
+```bash
+$ cp chart/values.example.yaml values.yaml
+```
+
+```yaml
+name: port-forward-for-aws-aurora
+
+remote:
+  # Amazon Aurora のリーダーエンドポイントを設定する
+  host: <ここに自分で値を設定する>
+  # Amazon Aurora のポート番号を設定する
+  port: <ここに自分で値を設定する>
+```
+
+##### ▼ pod.yaml
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.name}}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: {{.Values.name}}
+  template:
+    metadata:
+      labels:
+        name: {{.Values.name}}
+    spec:
+      containers:
+        - name: {{.Values.name}}
+          image: marcnuri/port-forward:latest
+          ports:
+            - containerPort: 443
+          env:
+            - name: LOCAL_PORT
+              value: "443"
+            - name: REMOTE_HOST
+              value: {{.Values.remote.host}}
+            - name: REMOTE_PORT
+              value: {{.Values.remote.port | quote}}
+```
+
+```bash
+$ helmfile -f helmfile.yaml diff
+
+$ helmfile -f helmfile.yaml apply
+```
+
+> - [marcnuri/port-forward - Docker Image](https://hub.docker.com/r/marcnuri/port-forward)
+
+##### ▼ コマンド
+
+ローカル PC の好きなポート番号を使用して、Amazon Aurora にポートフォワーディングを実行する。
+
+ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。
+
+```bash
+$ kubectl port-forward deployment/port-forwarding-for-aws-aurora -n <Namespace名> <ローカルPCの好きなポート番号>:443
+```
+
+別ターミナルを開き、Amazon Aurora の DB にログインする。
+
+AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。
+
+```bash
+$ docker exec -it <DBコンテナ名> bash
+
+bash# mysql -h host.docker.internal -P <前の手順で設定したローカルPCの好きなポート番号> -u <ユーザー名> -p<パスワード> <DB名>
+
+mysql> SHOW TABLES;
++-------------------------------+
+| Tables_in_<DB名>              |
++-------------------------------+
+...
+```
+
+> - [アプリ開発者のための kubectl 講座](https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84)
+
+<br>
+
+### Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法
+
+ECS Exec を有効化した Amazon ECS Fargate のタスクを踏み台にして、AWS Systems Manager Session Manager の `AWS-StartPortForwardingSessionToRemoteHost` ドキュメントでローカル PC から Amazon Aurora にポートフォワーディングする。
+
+> - [ECS Fargateを踏み台にポートフォワードしてVPC内のRDSに接続する](https://zenn.dev/quiver/articles/1458e453118254)
+
+<br>
+
+### コンソールの設定項目
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VPC とサブネットグループ</td>
+      <td>Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。</td>
+      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" alt="subnet_component-type"></td>
+    </tr>
+    <tr>
+      <td>パブリックアクセス</td>
+      <td>Amazon Aurora の DB インスタンスに IP アドレスを割り当てるか否かを設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+## 05. ログ出力
+
+### スロークエリログ
 
 Amazon CloudWatch Logs の `/aws/rds/cluster/<Amazon AuroraのDBクラスター名>/slowquery` というロググループにスロークエリログが出力される。
 
-#### ▼ エラークエリログ
+### エラークエリログ
 
 Amazon CloudWatch Logs の `/aws/rds/cluster/<Amazon AuroraのDBクラスター名>/error` というロググループにエラーログが出力される。
 
 <br>
 
-## 05. アップグレード
+### コンソールの設定項目
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ログのエクスポート</td>
+      <td>Amazon CloudWatch Logs に送信するデータエンジン (例：MySQL) のログを設定する。DB エンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。</td>
+      <td>すべてのログを選択するとよい。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 06. アップグレード
 
 ### ZDP (ゼロダウンタイムパッチ適用)
 
@@ -811,9 +760,43 @@ NOW()
 
 <br>
 
-### フェイルオーバー
+### B/G 式アップグレード
 
-#### ▼ Amazon Aurora のフェイルオーバーとは
+アップグレード時に、新しいバージョンからなる Amazon Aurora の DB クラスター (グリーン環境) を作成する。
+
+クラスターエンドポイントを起点として、アプリケーションのクエリの向き先を既存の Amazon Aurora の DB クラスター (ブルー環境) から新 Amazon Aurora の DB クラスター (グリーン環境) に切り替える。
+
+グリーン環境でアプリケーションが問題なく動作すれば、既存の Amazon Aurora の DB クラスター (ブルー環境) を削除する。
+
+<br>
+
+### コンソールの設定項目
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エンジンバージョン</td>
+      <td>DB エンジンのバージョンを設定する。DB クラスター内のすべての DB インスタンスに適用される。</td>
+      <td>・Amazon Aurora であれば、<code>SELECT AURORA_VERSION()</code> を使用して、エンジンバージョンを確認できる。</td>
+    </tr>
+    <tr>
+      <td>マイナーバージョンの自動アップグレード</td>
+      <td>Amazon Aurora の DB インスタンスの DB エンジンのバージョンを自動的に更新するかを設定する。</td>
+      <td>開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 07. フェイルオーバー
+
+### Amazon Aurora のフェイルオーバーとは
 
 プライマリーインスタンスで障害が起こった場合に、リードレプリカをプライマリーインスタンスに自動的に昇格する。
 
@@ -825,7 +808,7 @@ Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB イ�
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Amazon Aurora.Managing.FaultTolerance
 
-#### ▼ フェイルオーバーによるダウンタイムの最小化
+### フェイルオーバーによるダウンタイムの最小化
 
 Amazon Aurora の DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用してダウンタイムを最小化できる。
 
@@ -843,7 +826,7 @@ Amazon Aurora の DB インスタンスがマルチ AZ 構成の場合、以下�
 
 > - https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/
 
-#### ▼ Amazon Aurora の DB インスタンスの昇格優先順位
+### Amazon Aurora の DB インスタンスの昇格優先順位
 
 Amazon Aurora の場合、フェイルオーバーによって昇格する Amazon Aurora の DB インスタンスは次の順番で決定される。
 
@@ -861,23 +844,37 @@ Amazon Aurora の DB インスタンスごとにフェイルオーバーの優�
 
 > - [High availability for Amazon Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html)
 
-#### ▼ ダウンタイムを最小化できない場合
+### ダウンタイムを最小化できない場合
 
 エンジンバージョンのアップグレードは両方の Amazon Aurora の DB インスタンスで同時に実行する必要があるため、フェイルオーバーを使用できず、ダウンタイムを最小化できない。
 
 <br>
 
-### B/G 式アップグレード
+### コンソールの設定項目
 
-アップグレード時に、新しいバージョンからなる Amazon Aurora の DB クラスター (グリーン環境) を作成する。
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>レプリケーション</td>
+      <td>単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。</td>
+      <td>フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、Amazon Aurora の DB クラスターをクローンできないなどのデメリットもある。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms</a></td>
+    </tr>
+    <tr>
+      <td>マルチ AZ 配置</td>
+      <td>プライマリーインスタンスとは別に、リードレプリカをマルチ AZ 配置で追加するか否かを設定する。</td>
+      <td>後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。</td>
+    </tr>
+  </tbody>
+</table>
 
-クラスターエンドポイントを起点として、アプリケーションのクエリの向き先を既存の Amazon Aurora の DB クラスター (ブルー環境) から新 Amazon Aurora の DB クラスター (グリーン環境) に切り替える。
-
-グリーン環境でアプリケーションが問題なく動作すれば、既存の Amazon Aurora の DB クラスター (ブルー環境) を削除する。
-
-<br>
-
-## 06. 負荷対策
+## 08. 負荷分散と性能改善
 
 ### エンドポイントの使い分け
 
@@ -964,7 +961,26 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-## 07. イベント
+### コンソールの設定項目
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>インスタンスクラス</td>
+      <td>Amazon Aurora の DB インスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
+      <td>バースト可能クラスを選択するとよい。補足として、Amazon Aurora の DB サイズは自動的にスケーリングするため、設定する必要がない。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 09. イベント
 
 コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうがよい。
 
@@ -972,7 +988,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-## 08. Amazon Aurora Global DB
+## 10. リージョン間レプリケーション
 
 ### Amazon Aurora Global DB とは
 
@@ -1062,3 +1078,133 @@ Amazon Aurora Global DB では、リージョン間でデータをコピーし�
 > - [RDS リージョン間データ移行する方法 \| DevelopersIO](https://dev.classmethod.jp/articles/lim-rds-move-region-jp/#toc-7)
 
 <br>
+## 11. DB クラスターの保持
+
+### 空の Amazon Aurora の DB クラスターとは
+
+コンソール画面で、Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスを削除すると、Amazon Aurora の DB クラスターも自動的に削除される。
+
+一方で、AWS-API をコールしてすべての Amazon Aurora の DB インスタンスを削除する場合、Amazon Aurora の DB クラスターは自動的に削除されずに、空の状態になる。
+
+例えば、Terraform を使用して Amazon Aurora の DB クラスターを作成するときに、インスタンスの作成に失敗すると Amazon Aurora の DB クラスターが空になる。
+
+これは、Terraform が AWS-API をコールして作成しているためである。
+
+> - [Deleting Aurora DB clusters and DB instances - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster)
+
+<br>
+
+### コンソールの設定項目
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>削除保護</td>
+      <td>Amazon Aurora の DB クラスターの削除を防ぐ。</td>
+      <td>Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
+    </tr>
+  </tbody>
+</table>
+
+## 12. DB 認証とアクセス制御
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DB 認証</td>
+      <td>DB に接続するための認証方法を設定する。</td>
+      <td>Amazon Aurora の各 DB インスタンスに異なる DB 認証を設定できるが、すべての Amazon Aurora の DB インスタンスに同じ認証方法を設定すべきであるため、Amazon Aurora の DB クラスターでこれを設定すればよい。</td>
+    </tr>
+    <tr>
+      <td>マスタユーザー名</td>
+      <td>DB の root 権限の実行ユーザーを設定</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>マスターパスワード</td>
+      <td>DB の root 権限の実行ユーザーのパスワードを設定</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>セキュリティグループ</td>
+      <td>Amazon Aurora の DB クラスターのセキュリティグループを設定する。</td>
+      <td>コンピューティングからのリクエストのみを許可するように、これらのプライベート IP アドレス (<code>*.*.*.*/32</code>) を設定する。</td>
+    </tr>
+    <tr>
+      <td>認証機関</td>
+      <td>Amazon Aurora の DB クラスターに紐づけるサーバー証明書を署名するルート認証局を設定する。</td>
+      <td>アプリケーションが Amazon Aurora の DB クラスターに HTTPS で通信する場合に必要である。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 13. 暗号化
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>暗号化キー</td>
+      <td>AWS KMS を使用して、データを暗号化して保管する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+## 14. バックアップ
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>バックアップ保管期間</td>
+      <td>Amazon Aurora の DB クラスター がバックアップを保管する期間を設定する。</td>
+      <td><code>7</code> 日間にしておく。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 15. DB パラメーター設定
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>パラメーターグループ</td>
+      <td>グローバルオプションを設定する。</td>
+      <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、すべてのインスタンスに同じパラメーターループを設定する必要があるため、クラスターパラメーターを使用すればよい。各パラメーターに適用タイプ (dynamic/static) があり、dynamic タイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定するとよい。<br>・<code>time_zone=Asia/Tokyo</code><br>・<code>character_set_client=utf8mb4</code><br>・<code>character_set_connection=utf8mb4</code><br>・<code>character_set_database=utf8mb4</code><br>・<code>character_set_results=utf8mb4</code><br>・<code>character_set_server=utf8mb4</code><br>・<code>server_audit_logging=1</code> (監査ログを Amazon CloudWatch に送信するか否か) <br>・<code>server_audit_logs_upload=1</code><br>・<code>general_log=1</code> (通常クエリログを Amazon CloudWatch に送信するか否か) <br>・<code>slow_query_log=1</code> (スロークエリログを Amazon CloudWatch に送信するか否か) <br>・<code>long_query_time=3</code> (スロークエリと見なす最短秒数)</td>
+    </tr>
+  </tbody>
+</table>

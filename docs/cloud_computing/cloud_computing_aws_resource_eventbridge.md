@@ -15,7 +15,7 @@ tags:
 
 <br>
 
-## 01. Amazon EventBridge とは
+## 01. 概要
 
 クラウドパブリッシュ／サブスクライブ方式のシステムとして働く。
 
@@ -55,17 +55,23 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### パターン
+## 03. セットアップ
 
-#### ▼ イベント受信対象の AWS リソース
+### Terraformによる構築
+
+
+
+## 04. イベントの受信とフィルタリング
+
+### ▼ イベント受信対象の AWS リソース
 
 イベント受信対象の AWS リソースは以下のリンクを参考にせよ。
 
 > - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-list.html
 
-#### ▼ イベントパターン
+### ▼ イベントパターン
 
 指定した AWS リソースでイベントが起こると、以下のような JSON を送信する。
 
@@ -101,7 +107,7 @@ AWS Amplify の指定した ID のアプリケーションが `AWS Amplify Deplo
 
 > - https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/CloudWatchEventsandEventPatterns.html
 
-#### ▼ スケジュール
+## 05. スケジュール実行
 
 cron 式または rate 式を使用して、スケジュールを定義する。
 
@@ -111,15 +117,15 @@ cron 式または rate 式を使用して、スケジュールを定義する。
 
 <br>
 
-### ターゲット
+## 06. イベントの送信とデバッグ
 
-#### ▼ ターゲットの一覧
+### ▼ ターゲットの一覧
 
 AWS リソースで発生したイベントを受信し、他の AWS リソースや外部 API に送信する。
 
 > - [Event bus targets in Amazon EventBridge - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html)
 
-#### ▼ デバッグ
+### ▼ デバッグ
 
 Amazon EventBridge では、どのような JSON のイベントをターゲットに送信したかを確認できない。
 
@@ -169,9 +175,9 @@ AWS リソースで意図的にイベントを起こし、AWS Lambda のログ�
 
 <br>
 
-### 入力
+## 07. イベントデータの変換
 
-#### ▼ 入力トランスフォーマー
+### ▼ 入力トランスフォーマー
 
 入力パスで使用する値を抽出し、入力テンプレートで送信する JSON を定義できる。
 

@@ -15,17 +15,29 @@ tags:
 
 <br>
 
-## 01. Glue とは
+## 01. 概要
+
 
 AWS が提供するマネージドな ETL サービスであり、ソースからデータを抽出して加工し、ターゲットに保存する。
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### コンソール画面の場合
+### Apache Spark による並列処理
 
-#### ▼ 設定項目と説明
+Apache Spark を使用して、大きなサイズのデータを高速に並列処理できる。
+
+> - [AWS Glue Spark and PySpark jobs - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/spark_and_pyspark.html)
+
+<br>
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. ETL の入出力設定
+
+### ▼ 設定項目と説明
 
 <table>
   <thead>
@@ -48,13 +60,5 @@ AWS が提供するマネージドな ETL サービスであり、ソースか�
     </tr>
   </tbody>
 </table>
-
-<br>
-
-### 高速処理
-
-Apache Spark を使用して、大きなサイズのデータを高速に並列処理できる。
-
-> - [AWS Glue Spark and PySpark jobs - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/spark_and_pyspark.html)
 
 <br>

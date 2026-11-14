@@ -15,37 +15,15 @@ tags:
 
 <br>
 
-## 01. Kinesis Data Streams
+## 01. 概要
 
-### Kinesis Data Streams とは
+## 02. 仕組み
 
-リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、保管する。
+## 03. セットアップ
 
-> - https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
+### Terraformによる構築
 
-<br>
-
-## 02. Kinesis Data Firehose (Kinesis Delivery Stream)
-
-### Kinesis Data Firehose とは
-
-リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスや AWS リソースにフォワーディングする。
-
-フォワーディング時に AWS Lambda 関数を使用することで、収集したデータを加工できる。
-
-より非マネージにストリーミングしたい場合は、ストリーミングツール (例：Apache Kafka) を使用する。
-
-Kinesis を使用せずに、リアルタイム処理のストリーミングデータを直接送信してもよい。ただ、通信頻度が瞬間的に増加することなく、定常的に送信できる。
-
-> - [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
-> - https://techtarget.itmedia.co.jp/tt/news/2103/27/news02.html
-> - [リアルタイムのログ収集アーキテクチャーを調べる - エンジニアの何でもメモ帳](https://www.engineer-memo.net/20200310-5498)
-
-<br>
-
-## 02-02. セットアップ
-
-### コンソール画面の場合
+### Firehose の配信ストリームの初期設定
 
 #### ▼ 設定項目と説明
 
@@ -113,7 +91,35 @@ Kinesis を使用せずに、リアルタイム処理のストリーミングデ
 
 <br>
 
-## 03. Kinesis Data Analytics
+## 04. Kinesis Data Streams によるストリーム処理
+
+### Kinesis Data Streams とは
+
+リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、保管する。
+
+> - https://docs.aws.amazon.com/streams/latest/dev/amazon-kinesis-streams.html
+
+<br>
+
+## 05. Kinesis Data Firehose によるデータ配信
+
+### Kinesis Data Firehose とは
+
+リアルタイム処理のストリーミングデータ (例：動画データ、音声データなど) を継続的に収集し、保管/可視化/分析/レポート作成/アラートができる外部サービスや AWS リソースにフォワーディングする。
+
+フォワーディング時に AWS Lambda 関数を使用することで、収集したデータを加工できる。
+
+より非マネージにストリーミングしたい場合は、ストリーミングツール (例：Apache Kafka) を使用する。
+
+Kinesis を使用せずに、リアルタイム処理のストリーミングデータを直接送信してもよい。ただ、通信頻度が瞬間的に増加することなく、定常的に送信できる。
+
+> - [What is Amazon Data Firehose? - Amazon Data Firehose](https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html)
+> - https://techtarget.itmedia.co.jp/tt/news/2103/27/news02.html
+> - [リアルタイムのログ収集アーキテクチャーを調べる - エンジニアの何でもメモ帳](https://www.engineer-memo.net/20200310-5498)
+
+<br>
+
+## 06. Kinesis Data Analytics による分析
 
 ### Kinesis Data Analytics とは
 

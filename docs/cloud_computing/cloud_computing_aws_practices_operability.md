@@ -15,11 +15,17 @@ tags:
 
 <br>
 
-## 02. 監視
+## 01. 概要
 
-### ビジネス成果の監視
+## 02. 仕組み
 
-#### ▼ ビジネス成果の監視とは
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. ビジネス成果メトリクスの監視
+
+### ▼ ビジネス成果の監視とは
 
 ビジネス成果メトリクスを監視する。
 
@@ -27,7 +33,7 @@ tags:
 
 > - [Operate - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html)
 
-#### ▼ DevOps 成果
+### ▼ DevOps 成果
 
 以下のメトリクスを DevOps 成果の指標として、QuickSight で監視する。
 
@@ -45,15 +51,15 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 
 <br>
 
-### システムの監視
+## 05. システムメトリクスとログの監視
 
-#### ▼ システムの監視とは
+### ▼ システムの監視とは
 
 システムに関するメトリクスを監視する。
 
 > - [Operate - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/oe-operate.html)
 
-#### ▼ ユーザー定義の名前空間
+### ▼ ユーザー定義の名前空間
 
 名前空間ユーザー定義としたメトリクスの監視ポリシーは以下の通りである。
 
@@ -76,7 +82,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
   </tbody>
 </table>
 
-#### ▼ AWS ALB
+### ▼ AWS ALB
 
 名前空間を AWS ALB としたメトリクスの監視ポリシーは以下の通りである。
 
@@ -149,7 +155,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 
 > - [CloudWatch metrics for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-cloudwatch-metrics.html)
 
-#### ▼ Amazon API Gateway
+### ▼ Amazon API Gateway
 
 名前空間を Amazon API Gateway としたメトリクスの監視ポリシーは以下の通りである。
 
@@ -192,7 +198,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 
 > - [Amazon API Gateway dimensions and metrics - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-metrics-and-dimensions.html#api-gateway-metrics)
 
-#### ▼ Amazon EC2
+### ▼ Amazon EC2
 
 名前空間を EC2 としたメトリクスの監視ポリシーは以下の通りである。
 
@@ -241,7 +247,7 @@ Code 三兄弟のデータポイントを収集し、メトリクスとして分
 
 > - [StatusCheckFailed_System, StatusCheckFailed_Instance ,StatusCheckFailedの違い](https://awsjp.com/AWS/hikaku/StatusCheckFailed_System-StatusCheckFailed_Instance-hikaku.html)
 
-#### ▼ Amazon ECS
+### ▼ Amazon ECS
 
 名前空間を Amazon ECS クラスターまたは Amazon ECS サービスとしたメトリクスの監視ポリシーは以下の通りである。
 
@@ -284,7 +290,7 @@ ClusterName ディメンションと ServiceName ディメンションを使用�
 
 > - [Monitor Amazon ECS using CloudWatch - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cloudwatch-metrics.html#available_cloudwatch_metrics)
 
-#### ▼ Amazon ElastiCache Redis
+### ▼ Amazon ElastiCache Redis
 
 名前空間を Amazon ElastiCache Redis としたメトリクスの監視ポリシーは以下の通りである。
 
@@ -332,7 +338,7 @@ ClusterName ディメンションと ServiceName ディメンションを使用�
 
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/CacheMetrics.WhichShouldIMonitor.html
 
-#### ▼ Amazon Aurora
+### ▼ Amazon Aurora
 
 名前空間を Amazon Aurora としたメトリクスの監視ポリシーは以下の通りである。
 
@@ -415,7 +421,7 @@ ClusterName ディメンションと ServiceName ディメンションを使用�
 
 > - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.AuroraMySQL.Monitoring.Metrics.html
 
-#### ▼ Amazon RDS
+### ▼ Amazon RDS
 
 名前空間を Amazon RDS としたメトリクスの監視ポリシーは以下の通りである。
 
@@ -458,7 +464,7 @@ Amazon RDS のコンソール画面にも同じメトリクスが表示される
 
 > - [Monitoring Amazon RDS metrics with Amazon CloudWatch - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/monitoring-cloudwatch.html#rds-metrics)
 
-#### ▼ Amazon S3
+### ▼ Amazon S3
 
 名前空間を Amazon S3 としたメトリクスの監視ポリシーは以下の通りである。
 

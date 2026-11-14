@@ -15,7 +15,73 @@ tags:
 
 <br>
 
-## 01. Amazon CloudWatch Metrics
+## 01. 概要
+
+## 02. 仕組み
+
+## 03. セットアップ
+
+### Terraformによる構築 (SES 監視用アラーム)
+
+```terraform
+module "cloudwatch_metric_alarm_ses_foo" {
+  source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions"
+  version = "= 5.3.0"
+
+  for_each = {
+    # SESから外部メールサーバーへのメール送信の失敗が5分間に1件以上起こった場合に通知する
+    "ses-foo-Bounce-" = {
+      metric_name         = "Bounce"
+      comparison_operator = "GreaterThanOrEqualToThreshold"
+      evaluation_periods  = "1"
+      namespace           = "AWS/SES"
+      period              = "300"
+      statistic           = "Sum"
+      threshold           = 1.0
+      alarm_description   = "SES ${aws_ses_configuration_set.foo.name} Bounce: SESから外部メールサーバーへのメール送信に失敗しました"
+      dimensions = {
+        "ConfigurationSet" = {
+          ConfigurationSet = aws_ses_configuration_set.foo.name
+        }
+      }
+    }
+    # SESへのメール送信の失敗が5分間に1件以上起こった場合に通知する
+    "ses-foo-Reject-" = {
+      metric_name         = "Reject"
+      comparison_operator = "GreaterThanOrEqualToThreshold"
+      evaluation_periods  = "1"
+      namespace           = "AWS/SES"
+      period              = "300"
+      statistic           = "Sum"
+      threshold           = 1.0
+      alarm_description   = "SES ${aws_ses_configuration_set.foo.name} Reject: SESへのメール送信に失敗しました"
+      dimensions = {
+        "ConfigurationSet" = {
+          ConfigurationSet = aws_ses_configuration_set.foo.name
+        }
+      }
+    }
+
+    alarm_name          = each.key
+    tags                = local.tags
+    comparison_operator = each.value.comparison_operator
+    evaluation_periods  = each.value.evaluation_periods
+    metric_name         = each.value.metric_name
+    namespace           = each.value.namespace
+    period              = each.value.period
+    statistic           = each.value.statistic
+    threshold           = each.value.threshold
+    treat_missing_data  = "notBreaching"
+    alarm_description   = each.value.alarm_description
+    alarm_actions       = ["arn:aws:sns:ap-northeast-1:123456789012:********"]
+    dimensions          = each.value.dimensions
+  }
+}
+```
+
+
+
+## 04. メトリクスの収集と集約
 
 ### Amazon CloudWatch Metrics とは
 
@@ -132,65 +198,7 @@ Amazon CloudWatch Logs に送る構造化ログには、`metrics` オブジェ�
 
 <br>
 
-## 01-02. セットアップ (Terraform の場合)
-
-```terraform
-module "cloudwatch_metric_alarm_ses_foo" {
-  source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions"
-  version = "= 5.3.0"
-
-  for_each = {
-    # SESから外部メールサーバーへのメール送信の失敗が5分間に1件以上起こった場合に通知する
-    "ses-foo-Bounce-" = {
-      metric_name         = "Bounce"
-      comparison_operator = "GreaterThanOrEqualToThreshold"
-      evaluation_periods  = "1"
-      namespace           = "AWS/SES"
-      period              = "300"
-      statistic           = "Sum"
-      threshold           = 1.0
-      alarm_description   = "SES ${aws_ses_configuration_set.foo.name} Bounce: SESから外部メールサーバーへのメール送信に失敗しました"
-      dimensions = {
-        "ConfigurationSet" = {
-          ConfigurationSet = aws_ses_configuration_set.foo.name
-        }
-      }
-    }
-    # SESへのメール送信の失敗が5分間に1件以上起こった場合に通知する
-    "ses-foo-Reject-" = {
-      metric_name         = "Reject"
-      comparison_operator = "GreaterThanOrEqualToThreshold"
-      evaluation_periods  = "1"
-      namespace           = "AWS/SES"
-      period              = "300"
-      statistic           = "Sum"
-      threshold           = 1.0
-      alarm_description   = "SES ${aws_ses_configuration_set.foo.name} Reject: SESへのメール送信に失敗しました"
-      dimensions = {
-        "ConfigurationSet" = {
-          ConfigurationSet = aws_ses_configuration_set.foo.name
-        }
-      }
-    }
-
-    alarm_name          = each.key
-    tags                = local.tags
-    comparison_operator = each.value.comparison_operator
-    evaluation_periods  = each.value.evaluation_periods
-    metric_name         = each.value.metric_name
-    namespace           = each.value.namespace
-    period              = each.value.period
-    statistic           = each.value.statistic
-    threshold           = each.value.threshold
-    treat_missing_data  = "notBreaching"
-    alarm_description   = each.value.alarm_description
-    alarm_actions       = ["arn:aws:sns:ap-northeast-1:123456789012:********"]
-    dimensions          = each.value.dimensions
-  }
-}
-```
-
-## 02. Amazon CloudWatch Logs
+## 05. ログの収集
 
 ### Amazon CloudWatch Logs とは
 
@@ -200,11 +208,11 @@ AWS リソースで作成されたログを収集できる。
 
 <br>
 
-## 02-02. セットアップ
+### ログ収集の設定
 
-### コンソール画面の場合
+#### コンソール画面の場合
 
-#### ▼ 設定項目と説明
+##### ▼ 設定項目と説明
 
 <table>
   <thead>
@@ -393,13 +401,13 @@ $ service awslogs start
 
 <br>
 
-### Log インサイト
+## 06. ログの検索と分析
 
-#### ▼ Log インサイトとは
+### ▼ Log インサイトとは
 
 クエリを使用して、ロググループ単位でログを抽出する。
 
-#### ▼ 関数
+### ▼ 関数
 
 <table>
   <thead>
@@ -428,7 +436,7 @@ $ service awslogs start
   </tbody>
 </table>
 
-#### ▼ クエリ例
+### ▼ クエリ例
 
 汎用的なクエリを示す。
 
@@ -510,7 +518,7 @@ fields @timestamp, @message
 
 <br>
 
-## 02-02. cloudwatch エージェント
+## 07. エージェントによるデータ収集
 
 ### cloudwatch エージェントとは
 
@@ -810,7 +818,7 @@ AWS 以外 (オンプレミス、他のクラウドプロバイダー) のサー
 
 <br>
 
-## 03. Amazon CloudWatch アラーム
+## 08. アラーム
 
 ### Amazon CloudWatch アラームとは
 
@@ -818,11 +826,11 @@ Amazon CloudWatch のメトリクスを監視し、閾値を超えた場合に�
 
 <br>
 
-## 03-02. セットアップ
+### アラームの設定
 
-### コンソール画面の場合
+#### コンソール画面の場合
 
-#### ▼ ログが監視対象の場合
+##### ▼ ログが監視対象の場合
 
 <table>
   <thead>
@@ -851,9 +859,9 @@ Amazon CloudWatch のメトリクスを監視し、閾値を超えた場合に�
   </tbody>
 </table>
 
-#### ▼ メトリクスが監視対象の場合
+##### ▼ メトリクスが監視対象の場合
 
-#### ▼ 条件
+##### ▼ 条件
 
 <table>
   <thead>
@@ -884,7 +892,7 @@ Amazon CloudWatch のメトリクスを監視し、閾値を超えた場合に�
 
 <br>
 
-## 04. Amazon CloudWatch シンセティック
+## 09. 外形監視
 
 ### Amazon CloudWatch シンセティックとは
 

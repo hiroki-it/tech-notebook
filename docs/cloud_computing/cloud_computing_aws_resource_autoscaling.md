@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. オートスケーリングとは
+## 01. 概要
+
 
 AWS ALB を使用して、起動テンプレートを基にした Amazon EC2 の自動水平スケーリングを実行する。
 
@@ -29,62 +30,13 @@ AWS ALB を使用して、起動テンプレートを基にした Amazon EC2 の
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
+## 02. 仕組み
 
-### 設定項目と説明
+## 03. セットアップ
 
-<table>
-  <thead>
-    <tr>
-      <th>項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>スケーリンググループ</td>
-      <td>スケーリングのグループ構成を定義する。各グループで最大最小必要数を設定できる。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>起動テンプレート</td>
-      <td>スケーリングで起動するインスタンスの詳細 (例：マシンイメージ、インスタンスタイプなど) を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>ネットワーク</td>
-      <td>いずれの AZ のサブネットでインスタンスを作成するかを設定する。</td>
-      <td>選択した AZ の個数よりも少ない個数の Amazon EC2 を作成する場合、作成先の AZ をランダムに選択する。</td>
-    </tr>
-    <tr>
-      <td>ロードバランシング</td>
-      <td>オートスケーリングに紐づける AWS ALB を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>ヘルスチェック</td>
-      <td>ヘルスチェックの実行方法を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>スケーリングポリシー</td>
-      <td>スケーリングの方法を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>アクティビティ通知</td>
-      <td>スケーリング時のイベントを SNS に通知するように設定する。</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+### Terraformによる構築
 
-<br>
-
-## 02. セットアップ (Terraform の場合)
-
-### スケーリンググループ
+#### スケーリンググループ
 
 ```terraform
 # オートスケーリンググループ
@@ -152,7 +104,7 @@ resource "aws_launch_template" "foo" {
 
 > - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group)
 
-### 起動テンプレート
+#### 起動テンプレート
 
 ```terraform
 # 起動テンプレート
@@ -226,7 +178,7 @@ resource "aws_launch_template" "foo" {
 
 > - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template)
 
-#### ▼ アクティビティ通知
+##### ▼ アクティビティ通知
 
 ```terraform
 # アクティビティ通知
@@ -270,7 +222,60 @@ resource "aws_sns_topic" "foo" {
 
 <br>
 
-## 03. スケーリングの種類
+### Auto Scaling グループの初期設定
+
+#### 設定項目と説明
+
+<table>
+  <thead>
+    <tr>
+      <th>項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>スケーリンググループ</td>
+      <td>スケーリングのグループ構成を定義する。各グループで最大最小必要数を設定できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>起動テンプレート</td>
+      <td>スケーリングで起動するインスタンスの詳細 (例：マシンイメージ、インスタンスタイプなど) を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ネットワーク</td>
+      <td>いずれの AZ のサブネットでインスタンスを作成するかを設定する。</td>
+      <td>選択した AZ の個数よりも少ない個数の Amazon EC2 を作成する場合、作成先の AZ をランダムに選択する。</td>
+    </tr>
+    <tr>
+      <td>ロードバランシング</td>
+      <td>オートスケーリングに紐づける AWS ALB を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ヘルスチェック</td>
+      <td>ヘルスチェックの実行方法を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>スケーリングポリシー</td>
+      <td>スケーリングの方法を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>アクティビティ通知</td>
+      <td>スケーリング時のイベントを SNS に通知するように設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+## 04. スケーリング方式
 
 ### シンプルスケーリング
 
@@ -391,7 +396,7 @@ Amazon ECS サービスの CPU 平均使用率やメモリ平均使用率に段�
 
 <br>
 
-## 04. ヘルスチェック
+## 05. ヘルスチェック
 
 ### 仕組み
 

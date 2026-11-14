@@ -16,9 +16,10 @@ tags:
 
 <br>
 
-## 01. Amazon API Gateway 拡張機能
+## 01. 概要
 
-#### ▼ 必要なキー
+
+### OpenAPI の拡張キー
 
 Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイルにキーを新たに実装する必要がある。
 
@@ -26,9 +27,43 @@ Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイ
 
 <br>
 
-### `x-amazon-apigateway-integration` キー
+## 02. 仕組み
 
-#### ▼ `x-amazon-apigateway-integration` キーとは
+## 03. セットアップ
+
+### Terraformによる構築
+
+### OpenAPI 仕様のインポート時の注意点
+
+#### ▼ 注意点
+
+インポートにあたり、以下に注意する。
+
+Swagger Editor で API の仕様書の `html` ファイルを確認できる。
+
+> - [SwaggerEditor](https://editor.swagger.io/)
+
+- OpenAPI 仕様のバージョン 2.0 と 3.0 をサポートしている。
+- `x-amazon-apigateway-integration` キーを各 HTTP メソッドに定義する。
+- Amazon API Gateway が `security` キーのルート定義に非対応のため、冗長ではあるが、各 HTTP メソッドに個別に定義する。
+- リクエストメソッドで受信する API キーのヘッダー名は、小文字で『`x-api-key`』以外は設定できない。ただし、統合リクエストでフォワーディングするときに付与するヘッダー名は『`X-API-Key`』と設定できる。
+- 統合リクエストでバックエンドにフォワーディングする API キーは、シングルクオートで囲う必要がある。
+- API キーの作成は手動で行う必要がある。
+- ステージの作成は手動で行う必要がある。
+- `servers` キーの実装はインポートしても反映できない。
+- マッピングテンプレートは VTL を使用して定義できる。
+
+#### ▼ その他非対応な記法
+
+その他の非対応記述については、以下のリンクを参考にせよ。
+
+> - [Amazon API Gateway important notes - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis)
+
+<br>
+
+## 04. 統合リクエストと統合レスポンスの定義
+
+### ▼ `x-amazon-apigateway-integration` キーとは
 
 該当する HTTP メソッドで統合リクエストや統合レスポンスを定義するために `x-amazon-apigateway-integration` キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
@@ -44,7 +79,7 @@ Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイ
 
 > - [x-amazon-apigateway-integration.responseParameters object - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html)
 
-#### ▼ セットアップ (Amazon VPC リンク&プロキシ統合)
+### ▼ セットアップ (Amazon VPC リンク&プロキシ統合)
 
 ```yaml
 paths:
@@ -73,7 +108,7 @@ paths:
             statusCode: 200
 ```
 
-#### ▼ セットアップ (Amazon VPC リンク&非プロキシ統合の場合)
+### ▼ セットアップ (Amazon VPC リンク&非プロキシ統合の場合)
 
 パススルー条件や response キー以下の統合レスポンスを設定できる。
 
@@ -103,7 +138,7 @@ paths:
             statusCode: 401
 ```
 
-#### ▼ セットアップ (モック統合)
+### ▼ セットアップ (モック統合)
 
 パススルー条件を設定できる。
 
@@ -131,15 +166,15 @@ paths:
 
 <br>
 
-### `x-amazon-apigateway-request-validators` キー
+## 05. リクエストバリデーターの定義
 
-#### ▼ `x-amazon-apigateway-request-validators` キーとは
+### ▼ `x-amazon-apigateway-request-validators` キーとは
 
 メソッドリクエストで各種パラメーターのバリデーションを定義するために、`x-amazon-apigateway-request-validators` キーが必要である。
 
 実際に定義したものを使用するときは、後述の `x-amazon-apigateway-request-validator` キーが必要である。
 
-#### ▼ セットアップ
+### ▼ セットアップ
 
 各種パラメーターのいずれをバリデーションの対象とするかを指定したうえで、エイリアスを定義する。
 
@@ -163,13 +198,13 @@ x-amazon-apigateway-request-validators:
 
 <br>
 
-### `x-amazon-apigateway-request-validator` キー
+## 06. リクエストバリデーションの適用
 
-#### ▼ `x-amazon-apigateway-request-validator` キーとは
+### ▼ `x-amazon-apigateway-request-validator` キーとは
 
 メソッドリクエストで各種パラメーターのバリデーションを実行するために、`x-amazon-apigateway-request-validator` キーが必要である。
 
-#### ▼ セットアップ
+### ▼ セットアップ
 
 事前に定義した `x-amazon-apigateway-request-validators` キーのなかから、使用するバリデーションのエイリアスを宣言する。
 
@@ -201,37 +236,7 @@ x-amazon-apigateway-request-validators:
 
 <br>
 
-## 02. サンプル YAML
-
-### サンプルについて
-
-#### ▼ 注意点
-
-インポートにあたり、以下に注意する。
-
-Swagger Editor で API の仕様書の `html` ファイルを確認できる。
-
-> - [SwaggerEditor](https://editor.swagger.io/)
-
-- OpenAPI 仕様のバージョン 2.0 と 3.0 をサポートしている。
-- `x-amazon-apigateway-integration` キーを各 HTTP メソッドに定義する。
-- Amazon API Gateway が `security` キーのルート定義に非対応のため、冗長ではあるが、各 HTTP メソッドに個別に定義する。
-- リクエストメソッドで受信する API キーのヘッダー名は、小文字で『`x-api-key`』以外は設定できない。ただし、統合リクエストでフォワーディングするときに付与するヘッダー名は『`X-API-Key`』と設定できる。
-- 統合リクエストでバックエンドにフォワーディングする API キーは、シングルクオートで囲う必要がある。
-- API キーの作成は手動で行う必要がある。
-- ステージの作成は手動で行う必要がある。
-- `servers` キーの実装はインポートしても反映できない。
-- マッピングテンプレートは VTL を使用して定義できる。
-
-#### ▼ その他非対応な記法
-
-その他の非対応記述については、以下のリンクを参考にせよ。
-
-> - [Amazon API Gateway important notes - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-known-issues.html#api-gateway-known-issues-rest-apis)
-
-<br>
-
-### Amazon VPC リンク＆プロキシ統合
+## 07. VPC リンクによるプロキシ統合
 
 **実装例**
 
@@ -628,7 +633,7 @@ components:
 
 <br>
 
-### Amazon VPC リンク＆非プロキシ統合
+## 08. VPC リンクによる非プロキシ統合
 
 **実装例**
 
@@ -1054,7 +1059,7 @@ components:
 
 <br>
 
-### モック統合
+## 09. モック統合
 
 Amazon API Gateway のエンドポイントに対して、以下のパラメーターでリクエストを送信すると、レスポンスを確認できる。
 

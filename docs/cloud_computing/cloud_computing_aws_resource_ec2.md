@@ -15,7 +15,7 @@ tags:
 
 <br>
 
-## 01. Amazon EC2：Elastic Compute Cloud
+## 01. 概要
 
 ### Amazon EC2 とは
 
@@ -29,7 +29,57 @@ tags:
 
 <br>
 
-## 01-02. セットアップ
+## 02. 仕組み
+
+### Amazon EC2 のライフサイクルフェーズ
+
+![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ec2_lifecycle_phase.png)
+
+Amazon EC2 のライフサイクルにはフェーズがある。
+
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>pending</td>
+      <td>インスタンスを開始する前に必要な準備があり、これが完了していない。</td>
+    </tr>
+    <tr>
+      <td>running</td>
+      <td>インスタンスの起動が完了し、実行中である。</td>
+    </tr>
+    <tr>
+      <td>stopping</td>
+      <td>インスタンスを停止している途中である。</td>
+    </tr>
+    <tr>
+      <td>stopped</td>
+      <td>インスタンスの停止が完了した。</td>
+    </tr>
+    <tr>
+      <td>shutting-down</td>
+      <td>インスタンスを削除している途中である。</td>
+    </tr>
+    <tr>
+      <td>terminated</td>
+      <td>インスタンスの削除が完了した。</td>
+    </tr>
+  </tbody>
+</table>
+
+> - [Amazon EC2 instance state changes - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
+
+<br>
+
+## 03. セットアップ
+
+### Terraformによる構築
+
 
 ### コンソール画面の場合
 
@@ -134,43 +184,9 @@ tags:
 
 <br>
 
-### ダウンタイム
+## 04. インスタンスの性能設定
 
-#### ▼ ダウンタイムの発生条件
-
-以下の条件のとき、Amazon EC2 にダウンタイムが発生する。
-
-Amazon EC2 を冗長化している場合は、ユーザーに影響を与えずに対処できる。
-
-ダウンタイムが発生するほうのインスタンスを事前に ALB のターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。
-
-<table>
-  <thead>
-    <tr>
-      <th>変更する項目</th>
-      <th>ダウンタイムの有無</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>インスタンスタイプ</td>
-      <td>あり</td>
-      <td>インスタンスタイプを変更するためには Amazon EC2 を停止する必要がある。そのため、ダウンタイムが発生する。</td>
-    </tr>
-    <tr>
-      <td>ホスト物理サーバーのリタイアメント</td>
-      <td>あり</td>
-      <td>AWS から定期的にリタイアメントに関する警告メールが届く。ルートデバイスタイプが『AWS EBS』の場合、ホスト物理サーバーの引っ越しを実行するために Amazon EC2 の停止と起動が必要である。そのため、ダウンタイムが発生する。注意点として、再起動では引っ越しできない。</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-### インスタンスタイプ
-
-#### ▼ 要素
+### 要素
 
 インスタンス世代の数字が上がるにつれて、より小さなインスタンス世代と同じ大きさであっても、性能が上がり、金銭的コストが下がる。
 
@@ -214,7 +230,7 @@ AWS AMI の OS のバージョンによっては、新しく登場したイン�
 
 > - [AWS Marketplace](https://aws.amazon.com/marketplace/pp/prodview-gkh3rqhqbgzme?ref=cns_srchrow)
 
-#### ▼ CPU バーストモード
+### CPU バーストモード
 
 バーストモードのインスタンスタイプの場合、一定水準のベースライン CPU 使用率を提供しつつ、これを超過できる。
 
@@ -228,7 +244,7 @@ CPU クレジットは一定の割合で回復する。
 
 > - [Burstable performance instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/burstable-performance-instances.html)
 
-#### ▼ アプリケーションのドメインに合わせたインスタンスタイプ
+### アプリケーションのドメインに合わせたインスタンスタイプ
 
 <table>
   <thead>
@@ -326,7 +342,7 @@ CPU クレジットは一定の割合で回復する。
 > - [EC2 インスタンスタイプの種類や選び方！AWS初心者向けに今一度整理 - ForgeVision Engineer Blog](https://techblog.forgevision.com/entry/aws-ec2-instance-bgr)
 > - [【初心者向け】Amazon EC2インスタンスタイプの選び方は？種類ごとの特徴を解説 ｜コラム｜NURO Biz（ニューロ・ビズ）](https://biz.nuro.jp/column/aws-mama-022/)
 
-#### ▼ ファミリーに応じたスペック範囲
+### ファミリーに応じたスペック範囲
 
 <table>
   <thead>
@@ -402,144 +418,47 @@ CPU クレジットは一定の割合で回復する。
 
 <br>
 
-### ルートデバイスボリューム
+## 05. 設定変更に伴うダウンタイム
 
-#### ▼ ルートデバイスボリュームとは
+### ダウンタイムの発生条件
 
-Amazon EC2 では、ブロックデバイスにルートデバイスボリュームが紐づいている。
+以下の条件のとき、Amazon EC2 にダウンタイムが発生する。
 
-複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐付けることもできる。
+Amazon EC2 を冗長化している場合は、ユーザーに影響を与えずに対処できる。
 
-加えて、このブロックデバイスが、マウントポイントになるディレクトリ紐づいている。
-
-つまり Amazon EC2 が作成されると、ボリューム内に保管したファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。
-
-また反対に、マウント先ディレクトリ内に保管したファイルは、ルートデバイスボリューム内に保管される。
-
-複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリへマウントするようにしておく。
-
-> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html)
-> - [【 mountpoint 】コマンド――指定した場所がマウントポイントかどうかを調べる：Linux基本コマンドTips（186） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html)
-
-#### ▼ AWS EBS ボリューム
-
-![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_ebs-backed-instance.png)
-
-名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。
-
-AWS EBS で保管されているルートデバイスボリュームで、推奨の方法である。
-
-インスタンスストアボリュームとは異なり、コンピューティングとして動作する Amazon EC2 と、ストレージとして動作するルートデバイスボリュームが分離されている。
-
-そのため、Amazon EC2 が誤って削除されてしまったとしても、ボリュームは削除されずに、データを守れる。
-
-また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
-
-> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts)
-> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
-> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage)
-
-#### ▼ インスタンスストアボリューム
-
-![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_instance-store-backed-instance.png)
-
-名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。
-
-インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。
-
-AWS EBS ボリュームとは異なり、コンピューティングとして動作する Amazon EC2 内にルートデバイスボリュームが存在している。
-
-そのため、インスタンスストアボリュームは、Amazon EC2 を削除すると一緒に削除されてしまう。
-
-> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts)
-> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
-
-<br>
-
-### Amazon EC2 のライフサイクルフェーズ
-
-![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ec2_lifecycle_phase.png)
-
-Amazon EC2 のライフサイクルにはフェーズがある。
+ダウンタイムが発生するほうのインスタンスを事前に ALB のターゲットグループから解除しておき、停止したインスタンスが起動した後に、ターゲットグループに再登録する。
 
 <table>
   <thead>
     <tr>
-      <th>フェーズ名</th>
-      <th>説明</th>
+      <th>変更する項目</th>
+      <th>ダウンタイムの有無</th>
+      <th>補足</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td>pending</td>
-      <td>インスタンスを開始する前に必要な準備があり、これが完了していない。</td>
+      <td>インスタンスタイプ</td>
+      <td>あり</td>
+      <td>インスタンスタイプを変更するためには Amazon EC2 を停止する必要がある。そのため、ダウンタイムが発生する。</td>
     </tr>
     <tr>
-      <td>running</td>
-      <td>インスタンスの起動が完了し、実行中である。</td>
-    </tr>
-    <tr>
-      <td>stopping</td>
-      <td>インスタンスを停止している途中である。</td>
-    </tr>
-    <tr>
-      <td>stopped</td>
-      <td>インスタンスの停止が完了した。</td>
-    </tr>
-    <tr>
-      <td>shutting-down</td>
-      <td>インスタンスを削除している途中である。</td>
-    </tr>
-    <tr>
-      <td>terminated</td>
-      <td>インスタンスの削除が完了した。</td>
+      <td>ホスト物理サーバーのリタイアメント</td>
+      <td>あり</td>
+      <td>AWS から定期的にリタイアメントに関する警告メールが届く。ルートデバイスタイプが『AWS EBS』の場合、ホスト物理サーバーの引っ越しを実行するために Amazon EC2 の停止と起動が必要である。そのため、ダウンタイムが発生する。注意点として、再起動では引っ越しできない。</td>
     </tr>
   </tbody>
 </table>
 
-> - [Amazon EC2 instance state changes - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-lifecycle.html)
-
 <br>
 
-### Amazon EC2 への接続
+## 06. 起動時の初期化
 
-#### ▼ キーペアを使用した SSH 公開鍵認証
-
-キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つ Amazon EC2 に SSH 公開鍵認証でリクエストできる。
-
-クライアントの SSH のパケットは、まずインターネットを経由して、Internet Gateway を通過する。
-
-その後、Amazon Route 53、ALB を経由せず、そのまま Amazon EC2 へ向かう。
-
-![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
-
-<br>
-
-### キーペア
-
-#### ▼ フィンガープリント値
-
-ローカルマシンに配置されている秘密鍵が、該当する Amazon EC2 に配置されている公開鍵とペアなのか否かを、フィンガープリント値を照合して確認する方法
-
-```bash
-$ openssl pkcs8 \
-    -in <秘密鍵名>.pem \
-    -inform PEM \
-    -outform DER \
-    -topk8 \
-    -nocrypt \
-      | openssl sha1 -c
-```
-
-<br>
-
-### ユーザーデータファイル
-
-#### ▼ ユーザーデータファイルとは
+### ユーザーデータファイルとは
 
 Amazon EC2 の起動時に任意のコマンドを実行できるようにする。
 
-#### ▼ 実行タイミング
+### 実行タイミング
 
 ユーザーデータの実行タイミングは、`cloud-config.service` ファイルで設定している。
 
@@ -578,7 +497,97 @@ WantedBy=multi-user.target
 
 <br>
 
-## 02. Amazon EC2 based on AWS AMI：Amazon Machine Image
+## 07. インスタンスへの接続と認証
+
+### Amazon EC2 への接続
+
+#### ▼ キーペアを使用した SSH 公開鍵認証
+
+キーペアのうちの秘密鍵を使用して、対応する公開鍵を持つ Amazon EC2 に SSH 公開鍵認証でリクエストできる。
+
+クライアントの SSH のパケットは、まずインターネットを経由して、Internet Gateway を通過する。
+
+その後、Amazon Route 53、ALB を経由せず、そのまま Amazon EC2 へ向かう。
+
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
+
+<br>
+
+### キーペア
+
+#### ▼ フィンガープリント値
+
+ローカルマシンに配置されている秘密鍵が、該当する Amazon EC2 に配置されている公開鍵とペアなのか否かを、フィンガープリント値を照合して確認する方法
+
+```bash
+$ openssl pkcs8 \
+    -in <秘密鍵名>.pem \
+    -inform PEM \
+    -outform DER \
+    -topk8 \
+    -nocrypt \
+      | openssl sha1 -c
+```
+
+<br>
+
+### AWS SSM Session Manager を使用したログインシェル
+
+#### ▼ AWS SSM Session Manager を使用したログインシェル
+
+AWS SSM Session Manager を使用して Amazon EC2 に接続し、ログインシェルを起動する。
+
+![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png)
+
+> - [Session Manager を使って Private EC2 にアクセスする方法 - galife](https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html)
+> - [セッションマネージャー越しにSSHアクセスすると何が嬉しいのか \| DevelopersIO](https://dev.classmethod.jp/articles/ssh-through-session-manager/)
+
+#### ▼ systems-manager エージェント
+
+AWS Systems Manager を使用して Amazon EC2 に接続する場合、Amazon EC2 自体に systems-manager エージェントをインストールしておく必要がある。
+
+カスタム AMI であれば自身でインストールし、最適化された AWS AMI であれば事前にインストールされている。
+
+> - [Find AMIs with the SSM Agent preinstalled - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html)
+
+#### ▼ Amazon VPC エンドポイントの作成
+
+<table>
+  <thead>
+    <tr>
+      <th>Amazon VPC エンドポイントの接続先</th>
+      <th>タイプ</th>
+      <th>プライベート DNS 名</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EC2</td>
+      <td>Interface</td>
+      <td><code>ec2messages.ap-northeast-1.amazonaws.com</code></td>
+      <td>ローカルマシンから Amazon EC2 にコマンドを送信するため。</td>
+    </tr>
+    <tr>
+      <td>AWS Systems Manager</td>
+      <td>Interface</td>
+      <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
+      <td>AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。</td>
+    </tr>
+    <tr>
+      <td>Secrets Manager</td>
+      <td>Interface</td>
+      <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
+      <td>Secrets Manager を使用するため。</td>
+    </tr>
+  </tbody>
+</table>
+
+> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
+
+<br>
+
+## 08. マシンイメージの管理
 
 ### AWS AMI とは
 
@@ -671,7 +680,7 @@ Amazon EC2 を作成するために最適化された Linux のこと。
 
 <br>
 
-## 03. Amazon EC2 with AWS EBS：Elastic Block Storage
+## 09. ストレージ管理
 
 ### AWS EBS とは
 
@@ -679,11 +688,65 @@ Amazon EC2 のクラウド内蔵ストレージとして働く。
 
 <br>
 
-## 03-02. セットアップ
+### ルートデバイスボリューム
 
-### コンソール画面の場合
+#### ▼ ルートデバイスボリュームとは
 
-#### ▼ 設定項目と説明
+Amazon EC2 では、ブロックデバイスにルートデバイスボリュームが紐づいている。
+
+複数のブロックデバイスを用意し、それぞれを異なるルートデバイスボリュームから紐付けることもできる。
+
+加えて、このブロックデバイスが、マウントポイントになるディレクトリ紐づいている。
+
+つまり Amazon EC2 が作成されると、ボリューム内に保管したファイルは、ブロックデバイスを経由して、マウントポイントのディレクトリ内に作成される。
+
+また反対に、マウント先ディレクトリ内に保管したファイルは、ルートデバイスボリューム内に保管される。
+
+複数のルートボリュームを紐付ける場合は、最大サイズの大きなルートボリュームに紐づくルートデバイスを、サイズが大きくなり得るディレクトリへマウントするようにしておく。
+
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html)
+> - [【 mountpoint 】コマンド――指定した場所がマウントポイントかどうかを調べる：Linux基本コマンドTips（186） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1802/23/news024.html)
+
+#### ▼ AWS EBS ボリューム
+
+![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_ebs-backed-instance.png)
+
+名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。
+
+AWS EBS で保管されているルートデバイスボリュームで、推奨の方法である。
+
+インスタンスストアボリュームとは異なり、コンピューティングとして動作する Amazon EC2 と、ストレージとして動作するルートデバイスボリュームが分離されている。
+
+そのため、Amazon EC2 が誤って削除されてしまったとしても、ボリュームは削除されずに、データを守れる。
+
+また、両者が分離されていないインスタンスボリュームと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
+
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts)
+> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#Using_RootDeviceStorage)
+
+#### ▼ インスタンスストアボリューム
+
+![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_instance-store-backed-instance.png)
+
+名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。
+
+インスタンスストアで保管されているルートデバイスボリュームで、非推奨の方法である。
+
+AWS EBS ボリュームとは異なり、コンピューティングとして動作する Amazon EC2 内にルートデバイスボリュームが存在している。
+
+そのため、インスタンスストアボリュームは、Amazon EC2 を削除すると一緒に削除されてしまう。
+
+> - [Root volumes for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/RootDeviceStorage.html#RootDeviceStorageConcepts)
+> - [AMI types and characteristics in Amazon EC2 - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ComponentsAMIs.html#storage-for-the-root-device)
+
+<br>
+
+### セットアップ (コンソールの場合)
+
+#### コンソール画面の場合
+
+##### ▼ 設定項目と説明
 
 <table>
   <thead>
@@ -1095,63 +1158,7 @@ AWS EBS ボリュームのコピーのこと。
 
 <br>
 
-### AWS SSM Session Manager を使用したログインシェル
-
-#### ▼ AWS SSM Session Manager を使用したログインシェル
-
-AWS SSM Session Manager を使用して Amazon EC2 に接続し、ログインシェルを起動する。
-
-![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png)
-
-> - [Session Manager を使って Private EC2 にアクセスする方法 - galife](https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html)
-> - [セッションマネージャー越しにSSHアクセスすると何が嬉しいのか \| DevelopersIO](https://dev.classmethod.jp/articles/ssh-through-session-manager/)
-
-#### ▼ systems-manager エージェント
-
-AWS Systems Manager を使用して Amazon EC2 に接続する場合、Amazon EC2 自体に systems-manager エージェントをインストールしておく必要がある。
-
-カスタム AMI であれば自身でインストールし、最適化された AWS AMI であれば事前にインストールされている。
-
-> - [Find AMIs with the SSM Agent preinstalled - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/ami-preinstalled-agent.html)
-
-#### ▼ Amazon VPC エンドポイントの作成
-
-<table>
-  <thead>
-    <tr>
-      <th>Amazon VPC エンドポイントの接続先</th>
-      <th>タイプ</th>
-      <th>プライベート DNS 名</th>
-      <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Amazon EC2</td>
-      <td>Interface</td>
-      <td><code>ec2messages.ap-northeast-1.amazonaws.com</code></td>
-      <td>ローカルマシンから Amazon EC2 にコマンドを送信するため。</td>
-    </tr>
-    <tr>
-      <td>AWS Systems Manager</td>
-      <td>Interface</td>
-      <td><code>ssm.ap-northeast-1.amazonaws.com</code></td>
-      <td>AWS Systems Manager のパラメーターストアに GET リクエストを送信するため。</td>
-    </tr>
-    <tr>
-      <td>Secrets Manager</td>
-      <td>Interface</td>
-      <td><code>ssmmessage.ap-northeast-1.amazonaws.com</code></td>
-      <td>Secrets Manager を使用するため。</td>
-    </tr>
-  </tbody>
-</table>
-
-> - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ec2-systems-manager-vpc-endpoints/
-
-<br>
-
-## 04. ENI：Elastic Network Interface
+## 10. ネットワーク接続
 
 ### ENI とは
 
@@ -1258,15 +1265,15 @@ Amazon VPC エンドポイントを経由すれば異なる Amazon VPC に送信
 
 <br>
 
-## 04-02. セカンダリーIP アドレス割り当て
+### セカンダリーIP アドレス割り当て
 
-### セカンダリーIP アドレス割り当てとは
+#### セカンダリーIP アドレス割り当てとは
 
 ENI に、プライマリー IP アドレスとは別の IP アドレスを追加で割り当てる。
 
 <br>
 
-### IP アドレス数
+#### IP アドレス数
 
 <table>
   <thead>
@@ -1289,9 +1296,9 @@ ENI に、プライマリー IP アドレスとは別の IP アドレスを追�
 
 <br>
 
-## 04-03. IPv4 Prefix delegation
+### IPv4 Prefix delegation
 
-### IPv4 Prefix delegation とは
+#### IPv4 Prefix delegation とは
 
 複数の CIDR (サブネット内の `*.*.*.*/28`) を ENI に割り当て、この ENI を Amazon EC2 に紐づける。
 
@@ -1326,7 +1333,7 @@ Amazon EC2 に紐づけた CIDR から IP アドレスを取得する。
 
 <br>
 
-### IP アドレス数
+#### IP アドレス数
 
 ENI に割り当てる CIDR (サブネット内の `*.*.*.*/28`) は、`16` 個の IP アドレスを持つ。
 
@@ -1336,7 +1343,7 @@ ENI には複数の CIDR を紐づけられるため、`16` 個の倍数だけ�
 
 <br>
 
-### CIDR (サブネット内の `*.*.*.*/28`) の事前予約
+#### CIDR (サブネット内の `*.*.*.*/28`) の事前予約
 
 ENI に CIDR を手動/自動で割り当てるとき、サブネット内に断片化されていない `*.*.*.*/28` がないと、`InsufficientCidr` というエラーになる。
 
@@ -1356,13 +1363,13 @@ CIDR 内のセカンダリープライベート IP アドレスが使用中で�
 
 <br>
 
-### 外部のサブネットから IP アドレスを拝借する
+#### 外部のサブネットから IP アドレスを拝借する
 
 > - [Custom Networking - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/custom-networking/)
 
 <br>
 
-### CIDR の断片化の確認
+#### CIDR の断片化の確認
 
 ツールを使用して、CIDR が断片化されているかを確認するとよい。
 

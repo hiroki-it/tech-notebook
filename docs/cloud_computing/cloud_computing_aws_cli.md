@@ -14,11 +14,19 @@ tags:
 
 <br>
 
-## 01. AWS CLI のセットアップ
+## 01. 概要
 
-### configure
+## 02. 仕組み
 
-#### ▼ configure
+## 03. セットアップ
+
+### Terraformによる構築
+
+### AWS CLI の初期設定
+
+#### configure
+
+##### ▼ configure
 
 資格情報を設定する。
 
@@ -28,7 +36,7 @@ OS によって、資格情報ファイルの配置場所が異なる。
 $ aws configure
 ```
 
-#### ▼ --profile
+##### ▼ --profile
 
 プロファイルを新しく作成する。
 
@@ -45,9 +53,9 @@ Default output format [None]: <アウトプット形式>
 
 <br>
 
-### list
+#### list
 
-#### ▼ list とは
+##### ▼ list とは
 
 現在設定されている資格情報を取得する。
 
@@ -57,9 +65,9 @@ $ aws configure list
 
 <br>
 
-### set
+#### set
 
-#### ▼ set とは
+##### ▼ set とは
 
 資格情報の特定の項目を設定する。
 
@@ -89,7 +97,7 @@ $ aws configure set aws_default_region "<リージョン名>"
 
 <br>
 
-## 01-02. 設定ファイル
+## 04. プロファイルの設定ファイル
 
 ### `~/.aws/confidentials` ファイル
 
@@ -201,7 +209,7 @@ source_profile = default
 
 <br>
 
-## 01-03. 環境変数
+## 05. 環境変数による設定
 
 ### AWS_ACCESS_KEY_ID
 
@@ -273,7 +281,7 @@ $ export AWS_SESSION_TOKEN=<セッショントークン>
 
 <br>
 
-## 02. 返却データの出力方法の制御
+## 06. 返却データの出力制御
 
 ### 形式系
 
@@ -416,7 +424,7 @@ $ aws ec2 describe-instances \
 
 <br>
 
-## 03. AWS リソース別のプラクティス
+## 07. AWS リソースの操作
 
 ### グローバルオプション
 
@@ -874,7 +882,7 @@ $ aws ec2 revoke-security-group-ingress \
 
 <br>
 
-## 04. 認証/認可の手法
+## 08. 認証とリクエスト制限
 
 ### SSO
 

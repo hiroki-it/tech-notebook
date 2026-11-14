@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. AWS WAF とは：Web Application Firewall
+## 01. 概要
+
 
 `L7` (アプリケーション層) に対するサイバー攻撃を防御する。
 
@@ -68,9 +69,11 @@ tags:
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
+## 02. 仕組み
 
-## 2-02. セットアップ (Terraform の場合)
+## 03. セットアップ
+
+### Terraformによる構築
 
 ```terraform
 resource "aws_wafv2_web_acl" "foo" {
@@ -117,7 +120,7 @@ resource "aws_wafv2_web_acl_association" "foo" {
 }
 ```
 
-### 設定項目
+## 04. Web ACL とルールの構成
 
 <table>
   <thead>
@@ -158,7 +161,7 @@ resource "aws_wafv2_web_acl_association" "foo" {
 
 <br>
 
-### Web ACLs
+### Web ACL の設定
 
 <table>
   <thead>
@@ -192,7 +195,7 @@ resource "aws_wafv2_web_acl_association" "foo" {
   </tbody>
 </table>
 
-### Overview における Sampled requests の見方
+## 05. リクエスト検査結果の確認
 
 『すべてのルール』または『各ルール』のアクセス許可/拒否の履歴を確認できる。
 
@@ -224,9 +227,9 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 <br>
 
-### ルール
+## 06. リクエスト検査ルール
 
-#### ▼ ルールの種類
+### ▼ ルールの種類
 
 <table>
   <thead>
@@ -255,11 +258,11 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
   </tbody>
 </table>
 
-#### ▼ ルールの粒度のコツ
+### ▼ ルールの粒度のコツ
 
 わかりやすさの観点から、できる限り設定するステートメントを少なくし、`1` 個のルールに `1` 個の意味合いのみを持たせるように命名する。
 
-#### ▼ Count (検知) モード
+### ▼ Count (検知) モード
 
 ルールに該当するリクエスト数を数え、許可/拒否せずに次のルールを検証する。
 
@@ -267,7 +270,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 > - [WafCharmの COUNT/BLOCK Actionの追跡方法 \| Oji-Cloud](https://oji-cloud.net/2020/09/18/post-5501/)
 
-#### ▼ ルールグループアクションの上書き
+### ▼ ルールグループアクションの上書き
 
 ルールの Count モードを有効化している場合、Count アクションに続けて、そのルールに設定されていた元のアクションを実行する。
 
@@ -312,7 +315,7 @@ Cookie: sessionid=<セッションID>; _gid=<GoogleAnalytics値>; __ulfpc=<Googl
 
 > - [Overriding rule group actions in AWS WAF - AWS WAF, AWS Firewall Manager, AWS Shield Advanced, and AWS Shield network security director](https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html)
 
-#### ▼ セキュリティグループとの関係
+### ▼ セキュリティグループとの関係
 
 AWS WAF を紐付けられるリソースにセキュリティグループも紐付けている場合、セキュリティグループのルールが先に検証される。
 
@@ -324,9 +327,9 @@ AWS WAF を紐付けられるリソースにセキュリティグループも紐
 
 <br>
 
-### ログ
+## 07. 検査ログ
 
-#### ▼ マネージドルールのログ
+### ▼ マネージドルールのログ
 
 AWS WAF マネージドルールを採用している場合、マネージドルールが `ruleGroupList` キーに配列として格納されている。
 
@@ -372,7 +375,7 @@ AWS WAF マネージドルールを採用している場合、マネージドル
 }
 ```
 
-### クオータ
+## 08. クオータ
 
 定義できるルール数や文字数に制限がある。
 

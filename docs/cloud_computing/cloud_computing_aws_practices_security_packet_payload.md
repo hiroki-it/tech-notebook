@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. ネットワークレイヤー
+## 01. 概要
+
 
 ### OSI 層と AWS リソースの対応関係
 
@@ -73,9 +74,11 @@ AWS リソースごとにセキュリティを考慮する。
 
 <br>
 
-## 02. `L2` の防御
+## 02. 仕組み
 
-### `L2` の防御方法
+### L2 における防御の考え方
+
+#### `L2` の防御方法
 
 `L2` の攻撃を Amazon VPC やプライベートサブネットで防御する。
 
@@ -89,7 +92,33 @@ AWS リソースごとにセキュリティを考慮する。
 
 <br>
 
-### 推奨される CIDR ブロック
+### L3 における防御の考え方
+
+#### `L3` の防御方法
+
+`L3` の攻撃をセキュリティグループや Transit Gateway で防御する。
+
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
+
+<br>
+
+### L7 における防御の考え方
+
+#### `L7` の防御方法
+
+`L7` の攻撃を AWS WAF や Certificate Manager で防御する。
+
+代わりに、アプリケーションの実装で防御してもよい。
+
+> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
+
+<br>
+
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. CIDR によるアドレス管理
 
 `1` 個の Amazon VPC 内には複数のサブネットが入る。
 
@@ -131,9 +160,9 @@ RFC1918 では、以下の CIDR ブロックが推奨である。
 
 <br>
 
-### Amazon VPC による防御
+## 05. VPC によるネットワーク分離
 
-#### ▼ Amazon VPC 全体の CIDR ブロック
+### ▼ Amazon VPC 全体の CIDR ブロック
 
 あらかじめ、社内にある全アプリケーションの CIDR ブロックをスプレッドシートなどで一括管理しておく。
 
@@ -151,15 +180,15 @@ RFC1918 では、以下の CIDR ブロックが推奨である。
 
 <br>
 
-### サブネットによる防御
+## 06. サブネットによるネットワーク分離
 
-#### ▼ サブネット分割のメリット
+### ▼ サブネット分割のメリット
 
 サブネットを分割することにより、他のサブネットで発生したネットワーク障害の影響を防いだり、サブネット間のアクセスを制限できる。
 
 > - https://www.dot-plus.com/cloud-service/aws/2611/
 
-#### ▼ 各サブネットの CIDR ブロック
+### ▼ 各サブネットの CIDR ブロック
 
 Amazon VPC の IP アドレスの最初から、パブリックサブネットとプライベートサブネットを割り当てる。
 
@@ -209,7 +238,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 > - https://d0.awsstatic.com/events/jp/2017/summit/slide/D2T3-5.pdf
 > - [Amazon VPC設計時に気をつけたい基本の5のこと \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-vpc-5-tips/)
 
-#### ▼ アクセスタイプ別の命名
+### ▼ アクセスタイプ別の命名
 
 パブリックネットワークとの通信の遮断具合から名前をつける。
 
@@ -248,7 +277,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 > - [AWS はじめてのネットワーク構築 1 – ほのぼの万事屋 \| ほのぼの万事屋](https://mihono-bourbon.com/aws-network-1/)
 
-#### ▼ コンポーネントタイプ別の命名
+### ▼ コンポーネントタイプ別の命名
 
 ![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png)
 
@@ -285,13 +314,13 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 <br>
 
-### ルートテーブルによる防御
+## 07. ルーティングの制御
 
 サブネットに紐付けるルートテーブルの宛先を制限することで、サブネット内のリクエストを Amazon VPC 内に閉じるか、パブリックネットワークに公開するかを制御できる。
 
 ![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png)
 
-#### ▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合
+### ▼ プライベートサブネットのリクエストをパブリックネットワークに公開する場合
 
 上の図中で、サブネット `3` にはルートテーブル `2` が紐付けられている。
 
@@ -318,7 +347,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
   </tbody>
 </table>
 
-#### ▼ プライベートサブネットのリクエストを Amazon VPC 内に閉じる場合
+### ▼ プライベートサブネットのリクエストを Amazon VPC 内に閉じる場合
 
 上の図中で、サブネット `2` にはルートテーブル 1 が紐付けられている。
 
@@ -341,7 +370,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
   </tbody>
 </table>
 
-#### ▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合
+### ▼ プライベートサブネットのリクエストを同一サブネット内に閉じる場合
 
 プライベートサブネットでネットワークを完全に閉じる場合、ルートテーブルにサブネットの CIDR ブロックを設定する。
 
@@ -364,17 +393,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 <br>
 
-## 03. `L3` の防御
-
-### `L3` の防御方法
-
-`L3` の攻撃をセキュリティグループや Transit Gateway で防御する。
-
-> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
-
-<br>
-
-## 03-02. セキュリティグループ
+## 08. セキュリティグループによる通信制御
 
 ### セキュリティグループによる防御
 
@@ -649,7 +668,7 @@ AWS ALB から Amazon EC2 にリクエストをルーティングする場合、
 
 <br>
 
-## 03-03. Transit Gateway
+## 09. Transit Gateway による接続
 
 ### Transit Gateway による防御
 
@@ -657,19 +676,7 @@ AWS データセンター間の通信で使用する Transit Gateway であれ�
 
 <br>
 
-## 04. `L7` の防御
-
-### `L7` の防御方法
-
-`L7` の攻撃を AWS WAF や Certificate Manager で防御する。
-
-代わりに、アプリケーションの実装で防御してもよい。
-
-> - [Infrastructure protection - AWS Well-Architected Framework](https://docs.aws.amazon.com/wellarchitected/2023-10-03/framework/sec-infrastructure.html)
-
-<br>
-
-## 04-02. AWS WAF
+## 10. AWS WAF によるリクエスト検査
 
 ### AWS WAF による防御
 
@@ -998,7 +1005,7 @@ AWS が事前に用意している防御ルールで、よくある `L7` に対�
 
 <br>
 
-## 04-03. Certificate Manager
+## 11. サーバー証明書の管理
 
 ### Certificate Manager による防御
 
@@ -1012,7 +1019,7 @@ AWS が事前に用意している防御ルールで、よくある `L7` に対�
 
 <br>
 
-## 04-04. AWS Systems Manager
+## 12. Systems Manager による接続
 
 ### AWS Systems Manager による防御
 

@@ -15,7 +15,7 @@ tags:
 
 <br>
 
-## 01. Amazon Route 53 とは
+## 01. 概要
 
 クラウド DNS サーバーとして働く。
 
@@ -27,9 +27,59 @@ tags:
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### コンソール画面の場合
+![Amazon Route 53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png)
+
+1. クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。キャッシュが無ければ、クライアント PC はドメイン名をキャッシュ DNS サーバーに問い合わせる。
+
+2. キャッシュ DNS サーバーは、IP アドレスのキャッシュを検索する。キャッシュが無ければ、キャッシュ DNS サーバーはドメイン名を DNS サーバーに問い合わせる。
+
+3. Amazon Route 53 は、IP アドレスのキャッシュを検索する。キャッシュが無ければ、Amazon Route 53 は IP アドレスを検索する。また、キャッシュ DNS サーバーにこれを返却する。
+
+    <table>
+      <thead>
+    <tr>
+      <th style="text-align:center">ドメイン名</th>
+      <th style="text-align:center">Amazon Route 53 による変換</th>
+      <th style="text-align:center">IP アドレス</th>
+    </tr>
+      </thead>
+      <tbody>
+    <tr>
+      <td style="text-align:center"><code>http://www.example.com</code></td>
+      <td style="text-align:center">⇄</td>
+      <td style="text-align:center"><code>203.142.205.139</code></td>
+    </tr>
+      </tbody>
+    </table>
+
+4. キャッシュ DNS サーバーは、IP アドレスを NAT に返却する。このとき、IP アドレスのネットワーク間変換が起こる。
+
+5. NAT は、IP アドレスをクライアント PC に返却する。
+
+6. クライアント PC は、返却された IP アドレスに基づいて Web ページにリクエストを送信する。
+
+<br>
+## 03. セットアップ
+
+### Terraformによる構築
+
+
+### 外部ドメインの初期設定
+
+ドメインを購入したドメインレジストラが、ドメイン名を名前解決する。
+
+そのため、AWS 以外 (例：お名前ドットコム) でドメインを購入した場合、Amazon Route 53 の NS レコード値を、ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある。
+
+これにより、ドメインレジストラに対して IP アドレスの問い合わせがあった場合、Amazon Route 53 の NS レコード値が DNS サーバーへレスポンスされるようになる。
+
+DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 は DNS サーバーとして動作し、アプリケーションの IP アドレスをレスポンスする。
+
+一方で逆も同様で、AWS 以外のシステムのドメインを Amazon Route 53 で購入した場合、そのシステムの NS レコードを Amazon Route 53 へ登録することになる。
+
+
+## 04. ホストゾーンと DNS レコードの設定
 
 <table>
   <thead>
@@ -52,15 +102,15 @@ tags:
 
 <br>
 
-### DNS レコード
+## 05. DNS レコードによる名前解決
 
-#### ▼ DNS レコードとは
+### ▼ DNS レコードとは
 
 各ホストゾーンにドメインの名前解決方法を定義した DNS レコードを設定する。
 
 > - [How internet traffic is routed to your website or web application - Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure)
 
-#### ▼ DNS レコードタイプの種類
+### ▼ DNS レコードタイプの種類
 
 <table>
   <thead>
@@ -111,7 +161,7 @@ tags:
   </tbody>
 </table>
 
-#### ▼ AWS リソースの DNS 名、ドメイン名、エンドポイント名
+### ▼ AWS リソースの DNS 名、ドメイン名、エンドポイント名
 
 ![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
 
@@ -154,19 +204,7 @@ tags:
   </tbody>
 </table>
 
-#### ▼ AWS 以外でドメインを購入した場合
-
-ドメインを購入したドメインレジストラが、ドメイン名を名前解決する。
-
-そのため、AWS 以外 (例：お名前ドットコム) でドメインを購入した場合、Amazon Route 53 の NS レコード値を、ドメインを実際に購入したサービスのドメインレジストラに登録する必要がある。
-
-これにより、ドメインレジストラに対して IP アドレスの問い合わせがあった場合、Amazon Route 53 の NS レコード値が DNS サーバーへレスポンスされるようになる。
-
-DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 は DNS サーバーとして動作し、アプリケーションの IP アドレスをレスポンスする。
-
-一方で逆も同様で、AWS 以外のシステムのドメインを Amazon Route 53 で購入した場合、そのシステムの NS レコードを Amazon Route 53 へ登録することになる。
-
-#### ▼ DNS キャッシュ
+### DNS キャッシュ
 
 ルートサーバーは世界に 13 機しか存在しておらず、現実的には、世界中から届く名前解決リクエストをすべて処理できない。
 
@@ -176,30 +214,30 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 <br>
 
-### リゾルバー
+## 06. リゾルバーによる名前解決
 
-#### ▼ リゾルバーとは
+### ▼ リゾルバーとは
 
 Amazon VPC 内のリソースからの DNS クエリに応答し、プライベートホストゾーンのドメイン名やパブリックなドメイン名を名前解決する。
 
 <br>
 
-### ルーティングポリシー
+## 07. DNS ルーティング
 
-#### ▼ ルーティングポリシーとは
+### ▼ ルーティングポリシーとは
 
 ドメイン名の名前解決ルールを設定する。
 
 > - [Choosing a routing policy - Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
 > - [Amazon Route 53のルーティングがすごすぎる件](https://zenn.dev/seyama/articles/02118b0914183e)
 
-#### ▼ シンプル
+### ▼ シンプル
 
 ドメイン名に単一の IP アドレスを紐付けられる。
 
 ドメインの名前解決では、単一の IP アドレスが返却される。
 
-#### ▼ 複数値回答
+### ▼ 複数値回答
 
 ドメイン名に複数の IP アドレスを紐付けられる。
 
@@ -207,7 +245,7 @@ Amazon VPC 内のリソースからの DNS クエリに応答し、プライベ�
 
 ヘルスチェック機能を持つラウンドロビン方式と言い換えてもよい。
 
-#### ▼ 加重
+### ▼ 加重
 
 ドメイン名に複数の IP アドレスを紐付けられる。
 
@@ -250,40 +288,5 @@ Amazon VPC 内のリソースからの DNS クエリに応答し、プライベ�
 ![aws_route53_routing-policy_weighted-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
 
 > - [AWS Route53の加重ルーティング機能で本番インフラを無停止・段階的にECS環境に移行する - 弥生開発者ブログ](https://tech-blog.yayoi-kk.co.jp/entry/2021/12/06/000000)
-
-<br>
-
-## 03 Amazon Route 53 + DNS サーバーによる名前解決の仕組み
-
-![Amazon Route 53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png)
-
-1. クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。キャッシュが無ければ、クライアント PC はドメイン名をキャッシュ DNS サーバーに問い合わせる。
-
-2. キャッシュ DNS サーバーは、IP アドレスのキャッシュを検索する。キャッシュが無ければ、キャッシュ DNS サーバーはドメイン名を DNS サーバーに問い合わせる。
-
-3. Amazon Route 53 は、IP アドレスのキャッシュを検索する。キャッシュが無ければ、Amazon Route 53 は IP アドレスを検索する。また、キャッシュ DNS サーバーにこれを返却する。
-
-    <table>
-      <thead>
-    <tr>
-      <th style="text-align:center">ドメイン名</th>
-      <th style="text-align:center">Amazon Route 53 による変換</th>
-      <th style="text-align:center">IP アドレス</th>
-    </tr>
-      </thead>
-      <tbody>
-    <tr>
-      <td style="text-align:center"><code>http://www.example.com</code></td>
-      <td style="text-align:center">⇄</td>
-      <td style="text-align:center"><code>203.142.205.139</code></td>
-    </tr>
-      </tbody>
-    </table>
-
-4. キャッシュ DNS サーバーは、IP アドレスを NAT に返却する。このとき、IP アドレスのネットワーク間変換が起こる。
-
-5. NAT は、IP アドレスをクライアント PC に返却する。
-
-6. クライアント PC は、返却された IP アドレスに基づいて Web ページにリクエストを送信する。
 
 <br>

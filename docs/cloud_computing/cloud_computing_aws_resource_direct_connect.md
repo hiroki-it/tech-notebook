@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Direct Connect とは
+## 01. 概要
+
 
 専用線方式の WAN として動作し、AWS 側の単一のプライベートネットワーク (Amazon VPC) と、ユーザー側のプライベートネットワーク (例：オンプレミス) の間を接続する。
 
@@ -29,9 +30,15 @@ tags:
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### アタッチメント
+## 03. セットアップ
+
+### Terraformによる構築
+
+### 専用線の接続構成
+
+#### アタッチメント
 
 DirectConnect と他 AWS リソースを接続する。
 
@@ -39,7 +46,7 @@ DirectConnect と他 AWS リソースを接続する。
 
 <br>
 
-### DirectConnect Gateway
+#### DirectConnect Gateway
 
 DirectConnect と複数のプライベートネットワーク (Amazon VPC) をアタッチメントで接続する。
 
@@ -50,7 +57,7 @@ TransitGateway が必要になるため、各 Amazon VPC 上にそのための�
 
 <br>
 
-## 03. アプリケーションデータの暗号化
+## 04. 通信データの暗号化
 
 ### IPSec
 

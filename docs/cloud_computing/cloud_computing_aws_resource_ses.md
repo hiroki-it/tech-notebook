@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Amazon SES：Simple Email Service
+## 01. 概要
+
 
 ### Amazon SES とは
 
@@ -25,78 +26,11 @@ tags:
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
+## 02. 仕組み
 
-### 設定項目と説明
+## 03. セットアップ
 
-![Amazon SES とは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon SES とは.png)
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Domain</td>
-      <td>Amazon SES のドメイン名を設定する。</td>
-      <td>設定したドメイン名には、『<code>10 inbound-smtp.us-east-1.amazonaws.com</code>』という MX レコードタイプの値が紐付く。</td>
-    </tr>
-    <tr>
-      <td>Email Addresses</td>
-      <td>宛先として認証するメールアドレスを設定する。設定すると AWS からメールが届くため、指定されたリンクをクリックする。</td>
-      <td>Sandbox モードのときだけ動作する。</td>
-    </tr>
-    <tr>
-      <td>Sending Statistics</td>
-      <td>Amazon SES で収集したデータをメトリクスで確認できる。</td>
-      <td><code>Request Increased Sending Limits</code> のリンクにて、Sandbox モードの解除を申請できる。</td>
-    </tr>
-    <tr>
-      <td>SMTP Settings</td>
-      <td>SMTP-AUTH の接続情報を確認できる。</td>
-      <td>アプリケーションの <code>25</code> 番ポートは送信制限があるため、<code>465</code> 番ポートを使用する。これに合わせて、Amazon SES も受信で <code>465</code> 番ポートを使用する。</td>
-    </tr>
-    <tr>
-      <td>Rule Sets</td>
-      <td>メールの受信したトリガーとして実行するアクションを設定できる。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>IP Address Filters</td>
-      <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-### Rule Sets
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Recipiet</td>
-      <td>受信したメールアドレスで、何の宛先のときにこれを許可するかを設定する。</td>
-    </tr>
-    <tr>
-      <td>Actions</td>
-      <td>受信を許可した後に、これをトリガーとして実行するアクションを設定する。</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-## 03. セットアップ (Terraform の場合)
+### Terraformによる構築
 
 ```terraform
 resource "aws_sesv2_configuration_set" "foo" {
@@ -197,9 +131,7 @@ resource "aws_route53_record" "ses_dmarc_foo" {
 
 <br>
 
-## 04. 仕様上の制約
-
-### 作成リージョンの制約
+### リージョンの選択
 
 Amazon SES は連携する AWS リソースと同じリージョンに作成しなければならない。
 
@@ -232,7 +164,76 @@ Sandbox モードでは以下の制限がかかっており。
 
 <br>
 
-## 05. メール送信イベントと通知
+## 04. メールの送受信設定
+
+![Amazon SES とは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon SES とは.png)
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Domain</td>
+      <td>Amazon SES のドメイン名を設定する。</td>
+      <td>設定したドメイン名には、『<code>10 inbound-smtp.us-east-1.amazonaws.com</code>』という MX レコードタイプの値が紐付く。</td>
+    </tr>
+    <tr>
+      <td>Email Addresses</td>
+      <td>宛先として認証するメールアドレスを設定する。設定すると AWS からメールが届くため、指定されたリンクをクリックする。</td>
+      <td>Sandbox モードのときだけ動作する。</td>
+    </tr>
+    <tr>
+      <td>Sending Statistics</td>
+      <td>Amazon SES で収集したデータをメトリクスで確認できる。</td>
+      <td><code>Request Increased Sending Limits</code> のリンクにて、Sandbox モードの解除を申請できる。</td>
+    </tr>
+    <tr>
+      <td>SMTP Settings</td>
+      <td>SMTP-AUTH の接続情報を確認できる。</td>
+      <td>アプリケーションの <code>25</code> 番ポートは送信制限があるため、<code>465</code> 番ポートを使用する。これに合わせて、Amazon SES も受信で <code>465</code> 番ポートを使用する。</td>
+    </tr>
+    <tr>
+      <td>Rule Sets</td>
+      <td>メールの受信したトリガーとして実行するアクションを設定できる。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>IP Address Filters</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+## 05. メール受信ルール
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Recipiet</td>
+      <td>受信したメールアドレスで、何の宛先のときにこれを許可するかを設定する。</td>
+    </tr>
+    <tr>
+      <td>Actions</td>
+      <td>受信を許可した後に、これをトリガーとして実行するアクションを設定する。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+## 06. メール送信イベントと通知
 
 ### イベントの種類
 
@@ -274,7 +275,7 @@ SES ---> CloudWatch ---> SNS ---> Lambda ---> Slack
 
 <br>
 
-## 06. SMTP-AUTH
+## 07. SMTP 認証
 
 ### AWS における SMTP-AUTH の仕組み
 
@@ -288,7 +289,7 @@ SES ---> CloudWatch ---> SNS ---> Lambda ---> Slack
 
 <br>
 
-## 07. スパム対策用
+## 08. スパム判定への対処
 
 特定の送信元 IP から大量のメールを送信すると、スパムな IP アドレスであると自動的に判定されてしまうことがある。
 

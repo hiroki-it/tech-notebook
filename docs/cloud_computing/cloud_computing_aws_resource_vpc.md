@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Amazon VPC とは：Virtual Private Cloud
+## 01. 概要
+
 
 クラウドプライベートネットワークとして働く。
 
@@ -32,9 +33,15 @@ EKS の場合、Amazon VPC (`L3`) 上に Amazon VPC CNI を配置することに
 
 <br>
 
-### Amazon VPC 内の IP アドレス
+## 02. 仕組み
 
-#### ▼ IP アドレスの種類
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. IP アドレスの割り当て
+
+### ▼ IP アドレスの種類
 
 <table>
   <thead>
@@ -74,7 +81,7 @@ EKS の場合、Amazon VPC (`L3`) 上に Amazon VPC CNI を配置することに
 > - [EC2 における Public IP と Elastic IPの違いに関して](https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html)
 > - https://qiita.com/masato930/items/ba242f0171a76ce0994f
 
-#### ▼ DNS 名の割り当て
+### ▼ DNS 名の割り当て
 
 Amazon VPC 内で作成されたインスタンスにはパブリック IP アドレスが自動的に割り当てられるが、IP アドレスにマッピングされた DNS 名を持たない。
 
@@ -83,7 +90,7 @@ Amazon VPC 内で作成されたインスタンスにはパブリック IP ア�
 > - [DNS attributes for your VPC - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support)
 > - [DNS attributes for your VPC - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating)
 
-#### ▼ 紐付け
+### ▼ 紐付け
 
 <table>
   <thead>
@@ -106,7 +113,7 @@ Amazon VPC 内で作成されたインスタンスにはパブリック IP ア�
 
 <br>
 
-## 02. Amazon VPC サブネット
+## 05. サブネットによるネットワーク分割
 
 ### Amazon VPC サブネットとは
 
@@ -132,7 +139,7 @@ LAN 内の内部ネットワークに相当する。
 
 <br>
 
-## 03. Network ACL：Network Access Control List
+## 06. ネットワーク ACL による通信制御
 
 ### Network ACL とは
 
@@ -218,7 +225,7 @@ LAN 内の内部ネットワークに相当する。
 
 <br>
 
-## 04. ルートテーブル
+## 07. ルートテーブルによる経路制御
 
 ### ルートテーブルとは
 
@@ -261,7 +268,7 @@ Amazon VPC の作成時に自動的に作成される。
 
 <br>
 
-## 05. Amazon VPC エンドポイント
+## 08. VPC エンドポイントによる接続
 
 ### Amazon VPC エンドポイントとは
 
@@ -313,7 +320,7 @@ Amazon S3、DynamoDB のみ
 
 <br>
 
-## 06. Internet Gateway
+## 09. インターネットゲートウェイ
 
 ### Internet Gateway とは
 
@@ -355,7 +362,7 @@ Internet Gateway の SNAT 処理では、Amazon VPC 内からリクエストを�
 
 <br>
 
-## 06-02. AWS NAT Gateway
+## 10. NAT ゲートウェイ
 
 ### AWS NAT Gateway とは
 
@@ -393,7 +400,7 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 <br>
 
-## 06-03. NAT Amazon EC2 インスタンス
+## 11. NAT インスタンス
 
 ### NAT Amazon EC2 インスタンスとは
 
@@ -404,7 +411,7 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 <br>
 
-## 07. Amazon VPC 間、Amazon VPC-オンプレミス間の通信
+## 12. VPC 間およびオンプレミスとの接続
 
 ### Amazon VPC ピアリング接続
 
@@ -576,7 +583,7 @@ Amazon EC2、Amazon ECS、Amazon EKS、AWS Lambda 間を接続する。
 
 <br>
 
-## 08. Amazon VPC フローログ
+## 13. フローログ
 
 Amazon VPC 内の ENI を通過するパケットをキャプチャできる。
 
@@ -591,7 +598,7 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 <br>
 
-## 09. セキュリティグループ
+## 14. セキュリティグループによる通信制御
 
 ### セキュリティグループとは
 
@@ -603,9 +610,9 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 <br>
 
-## 09-02. セットアップ
+### セキュリティグループの設定
 
-### コンソール画面の場合
+#### コンソール画面の場合
 
 リクエストを許可するルールとアウトバウンドルールを設定できる。
 
@@ -615,9 +622,9 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 <br>
 
-### 送信元 IP アドレスの指定
+#### 送信元 IP アドレスの指定
 
-#### ▼ セキュリティグループ ID の紐付け
+##### ▼ セキュリティグループ ID の紐付け
 
 許可する送信元 IP アドレスにセキュリティグループ ID を設定した場合、そのセキュリティグループが紐付けられている ENI と、この ENI に紐付けられたリソースからのトラフィックを許可できる。
 
@@ -625,7 +632,7 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 > - https://docs.aws.amazon.com/vpc/latest/userguide/Amazon VPC_SecurityGroups.html#DefaultSecurityGroup
 
-#### ▼ 自己参照
+##### ▼ 自己参照
 
 許可する送信元 IP アドレスに、自分自身のセキュリティグループ ID を設定した場合、同じセキュリティグループが紐付けられている同士で通信できるようになる。
 

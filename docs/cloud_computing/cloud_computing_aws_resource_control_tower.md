@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Control Tower とは
+## 01. 概要
+
 
 Control Tower は、AWS Organizations、IdentityCenter (AWS SSO の後継)、Account Factory、AWS Config、AWS CloudTrail を一括で作成する。
 
@@ -26,7 +27,8 @@ Control Tower は、AWS Organizations、IdentityCenter (AWS SSO の後継)、Acc
 
 <br>
 
-## 02. Control Tower の仕組み
+## 02. 仕組み
+
 
 ### AWS Organizations
 
@@ -37,3 +39,6 @@ AWS Organizations の CreateAccount-API をコールして、AWS アカウント
 既存のアカウントを Control Tower に移行する場合、既存のアカウントで作成された IAM ユーザーと IAM グループが不要になるため、これらを削除する必要がある。
 
 <br>
+## 03. セットアップ
+
+### Terraformによる構築

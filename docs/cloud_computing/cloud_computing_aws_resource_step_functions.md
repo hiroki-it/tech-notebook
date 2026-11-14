@@ -15,21 +15,26 @@ tags:
 
 <br>
 
-## 01. Step Functions とは
+## 01. 概要
+
 
 AWS サービスを組み合わせて、ワークフローエンジンを作成できる。
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### AWS リソースの API コール
+## 03. セットアップ
 
-#### ▼ API コールできるリソース
+### Terraformによる構築
+
+## 04. AWS リソースの API 呼び出し
+
+### ▼ API コールできるリソース
 
 > - https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
-#### ▼ AWS Lambda
+### ▼ AWS Lambda
 
 ```json
 {
@@ -60,9 +65,9 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 <br>
 
-### Amazon API Gateway との連携
+## 05. API Gateway との連携
 
-#### ▼ 注意が必要な項目
+### ▼ 注意が必要な項目
 
 <table>
   <thead>
@@ -107,7 +112,7 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 }
 ```
 
-#### ▼ レスポンス構造
+### ▼ レスポンス構造
 
 以下がレスポンスされれば、Amazon API Gateway が Step Functions をコールできたことになる。
 

@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Amazon ElastiCache とは
+## 01. 概要
+
 
 アプリケーションの代わりに、セッション、クエリキャッシュ、分散ロックなどを管理する。
 
@@ -26,17 +27,68 @@ Redis と Memcached がある。
 
 <br>
 
-## 02. Amazon ElastiCache for Redis
+### Redis エンジン
 
-### Amazon ElastiCache for Redis とは
+#### Amazon ElastiCache for Redis とは
 
 Redis をキャッシュエンジンとして使用し、インメモリデータストアをフルマネージドで提供する。
 
 <br>
 
-## 02-02. セットアップ
+## 02. 仕組み
 
-### コンソール画面の場合
+### クラスター
+
+#### ▼ Redis クラスターとは
+
+複数の Redis ノードを持つ Redis シャードから構成されている。
+
+`1` 個のリクエストを処理するグループ単位である。
+
+![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png)
+
+> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
+> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Clusters
+
+#### ▼ クラスターモード
+
+クラスターモードを有効化すると、Redis クラスター内に複数の Redis シャードを作成する。
+
+反対に無効化すると、シャードは `1` 個だけ作成される。
+
+> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
+
+<br>
+
+### シャード
+
+#### ▼ Redis シャードとは
+
+Redis ノードのグループであり、処理の実行単位でもある。
+
+同じデータを保管するグループ単位であり、プライマリーノードとレプリカノードが含まれる。
+
+同じ Redis シャード内にある Redis ノード間では、セッションやクエリキャッシュが同期される。
+
+一方で、Amazon Aurora の DB クラスターはこれに相当する概念である。
+
+> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
+
+<br>
+
+### ノード
+
+#### ▼ Redis ノードとは
+
+セッションやクエリキャッシュを保管するインスタンスのこと。
+
+<br>
+
+## 03. セットアップ
+
+### Terraformによる構築
+
+### Redis クラスターの初期設定
 
 #### ▼ 設定項目と説明
 
@@ -114,56 +166,9 @@ Redis をキャッシュエンジンとして使用し、インメモリデー�
 
 <br>
 
-### Redis クラスター
+## 04. セッション情報の保管
 
-#### ▼ Redis クラスターとは
-
-複数の Redis ノードを持つ Redis シャードから構成されている。
-
-`1` 個のリクエストを処理するグループ単位である。
-
-![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png)
-
-> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
-> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Clusters
-
-#### ▼ クラスターモード
-
-クラスターモードを有効化すると、Redis クラスター内に複数の Redis シャードを作成する。
-
-反対に無効化すると、シャードは `1` 個だけ作成される。
-
-> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.ReplicationGroups
-
-<br>
-
-### Redis シャード
-
-#### ▼ Redis シャードとは
-
-Redis ノードのグループであり、処理の実行単位でもある。
-
-同じデータを保管するグループ単位であり、プライマリーノードとレプリカノードが含まれる。
-
-同じ Redis シャード内にある Redis ノード間では、セッションやクエリキャッシュが同期される。
-
-一方で、Amazon Aurora の DB クラスターはこれに相当する概念である。
-
-> - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Shards
-
-<br>
-
-### Redis ノード
-
-#### ▼ Redis ノードとは
-
-セッションやクエリキャッシュを保管するインスタンスのこと。
-
-<br>
-
-### セッション管理機能
-
-#### ▼ セッション管理機能とは
+### ▼ セッション管理機能とは
 
 アプリケーションがセッション ID を管理する代わりに、セッション ID を管理する。
 
@@ -171,7 +176,7 @@ Redis ノードのグループであり、処理の実行単位でもある。
 
 ![Amazon ElastiCache のセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon ElastiCache のセッション管理機能.png)
 
-#### ▼ Amazon ElastiCache を使用しない場合
+### ▼ Amazon ElastiCache を使用しない場合
 
 アプリケーションが特にコンテナの場合、アプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナが他のコンテナにセッションデータを引き継げず、スケールイン/スケールアウトしてしまう。
 
@@ -179,9 +184,9 @@ Redis ノードのグループであり、処理の実行単位でもある。
 
 <br>
 
-### クエリキャッシュ管理機能
+## 05. クエリキャッシュ
 
-#### ▼ クエリキャッシュ管理機能とは
+### ▼ クエリキャッシュ管理機能とは
 
 Amazon RDS に対する SQL と読み出されたデータを、キャッシュとして管理する。
 
@@ -192,7 +197,7 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 > - [Amazon ElastiCache を使用して RDS for MySQL ワークロードのコストを最適化し、パフォーマンスを向上させる \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/)
 > - [MySQL 8.0 : クエリーキャッシュのサポート終了 \| Yakst](https://yakst.com/ja/posts/4612)
 
-#### ▼ 仕組み
+### ▼ 仕組み
 
 1. アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
 
@@ -252,9 +257,9 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 <br>
 
-### 障害対策
+## 06. 障害復旧
 
-#### ▼ Redis のフェイルオーバー
+### ▼ Redis のフェイルオーバー
 
 プライマリーノードで障害が起こった場合に、リードレプリカノードをプライマリーノードに自動的に昇格する。
 
@@ -279,9 +284,9 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 <br>
 
-### Redis クラスターのダウンタイム
+## 07. 停止時間の管理
 
-#### ▼ ダウンタイムの発生条件
+### ▼ ダウンタイムの発生条件
 
 <table>
   <thead>
@@ -302,15 +307,15 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 <br>
 
-### 計画的なダウンタイム
+## 08. 計画停止
 
-#### ▼ 計画的なダウンタイムとは
+### ▼ 計画的なダウンタイムとは
 
 Redis クラスターでは、設定値 (例：エンジンバージョン) のアップグレード時に、Redis ノードの再起動が必要である。
 
 サイトの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。
 
-#### ▼ バックアップとインポートによるダウンタイムの最小化
+### ▼ バックアップとインポートによるダウンタイムの最小化
 
 以下の手順で、ダウンタイムを最小限にしてアップグレードできる。
 

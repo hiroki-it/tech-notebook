@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Global Accelerator とは
+## 01. 概要
+
 
 `L4`/`L7` ロードバランサーとして機能する。
 
@@ -23,11 +24,36 @@ tags:
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### コンソール画面の場合
+### レスポンスを高速化する仕組み
 
-#### ▼ 基本的設定
+![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator.png)
+
+最初、クライアント PC からのリクエストはエッジロケーションで受信される。
+
+プライベートネットワーク内のエッジロケーションを経由して、ルーティング先のリージョンまで届く。
+
+パブリックネットワークを使用しないため、小さなレイテシーでトラフィックをルーティングできる。
+
+![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入後.png)
+
+Global Accelerator を使用しない場合、クライアント PC のリージョンから指定したリージョンに至るまで、いくつもパブリックネットワークを経由する必要があり、時間がかかってしまう。
+
+![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入前.png)
+
+以下のサイトで、Global Accelerator を使用した場合としなかった場合のレスポンスタイムを比較できる。
+
+> - [AWS Global Accelerator Speed Comparison](https://speedtest.globalaccelerator.aws/#/)
+
+<br>
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. アクセラレーターのトラフィック制御
+
+### ▼ 基本的設定
 
 <table>
   <thead>
@@ -51,7 +77,7 @@ tags:
   </tbody>
 </table>
 
-#### ▼ リスナー
+### ▼ リスナー
 
 <table>
   <thead>
@@ -80,7 +106,7 @@ tags:
   </tbody>
 </table>
 
-#### ▼ エンドポイントグループ
+### ▼ エンドポイントグループ
 
 <table>
   <thead>
@@ -109,7 +135,7 @@ tags:
   </tbody>
 </table>
 
-#### ▼ エンドポイント
+### ▼ エンドポイント
 
 <table>
   <thead>
@@ -137,27 +163,5 @@ tags:
     </tr>
   </tbody>
 </table>
-
-<br>
-
-### 素早いレスポンスの理由
-
-![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator.png)
-
-最初、クライアント PC からのリクエストはエッジロケーションで受信される。
-
-プライベートネットワーク内のエッジロケーションを経由して、ルーティング先のリージョンまで届く。
-
-パブリックネットワークを使用しないため、小さなレイテシーでトラフィックをルーティングできる。
-
-![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入後.png)
-
-Global Accelerator を使用しない場合、クライアント PC のリージョンから指定したリージョンに至るまで、いくつもパブリックネットワークを経由する必要があり、時間がかかってしまう。
-
-![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入前.png)
-
-以下のサイトで、Global Accelerator を使用した場合としなかった場合のレスポンスタイムを比較できる。
-
-> - [AWS Global Accelerator Speed Comparison](https://speedtest.globalaccelerator.aws/#/)
 
 <br>

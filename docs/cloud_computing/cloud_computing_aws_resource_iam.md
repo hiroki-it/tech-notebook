@@ -15,15 +15,91 @@ tags:
 
 <br>
 
-## 01. AWS IAM とは：Identity and Access Management
+## 01. 概要
 
 AWS リソースへのアクセスに関する認証/認可を制御する。
 
+<br>
+
+## 02. 仕組み
+
+### 認証と認可
+
 認証はアクセスキーID とシークレットアクセスキーによって、また認可は AWS IAM ロール/AWS IAM ポリシー/AWS IAM ステートメントによって制御される。
+
+## 03. セットアップ
+
+### Terraformによる構築
+
+
+
+## 04. ユーザー管理
+
+### ルートユーザーとは
+
+すべての認可スコープをもったアカウントのこと。
 
 <br>
 
-## 02. AWS IAM ロール
+### AWS IAM ユーザーとは
+
+特定の認可スコープをもったアカウントのこと。
+
+<br>
+
+## 05. グループ管理
+
+### AWS IAM グループとは
+
+AWS IAM ユーザーをグループ化したもの。
+
+AWS IAM グループごとに AWS IAM ロールを紐付けすれば、AWS IAM ユーザーの AWS IAM ロールを管理しやすくなる。
+
+![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループ.png)
+
+<br>
+
+### AWS IAM グループへの AWS IAM ロールの紐付け
+
+AWS IAM グループに対して、AWS IAM ロールを紐付ける。
+
+その AWS IAM グループに対して、AWS IAM ロールを紐付けしたい AWS IAM ユーザーを追加していく。
+
+![グループに属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループに所属するユーザーにロールを付与.png)
+
+<br>
+
+### グループ一覧
+
+<table>
+  <thead>
+    <tr>
+      <th>グループ名</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Administrator</td>
+      <td>すべてのリソースに認可スコープがある。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>PowerUserAccess</td>
+      <td>AWS IAM のみが参照の認可スコープであり、それ以外の AWS リソースに変更の認可スコープがある。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>ViewOnlyAccess</td>
+      <td>参照のみの認可スコープがある。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+## 06. ロールによる権限の付与
 
 ### AWS IAM ロールとは
 
@@ -61,7 +137,7 @@ AWS リソースを作成したときに自動的に作成されるロール。
 
 <br>
 
-## 03. AWS IAM ポリシー
+## 07. ポリシーによるアクセス制御
 
 ### アイデンティティベースのポリシー
 
@@ -247,9 +323,9 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 <br>
 
-## 03-02. AWS IAM ポリシーの構造
+### ポリシーの記述方法
 
-### 構造
+#### 構造
 
 ```json
 {
@@ -273,7 +349,7 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 <br>
 
-### Sid
+#### Sid
 
 任意の一意な文字列を設定する。
 
@@ -281,23 +357,23 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 <br>
 
-### Version
+#### Version
 
 ポリシー言語のバージョンを設定し、現在のバージョンである `2012-10-17` を設定する。
 
 <br>
 
-### Statement (AWS IAM ステートメント)
+#### Statement (AWS IAM ステートメント)
 
-#### ▼ Statement とは
+##### ▼ Statement とは
 
 AWS リソースに関する認可のスコープを定義する。
 
-#### ▼ Effect
+##### ▼ Effect
 
 許可/拒否を設定する。
 
-#### ▼ Action
+##### ▼ Action
 
 指定した AWS リソースの API に対するコールを設定する。
 
@@ -334,7 +410,7 @@ AWS リソースに関する認可のスコープを定義する。
   </tbody>
 </table>
 
-#### ▼ Resource
+##### ▼ Resource
 
 アクションの実行対象に選択できるリソースを設定する。
 
@@ -356,7 +432,7 @@ ARN で AWS リソースの識別子を設定する。
 
 > - https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html
 
-#### ▼ Condition
+##### ▼ Condition
 
 信頼されたエンティティの設定でよく使用する。
 
@@ -446,9 +522,9 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 
 <br>
 
-## 03-03. AWS IAM ポリシーを紐付けできる対象
+### ポリシーの紐付け
 
-### AWS IAM ユーザーに対する紐付け
+#### AWS IAM ユーザーに対する紐付け
 
 AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM ユーザーは紐付けた AWS IAM ポリシーの認可スコープをもち、同じ AWS IAM ポリシーを複数の AWS IAM ユーザーで共有できる。
 
@@ -456,7 +532,7 @@ AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM �
 
 <br>
 
-### AWS IAM グループに対する紐付け
+#### AWS IAM グループに対する紐付け
 
 AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グループに所属する AWS IAM ユーザーがまとめて同じ認可スコープをもつため、AWS IAM ユーザーごとに AWS IAM ポリシーを紐付けずに済む。
 
@@ -464,77 +540,10 @@ AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グル�
 
 <br>
 
-### AWS IAM ロールに対する紐付け
+#### AWS IAM ロールに対する紐付け
 
 AWS IAM ロールに AWS IAM ポリシーを紐付けると、AWS IAM ロールを割り当てた EC2 などの AWS リソースが、AWS IAM ポリシーの認可スコープで他の AWS リソースを操作できる。
 
 ![AWS IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
-
-<br>
-
-## 04. ルートユーザー、AWS IAM ユーザー
-
-### ルートユーザーとは
-
-すべての認可スコープをもったアカウントのこと。
-
-<br>
-
-### AWS IAM ユーザーとは
-
-特定の認可スコープをもったアカウントのこと。
-
-<br>
-
-## 05. AWS IAM グループ
-
-### AWS IAM グループとは
-
-AWS IAM ユーザーをグループ化したもの。
-
-AWS IAM グループごとに AWS IAM ロールを紐付けすれば、AWS IAM ユーザーの AWS IAM ロールを管理しやすくなる。
-
-![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループ.png)
-
-<br>
-
-### AWS IAM グループへの AWS IAM ロールの紐付け
-
-AWS IAM グループに対して、AWS IAM ロールを紐付ける。
-
-その AWS IAM グループに対して、AWS IAM ロールを紐付けしたい AWS IAM ユーザーを追加していく。
-
-![グループに属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループに所属するユーザーにロールを付与.png)
-
-<br>
-
-### グループ一覧
-
-<table>
-  <thead>
-    <tr>
-      <th>グループ名</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Administrator</td>
-      <td>すべてのリソースに認可スコープがある。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>PowerUserAccess</td>
-      <td>AWS IAM のみが参照の認可スコープであり、それ以外の AWS リソースに変更の認可スコープがある。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>ViewOnlyAccess</td>
-      <td>参照のみの認可スコープがある。</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
 
 <br>

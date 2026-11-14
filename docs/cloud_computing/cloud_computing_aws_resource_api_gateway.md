@@ -16,7 +16,7 @@ tags:
 
 <br>
 
-## 01. Amazon API Gateway とは
+## 01. 概要
 
 異なるクライアントからのリクエストを受信して差分を吸収し、適切な API に振り分けられる。
 
@@ -29,11 +29,25 @@ tags:
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### コンソール画面の場合
+### リクエスト処理の構成
 
 Amazon API Gateway は、メソッドリクエスト、統合リクエスト、統合レスポンス、メソッドレスポンスから構成される。
+
+## 03. セットアップ
+
+### Terraformによる構築
+
+
+### OpenAPI 仕様のインポート
+
+以下のリンクを参考にせよ。
+
+> - [【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html)
+
+
+## 04. API の機能と設定項目
 
 <table>
   <thead>
@@ -114,9 +128,9 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 <br>
 
-### リソース
+## 05. リクエストの受信と変換
 
-#### ▼ リソース
+### ▼ リソース
 
 <table>
   <thead>
@@ -155,7 +169,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
   </tbody>
 </table>
 
-#### ▼ メソッドリクエスト
+### ▼ メソッドリクエスト
 
 <table>
   <thead>
@@ -204,7 +218,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
   </tbody>
 </table>
 
-#### ▼ 統合リクエスト
+### ▼ 統合リクエスト
 
 <table>
   <thead>
@@ -243,7 +257,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
   </tbody>
 </table>
 
-#### ▼ ホワイトボックステスト
+### ホワイトボックステスト
 
 <table>
   <thead>
@@ -272,13 +286,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
   </tbody>
 </table>
 
-#### ▼ OpenAPI 仕様のインポート
-
-以下のリンクを参考にせよ。
-
-> - [【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html)
-
-#### ▼ CORS の突破
+## 06. CORS
 
 正しいリクエストが CORS を突破できるように、異なるオリジンによって表示されたページからのリクエストを許可する。
 
@@ -286,9 +294,9 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 <br>
 
-### プライベート統合
+## 07. プライベート統合
 
-#### ▼ プライベート統合とは
+### ▼ プライベート統合とは
 
 Amazon API Gateway と Amazon VPC リンクの間で、リクエスト／レスポンスの JSON 型データを自動的にマッピングする機能のこと。
 
@@ -331,13 +339,13 @@ Amazon API Gateway と Amazon VPC リンクの間で、リクエスト／レス�
 
 > - [Set up a private integration - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html)
 
-#### ▼ メソッドリクエストと統合リクエストのマッピング
+### ▼ メソッドリクエストと統合リクエストのマッピング
 
 <br>
 
-### AWS Lambda プロキシ統合
+## 08. Lambda プロキシ統合
 
-#### ▼ AWS Lambda プロキシ統合とは
+### ▼ AWS Lambda プロキシ統合とは
 
 Amazon API Gateway と AWS Lambda の間で、リクエスト／レスポンスの JSON 型データを自動的にマッピングする機能のこと。
 
@@ -386,7 +394,7 @@ Amazon API Gateway と AWS Lambda の間で、リクエスト／レスポンス�
 
 > - [Lambda integrations for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html)
 
-#### ▼ リクエスト時のマッピング
+### ▼ リクエスト時のマッピング
 
 Amazon API Gateway 側でプロキシ統合を有効化すると、Amazon API Gateway を経由したクライアントからのリクエストは、ハンドラ関数の event オブジェクトの JSON 型データにマッピングされる。
 
@@ -445,7 +453,7 @@ Amazon API Gateway 側でプロキシ統合を有効化すると、Amazon API Ga
 }
 ```
 
-#### ▼ レスポンス時のマッピング
+### ▼ レスポンス時のマッピング
 
 Amazon API Gateway は、AWS Lambda からのレスポンスを、以下の JSON 型データにマッピングする。
 
@@ -470,9 +478,9 @@ Amazon API Gateway は上記の JSON 型データを受信した後、`body` の
 
 <br>
 
-### ステージ
+## 09. ステージ管理
 
-#### ▼ 設定
+### ▼ 設定
 
 <table>
   <thead>
@@ -501,7 +509,7 @@ Amazon API Gateway は上記の JSON 型データを受信した後、`body` の
   </tbody>
 </table>
 
-#### ▼ ステージ変数
+### ▼ ステージ変数
 
 デプロイされるステージ固有の環境変数を設定できる。
 
@@ -511,13 +519,13 @@ AWS Lambda 関数名、エンドポイント URL、パラメーターマッピ�
 
 > - [API Gateway stage variables reference for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html)
 
-#### ▼ SDK の作成
+### ▼ SDK の作成
 
 <br>
 
-### デプロイメント
+## 10. API のデプロイ
 
-#### ▼ 通常のデプロイメント
+### ▼ 通常のデプロイメント
 
 Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽されている。
 
@@ -525,7 +533,7 @@ Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽�
 
 > - https://forums.aws.amazon.com/thread.jspa?threadID=238876
 
-#### ▼ カナリアリリース
+### ▼ カナリアリリース
 
 カナリアリリースを使用して、新しいステージをデプロイする。
 
@@ -560,9 +568,9 @@ Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽�
 
 <br>
 
-### ログの種類
+## 11. ログ出力
 
-#### ▼ 実行ログ
+### ▼ 実行ログ
 
 Amazon CloudWatch Logs に Amazon API Gateway の実行ログを送信するか否かを設定できる。
 
@@ -570,7 +578,7 @@ Amazon CloudWatch Logs に Amazon API Gateway の実行ログを送信するか�
 
 > - [Set up CloudWatch logging for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
 
-#### ▼ カスタムアクセスログ
+### ▼ カスタムアクセスログ
 
 Amazon CloudWatch Logs に Amazon API Gateway のアクセスログを送信するか否かを設定できる。
 
@@ -580,7 +588,7 @@ Amazon CloudWatch Logs に Amazon API Gateway のアクセスログを送信す�
 
 <br>
 
-### 分散トレースの収集
+## 12. 分散トレース
 
 X-Ray を使用して、Amazon API Gateway を開始点とした分散トレースを収集する。
 
@@ -594,9 +602,9 @@ X-Ray を使用して、Amazon API Gateway を開始点とした分散トレー�
 
 <br>
 
-### API の設定
+## 13. API の公開範囲
 
-#### ▼ エンドポイントタイプ
+### ▼ エンドポイントタイプ
 
 <table>
   <thead>
@@ -625,7 +633,7 @@ X-Ray を使用して、Amazon API Gateway を開始点とした分散トレー�
 
 <br>
 
-## 03. AWS Lambda オーソライザー
+## 14. 認証と認可 (Lambda オーソライザー)
 
 Amazon API Gateway の認証プロキシと中央集権的な認可プロバイダーとして機能する。
 

@@ -16,7 +16,7 @@ tags:
 
 <br>
 
-## 01. AWS Lambda とは
+## 01. 概要
 
 他の AWS リソースのイベントによって駆動する関数を管理できる。
 
@@ -26,101 +26,7 @@ tags:
 
 <br>
 
-## 01-02. セットアップ
-
-### コンソール画面の場合
-
-#### ▼ 設定項目と説明
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ランタイム</td>
-      <td>関数の実装に使用する言語を設定する。</td>
-      <td>コンテナイメージの関数では使用できない。</td>
-    </tr>
-    <tr>
-      <td>ハンドラ</td>
-      <td>関数の実行時にコールしたい具体的関数名を設定する。</td>
-      <td>・コンテナイメージの関数では使用できない。<br>・Node.js：<code>index.js</code> というファイル名で <code>exports.handler()</code> 関数を呼び出したい場合、ハンドラ名を <code>index.handler</code> とする</td>
-    </tr>
-    <tr>
-      <td>レイヤー</td>
-      <td>異なる関数の間で、特定の処理を共通化できる。</td>
-      <td>コンテナイメージの関数では使用できない。</td>
-    </tr>
-    <tr>
-      <td>メモリ</td>
-      <td>AWS Lambda に割り当てるメモリサイズを設定する。</td>
-      <td>最大 10240MB まで増設でき、増設するほど性能が上がる。<br>- <a href="https://www.business-on-it.com/2003-aws-lambda-performance-check/">https://www.business-on-it.com/2003-aws-lambda-performance-check/</a></td>
-    </tr>
-    <tr>
-      <td>タイムアウト</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>実行ロール</td>
-      <td>AWS Lambda 内の関数が実行されるときに必要なポリシーを持つロールを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>既存ロール</td>
-      <td>AWS Lambda にロールを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>トリガー</td>
-      <td>AWS Lambda にリクエストを送信できる AWS リソースを設定する。</td>
-      <td>設定された AWS リソースに応じて、AWS Lambda のポリシーが自動的に修正される。</td>
-    </tr>
-    <tr>
-      <td>アクセス権限</td>
-      <td>AWS Lambda の認可スコープを設定する。</td>
-      <td>トリガーの設定に応じて、AWS Lambda のポリシーが自動的に修正される。</td>
-    </tr>
-    <tr>
-      <td>宛先</td>
-      <td>AWS Lambda からリクエストできる AWS リソースを設定する。</td>
-      <td>宛先の AWS リソースのポリシーは自動的に修正されないため、別途、手動で修正する必要がある。</td>
-    </tr>
-    <tr>
-      <td>環境変数</td>
-      <td>AWS Lambda の関数内に出力する環境変数を設定する。</td>
-      <td>デフォルトでは、環境変数は AWS マネージド型 KMS キーによって暗号化される。</td>
-    </tr>
-    <tr>
-      <td>同時実行数</td>
-      <td>同時実行の予約を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>プロビジョニングされた同時実行設定</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>モニタリング</td>
-      <td>AWS Lambda を Amazon CloudWatch または X-Ray を使用して、メトリクスの元になるデータポイントを収集する。</td>
-      <td>次の方法がある<br>・Amazon CloudWatch によって、メトリクスの元になるデータポイントを収集する。<br>・Amazon CloudWatch の AWS Lambda Insights によって、性能に関するメトリクスの元になるデータポイントを収集する。<br>・X-Ray によって、API に対するリクエスト、AWS Lambda コール、AWS Lambda の宛先とのデータ通信をトレースし、これらをスタックトレース化する。</td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-### 設定のベストプラクティス
-
-> - https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration>
-
-<br>
+## 02. 仕組み
 
 ### AWS Lambda と関数の関係性
 
@@ -166,13 +72,68 @@ AWS Lambda は関数を実行する。
 
 <br>
 
-### AWS Lambda 関数 on Docker
+## 03. セットアップ
 
-#### ▼ ベースイメージの準備
+### Terraformによる構築
+
+
+
+## 04. 関数の設定
+
+### 実行時の設定値
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ランタイム</td>
+      <td>関数の実装に使用する言語を設定する。</td>
+      <td>コンテナイメージの関数では使用できない。</td>
+    </tr>
+    <tr>
+      <td>ハンドラ</td>
+      <td>関数の実行時にコールしたい具体的関数名を設定する。</td>
+      <td>・コンテナイメージの関数では使用できない。<br>・Node.js：<code>index.js</code> というファイル名で <code>exports.handler()</code> 関数を呼び出したい場合、ハンドラ名を <code>index.handler</code> とする</td>
+    </tr>
+    <tr>
+      <td>メモリ</td>
+      <td>AWS Lambda に割り当てるメモリサイズを設定する。</td>
+      <td>最大 10240MB まで増設でき、増設するほど性能が上がる。<br>- <a href="https://www.business-on-it.com/2003-aws-lambda-performance-check/">https://www.business-on-it.com/2003-aws-lambda-performance-check/</a></td>
+    </tr>
+    <tr>
+      <td>タイムアウト</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>環境変数</td>
+      <td>AWS Lambda の関数内に出力する環境変数を設定する。</td>
+      <td>デフォルトでは、環境変数は AWS マネージド型 KMS キーによって暗号化される。</td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+### 設定のベストプラクティス
+
+> - https://docs.aws.amazon.com/lambda/latest/dg/best-practices.html#function-configuration>
+
+<br>
+
+## 05. コンテナイメージでの関数実行
+
+### ▼ ベースイメージの準備
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp>
 
-#### ▼ RIC：Runtime Interface Clients
+### ▼ RIC：Runtime Interface Clients
 
 通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりに RIC を使用してコンテナ内関数と通信する。
 
@@ -180,7 +141,7 @@ AWS Lambda は関数を実行する。
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client>
 
-#### ▼ RIE：Runtime Interface Emulator
+### ▼ RIE：Runtime Interface Emulator
 
 開発環境のコンテナで、擬似的に AWS Lambda 関数を再現する。
 
@@ -247,9 +208,9 @@ $ curl \
 
 <br>
 
-### 同時実行
+## 06. 同時実行
 
-#### ▼ 同時実行の予約
+### ▼ 同時実行の予約
 
 AWS Lambda は、関数の実行中に再びリクエストを受信すると、関数のインスタンスを新しく作成する。
 
@@ -267,9 +228,33 @@ AWS Lambda は、関数の実行中に再びリクエストを受信すると、
 
 <br>
 
-### Amazon VPC 外/Amazon VPC 内
+### 設定項目
 
-#### ▼ Amazon VPC 外への配置
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>同時実行数</td>
+      <td>同時実行の予約を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>プロビジョニングされた同時実行設定</td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+## 07. VPC への配置
+
+### ▼ Amazon VPC 外への配置
 
 AWS Lambda はデフォルトでは Amazon VPC 外に配置される。
 
@@ -277,7 +262,7 @@ AWS Lambda はデフォルトでは Amazon VPC 外に配置される。
 
 AWS Lambda の実行時に ENI は再作成されるため、実行ごとに IP アドレスは変化するが、一定時間内の再実行であれば ENI は再利用されるため、前回の実行時と同じ IP アドレスになることもある。
 
-#### ▼ Amazon VPC 内への配置
+### ▼ Amazon VPC 内への配置
 
 AWS Lambda を Amazon VPC 内に配置するように設定する。
 
@@ -285,9 +270,9 @@ Amazon VPC 内に配置した AWS Lambda にはパブリック IP アドレス�
 
 <br>
 
-### ポリシー
+## 08. 権限管理
 
-#### ▼ 実行に必要な最低限のポリシー
+### ▼ 実行に必要な最低限のポリシー
 
 AWS Lambda を実行するためには、デプロイされた関数を使用する認可スコープが必要である。
 
@@ -309,7 +294,36 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 
 <br>
 
-### データベース
+### 設定項目
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>実行ロール</td>
+      <td>AWS Lambda 内の関数が実行されるときに必要なポリシーを持つロールを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>既存ロール</td>
+      <td>AWS Lambda にロールを設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>アクセス権限</td>
+      <td>AWS Lambda の認可スコープを設定する。</td>
+      <td>トリガーの設定に応じて、AWS Lambda のポリシーが自動的に修正される。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 09. データベース接続
 
 - AWS DynamoDB
 - Amazon RDS プロキシと Amazon RDS
@@ -318,13 +332,13 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 
 <br>
 
-### デプロイ
+## 10. 関数のデプロイ
 
-#### ▼ 直接的に修正
+### ▼ 直接的に修正
 
 デプロイを行わずに、関数のコードを直接的に修正し、『Deploy』ボタンでデプロイする。
 
-#### ▼ Amazon S3 における `.zip` ファイル
+### ▼ Amazon S3 における `.zip` ファイル
 
 ビルド後のコードを `.zip` ファイルにしてアップロードする。
 
@@ -332,7 +346,7 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip>
 
-#### ▼ Amazon ECR におけるイメージ
+### ▼ Amazon ECR におけるイメージ
 
 コンテナイメージの関数のみで有効である。
 
@@ -344,7 +358,7 @@ Amazon ECR からアップロードできる。
 
 <br>
 
-## 02. AWS Lambda@Edge
+## 11. エッジでの関数実行 (Lambda@Edge)
 
 ### AWS Lambda@Edge とは
 
@@ -352,11 +366,11 @@ Amazon CloudFront に統合された AWS Lambda を、特別に AWS Lambda@Edge 
 
 <br>
 
-## 02-02. セットアップ
+### Lambda@Edge の設定
 
-### コンソール画面の場合
+#### コンソール画面の場合
 
-#### ▼ トリガーの種類
+##### ▼ トリガーの種類
 
 ![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge.png)
 
@@ -391,7 +405,7 @@ Amazon CloudFront のビューワーリクエスト、オリジンリクエス�
   </tbody>
 </table>
 
-#### ▼ 各トリガーの event オブジェクトへのマッピング
+##### ▼ 各トリガーの event オブジェクトへのマッピング
 
 各トリガーの event オブジェクトへのマッピングは、リンクを参考にせよ。
 
@@ -399,9 +413,9 @@ Amazon CloudFront のビューワーリクエスト、オリジンリクエス�
 
 <br>
 
-### ポリシー
+#### ポリシー
 
-#### ▼ 実行に必要な最低限のポリシー
+##### ▼ 実行に必要な最低限のポリシー
 
 AWS Lambda@Edge を実行するためには、最低限、以下の認可スコープが必要である。
 
@@ -431,7 +445,7 @@ AWS Lambda@Edge を実行するためには、最低限、以下の認可スコ�
 
 <br>
 
-## 03. AWS Lambda Web Adapter
+## 12. Web アプリケーションの実行 (Web Adapter)
 
 ### AWS Lambda Web Adapter とは
 
@@ -471,3 +485,64 @@ ENTRYPOINT ["node", "server.js"]
 ```
 
 <br>
+## 13. レイヤーによるコードの共有
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>レイヤー</td>
+      <td>異なる関数の間で、特定の処理を共通化できる。</td>
+      <td>コンテナイメージの関数では使用できない。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 14. イベント連携
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>トリガー</td>
+      <td>AWS Lambda にリクエストを送信できる AWS リソースを設定する。</td>
+      <td>設定された AWS リソースに応じて、AWS Lambda のポリシーが自動的に修正される。</td>
+    </tr>
+    <tr>
+      <td>宛先</td>
+      <td>AWS Lambda からリクエストできる AWS リソースを設定する。</td>
+      <td>宛先の AWS リソースのポリシーは自動的に修正されないため、別途、手動で修正する必要がある。</td>
+    </tr>
+  </tbody>
+</table>
+
+## 15. 監視
+
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>モニタリング</td>
+      <td>AWS Lambda を Amazon CloudWatch または X-Ray を使用して、メトリクスの元になるデータポイントを収集する。</td>
+      <td>次の方法がある<br>・Amazon CloudWatch によって、メトリクスの元になるデータポイントを収集する。<br>・Amazon CloudWatch の AWS Lambda Insights によって、性能に関するメトリクスの元になるデータポイントを収集する。<br>・X-Ray によって、API に対するリクエスト、AWS Lambda コール、AWS Lambda の宛先とのデータ通信をトレースし、これらをスタックトレース化する。</td>
+    </tr>
+  </tbody>
+</table>

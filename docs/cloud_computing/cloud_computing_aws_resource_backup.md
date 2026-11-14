@@ -15,15 +15,21 @@ tags:
 
 <br>
 
-## 01. Backup とは
+## 01. 概要
 
 複数の AWS リソースのバックアップの作成、保持、復元を一元的に管理する AWS リソースである。
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### 対応 AWS リソース
+## 03. セットアップ
+
+### Terraformによる構築
+
+
+
+## 04. リソースのバックアップ
 
 > - [What is AWS Backup? - AWS Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources)
 
@@ -56,7 +62,7 @@ tags:
 
 <br>
 
-### 障害対策
+## 05. リージョン間のバックアップコピー
 
 ![backup_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/backup_multi-region.png)
 

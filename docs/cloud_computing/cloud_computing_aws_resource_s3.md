@@ -15,15 +15,17 @@ tags:
 
 <br>
 
-## 01. Amazon S3 とは：Simple Storage Service
+## 01. 概要
 
 クラウドオブジェクトストレージとして働く。
 
 <br>
 
-## 02. セットアップ (コンソールの場合)
+## 02. 仕組み
 
-## 2-02. セットアップ (Terraform の場合)
+## 03. セットアップ
+
+### Terraformによる構築
 
 ```terraform
 module "s3_foo" {
@@ -71,7 +73,9 @@ module "s3_foo" {
 }
 ```
 
-### 設定項目
+
+
+## 04. バケットの管理
 
 <table>
   <thead>
@@ -98,7 +102,7 @@ module "s3_foo" {
 
 <br>
 
-### プロパティ
+## 05. バケットのプロパティ
 
 特にプロパティには、以下の項目がある。
 
@@ -161,7 +165,7 @@ module "s3_foo" {
 
 <br>
 
-### リクエスト制限
+## 06. アクセス制御
 
 特にリクエスト制限には、以下の項目がある。
 
@@ -192,59 +196,6 @@ module "s3_foo" {
     <tr>
       <td>CORS の設定</td>
       <td></td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-<br>
-
-### レスポンスヘッダー
-
-#### ▼ レスポンスヘッダーの設定
-
-<table>
-  <thead>
-    <tr>
-      <th>設定できるヘッダー</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ETag</td>
-      <td>コンテンツの一意な識別子。クライアントサイドキャッシュの検証に使用される。</td>
-      <td>すべてのコンテンツにデフォルトで設定されている。</td>
-    </tr>
-    <tr>
-      <td>Cache-Control</td>
-      <td>Expires と同様に、ブラウザにおけるキャッシュの有効期限を設定する。</td>
-      <td>すべてのコンテンツにデフォルトで設定されている。</td>
-    </tr>
-    <tr>
-      <td>Content-Type</td>
-      <td>コンテンツの MIME タイプを設定する。</td>
-      <td>すべてのコンテンツにデフォルトで設定されている。</td>
-    </tr>
-    <tr>
-      <td>Expires</td>
-      <td>Cache-Control と同様に、ブラウザにおけるキャッシュの有効期限を設定する。ただし、Cache-Control のほうが優先度が高い。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Content-Disposition</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Content-Encoding</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>x-amz-website-redirect-location</td>
-      <td>コンテンツのリダイレクト先を設定する。</td>
       <td></td>
     </tr>
   </tbody>
@@ -370,9 +321,20 @@ module "s3_foo" {
 
 <br>
 
-### CORS の突破
+### 署名付き URL
 
-#### ▼ CORS について
+#### ▼ 署名付き URL とは
+
+認証/認可情報をパラメーターに持つ URL のこと。
+
+Amazon S3 では、署名付き URL を発行し、Amazon S3 への認可スコープを外部のユーザーに一時的に付与する。
+
+> - [メール添付＆パスワード後送をやめたいときの「Amazon S3」の「署名付きURL」によるファイル共有：AWSチートシート - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html)
+
+<br>
+## 07. CORS
+
+### ▼ CORS について
 
 ブラウザではデフォルトで CORS が有効になっており、正しいリクエストが CORS を突破できるように対処する必要がある。
 
@@ -382,7 +344,7 @@ module "s3_foo" {
 
 これを突破できるように、対処する必要がある。
 
-#### ▼ Access-Control-Allow-Origin ヘッダー
+### ▼ Access-Control-Allow-Origin ヘッダー
 
 サーバー側の Amazon S3 では、`Access-Control-Allow-Origin` ヘッダーに必要な値を設定して返却する。
 
@@ -402,14 +364,55 @@ module "s3_foo" {
 
 <br>
 
-### 署名付き URL
+## 08. レスポンスヘッダー
 
-#### ▼ 署名付き URL とは
+### ▼ レスポンスヘッダーの設定
 
-認証/認可情報をパラメーターに持つ URL のこと。
-
-Amazon S3 では、署名付き URL を発行し、Amazon S3 への認可スコープを外部のユーザーに一時的に付与する。
-
-> - [メール添付＆パスワード後送をやめたいときの「Amazon S3」の「署名付きURL」によるファイル共有：AWSチートシート - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2107/15/news009.html)
+<table>
+  <thead>
+    <tr>
+      <th>設定できるヘッダー</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ETag</td>
+      <td>コンテンツの一意な識別子。クライアントサイドキャッシュの検証に使用される。</td>
+      <td>すべてのコンテンツにデフォルトで設定されている。</td>
+    </tr>
+    <tr>
+      <td>Cache-Control</td>
+      <td>Expires と同様に、ブラウザにおけるキャッシュの有効期限を設定する。</td>
+      <td>すべてのコンテンツにデフォルトで設定されている。</td>
+    </tr>
+    <tr>
+      <td>Content-Type</td>
+      <td>コンテンツの MIME タイプを設定する。</td>
+      <td>すべてのコンテンツにデフォルトで設定されている。</td>
+    </tr>
+    <tr>
+      <td>Expires</td>
+      <td>Cache-Control と同様に、ブラウザにおけるキャッシュの有効期限を設定する。ただし、Cache-Control のほうが優先度が高い。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Content-Disposition</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Content-Encoding</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>x-amz-website-redirect-location</td>
+      <td>コンテンツのリダイレクト先を設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
 
 <br>

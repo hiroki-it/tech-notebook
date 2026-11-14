@@ -15,7 +15,8 @@ tags:
 
 <br>
 
-## 01. Amazon SNS とは：Simple Notification Service
+## 01. 概要
+
 
 クラウドパブリッシュ／サブスクライブ方式のシステムとして働く。
 
@@ -53,7 +54,8 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 <br>
 
-## 01-02. 仕組み
+## 02. 仕組み
+
 
 メッセージキュー (例：Amazon SQS) とは異なりメッセージをルーティングできるが、メッセージをキューイングできない。
 
@@ -65,9 +67,11 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 <br>
 
-## 02. セットアップ
+## 03. セットアップ
 
-### コンソール画面の場合
+### Terraformによる構築
+
+## 04. トピックとサブスクリプションの構成
 
 <table>
   <thead>
@@ -90,7 +94,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 <br>
 
-### トピック
+## 05. トピックによるメッセージ配信
 
 <table>
   <thead>
@@ -125,36 +129,36 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 <br>
 
-### サブスクリプション
+## 06. サブスクリプションによる購読
 
-#### ▼ Kinesis Data Firehose
+### ▼ Kinesis Data Firehose
 
 Kinesis Data Firehose に送信する。
 
-#### ▼ Amazon SQS
+### ▼ Amazon SQS
 
 SQS に送信する。
 
-#### ▼ AWS Lambda
+### ▼ AWS Lambda
 
 AWS Lambda に送信する。
 
-#### ▼ E メール
+### ▼ E メール
 
 メールアドレスに送信する。
 
-#### ▼ HTTP/HTTPS
+### ▼ HTTP/HTTPS
 
 Webhook リクエスト用のエンドポイントに送信する。
 
 - AWS Chatbot のドメイン名 (`https://global.sns-api.chatbot.amazonaws.com`)
 - incident.io (`https://api.incident.io/v2/alert_events/cloudwatch/*****`)
 
-#### ▼ `json` 形式のメール
+### ▼ `json` 形式のメール
 
 メースアドレスに `json` 形式で送信する。
 
-#### ▼ SMS
+### ▼ SMS
 
 SMS に送信する。
 
