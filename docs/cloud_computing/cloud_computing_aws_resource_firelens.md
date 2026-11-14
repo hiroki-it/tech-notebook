@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+Fluent Bit や Fluentd を使用し、Amazon ECS のコンテナログを AWS サービスや外部のログ基盤に転送する機能である。
+
+> - [Send Amazon ECS logs to an AWS service or AWS Partner - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using_firelens.html)
+
+<br>
+
 ## 02. 仕組み
 
 

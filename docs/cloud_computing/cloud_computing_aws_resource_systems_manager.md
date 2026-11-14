@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+AWS やオンプレミスのサーバーを管理し、設定情報の保管、リモート接続、運用作業の自動化を行うサービスである。
+
+> - [What is AWS Systems Manager? - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

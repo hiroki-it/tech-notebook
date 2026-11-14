@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+保存データを暗号化し、アクセスを制御することで、不正な閲覧や改ざんからデータを保護する。
+
+> - [Protecting data at rest - Security Pillar](https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/protecting-data-at-rest.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

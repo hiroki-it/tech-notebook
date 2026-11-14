@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+連続して発生するストリーミングデータを収集し、リアルタイムで処理するためのサービスである。
+
+> - [What is Amazon Kinesis Data Streams? - Amazon Kinesis Data Streams](https://docs.aws.amazon.com/streams/latest/dev/introduction.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+障害からの復旧や負荷の変化への対応により、システムが期待される機能を継続して提供できる能力である。
+
+> - [Reliability Pillar - AWS Well-Architected Framework - Reliability Pillar](https://docs.aws.amazon.com/wellarchitected/latest/reliability-pillar/welcome.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

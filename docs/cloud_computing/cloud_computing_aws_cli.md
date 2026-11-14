@@ -16,6 +16,12 @@ tags:
 
 ## 01. 概要
 
+AWS リソースをコマンドラインから操作し、スクリプトで操作を自動化できるツールである。
+
+> - [What is the AWS Command Line Interface? - AWS Command Line Interface](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

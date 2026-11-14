@@ -18,6 +18,12 @@ tags:
 
 ## 01. 概要
 
+独立して開発・デプロイできる小さなサービスを組み合わせ、AWS 上でアプリケーションを構築する設計手法である。
+
+> - [Implementing Microservices on AWS - Implementing Microservices on AWS](https://docs.aws.amazon.com/whitepapers/latest/microservices-on-aws/microservices-on-aws.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

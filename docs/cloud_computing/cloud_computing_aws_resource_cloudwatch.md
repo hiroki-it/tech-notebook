@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+メトリクスやログを収集・分析し、AWS リソースやアプリケーションの状態を監視するサービスである。
+
+> - [What is Amazon CloudWatch? - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+テンプレートに定義した AWS リソースを、スタックとしてまとめて作成・更新・削除できるサービスである。
+
+> - [What is CloudFormation? - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/Welcome.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+メトリクスやログでシステムの状態を把握し、日々の運用と改善を継続できる能力である。
+
+> - [Operational Excellence Pillar - AWS Well-Architected Framework - Operational Excellence Pillar](https://docs.aws.amazon.com/wellarchitected/latest/operational-excellence-pillar/welcome.html)
+
+<br>
+
 ## 02. 仕組み
 
 ## 03. セットアップ

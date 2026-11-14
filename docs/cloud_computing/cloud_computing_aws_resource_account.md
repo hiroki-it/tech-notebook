@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+AWS リソースの所有と利用料金の請求を管理し、リソースへのアクセスを分離する単位である。
+
+> - [What is an AWS account? - AWS Account Management](https://docs.aws.amazon.com/accounts/latest/reference/accounts-welcome.html)
+
+<br>
+
 ## 02. 仕組み
 
 ### アカウント・リージョン・AZ

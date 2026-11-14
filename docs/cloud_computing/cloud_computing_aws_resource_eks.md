@@ -17,6 +17,12 @@ tags:
 
 ## 01. 概要
 
+Kubernetes のコントロールプレーンを AWS が管理し、コンテナ化したアプリケーションを実行できるサービスである。
+
+> - [What is Amazon EKS? - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/what-is-eks.html)
+
+<br>
+
 ## 02. 仕組み
 
 ### コントロールプレーン
