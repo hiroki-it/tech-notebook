@@ -43,34 +43,20 @@ AWS Organizations の CreateAccount-API をコールして、AWS アカウント
 
 ### Terraformによる構築
 
-AWS IA の Account Factory for Terraform（AFT）モジュールを使用し、Control Tower によるアカウント管理を自動化する基盤を作成する。Control Tower のランディングゾーン、管理・ログ保管・監査・AFT 管理用の 4 アカウントを準備し、Control Tower 管理アカウントから実行する。
+AWS IA の Account Factory for Terraform（AFT）モジュールを使用し、Control Tower によるアカウント管理を自動化する基盤を作成する。
+
+Control Tower のランディングゾーン、管理・ログ保管・監査・AFT 管理用の 4 アカウントを準備し、Control Tower 管理アカウントから実行する。
 
 ```terraform
-variable "ct_management_account_id" {
-  type = string
-}
-
-variable "log_archive_account_id" {
-  type = string
-}
-
-variable "audit_account_id" {
-  type = string
-}
-
-variable "aft_management_account_id" {
-  type = string
-}
-
 module "aft" {
   source  = "aws-ia/control_tower_account_factory/aws"
   version = "1.24.0"
 
   ct_home_region            = "ap-northeast-1"
-  ct_management_account_id  = var.ct_management_account_id
-  log_archive_account_id    = var.log_archive_account_id
-  audit_account_id          = var.audit_account_id
-  aft_management_account_id = var.aft_management_account_id
+  ct_management_account_id  = "111111111111"
+  log_archive_account_id    = "222222222222"
+  audit_account_id          = "333333333333"
+  aft_management_account_id = "444444444444"
   terraform_version         = "1.14.0"
 }
 ```

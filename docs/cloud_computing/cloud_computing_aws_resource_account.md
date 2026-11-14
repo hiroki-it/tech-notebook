@@ -85,18 +85,16 @@ AZ に跨いで冗長化すると、いずれかのデータセンターで障�
 
 ### Terraformによる構築
 
-terraform-aws-modules の IAM Account モジュールを使用し、既存の AWS アカウントにエイリアスと IAM ユーザーのパスワードポリシーを設定する。エイリアスには一意の名前を指定する。
+terraform-aws-modules の IAM Account モジュールを使用し、既存の AWS アカウントにエイリアスと IAM ユーザーのパスワードポリシーを設定する。
+
+エイリアスには一意の名前を指定する。
 
 ```terraform
-variable "account_alias" {
-  type = string
-}
-
 module "iam_account" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-account"
   version = "6.8.2"
 
-  account_alias           = var.account_alias
+  account_alias           = "foo-account-123456789012"
   minimum_password_length = 14
 }
 ```

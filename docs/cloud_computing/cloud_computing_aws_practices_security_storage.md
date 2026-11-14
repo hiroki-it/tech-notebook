@@ -29,13 +29,11 @@ tags:
 
 ### Terraformによる構築
 
-terraform-aws-modules の KMS モジュールと S3 モジュールを使用し、カスタマーマネージドキーによる暗号化とバージョニングを有効にした非公開バケットを作成する。バケット名には一意の名前を指定する。
+terraform-aws-modules の KMS モジュールと S3 モジュールを使用し、カスタマーマネージドキーによる暗号化とバージョニングを有効にした非公開バケットを作成する。
+
+バケット名には一意の名前を指定する。
 
 ```terraform
-variable "bucket_name" {
-  type = string
-}
-
 module "kms" {
   source  = "terraform-aws-modules/kms/aws"
   version = "4.2.2"
@@ -47,7 +45,7 @@ module "bucket" {
   source  = "terraform-aws-modules/s3-bucket/aws"
   version = "5.17.0"
 
-  bucket     = var.bucket_name
+  bucket     = "foo-storage-123456789012"
   versioning = { enabled = true }
   server_side_encryption_configuration = {
     rule = {

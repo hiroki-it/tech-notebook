@@ -118,29 +118,23 @@ AWS リソースごとにセキュリティを考慮する。
 
 ### Terraformによる構築
 
-terraform-aws-modules の Security Group モジュールを使用し、指定した CIDR からの HTTPS 通信だけを受信するセキュリティグループを作成する。既存の VPC を指定し、作成後に対象リソースへ紐付ける。
+terraform-aws-modules の Security Group モジュールを使用し、指定した CIDR からの HTTPS 通信だけを受信するセキュリティグループを作成する。
+
+既存の VPC を指定し、作成後に対象リソースへ紐付ける。
 
 ```terraform
-variable "vpc_id" {
-  type = string
-}
-
-variable "allowed_cidr" {
-  type = string
-}
-
 module "security_group" {
   source  = "terraform-aws-modules/security-group/aws"
   version = "6.0.0"
 
   name   = "foo-https"
-  vpc_id = var.vpc_id
+  vpc_id = "vpc-0123456789abcdef0"
   ingress_rules = {
     https = {
       ip_protocol = "tcp"
       from_port   = 443
       to_port     = 443
-      cidr_ipv4   = var.allowed_cidr
+      cidr_ipv4   = "203.0.113.0/24"
     }
   }
 }

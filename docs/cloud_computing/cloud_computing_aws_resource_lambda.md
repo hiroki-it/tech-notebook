@@ -76,13 +76,11 @@ AWS Lambda は関数を実行する。
 
 ### Terraformによる構築
 
-terraform-aws-modules の Lambda モジュールを使用し、準備済みの ZIP ファイルから Python の Lambda 関数を作成する。ZIP の直下に lambda_function.py を配置し、lambda_handler 関数を実装しておく。
+terraform-aws-modules の Lambda モジュールを使用し、準備済みの ZIP ファイルから Python の Lambda 関数を作成する。
+
+ZIP の直下に lambda_function.py を配置し、lambda_handler 関数を実装しておく。
 
 ```terraform
-variable "package_path" {
-  type = string
-}
-
 module "lambda" {
   source  = "terraform-aws-modules/lambda/aws"
   version = "8.13.0"
@@ -91,7 +89,7 @@ module "lambda" {
   runtime                           = "python3.13"
   handler                           = "lambda_function.lambda_handler"
   create_package                    = false
-  local_existing_package            = var.package_path
+  local_existing_package            = "./lambda.zip"
   cloudwatch_logs_retention_in_days = 30
 }
 ```

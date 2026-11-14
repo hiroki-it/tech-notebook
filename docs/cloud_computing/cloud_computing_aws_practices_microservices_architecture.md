@@ -30,7 +30,9 @@ tags:
 
 ### Terraformによる構築
 
-terraform-aws-modules の ECS モジュールを使用し、Fargate のマイクロサービスを配置するためのクラスターを作成する。個々のサービスやタスク定義は別途設定する。
+terraform-aws-modules の ECS モジュールを使用し、Fargate のマイクロサービスを配置するためのクラスターを作成する。
+
+個々のサービスやタスク定義は別途設定する。
 
 ```terraform
 module "ecs_cluster" {

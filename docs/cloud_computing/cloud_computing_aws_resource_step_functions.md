@@ -28,13 +28,11 @@ AWS サービスを組み合わせて、ワークフローエンジンを作成�
 
 ### Terraformによる構築
 
-terraform-aws-modules の Step Functions モジュールを使用し、既存の Lambda 関数を呼び出すステートマシンを作成する。Lambda を呼び出す IAM 権限もモジュールで設定する。
+terraform-aws-modules の Step Functions モジュールを使用し、既存の Lambda 関数を呼び出すステートマシンを作成する。
+
+Lambda を呼び出す IAM 権限もモジュールで設定する。
 
 ```terraform
-variable "lambda_function_arn" {
-  type = string
-}
-
 module "state_machine" {
   source  = "terraform-aws-modules/step-functions/aws"
   version = "5.1.1"
@@ -47,7 +45,7 @@ module "state_machine" {
         Type     = "Task"
         Resource = "arn:aws:states:::lambda:invoke"
         Parameters = {
-          FunctionName = var.lambda_function_arn
+          FunctionName = "arn:aws:lambda:ap-northeast-1:123456789012:function:foo-function"
           "Payload.$"  = "$"
         }
         End = true
@@ -55,7 +53,7 @@ module "state_machine" {
     }
   })
   service_integrations = {
-    lambda = { lambda = [var.lambda_function_arn] }
+    lambda = { lambda = ["arn:aws:lambda:ap-northeast-1:123456789012:function:foo-function"] }
   }
 }
 ```

@@ -98,13 +98,11 @@ $ nslookup <発行されたランダム文字列>.cloudfront.net
 
 ### Terraformによる構築
 
-terraform-aws-modules の CloudFront モジュールを使用し、既存の HTTPS オリジンへリクエストを転送するディストリビューションを作成する。オリジンの DNS 名を指定し、閲覧には CloudFront の標準ドメインと証明書を使用する。
+terraform-aws-modules の CloudFront モジュールを使用し、既存の HTTPS オリジンへリクエストを転送するディストリビューションを作成する。
+
+オリジンの DNS 名を指定し、閲覧には CloudFront の標準ドメインと証明書を使用する。
 
 ```terraform
-variable "origin_domain_name" {
-  type = string
-}
-
 data "aws_cloudfront_cache_policy" "this" {
   name = "Managed-CachingOptimized"
 }
@@ -116,7 +114,7 @@ module "cloudfront" {
   origin_access_control = {}
   origin = {
     app = {
-      domain_name = var.origin_domain_name
+      domain_name = "app.example.com"
       custom_origin_config = {
         http_port              = 80
         https_port             = 443

@@ -31,7 +31,9 @@ AWS リソースへのアクセスに関する認証/認可を制御する。
 
 ### Terraformによる構築
 
-terraform-aws-modules の IAM Role モジュールを使用し、EC2 が引き受ける IAM ロールとインスタンスプロファイルを作成する。プロファイルを EC2 へ紐付けると、SSM Agent が Systems Manager へ接続するための権限を付与できる。
+terraform-aws-modules の IAM Role モジュールを使用し、EC2 が引き受ける IAM ロールとインスタンスプロファイルを作成する。
+
+プロファイルを EC2 へ紐付けると、SSM Agent が Systems Manager へ接続するための権限を付与できる。
 
 ```terraform
 module "ec2_role" {

@@ -63,18 +63,16 @@ Cloud Logging でログを処理するための API (`logging.googleapis.com`) �
 
 ### Terraformによる構築
 
-terraform-google-modules の log-export モジュールを使用し、重要度が ERROR 以上のログを Pub/Sub に転送するシンク、トピック、プル型サブスクリプションを作成する。Cloud Logging API が有効なプロジェクトを指定する。
+terraform-google-modules の log-export モジュールを使用し、重要度が ERROR 以上のログを Pub/Sub に転送するシンク、トピック、プル型サブスクリプションを作成する。
+
+Cloud Logging API が有効なプロジェクトを指定する。
 
 ```terraform
-variable "project_id" {
-  type = string
-}
-
 module "log_export" {
   source  = "terraform-google-modules/log-export/google"
   version = "12.0.0"
 
-  parent_resource_id     = var.project_id
+  parent_resource_id     = "foo-project"
   log_sink_name          = "foo-error-logs"
   destination_uri        = module.destination.destination_uri
   filter                 = "severity >= ERROR"
@@ -85,7 +83,7 @@ module "destination" {
   source  = "terraform-google-modules/log-export/google//modules/pubsub"
   version = "12.0.0"
 
-  project_id               = var.project_id
+  project_id               = "foo-project"
   topic_name               = "foo-logs"
   log_sink_writer_identity = module.log_export.writer_identity
   create_subscriber        = true

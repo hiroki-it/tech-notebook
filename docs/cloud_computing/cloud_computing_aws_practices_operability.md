@@ -32,14 +32,6 @@ tags:
 terraform-aws-modules の CloudWatch モジュールを使用し、既存の EC2 の平均 CPU 使用率が 80%を 3 回連続で超えると、SNS へ通知するアラームを作成する。
 
 ```terraform
-variable "instance_id" {
-  type = string
-}
-
-variable "sns_topic_arn" {
-  type = string
-}
-
 module "cpu_alarm" {
   source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarm"
   version = "6.0.0"
@@ -52,8 +44,8 @@ module "cpu_alarm" {
   statistic           = "Average"
   namespace           = "AWS/EC2"
   metric_name         = "CPUUtilization"
-  dimensions          = { InstanceId = var.instance_id }
-  alarm_actions       = [var.sns_topic_arn]
+  dimensions          = { InstanceId = "i-0123456789abcdef0" }
+  alarm_actions       = ["arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"]
 }
 ```
 

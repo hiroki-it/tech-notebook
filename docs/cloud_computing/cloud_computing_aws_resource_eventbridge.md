@@ -61,13 +61,11 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 ### Terraformによる構築
 
-terraform-aws-modules の EventBridge モジュールを使用し、既存の Lambda 関数へ独自イベントを転送するイベントバスとルールを作成する。Lambda 側にも、このルールからの呼び出しを許可する。
+terraform-aws-modules の EventBridge モジュールを使用し、既存の Lambda 関数へ独自イベントを転送するイベントバスとルールを作成する。
+
+Lambda 側にも、このルールからの呼び出しを許可する。
 
 ```terraform
-variable "lambda_function_arn" {
-  type = string
-}
-
 module "eventbridge" {
   source  = "terraform-aws-modules/eventbridge/aws"
   version = "4.3.3"
@@ -80,14 +78,14 @@ module "eventbridge" {
     }
   }
   targets = {
-    order_created = [{ name = "foo-handler", arn = var.lambda_function_arn }]
+    order_created = [{ name = "foo-handler", arn = "arn:aws:lambda:ap-northeast-1:123456789012:function:foo-function" }]
   }
 }
 
 resource "aws_lambda_permission" "eventbridge" {
   statement_id  = "AllowEventBridge"
   action        = "lambda:InvokeFunction"
-  function_name = var.lambda_function_arn
+  function_name = "arn:aws:lambda:ap-northeast-1:123456789012:function:foo-function"
   principal     = "events.amazonaws.com"
   source_arn    = module.eventbridge.eventbridge_rule_arns["order_created"]
 }

@@ -104,24 +104,18 @@ tags:
 
 ### Terraformによる構築
 
-terraform-google-modules の projects_iam モジュールを使用し、既存のプリンシパルにプロジェクト内のログを閲覧するロールを付与する。`member` には `user:example@gmail.com` や `serviceAccount:foo@foo-project.iam.gserviceaccount.com` の形式で指定する。
+terraform-google-modules の projects_iam モジュールを使用し、既存のプリンシパルにプロジェクト内のログを閲覧するロールを付与する。
+
+プリンシパルには `user:foo@example.com` や `serviceAccount:foo@foo-project.iam.gserviceaccount.com` の形式で指定する。
 
 ```terraform
-variable "project_id" {
-  type = string
-}
-
-variable "member" {
-  type = string
-}
-
 module "project_iam" {
   source  = "terraform-google-modules/iam/google//modules/projects_iam"
   version = "8.3.0"
 
-  projects = [var.project_id]
+  projects = ["foo-project"]
   bindings = {
-    "roles/logging.viewer" = [var.member]
+    "roles/logging.viewer" = ["user:foo@example.com"]
   }
 }
 ```

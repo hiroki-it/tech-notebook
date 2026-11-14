@@ -51,13 +51,11 @@ Global Accelerator を使用しない場合、クライアント PC のリージ
 
 ### Terraformによる構築
 
-terraform-aws-modules の Global Accelerator モジュールを使用し、TCP の 443 番ポートへの通信を東京リージョンの既存 ALB へ転送する。ALB には HTTPS リスナーと正常なターゲットを設定しておく。
+terraform-aws-modules の Global Accelerator モジュールを使用し、TCP の 443 番ポートへの通信を東京リージョンの既存 ALB へ転送する。
+
+ALB には HTTPS リスナーと正常なターゲットを設定しておく。
 
 ```terraform
-variable "alb_arn" {
-  type = string
-}
-
 module "global_accelerator" {
   source  = "terraform-aws-modules/global-accelerator/aws"
   version = "3.0.0"
@@ -71,7 +69,7 @@ module "global_accelerator" {
         tokyo = {
           endpoint_group_region = "ap-northeast-1"
           endpoint_configuration = [{
-            endpoint_id                    = var.alb_arn
+            endpoint_id                    = "arn:aws:elasticloadbalancing:ap-northeast-1:123456789012:loadbalancer/app/foo-alb/0123456789abcdef"
             weight                         = 100
             client_ip_preservation_enabled = true
           }]

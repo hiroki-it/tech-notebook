@@ -223,13 +223,11 @@ aws s3 ls --profile <プロファイル名> <tfstateファイルが管理され�
 
 ### Terraformによる構築
 
-terraform-aws-modules の IAM Role モジュールを使用し、指定した IAM ロールだけが STS で引き受けられるロールを作成する。呼び出し元にも、作成先ロールに対する sts:AssumeRole 権限を設定しておく。
+terraform-aws-modules の IAM Role モジュールを使用し、指定した IAM ロールだけが STS で引き受けられるロールを作成する。
+
+呼び出し元にも、作成先ロールに対する sts:AssumeRole 権限を設定しておく。
 
 ```terraform
-variable "caller_role_arn" {
-  type = string
-}
-
 module "assumable_role" {
   source  = "terraform-aws-modules/iam/aws//modules/iam-role"
   version = "6.8.2"
@@ -238,7 +236,7 @@ module "assumable_role" {
   trust_policy_permissions = {
     caller = {
       actions    = ["sts:AssumeRole"]
-      principals = [{ type = "AWS", identifiers = [var.caller_role_arn] }]
+      principals = [{ type = "AWS", identifiers = ["arn:aws:iam::123456789012:role/foo-caller"] }]
     }
   }
   policies = {

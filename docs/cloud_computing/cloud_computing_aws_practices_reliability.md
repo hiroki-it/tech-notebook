@@ -29,7 +29,9 @@ tags:
 
 ### Terraformによる構築
 
-terraform-aws-modules の VPC モジュールを使用し、2 つの AZ にパブリックサブネットとプライベートサブネットを配置し、AZ ごとに NAT Gateway を作成する。AWS プロバイダーのリージョンは ap-northeast-1 とする。
+terraform-aws-modules の VPC モジュールを使用し、2 つの AZ にパブリックサブネットとプライベートサブネットを配置し、AZ ごとに NAT Gateway を作成する。
+
+AWS プロバイダーのリージョンは ap-northeast-1 とする。
 
 ```terraform
 module "vpc" {

@@ -39,7 +39,9 @@ EKS の場合、Amazon VPC (`L3`) 上に Amazon VPC CNI を配置することに
 
 ### Terraformによる構築
 
-terraform-aws-modules の VPC モジュールを使用し、2 つの AZ にパブリックサブネットとプライベートサブネットを作成する。AWS プロバイダーのリージョンは ap-northeast-1 とし、この例では NAT Gateway を作成しない。
+terraform-aws-modules の VPC モジュールを使用し、2 つの AZ にパブリックサブネットとプライベートサブネットを作成する。
+
+AWS プロバイダーのリージョンは ap-northeast-1 とし、この例では NAT Gateway を作成しない。
 
 ```terraform
 module "vpc" {
