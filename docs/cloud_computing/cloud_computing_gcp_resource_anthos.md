@@ -95,6 +95,35 @@ Google Cloud の API を経由して、他のクラウドプロバイダー (例
 
 ### Terraformによる構築
 
+terraform-google-modules の fleet-membership モジュールを使用し、Google Cloud 上の既存の GKE クラスターを同じプロジェクトの Fleet に登録する。GKE Hub API が有効なプロジェクトと、Fleet に未登録のクラスターを指定する。
+
+```terraform
+variable "project_id" {
+  type = string
+}
+
+variable "cluster_name" {
+  type = string
+}
+
+variable "location" {
+  type = string
+}
+
+module "fleet_membership" {
+  source  = "terraform-google-modules/kubernetes-engine/google//modules/fleet-membership"
+  version = "47.0.0"
+
+  project_id   = var.project_id
+  cluster_name = var.cluster_name
+  location     = var.location
+}
+```
+
+> - [terraform-google-modules/kubernetes-engine/google//modules/fleet-membership (47.0.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-google-modules/kubernetes-engine/google/47.0.0/submodules/fleet-membership)
+
+<br>
+
 ### ワークステーション
 
 #### ▼ ワークステーションとは
