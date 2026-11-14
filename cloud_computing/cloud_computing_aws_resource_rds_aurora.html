@@ -21382,10 +21382,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-amazon-aurora" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. Amazon Aurora とは
+        01. 概要
       
     </span>
   </a>
@@ -21396,42 +21396,59 @@
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. セットアップ (コンソールの場合)
+        02. 仕組み
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-02-terraform" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2-02. セットアップ (Terraform の場合)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2-02. セットアップ (Terraform の場合)">
+    <nav class="md-nav" aria-label="02. 仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DB エンジン
+        DB クラスター
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DB エンジン">
+    <nav class="md-nav" aria-label="DB クラスター">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#amazon-aurora-db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon Aurora の DB クラスター
+        Amazon Aurora の DB クラスターとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DB インスタンス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DB インスタンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aurora-db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Aurora の DB インスタンスとは
       
     </span>
   </a>
@@ -21439,10 +21456,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#amazon-aurora-db_1" class="md-nav__link">
+  <a href="#amazon-aurora-db_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon Aurora の DB インスタンス
+        Amazon Aurora の DB インスタンスの種類
       
     </span>
   </a>
@@ -21499,34 +21516,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02-02. 踏み台サーバーをパブリックサブネットに置く場合の接続方法
+        03. セットアップ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-02. 踏み台サーバーをパブリックサブネットに置く場合の接続方法">
+    <nav class="md-nav" aria-label="03. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
+  <a href="#terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SSH 公開鍵認証を使用する場合
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH 公開鍵認証を使用する場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ この方法について
+        Terraformによる構築
       
     </span>
   </a>
@@ -21534,10 +21539,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ セットアップ
+        コンソールの場合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソールの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db-db-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DB エンジンと DB クラスター・DB インスタンスの設定
       
     </span>
   </a>
@@ -21555,15 +21572,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-03" class="md-nav__link">
+  <a href="#04-db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02-03. 踏み台サーバーをプライベートサブネットに置く場合の接続方法
+        04. DB への接続
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-03. 踏み台サーバーをプライベートサブネットに置く場合の接続方法">
+    <nav class="md-nav" aria-label="04. DB への接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンドポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        踏み台サーバーをパブリックサブネットに置く場合の接続方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="踏み台サーバーをパブリックサブネットに置く場合の接続方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH 公開鍵認証を使用する場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        踏み台サーバーをプライベートサブネットに置く場合の接続方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="踏み台サーバーをプライベートサブネットに置く場合の接続方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21574,23 +21642,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="AWS SSM Session Manager を使用した SSH セッション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ この方法について
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -21603,40 +21654,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ この方法について
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 前提条件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ セットアップ
-      
-    </span>
-  </a>
-  
 </li>
         
       </ul>
@@ -21644,21 +21661,16 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-04-pod-amazon-eks" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#pod-amazon-eks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02-04. 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法
+        踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-04. 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法">
+    <nav class="md-nav" aria-label="踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21692,29 +21704,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="values.example.yaml">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ pod.yaml
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ コマンド
-      
-    </span>
-  </a>
-  
 </li>
         
       </ul>
@@ -21722,39 +21711,11 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-05-amazon-ecs-fargate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02-05. Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-amazon-aurora-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        03. Amazon Aurora の DB クラスター
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. Amazon Aurora の DB クラスター">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#amazon-aurora-db_2" class="md-nav__link">
+  <a href="#amazon-ecs-fargate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Amazon Aurora の DB クラスターとは
+        Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法
       
     </span>
   </a>
@@ -21762,119 +21723,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#amazon-aurora-db_3" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        空の Amazon Aurora の DB クラスター
+        コンソールの設定項目
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="空の Amazon Aurora の DB クラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 空の Amazon Aurora の DB クラスターとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-amazon-aurora-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        04. Amazon Aurora の DB インスタンス
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. Amazon Aurora の DB インスタンス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Amazon Aurora の DB インスタンスとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Amazon Aurora の DB インスタンスの種類
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        エンドポイント
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DB エンジンのログ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DB エンジンのログ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ スロークエリログ
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ エラークエリログ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -21887,12 +21742,62 @@
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. アップグレード
+        05. ログ出力
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. アップグレード">
+    <nav class="md-nav" aria-label="05. ログ出力">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スロークエリログ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エラークエリログ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06. アップグレード
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. アップグレード">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -21907,7 +21812,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         アップグレード可能かのバリデーション
@@ -21918,7 +21823,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
         ダウンタイム
@@ -21930,7 +21835,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ダウンタイムとは
@@ -21941,7 +21846,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ダウンタイムの発生条件
@@ -21952,7 +21857,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ エンジンタイプによるダウンタイムの最小化
@@ -21963,71 +21868,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ダウンタイムの計測例
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        フェイルオーバー
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="フェイルオーバー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Amazon Aurora のフェイルオーバーとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ フェイルオーバーによるダウンタイムの最小化
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Amazon Aurora の DB インスタンスの昇格優先順位
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ダウンタイムを最小化できない場合
       
     </span>
   </a>
@@ -22050,25 +21894,108 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
+  <a href="#07" class="md-nav__link">
     <span class="md-ellipsis">
       
-        06. 負荷対策
+        07. フェイルオーバー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. 負荷対策">
+    <nav class="md-nav" aria-label="07. フェイルオーバー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#amazon-aurora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Aurora のフェイルオーバーとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フェイルオーバーによるダウンタイムの最小化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aurora-db_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Aurora の DB インスタンスの昇格優先順位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ダウンタイムを最小化できない場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08. 負荷分散と性能改善
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. 負荷分散と性能改善">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       
         エンドポイントの使い分け
@@ -22090,7 +22017,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       
         クエリキャッシュの利用
@@ -22101,7 +22028,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       
         ユニークキーまたはインデックスの利用
@@ -22112,7 +22039,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_31" class="md-nav__link">
     <span class="md-ellipsis">
       
         テーブルを正規化し過ぎない
@@ -22123,10 +22050,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_32" class="md-nav__link">
     <span class="md-ellipsis">
       
         インスタンスタイプのスケールアップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
       
     </span>
   </a>
@@ -22139,10 +22077,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#07" class="md-nav__link">
+  <a href="#09" class="md-nav__link">
     <span class="md-ellipsis">
       
-        07. イベント
+        09. イベント
       
     </span>
   </a>
@@ -22150,15 +22088,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#08-amazon-aurora-global-db" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        08. Amazon Aurora Global DB
+        10. リージョン間レプリケーション
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="08. Amazon Aurora Global DB">
+    <nav class="md-nav" aria-label="10. リージョン間レプリケーション">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -22184,7 +22122,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
       
         仕組み
@@ -22196,7 +22134,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ウォームスタンバイ構成
@@ -22207,7 +22145,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ コールドスタンバイ構成
@@ -22223,7 +22161,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
+  <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
       
         アップグレード
@@ -22234,7 +22172,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
       
         スナップショット
@@ -22246,6 +22184,89 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. DB クラスターの保持
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. DB クラスターの保持">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aurora-db_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        空の Amazon Aurora の DB クラスターとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. DB 認証とアクセス制御
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 暗号化
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. バックアップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. DB パラメーター設定
+      
+    </span>
+  </a>
   
 </li>
       
@@ -36320,10 +36341,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-amazon-aurora" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. Amazon Aurora とは
+        01. 概要
       
     </span>
   </a>
@@ -36334,42 +36355,59 @@
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. セットアップ (コンソールの場合)
+        02. 仕組み
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-02-terraform" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2-02. セットアップ (Terraform の場合)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2-02. セットアップ (Terraform の場合)">
+    <nav class="md-nav" aria-label="02. 仕組み">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DB エンジン
+        DB クラスター
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="DB エンジン">
+    <nav class="md-nav" aria-label="DB クラスター">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#amazon-aurora-db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon Aurora の DB クラスター
+        Amazon Aurora の DB クラスターとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DB インスタンス
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DB インスタンス">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aurora-db_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Aurora の DB インスタンスとは
       
     </span>
   </a>
@@ -36377,10 +36415,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#amazon-aurora-db_1" class="md-nav__link">
+  <a href="#amazon-aurora-db_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ Amazon Aurora の DB インスタンス
+        Amazon Aurora の DB インスタンスの種類
       
     </span>
   </a>
@@ -36437,34 +36475,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-02" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02-02. 踏み台サーバーをパブリックサブネットに置く場合の接続方法
+        03. セットアップ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-02. 踏み台サーバーをパブリックサブネットに置く場合の接続方法">
+    <nav class="md-nav" aria-label="03. セットアップ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ssh" class="md-nav__link">
+  <a href="#terraform" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SSH 公開鍵認証を使用する場合
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="SSH 公開鍵認証を使用する場合">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ この方法について
+        Terraformによる構築
       
     </span>
   </a>
@@ -36472,10 +36498,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ▼ セットアップ
+        コンソールの場合
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="コンソールの場合">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#db-db-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DB エンジンと DB クラスター・DB インスタンスの設定
       
     </span>
   </a>
@@ -36493,15 +36531,66 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#02-03" class="md-nav__link">
+  <a href="#04-db" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02-03. 踏み台サーバーをプライベートサブネットに置く場合の接続方法
+        04. DB への接続
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-03. 踏み台サーバーをプライベートサブネットに置く場合の接続方法">
+    <nav class="md-nav" aria-label="04. DB への接続">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エンドポイント
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        踏み台サーバーをパブリックサブネットに置く場合の接続方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="踏み台サーバーをパブリックサブネットに置く場合の接続方法">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ssh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SSH 公開鍵認証を使用する場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        踏み台サーバーをプライベートサブネットに置く場合の接続方法
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="踏み台サーバーをプライベートサブネットに置く場合の接続方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -36512,23 +36601,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="AWS SSM Session Manager を使用した SSH セッション">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ この方法について
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -36541,40 +36613,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ この方法について
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 前提条件
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ セットアップ
-      
-    </span>
-  </a>
-  
 </li>
         
       </ul>
@@ -36582,21 +36620,16 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-04-pod-amazon-eks" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#pod-amazon-eks" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02-04. 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法
+        踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="02-04. 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法">
+    <nav class="md-nav" aria-label="踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -36630,29 +36663,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="values.example.yaml">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#podyaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ pod.yaml
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ コマンド
-      
-    </span>
-  </a>
-  
 </li>
         
       </ul>
@@ -36660,39 +36670,11 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#02-05-amazon-ecs-fargate" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02-05. Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03-amazon-aurora-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        03. Amazon Aurora の DB クラスター
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. Amazon Aurora の DB クラスター">
-      <ul class="md-nav__list">
-        
           <li class="md-nav__item">
-  <a href="#amazon-aurora-db_2" class="md-nav__link">
+  <a href="#amazon-ecs-fargate" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Amazon Aurora の DB クラスターとは
+        Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法
       
     </span>
   </a>
@@ -36700,119 +36682,13 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#amazon-aurora-db_3" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
-        空の Amazon Aurora の DB クラスター
+        コンソールの設定項目
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="空の Amazon Aurora の DB クラスター">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 空の Amazon Aurora の DB クラスターとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-amazon-aurora-db" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        04. Amazon Aurora の DB インスタンス
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. Amazon Aurora の DB インスタンス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Amazon Aurora の DB インスタンスとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Amazon Aurora の DB インスタンスの種類
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        エンドポイント
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#db_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        DB エンジンのログ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="DB エンジンのログ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ スロークエリログ
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ エラークエリログ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -36825,12 +36701,62 @@
   <a href="#05" class="md-nav__link">
     <span class="md-ellipsis">
       
-        05. アップグレード
+        05. ログ出力
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="05. アップグレード">
+    <nav class="md-nav" aria-label="05. ログ出力">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        スロークエリログ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        エラークエリログ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06. アップグレード
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. アップグレード">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -36845,7 +36771,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
       
         アップグレード可能かのバリデーション
@@ -36856,7 +36782,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
       
         ダウンタイム
@@ -36868,7 +36794,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ダウンタイムとは
@@ -36879,7 +36805,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ダウンタイムの発生条件
@@ -36890,7 +36816,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
+  <a href="#_22" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ エンジンタイプによるダウンタイムの最小化
@@ -36901,71 +36827,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
+  <a href="#_23" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ダウンタイムの計測例
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        フェイルオーバー
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="フェイルオーバー">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Amazon Aurora のフェイルオーバーとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_20" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ フェイルオーバーによるダウンタイムの最小化
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#amazon-aurora-db_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Amazon Aurora の DB インスタンスの昇格優先順位
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_21" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ダウンタイムを最小化できない場合
       
     </span>
   </a>
@@ -36988,25 +36853,108 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#06" class="md-nav__link">
+  <a href="#07" class="md-nav__link">
     <span class="md-ellipsis">
       
-        06. 負荷対策
+        07. フェイルオーバー
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="06. 負荷対策">
+    <nav class="md-nav" aria-label="07. フェイルオーバー">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_22" class="md-nav__link">
+  <a href="#amazon-aurora_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Aurora のフェイルオーバーとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        フェイルオーバーによるダウンタイムの最小化
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aurora-db_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Amazon Aurora の DB インスタンスの昇格優先順位
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ダウンタイムを最小化できない場合
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        08. 負荷分散と性能改善
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="08. 負荷分散と性能改善">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
     <span class="md-ellipsis">
       
         エンドポイントの使い分け
@@ -37028,7 +36976,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_23" class="md-nav__link">
+  <a href="#_29" class="md-nav__link">
     <span class="md-ellipsis">
       
         クエリキャッシュの利用
@@ -37039,7 +36987,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_24" class="md-nav__link">
+  <a href="#_30" class="md-nav__link">
     <span class="md-ellipsis">
       
         ユニークキーまたはインデックスの利用
@@ -37050,7 +36998,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_25" class="md-nav__link">
+  <a href="#_31" class="md-nav__link">
     <span class="md-ellipsis">
       
         テーブルを正規化し過ぎない
@@ -37061,10 +37009,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_26" class="md-nav__link">
+  <a href="#_32" class="md-nav__link">
     <span class="md-ellipsis">
       
         インスタンスタイプのスケールアップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
       
     </span>
   </a>
@@ -37077,10 +37036,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#07" class="md-nav__link">
+  <a href="#09" class="md-nav__link">
     <span class="md-ellipsis">
       
-        07. イベント
+        09. イベント
       
     </span>
   </a>
@@ -37088,15 +37047,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#08-amazon-aurora-global-db" class="md-nav__link">
+  <a href="#10" class="md-nav__link">
     <span class="md-ellipsis">
       
-        08. Amazon Aurora Global DB
+        10. リージョン間レプリケーション
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="08. Amazon Aurora Global DB">
+    <nav class="md-nav" aria-label="10. リージョン間レプリケーション">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -37122,7 +37081,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_27" class="md-nav__link">
+  <a href="#_34" class="md-nav__link">
     <span class="md-ellipsis">
       
         仕組み
@@ -37134,7 +37093,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_28" class="md-nav__link">
+  <a href="#_35" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ウォームスタンバイ構成
@@ -37145,7 +37104,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_29" class="md-nav__link">
+  <a href="#_36" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ コールドスタンバイ構成
@@ -37161,7 +37120,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_30" class="md-nav__link">
+  <a href="#_37" class="md-nav__link">
     <span class="md-ellipsis">
       
         アップグレード
@@ -37172,7 +37131,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_31" class="md-nav__link">
+  <a href="#_38" class="md-nav__link">
     <span class="md-ellipsis">
       
         スナップショット
@@ -37184,6 +37143,89 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. DB クラスターの保持
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="11. DB クラスターの保持">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amazon-aurora-db_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        空の Amazon Aurora の DB クラスターとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        コンソールの設定項目
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. DB 認証とアクセス制御
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        13. 暗号化
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        14. バックアップ
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-db" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        15. DB パラメーター設定
+      
+    </span>
+  </a>
   
 </li>
       
@@ -37362,7 +37404,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:06:11 JST">2026-11-14</span>
   </span>
 
     
@@ -37391,7 +37433,7 @@
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
-<h2 id="01-amazon-aurora">01. Amazon Aurora とは<a class="headerlink" href="#01-amazon-aurora" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 概要<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>Amazon RDS をよりマネージドにした AWS リソースである。</p>
 <blockquote>
 <ul>
@@ -37399,400 +37441,9 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="02">02. セットアップ (コンソールの場合)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h2 id="2-02-terraform">2-02. セットアップ (Terraform の場合)<a class="headerlink" href="#2-02-terraform" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_rds_cluster"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">cluster_identifier</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-cluster"</span>
-<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"aurora-mysql"</span>
-<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"8.0.mysql_aurora.3.05.2"</span>
-<span class="w">  </span><span class="na">database_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
-<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"admin"</span>
-<span class="w">  </span><span class="na">manage_master_user_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">db_subnet_group_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_db_subnet_group.foo.name</span>
-<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_security_group.foo.id</span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_rds_cluster_instance"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">count</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
-<span class="w">  </span><span class="na">identifier</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-instance-${count.index}"</span>
-<span class="w">  </span><span class="na">cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.id</span>
-<span class="w">  </span><span class="na">instance_class</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"db.r6g.large"</span>
-<span class="w">  </span><span class="na">engine</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.engine</span>
-<span class="w">  </span><span class="na">engine_version</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.engine_version</span>
-<span class="p">}</span>
-</code></pre></div>
-<h3 id="db">DB エンジン<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>エンジンタイプ</td>
-      <td>ミドルウェアの DBMS の種類を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>エディション</td>
-      <td>エンジンバージョンで Amazon Aurora を選択した場合の互換性を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>エンジンバージョン</td>
-      <td>DB エンジンのバージョンを設定する。DB クラスター内のすべての DB インスタンスに適用される。</td>
-      <td>・Amazon Aurora であれば、<code>SELECT AURORA_VERSION()</code> を使用して、エンジンバージョンを確認できる。</td>
-    </tr>
-  </tbody>
-</table>
-
-<h4 id="amazon-aurora-db">▼ Amazon Aurora の DB クラスター<a class="headerlink" href="#amazon-aurora-db" title="Permanent link">&para;</a></h4>
-<p>ベストプラクティスについては、以下のリンクを参考にせよ。</p>
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>レプリケーション</td>
-      <td>単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。</td>
-      <td>フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、Amazon Aurora の DB クラスターをクローンできないなどのデメリットもある。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms</a></td>
-    </tr>
-    <tr>
-      <td>Amazon Aurora の DB クラスター識別子</td>
-      <td>Amazon Aurora の DB クラスター名を設定する。</td>
-      <td>インスタンス名は、最初に設定できず、Amazon RDS の作成後に設定できる。</td>
-    </tr>
-    <tr>
-      <td>VPC とサブネットグループ</td>
-      <td>Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。</td>
-      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" alt="subnet_component-type"></td>
-    </tr>
-    <tr>
-      <td>パラメーターグループ</td>
-      <td>グローバルオプションを設定する。</td>
-      <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、すべてのインスタンスに同じパラメーターループを設定する必要があるため、クラスターパラメーターを使用すればよい。各パラメーターに適用タイプ (dynamic/static) があり、dynamic タイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定するとよい。<br>・<code>time_zone=Asia/Tokyo</code><br>・<code>character_set_client=utf8mb4</code><br>・<code>character_set_connection=utf8mb4</code><br>・<code>character_set_database=utf8mb4</code><br>・<code>character_set_results=utf8mb4</code><br>・<code>character_set_server=utf8mb4</code><br>・<code>server_audit_logging=1</code> (監査ログを Amazon CloudWatch に送信するか否か) <br>・<code>server_audit_logs_upload=1</code><br>・<code>general_log=1</code> (通常クエリログを Amazon CloudWatch に送信するか否か) <br>・<code>slow_query_log=1</code> (スロークエリログを Amazon CloudWatch に送信するか否か) <br>・<code>long_query_time=3</code> (スロークエリと見なす最短秒数)</td>
-    </tr>
-    <tr>
-      <td>DB 認証</td>
-      <td>DB に接続するための認証方法を設定する。</td>
-      <td>Amazon Aurora の各 DB インスタンスに異なる DB 認証を設定できるが、すべての Amazon Aurora の DB インスタンスに同じ認証方法を設定すべきであるため、Amazon Aurora の DB クラスターでこれを設定すればよい。</td>
-    </tr>
-    <tr>
-      <td>マスタユーザー名</td>
-      <td>DB の root 権限の実行ユーザーを設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>マスターパスワード</td>
-      <td>DB の root 権限の実行ユーザーのパスワードを設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>暗号化キー</td>
-      <td>AWS KMS を使用して、データを暗号化して保管する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>バックアップ保管期間</td>
-      <td>Amazon Aurora の DB クラスター がバックアップを保管する期間を設定する。</td>
-      <td><code>7</code> 日間にしておく。</td>
-    </tr>
-    <tr>
-      <td>ログのエクスポート</td>
-      <td>Amazon CloudWatch Logs に送信するデータエンジン (例：MySQL) のログを設定する。DB エンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。</td>
-      <td>すべてのログを選択するとよい。</td>
-    </tr>
-    <tr>
-      <td>セキュリティグループ</td>
-      <td>Amazon Aurora の DB クラスターのセキュリティグループを設定する。</td>
-      <td>コンピューティングからのリクエストのみを許可するように、これらのプライベート IP アドレス (<code>*.*.*.*/32</code>) を設定する。</td>
-    </tr>
-    <tr>
-      <td>認証機関</td>
-      <td>Amazon Aurora の DB クラスターに紐づけるサーバー証明書を署名するルート認証局を設定する。</td>
-      <td>アプリケーションが Amazon Aurora の DB クラスターに HTTPS で通信する場合に必要である。</td>
-    </tr>
-    <tr>
-      <td>削除保護</td>
-      <td>Amazon Aurora の DB クラスターの削除を防ぐ。</td>
-      <td>Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote>
-<ul>
-<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon</a> RDS/</li>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html">Using SSL/TLS to encrypt a connection to a DB instance or cluster - Amazon Relational Database Service</a></li>
-</ul>
-</blockquote>
-<h4 id="amazon-aurora-db_1">▼ Amazon Aurora の DB インスタンス<a class="headerlink" href="#amazon-aurora-db_1" title="Permanent link">&para;</a></h4>
-<p>ベストプラクティスについては、以下のリンクを参考にせよ。</p>
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>インスタンスクラス</td>
-      <td>Amazon Aurora の DB インスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
-      <td>バースト可能クラスを選択するとよい。補足として、Amazon Aurora の DB サイズは自動的にスケーリングするため、設定する必要がない。</td>
-    </tr>
-    <tr>
-      <td>パブリックアクセス</td>
-      <td>Amazon Aurora の DB インスタンスに IP アドレスを割り当てるか否かを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>キャパシティタイプ</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>マルチ AZ 配置</td>
-      <td>プライマリーインスタンスとは別に、リードレプリカをマルチ AZ 配置で追加するか否かを設定する。</td>
-      <td>後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。</td>
-    </tr>
-    <tr>
-      <td>最初の DB 名</td>
-      <td>Amazon Aurora の DB インスタンスに自動的に作成される DB 名を設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>マイナーバージョンの自動アップグレード</td>
-      <td>Amazon Aurora の DB インスタンスの DB エンジンのバージョンを自動的に更新するかを設定する。</td>
-      <td>開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。</td>
-    </tr>
-  </tbody>
-</table>
-
-<blockquote>
-<ul>
-<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon</a> RDS/</li>
-</ul>
-</blockquote>
-<h3 id="os">OS の隠蔽<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
-<h4 id="os_1">▼ OS の隠蔽とは<a class="headerlink" href="#os_1" title="Permanent link">&para;</a></h4>
-<p>Amazon Aurora は、EC2 内に DBMS が稼働したものであるが、このほとんどが隠蔽されている。</p>
-<p>そのため DB サーバーのようには操作できず、OS のバージョン確認や SSH 公開鍵認証を行えない。</p>
-<blockquote>
-<ul>
-<li><a href="https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/">［5］RDSのつまずきポイント、DBサーバーと思うと失敗する | 日経クロステック（xTECH）</a></li>
-</ul>
-</blockquote>
-<h4 id="_2">▼ 確認方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linux のバージョンは隠蔽されている。</p>
-<p>Amazon RDS でも確認方法は同じである。</p>
-<div class="highlight"><pre><span></span><code><span class="c1">-- Amazon Auroraの場合</span>
-<span class="k">SHOW</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%version%'</span><span class="p">;</span>
-
-<span class="o">+-------------------------+------------------------------+</span>
-<span class="o">|</span><span class="w"> </span><span class="n">Variable_name</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="k">Value</span><span class="w">                        </span><span class="o">|</span>
-<span class="o">+-------------------------+------------------------------+</span>
-<span class="o">|</span><span class="w"> </span><span class="n">aurora_version</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="mf">2.09.0</span><span class="w">                       </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">innodb_version</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="mf">5.7.0</span><span class="w">                        </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">protocol_version</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w">                           </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">slave_type_conversions</span><span class="w">  </span><span class="o">|</span><span class="w">                              </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">tls_version</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">TLSv1</span><span class="p">,</span><span class="n">TLSv1</span><span class="mf">.1</span><span class="p">,</span><span class="n">TLSv1</span><span class="mf">.2</span><span class="w">        </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version</span><span class="w">                 </span><span class="o">|</span><span class="w"> </span><span class="mf">5.7.12</span><span class="o">-</span><span class="k">log</span><span class="w">                   </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version_comment</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">MySQL</span><span class="w"> </span><span class="n">Community</span><span class="w"> </span><span class="k">Server</span><span class="w"> </span><span class="p">(</span><span class="n">GPL</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version_compile_machine</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x86_64</span><span class="w">                       </span><span class="o">|</span>
-<span class="o">|</span><span class="w"> </span><span class="n">version_compile_os</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Linux</span><span class="w">                        </span><span class="o">|</span>
-<span class="o">+-------------------------+------------------------------+</span>
-</code></pre></div>
-<p><br></p>
-<h2 id="02-02">02-02. 踏み台サーバーをパブリックサブネットに置く場合の接続方法<a class="headerlink" href="#02-02" title="Permanent link">&para;</a></h2>
-<h3 id="ssh">SSH 公開鍵認証を使用する場合<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h3>
-<h4 id="_3">▼ この方法について<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
-<p>SSH 公開鍵認証を使用する場合、ユーザーが自前で DB 接続者を管理する必要がある。</p>
-<p>この場合、踏み台サーバー (Amazon EC2) をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。</p>
-<h4 id="_4">▼ セットアップ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;Amazon<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">"~/.ssh/foo.pem"</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバー<span class="w"> </span><span class="o">(</span>Amazon<span class="w"> </span>EC2<span class="o">)</span><span class="w"> </span>のホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://qiita.com/shimi7o/items/732e91126ab4a06162a7">Auroraへの接続にはSSM Session Managerを利用したリモートホストへのポートフォワーディングがおすすめという話 #AWS - Qiita</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-03">02-03. 踏み台サーバーをプライベートサブネットに置く場合の接続方法<a class="headerlink" href="#02-03" title="Permanent link">&para;</a></h2>
-<h3 id="aws-ssm-session-manager-ssh">AWS SSM Session Manager を使用した SSH セッション<a class="headerlink" href="#aws-ssm-session-manager-ssh" title="Permanent link">&para;</a></h3>
-<h4 id="_5">▼ この方法について<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh">Start a session - AWS Systems Manager</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="aws-ssm-session-manager-startportforwardingsessiontoremotehost">AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)<a class="headerlink" href="#aws-ssm-session-manager-startportforwardingsessiontoremotehost" title="Permanent link">&para;</a></h3>
-<h4 id="_6">▼ この方法について<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
-<p>AWS SSM Session Manager の認証を使用する場合、AWS IAM で DB 接続者を管理する。</p>
-<p>この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding">Start a session - AWS Systems Manager</a></li>
-</ul>
-</blockquote>
-<h4 id="_7">▼ 前提条件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p>事前に、踏み台サーバー (Amazon EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。</p>
-<p>以下のツールをインストールすること</p>
-<ul>
-<li>AWS CLI (セットアップ時点で最新のもの)</li>
-<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html">Session Manager プラグイン</a> (使用中の PC の OS に合わせること)</li>
-</ul>
-<h4 id="_8">▼ セットアップ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
-<p>ローカル PC の任意のポート番号を使用して、ポートフォワーディングする。</p>
-<p>ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)</span>
-$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台サーバー<span class="w"> </span><span class="o">(</span>Amazon<span class="w"> </span>EC2<span class="o">)</span><span class="w"> </span>インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
-<span class="w">    </span>--parameters<span class="w"> </span><span class="s1">'{"host":["&lt;Amazon Auroraのリーダーエンドポイント&gt;"],"portNumber":["&lt;Amazon Auroraのポート番号&gt;"], "localPortNumber":["&lt;ローカルPCのポート番号&gt;"]}'</span>
-</code></pre></div>
-<p>別ターミナルを開き、Amazon Aurora の DB にログインする。</p>
-<p>AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;DBコンテナ名&gt;<span class="w"> </span>bash
-
-bash#<span class="w"> </span>mysql<span class="w"> </span>-h<span class="w"> </span>host.docker.internal<span class="w"> </span>-P<span class="w"> </span>&lt;前の手順で設定したローカルPCの好きなポート番号&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;ユーザー名&gt;<span class="w"> </span>-p&lt;パスワード&gt;<span class="w"> </span>&lt;DB名&gt;
-
-mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="p">;</span>
-+-------------------------------+
-<span class="p">|</span><span class="w"> </span>Tables_in_&lt;DB名&gt;<span class="w">              </span><span class="p">|</span>
-+-------------------------------+
-...
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1">SSM Session Managerを使ってポートフォワードする | DevelopersIO</a></li>
-<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding">Start a session - AWS Systems Manager</a></li>
-<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html">Install the Session Manager plugin on macOS - AWS Systems Manager</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-04-pod-amazon-eks">02-04. 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法<a class="headerlink" href="#02-04-pod-amazon-eks" title="Permanent link">&para;</a></h2>
-<h3 id="pod">踏み台 Pod とは<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h3>
-<p>これは、Amazon EKS を使用している場合に使用できる。</p>
-<p>DB に接続したい場合、ポートフォワーディング用の踏み台 Pod を Amazon EKS 内に作成する。</p>
-<p>Helm チャートを作成しておくと、簡単にセットアップできる。</p>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84">アプリ開発者のための kubectl 講座</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="troubleshooting">troubleshooting リポジトリ<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">troubleshooting/</span>
-<span class="l l-Scalar l-Scalar-Plain">├── README.md</span>
-<span class="l l-Scalar l-Scalar-Plain">├── .gitignore</span>
-<span class="l l-Scalar l-Scalar-Plain">├── chart/</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── Chart.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── templates</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │   └── deployment.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   │</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── .helmignore</span>
-<span class="l l-Scalar l-Scalar-Plain">│   ├── values.example.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">│   └── values.yaml</span>
-<span class="l l-Scalar l-Scalar-Plain">└── helmfile.yaml</span>
-</code></pre></div>
-<p><code>.gitignore</code> ファイルでは、<code>values.example.yaml</code> ファイルのコピーから作成される <code>values.yaml</code> ファイルのバージョン管理を無視するように実装する。</p>
-<div class="highlight"><pre><span></span><code>**/**/values.yaml
-</code></pre></div>
-<p><br></p>
-<h3 id="valuesexampleyaml">values.example.yaml<a class="headerlink" href="#valuesexampleyaml" title="Permanent link">&para;</a></h3>
-<p><code>.env</code> ファイルのように、バージョン管理しない <code>values.example.yaml</code> ファイルを用意しておく。</p>
-<p>各開発者がローカル PC で <code>values.example.yaml</code> ファイルから <code>values.yaml</code> ファイルを作成する。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cp<span class="w"> </span>chart/values.example.yaml<span class="w"> </span>values.yaml
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">port-forward-for-aws-aurora</span>
-
-<span class="nt">remote</span><span class="p">:</span>
-<span class="w">  </span><span class="c1"># Amazon Aurora のリーダーエンドポイントを設定する</span>
-<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ここに自分で値を設定する&gt;</span>
-<span class="w">  </span><span class="c1"># Amazon Aurora のポート番号を設定する</span>
-<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ここに自分で値を設定する&gt;</span>
-</code></pre></div>
-<h4 id="podyaml">▼ pod.yaml<a class="headerlink" href="#podyaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
-<span class="nt">metadata</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
-<span class="nt">spec</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
-<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
-<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
-<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
-<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">marcnuri/port-forward:latest</span>
-<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
-<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOCAL_PORT</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"443"</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REMOTE_HOST</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.remote.host</span><span class="p p-Indicator">}}</span>
-<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REMOTE_PORT</span>
-<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.remote.port | quote</span><span class="p p-Indicator">}}</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml<span class="w"> </span>diff
-
-$<span class="w"> </span>helmfile<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml<span class="w"> </span>apply
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://hub.docker.com/r/marcnuri/port-forward">marcnuri/port-forward - Docker Image</a></li>
-</ul>
-</blockquote>
-<h4 id="_9">▼ コマンド<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p>ローカル PC の好きなポート番号を使用して、Amazon Aurora にポートフォワーディングを実行する。</p>
-<p>ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>deployment/port-forwarding-for-aws-aurora<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;<span class="w"> </span>&lt;ローカルPCの好きなポート番号&gt;:443
-</code></pre></div>
-<p>別ターミナルを開き、Amazon Aurora の DB にログインする。</p>
-<p>AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;DBコンテナ名&gt;<span class="w"> </span>bash
-
-bash#<span class="w"> </span>mysql<span class="w"> </span>-h<span class="w"> </span>host.docker.internal<span class="w"> </span>-P<span class="w"> </span>&lt;前の手順で設定したローカルPCの好きなポート番号&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;ユーザー名&gt;<span class="w"> </span>-p&lt;パスワード&gt;<span class="w"> </span>&lt;DB名&gt;
-
-mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="p">;</span>
-+-------------------------------+
-<span class="p">|</span><span class="w"> </span>Tables_in_&lt;DB名&gt;<span class="w">              </span><span class="p">|</span>
-+-------------------------------+
-...
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84">アプリ開発者のための kubectl 講座</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="02-05-amazon-ecs-fargate">02-05. Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法<a class="headerlink" href="#02-05-amazon-ecs-fargate" title="Permanent link">&para;</a></h2>
-<p>ECS Exec を有効化した Amazon ECS Fargate のタスクを踏み台にして、AWS Systems Manager Session Manager の <code>AWS-StartPortForwardingSessionToRemoteHost</code> ドキュメントでローカル PC から Amazon Aurora にポートフォワーディングする。</p>
-<blockquote>
-<ul>
-<li><a href="https://zenn.dev/quiver/articles/1458e453118254">ECS Fargateを踏み台にポートフォワードしてVPC内のRDSに接続する</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="03-amazon-aurora-db">03. Amazon Aurora の DB クラスター<a class="headerlink" href="#03-amazon-aurora-db" title="Permanent link">&para;</a></h2>
-<h3 id="amazon-aurora-db_2">Amazon Aurora の DB クラスターとは<a class="headerlink" href="#amazon-aurora-db_2" title="Permanent link">&para;</a></h3>
+<h2 id="02">02. 仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h3 id="db">DB クラスター<a class="headerlink" href="#db" title="Permanent link">&para;</a></h3>
+<h4 id="amazon-aurora-db">Amazon Aurora の DB クラスターとは<a class="headerlink" href="#amazon-aurora-db" title="Permanent link">&para;</a></h4>
 <p>DB エンジンに Amazon Aurora を選択した場合にのみ使用できる。</p>
 <p>Amazon Aurora の DB インスタンスとクラスターボリュームから構成されている。</p>
 <p>コンピューティングとして動作する Amazon Aurora の DB インスタンスと、ストレージとして動作するクラスターボリュームが分離されているため、Amazon Aurora の DB インスタンスが誤ってすべて削除されてしまったとしても、データを守れる。</p>
@@ -37804,23 +37455,11 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="amazon-aurora-db_3">空の Amazon Aurora の DB クラスター<a class="headerlink" href="#amazon-aurora-db_3" title="Permanent link">&para;</a></h3>
-<h4 id="amazon-aurora-db_4">▼ 空の Amazon Aurora の DB クラスターとは<a class="headerlink" href="#amazon-aurora-db_4" title="Permanent link">&para;</a></h4>
-<p>コンソール画面で、Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスを削除すると、Amazon Aurora の DB クラスターも自動的に削除される。</p>
-<p>一方で、AWS-API をコールしてすべての Amazon Aurora の DB インスタンスを削除する場合、Amazon Aurora の DB クラスターは自動的に削除されずに、空の状態になる。</p>
-<p>例えば、Terraform を使用して Amazon Aurora の DB クラスターを作成するときに、インスタンスの作成に失敗すると Amazon Aurora の DB クラスターが空になる。</p>
-<p>これは、Terraform が AWS-API をコールして作成しているためである。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster">Deleting Aurora DB clusters and DB instances - Amazon Aurora</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="04-amazon-aurora-db">04. Amazon Aurora の DB インスタンス<a class="headerlink" href="#04-amazon-aurora-db" title="Permanent link">&para;</a></h2>
-<h3 id="amazon-aurora-db_5">Amazon Aurora の DB インスタンスとは<a class="headerlink" href="#amazon-aurora-db_5" title="Permanent link">&para;</a></h3>
+<h3 id="db_1">DB インスタンス<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
+<h4 id="amazon-aurora-db_1">Amazon Aurora の DB インスタンスとは<a class="headerlink" href="#amazon-aurora-db_1" title="Permanent link">&para;</a></h4>
 <p>コンピューティング機能を持ち、クラスターボリュームを操作できる。</p>
 <p><br></p>
-<h3 id="amazon-aurora-db_6">Amazon Aurora の DB インスタンスの種類<a class="headerlink" href="#amazon-aurora-db_6" title="Permanent link">&para;</a></h3>
+<h4 id="amazon-aurora-db_2">Amazon Aurora の DB インスタンスの種類<a class="headerlink" href="#amazon-aurora-db_2" title="Permanent link">&para;</a></h4>
 <table>
   <thead>
     <tr>
@@ -37854,7 +37493,138 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 </table>
 
 <p><br></p>
-<h3 id="_10">エンドポイント<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h3 id="os">OS の隠蔽<a class="headerlink" href="#os" title="Permanent link">&para;</a></h3>
+<h4 id="os_1">▼ OS の隠蔽とは<a class="headerlink" href="#os_1" title="Permanent link">&para;</a></h4>
+<p>Amazon Aurora は、EC2 内に DBMS が稼働したものであるが、このほとんどが隠蔽されている。</p>
+<p>そのため DB サーバーのようには操作できず、OS のバージョン確認や SSH 公開鍵認証を行えない。</p>
+<blockquote>
+<ul>
+<li><a href="https://xtech.nikkei.com/it/article/COLUMN/20131108/516863/">［5］RDSのつまずきポイント、DBサーバーと思うと失敗する | 日経クロステック（xTECH）</a></li>
+</ul>
+</blockquote>
+<h4 id="_2">▼ 確認方法<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
+<p>Linux x86_64 (AMD64) が使用されているところまでは確認できるが、Linux のバージョンは隠蔽されている。</p>
+<p>Amazon RDS でも確認方法は同じである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Amazon Auroraの場合</span>
+<span class="k">SHOW</span><span class="w"> </span><span class="k">VARIABLES</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">'%version%'</span><span class="p">;</span>
+
+<span class="o">+-------------------------+------------------------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Variable_name</span><span class="w">           </span><span class="o">|</span><span class="w"> </span><span class="k">Value</span><span class="w">                        </span><span class="o">|</span>
+<span class="o">+-------------------------+------------------------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">aurora_version</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="mf">2.09.0</span><span class="w">                       </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">innodb_version</span><span class="w">          </span><span class="o">|</span><span class="w"> </span><span class="mf">5.7.0</span><span class="w">                        </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">protocol_version</span><span class="w">        </span><span class="o">|</span><span class="w"> </span><span class="mi">10</span><span class="w">                           </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">slave_type_conversions</span><span class="w">  </span><span class="o">|</span><span class="w">                              </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">tls_version</span><span class="w">             </span><span class="o">|</span><span class="w"> </span><span class="n">TLSv1</span><span class="p">,</span><span class="n">TLSv1</span><span class="mf">.1</span><span class="p">,</span><span class="n">TLSv1</span><span class="mf">.2</span><span class="w">        </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">version</span><span class="w">                 </span><span class="o">|</span><span class="w"> </span><span class="mf">5.7.12</span><span class="o">-</span><span class="k">log</span><span class="w">                   </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">version_comment</span><span class="w">         </span><span class="o">|</span><span class="w"> </span><span class="n">MySQL</span><span class="w"> </span><span class="n">Community</span><span class="w"> </span><span class="k">Server</span><span class="w"> </span><span class="p">(</span><span class="n">GPL</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">version_compile_machine</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">x86_64</span><span class="w">                       </span><span class="o">|</span>
+<span class="o">|</span><span class="w"> </span><span class="n">version_compile_os</span><span class="w">      </span><span class="o">|</span><span class="w"> </span><span class="n">Linux</span><span class="w">                        </span><span class="o">|</span>
+<span class="o">+-------------------------+------------------------------+</span>
+</code></pre></div>
+<p><br></p>
+<h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="terraform">Terraformによる構築<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_rds_cluster"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">cluster_identifier</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-cluster"</span>
+<span class="w">  </span><span class="na">engine</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"aurora-mysql"</span>
+<span class="w">  </span><span class="na">engine_version</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"8.0.mysql_aurora.3.05.2"</span>
+<span class="w">  </span><span class="na">database_name</span><span class="w">               </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
+<span class="w">  </span><span class="na">master_username</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"admin"</span>
+<span class="w">  </span><span class="na">manage_master_user_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
+<span class="w">  </span><span class="na">db_subnet_group_name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_db_subnet_group.foo.name</span>
+<span class="w">  </span><span class="na">vpc_security_group_ids</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_security_group.foo.id</span><span class="p">]</span>
+<span class="p">}</span>
+
+<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_rds_cluster_instance"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">count</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<span class="w">  </span><span class="na">identifier</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-instance-${count.index}"</span>
+<span class="w">  </span><span class="na">cluster_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.id</span>
+<span class="w">  </span><span class="na">instance_class</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"db.r6g.large"</span>
+<span class="w">  </span><span class="na">engine</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.engine</span>
+<span class="w">  </span><span class="na">engine_version</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_rds_cluster.foo.engine_version</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="_3">コンソールの場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="db-db-db">DB エンジンと DB クラスター・DB インスタンスの設定<a class="headerlink" href="#db-db-db" title="Permanent link">&para;</a></h4>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エンジンタイプ</td>
+      <td>ミドルウェアの DBMS の種類を設定する。</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>エディション</td>
+      <td>エンジンバージョンで Amazon Aurora を選択した場合の互換性を設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h5 id="amazon-aurora-db_3">▼ Amazon Aurora の DB クラスター<a class="headerlink" href="#amazon-aurora-db_3" title="Permanent link">&para;</a></h5>
+<p>ベストプラクティスについては、以下のリンクを参考にせよ。</p>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon Aurora の DB クラスター識別子</td>
+      <td>Amazon Aurora の DB クラスター名を設定する。</td>
+      <td>インスタンス名は、最初に設定できず、Amazon RDS の作成後に設定できる。</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+<ul>
+<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon</a> RDS/</li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html">Using SSL/TLS to encrypt a connection to a DB instance or cluster - Amazon Relational Database Service</a></li>
+</ul>
+</blockquote>
+<h5 id="amazon-aurora-db_4">▼ Amazon Aurora の DB インスタンス<a class="headerlink" href="#amazon-aurora-db_4" title="Permanent link">&para;</a></h5>
+<p>ベストプラクティスについては、以下のリンクを参考にせよ。</p>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>キャパシティタイプ</td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>最初の DB 名</td>
+      <td>Amazon Aurora の DB インスタンスに自動的に作成される DB 名を設定</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+<ul>
+<li><a href="https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon">https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon</a> RDS/</li>
+</ul>
+</blockquote>
+<h2 id="04-db">04. DB への接続<a class="headerlink" href="#04-db" title="Permanent link">&para;</a></h2>
+<h3 id="_4">エンドポイント<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p><img alt="rds_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_endpoint.png" /></p>
 <table>
   <thead>
@@ -37905,13 +37675,232 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="db_1">DB エンジンのログ<a class="headerlink" href="#db_1" title="Permanent link">&para;</a></h3>
-<h4 id="_11">▼ スロークエリログ<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<h3 id="_5">踏み台サーバーをパブリックサブネットに置く場合の接続方法<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<h4 id="ssh">SSH 公開鍵認証を使用する場合<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h4>
+<h5 id="_6">▼ この方法について<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
+<p>SSH 公開鍵認証を使用する場合、ユーザーが自前で DB 接続者を管理する必要がある。</p>
+<p>この場合、踏み台サーバー (Amazon EC2) をパブリックサブネットに置く必要があり、プライベートサブネットには置けない。</p>
+<h5 id="_7">▼ セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ssh<span class="w"> </span>-o<span class="w"> </span><span class="nv">serveraliveinterval</span><span class="o">=</span><span class="m">60</span><span class="w"> </span>-f<span class="w"> </span>-N<span class="w"> </span>-L<span class="w"> </span><span class="m">3306</span>:&lt;Amazon<span class="w"> </span>Auroraのリーダーエンドポイント&gt;:3306<span class="w"> </span>-i<span class="w"> </span><span class="s2">"~/.ssh/foo.pem"</span><span class="w"> </span>&lt;踏み台サーバーの実行ユーザー&gt;@&lt;踏み台サーバー<span class="w"> </span><span class="o">(</span>Amazon<span class="w"> </span>EC2<span class="o">)</span><span class="w"> </span>のホスト&gt;<span class="w"> </span>-p<span class="w"> </span><span class="m">22</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://qiita.com/shimi7o/items/732e91126ab4a06162a7">Auroraへの接続にはSSM Session Managerを利用したリモートホストへのポートフォワーディングがおすすめという話 #AWS - Qiita</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_8">踏み台サーバーをプライベートサブネットに置く場合の接続方法<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="aws-ssm-session-manager-ssh">AWS SSM Session Manager を使用した SSH セッション<a class="headerlink" href="#aws-ssm-session-manager-ssh" title="Permanent link">&para;</a></h4>
+<h5 id="_9">▼ この方法について<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<p>この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-start-ssh">Start a session - AWS Systems Manager</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h4 id="aws-ssm-session-manager-startportforwardingsessiontoremotehost">AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)<a class="headerlink" href="#aws-ssm-session-manager-startportforwardingsessiontoremotehost" title="Permanent link">&para;</a></h4>
+<h5 id="_10">▼ この方法について<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<p>AWS SSM Session Manager の認証を使用する場合、AWS IAM で DB 接続者を管理する。</p>
+<p>この場合、AWS SSM Session Manager を使用するため、踏み台サーバー (Amazon EC2) をプライベートサブネットに置ける。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding">Start a session - AWS Systems Manager</a></li>
+</ul>
+</blockquote>
+<h5 id="_11">▼ 前提条件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<p>事前に、踏み台サーバー (Amazon EC2) のセキュリティグループのインバウンドルールでポート番号を開放しておく。</p>
+<p>以下のツールをインストールすること</p>
+<ul>
+<li>AWS CLI (セットアップ時点で最新のもの)</li>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html">Session Manager プラグイン</a> (使用中の PC の OS に合わせること)</li>
+</ul>
+<h5 id="_12">▼ セットアップ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
+<p>ローカル PC の任意のポート番号を使用して、ポートフォワーディングする。</p>
+<p>ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># ポートフォワーディングのコマンドを実行する (事前にAWS Session Managerプラグインをインストールしないとエラーになる)</span>
+$<span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span>&lt;踏み台サーバー<span class="w"> </span><span class="o">(</span>Amazon<span class="w"> </span>EC2<span class="o">)</span><span class="w"> </span>インスタンスID&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--parameters<span class="w"> </span><span class="s1">'{"host":["&lt;Amazon Auroraのリーダーエンドポイント&gt;"],"portNumber":["&lt;Amazon Auroraのポート番号&gt;"], "localPortNumber":["&lt;ローカルPCのポート番号&gt;"]}'</span>
+</code></pre></div>
+<p>別ターミナルを開き、Amazon Aurora の DB にログインする。</p>
+<p>AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;DBコンテナ名&gt;<span class="w"> </span>bash
+
+bash#<span class="w"> </span>mysql<span class="w"> </span>-h<span class="w"> </span>host.docker.internal<span class="w"> </span>-P<span class="w"> </span>&lt;前の手順で設定したローカルPCの好きなポート番号&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;ユーザー名&gt;<span class="w"> </span>-p&lt;パスワード&gt;<span class="w"> </span>&lt;DB名&gt;
+
+mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="p">;</span>
++-------------------------------+
+<span class="p">|</span><span class="w"> </span>Tables_in_&lt;DB名&gt;<span class="w">              </span><span class="p">|</span>
++-------------------------------+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://dev.classmethod.jp/articles/ssm-session-manage-port-forwarding/#toc-1">SSM Session Managerを使ってポートフォワードする | DevelopersIO</a></li>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#sessions-remote-port-forwarding">Start a session - AWS Systems Manager</a></li>
+<li><a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/install-plugin-macos-overview.html">Install the Session Manager plugin on macOS - AWS Systems Manager</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="pod-amazon-eks">踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法<a class="headerlink" href="#pod-amazon-eks" title="Permanent link">&para;</a></h3>
+<h4 id="pod">踏み台 Pod とは<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>これは、Amazon EKS を使用している場合に使用できる。</p>
+<p>DB に接続したい場合、ポートフォワーディング用の踏み台 Pod を Amazon EKS 内に作成する。</p>
+<p>Helm チャートを作成しておくと、簡単にセットアップできる。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84">アプリ開発者のための kubectl 講座</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h4 id="troubleshooting">troubleshooting リポジトリ<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">troubleshooting/</span>
+<span class="l l-Scalar l-Scalar-Plain">├── README.md</span>
+<span class="l l-Scalar l-Scalar-Plain">├── .gitignore</span>
+<span class="l l-Scalar l-Scalar-Plain">├── chart/</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── Chart.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── templates</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │   └── deployment.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   │</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── .helmignore</span>
+<span class="l l-Scalar l-Scalar-Plain">│   ├── values.example.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">│   └── values.yaml</span>
+<span class="l l-Scalar l-Scalar-Plain">└── helmfile.yaml</span>
+</code></pre></div>
+<p><code>.gitignore</code> ファイルでは、<code>values.example.yaml</code> ファイルのコピーから作成される <code>values.yaml</code> ファイルのバージョン管理を無視するように実装する。</p>
+<div class="highlight"><pre><span></span><code>**/**/values.yaml
+</code></pre></div>
+<p><br></p>
+<h4 id="valuesexampleyaml">values.example.yaml<a class="headerlink" href="#valuesexampleyaml" title="Permanent link">&para;</a></h4>
+<p><code>.env</code> ファイルのように、バージョン管理しない <code>values.example.yaml</code> ファイルを用意しておく。</p>
+<p>各開発者がローカル PC で <code>values.example.yaml</code> ファイルから <code>values.yaml</code> ファイルを作成する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>cp<span class="w"> </span>chart/values.example.yaml<span class="w"> </span>values.yaml
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">port-forward-for-aws-aurora</span>
+
+<span class="nt">remote</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Amazon Aurora のリーダーエンドポイントを設定する</span>
+<span class="w">  </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ここに自分で値を設定する&gt;</span>
+<span class="w">  </span><span class="c1"># Amazon Aurora のポート番号を設定する</span>
+<span class="w">  </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;ここに自分で値を設定する&gt;</span>
+</code></pre></div>
+<h5 id="podyaml">▼ pod.yaml<a class="headerlink" href="#podyaml" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<span class="nt">metadata</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
+<span class="nt">spec</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
+<span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.name</span><span class="p p-Indicator">}}</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">marcnuri/port-forward:latest</span>
+<span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">443</span>
+<span class="w">          </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOCAL_PORT</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">"443"</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REMOTE_HOST</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.remote.host</span><span class="p p-Indicator">}}</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">REMOTE_PORT</span>
+<span class="w">              </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">.Values.remote.port | quote</span><span class="p p-Indicator">}}</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>helmfile<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml<span class="w"> </span>diff
+
+$<span class="w"> </span>helmfile<span class="w"> </span>-f<span class="w"> </span>helmfile.yaml<span class="w"> </span>apply
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://hub.docker.com/r/marcnuri/port-forward">marcnuri/port-forward - Docker Image</a></li>
+</ul>
+</blockquote>
+<h5 id="_13">▼ コマンド<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h5>
+<p>ローカル PC の好きなポート番号を使用して、Amazon Aurora にポートフォワーディングを実行する。</p>
+<p>ローカル PC では、コンテナなどが 3306 番ポートをすでに使用している可能性があり、他のポート番号がおすすめである。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>kubectl<span class="w"> </span>port-forward<span class="w"> </span>deployment/port-forwarding-for-aws-aurora<span class="w"> </span>-n<span class="w"> </span>&lt;Namespace名&gt;<span class="w"> </span>&lt;ローカルPCの好きなポート番号&gt;:443
+</code></pre></div>
+<p>別ターミナルを開き、Amazon Aurora の DB にログインする。</p>
+<p>AWS Secrets Manager の DB のユーザー名やパスワードを確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;DBコンテナ名&gt;<span class="w"> </span>bash
+
+bash#<span class="w"> </span>mysql<span class="w"> </span>-h<span class="w"> </span>host.docker.internal<span class="w"> </span>-P<span class="w"> </span>&lt;前の手順で設定したローカルPCの好きなポート番号&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;ユーザー名&gt;<span class="w"> </span>-p&lt;パスワード&gt;<span class="w"> </span>&lt;DB名&gt;
+
+mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="p">;</span>
++-------------------------------+
+<span class="p">|</span><span class="w"> </span>Tables_in_&lt;DB名&gt;<span class="w">              </span><span class="p">|</span>
++-------------------------------+
+...
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/toshikish/articles/6a06017747cbba#%E3%83%87%E3%83%BC%E3%82%BF%E3%83%99%E3%83%BC%E3%82%B9%E3%81%AB%E5%A4%A7%E9%87%8F%E3%81%AB%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E6%8C%BF%E5%85%A5%E3%81%97%E3%81%9F%E3%81%84">アプリ開発者のための kubectl 講座</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="amazon-ecs-fargate">Amazon ECS Fargate をプライベートサブネットに置く場合の接続方法<a class="headerlink" href="#amazon-ecs-fargate" title="Permanent link">&para;</a></h3>
+<p>ECS Exec を有効化した Amazon ECS Fargate のタスクを踏み台にして、AWS Systems Manager Session Manager の <code>AWS-StartPortForwardingSessionToRemoteHost</code> ドキュメントでローカル PC から Amazon Aurora にポートフォワーディングする。</p>
+<blockquote>
+<ul>
+<li><a href="https://zenn.dev/quiver/articles/1458e453118254">ECS Fargateを踏み台にポートフォワードしてVPC内のRDSに接続する</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_14">コンソールの設定項目<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>VPC とサブネットグループ</td>
+      <td>Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。</td>
+      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" alt="subnet_component-type"></td>
+    </tr>
+    <tr>
+      <td>パブリックアクセス</td>
+      <td>Amazon Aurora の DB インスタンスに IP アドレスを割り当てるか否かを設定する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="05">05. ログ出力<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_15">スロークエリログ<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>Amazon CloudWatch Logs の <code>/aws/rds/cluster/&lt;Amazon AuroraのDBクラスター名&gt;/slowquery</code> というロググループにスロークエリログが出力される。</p>
-<h4 id="_12">▼ エラークエリログ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<h3 id="_16">エラークエリログ<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <p>Amazon CloudWatch Logs の <code>/aws/rds/cluster/&lt;Amazon AuroraのDBクラスター名&gt;/error</code> というロググループにエラーログが出力される。</p>
 <p><br></p>
-<h2 id="05">05. アップグレード<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
+<h3 id="_17">コンソールの設定項目<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ログのエクスポート</td>
+      <td>Amazon CloudWatch Logs に送信するデータエンジン (例：MySQL) のログを設定する。DB エンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。</td>
+      <td>すべてのログを選択するとよい。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="06">06. アップグレード<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="zdp">ZDP (ゼロダウンタイムパッチ適用)<a class="headerlink" href="#zdp" title="Permanent link">&para;</a></h3>
 <p><img alt="zero-downtime-patching" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/zero-downtime-patching.png" /></p>
 <p>Amazon Aurora をエンジンバージョンとして選択した場合に使用でき、パッチバージョンとマイナーバージョンの更新で、条件を満たせば適用される。</p>
@@ -37938,7 +37927,7 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_13">アップグレード可能かのバリデーション<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h3 id="_18">アップグレード可能かのバリデーション<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>アップグレードに伴う問題を静的解析で検出する。</p>
 <p>Amazon Aurora に SSH 接続したうえで、DB に対して以下のコマンドを実行すると、<code>v5.7</code> から <code>v8</code> 系へのアップグレードで問題が起こるかを解析できる</p>
 <p>ただ、アプリ側の SQL のロジックは解析できない。あくまで MySQL の設定値のみを解析でき、廃止予定のロジックを使っているかまでは見つけられない。</p>
@@ -37951,12 +37940,12 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_14">ダウンタイム<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<h4 id="_15">▼ ダウンタイムとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<h3 id="_19">ダウンタイム<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<h4 id="_20">▼ ダウンタイムとは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>Amazon Aurora では、設定値 (例：OS、エンジンバージョン、MySQL) のアップグレード時に、Amazon Aurora の DB インスタンスの再起動が必要である。</p>
 <p>再起動に伴ってダウンタイムが発生し、アプリケーションから DB に接続できなくなる。</p>
 <p>この間、アプリケーションの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。</p>
-<h4 id="_16">▼ ダウンタイムの発生条件<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<h4 id="_21">▼ ダウンタイムの発生条件<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
 <p>Amazon RDS にはダウンタイムに関する情報が多いが、Amazon Aurora には情報が少ない。</p>
 <p>ただし、経験上同じ項目でダウンタイムが発生しているため、他の項目についても Amazon RDS のダウンタイムも参考になる。</p>
 <table>
@@ -37981,9 +37970,9 @@ mysql&gt;<span class="w"> </span>SHOW<span class="w"> </span>TABLES<span class="
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.DBInstance.Modifying.html#USER_ModifyInstance.Settings">Modifying an Amazon RDS DB instance - Amazon Relational Database Service</a></li>
 </ul>
 </blockquote>
-<h4 id="_17">▼ エンジンタイプによるダウンタイムの最小化<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<h4 id="_22">▼ エンジンタイプによるダウンタイムの最小化<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <p>コンピューティングとストレージが分離している Amazon Aurora はエンジンタイプのなかでもダウンタイムが短い。</p>
-<h4 id="_18">▼ ダウンタイムの計測例<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<h4 id="_23">▼ ダウンタイムの計測例<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
 <p>アプリケーションにリクエストを送信する方法と、Amazon RDS にクエリを直接的に送信する方法がある。</p>
 <p>レスポンスと Amazon RDS イベントログから、ダウンタイムを計測する。</p>
 <p>Amazon Aurora MySQL のアップグレードに伴うダウンタイムを計測する。</p>
@@ -38074,8 +38063,36 @@ NOW<span class="o">()</span>
 <p>補足として、リードレプリカは再起動のみを実行していることがわかる。</p>
 <p><img alt="rds-event-log_read-replica" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_read-replica.png" /></p>
 <p><br></p>
-<h3 id="_19">フェイルオーバー<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
-<h4 id="amazon-aurora_1">▼ Amazon Aurora のフェイルオーバーとは<a class="headerlink" href="#amazon-aurora_1" title="Permanent link">&para;</a></h4>
+<h3 id="bg">B/G 式アップグレード<a class="headerlink" href="#bg" title="Permanent link">&para;</a></h3>
+<p>アップグレード時に、新しいバージョンからなる Amazon Aurora の DB クラスター (グリーン環境) を作成する。</p>
+<p>クラスターエンドポイントを起点として、アプリケーションのクエリの向き先を既存の Amazon Aurora の DB クラスター (ブルー環境) から新 Amazon Aurora の DB クラスター (グリーン環境) に切り替える。</p>
+<p>グリーン環境でアプリケーションが問題なく動作すれば、既存の Amazon Aurora の DB クラスター (ブルー環境) を削除する。</p>
+<p><br></p>
+<h3 id="_24">コンソールの設定項目<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>エンジンバージョン</td>
+      <td>DB エンジンのバージョンを設定する。DB クラスター内のすべての DB インスタンスに適用される。</td>
+      <td>・Amazon Aurora であれば、<code>SELECT AURORA_VERSION()</code> を使用して、エンジンバージョンを確認できる。</td>
+    </tr>
+    <tr>
+      <td>マイナーバージョンの自動アップグレード</td>
+      <td>Amazon Aurora の DB インスタンスの DB エンジンのバージョンを自動的に更新するかを設定する。</td>
+      <td>開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="07">07. フェイルオーバー<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="amazon-aurora_1">Amazon Aurora のフェイルオーバーとは<a class="headerlink" href="#amazon-aurora_1" title="Permanent link">&para;</a></h3>
 <p>プライマリーインスタンスで障害が起こった場合に、リードレプリカをプライマリーインスタンスに自動的に昇格する。</p>
 <p>Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスが同じ AZ に配置されている場合、あらかじめ異なる AZ にリードレプリカを新しく作成する必要がある。</p>
 <p>また、フェイルオーバー時に、もし Amazon Aurora の DB クラスター内にリードレプリカが存在していない場合、異なる AZ に昇格後のプライマリーインスタンスが自動的に作成される。</p>
@@ -38085,7 +38102,7 @@ NOW<span class="o">()</span>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Amazon">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Amazon</a> Aurora.Managing.FaultTolerance</li>
 </ul>
 </blockquote>
-<h4 id="_20">▼ フェイルオーバーによるダウンタイムの最小化<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<h3 id="_25">フェイルオーバーによるダウンタイムの最小化<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
 <p>Amazon Aurora の DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用してダウンタイムを最小化できる。</p>
 <ol>
 <li>
@@ -38106,7 +38123,7 @@ NOW<span class="o">()</span>
 <li><a href="https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/">https://lab.taf-jp.com/rds%E3%81%AE%E3%83%95%E3%82%A7%E3%82%A4%E3%83%AB%E3%82%AA%E3%83%BC%E3%83%90%E3%83%BC%E6%99%82%E3%81%AE%E6%8C%99%E5%8B%95%E3%82%92%E7%90%86%E8%A7%A3%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B/</a></li>
 </ul>
 </blockquote>
-<h4 id="amazon-aurora-db_7">▼ Amazon Aurora の DB インスタンスの昇格優先順位<a class="headerlink" href="#amazon-aurora-db_7" title="Permanent link">&para;</a></h4>
+<h3 id="amazon-aurora-db_5">Amazon Aurora の DB インスタンスの昇格優先順位<a class="headerlink" href="#amazon-aurora-db_5" title="Permanent link">&para;</a></h3>
 <p>Amazon Aurora の場合、フェイルオーバーによって昇格する Amazon Aurora の DB インスタンスは次の順番で決定される。</p>
 <p>Amazon Aurora の DB インスタンスごとにフェイルオーバーの優先度 (<code>0</code>～<code>15</code>) を設定でき、優先度の数値の小さい Amazon Aurora の DB インスタンスほど優先され、昇格対象になる。</p>
 <p>優先度が同じだと、インスタンスクラスが大きい Amazon Aurora の DB インスタンスが昇格対象になる。</p>
@@ -38127,16 +38144,34 @@ NOW<span class="o">()</span>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html">High availability for Amazon Aurora - Amazon Aurora</a></li>
 </ul>
 </blockquote>
-<h4 id="_21">▼ ダウンタイムを最小化できない場合<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<h3 id="_26">ダウンタイムを最小化できない場合<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
 <p>エンジンバージョンのアップグレードは両方の Amazon Aurora の DB インスタンスで同時に実行する必要があるため、フェイルオーバーを使用できず、ダウンタイムを最小化できない。</p>
 <p><br></p>
-<h3 id="bg">B/G 式アップグレード<a class="headerlink" href="#bg" title="Permanent link">&para;</a></h3>
-<p>アップグレード時に、新しいバージョンからなる Amazon Aurora の DB クラスター (グリーン環境) を作成する。</p>
-<p>クラスターエンドポイントを起点として、アプリケーションのクエリの向き先を既存の Amazon Aurora の DB クラスター (ブルー環境) から新 Amazon Aurora の DB クラスター (グリーン環境) に切り替える。</p>
-<p>グリーン環境でアプリケーションが問題なく動作すれば、既存の Amazon Aurora の DB クラスター (ブルー環境) を削除する。</p>
-<p><br></p>
-<h2 id="06">06. 負荷対策<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
-<h3 id="_22">エンドポイントの使い分け<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<h3 id="_27">コンソールの設定項目<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>レプリケーション</td>
+      <td>単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。</td>
+      <td>フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、Amazon Aurora の DB クラスターをクローンできないなどのデメリットもある。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms</a></td>
+    </tr>
+    <tr>
+      <td>マルチ AZ 配置</td>
+      <td>プライマリーインスタンスとは別に、リードレプリカをマルチ AZ 配置で追加するか否かを設定する。</td>
+      <td>後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="08">08. 負荷分散と性能改善<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
+<h3 id="_28">エンドポイントの使い分け<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <p>Amazon Aurora の DB インスタンスに応じたエンドポイントが用意されている。</p>
 <p>アプリケーションからの CRUD の種類に応じて、宛先を振り分けることで、負荷を分散させられる。</p>
 <p>読み出しオンリーエンドポイントで READ 以外の処理を実行すると、以下のとおりエラーとなる。</p>
@@ -38154,11 +38189,11 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_23">クエリキャッシュの利用<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<h3 id="_29">クエリキャッシュの利用<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h3>
 <p>MySQL や Redis のクエリキャッシュ機能を利用する。</p>
 <p>ただし、MySQL のクエリキャッシュ機能は、バージョン <code>8</code> で廃止されることになっている。</p>
 <p><br></p>
-<h3 id="_24">ユニークキーまたはインデックスの利用<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<h3 id="_30">ユニークキーまたはインデックスの利用<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
 <p>スロークエリを検出し、その SQL で対象としているカラムにユニークキーやインデックスを設定する。</p>
 <p>スロークエリを検出する方法として、Amazon RDS の <code>long_query_time</code> パラメーターによる閾値や、<code>EXPLAIN</code> による予想実行時間の比較などがある。</p>
 <p>CloudWatch Logs インサイト上で、閾値以上の実行時間のスロークエリを実行時間の昇順で取得できる。</p>
@@ -38174,12 +38209,12 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_25">テーブルを正規化し過ぎない<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<h3 id="_31">テーブルを正規化し過ぎない<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
 <p>テーブルを正規化すると保守性が高まるが、アプリケーションの SQL で <code>JOIN</code> が必要になる。</p>
 <p>しかし、<code>JOIN</code> を含む SQL は、含まない SQL と比較して、実行速度が遅くなる。</p>
 <p>そこで、戦略的に正規化し過ぎないようにする。</p>
 <p><br></p>
-<h3 id="_26">インスタンスタイプのスケールアップ<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<h3 id="_32">インスタンスタイプのスケールアップ<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
 <p>インスタンスタイプをスケールアップさせることにより、接続過多のエラー (<code>ERROR 1040 (HY000): Too many connections</code>) に対処する。</p>
 <p>補足として現在の最大接続数はパラメーターグループの値から確認できる。</p>
 <p>コンソール画面からはおおよその値しかわからないため、SQL で確認したほうがよい。</p>
@@ -38193,7 +38228,25 @@ NOW<span class="o">()</span>
 <span class="mi">1</span><span class="w"> </span><span class="k">row</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="kt">set</span><span class="w"> </span><span class="p">(</span><span class="mf">0.00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span>
 </code></pre></div>
 <p><br></p>
-<h2 id="07">07. イベント<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_33">コンソールの設定項目<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>インスタンスクラス</td>
+      <td>Amazon Aurora の DB インスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
+      <td>バースト可能クラスを選択するとよい。補足として、Amazon Aurora の DB サイズは自動的にスケーリングするため、設定する必要がない。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="09">09. イベント<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
 <p>コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうがよい。</p>
 <blockquote>
 <ul>
@@ -38201,7 +38254,7 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h2 id="08-amazon-aurora-global-db">08. Amazon Aurora Global DB<a class="headerlink" href="#08-amazon-aurora-global-db" title="Permanent link">&para;</a></h2>
+<h2 id="10">10. リージョン間レプリケーション<a class="headerlink" href="#10" title="Permanent link">&para;</a></h2>
 <h3 id="amazon-aurora-global-db">Amazon Aurora Global DB とは<a class="headerlink" href="#amazon-aurora-global-db" title="Permanent link">&para;</a></h3>
 <p>リージョン間に跨いだ Amazon Aurora の DB クラスターから構成されている。</p>
 <p>メインリージョンにあるプライマリークラスターのクラスターボリュームと、DR リージョンにあるセカンダリークラスターのクラスターボリュームは、データが定期的に同期される。</p>
@@ -38221,8 +38274,8 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_27">仕組み<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
-<h4 id="_28">▼ ウォームスタンバイ構成<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<h3 id="_34">仕組み<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<h4 id="_35">▼ ウォームスタンバイ構成<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
 <p>ウォームスタンバイ構成の場合、メインリージョンにはプライマリーインスタンスとリードレプリカ (クラスターボリュームを含む) がおり、DR リージョンにはリードレプリカ (クラスターボリュームを含む) のみがいる。</p>
 <p>メインリージョンで障害が起こった場合は、DR リージョンのリードレプリカがプライマリインスタンスに昇格する。</p>
 <ol>
@@ -38256,7 +38309,7 @@ NOW<span class="o">()</span>
 <li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database.html#aurora-global-database.limitations">Using Amazon Aurora Global Database - Amazon Aurora</a></li>
 </ul>
 </blockquote>
-<h4 id="_29">▼ コールドスタンバイ構成<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<h4 id="_36">▼ コールドスタンバイ構成<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
 <p>コールドスタンバイ構成の場合、メインリージョンにはプライマリーインスタンスとリードレプリカがおり、DR リージョンにクラスターボリュームのみがいる。</p>
 <p>つまり、DR リージョンに Amazon Aurora の DB インスタンスがない。</p>
 <blockquote>
@@ -38265,7 +38318,7 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_30">アップグレード<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>
+<h3 id="_37">アップグレード<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h3>
 <p>Amazon Aurora Global DB では、プライマリークラスターとセカンダリークラスターを同時にアップグレードできない。</p>
 <p>マイナーバージョンのアップグレードの場合は、セカンダリーDB クラスターからアップグレードする。</p>
 <p>メジャーバージョンのアップグレードの場合は、Amazon Aurora Global DB 自体をアップグレードする。</p>
@@ -38275,7 +38328,7 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_31">スナップショット<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h3>
+<h3 id="_38">スナップショット<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h3>
 <p>Amazon Aurora Global DB では、リージョン間でデータをコピーしている。</p>
 <p>そのため、メインリージョンのプライマリークラスターでスナップショットを作成し、これを DR リージョンへコピーするようにする。</p>
 <blockquote>
@@ -38284,6 +38337,127 @@ NOW<span class="o">()</span>
 </ul>
 </blockquote>
 <p><br></p>
+<h2 id="11-db">11. DB クラスターの保持<a class="headerlink" href="#11-db" title="Permanent link">&para;</a></h2>
+<h3 id="amazon-aurora-db_6">空の Amazon Aurora の DB クラスターとは<a class="headerlink" href="#amazon-aurora-db_6" title="Permanent link">&para;</a></h3>
+<p>コンソール画面で、Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスを削除すると、Amazon Aurora の DB クラスターも自動的に削除される。</p>
+<p>一方で、AWS-API をコールしてすべての Amazon Aurora の DB インスタンスを削除する場合、Amazon Aurora の DB クラスターは自動的に削除されずに、空の状態になる。</p>
+<p>例えば、Terraform を使用して Amazon Aurora の DB クラスターを作成するときに、インスタンスの作成に失敗すると Amazon Aurora の DB クラスターが空になる。</p>
+<p>これは、Terraform が AWS-API をコールして作成しているためである。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster">Deleting Aurora DB clusters and DB instances - Amazon Aurora</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_39">コンソールの設定項目<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>削除保護</td>
+      <td>Amazon Aurora の DB クラスターの削除を防ぐ。</td>
+      <td>Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="12-db">12. DB 認証とアクセス制御<a class="headerlink" href="#12-db" title="Permanent link">&para;</a></h2>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>DB 認証</td>
+      <td>DB に接続するための認証方法を設定する。</td>
+      <td>Amazon Aurora の各 DB インスタンスに異なる DB 認証を設定できるが、すべての Amazon Aurora の DB インスタンスに同じ認証方法を設定すべきであるため、Amazon Aurora の DB クラスターでこれを設定すればよい。</td>
+    </tr>
+    <tr>
+      <td>マスタユーザー名</td>
+      <td>DB の root 権限の実行ユーザーを設定</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>マスターパスワード</td>
+      <td>DB の root 権限の実行ユーザーのパスワードを設定</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>セキュリティグループ</td>
+      <td>Amazon Aurora の DB クラスターのセキュリティグループを設定する。</td>
+      <td>コンピューティングからのリクエストのみを許可するように、これらのプライベート IP アドレス (<code>*.*.*.*/32</code>) を設定する。</td>
+    </tr>
+    <tr>
+      <td>認証機関</td>
+      <td>Amazon Aurora の DB クラスターに紐づけるサーバー証明書を署名するルート認証局を設定する。</td>
+      <td>アプリケーションが Amazon Aurora の DB クラスターに HTTPS で通信する場合に必要である。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="13">13. 暗号化<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>暗号化キー</td>
+      <td>AWS KMS を使用して、データを暗号化して保管する。</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="14">14. バックアップ<a class="headerlink" href="#14" title="Permanent link">&para;</a></h2>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>バックアップ保管期間</td>
+      <td>Amazon Aurora の DB クラスター がバックアップを保管する期間を設定する。</td>
+      <td><code>7</code> 日間にしておく。</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="15-db">15. DB パラメーター設定<a class="headerlink" href="#15-db" title="Permanent link">&para;</a></h2>
+<table>
+  <thead>
+    <tr>
+      <th>設定項目</th>
+      <th>説明</th>
+      <th>補足</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>パラメーターグループ</td>
+      <td>グローバルオプションを設定する。</td>
+      <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、すべてのインスタンスに同じパラメーターループを設定する必要があるため、クラスターパラメーターを使用すればよい。各パラメーターに適用タイプ (dynamic/static) があり、dynamic タイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定するとよい。<br>・<code>time_zone=Asia/Tokyo</code><br>・<code>character_set_client=utf8mb4</code><br>・<code>character_set_connection=utf8mb4</code><br>・<code>character_set_database=utf8mb4</code><br>・<code>character_set_results=utf8mb4</code><br>・<code>character_set_server=utf8mb4</code><br>・<code>server_audit_logging=1</code> (監査ログを Amazon CloudWatch に送信するか否か) <br>・<code>server_audit_logs_upload=1</code><br>・<code>general_log=1</code> (通常クエリログを Amazon CloudWatch に送信するか否か) <br>・<code>slow_query_log=1</code> (スロークエリログを Amazon CloudWatch に送信するか否か) <br>・<code>long_query_time=3</code> (スロークエリと見なす最短秒数)</td>
+    </tr>
+  </tbody>
+</table>
 
   
 

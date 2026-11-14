@@ -21726,10 +21726,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-waf-web-application-firewall" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS WAF とは：Web Application Firewall
+        01. 概要
       
     </span>
   </a>
@@ -21740,7 +21740,7 @@
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. セットアップ (コンソールの場合)
+        02. 仕組み
       
     </span>
   </a>
@@ -21748,64 +21748,86 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-02-terraform" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2-02. セットアップ (Terraform の場合)
+        03. セットアップ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2-02. セットアップ (Terraform の場合)">
+    <nav class="md-nav" aria-label="03. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraformによる構築
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-web-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04. Web ACL とルールの構成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Web ACL とルールの構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web ACL の設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05. リクエスト検査結果の確認
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06. リクエスト検査ルール
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. リクエスト検査ルール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        設定項目
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web-acls" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Web ACLs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overview-sampled-requests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview における Sampled requests の見方
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ルール
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ルール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ルールの種類
@@ -21816,7 +21838,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ルールの粒度のコツ
@@ -21838,7 +21860,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ルールグループアクションの上書き
@@ -21849,7 +21871,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ セキュリティグループとの関係
@@ -21863,21 +21885,21 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ログ
+        07. 検査ログ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ログ">
+    <nav class="md-nav" aria-label="07. 検査ログ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ マネージドルールのログ
@@ -21891,20 +21913,15 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
     <span class="md-ellipsis">
       
-        クオータ
+        08. クオータ
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -35635,10 +35652,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#01-aws-waf-web-application-firewall" class="md-nav__link">
+  <a href="#01" class="md-nav__link">
     <span class="md-ellipsis">
       
-        01. AWS WAF とは：Web Application Firewall
+        01. 概要
       
     </span>
   </a>
@@ -35649,7 +35666,7 @@
   <a href="#02" class="md-nav__link">
     <span class="md-ellipsis">
       
-        02. セットアップ (コンソールの場合)
+        02. 仕組み
       
     </span>
   </a>
@@ -35657,64 +35674,86 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-02-terraform" class="md-nav__link">
+  <a href="#03" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2-02. セットアップ (Terraform の場合)
+        03. セットアップ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2-02. セットアップ (Terraform の場合)">
+    <nav class="md-nav" aria-label="03. セットアップ">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Terraformによる構築
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04-web-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04. Web ACL とルールの構成
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04. Web ACL とルールの構成">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-acl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web ACL の設定
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05. リクエスト検査結果の確認
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06. リクエスト検査ルール
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06. リクエスト検査ルール">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        設定項目
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web-acls" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Web ACLs
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#overview-sampled-requests" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Overview における Sampled requests の見方
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ルール
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ルール">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ルールの種類
@@ -35725,7 +35764,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ルールの粒度のコツ
@@ -35747,7 +35786,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ ルールグループアクションの上書き
@@ -35758,7 +35797,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ セキュリティグループとの関係
@@ -35772,21 +35811,21 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ログ
+        07. 検査ログ
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="ログ">
+    <nav class="md-nav" aria-label="07. 検査ログ">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
         ▼ マネージドルールのログ
@@ -35800,20 +35839,15 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#08" class="md-nav__link">
     <span class="md-ellipsis">
       
-        クオータ
+        08. クオータ
       
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -35967,7 +36001,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:06:11 JST">2026-11-14</span>
   </span>
 
     
@@ -35996,7 +36030,7 @@
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
-<h2 id="01-aws-waf-web-application-firewall">01. AWS WAF とは：Web Application Firewall<a class="headerlink" href="#01-aws-waf-web-application-firewall" title="Permanent link">&para;</a></h2>
+<h2 id="01">01. 概要<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p><code>L7</code> (アプリケーション層) に対するサイバー攻撃を防御する。</p>
 <table>
   <thead>
@@ -36046,8 +36080,9 @@
 </table>
 
 <p><br></p>
-<h2 id="02">02. セットアップ (コンソールの場合)<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h2 id="2-02-terraform">2-02. セットアップ (Terraform の場合)<a class="headerlink" href="#2-02-terraform" title="Permanent link">&para;</a></h2>
+<h2 id="02">02. 仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
+<h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
+<h3 id="terraform">Terraformによる構築<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_wafv2_web_acl"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">name</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-web-acl"</span>
 <span class="c1">  # CloudFront に紐付ける場合は CLOUDFRONT とし、us-east-1 リージョンで作成する</span>
@@ -36091,7 +36126,7 @@
 <span class="w">  </span><span class="na">web_acl_arn</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_wafv2_web_acl.foo.arn</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_2">設定項目<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h2 id="04-web-acl">04. Web ACL とルールの構成<a class="headerlink" href="#04-web-acl" title="Permanent link">&para;</a></h2>
 <table>
   <thead>
     <tr>
@@ -36130,7 +36165,7 @@
 </table>
 
 <p><br></p>
-<h3 id="web-acls">Web ACLs<a class="headerlink" href="#web-acls" title="Permanent link">&para;</a></h3>
+<h3 id="web-acl">Web ACL の設定<a class="headerlink" href="#web-acl" title="Permanent link">&para;</a></h3>
 <table>
   <thead>
     <tr>
@@ -36163,7 +36198,7 @@
   </tbody>
 </table>
 
-<h3 id="overview-sampled-requests">Overview における Sampled requests の見方<a class="headerlink" href="#overview-sampled-requests" title="Permanent link">&para;</a></h3>
+<h2 id="05">05. リクエスト検査結果の確認<a class="headerlink" href="#05" title="Permanent link">&para;</a></h2>
 <p>『すべてのルール』または『各ルール』のアクセス許可/拒否の履歴を確認できる。</p>
 <p>AWS ALB や Amazon CloudFront のアクセスログよりも解りやすく、さまざまなデバッグに役立つ。</p>
 <p>ただし、３時間分しか残らない。</p>
@@ -36187,8 +36222,8 @@
 <span class="nt">Cookie</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sessionid=&lt;セッションID&gt;; _gid=&lt;GoogleAnalytics値&gt;; __ulfpc=&lt;GoogleAnalytics値&gt;; _ga=&lt;GoogleAnalytics値&gt;</span>
 </code></pre></div>
 <p><br></p>
-<h3 id="_3">ルール<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<h4 id="_4">▼ ルールの種類<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<h2 id="06">06. リクエスト検査ルール<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
+<h3 id="_2">▼ ルールの種類<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <table>
   <thead>
     <tr>
@@ -36216,9 +36251,9 @@
   </tbody>
 </table>
 
-<h4 id="_5">▼ ルールの粒度のコツ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<h3 id="_3">▼ ルールの粒度のコツ<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>わかりやすさの観点から、できる限り設定するステートメントを少なくし、<code>1</code> 個のルールに <code>1</code> 個の意味合いのみを持たせるように命名する。</p>
-<h4 id="count">▼ Count (検知) モード<a class="headerlink" href="#count" title="Permanent link">&para;</a></h4>
+<h3 id="count">▼ Count (検知) モード<a class="headerlink" href="#count" title="Permanent link">&para;</a></h3>
 <p>ルールに該当するリクエスト数を数え、許可/拒否せずに次のルールを検証する。</p>
 <p>計測結果に応じて、Count モードを無効化し、拒否できるようにする。</p>
 <blockquote>
@@ -36226,7 +36261,7 @@
 <li><a href="https://oji-cloud.net/2020/09/18/post-5501/">WafCharmの COUNT/BLOCK Actionの追跡方法 | Oji-Cloud</a></li>
 </ul>
 </blockquote>
-<h4 id="_6">▼ ルールグループアクションの上書き<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
+<h3 id="_4">▼ ルールグループアクションの上書き<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>ルールの Count モードを有効化している場合、Count アクションに続けて、そのルールに設定されていた元のアクションを実行する。</p>
 <p>そのため、Count アクションしつつ、Block アクションを実行できる (仕様がややこしすぎるので、なんとかしてほしい) 。</p>
 <table>
@@ -36271,7 +36306,7 @@
 <li><a href="https://docs.aws.amazon.com/waf/latest/developerguide/web-acl-rule-group-override-options.html">Overriding rule group actions in AWS WAF - AWS WAF, AWS Firewall Manager, AWS Shield Advanced, and AWS Shield network security director</a></li>
 </ul>
 </blockquote>
-<h4 id="_7">▼ セキュリティグループとの関係<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
+<h3 id="_5">▼ セキュリティグループとの関係<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>AWS WAF を紐付けられるリソースにセキュリティグループも紐付けている場合、セキュリティグループのルールが先に検証される。</p>
 <p>例えば、AWS WAF を AWS ALB に紐付け、かつ AWS ALB のセキュリティグループに HTTPS プロトコルのルールを設定した場合、後者が先に検証される。</p>
 <p>両方にルールが定義されてると混乱を生むため、HTTP プロトコルや HTTPS プロトコルに関するルールは AWS WAF に定義し、それ以外のプロトコルに関するルールはセキュリティグループで定義するようにしておく。</p>
@@ -36281,8 +36316,8 @@
 </ul>
 </blockquote>
 <p><br></p>
-<h3 id="_8">ログ<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h4 id="_9">▼ マネージドルールのログ<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<h2 id="07">07. 検査ログ<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
+<h3 id="_6">▼ マネージドルールのログ<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>AWS WAF マネージドルールを採用している場合、マネージドルールが <code>ruleGroupList</code> キーに配列として格納されている。</p>
 <p>もし、Count アクションが実行されていれば、<code>excludedRules</code> キーにその旨とルール ID が格納される。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
@@ -36323,7 +36358,7 @@
 <span class="w">  </span><span class="err">...</span><span class="p">,</span>
 <span class="p">}</span>
 </code></pre></div>
-<h3 id="_10">クオータ<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<h2 id="08">08. クオータ<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <p>定義できるルール数や文字数に制限がある。</p>
 <p>以下のリンクを参考にせよ。</p>
 <blockquote>
