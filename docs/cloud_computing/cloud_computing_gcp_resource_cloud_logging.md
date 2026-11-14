@@ -97,9 +97,9 @@ module "destination" {
 
 ## 04. ログベースのメトリクス
 
-### ▼ ユーザー定義
+### ユーザー定義
 
-### ▼ ビルトイン
+### ビルトイン
 
 - billing/bytes_ingested
 - billing/bytes_stored
@@ -110,7 +110,7 @@ module "destination" {
 
 ## 05. ログルーターとシンク
 
-### ▼ ログシンク
+### ログシンク
 
 ログの特定の文字列を発火条件として、各種 Google Cloud リソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring など) にログイベントを送信する。
 
@@ -119,7 +119,7 @@ module "destination" {
 > - [GCP Cloud Logging: The Basis - DEV Community](https://dev.to/alvardev/gcp-cloud-logging-the-basis-45eh)
 > - [Cloud Logging のイベントをリアルタイムで検出して対応する \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/management-tools/automate-your-response-to-a-cloud-logging-event)
 
-### ▼ ログシンクフィルター
+### ログシンクフィルター
 
 シンクを発火させるときのログの条件を設定する。
 
@@ -151,7 +151,7 @@ resource.type = "k8s_container"
 
 ## 06. ログフィールド
 
-### ▼ 種類
+### 種類
 
 <table>
   <thead>
@@ -244,11 +244,11 @@ resource.type = "k8s_container"
 
 ## 07. ログの検索とフィルタリング
 
-### ▼ レシピ
+### レシピ
 
 > - [Sample queries \| Cloud Logging \| Google Cloud Documentation](https://cloud.google.com/logging/docs/view/query-library#container_queries)
 
-### ▼ テキスト検索
+### テキスト検索
 
 タグに関係なく、ログからテキストを検索する。
 
@@ -256,7 +256,7 @@ resource.type = "k8s_container"
 foo-pod
 ```
 
-### ▼ ワイルドカード
+### ワイルドカード
 
 ```bash
 # 部分一致
@@ -266,7 +266,7 @@ resource.labels.pod_name: "pod"
 > - https://tools.bigwave.biz/notes/blog/posts/gcp_logging_query
 > - [GCP Loggingで該当のurlのみのログを取得する #GoogleCloud - Qiita](https://qiita.com/shigeru10/items/f54455e02e9d93e9ba4c)
 
-### ▼ 正規表現
+### 正規表現
 
 `=~` 演算子を使用して正規表現マッチングを有効化する。
 
@@ -290,7 +290,7 @@ resource.labels.pod_name=~".*pod.*"
 > - [Logging query language \| Google Cloud Documentation](https://cloud.google.com/logging/docs/view/logging-query-language#regular-expressions)
 > - https://stackoverflow.com/questions/71922754/google-cloud-platform-logging-how-to-search-wildcard-strings-in-all-logs
 
-### ▼ 除外
+### 除外
 
 特定の値を持たないログをクエリする。
 

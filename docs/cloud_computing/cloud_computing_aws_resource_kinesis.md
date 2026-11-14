@@ -29,6 +29,26 @@ tags:
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、オンデマンドモードの Kinesis Data Streams を作成する。
+
+AWS マネージドキーで暗号化し、データを 48 時間保管する。
+
+```terraform
+resource "aws_kinesis_stream" "this" {
+  name             = "foo-events"
+  retention_period = 48
+  encryption_type  = "KMS"
+  kms_key_id       = "alias/aws/kinesis"
+  stream_mode_details {
+    stream_mode = "ON_DEMAND"
+  }
+}
+```
+
+> - [kinesis_stream - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_stream)
+
+<br>
+
 ### Firehose の配信ストリームの初期設定
 
 #### ▼ 設定項目と説明

@@ -52,7 +52,7 @@ resource "aws_chatbot_slack_channel_configuration" "this" {
 
 ## 04. チャットクライアントとの連携
 
-### ▼ Slack 通知の場合
+### Slack 通知の場合
 
 クライアントを Slack とした場合の設定を以下に示す。
 
@@ -79,7 +79,7 @@ resource "aws_chatbot_slack_channel_configuration" "this" {
   </tbody>
 </table>
 
-### ▼ サポート対象のイベント
+### サポート対象のイベント
 
 AWS リソースのイベントを、Amazon EventBridge (Amazon CloudWatch イベント) を使用して、AWS Chatbot にフォワーディングできるが、すべての AWS リソースをサポートしているわけではない。
 

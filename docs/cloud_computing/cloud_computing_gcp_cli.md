@@ -20,8 +20,6 @@ tags:
 
 ## 03. セットアップ
 
-### Terraformによる構築
-
 ### init
 
 #### ▼ init とは

@@ -36,7 +36,7 @@ AWS ALB を使用して、起動テンプレートを基にした Amazon EC2 の
 
 ### Terraformによる構築
 
-#### スケーリンググループ
+#### ▼ スケーリンググループ
 
 ```terraform
 # オートスケーリンググループ
@@ -104,7 +104,7 @@ resource "aws_launch_template" "foo" {
 
 > - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group)
 
-#### 起動テンプレート
+#### ▼ 起動テンプレート
 
 ```terraform
 # 起動テンプレート
@@ -224,7 +224,7 @@ resource "aws_sns_topic" "foo" {
 
 ### Auto Scaling グループの初期設定
 
-#### 設定項目と説明
+#### ▼ 設定項目と説明
 
 <table>
   <thead>

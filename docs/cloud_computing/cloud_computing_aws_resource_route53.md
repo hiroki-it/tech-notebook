@@ -65,6 +65,30 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の Route 53 モジュールを使用し、パブリックホストゾーンと A レコードを作成する。
+
+所有するドメイン名と宛先の固定 IP アドレスを指定し、ドメインの登録先でネームサーバーを Route 53 のものに変更する。
+
+```terraform
+module "zone" {
+  source  = "terraform-aws-modules/route53/aws"
+  version = "6.5.1"
+
+  name = "example.com"
+  records = {
+    app = {
+      type    = "A"
+      ttl     = 300
+      records = ["203.0.113.10"]
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/route53/aws (6.5.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/route53/aws/6.5.1)
+
+<br>
+
 
 ### 外部ドメインの初期設定
 
@@ -104,13 +128,13 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 ## 05. DNS レコードによる名前解決
 
-### ▼ DNS レコードとは
+### DNS レコードとは
 
 各ホストゾーンにドメインの名前解決方法を定義した DNS レコードを設定する。
 
 > - [How internet traffic is routed to your website or web application - Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html#welcome-dns-service-how-to-configure)
 
-### ▼ DNS レコードタイプの種類
+### DNS レコードタイプの種類
 
 <table>
   <thead>
@@ -161,7 +185,7 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
   </tbody>
 </table>
 
-### ▼ AWS リソースの DNS 名、ドメイン名、エンドポイント名
+### AWS リソースの DNS 名、ドメイン名、エンドポイント名
 
 ![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
 
@@ -216,7 +240,7 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 ## 06. リゾルバーによる名前解決
 
-### ▼ リゾルバーとは
+### リゾルバーとは
 
 Amazon VPC 内のリソースからの DNS クエリに応答し、プライベートホストゾーンのドメイン名やパブリックなドメイン名を名前解決する。
 
@@ -224,20 +248,20 @@ Amazon VPC 内のリソースからの DNS クエリに応答し、プライベ�
 
 ## 07. DNS ルーティング
 
-### ▼ ルーティングポリシーとは
+### ルーティングポリシーとは
 
 ドメイン名の名前解決ルールを設定する。
 
 > - [Choosing a routing policy - Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
 > - [Amazon Route 53のルーティングがすごすぎる件](https://zenn.dev/seyama/articles/02118b0914183e)
 
-### ▼ シンプル
+### シンプル
 
 ドメイン名に単一の IP アドレスを紐付けられる。
 
 ドメインの名前解決では、単一の IP アドレスが返却される。
 
-### ▼ 複数値回答
+### 複数値回答
 
 ドメイン名に複数の IP アドレスを紐付けられる。
 
@@ -245,7 +269,7 @@ Amazon VPC 内のリソースからの DNS クエリに応答し、プライベ�
 
 ヘルスチェック機能を持つラウンドロビン方式と言い換えてもよい。
 
-### ▼ 加重
+### 加重
 
 ドメイン名に複数の IP アドレスを紐付けられる。
 

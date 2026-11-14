@@ -26,7 +26,7 @@ tags:
 
 ### 認証局
 
-#### AWS 認証局とは
+#### ▼ AWS 認証局とは
 
 認証局である ATS によって認証済みのサーバー証明書を管理できる。
 
@@ -60,15 +60,34 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の ACM モジュールを使用し、DNS 検証で公開証明書を発行する。
+
+所有するドメイン名と、そのドメインの既存の Route 53 パブリックホストゾーンを指定する。
+
+```terraform
+module "acm" {
+  source  = "terraform-aws-modules/acm/aws"
+  version = "6.3.1"
+
+  domain_name       = "app.example.com"
+  zone_id           = "Z0123456789ABCDEFGHIJ"
+  validation_method = "DNS"
+}
+```
+
+> - [terraform-aws-modules/acm/aws (6.3.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/acm/aws/6.3.1)
+
+<br>
+
 ### ドメインの準備と検証方法の選択
 
-#### ドメイン名
+#### ▼ ドメイン名
 
 認証をリクエストするドメイン名を設定する。
 
 <br>
 
-#### 検証の方法
+#### ▼ 検証の方法
 
 DNS 検証か E メール検証かを設定する。
 

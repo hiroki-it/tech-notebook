@@ -151,34 +151,34 @@ module "sns" {
 
 ## 06. サブスクリプションによる購読
 
-### ▼ Kinesis Data Firehose
+### Kinesis Data Firehose
 
 Kinesis Data Firehose に送信する。
 
-### ▼ Amazon SQS
+### Amazon SQS
 
 SQS に送信する。
 
-### ▼ AWS Lambda
+### AWS Lambda
 
 AWS Lambda に送信する。
 
-### ▼ E メール
+### E メール
 
 メールアドレスに送信する。
 
-### ▼ HTTP/HTTPS
+### HTTP/HTTPS
 
 Webhook リクエスト用のエンドポイントに送信する。
 
 - AWS Chatbot のドメイン名 (`https://global.sns-api.chatbot.amazonaws.com`)
 - incident.io (`https://api.incident.io/v2/alert_events/cloudwatch/*****`)
 
-### ▼ `json` 形式のメール
+### `json` 形式のメール
 
 メースアドレスに `json` 形式で送信する。
 
-### ▼ SMS
+### SMS
 
 SMS に送信する。
 

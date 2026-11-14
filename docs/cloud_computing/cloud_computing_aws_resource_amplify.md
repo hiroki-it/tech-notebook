@@ -144,6 +144,27 @@ GitHub のブランチごとにアプリケーションの CI/CD パイプライ
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、手動デプロイ用の Amplify アプリケーションと本番ブランチを作成する。
+
+ビルド済みの静的ファイルは、後述の手動デプロイ手順でアップロードする。
+
+```terraform
+resource "aws_amplify_app" "this" {
+  name = "foo-app"
+}
+
+resource "aws_amplify_branch" "main" {
+  app_id      = aws_amplify_app.this.id
+  branch_name = "main"
+  stage       = "PRODUCTION"
+}
+```
+
+> - [amplify_app - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/amplify_app)
+> - [amplify_branch - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/amplify_branch)
+
+<br>
+
 ### アプリケーションの初期構築
 
 #### ▼ 設定項目と説明
@@ -194,7 +215,7 @@ GitHub のブランチごとにアプリケーションの CI/CD パイプライ
 
 ## 04. 手動ビルドとデプロイ
 
-### ▼ 開発環境で擬似再現
+### 開発環境で擬似再現
 
 サーバーレスアプリケーションを開発環境で再現する。
 
@@ -202,7 +223,7 @@ GitHub のブランチごとにアプリケーションの CI/CD パイプライ
 $ amplify mock api
 ```
 
-### ▼ 開発環境から手動でビルド&デプロイ
+### 開発環境から手動でビルド&デプロイ
 
 開発/ステージング/本番環境に切り替える必要がある。
 
@@ -218,11 +239,11 @@ $ amplify publish
 
 ## 05. 自動ビルドとデプロイ
 
-### ▼ 連携できるバージョン管理システム
+### 連携できるバージョン管理システム
 
 > - [Getting started with deploying an app to Amplify Hosting - AWS Amplify Hosting](https://docs.aws.amazon.com/amplify/latest/userguide/getting-started.html#step-1-connect-repository)
 
-### ▼ 対応するバージョン管理リポジトリ構造
+### 対応するバージョン管理リポジトリ構造
 
 <table>
   <thead>
@@ -243,7 +264,7 @@ $ amplify publish
   </tbody>
 </table>
 
-### ▼ `amplify.yml` ファイル
+### `amplify.yml` ファイル
 
 バージョン管理リポジトリのルートに `amplify.yml` ファイルを配置する。
 

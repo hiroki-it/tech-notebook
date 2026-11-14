@@ -29,6 +29,31 @@ tags:
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、S3 バケットを管理する CloudFormation スタックを作成する。
+
+バケット名には一意の名前を指定する。
+
+```terraform
+resource "aws_cloudformation_stack" "this" {
+  name = "foo-storage"
+  template_body = yamlencode({
+    AWSTemplateFormatVersion = "2010-09-09"
+    Resources = {
+      Bucket = {
+        Type = "AWS::S3::Bucket"
+        Properties = {
+          BucketName = "foo-data-123456789012"
+        }
+      }
+    }
+  })
+}
+```
+
+> - [cloudformation_stack - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudformation_stack)
+
+<br>
+
 ### スタックの作成
 
 テンプレートファイルを作成し、AWS コンソールや AWS CLI から、そのテンプレートを指定した Stack を作成する。

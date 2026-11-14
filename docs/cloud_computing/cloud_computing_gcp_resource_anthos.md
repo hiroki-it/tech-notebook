@@ -148,11 +148,11 @@ $ kubectl get pod \
 
 ## 04. Google Anthos GKE Cluster
 
-### ▼ Google Anthos GKE Cluster とは
+### Google Anthos GKE Cluster とは
 
 Google GKE Cluster (コントロールプレーン Node、ワーカーNode を含む) から構成される。
 
-### ▼ アタッチ Cluster
+### アタッチ Cluster
 
 Anthos の Google GKE Cluster 部分の能力を、Kubernetes のほかの実行環境 (Amazon EKS、Azure AKS、RKE、K3S や K3D) の Cluster に委譲する。
 
@@ -165,7 +165,7 @@ Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対�
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/attach-kubernetes-clusters
 > - https://www.jetstack.io/blog/anthos-attached-clusters/
 
-### ▼ Anthos、Kubernetes のバージョンの対応
+### Anthos、Kubernetes のバージョンの対応
 
 > - https://cloud.google.com/anthos/clusters/docs/bare-metal/latest/getting-support#version-support
 
@@ -173,7 +173,7 @@ Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対�
 
 ## 05. Google Anthos Service Mesh
 
-### ▼ Google Anthos Service Mesh とは
+### Google Anthos Service Mesh とは
 
 Traffic Director、Mesh CA、Managed backends、といったコンポーネントから構成される。
 
@@ -182,13 +182,13 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 > - [Service Management - Cloud Solutions](https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/)
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=20
 
-### ▼ Traffic Director
+### Traffic Director
 
 サービス検出として、istio-proxy に他の宛先の情報を提供する。
 
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=23
 
-### ▼ Mesh CA
+### Mesh CA
 
 中間認証局として、相互 TLS 認証のためのサーバー証明書を istio-proxy に提供する。
 
@@ -200,7 +200,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 ## 06. Google Anthos Config Management
 
-### ▼ Google Anthos Config Management とは
+### Google Anthos Config Management とは
 
 一連の acm-operator (cluster-operator など) から構成される。
 
@@ -208,7 +208,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 > - [Anthos Config Management (ACM) - Cloud Solutions](https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/)
 
-### ▼ acm-operator の仕組み
+### acm-operator の仕組み
 
 一連の acm-operator (cluster-operator など) は、組み合わさって動作する。
 
@@ -222,7 +222,7 @@ Git リポジトリで管理された ACM カスタムリソースの GitOps を
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
 > - https://github.com/GoogleCloudPlatform/acm-policy-controller-library
 
-### ▼ cluster-operator
+### cluster-operator
 
 cluster-operator は、kube-apiserver を経由して、etcd に watch イベントを送信している。
 
@@ -240,7 +240,7 @@ Google Anthos GKE Cluster が Google Cloud 以外 (オンプレミス、ベア�
 
 ## 07. connect-gateway によるクラスターへの接続
 
-### ▼ connect-gateway
+### connect-gateway
 
 Google Cloud 上で `kubectl` コマンドを実行して各クラウドプロバイダー上の Google Anthos GKE Cluster の kube-apiserver にリクエストを送信するときに、各クラウドプロバイダーごとの API の違いを吸収してくれる。
 
@@ -250,7 +250,7 @@ Google Cloud 上で `kubectl` コマンドを実行して各クラウドプロ�
 
 ## 08. fleet-workload-identity による認証連携
 
-### ▼ fleet-workload-identity
+### fleet-workload-identity
 
 Google Cloud 側の資格情報と、各クラウドプロバイダーの Anthos 内の ServiceAccount を紐付ける。
 
@@ -260,7 +260,7 @@ Google Cloud 側の資格情報と、各クラウドプロバイダーの Anthos
 
 ## 09. anetd によるネットワークの構築
 
-### ▼ anetd
+### anetd
 
 cni として、Cilium を使用して Google Anthos GKE Cluster のネットワークを作成する。
 

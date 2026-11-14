@@ -39,6 +39,61 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、`GET /health` に `200` を返すモック統合の REST API とステージを作成する。
+
+```terraform
+resource "aws_api_gateway_rest_api" "this" {
+  name = "foo-api"
+  body = jsonencode({
+    openapi = "3.0.1"
+    info = {
+      title   = "foo-api"
+      version = "1.0.0"
+    }
+    paths = {
+      "/health" = {
+        get = {
+          responses = {
+            "200" = { description = "OK" }
+          }
+          "x-amazon-apigateway-integration" = {
+            type = "mock"
+            requestTemplates = {
+              "application/json" = jsonencode({ statusCode = 200 })
+            }
+            responses = {
+              default = { statusCode = "200" }
+            }
+          }
+        }
+      }
+    }
+  })
+}
+
+resource "aws_api_gateway_deployment" "this" {
+  rest_api_id = aws_api_gateway_rest_api.this.id
+  triggers = {
+    redeployment = sha1(aws_api_gateway_rest_api.this.body)
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "this" {
+  rest_api_id   = aws_api_gateway_rest_api.this.id
+  deployment_id = aws_api_gateway_deployment.this.id
+  stage_name    = "foo"
+}
+```
+
+> - [api_gateway_rest_api - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api)
+> - [api_gateway_deployment - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment)
+> - [api_gateway_stage - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage)
+
+<br>
+
 
 ### OpenAPI 仕様のインポート
 
@@ -130,7 +185,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 ## 05. リクエストの受信と変換
 
-### ▼ リソース
+### リソース
 
 <table>
   <thead>
@@ -169,7 +224,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
   </tbody>
 </table>
 
-### ▼ メソッドリクエスト
+### メソッドリクエスト
 
 <table>
   <thead>
@@ -218,7 +273,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
   </tbody>
 </table>
 
-### ▼ 統合リクエスト
+### 統合リクエスト
 
 <table>
   <thead>
@@ -296,7 +351,7 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 ## 07. プライベート統合
 
-### ▼ プライベート統合とは
+### プライベート統合とは
 
 Amazon API Gateway と Amazon VPC リンクの間で、リクエスト／レスポンスの JSON 型データを自動的にマッピングする機能のこと。
 
@@ -339,13 +394,13 @@ Amazon API Gateway と Amazon VPC リンクの間で、リクエスト／レス�
 
 > - [Set up a private integration - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-private-integration.html)
 
-### ▼ メソッドリクエストと統合リクエストのマッピング
+### メソッドリクエストと統合リクエストのマッピング
 
 <br>
 
 ## 08. Lambda プロキシ統合
 
-### ▼ AWS Lambda プロキシ統合とは
+### AWS Lambda プロキシ統合とは
 
 Amazon API Gateway と AWS Lambda の間で、リクエスト／レスポンスの JSON 型データを自動的にマッピングする機能のこと。
 
@@ -394,7 +449,7 @@ Amazon API Gateway と AWS Lambda の間で、リクエスト／レスポンス�
 
 > - [Lambda integrations for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-lambda-integrations.html)
 
-### ▼ リクエスト時のマッピング
+### リクエスト時のマッピング
 
 Amazon API Gateway 側でプロキシ統合を有効化すると、Amazon API Gateway を経由したクライアントからのリクエストは、ハンドラ関数の event オブジェクトの JSON 型データにマッピングされる。
 
@@ -453,7 +508,7 @@ Amazon API Gateway 側でプロキシ統合を有効化すると、Amazon API Ga
 }
 ```
 
-### ▼ レスポンス時のマッピング
+### レスポンス時のマッピング
 
 Amazon API Gateway は、AWS Lambda からのレスポンスを、以下の JSON 型データにマッピングする。
 
@@ -480,7 +535,7 @@ Amazon API Gateway は上記の JSON 型データを受信した後、`body` の
 
 ## 09. ステージ管理
 
-### ▼ 設定
+### 設定
 
 <table>
   <thead>
@@ -509,7 +564,7 @@ Amazon API Gateway は上記の JSON 型データを受信した後、`body` の
   </tbody>
 </table>
 
-### ▼ ステージ変数
+### ステージ変数
 
 デプロイされるステージ固有の環境変数を設定できる。
 
@@ -519,13 +574,13 @@ AWS Lambda 関数名、エンドポイント URL、パラメーターマッピ�
 
 > - [API Gateway stage variables reference for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/aws-api-gateway-stage-variables-reference.html)
 
-### ▼ SDK の作成
+### SDK の作成
 
 <br>
 
 ## 10. API のデプロイ
 
-### ▼ 通常のデプロイメント
+### 通常のデプロイメント
 
 Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽されている。
 
@@ -533,7 +588,7 @@ Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽�
 
 > - https://forums.aws.amazon.com/thread.jspa?threadID=238876
 
-### ▼ カナリアリリース
+### カナリアリリース
 
 カナリアリリースを使用して、新しいステージをデプロイする。
 
@@ -570,7 +625,7 @@ Amazon API Gateway では、通常のデプロイメントの仕組みが隠蔽�
 
 ## 11. ログ出力
 
-### ▼ 実行ログ
+### 実行ログ
 
 Amazon CloudWatch Logs に Amazon API Gateway の実行ログを送信するか否かを設定できる。
 
@@ -578,7 +633,7 @@ Amazon CloudWatch Logs に Amazon API Gateway の実行ログを送信するか�
 
 > - [Set up CloudWatch logging for REST APIs in API Gateway - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/set-up-logging.html)
 
-### ▼ カスタムアクセスログ
+### カスタムアクセスログ
 
 Amazon CloudWatch Logs に Amazon API Gateway のアクセスログを送信するか否かを設定できる。
 
@@ -604,7 +659,7 @@ X-Ray を使用して、Amazon API Gateway を開始点とした分散トレー�
 
 ## 13. API の公開範囲
 
-### ▼ エンドポイントタイプ
+### エンドポイントタイプ
 
 <table>
   <thead>

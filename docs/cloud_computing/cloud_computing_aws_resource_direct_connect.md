@@ -36,9 +36,24 @@ tags:
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、Direct Connect ゲートウェイを作成する。
+
+専用線の開通、プライベート仮想インターフェースの作成、仮想プライベートゲートウェイとの関連付けは別途実施する。
+
+```terraform
+resource "aws_dx_gateway" "this" {
+  name            = "foo-dx-gateway"
+  amazon_side_asn = "64512"
+}
+```
+
+> - [dx_gateway - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dx_gateway)
+
+<br>
+
 ### 専用線の接続構成
 
-#### アタッチメント
+#### ▼ アタッチメント
 
 DirectConnect と他 AWS リソースを接続する。
 
@@ -46,7 +61,7 @@ DirectConnect と他 AWS リソースを接続する。
 
 <br>
 
-#### DirectConnect Gateway
+#### ▼ DirectConnect Gateway
 
 DirectConnect と複数のプライベートネットワーク (Amazon VPC) をアタッチメントで接続する。
 

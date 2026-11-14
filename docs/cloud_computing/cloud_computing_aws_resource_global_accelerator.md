@@ -86,7 +86,7 @@ module "global_accelerator" {
 
 ## 04. アクセラレーターのトラフィック制御
 
-### ▼ 基本的設定
+### 基本的設定
 
 <table>
   <thead>
@@ -110,7 +110,7 @@ module "global_accelerator" {
   </tbody>
 </table>
 
-### ▼ リスナー
+### リスナー
 
 <table>
   <thead>
@@ -139,7 +139,7 @@ module "global_accelerator" {
   </tbody>
 </table>
 
-### ▼ エンドポイントグループ
+### エンドポイントグループ
 
 <table>
   <thead>
@@ -168,7 +168,7 @@ module "global_accelerator" {
   </tbody>
 </table>
 
-### ▼ エンドポイント
+### エンドポイント
 
 <table>
   <thead>

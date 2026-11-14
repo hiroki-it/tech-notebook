@@ -31,6 +31,7 @@ Apache Spark を使用して、大きなサイズのデータを高速に並列�
 > - [AWS Glue Spark and PySpark jobs - AWS Glue](https://docs.aws.amazon.com/glue/latest/dg/spark_and_pyspark.html)
 
 <br>
+
 ## 03. セットアップ
 
 ### Terraformによる構築
@@ -62,7 +63,7 @@ resource "aws_glue_job" "this" {
 
 ## 04. ETL の入出力設定
 
-### ▼ 設定項目と説明
+### 設定項目と説明
 
 <table>
   <thead>

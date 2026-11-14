@@ -62,7 +62,7 @@ module "vpc" {
 
 ## 04. IP アドレスの割り当て
 
-### ▼ IP アドレスの種類
+### IP アドレスの種類
 
 <table>
   <thead>
@@ -102,7 +102,7 @@ module "vpc" {
 > - [EC2 における Public IP と Elastic IPの違いに関して](https://awsjp.com/AWS/hikaku/Elastic-IP_Public-IP-hikaku.html)
 > - https://qiita.com/masato930/items/ba242f0171a76ce0994f
 
-### ▼ DNS 名の割り当て
+### DNS 名の割り当て
 
 Amazon VPC 内で作成されたインスタンスにはパブリック IP アドレスが自動的に割り当てられるが、IP アドレスにマッピングされた DNS 名を持たない。
 
@@ -111,7 +111,7 @@ Amazon VPC 内で作成されたインスタンスにはパブリック IP ア�
 > - [DNS attributes for your VPC - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-support)
 > - [DNS attributes for your VPC - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-dns.html#vpc-dns-updating)
 
-### ▼ 紐付け
+### 紐付け
 
 <table>
   <thead>
@@ -633,7 +633,7 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 ### セキュリティグループの設定
 
-#### コンソール画面の場合
+#### ▼ コンソール画面の場合
 
 リクエストを許可するルールとアウトバウンドルールを設定できる。
 
@@ -643,7 +643,7 @@ version account-id       interface-id  srcaddr           dstaddr         srcport
 
 <br>
 
-#### 送信元 IP アドレスの指定
+#### ▼ 送信元 IP アドレスの指定
 
 ##### ▼ セキュリティグループ ID の紐付け
 

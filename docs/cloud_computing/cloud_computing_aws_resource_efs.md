@@ -34,6 +34,33 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の EFS モジュールを使用し、暗号化したファイルシステムと 2 つの AZ のマウントターゲットを作成する。
+
+既存の VPC と異なる AZ のサブネットを指定し、NFS 接続元のセキュリティグループを許可する。
+
+```terraform
+module "efs" {
+  source  = "terraform-aws-modules/efs/aws"
+  version = "2.2.1"
+
+  name                  = "foo-efs"
+  security_group_vpc_id = "vpc-0123456789abcdef0"
+  mount_targets = {
+    az_a = { subnet_id = "subnet-0123456789abcdef0" }
+    az_c = { subnet_id = "subnet-0123456789abcdef1" }
+  }
+  security_group_ingress_rules = {
+    nfs = {
+      referenced_security_group_id = "sg-0123456789abcdef0"
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/efs/aws (2.2.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/efs/aws/2.2.1)
+
+<br>
+
 ### ファイルシステムの初期設定
 
 <table>

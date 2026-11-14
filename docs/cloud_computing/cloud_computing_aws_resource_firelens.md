@@ -95,9 +95,65 @@ FluentBit が対応する宛先にログをルーティングできる。
 
 ### Terraformによる構築
 
+terraform-aws-modules の ECS Service モジュールを使用し、Fluent Bit の FireLens コンテナでアプリケーションログを CloudWatch Logs へ転送するタスク定義を作成する。
+
+サービスは作成せず、作成したタスク定義を既存の ECS クラスターで実行する。
+
+AWS プロバイダーのリージョンは ap-northeast-1 とする。
+
+```terraform
+resource "aws_cloudwatch_log_group" "application" {
+  name              = "/ecs/foo-firelens"
+  retention_in_days = 30
+}
+
+module "firelens_task" {
+  source  = "terraform-aws-modules/ecs/aws//modules/service"
+  version = "7.6.1"
+
+  name                  = "foo-firelens"
+  create_service        = false
+  create_security_group = false
+  cpu                   = 256
+  memory                = 512
+  container_definitions = {
+    log_router = {
+      image                  = "public.ecr.aws/aws-observability/aws-for-fluent-bit:stable"
+      readonlyRootFilesystem = false
+      firelensConfiguration = {
+        type = "fluentbit"
+      }
+    }
+    app = {
+      image                       = "public.ecr.aws/docker/library/busybox:1.37"
+      command                     = ["sh", "-c", "while true; do echo foo; sleep 10; done"]
+      enable_cloudwatch_logging   = false
+      create_cloudwatch_log_group = false
+      logConfiguration = {
+        logDriver = "awsfirelens"
+        options = {
+          Name              = "cloudwatch_logs"
+          region            = "ap-northeast-1"
+          log_group_name    = aws_cloudwatch_log_group.application.name
+          log_stream_prefix = "app/"
+        }
+      }
+    }
+  }
+  tasks_iam_role_statements = [{
+    actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
+    resources = ["${aws_cloudwatch_log_group.application.arn}:*"]
+  }]
+}
+```
+
+> - [terraform-aws-modules/ecs/aws//modules/service (7.6.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/7.6.1/submodules/service)
+
+<br>
+
 ### コンテナイメージとタスク定義の準備
 
-#### Dockerfile
+#### ▼ Dockerfile
 
 ##### ▼ Amazon ECR パブリックギャラリーを使用する場合
 
@@ -125,7 +181,7 @@ FROM amazon/aws-for-fluent-bit:latest
 
 <br>
 
-#### コンテナ定義
+#### ▼ コンテナ定義
 
 ##### ▼ `container_definition.json` ファイル
 
@@ -250,7 +306,7 @@ aws-for-fluent-bit イメージの `/fluent-bit/etc` ディレクトリにはデ
 
 ## 05. Fluent Bit のログ転送
 
-### ▼ `fluent-bit.conf` とは
+### `fluent-bit.conf` とは
 
 FireLens コンテナのデフォルトの設定ファイル。
 
@@ -290,7 +346,7 @@ FireLens コンテナのデフォルトの設定ファイル。
 
 ## 06. カスタム設定の読み込み
 
-### ▼ `fluent-bit_custom.conf` ファイルとは
+### `fluent-bit_custom.conf` ファイルとは
 
 FireLens コンテナにカスタム値を設定する。
 
@@ -335,7 +391,7 @@ FireLens コンテナにカスタム値を設定する。
     Match nginx-firelens*
 ```
 
-### ▼ INPUT セクション
+### INPUT セクション
 
 標準出力/標準エラー出力に出力されたログをそのままインプットするために、FireLens コンテナでは forward プラグインを設定する必要がある。
 
@@ -358,7 +414,7 @@ FireLens コンテナにカスタム値を設定する。
 
 > - [aws-for-fluent-bit/fluent-bit.conf at mainline · aws/aws-for-fluent-bit · GitHub](https://github.com/aws/aws-for-fluent-bit/blob/mainline/fluent-bit.conf)
 
-### ▼ OUTPUT セクションとプラグイン
+### OUTPUT セクションとプラグイン
 
 AWS や Datadog にルーティングするための設定が必要である。
 
@@ -411,11 +467,11 @@ Amazon ECR パブリックギャラリーからプルしたコンテナイメー
 
 ## 07. ログのパース
 
-### ▼ `parser.conf` ファイルとは
+### `parser.conf` ファイルとは
 
 FireLens コンテナで処理中のログについて、キーの値を修正したい場合、`parser.conf` ファイルで PARSER セクションを設定する必要がある。
 
-### ▼ PARSER セクション
+### PARSER セクション
 
 Amazon ECS が送信したログ
 
@@ -466,13 +522,13 @@ PARSER セクションでコンテナ名を抽出したおかげで、STREAM_TAS
 
 ## 08. 複数行ログの処理
 
-### ▼ `parsers_multiline.conf` ファイル
+### `parsers_multiline.conf` ファイル
 
 FireLens コンテナで複数行のログを処理したい場合、`parsers_multiline.conf` ファイルで MULTILINE_PARSER を設定する必要がある。
 
 > - [amazon-ecs-firelens-examples/examples/fluent-bit/filter-multiline/README.md at mainline · aws-samples/amazon-ecs-firelens-examples · GitHub](https://github.com/aws-samples/amazon-ecs-firelens-examples/blob/mainline/examples/fluent-bit/filter-multiline/README.md)
 
-### ▼ MULTILINE_PARSER セクション
+### MULTILINE_PARSER セクション
 
 ```bash
 [MULTILINE_PARSER]
@@ -500,11 +556,11 @@ FireLens コンテナで複数行のログを処理したい場合、`parsers_mu
 
 ## 09. ストリーム処理
 
-### ▼ `stream_processor.conf` ファイルとは
+### `stream_processor.conf` ファイルとは
 
 ログの作成元のコンテナごとに異なる処理を設定したい場合、`stream_processor.conf` ファイルで STREAM_TASK セクションを定義する必要がある。
 
-### ▼ STREAM_TASK セクション
+### STREAM_TASK セクション
 
 FireLens コンテナで処理中のログのタグ名は『`<コンテナ名>-firelens-<Amazon ECSタスクID>`』になっている。
 

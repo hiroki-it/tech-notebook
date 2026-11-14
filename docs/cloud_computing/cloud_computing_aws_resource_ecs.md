@@ -116,7 +116,7 @@ Amazon ECS のコントロールプレーンは AWS が管理しており、ユ�
 
 ### データプレーンのコンポーネント
 
-#### Amazon ECS クラスター
+#### ▼ Amazon ECS クラスター
 
 Amazon ECS サービスの管理グループ単位のこと。
 
@@ -126,7 +126,7 @@ Amazon ECS サービスの管理グループ単位のこと。
 
 <br>
 
-#### Amazon ECS サービス
+#### ▼ Amazon ECS サービス
 
 Amazon ECS タスクの管理グループ単位のこと。
 
@@ -138,7 +138,7 @@ Amazon ECS タスクへのロードバランシング、タスクの数の維持
 
 <br>
 
-#### Amazon ECS タスク
+#### ▼ Amazon ECS タスク
 
 ##### ▼ Amazon ECS タスク
 
@@ -234,6 +234,55 @@ Amazon ECS タスクは、必須コンテナの異常停止時、デプロイ時
 ## 03. セットアップ
 
 ### Terraformによる構築
+
+terraform-aws-modules の ECS モジュールを使用し、Fargate のクラスター、タスク定義、サービスを作成する。
+
+既存のプライベートサブネットと ALB のセキュリティグループを指定し、コンテナイメージの取得やログ送信に必要な NAT Gateway または VPC エンドポイントを用意しておく。
+
+ALB のターゲットグループへの登録は別途設定する。
+
+```terraform
+module "ecs" {
+  source  = "terraform-aws-modules/ecs/aws"
+  version = "7.6.1"
+
+  cluster_name               = "foo-cluster"
+  cluster_capacity_providers = ["FARGATE"]
+  services = {
+    web = {
+      cpu                = 256
+      memory             = 512
+      enable_autoscaling = false
+      subnet_ids         = ["subnet-0123456789abcdef0", "subnet-0123456789abcdef1"]
+      container_definitions = {
+        web = {
+          image                  = "public.ecr.aws/docker/library/nginx:1.28"
+          readonlyRootFilesystem = false
+          portMappings           = [{ containerPort = 80 }]
+        }
+      }
+      security_group_ingress_rules = {
+        alb = {
+          from_port                    = 80
+          to_port                      = 80
+          referenced_security_group_id = "sg-0123456789abcdef0"
+        }
+      }
+      security_group_egress_rules = {
+        https = {
+          from_port = 443
+          to_port   = 443
+          cidr_ipv4 = "0.0.0.0/0"
+        }
+      }
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/ecs/aws (7.6.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/7.6.1)
+
+<br>
 
 ### Fargate のクラスター・タスク・サービスの初期設定
 
@@ -889,13 +938,13 @@ Amazon ECS サービスを増えるたびにサイドカーの横展開してい
 
 ## 10. タスクへの IP アドレス割り当て
 
-### ▼ Amazon ECS タスクの IP アドレス
+### Amazon ECS タスクの IP アドレス
 
 Amazon ECS タスクごとに異なるプライベート IP が割り当てられる。
 
 この IP アドレスに対して、ALB はルーティングを実行する。
 
-### ▼ Fargate の IP アドレス
+### Fargate の IP アドレス
 
 Fargate は動的パブリック IP アドレス (Fargate の再作成後に変化する IP アドレス) を持ち、固定パブリック IP アドレスである Elastic IP アドレスを設定できない。
 
@@ -913,7 +962,7 @@ Fargate は動的パブリック IP アドレス (Fargate の再作成後に変�
 
 ## 11. タスクの一時起動
 
-### ▼ DB マイグレーション
+### DB マイグレーション
 
 現在起動中の Amazon ECS タスクとは別に、新しいタスクを一時的に起動する。
 
@@ -1005,7 +1054,7 @@ exit ${EXIT_STATUS}
 
 ## 12. タスクのデプロイ
 
-### ▼ ローリングアップデート
+### ローリングアップデート
 
 1. 最小ヘルス率の設定値を基に、ローリングアップデート時の稼働中タスクの最低合計数が決定される。
 
@@ -1023,7 +1072,7 @@ exit ${EXIT_STATUS}
 
 > - [Amazon ECS でのコンテナデプロイの高速化 \| トリの部屋](https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/)
 
-### ▼ ブルー/グリーンデプロイメント
+### ブルー/グリーンデプロイメント
 
 CodeDeploy を使用してデプロイする。
 
@@ -1092,7 +1141,7 @@ AWS NAT Gateway と VPC エンドポイントの両方を作成している場�
 
 ## 14. コンテナへの接続
 
-### ▼ AWS SSM Session Manager を使用した Amazon ECS Exec
+### AWS SSM Session Manager を使用した Amazon ECS Exec
 
 ![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png)
 

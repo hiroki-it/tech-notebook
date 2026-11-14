@@ -937,7 +937,7 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ### RDS への接続例
 
-#### AWS Lambda ➡️ Amazon RDS
+#### ▼ AWS Lambda ➡️ Amazon RDS
 
 ##### ▼ 自動起動
 

@@ -151,11 +151,11 @@ module "lambda" {
 
 ## 05. コンテナイメージでの関数実行
 
-### ▼ ベースイメージの準備
+### ベースイメージの準備
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-images-lp>
 
-### ▼ RIC：Runtime Interface Clients
+### RIC：Runtime Interface Clients
 
 通常のランタイムはコンテナ内関数と通信できないため、ランタイムの代わりに RIC を使用してコンテナ内関数と通信する。
 
@@ -163,7 +163,7 @@ module "lambda" {
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-images.html#runtimes-api-client>
 
-### ▼ RIE：Runtime Interface Emulator
+### RIE：Runtime Interface Emulator
 
 開発環境のコンテナで、擬似的に AWS Lambda 関数を再現する。
 
@@ -232,7 +232,7 @@ $ curl \
 
 ## 06. 同時実行
 
-### ▼ 同時実行の予約
+### 同時実行の予約
 
 AWS Lambda は、関数の実行中に再びリクエストを受信すると、関数のインスタンスを新しく作成する。
 
@@ -276,7 +276,7 @@ AWS Lambda は、関数の実行中に再びリクエストを受信すると、
 
 ## 07. VPC への配置
 
-### ▼ Amazon VPC 外への配置
+### Amazon VPC 外への配置
 
 AWS Lambda はデフォルトでは Amazon VPC 外に配置される。
 
@@ -284,7 +284,7 @@ AWS Lambda はデフォルトでは Amazon VPC 外に配置される。
 
 AWS Lambda の実行時に ENI は再作成されるため、実行ごとに IP アドレスは変化するが、一定時間内の再実行であれば ENI は再利用されるため、前回の実行時と同じ IP アドレスになることもある。
 
-### ▼ Amazon VPC 内への配置
+### Amazon VPC 内への配置
 
 AWS Lambda を Amazon VPC 内に配置するように設定する。
 
@@ -294,7 +294,7 @@ Amazon VPC 内に配置した AWS Lambda にはパブリック IP アドレス�
 
 ## 08. 権限管理
 
-### ▼ 実行に必要な最低限のポリシー
+### 実行に必要な最低限のポリシー
 
 AWS Lambda を実行するためには、デプロイされた関数を使用する認可スコープが必要である。
 
@@ -356,11 +356,11 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 
 ## 10. 関数のデプロイ
 
-### ▼ 直接的に修正
+### 直接的に修正
 
 デプロイを行わずに、関数のコードを直接的に修正し、『Deploy』ボタンでデプロイする。
 
-### ▼ Amazon S3 における `.zip` ファイル
+### Amazon S3 における `.zip` ファイル
 
 ビルド後のコードを `.zip` ファイルにしてアップロードする。
 
@@ -368,7 +368,7 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html#gettingstarted-package-zip>
 
-### ▼ Amazon ECR におけるイメージ
+### Amazon ECR におけるイメージ
 
 コンテナイメージの関数のみで有効である。
 
@@ -390,7 +390,7 @@ Amazon CloudFront に統合された AWS Lambda を、特別に AWS Lambda@Edge 
 
 ### Lambda@Edge の設定
 
-#### コンソール画面の場合
+#### ▼ コンソール画面の場合
 
 ##### ▼ トリガーの種類
 
@@ -435,7 +435,7 @@ Amazon CloudFront のビューワーリクエスト、オリジンリクエス�
 
 <br>
 
-#### ポリシー
+#### ▼ ポリシー
 
 ##### ▼ 実行に必要な最低限のポリシー
 

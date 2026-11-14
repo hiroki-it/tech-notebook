@@ -26,11 +26,9 @@ AWS リソースをコマンドラインから操作し、スクリプトで操�
 
 ## 03. セットアップ
 
-### Terraformによる構築
-
 ### AWS CLI の初期設定
 
-#### configure
+#### ▼ configure
 
 ##### ▼ configure
 
@@ -59,7 +57,7 @@ Default output format [None]: <アウトプット形式>
 
 <br>
 
-#### list
+#### ▼ list
 
 ##### ▼ list とは
 
@@ -71,7 +69,7 @@ $ aws configure list
 
 <br>
 
-#### set
+#### ▼ set
 
 ##### ▼ set とは
 

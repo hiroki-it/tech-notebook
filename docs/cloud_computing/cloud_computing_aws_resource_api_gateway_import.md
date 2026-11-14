@@ -33,6 +33,38 @@ Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイ
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、OpenAPI 仕様のファイルを REST API にインポートする。
+
+後述の OpenAPI 仕様を `openapi.yml` として配置しておく。
+
+```terraform
+resource "aws_api_gateway_rest_api" "this" {
+  name = "foo-imported-api"
+  body = file("${path.module}/openapi.yml")
+}
+
+resource "aws_api_gateway_deployment" "this" {
+  rest_api_id = aws_api_gateway_rest_api.this.id
+  triggers = {
+    redeployment = sha1(aws_api_gateway_rest_api.this.body)
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "aws_api_gateway_stage" "this" {
+  rest_api_id   = aws_api_gateway_rest_api.this.id
+  deployment_id = aws_api_gateway_deployment.this.id
+  stage_name    = "foo"
+}
+```
+
+> - [api_gateway_rest_api - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api)
+> - [api_gateway_deployment - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment)
+
+<br>
+
 ### OpenAPI 仕様のインポート時の注意点
 
 #### ▼ 注意点
@@ -63,7 +95,7 @@ Swagger Editor で API の仕様書の `html` ファイルを確認できる。
 
 ## 04. 統合リクエストと統合レスポンスの定義
 
-### ▼ `x-amazon-apigateway-integration` キーとは
+### `x-amazon-apigateway-integration` キーとは
 
 該当する HTTP メソッドで統合リクエストや統合レスポンスを定義するために `x-amazon-apigateway-integration` キー が必要である。各項目の説明は以下のリンクを参考にせよ。
 
@@ -79,7 +111,7 @@ Swagger Editor で API の仕様書の `html` ファイルを確認できる。
 
 > - [x-amazon-apigateway-integration.responseParameters object - Amazon API Gateway](https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-swagger-extensions-integration-responseParameters.html)
 
-### ▼ セットアップ (Amazon VPC リンク&プロキシ統合)
+### セットアップ (Amazon VPC リンク&プロキシ統合)
 
 ```yaml
 paths:
@@ -108,7 +140,7 @@ paths:
             statusCode: 200
 ```
 
-### ▼ セットアップ (Amazon VPC リンク&非プロキシ統合の場合)
+### セットアップ (Amazon VPC リンク&非プロキシ統合の場合)
 
 パススルー条件や response キー以下の統合レスポンスを設定できる。
 
@@ -138,7 +170,7 @@ paths:
             statusCode: 401
 ```
 
-### ▼ セットアップ (モック統合)
+### セットアップ (モック統合)
 
 パススルー条件を設定できる。
 
@@ -168,13 +200,13 @@ paths:
 
 ## 05. リクエストバリデーターの定義
 
-### ▼ `x-amazon-apigateway-request-validators` キーとは
+### `x-amazon-apigateway-request-validators` キーとは
 
 メソッドリクエストで各種パラメーターのバリデーションを定義するために、`x-amazon-apigateway-request-validators` キーが必要である。
 
 実際に定義したものを使用するときは、後述の `x-amazon-apigateway-request-validator` キーが必要である。
 
-### ▼ セットアップ
+### セットアップ
 
 各種パラメーターのいずれをバリデーションの対象とするかを指定したうえで、エイリアスを定義する。
 
@@ -200,11 +232,11 @@ x-amazon-apigateway-request-validators:
 
 ## 06. リクエストバリデーションの適用
 
-### ▼ `x-amazon-apigateway-request-validator` キーとは
+### `x-amazon-apigateway-request-validator` キーとは
 
 メソッドリクエストで各種パラメーターのバリデーションを実行するために、`x-amazon-apigateway-request-validator` キーが必要である。
 
-### ▼ セットアップ
+### セットアップ
 
 事前に定義した `x-amazon-apigateway-request-validators` キーのなかから、使用するバリデーションのエイリアスを宣言する。
 

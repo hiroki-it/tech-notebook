@@ -137,7 +137,7 @@ module "cloudfront" {
 
 ## 04. ディストリビューションの設定
 
-### ▼ Distributions
+### Distributions
 
 <table>
   <thead>
@@ -183,7 +183,7 @@ module "cloudfront" {
 
 > - [WordPressで構築されているウェブサイトにCloudFrontを立てて高速化＆セキュリティ強化② \| ソフトウェア開発のギークフィード](https://www.geekfeed.co.jp/geekblog/wordpress%E3%81%A7%E6%A7%8B%E7%AF%89%E3%81%95%E3%82%8C%E3%81%A6%E3%81%84%E3%82%8B%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B5%E3%82%A4%E3%83%88%E3%81%ABcloudfront%E3%82%92%E7%AB%8B%E3%81%A6%E3%81%A6%E9%AB%98/)
 
-### ▼ General
+### General
 
 <table>
   <thead>
@@ -232,7 +232,7 @@ module "cloudfront" {
   </tbody>
 </table>
 
-### ▼ Origin and Origin Groups
+### Origin and Origin Groups
 
 <table>
   <thead>
@@ -276,7 +276,7 @@ module "cloudfront" {
   </tbody>
 </table>
 
-### ▼ Behavior
+### Behavior
 
 <table>
   <thead>
@@ -340,7 +340,7 @@ module "cloudfront" {
   </tbody>
 </table>
 
-### ▼ オリジンに対するリクエストの構造
+### オリジンに対するリクエストの構造
 
 Amazon CloudFront からオリジンに送信されるリクエストの構造例を以下に示す。
 
@@ -379,7 +379,7 @@ CloudFront-Viewer-Country: JP
 CloudFront-Forwarded-Proto: https
 ```
 
-### ▼ Amazon CloudFront とオリジン間の HTTPS プロトコル
+### Amazon CloudFront とオリジン間の HTTPS プロトコル
 
 Amazon CloudFront とオリジン間で HTTPS プロトコルを使用する場合、両方にサーバー証明書を割り当てる必要がある。
 
@@ -393,11 +393,11 @@ CLoudFront からオリジンに `Host` ヘッダーをルーティングしな�
 
 ## 05. リクエストの集計と分析
 
-### ▼ Cache statistics
+### Cache statistics
 
 リクエストに関連するさまざまなデータを、日付別に集計したものを確認できる。
 
-### ▼ Popular objects
+### Popular objects
 
 リクエストに関連するさまざまなデータを、オブジェクト別に集計したものを確認できる。
 

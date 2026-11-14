@@ -334,7 +334,7 @@ Amazon S3 では、署名付き URL を発行し、Amazon S3 への認可スコ�
 <br>
 ## 07. CORS
 
-### ▼ CORS について
+### CORS について
 
 ブラウザではデフォルトで CORS が有効になっており、正しいリクエストが CORS を突破できるように対処する必要がある。
 
@@ -344,7 +344,7 @@ Amazon S3 では、署名付き URL を発行し、Amazon S3 への認可スコ�
 
 これを突破できるように、対処する必要がある。
 
-### ▼ Access-Control-Allow-Origin ヘッダー
+### Access-Control-Allow-Origin ヘッダー
 
 サーバー側の Amazon S3 では、`Access-Control-Allow-Origin` ヘッダーに必要な値を設定して返却する。
 
@@ -366,7 +366,7 @@ Amazon S3 では、署名付き URL を発行し、Amazon S3 への認可スコ�
 
 ## 08. レスポンスヘッダー
 
-### ▼ レスポンスヘッダーの設定
+### レスポンスヘッダーの設定
 
 <table>
   <thead>

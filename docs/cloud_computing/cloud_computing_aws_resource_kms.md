@@ -122,14 +122,14 @@ AWS KMS のリクエスト制限を設定する。
 
 ## 06. 暗号化方式とキーマテリアル
 
-### ▼ キータイプ
+### キータイプ
 
 暗号化キーを対称型 (ペアは不要) または非対称 (パブリックとプライベートのペアが必要) とするかを設定する。
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#symmetric-cmks)
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#asymmetric-keys-concept)
 
-### ▼ オリジン
+### オリジン
 
 - AWS KMS が作成したキーマテリアル (`AWS_KMS`)
 - インポートしたキーマテリアル (`EXTERNAL`)
@@ -138,7 +138,7 @@ AWS KMS のリクエスト制限を設定する。
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-origin)
 
-### ▼ キーの仕様
+### キーの仕様
 
 - 対称暗号化キー (`SYMMETRIC_DEFAULT`)
 - RSA キーペア (`RSA_2048`、`RSA_3072`、`RSA_4096`)
@@ -147,7 +147,7 @@ AWS KMS のリクエスト制限を設定する。
 
 > - [AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-spec)
 
-### ▼ キーの用途
+### キーの用途
 
 暗号化キーの用途タイプを設定する。
 

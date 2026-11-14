@@ -116,7 +116,7 @@ EOF
   </tbody>
 </table>
 
-### ▼ グループ
+### グループ
 
 <table>
   <thead>

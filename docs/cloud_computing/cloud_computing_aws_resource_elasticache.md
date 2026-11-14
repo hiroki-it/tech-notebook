@@ -29,7 +29,7 @@ Redis と Memcached がある。
 
 ### Redis エンジン
 
-#### Amazon ElastiCache for Redis とは
+#### ▼ Amazon ElastiCache for Redis とは
 
 Redis をキャッシュエンジンとして使用し、インメモリデータストアをフルマネージドで提供する。
 
@@ -87,6 +87,37 @@ Redis ノードのグループであり、処理の実行単位でもある。
 ## 03. セットアップ
 
 ### Terraformによる構築
+
+terraform-aws-modules の ElastiCache モジュールを使用し、Redis のプライマリとレプリカを 1 台ずつ作成する。
+
+既存の VPC と異なる AZ のサブネットを指定し、アプリケーションのセキュリティグループからの接続を許可する。
+
+暗号化と自動フェイルオーバーを有効にし、クライアントは TLS で接続する。
+
+```terraform
+module "redis" {
+  source  = "terraform-aws-modules/elasticache/aws"
+  version = "1.11.2"
+
+  replication_group_id       = "foo-redis"
+  engine_version             = "7.1"
+  node_type                  = "cache.t4g.small"
+  num_cache_clusters         = 2
+  automatic_failover_enabled = true
+  multi_az_enabled           = true
+  vpc_id                     = "vpc-0123456789abcdef0"
+  subnet_ids                 = ["subnet-0123456789abcdef0", "subnet-0123456789abcdef1"]
+  security_group_rules = {
+    application = {
+      referenced_security_group_id = "sg-0123456789abcdef0"
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/elasticache/aws (1.11.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/elasticache/aws/1.11.2)
+
+<br>
 
 ### Redis クラスターの初期設定
 
@@ -168,7 +199,7 @@ Redis ノードのグループであり、処理の実行単位でもある。
 
 ## 04. セッション情報の保管
 
-### ▼ セッション管理機能とは
+### セッション管理機能とは
 
 アプリケーションがセッション ID を管理する代わりに、セッション ID を管理する。
 
@@ -176,7 +207,7 @@ Redis ノードのグループであり、処理の実行単位でもある。
 
 ![Amazon ElastiCache のセッション管理機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon ElastiCache のセッション管理機能.png)
 
-### ▼ Amazon ElastiCache を使用しない場合
+### Amazon ElastiCache を使用しない場合
 
 アプリケーションが特にコンテナの場合、アプリでセッションデータを管理してしまうと、該当のセッションを持ったコンテナが他のコンテナにセッションデータを引き継げず、スケールイン/スケールアウトしてしまう。
 
@@ -186,7 +217,7 @@ Redis ノードのグループであり、処理の実行単位でもある。
 
 ## 05. クエリキャッシュ
 
-### ▼ クエリキャッシュ管理機能とは
+### クエリキャッシュ管理機能とは
 
 Amazon RDS に対する SQL と読み出されたデータを、キャッシュとして管理する。
 
@@ -197,7 +228,7 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 > - [Amazon ElastiCache を使用して RDS for MySQL ワークロードのコストを最適化し、パフォーマンスを向上させる \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/)
 > - [MySQL 8.0 : クエリーキャッシュのサポート終了 \| Yakst](https://yakst.com/ja/posts/4612)
 
-### ▼ 仕組み
+### 仕組み
 
 1. アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
 
@@ -259,7 +290,7 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 ## 06. 障害復旧
 
-### ▼ Redis のフェイルオーバー
+### Redis のフェイルオーバー
 
 プライマリーノードで障害が起こった場合に、リードレプリカノードをプライマリーノードに自動的に昇格する。
 
@@ -286,7 +317,7 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 ## 07. 停止時間の管理
 
-### ▼ ダウンタイムの発生条件
+### ダウンタイムの発生条件
 
 <table>
   <thead>
@@ -309,13 +340,13 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 ## 08. 計画停止
 
-### ▼ 計画的なダウンタイムとは
+### 計画的なダウンタイムとは
 
 Redis クラスターでは、設定値 (例：エンジンバージョン) のアップグレード時に、Redis ノードの再起動が必要である。
 
 サイトの利用者に与える影響を小さくできるように、計画的にダウンタイムを発生させる必要がある。
 
-### ▼ バックアップとインポートによるダウンタイムの最小化
+### バックアップとインポートによるダウンタイムの最小化
 
 以下の手順で、ダウンタイムを最小限にしてアップグレードできる。
 

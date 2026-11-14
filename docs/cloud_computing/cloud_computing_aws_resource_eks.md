@@ -57,7 +57,7 @@ Amazon EKS のコントロールプレーンは、開発者や他の AWS リソ�
 
 ### コントロールプレーンのコンポーネント
 
-#### 対応関係
+#### ▼ 対応関係
 
 <table>
   <thead>
@@ -88,13 +88,13 @@ Amazon EKS のコントロールプレーンは、開発者や他の AWS リソ�
 
 <br>
 
-#### コントロールプレーン Node
+#### ▼ コントロールプレーン Node
 
 コントロールプレーン Node は、ユーザーの管理外の Amazon VPC に所属している。
 
 <br>
 
-#### NLB
+#### ▼ NLB
 
 Amazon EKS コントロールプレーンでは、NLB が kube-apiserver の前段に位置し、複数の kube-apiserver にリクエストを分散する。
 
@@ -102,7 +102,7 @@ Amazon EKS コントロールプレーンでは、NLB が kube-apiserver の前�
 
 ### データプレーンのコンポーネント
 
-#### 対応関係
+#### ▼ 対応関係
 
 ![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks.png)
 
@@ -167,7 +167,7 @@ Amazon EKS コントロールプレーンでは、NLB が kube-apiserver の前�
 
 <br>
 
-#### Amazon EKS Cluster
+#### ▼ Amazon EKS Cluster
 
 ##### ▼ Amazon EKS Cluster とは
 
@@ -262,7 +262,7 @@ module "eks_foo" {
 
 ### コンソールの場合
 
-#### 設定項目と説明
+#### ▼ 設定項目と説明
 
 <table>
   <thead>
@@ -380,7 +380,7 @@ kube-apiserver のインターネットへの公開範囲を設定できる。
 
 ### kube-apiserver の認証と認可
 
-#### aws-auth (ConfigMap) を経由した Kubernetes RBAC との連携
+#### ▼ aws-auth (ConfigMap) を経由した Kubernetes RBAC との連携
 
 ![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
 
@@ -441,7 +441,7 @@ ConfigMap を経由して Kubernetes の RBAC と連携することにより、K
 
 <br>
 
-#### プリンシパル AWS IAM ロールとアクセスエントリーを経由した Kubernetes Cluster の操作
+#### ▼ プリンシパル AWS IAM ロールとアクセスエントリーを経由した Kubernetes Cluster の操作
 
 ##### ▼ 概要
 
@@ -766,7 +766,7 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 
 ### Cluster 内の IP アドレス
 
-#### Service のための IP アドレス
+#### ▼ Service のための IP アドレス
 
 Service に割り当てる IP アドレスは、Service IP 範囲によって決まる。
 
@@ -787,7 +787,7 @@ $ kubectl get service -A jsonpath='{.spec.clusterIP}'
 
 <br>
 
-#### Pod のための IP アドレス
+#### ▼ Pod のための IP アドレス
 
 Pod の IP アドレスは、Amazon EC2 の ENI とセカンダリープライベート IP アドレスに割り当てられる IP アドレスによって決まる。
 
@@ -812,7 +812,7 @@ Amazon EKS データプレーンはプライベートサブネットで稼働さ
 
 ### データプレーン内外へのリクエスト
 
-#### パブリックサブネット内のデータプレーンからのリクエスト
+#### ▼ パブリックサブネット内のデータプレーンからのリクエスト
 
 Pod をパブリックサブネットに配置した場合、パブリックネットワークや Amazon VPC 外にある AWS リソース (Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) へリクエストを送信するために特に必要なものはない。
 
@@ -823,7 +823,7 @@ Pod をパブリックサブネットに配置した場合、パブリックネ�
 
 <br>
 
-#### プライベートサブネット内のデータプレーンからのリクエスト
+#### ▼ プライベートサブネット内のデータプレーンからのリクエスト
 
 ##### ▼ Pod 外から内へのリクエスト
 
@@ -937,7 +937,7 @@ Amazon VPC 内にある AWS リソース (RDS など) の場合、その AWS 側
 
 ### コントロールプレーン内外へのリクエスト
 
-#### コントロールプレーンとワーカーNode のネットワーク
+#### ▼ コントロールプレーンとワーカーNode のネットワーク
 
 コントロールプレーンは Amazon VPC 外にあり、ワーカーNode は Amazon VPC 内にある。
 
@@ -953,7 +953,7 @@ Amazon VPC 外から NLB への `443` 番ポートに対するネットワーク
 
 <br>
 
-#### クラスターエンドポイントのリクエスト制限
+#### ▼ クラスターエンドポイントのリクエスト制限
 
 ##### ▼ パブリックのみの場合
 
@@ -1071,7 +1071,7 @@ Pod のファイルはワーカーNode にマウントされるため、異な�
 
 ### Amazon EC2 ワーカーNode
 
-#### Amazon EC2 ワーカーNode
+#### ▼ Amazon EC2 ワーカーNode
 
 ##### ▼ Amazon EC2 ワーカーNode とは
 
@@ -1087,7 +1087,7 @@ Fargate と比べてカスタマイズ性が高く、ワーカーNode 当たり�
 
 <br>
 
-#### セットアップ
+#### ▼ セットアップ
 
 ##### ▼ IAM ポリシー
 
@@ -1108,7 +1108,7 @@ Amazon EC2 ワーカーNode 内の Pod が Amazon ECR からコンテナイメ�
 
 ### Node グループ (on Amazon EC2)
 
-#### マネージド
+#### ▼ マネージド
 
 ##### ▼ マネージド Node グループ
 
@@ -1146,7 +1146,7 @@ Amazon EKS のテスト環境の請求料金を節約するため、昼間に通
 
 <br>
 
-#### セルフマネージド
+#### ▼ セルフマネージド
 
 ##### ▼ セルフマネージド Node グループ
 
@@ -1163,7 +1163,7 @@ AWS Auto Scaling グループの機能を使用すれば、Amazon EC2 ワーカ�
 
 <br>
 
-#### Node 数の変更
+#### ▼ Node 数の変更
 
 Node グループ (マネージド Node グループ、セルフマネージド Node グループ) では、希望数を変更することで現在の Node 数を変更できる。
 
@@ -1178,7 +1178,7 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 
 <br>
 
-#### Amazon EC2 へのタグ付けの例
+#### ▼ Amazon EC2 へのタグ付けの例
 
 ##### ▼ マネージド Node グループ
 
@@ -1231,13 +1231,13 @@ Node グループ (マネージド Node グループ、セルフマネージド 
 
 ### Amazon EC2 ワーカーNode のセットアップ (コンソールの場合)
 
-#### マネージド Node グループの場合
+#### ▼ マネージド Node グループの場合
 
 起動テンプレートを使用し、Amazon EC2 ワーカーNode を作成する。
 
 起動テンプレートのタグ付け機能を使用して Amazon EC2 にタグ付けでき、これは任意である。
 
-#### セルフマネージド Node グループの場合
+#### ▼ セルフマネージド Node グループの場合
 
 任意の AWS Auto Scaling グループにて、起動テンプレートを使用して Amazon EC2 ワーカーNode を作成する。
 
@@ -1252,7 +1252,7 @@ AWS Auto Scaling グループのタグ付け機能を使用して、`kubernetes.
 
 ### Amazon EC2 ワーカーNode のセットアップ (Terraform の場合)
 
-#### マネージド Node グループの場合
+#### ▼ マネージド Node グループの場合
 
 起動テンプレートを使用し、Amazon EC2 ワーカーNode を作成する。
 
@@ -1311,7 +1311,7 @@ resource "aws_autoscaling_group_tag" "foo" {
 
 > - [terraform-aws-eks/modules/eks-managed-node-group/main.tf at v19.16.0 · terraform-aws-modules/terraform-aws-eks · GitHub](https://github.com/terraform-aws-modules/terraform-aws-eks/blob/v19.16.0/modules/eks-managed-node-group/main.tf)
 
-#### セルフマネージド Node グループの場合
+#### ▼ セルフマネージド Node グループの場合
 
 任意の AutoScaling にて、起動テンプレートを使用して Amazon EC2 ワーカーNode を作成する。
 
@@ -1749,7 +1749,7 @@ AWS が管理する Fargate 上の実行環境を Pod ごとにワーカーNode 
 
 ### Fargate の選択条件
 
-#### Amazon EC2 ワーカーNode との比較
+#### ▼ Amazon EC2 ワーカーNode との比較
 
 Amazon EC2 ワーカーNode と比較して、使用できない機能については、以下のリンクを参考にせよ。
 
@@ -1758,7 +1758,7 @@ Amazon EC2 ワーカーNode と比較して、使用できない機能につい�
 
 <br>
 
-#### Fargate ワーカーNode
+#### ▼ Fargate ワーカーNode
 
 ##### ▼ Fargate ワーカーNode とは
 

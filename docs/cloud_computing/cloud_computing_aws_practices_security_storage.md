@@ -79,7 +79,7 @@ AWS Secrets Manager は、機密データをキーバリュー単位で保管で
 
 ## 05. ブロックデータの保管と暗号化
 
-### ▼ Amazon Aurora
+### Amazon Aurora
 
 Amazon Aurora は、永続データをブロック単位で保管できるブロックストレージである。
 
@@ -89,7 +89,7 @@ Amazon Aurora は、永続データをブロック単位で保管できるブロ
 > - [AWS のストレージサービス EBS、EFS、S3、FSxなどの違い \| 株式会社スタイルズ](https://www.stylez.co.jp/aws_columns/explain_aws_services_that_are_difficult_to_differentiate/aws_storage_services_difference_between_ebs_efs_s3_fsx_etc/#AWS-2)
 > - [Auroraの保管時の暗号化を整理してみた #AWS - Qiita](https://qiita.com/zumax/items/ee70a643a0ec803b8671)
 
-### ▼ AWS EBS
+### AWS EBS
 
 AWS EBS は、ファイルをブロック単位で保管できるブロックストレージである。
 
@@ -99,7 +99,7 @@ AWS EBS は、ファイルをブロック単位で保管できるブロックス
 
 ## 06. オブジェクトの保管と暗号化
 
-### ▼ Amazon S3
+### Amazon S3
 
 Amazon S3 は、属性を付与した静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) やビッグデータをオブジェクト単位で管理できるオブジェクトストレージである。
 

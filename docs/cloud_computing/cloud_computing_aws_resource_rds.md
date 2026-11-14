@@ -80,7 +80,7 @@ resource "aws_db_instance" "this" {
 
 ## 04. DB エンジンの選択
 
-### ▼ DBMS に対応する RDB
+### DBMS に対応する RDB
 
 <table>
   <thead>
@@ -114,7 +114,7 @@ resource "aws_db_instance" "this" {
   </tbody>
 </table>
 
-### ▼ 機能の違い
+### 機能の違い
 
 RDB が Amazon Aurora か Amazon RDS かで機能に差があり、Amazon Aurora のほうが耐障害性や可用性が高い。
 

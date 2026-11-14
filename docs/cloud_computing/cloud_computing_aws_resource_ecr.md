@@ -30,6 +30,25 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の ECR モジュールを使用し、既存のビルド用 IAM ロールが読み書きできるプライベートリポジトリを作成する。
+
+この例では、イメージを自動削除するライフサイクルポリシーは作成しない。
+
+```terraform
+module "ecr" {
+  source  = "terraform-aws-modules/ecr/aws"
+  version = "3.2.1"
+
+  repository_name                   = "foo-app"
+  repository_read_write_access_arns = ["arn:aws:iam::123456789012:role/foo-build"]
+  create_lifecycle_policy           = false
+}
+```
+
+> - [terraform-aws-modules/ecr/aws (3.2.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/ecr/aws/3.2.1)
+
+<br>
+
 ### リポジトリの初期設定
 
 #### ▼ 設定項目と説明
@@ -70,7 +89,7 @@ tags:
 
 ## 04. イメージのプッシュ
 
-### ▼ コンテナイメージの場合
+### コンテナイメージの場合
 
 1. Amazon ECR にログインする。
 
@@ -97,7 +116,7 @@ tags:
 
 > - [Pushing a Docker image to an Amazon ECR private repository - Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
 
-### ▼ helm チャートの場合
+### helm チャートの場合
 
 調査中...
 
@@ -107,7 +126,7 @@ tags:
 
 ## 05. イメージのライフサイクル
 
-### ▼ ライフサイクルポリシー
+### ライフサイクルポリシー
 
 Amazon ECR のコンテナイメージの有効期間を定義できる。
 
@@ -144,7 +163,7 @@ Amazon ECR のコンテナイメージの有効期間を定義できる。
 
 ## 06. バージョンタグ
 
-### ▼ タグ名のベストプラクティス
+### タグ名のベストプラクティス
 
 Docker のベストプラクティスに則り、タグ名に `latest` を使用しないようにする。
 

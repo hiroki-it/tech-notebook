@@ -99,13 +99,13 @@ resource "aws_lambda_permission" "eventbridge" {
 
 ## 04. イベントの受信とフィルタリング
 
-### ▼ イベント受信対象の AWS リソース
+### イベント受信対象の AWS リソース
 
 イベント受信対象の AWS リソースは以下のリンクを参考にせよ。
 
 > - https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-service-event-list.html
 
-### ▼ イベントパターン
+### イベントパターン
 
 指定した AWS リソースでイベントが起こると、以下のような JSON を送信する。
 
@@ -153,13 +153,13 @@ cron 式または rate 式を使用して、スケジュールを定義する。
 
 ## 06. イベントの送信とデバッグ
 
-### ▼ ターゲットの一覧
+### ターゲットの一覧
 
 AWS リソースで発生したイベントを受信し、他の AWS リソースや外部 API に送信する。
 
 > - [Event bus targets in Amazon EventBridge - Amazon EventBridge](https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-targets.html)
 
-### ▼ デバッグ
+### デバッグ
 
 Amazon EventBridge では、どのような JSON のイベントをターゲットに送信したかを確認できない。
 
@@ -211,7 +211,7 @@ AWS リソースで意図的にイベントを起こし、AWS Lambda のログ�
 
 ## 07. イベントデータの変換
 
-### ▼ 入力トランスフォーマー
+### 入力トランスフォーマー
 
 入力パスで使用する値を抽出し、入力テンプレートで送信する JSON を定義できる。
 

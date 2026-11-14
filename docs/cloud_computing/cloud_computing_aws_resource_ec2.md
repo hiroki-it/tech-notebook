@@ -80,6 +80,27 @@ Amazon EC2 のライフサイクルにはフェーズがある。
 
 ### Terraformによる構築
 
+terraform-aws-modules の EC2 Instance モジュールを使用し、既存のサブネットとセキュリティグループに EC2 インスタンスを作成する。
+
+AMI には、使用するリージョンとインスタンスタイプに対応するものを指定する。
+
+```terraform
+module "ec2" {
+  source  = "terraform-aws-modules/ec2-instance/aws"
+  version = "6.4.1"
+
+  name                   = "foo-ec2"
+  ami                    = "ami-0123456789abcdef0"
+  subnet_id              = "subnet-0123456789abcdef0"
+  create_security_group  = false
+  vpc_security_group_ids = ["sg-0123456789abcdef0"]
+}
+```
+
+> - [terraform-aws-modules/ec2-instance/aws (6.4.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/ec2-instance/aws/6.4.1)
+
+<br>
+
 
 ### コンソール画面の場合
 
@@ -744,7 +765,7 @@ AWS EBS ボリュームとは異なり、コンピューティングとして動
 
 ### セットアップ (コンソールの場合)
 
-#### コンソール画面の場合
+#### ▼ コンソール画面の場合
 
 ##### ▼ 設定項目と説明
 
@@ -1267,13 +1288,13 @@ Amazon VPC エンドポイントを経由すれば異なる Amazon VPC に送信
 
 ### セカンダリーIP アドレス割り当て
 
-#### セカンダリーIP アドレス割り当てとは
+#### ▼ セカンダリーIP アドレス割り当てとは
 
 ENI に、プライマリー IP アドレスとは別の IP アドレスを追加で割り当てる。
 
 <br>
 
-#### IP アドレス数
+#### ▼ IP アドレス数
 
 <table>
   <thead>
@@ -1298,7 +1319,7 @@ ENI に、プライマリー IP アドレスとは別の IP アドレスを追�
 
 ### IPv4 Prefix delegation
 
-#### IPv4 Prefix delegation とは
+#### ▼ IPv4 Prefix delegation とは
 
 複数の CIDR (サブネット内の `*.*.*.*/28`) を ENI に割り当て、この ENI を Amazon EC2 に紐づける。
 
@@ -1333,7 +1354,7 @@ Amazon EC2 に紐づけた CIDR から IP アドレスを取得する。
 
 <br>
 
-#### IP アドレス数
+#### ▼ IP アドレス数
 
 ENI に割り当てる CIDR (サブネット内の `*.*.*.*/28`) は、`16` 個の IP アドレスを持つ。
 
@@ -1343,7 +1364,7 @@ ENI には複数の CIDR を紐づけられるため、`16` 個の倍数だけ�
 
 <br>
 
-#### CIDR (サブネット内の `*.*.*.*/28`) の事前予約
+#### ▼ CIDR (サブネット内の `*.*.*.*/28`) の事前予約
 
 ENI に CIDR を手動/自動で割り当てるとき、サブネット内に断片化されていない `*.*.*.*/28` がないと、`InsufficientCidr` というエラーになる。
 
@@ -1363,13 +1384,13 @@ CIDR 内のセカンダリープライベート IP アドレスが使用中で�
 
 <br>
 
-#### 外部のサブネットから IP アドレスを拝借する
+#### ▼ 外部のサブネットから IP アドレスを拝借する
 
 > - [Custom Networking - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/custom-networking/)
 
 <br>
 
-#### CIDR の断片化の確認
+#### ▼ CIDR の断片化の確認
 
 ツールを使用して、CIDR が断片化されているかを確認するとよい。
 

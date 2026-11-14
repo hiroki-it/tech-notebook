@@ -64,11 +64,11 @@ module "state_machine" {
 
 ## 04. AWS リソースの API 呼び出し
 
-### ▼ API コールできるリソース
+### API コールできるリソース
 
 > - https://docs.aws.amazon.com/step-functions/latest/dg/connect-supported-services.html
 
-### ▼ AWS Lambda
+### AWS Lambda
 
 ```json
 {
@@ -101,7 +101,7 @@ module "state_machine" {
 
 ## 05. API Gateway との連携
 
-### ▼ 注意が必要な項目
+### 注意が必要な項目
 
 <table>
   <thead>
@@ -146,7 +146,7 @@ module "state_machine" {
 }
 ```
 
-### ▼ レスポンス構造
+### レスポンス構造
 
 以下がレスポンスされれば、Amazon API Gateway が Step Functions をコールできたことになる。
 

@@ -28,7 +28,7 @@ Amazon RDS をよりマネージドにした AWS リソースである。
 
 ### DB クラスター
 
-#### Amazon Aurora の DB クラスターとは
+#### ▼ Amazon Aurora の DB クラスターとは
 
 DB エンジンに Amazon Aurora を選択した場合にのみ使用できる。
 
@@ -46,13 +46,13 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 ### DB インスタンス
 
-#### Amazon Aurora の DB インスタンスとは
+#### ▼ Amazon Aurora の DB インスタンスとは
 
 コンピューティング機能を持ち、クラスターボリュームを操作できる。
 
 <br>
 
-#### Amazon Aurora の DB インスタンスの種類
+#### ▼ Amazon Aurora の DB インスタンスの種類
 
 <table>
   <thead>
@@ -154,7 +154,7 @@ resource "aws_rds_cluster_instance" "foo" {
 
 ### コンソールの場合
 
-#### DB エンジンと DB クラスター・DB インスタンスの設定
+#### ▼ DB エンジンと DB クラスター・DB インスタンスの設定
 
 <table>
   <thead>
@@ -285,7 +285,7 @@ resource "aws_rds_cluster_instance" "foo" {
 
 ### 踏み台サーバーをパブリックサブネットに置く場合の接続方法
 
-#### SSH 公開鍵認証を使用する場合
+#### ▼ SSH 公開鍵認証を使用する場合
 
 ##### ▼ この方法について
 
@@ -305,7 +305,7 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<Amazon Auroraのリーダーエ�
 
 ### 踏み台サーバーをプライベートサブネットに置く場合の接続方法
 
-#### AWS SSM Session Manager を使用した SSH セッション
+#### ▼ AWS SSM Session Manager を使用した SSH セッション
 
 ##### ▼ この方法について
 
@@ -315,7 +315,7 @@ $ ssh -o serveraliveinterval=60 -f -N -L 3306:<Amazon Auroraのリーダーエ�
 
 <br>
 
-#### AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)
+#### ▼ AWS SSM Session Manager を使用したリモートホストへのポートフォワーディング (StartPortForwardingSessionToRemoteHost)
 
 ##### ▼ この方法について
 
@@ -371,7 +371,7 @@ mysql> SHOW TABLES;
 
 ### 踏み台 Pod を Amazon EKS クラスター内に置く場合の接続方法
 
-#### 踏み台 Pod とは
+#### ▼ 踏み台 Pod とは
 
 これは、Amazon EKS を使用している場合に使用できる。
 
@@ -383,7 +383,7 @@ Helm チャートを作成しておくと、簡単にセットアップできる
 
 <br>
 
-#### troubleshooting リポジトリ
+#### ▼ troubleshooting リポジトリ
 
 ```yaml
 troubleshooting/
@@ -408,7 +408,7 @@ troubleshooting/
 
 <br>
 
-#### values.example.yaml
+#### ▼ values.example.yaml
 
 `.env` ファイルのように、バージョン管理しない `values.example.yaml` ファイルを用意しておく。
 
