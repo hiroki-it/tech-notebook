@@ -39,6 +39,7 @@ AWS Organizations の CreateAccount-API をコールして、AWS アカウント
 既存のアカウントを Control Tower に移行する場合、既存のアカウントで作成された IAM ユーザーと IAM グループが不要になるため、これらを削除する必要がある。
 
 <br>
+
 ## 03. セットアップ
 
 ### Terraformによる構築

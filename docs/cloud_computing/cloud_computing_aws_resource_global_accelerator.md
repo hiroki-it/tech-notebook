@@ -47,6 +47,7 @@ Global Accelerator を使用しない場合、クライアント PC のリージ
 > - [AWS Global Accelerator Speed Comparison](https://speedtest.globalaccelerator.aws/#/)
 
 <br>
+
 ## 03. セットアップ
 
 ### Terraformによる構築

@@ -36,6 +36,7 @@ Apache Spark を使用して、大きなサイズのデータを高速に並列�
 > - [NEW – Amazon Redshift と Apache Spark の統合 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/new-amazon-redshift-integration-with-apache-spark/)
 
 <br>
+
 ## 03. セットアップ
 
 ### Terraformによる構築
