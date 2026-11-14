@@ -15,15 +15,17 @@ tags:
 
 <br>
 
-## 01. Cloud Logging とは
+## 01. 概要
+
+### Cloud Logging とは
 
 Google Cloud リソースやアプリケーションのログを収集し、保管、検索、分析できるログ管理サービスである。
 
 <br>
 
-## 02. セットアップ
+## 02. 仕組み
 
-### コンソール画面の場合
+### ログの収集・保管・振り分け
 
 ログを収集/保管できる。
 
@@ -57,11 +59,15 @@ Cloud Logging でログを処理するための API (`logging.googleapis.com`) �
 
 <br>
 
-### ログベースのメトリクス
+## 03. セットアップ
 
-#### ▼ ユーザー定義
+### Terraformによる構築
 
-#### ▼ ビルトイン
+## 04. ログベースのメトリクス
+
+### ▼ ユーザー定義
+
+### ▼ ビルトイン
 
 - billing/bytes_ingested
 - billing/bytes_stored
@@ -70,9 +76,9 @@ Cloud Logging でログを処理するための API (`logging.googleapis.com`) �
 
 <br>
 
-### ログルーター
+## 05. ログルーターとシンク
 
-#### ▼ ログシンク
+### ▼ ログシンク
 
 ログの特定の文字列を発火条件として、各種 Google Cloud リソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring など) にログイベントを送信する。
 
@@ -81,7 +87,7 @@ Cloud Logging でログを処理するための API (`logging.googleapis.com`) �
 > - [GCP Cloud Logging: The Basis - DEV Community](https://dev.to/alvardev/gcp-cloud-logging-the-basis-45eh)
 > - [Cloud Logging のイベントをリアルタイムで検出して対応する \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/management-tools/automate-your-response-to-a-cloud-logging-event)
 
-#### ▼ ログシンクフィルター
+### ▼ ログシンクフィルター
 
 シンクを発火させるときのログの条件を設定する。
 
@@ -91,11 +97,29 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 
 <br>
 
-## 02. 文法
+### シンク
 
-### ログフィールド
+#### ▼ フィルター
 
-#### ▼ 種類
+ログの条件を設定する。
+
+ロジックは、ログクエリと同じである。
+
+#### ▼ リソースタイプ
+
+```bash
+# KubernetesCluster
+resource.type = "k8s_cluster"
+```
+
+```bash
+# Kubernetesコンテナ
+resource.type = "k8s_container"
+```
+
+## 06. ログフィールド
+
+### ▼ 種類
 
 <table>
   <thead>
@@ -186,13 +210,13 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 
 <br>
 
-### ログクエリ
+## 07. ログの検索とフィルタリング
 
-#### ▼ レシピ
+### ▼ レシピ
 
 > - [Sample queries \| Cloud Logging \| Google Cloud Documentation](https://cloud.google.com/logging/docs/view/query-library#container_queries)
 
-#### ▼ テキスト検索
+### ▼ テキスト検索
 
 タグに関係なく、ログからテキストを検索する。
 
@@ -200,7 +224,7 @@ resource.type = "k8s_container" AND resource.labels.namespace_name = "foo-namesp
 foo-pod
 ```
 
-#### ▼ ワイルドカード
+### ▼ ワイルドカード
 
 ```bash
 # 部分一致
@@ -210,7 +234,7 @@ resource.labels.pod_name: "pod"
 > - https://tools.bigwave.biz/notes/blog/posts/gcp_logging_query
 > - [GCP Loggingで該当のurlのみのログを取得する #GoogleCloud - Qiita](https://qiita.com/shigeru10/items/f54455e02e9d93e9ba4c)
 
-#### ▼ 正規表現
+### ▼ 正規表現
 
 `=~` 演算子を使用して正規表現マッチングを有効化する。
 
@@ -234,7 +258,7 @@ resource.labels.pod_name=~".*pod.*"
 > - [Logging query language \| Google Cloud Documentation](https://cloud.google.com/logging/docs/view/logging-query-language#regular-expressions)
 > - https://stackoverflow.com/questions/71922754/google-cloud-platform-logging-how-to-search-wildcard-strings-in-all-logs
 
-#### ▼ 除外
+### ▼ 除外
 
 特定の値を持たないログをクエリする。
 
@@ -248,26 +272,6 @@ resource.labels.pod_name=~".*pod.*"
 ```
 
 <br>
-
-### シンク
-
-#### ▼ フィルター
-
-ログの条件を設定する。
-
-ロジックは、ログクエリと同じである。
-
-#### ▼ リソースタイプ
-
-```bash
-# KubernetesCluster
-resource.type = "k8s_cluster"
-```
-
-```bash
-# Kubernetesコンテナ
-resource.type = "k8s_container"
-```
 
 ### リソースラベル
 

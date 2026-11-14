@@ -15,15 +15,19 @@ tags:
 
 <br>
 
-## 01. プリンシパル
+## 01. 概要
 
-### プリンシパルとは
+## 02. 仕組み
+
+### プリンシパル
+
+#### プリンシパルとは
 
 ロールの紐付け対象のこと。
 
 <br>
 
-### プリンシパルの種類
+#### プリンシパルの種類
 
 - ユーザー
 - サービスアカウント
@@ -36,7 +40,71 @@ tags:
 
 <br>
 
-## 01-02. ユーザー
+### パーミッション (権限)
+
+#### パーミッションとは
+
+認可スコープのこと。
+
+`<サービス>.<Google Cloudリソース>.<動作>` (例：`compute.instances.create`) で表記する。
+
+<br>
+
+#### 種類
+
+- 基本ロール
+- 事前定義ロール
+- カスタムロース
+
+<br>
+
+### ロール
+
+#### ロールとは
+
+パーミッションのセットのこと。
+
+プリンシパルに紐づける。
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ビルトインロール</td>
+      <td><code>roles/&lt;GoogleCloudリソース名&gt;.&lt;識別名&gt;</code></td>
+    </tr>
+    <tr>
+      <td>プロジェクトレベルのカスタムロース</td>
+      <td><code>projects/&lt;プロジェクトID&gt;/roles/&lt;識別名&gt;</code></td>
+    </tr>
+    <tr>
+      <td>組織レベルのカスタムロール</td>
+      <td><code>organizations/&lt;組織ID&gt;/roles/&lt;識別名&gt;</code></td>
+    </tr>
+  </tbody>
+</table>
+
+> - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
+> - [ロールと権限 \| Identity and Access Management (IAM) \| Google Cloud Documentation](https://cloud.google.com/iam/docs/roles-overview?hl=ja#components)
+
+<br>
+
+### ポリシー
+
+> - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
+
+<br>
+
+## 03. セットアップ
+
+### Terraformによる構築
+
+## 04. ユーザーの認証
 
 ### ユーザーとは
 
@@ -58,7 +126,7 @@ $ gcloud auth login
 
 <br>
 
-## 01-03. サービスアカウント
+## 05. サービスアカウントと資格情報
 
 ### サービスアカウントとは
 
@@ -129,67 +197,7 @@ $ gcloud info
 
 <br>
 
-## 02. パーミッション (権限)
-
-### パーミッションとは
-
-認可スコープのこと。
-
-`<サービス>.<Google Cloudリソース>.<動作>` (例：`compute.instances.create`) で表記する。
-
-<br>
-
-### 種類
-
-- 基本ロール
-- 事前定義ロール
-- カスタムロース
-
-<br>
-
-## 03. ロール
-
-### ロールとは
-
-パーミッションのセットのこと。
-
-プリンシパルに紐づける。
-
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ビルトインロール</td>
-      <td><code>roles/&lt;GoogleCloudリソース名&gt;.&lt;識別名&gt;</code></td>
-    </tr>
-    <tr>
-      <td>プロジェクトレベルのカスタムロース</td>
-      <td><code>projects/&lt;プロジェクトID&gt;/roles/&lt;識別名&gt;</code></td>
-    </tr>
-    <tr>
-      <td>組織レベルのカスタムロール</td>
-      <td><code>organizations/&lt;組織ID&gt;/roles/&lt;識別名&gt;</code></td>
-    </tr>
-  </tbody>
-</table>
-
-> - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
-> - [ロールと権限 \| Identity and Access Management (IAM) \| Google Cloud Documentation](https://cloud.google.com/iam/docs/roles-overview?hl=ja#components)
-
-<br>
-
-## 04. ポリシー
-
-> - [GCP の使い方 (1) IAM を使ってみよう｜研修コースに参加してみた \| SEプラス 研修 Topics](https://www.seplus.jp/dokushuzemi/blog/2023/04/gcp_essential_iam.html)
-
-<br>
-
-## 05. Workload Identity
+## 06. Workload Identity による認証連携
 
 ### Workload Identity とは
 

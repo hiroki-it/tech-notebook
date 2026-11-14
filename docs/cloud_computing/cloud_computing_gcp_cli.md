@@ -14,44 +14,66 @@ tags:
 
 <br>
 
-## 01. 設定ファイル
+## 01. 概要
 
-### Configuration
+## 02. 仕組み
 
-現在の資格情報を設定する。
+## 03. セットアップ
+
+### Terraformによる構築
+
+### init
+
+#### ▼ init とは
+
+認証時のデフォルト値を対話方式で設定する。
+
+**＊実行例＊**
 
 ```bash
-$ cat /root/.config/gcloud/configurations/config_<プロジェクト名>
+$ gcloud init
 
-[core]
-account = example@gmail.com
-project = foo-project
+Welcome! This command will take you through the configuration of gcloud.
+
+Settings from your current configuration [default] are:
+core:
+  account: hiroki.hasegawa
+  disable_usage_reporting: 'True'
+  project: foo-project
+
+Pick configuration to use:
+ [1] Re-initialize this configuration [default] with new settings
+ [2] Create a new configuration
+Please enter your numeric choice:  1 # 再設定か新しいプリンシパルの設定かを選択する。
+
+Your current configuration has been set to: [default]
+
+You can skip diagnostics next time by using the following flag:
+  gcloud init --skip-diagnostics
+
+Network diagnostic detects and fixes local network connection issues.
+Checking network connection...done.
+Reachability Check passed.
+Network diagnostic passed (1/1 checks passed).
+
+Choose the account you would like to use to perform operations for this configuration:
+[1] hiroki.hasegawa
+[2] Log in with a new account
+Please enter your numeric choice:  1 # デフォルトのプリンシパルを設定する。
+
+You are logged in as: [hiroki.hasegawa].
+
+Pick cloud project to use:
+[1] foo-project
+[2] bar-project
+[3] baz-project
+
+Please enter numeric choice or text value (must exactly match list item): 3 # デフォルトのプロジェクト名を設定する。
 ```
 
 <br>
 
-### ログファイル
-
-`gcloud` コマンドのログを出力する。
-
-`gcloud` コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。
-
-```bash
-$ cat /root/.config/gcloud/logs/<タイムスタンプ>/<タイムスタンプ>.log
-
-2023-06-26 06:23:43,998 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
-2023-06-26 06:23:44,000 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'activate_service_account']
-2023-06-26 06:23:44,003 DEBUG    root            Running [gcloud.auth.activate-service-account] with arguments: [--key-file: "foo-credential.json", ACCOUNT: "foo-serviceaccount@foo-project.iam.gserviceaccount.com"]
-2023-06-26 06:23:44,003 DEBUG    root            'str' object has no attribute 'get'
-
-# エラーがあれば
-Traceback (most recent call last):
-...
-```
-
-<br>
-
-## 02. Google Cloud CLI のセットアップ
+## 04. 認証と資格情報
 
 ### auth
 
@@ -197,76 +219,19 @@ $ gcloud auth revoke foo2-serviceaccount@foo-project.iam.gserviceaccount.com
 
 <br>
 
-### component
+## 05. 構成とプロパティの管理
 
-#### ▼ component とは
+### Configuration
 
-`gcloud` コマンドのコンポーネントを管理する。
-
-#### ▼ install
-
-`gcloud` コマンドのコンポーネントをインストールする。
+現在の資格情報を設定する。
 
 ```bash
-$ gcloud components install
+$ cat /root/.config/gcloud/configurations/config_<プロジェクト名>
+
+[core]
+account = example@gmail.com
+project = foo-project
 ```
-
-別途、コンポーネントを読み込む必要がある。
-
-```bash
-$ brew info google-cloud-sdk
-
-To add gcloud components to your PATH, add this to your profile:
-
-  for bash users
-    source "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
-
-  for zsh users
-    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
-    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
-
-  for fish users
-    source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
-
-```
-
-> - https://stackoverflow.com/a/74733176
-
-#### ▼ update
-
-`gcloud` コマンドのコンポーネントをアップグレードする。
-
-```bash
-$ gcloud components update
-```
-
-#### ▼ list
-
-`gcloud` コマンドのコンポーネントの一覧を取得する。
-
-```bash
-$ gcloud components list
-
-
-Your current Google Cloud CLI version is: 386.0.0
-The latest available version is: 400.0.0
-
-┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│                                                   Components                                                  │
-├──────────────────┬──────────────────────────────────────────────────────┬──────────────────────────┬──────────┤
-│      Status      │                         Name                         │            ID            │   Size   │
-├──────────────────┼──────────────────────────────────────────────────────┼──────────────────────────┼──────────┤
-│ Update Available │ BigQuery Command Line Tool                           │ bq                       │  1.6 MiB │
-│ Update Available │ Cloud Storage Command Line Tool                      │ gsutil                   │ 15.5 MiB │
-
-                                                       ...
-
-│ Not Installed    │ kubectl-oidc                                         │ kubectl-oidc             │ 18.2 MiB │
-│ Not Installed    │ pkg                                                  │ pkg                      │          │
-└──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
-```
-
-> - [Managing gcloud CLI components \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/docs/components)
 
 <br>
 
@@ -424,6 +389,102 @@ bar   True       example@gmail.com   bar-project   asia-northeast1-a
 
 <br>
 
+### info
+
+#### ▼ info とは
+
+現在使用している設定ファイルの場所を取得する。
+
+```bash
+$ gcloud info
+
+# 資格情報ファイル
+User Config Directory: /root/.config/gcloud]
+
+...
+```
+
+> - https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
+
+<br>
+
+## 06. CLI コンポーネントの管理
+
+### component
+
+#### ▼ component とは
+
+`gcloud` コマンドのコンポーネントを管理する。
+
+#### ▼ install
+
+`gcloud` コマンドのコンポーネントをインストールする。
+
+```bash
+$ gcloud components install
+```
+
+別途、コンポーネントを読み込む必要がある。
+
+```bash
+$ brew info google-cloud-sdk
+
+To add gcloud components to your PATH, add this to your profile:
+
+  for bash users
+    source "$(brew --prefix)/share/google-cloud-sdk/path.bash.inc"
+
+  for zsh users
+    source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+    source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+  for fish users
+    source "$(brew --prefix)/share/google-cloud-sdk/path.fish.inc"
+
+```
+
+> - https://stackoverflow.com/a/74733176
+
+#### ▼ update
+
+`gcloud` コマンドのコンポーネントをアップグレードする。
+
+```bash
+$ gcloud components update
+```
+
+#### ▼ list
+
+`gcloud` コマンドのコンポーネントの一覧を取得する。
+
+```bash
+$ gcloud components list
+
+
+Your current Google Cloud CLI version is: 386.0.0
+The latest available version is: 400.0.0
+
+┌───────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                   Components                                                  │
+├──────────────────┬──────────────────────────────────────────────────────┬──────────────────────────┬──────────┤
+│      Status      │                         Name                         │            ID            │   Size   │
+├──────────────────┼──────────────────────────────────────────────────────┼──────────────────────────┼──────────┤
+│ Update Available │ BigQuery Command Line Tool                           │ bq                       │  1.6 MiB │
+│ Update Available │ Cloud Storage Command Line Tool                      │ gsutil                   │ 15.5 MiB │
+
+                                                       ...
+
+│ Not Installed    │ kubectl-oidc                                         │ kubectl-oidc             │ 18.2 MiB │
+│ Not Installed    │ pkg                                                  │ pkg                      │          │
+└──────────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴──────────┘
+```
+
+> - [Managing gcloud CLI components \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/docs/components)
+
+<br>
+
+## 07. Google Cloud リソースの操作
+
 ### container clusters
 
 #### ▼ container clusters とは
@@ -506,76 +567,6 @@ $ gcloud container node-pools update foo-node-pool \
 
 <br>
 
-### init
-
-#### ▼ init とは
-
-認証時のデフォルト値を対話方式で設定する。
-
-**＊実行例＊**
-
-```bash
-$ gcloud init
-
-Welcome! This command will take you through the configuration of gcloud.
-
-Settings from your current configuration [default] are:
-core:
-  account: hiroki.hasegawa
-  disable_usage_reporting: 'True'
-  project: foo-project
-
-Pick configuration to use:
- [1] Re-initialize this configuration [default] with new settings
- [2] Create a new configuration
-Please enter your numeric choice:  1 # 再設定か新しいプリンシパルの設定かを選択する。
-
-Your current configuration has been set to: [default]
-
-You can skip diagnostics next time by using the following flag:
-  gcloud init --skip-diagnostics
-
-Network diagnostic detects and fixes local network connection issues.
-Checking network connection...done.
-Reachability Check passed.
-Network diagnostic passed (1/1 checks passed).
-
-Choose the account you would like to use to perform operations for this configuration:
-[1] hiroki.hasegawa
-[2] Log in with a new account
-Please enter your numeric choice:  1 # デフォルトのプリンシパルを設定する。
-
-You are logged in as: [hiroki.hasegawa].
-
-Pick cloud project to use:
-[1] foo-project
-[2] bar-project
-[3] baz-project
-
-Please enter numeric choice or text value (must exactly match list item): 3 # デフォルトのプロジェクト名を設定する。
-```
-
-<br>
-
-### info
-
-#### ▼ info とは
-
-現在使用している設定ファイルの場所を取得する。
-
-```bash
-$ gcloud info
-
-# 資格情報ファイル
-User Config Directory: /root/.config/gcloud]
-
-...
-```
-
-> - https://cloud.google.com/sdk/docs/authorizing?hl=ja#find-cred-files
-
-<br>
-
 ### project
 
 #### ▼ project とは
@@ -601,8 +592,6 @@ bar-project-***    bar-project   *****
 > - [gcloud projects list \| Google Cloud SDK \| Google Cloud Documentation](https://cloud.google.com/sdk/gcloud/reference/projects/list)
 
 <br>
-
-## 03. Google Cloud リソース別のプラクティス
 
 ### Google Cloud Logging
 
@@ -667,6 +656,28 @@ $ gcloud kms keys describe <KMSのリソースID>
 
 ```bash
 $ gcloud kms keys describe projects/foo-project/locations/global/keyRings/sops/cryptoKeys/sops-key
+```
+
+<br>
+## 08. CLI のログ確認
+
+### ログファイル
+
+`gcloud` コマンドのログを出力する。
+
+`gcloud` コマンドはわかりにくいエラーを出力することがあり、足がかりを掴めることがある。
+
+```bash
+$ cat /root/.config/gcloud/logs/<タイムスタンプ>/<タイムスタンプ>.log
+
+2023-06-26 06:23:43,998 DEBUG    root            Loaded Command Group: ['gcloud', 'auth']
+2023-06-26 06:23:44,000 DEBUG    root            Loaded Command Group: ['gcloud', 'auth', 'activate_service_account']
+2023-06-26 06:23:44,003 DEBUG    root            Running [gcloud.auth.activate-service-account] with arguments: [--key-file: "foo-credential.json", ACCOUNT: "foo-serviceaccount@foo-project.iam.gserviceaccount.com"]
+2023-06-26 06:23:44,003 DEBUG    root            'str' object has no attribute 'get'
+
+# エラーがあれば
+Traceback (most recent call last):
+...
 ```
 
 <br>
