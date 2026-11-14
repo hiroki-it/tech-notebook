@@ -36583,7 +36583,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:25:02 JST">2026-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:41:37 JST">2026-11-14</span>
   </span>
 
     
@@ -36653,28 +36653,17 @@
 <h2 id="02">02. 仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="terraform">Terraformによる構築<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
-<p>terraform-aws-modules の Auto Scaling モジュールを使用し、平日の日本時間 9 時に起動し、19 時に停止する開発環境を作成する。AMI とプライベートサブネット、セキュリティグループは既存のものを指定する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">"ami_id"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kr">variable</span><span class="w"> </span><span class="nv">"private_subnet_ids"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">list</span><span class="p">(</span><span class="kt">string</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="kr">variable</span><span class="w"> </span><span class="nv">"security_group_id"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kr">module</span><span class="w"> </span><span class="nv">"development_asg"</span><span class="w"> </span><span class="p">{</span>
+<p>terraform-aws-modules の Auto Scaling モジュールを使用し、平日の日本時間 9 時に起動し、19 時に停止する開発環境を作成する。</p>
+<p>AMI とプライベートサブネット、セキュリティグループは既存のものを指定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"development_asg"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/autoscaling/aws"</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"9.3.2"</span>
 
 <span class="w">  </span><span class="na">name</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-development"</span>
-<span class="w">  </span><span class="na">image_id</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ami_id</span>
+<span class="w">  </span><span class="na">image_id</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="s2">"ami-0123456789abcdef0"</span>
 <span class="w">  </span><span class="na">instance_type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"t3.micro"</span>
-<span class="w">  </span><span class="na">vpc_zone_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.private_subnet_ids</span>
-<span class="w">  </span><span class="na">security_groups</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">var.security_group_id</span><span class="p">]</span>
+<span class="w">  </span><span class="na">vpc_zone_identifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"subnet-0123456789abcdef0", "subnet-0123456789abcdef1"</span><span class="p">]</span>
+<span class="w">  </span><span class="na">security_groups</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"sg-0123456789abcdef0"</span><span class="p">]</span>
 <span class="w">  </span><span class="na">min_size</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
 <span class="w">  </span><span class="na">max_size</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 <span class="w">  </span><span class="na">desired_capacity</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>

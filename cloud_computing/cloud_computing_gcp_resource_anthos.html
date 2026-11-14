@@ -36716,7 +36716,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:35:40 JST">2026-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:41:37 JST">2026-11-14</span>
   </span>
 
     
@@ -36802,26 +36802,15 @@
 <p><br></p>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="terraform">Terraformによる構築<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
-<p>terraform-google-modules の fleet-membership モジュールを使用し、Google Cloud 上の既存の GKE クラスターを同じプロジェクトの Fleet に登録する。GKE Hub API が有効なプロジェクトと、Fleet に未登録のクラスターを指定する。</p>
-<div class="highlight"><pre><span></span><code><span class="kr">variable</span><span class="w"> </span><span class="nv">"project_id"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kr">variable</span><span class="w"> </span><span class="nv">"cluster_name"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kr">variable</span><span class="w"> </span><span class="nv">"location"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">string</span>
-<span class="p">}</span>
-
-<span class="kr">module</span><span class="w"> </span><span class="nv">"fleet_membership"</span><span class="w"> </span><span class="p">{</span>
+<p>terraform-google-modules の fleet-membership モジュールを使用し、Google Cloud 上の既存の GKE クラスターを同じプロジェクトの Fleet に登録する。</p>
+<p>GKE Hub API が有効なプロジェクトと、Fleet に未登録のクラスターを指定する。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"fleet_membership"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-google-modules/kubernetes-engine/google//modules/fleet-membership"</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"47.0.0"</span>
 
-<span class="w">  </span><span class="na">project_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.project_id</span>
-<span class="w">  </span><span class="na">cluster_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">var.cluster_name</span>
-<span class="w">  </span><span class="na">location</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="nv">var.location</span>
+<span class="w">  </span><span class="na">project_id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-project"</span>
+<span class="w">  </span><span class="na">cluster_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-gke-cluster"</span>
+<span class="w">  </span><span class="na">location</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"asia-northeast1"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
