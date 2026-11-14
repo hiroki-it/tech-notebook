@@ -21416,6 +21416,68 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_13_3_2_29" >
+        
+          
+          <label class="md-nav__link" for="__nav_13_3_2_29" id="__nav_13_3_2_29_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ Load Balancer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_13_3_2_29_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13_3_2_29">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ Load Balancer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="cloud_computing_aws_resource_load_balancer.html" class="md-nav__link">
         
@@ -21433,6 +21495,98 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_load_balancer_alb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ALB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_load_balancer_nlb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_load_balancer_clb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -35925,7 +36079,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:29:03 JST">2026-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 19:00:22 JST">2026-11-14</span>
   </span>
 
     
@@ -35965,6 +36119,24 @@
 <h2 id="02">02. 仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="terraform">Terraformによる構築<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
+<p>hashicorp/aws プロバイダーを使用し、オンデマンドモードの Kinesis Data Streams を作成する。</p>
+<p>AWS マネージドキーで暗号化し、データを 48 時間保管する。</p>
+<div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_kinesis_stream"</span><span class="w"> </span><span class="nv">"this"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">name</span><span class="w">             </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-events"</span>
+<span class="w">  </span><span class="na">retention_period</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">48</span>
+<span class="w">  </span><span class="na">encryption_type</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"KMS"</span>
+<span class="w">  </span><span class="na">kms_key_id</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"alias/aws/kinesis"</span>
+<span class="w">  </span><span class="nb">stream_mode_details</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="na">stream_mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"ON_DEMAND"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_stream">kinesis_stream - Terraform Registry</a></li>
+</ul>
+</blockquote>
+<p><br></p>
 <h3 id="firehose">Firehose の配信ストリームの初期設定<a class="headerlink" href="#firehose" title="Permanent link">&para;</a></h3>
 <h4 id="_2">▼ 設定項目と説明<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
 <table>

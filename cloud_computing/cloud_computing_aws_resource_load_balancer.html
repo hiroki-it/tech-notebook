@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="LBの知見を記録しています。">
+        <meta name="description" content="Load Balancerの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -22,7 +22,7 @@
         <link rel="prev" href="cloud_computing_aws_resource_lambda_function.html">
       
       
-        <link rel="next" href="cloud_computing_aws_resource_rds.html">
+        <link rel="next" href="cloud_computing_aws_resource_load_balancer_alb.html">
       
       
         
@@ -33,7 +33,7 @@
     
     
       
-        <title>【IT技術の知見】LB - 俺の技術ノート</title>
+        <title>【IT技術の知見】Load Balancer - 俺の技術ノート</title>
       
     
     
@@ -96,7 +96,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lb" class="md-skip">
+        <a href="#load-balancer" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -166,7 +166,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              【IT技術の知見】LB
+              【IT技術の知見】Load Balancer
             
           </span>
         </div>
@@ -21196,6 +21196,68 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13_3_2_29" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13_3_2_29" id="__nav_13_3_2_29_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ■ Load Balancer
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_13_3_2_29_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13_3_2_29">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    ■ Load Balancer
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -21278,482 +21340,101 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. 仕組み
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ALB の仕組み
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ALB の仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alb_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ALB とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alb_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ALB インスタンス
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ALB インスタンス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alb_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ALB インスタンスとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 割り当てられる IP アドレス
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ オートスケーリング
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#500" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 500 系ステータスの原因
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alb_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ALB のセキュリティグループ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLB の仕組み
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nlb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NLB の仕組み
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        03. セットアップ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#terraform-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Terraformによる構築 (ALB)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Terraformによる構築 (ALB)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-eks-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Amazon EKS に紐づける ALB
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alb_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ メンテナンス用 ALB
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-load-balancer-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AWS Load Balancer Controller による構築
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        04. ALB のリスナーとターゲットグループ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ALB のリスナーとターゲットグループ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 設定項目と説明
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ターゲットグループ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        05. ALB のリクエスト転送ルール
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        06. ALB の構成パターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. ALB の構成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bff" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 同じドメインを設け、パスで複数の BFF に振り分ける場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 異なるドメインを設け、通信経路を分ける場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07-ssl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        07. 常時 SSL のアプリケーションへのルーティング
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="07. 常時 SSL のアプリケーションへのルーティング">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 問題
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Web サーバーにおける対処方法
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ アプリケーションにおける対処方法
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#08" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        08. 負荷分散方式
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="08. 負荷分散方式">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 負荷分散方式とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ラウンドロビン方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 最小未処理リクエスト方式 (ファステスト)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ スロースタート方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        09. アクセスログ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="09. アクセスログ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#https" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ HTTPS リクエストの場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-waf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. WAF によるリクエスト検査
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-nlb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. NLB の通信制御
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="11. NLB の通信制御">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#l3l4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ L3/L4 防御
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_load_balancer_alb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ALB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_load_balancer_nlb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NLB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="cloud_computing_aws_resource_load_balancer_clb.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -35946,479 +35627,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#02" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        02. 仕組み
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="02. 仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ALB の仕組み
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ALB の仕組み">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alb_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ALB とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alb_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ALB インスタンス
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="ALB インスタンス">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#alb_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ALB インスタンスとは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 割り当てられる IP アドレス
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ オートスケーリング
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#500" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 500 系ステータスの原因
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alb_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ALB のセキュリティグループ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#clb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        CLB の仕組み
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#nlb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        NLB の仕組み
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#03" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        03. セットアップ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="03. セットアップ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#terraform-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Terraformによる構築 (ALB)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Terraformによる構築 (ALB)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#amazon-eks-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Amazon EKS に紐づける ALB
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#alb_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ メンテナンス用 ALB
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#aws-load-balancer-controller" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AWS Load Balancer Controller による構築
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#04-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        04. ALB のリスナーとターゲットグループ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="04. ALB のリスナーとターゲットグループ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 設定項目と説明
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ターゲットグループ
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#05-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        05. ALB のリクエスト転送ルール
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#06-alb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        06. ALB の構成パターン
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="06. ALB の構成パターン">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bff" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 同じドメインを設け、パスで複数の BFF に振り分ける場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 異なるドメインを設け、通信経路を分ける場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#07-ssl" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        07. 常時 SSL のアプリケーションへのルーティング
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="07. 常時 SSL のアプリケーションへのルーティング">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 問題
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#web" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ Web サーバーにおける対処方法
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ アプリケーションにおける対処方法
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#08" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        08. 負荷分散方式
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="08. 負荷分散方式">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 負荷分散方式とは
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ ラウンドロビン方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ 最小未処理リクエスト方式 (ファステスト)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ スロースタート方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#09" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        09. アクセスログ
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="09. アクセスログ">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#https" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ HTTPS リクエストの場合
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#10-waf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        10. WAF によるリクエスト検査
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#11-nlb" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        11. NLB の通信制御
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="11. NLB の通信制御">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#l3l4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ▼ L3/L4 防御
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -36510,6 +35718,24 @@
   
 
       
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="cloud_computing_aws_resource_load_balancer.html" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    ■ Load Balancer
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
     </ol>
   </nav>
 
@@ -36542,6 +35768,13 @@
         <a href="../tags.html#tag:awsリソース" class="md-tag">AWSリソース</a>
       
     
+      
+      
+      
+      
+        <a href="../tags.html#tag:load-balancer" class="md-tag">Load Balancer</a>
+      
+    
   </nav>
 
 
@@ -36569,7 +35802,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:06:11 JST">2026-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 18:51:10 JST">2026-11-14</span>
   </span>
 
     
@@ -36594,7 +35827,7 @@
   </aside>
 
 
-<h1 id="lb">LB<a class="headerlink" href="#lb" title="Permanent link">&para;</a></h1>
+<h1 id="load-balancer">Load Balancer<a class="headerlink" href="#load-balancer" title="Permanent link">&para;</a></h1>
 <h2 id="_1">はじめに<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
@@ -36660,502 +35893,6 @@
 <li><a href="https://aws.amazon.com/jp/elasticloadbalancing/faqs/">ネットワークトラフィックディストリビューション - Elastic Load Balancing のよくある質問 - アマゾン ウェブ サービス</a></li>
 </ul>
 </blockquote>
-<p><br></p>
-<h2 id="02">02. 仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
-<h3 id="alb">ALB の仕組み<a class="headerlink" href="#alb" title="Permanent link">&para;</a></h3>
-<h4 id="alb_1">ALB とは<a class="headerlink" href="#alb_1" title="Permanent link">&para;</a></h4>
-<p>クラウドリバースプロキシサーバー、かつクラウド <code>L7</code> ロードバランサーとして働く。</p>
-<p>Amazon EC2 へのリクエストをバランスよく分配することで、サーバーへの負荷を緩和する。</p>
-<p><img alt="aws_alb" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer#24">https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer#24</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="alb_2">ALB インスタンス<a class="headerlink" href="#alb_2" title="Permanent link">&para;</a></h3>
-<h4 id="alb_3">▼ ALB インスタンスとは<a class="headerlink" href="#alb_3" title="Permanent link">&para;</a></h4>
-<p>ALB の実体で、各 ALB インスタンスが異なるグローバル IP アドレスを持つ。</p>
-<p>複数の AZ にルーティングするように ALB を設定した場合、各 AZ に ALB インスタンスが 1 つずつ配置される。</p>
-<p><img alt="alb-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb-instance.png" /></p>
-<blockquote>
-<ul>
-<li><a href="https://blog.takuros.net/entry/2019/08/27/075726">マルチAZ構成で単一AZの障害の影響を受けるのは何故か？ - プログラマでありたい</a></li>
-</ul>
-</blockquote>
-<h4 id="ip">▼ 割り当てられる IP アドレス<a class="headerlink" href="#ip" title="Permanent link">&para;</a></h4>
-<p>ALB に割り当てられる IP アドレスには、Amazon VPC のものが適用される。</p>
-<p>そのため、Amazon EC2 のセキュリティグループでは、Amazon VPC の CIDR ブロックを許可するように設定する必要がある。</p>
-<h4 id="_2">▼ オートスケーリング<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h4>
-<p>単一障害点にならないように、負荷が高まると ALB インスタンスが増えるように自動スケールアウトする仕組みを持つ。</p>
-<h4 id="500">▼ <code>500</code> 系ステータスの原因<a class="headerlink" href="#500" title="Permanent link">&para;</a></h4>
-<blockquote>
-<ul>
-<li><a href="https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/">https://aws.amazon.com/jp/premiumsupport/knowledge-center/troubleshoot-http-5xx/</a></li>
-</ul>
-</blockquote>
-<h4 id="alb_4">▼ ALB のセキュリティグループ<a class="headerlink" href="#alb_4" title="Permanent link">&para;</a></h4>
-<p>Amazon Route 53 からルーティングされるパブリック IP アドレスを受信できるようにしておく必要がある。</p>
-<p>パブリックネットワークに公開するサイトであれば、IP アドレスはすべての範囲 (<code>0.0.0.0/0</code> と <code>::/0</code>) にする。</p>
-<p>社内向けのサイトであれば、社内のプライベート IP アドレスのみ (<code>*.*.*.*/32</code>) を許可する。</p>
-<p><br></p>
-<h3 id="clb">CLB の仕組み<a class="headerlink" href="#clb" title="Permanent link">&para;</a></h3>
-<p>キューを持ち、クラウド <code>L4</code>/<code>L7</code> ロードバランサーとして働く。</p>
-<p>ALB、NLB、ではもともと実装されていたキューを廃止した経緯がある。</p>
-<blockquote>
-<ul>
-<li><a href="https://repost.aws/ja/knowledge-center/elb-capacity-troubleshooting">Elastic Load Balancing 容量のトラブルシューティング | AWS re:Post</a></li>
-<li><a href="https://stackoverflow.com/a/49421971">https://stackoverflow.com/a/49421971</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h3 id="nlb">NLB の仕組み<a class="headerlink" href="#nlb" title="Permanent link">&para;</a></h3>
-<p>クラウド <code>L4</code> ロードバランサーとして働く。</p>
-<p>固定 IP アドレスを設定できる。</p>
-<p>そのため、ドメインを指定できず、IP アドレスを指定しないといけない HTTP リクエストを送信できないような通信元にも対応している。</p>
-<p>この場合、NLB で受信した HTTP リクエストを ALB（internal タイプ）へ送信するようにするとよい。</p>
-<pre class="mermaid"><code>flowchart LR
-    Route53
-    NLB
-    ALB[internal ALB]
-    EKS
-
-    Route53 --&gt; NLB --&gt; ALB --&gt; EKS</code></pre>
-<p><br></p>
-<h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
-<h3 id="terraform-alb">Terraformによる構築 (ALB)<a class="headerlink" href="#terraform-alb" title="Permanent link">&para;</a></h3>
-<h4 id="amazon-eks-alb">▼ Amazon EKS に紐づける ALB<a class="headerlink" href="#amazon-eks-alb" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"alb_eks"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/alb/aws"</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 9.13.0"</span>
-
-<span class="w">  </span><span class="na">name</span><span class="w">                             </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-eks"</span>
-<span class="w">  </span><span class="na">enable_cross_zone_load_balancing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">vpc_id</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-<span class="w">  </span><span class="na">subnets</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*****", "*****"</span><span class="p">]</span>
-<span class="w">  </span><span class="na">associate_web_acl</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">web_acl_arn</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-<span class="w">  </span><span class="nb">access_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-<span class="w">    </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-eks"</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">security_group_egress_rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">65535</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">security_group_ingress_rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">listeners</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">port</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
-<span class="w">      </span><span class="na">certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-<span class="w">      </span><span class="nb">forward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="c1">        # ターゲットグループのキー名を指定する</span>
-<span class="w">        </span><span class="na">target_group_key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"eks"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nb">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
-<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"redirect"</span>
-<span class="w">      </span><span class="nb">redirect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">        </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
-<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP_301"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="c1">  # ターゲットグループを定義</span>
-<span class="c1">  # aws_lb_target_groupを使用しても良い</span>
-<span class="w">  </span><span class="nb">target_groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
-<span class="c1">    # 自由にキー名を設定する</span>
-<span class="w">    </span><span class="nb">eks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">port</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">30180</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
-<span class="c1">      # Nodeにルーティングするためにinstanceとする</span>
-<span class="w">      </span><span class="na">target_type</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="s2">"instance"</span>
-<span class="c1">      # ターゲットグループへのEC2の登録はEKSマネージドNodeグループに委譲する</span>
-<span class="w">      </span><span class="na">create_attachment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
-
-<span class="w">      </span><span class="nb">health_check</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">enabled</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">        </span><span class="na">path</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="s2">"/healthz/ready"</span>
-<span class="w">        </span><span class="na">port</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">30000</span>
-<span class="w">        </span><span class="na">protocol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
-<span class="w">        </span><span class="na">matcher</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"200"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-
-<span class="c1"># ターゲットグループとマネージドNodeグループを紐づける</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_autoscaling_attachment"</span><span class="w"> </span><span class="nv">"alb_eks"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">autoscaling_group_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_eks_node_group.foo.resources[0].autoscaling_groups[0].name</span>
-<span class="w">  </span><span class="na">lb_target_group_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">module.alb_eks.target_group_arns</span><span class="p">[</span><span class="s2">"eks"</span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-<h4 id="alb_5">▼ メンテナンス用 ALB<a class="headerlink" href="#alb_5" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"alb_eks_maintenance"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/alb/aws"</span>
-<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 9.13.0"</span>
-
-<span class="w">  </span><span class="na">name</span><span class="w">                             </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-maintenance"</span>
-<span class="w">  </span><span class="na">enable_cross_zone_load_balancing</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">vpc_id</span><span class="w">                           </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-<span class="w">  </span><span class="na">subnets</span><span class="w">                          </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"*****", "*****"</span><span class="p">]</span>
-<span class="w">  </span><span class="na">associate_web_acl</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="no">true</span>
-<span class="w">  </span><span class="na">web_acl_arn</span><span class="w">                      </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-<span class="w">  </span><span class="nb">access_logs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="na">bucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-<span class="w">    </span><span class="na">prefix</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo-alb-maintenance"</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">security_group_egress_rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">all</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
-<span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">65535</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">security_group_ingress_rules</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">from_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">to_port</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"-1"</span>
-<span class="w">      </span><span class="na">cidr_ipv4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.0.0.0/0"</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-
-<span class="w">  </span><span class="nb">listeners</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-
-<span class="w">    </span><span class="nb">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">port</span><span class="w">            </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
-<span class="w">      </span><span class="na">certificate_arn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"*****"</span>
-
-<span class="c1">      # JSONデータを含む固定レスポンス</span>
-<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fixed-response"</span>
-<span class="w">      </span><span class="nb">fixed_response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">content_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"application/json"</span>
-<span class="w">        </span><span class="na">message_body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">jsonencode</span><span class="p">({</span>
-<span class="w">          </span><span class="na">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"9999"</span>
-<span class="c1">          # メンテナンスモード時の業務コード</span>
-<span class="w">          </span><span class="na">reason</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"MAINTENANCE"</span>
-<span class="w">        </span><span class="p">})</span>
-<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"503"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="c1">      # XMLデータを含む固定レスポンスの場合</span>
-<span class="c1">      # fixed_response = {</span>
-<span class="c1">      #   content_type = "text/xml;charset=UTF-8"</span>
-<span class="c1">      #   message_body = &lt;&lt;-XML</span>
-<span class="c1">      #     &lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
-<span class="c1">      #     &lt;error&gt;</span>
-<span class="c1">      #       &lt;code&gt;9999&lt;/status&gt;</span>
-<span class="c1">      #       &lt;reason&gt;MAINTENANCE&lt;/statusReason&gt;</span>
-<span class="c1">      #     &lt;/error&gt;</span>
-<span class="c1">      #   XML</span>
-<span class="c1">      #   status_code = "503"</span>
-<span class="c1">      # }</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nb">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">80</span>
-<span class="w">      </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP"</span>
-<span class="w">      </span><span class="na">action_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"redirect"</span>
-<span class="w">      </span><span class="nb">redirect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="na">port</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="m">443</span>
-<span class="w">        </span><span class="na">protocol</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTPS"</span>
-<span class="w">        </span><span class="na">status_code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"HTTP_301"</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><br></p>
-<h3 id="aws-load-balancer-controller">AWS Load Balancer Controller による構築<a class="headerlink" href="#aws-load-balancer-controller" title="Permanent link">&para;</a></h3>
-<p><br></p>
-<h2 id="04-alb">04. ALB のリスナーとターゲットグループ<a class="headerlink" href="#04-alb" title="Permanent link">&para;</a></h2>
-<h3 id="_3">▼ 設定項目と説明<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>リスナー</td>
-      <td>ALB に割り振るポート番号と受信するプロトコルを設定する。リバースプロキシサーバーかつロードバランサーとして、これらの通信をターゲットグループにルーティングする。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>スキーム</td>
-      <td>パブリックネットワークからのリクエストを待ち受けるか、あるいはプライベートネットワークからのリクエストを待ち受けるかを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>セキュリティポリシー</td>
-      <td>リクエストの送信者が使用する SSL/TLS プロトコルや暗号化方式のバージョンに合わせて、ALB が受信できるこれらのバージョンを設定する。</td>
-      <td>・リクエストの送信者には、ブラウザ、API にリクエストを送信する外部サービス、フォワーディング元の AWS リソース (例：CloudFront など) などを含む。<br>・- <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies">https://docs.aws.amazon.com/elasticloadbalancing/latest/application/create-https-listener.html#describe-ssl-policies</a></td>
-    </tr>
-    <tr>
-      <td>ルール</td>
-      <td>リクエストのルーティングのロジックを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>ターゲットグループ</td>
-      <td>ルーティング時に使用するプロトコルと、宛先とするポート番号を設定する。</td>
-      <td>ターゲットグループ内のターゲットのうち、トラフィックはヘルスチェックが OK になっているターゲットにルーティングされる。</td>
-    </tr>
-    <tr>
-      <td>ヘルスチェック</td>
-      <td>ターゲットグループに所属するプロトコルとアプリケーションのポート番号を指定して、定期的にリクエストを送信する。</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-<h3 id="_4">▼ ターゲットグループ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
-<table>
-  <thead>
-    <tr>
-      <th>ターゲットの指定方法</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Amazon EC2 インスタンス</td>
-      <td>ターゲットは Amazon EC2 である必要がある。</td>
-    </tr>
-    <tr>
-      <td>IP アドレス</td>
-      <td>ターゲットのパブリック IP アドレスは静的である必要がある。</td>
-    </tr>
-    <tr>
-      <td>Lambda</td>
-      <td>ターゲットは Lambda である必要がある。</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br></p>
-<h2 id="05-alb">05. ALB のリクエスト転送ルール<a class="headerlink" href="#05-alb" title="Permanent link">&para;</a></h2>
-<table>
-  <thead>
-    <tr>
-      <th>ユースケース</th>
-      <th>ポート</th>
-      <th>IF</th>
-      <th>THEN</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>リクエストが <code>80</code> 番ポートを指定したときに、<code>443</code> 番ポートにリダイレクトしたい。</td>
-      <td><code>80</code></td>
-      <td>それ以外の場合はルーティングされないリクエスト</td>
-      <td>ルーティング先：<code>https://#{host}:443/#{path}?#{query}</code><br>ステータスコード：<code>HTTP_301</code></td>
-    </tr>
-    <tr>
-      <td>リクエストが <code>443</code> 番ポートを指定したときに、ターゲットグループにフォワーディングしたい。</td>
-      <td><code>443</code></td>
-      <td>それ以外の場合はルーティングされないリクエスト</td>
-      <td>特定のターゲットグループ</td>
-    </tr>
-  </tbody>
-</table>
-
-<p><br></p>
-<h2 id="06-alb">06. ALB の構成パターン<a class="headerlink" href="#06-alb" title="Permanent link">&para;</a></h2>
-<h3 id="bff">▼ 同じドメインを設け、パスで複数の BFF に振り分ける場合<a class="headerlink" href="#bff" title="Permanent link">&para;</a></h3>
-<p><code>1</code> 個のドメインと ALB を共有し、ALB がリクエストのパスに応じて各 BFF の Service に振り分ける。</p>
-<pre class="mermaid"><code>flowchart LR
-    user[クライアント]
-
-    r53[Route53&lt;br/&gt;example.com]
-    alb[ALB&lt;br/&gt;HTTPS :443]
-
-    subgraph EKS[EKS Cluster]
-        svcA[Service A&lt;br/&gt;Port 3000]
-        svcB[Service B&lt;br/&gt;Port 4000]
-    end
-
-    user --&gt; r53
-    r53 --&gt; alb
-
-    alb -- "/app1/*" --&gt; svcA
-    alb -- "/app2/*" --&gt; svcB</code></pre>
-<h3 id="_5">▼ 異なるドメインを設け、通信経路を分ける場合<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p>BFF ごとにドメインと ALB を設け、リクエストを BFF ごとに別々の経路で各 Service にルーティングする。</p>
-<pre class="mermaid"><code>flowchart LR
-    user[クライアント]
-
-    r53A[Route53&lt;br/&gt;app1.example.com]
-    r53B[Route53&lt;br/&gt;app2.example.com]
-
-    albA[app1 ALB&lt;br/&gt;HTTPS :443]
-    albB[app2 ALB&lt;br/&gt;HTTPS :443]
-
-    subgraph EKS[EKS Cluster]
-        svcA[Service A&lt;br/&gt;Port 3000]
-        svcB[Service B&lt;br/&gt;Port 4000]
-    end
-
-    user --&gt; r53A
-    user --&gt; r53B
-
-    r53A --&gt; albA
-    r53B --&gt; albB
-
-    albA -- "Host: app1.example.com" --&gt; svcA
-    albB -- "Host: app2.example.com" --&gt; svcB</code></pre>
-<p><br></p>
-<h2 id="07-ssl">07. 常時 SSL のアプリケーションへのルーティング<a class="headerlink" href="#07-ssl" title="Permanent link">&para;</a></h2>
-<h3 id="_6">▼ 問題<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>アプリケーションが常時 SSL になっているアプリケーション (例：WordPress) の場合、ALB からアプリケーションに HTTP プロトコルでルーティングすると、HTTPS プロトコルへのリダイレクトループが発生してしまう。</p>
-<p>常時 SSL がデフォルトになっていないアプリケーションであれば、これは起こらない。</p>
-<blockquote>
-<ul>
-<li><a href="https://cloudpack.media/525">https://cloudpack.media/525</a></li>
-</ul>
-</blockquote>
-<h3 id="web">▼ Web サーバーにおける対処方法<a class="headerlink" href="#web" title="Permanent link">&para;</a></h3>
-<p>ALB を経由したリクエストには、リクエストヘッダーに <code>X-Forwarded-Proto</code> ヘッダーが付与される。</p>
-<p>これには、ALB に対するリクエストのプロトコルの種類が文字列で代入されている。</p>
-<p>これが『HTTPS』だった場合、Web サーバーへのリクエストを HTTPS プロトコルとみなすように設定する。</p>
-<p>これにより、アプリケーションへのリクエストのプロトコルが HTTPS プロトコルとなる (この設定では、アプリケーション側の対応は不要) 。</p>
-<div class="highlight"><pre><span></span><code><span class="nb">SetEnvIf</span><span class="w"> </span>X-Forwarded-Proto<span class="w"> </span>https<span class="w"> </span>HTTPS=on
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.d-wood.com/blog/2017/11/29_9354.html">AWS 上の WordPress が HTTPS で正常に表示されない場合の対処 | DriftwoodJP</a></li>
-</ul>
-</blockquote>
-<h3 id="_7">▼ アプリケーションにおける対処方法<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<p><img alt="ALBからEC2に対するリクエストのプロトコルをHTTPSプロトコルと見なす" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png" /></p>
-<p>ALB を経由したリクエストには、リクエストヘッダーに <code>HTTP_X_FORWARDED_PROTO</code> ヘッダーが付与される。</p>
-<p>これには、ALB に対するリクエストのプロトコルの種類が文字列で代入されている。</p>
-<p>ALB へのリクエストが HTTPS プロトコルだった場合は、ALB からアプリケーションへのリクエストも HTTPS プロトコルとみなす。これを実現するために、<code>index.php</code> へ処理を追加する (この処理を追加した場合は、Web サーバー側の対応は不要) 。</p>
-<div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
-
-<span class="c1">// index.php</span>
-<span class="k">if</span> <span class="p">(</span><span class="nb">isset</span><span class="p">(</span><span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_X_FORWARDED_PROTO"</span><span class="p">])</span>
-    <span class="o">&amp;&amp;</span> <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTP_X_FORWARDED_PROTO"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"https"</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nv">$_SERVER</span><span class="p">[</span><span class="s2">"HTTPS"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"on"</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://www.d-wood.com/blog/2017/11/29_9354.html">AWS 上の WordPress が HTTPS で正常に表示されない場合の対処 | DriftwoodJP</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="08">08. 負荷分散方式<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
-<h3 id="_8">▼ 負荷分散方式とは<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<p>ターゲットに対するリクエストフォワーディング時の負荷分散方式を設定する。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/introduction.html#application-load-balancer-overview">What is an Application Load Balancer? - Elastic Load Balancing</a></li>
-</ul>
-</blockquote>
-<h3 id="_9">▼ ラウンドロビン方式<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストを、ターゲットに均等にルーティングする。</p>
-<h3 id="_10">▼ 最小未処理リクエスト方式 (ファステスト)<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストを、未処理のリクエスト数がもっとも少ないターゲットにルーティングする。</p>
-<blockquote>
-<ul>
-<li><a href="https://www.infraexpert.com/study/loadbalancer4.html">ロードバランサ - ロードバランシングの種類</a></li>
-</ul>
-</blockquote>
-<h3 id="_11">▼ スロースタート方式<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p>受信したリクエストをルーティングするときに、スロースタート方式 (通過させるリクエストの数を少しずつ増加させる) で負荷分散を実施する。</p>
-<p>リクエスト数の非常に多い高トラフィックなシステムで、起動直後のパフォーマンスが悪いアプリケーション (例：キャッシュに依存、接続プールの作成が必要、ウォームアップが必要な JVM 言語製アプリケーション) にいきなり高負荷をかけないようにできる。</p>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/ja_jp/elasticloadbalancing/latest/application/edit-target-group-attributes.html#slow-start-mode">Application Load Balancer のターゲットグループ属性を編集する - Elastic Load Balancing</a></li>
-<li><a href="https://aws.amazon.com/jp/about-aws/whats-new/2018/05/application-load-balancer-announces-slow-start-support/">https://aws.amazon.com/jp/about-aws/whats-new/2018/05/application-load-balancer-announces-slow-start-support/</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="09">09. アクセスログ<a class="headerlink" href="#09" title="Permanent link">&para;</a></h2>
-<h3 id="https">▼ HTTPS リクエストの場合<a class="headerlink" href="#https" title="Permanent link">&para;</a></h3>
-<p>HTTPS リクエストのアクセスログのフォーマットは以下の通りである。</p>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https 2018-07-02T22:23:00.186641Z app/my-loadbalancer/50dc6c495c0c9188 192.168.131.39:2817 10.0.0.1:80 0.086 0.048 0.037 200 200 0 57 "GET https://www.example.com:443/ HTTP/1.1" "curl/7.46.0" ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2 arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067 "Root=1-58337281-1d84f3d73c47ec4e58577259" "www.example.com" "arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012" 1 2018-07-02T22:22:48.364000Z "authenticate,forward" "-" "-" "10.0.0.1:80" "200" "-" "-" TID_123456</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">https</span><span class="w"> </span><span class="c1"># リクエストタイプ</span>
-<span class="l l-Scalar l-Scalar-Plain">2018-07-02T22:23:00.186641Z</span>
-<span class="l l-Scalar l-Scalar-Plain">app/my-loadbalancer/50dc6c495c0c9188</span><span class="w"> </span><span class="c1"># ロードバランサー名</span>
-<span class="l l-Scalar l-Scalar-Plain">192.168.131.39:2817</span><span class="w"> </span><span class="c1"># クライアント側の情報</span>
-<span class="l l-Scalar l-Scalar-Plain">10.0.0.1:80</span><span class="w">  </span><span class="c1"># ターゲット側の情報 (Amazon EC2、Amazon ECS、Amazon EC2 Node の IP アドレスとポート番号)</span>
-<span class="l l-Scalar l-Scalar-Plain">0.086</span>
-<span class="l l-Scalar l-Scalar-Plain">0.048</span>
-<span class="l l-Scalar l-Scalar-Plain">0.037</span>
-<span class="l l-Scalar l-Scalar-Plain">200</span><span class="w"> </span><span class="c1"># ロードバランサーのレスポンスのステータスコード</span>
-<span class="l l-Scalar l-Scalar-Plain">200</span>
-<span class="l l-Scalar l-Scalar-Plain">0</span>
-<span class="l l-Scalar l-Scalar-Plain">57</span>
-<span class="l l-Scalar l-Scalar-Plain">"GET https://www.example.com:443/ HTTP/1.1"</span>
-<span class="l l-Scalar l-Scalar-Plain">"curl/7.46.0"</span><span class="w"> </span><span class="c1"># ユーザーエージェント</span>
-<span class="l l-Scalar l-Scalar-Plain">ECDHE-RSA-AES128-GCM-SHA256 TLSv1.2</span>
-<span class="l l-Scalar l-Scalar-Plain">arn:aws:elasticloadbalancing:us-east-2:123456789012:targetgroup/my-targets/73e2d6bc24d8a067</span>
-<span class="l l-Scalar l-Scalar-Plain">"Root=1-58337281-1d84f3d73c47ec4e58577259"</span>
-<span class="l l-Scalar l-Scalar-Plain">"www.example.com"</span>
-<span class="l l-Scalar l-Scalar-Plain">"arn:aws:acm:us-east-2:123456789012:certificate/12345678-1234-1234-1234-123456789012"</span>
-<span class="l l-Scalar l-Scalar-Plain">1</span>
-<span class="l l-Scalar l-Scalar-Plain">2018-07-02T22:22:48.364000Z</span>
-<span class="l l-Scalar l-Scalar-Plain">"waf,authenticate,forward"</span><span class="w"> </span><span class="c1"># AWS WAF を通過している場合はここに記録される</span>
-<span class="s">"-"</span>
-<span class="s">"-"</span>
-<span class="s">"10.0.0.1:80"</span>
-<span class="s">"200"</span><span class="w"> </span><span class="c1"># サーバー側のレスポンスのステータスコード</span>
-<span class="s">"-"</span>
-<span class="s">"-"</span>
-<span class="l l-Scalar l-Scalar-Plain">TID_123456</span>
-</code></pre></div>
-<blockquote>
-<ul>
-<li><a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-access-logs.html#access-log-entry-examples">Access logs for your Application Load Balancer - Elastic Load Balancing</a></li>
-<li><a href="https://dev.classmethod.jp/articles/alb-log-to-s3/#toc-1">ALBのアクセスログをS3に保存して中身を読み解いてみる | DevelopersIO</a></li>
-</ul>
-</blockquote>
-<p><br></p>
-<h2 id="10-waf">10. WAF によるリクエスト検査<a class="headerlink" href="#10-waf" title="Permanent link">&para;</a></h2>
-<p>AWS WAF をアタッチし、L7 を防御する。</p>
-<p><br></p>
-<h2 id="11-nlb">11. NLB の通信制御<a class="headerlink" href="#11-nlb" title="Permanent link">&para;</a></h2>
-<h3 id="l3l4">▼ L3/L4 防御<a class="headerlink" href="#l3l4" title="Permanent link">&para;</a></h3>
-<p>Amazon EC2 Security Group をアタッチし、L3/L4（IP アドレス、プロトコル、ポート番号） を防御する。</p>
-<pre class="mermaid"><code>flowchart LR
-    Route53
-    NLB[NLB with SG]
-    ALB[internal ALB]
-    EKS
-
-    Route53 --&gt; NLB --&gt; ALB --&gt; EKS</code></pre>
 <p><br></p>
 
   
