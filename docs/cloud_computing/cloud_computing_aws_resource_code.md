@@ -48,6 +48,41 @@ CodeCommit は、他のコード管理サービスで代用できる。
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、GitHub のリポジトリにある buildspec.yml でビルドする CodeBuild プロジェクトを作成する。CodeBuild が引き受けられ、ログ出力やビルドに必要な権限を持つ既存の IAM ロールを指定する。
+
+```terraform
+variable "codebuild_role_arn" {
+  type = string
+}
+
+variable "repository_url" {
+  type = string
+}
+
+resource "aws_codebuild_project" "this" {
+  name         = "foo-build"
+  service_role = var.codebuild_role_arn
+  artifacts {
+    type = "NO_ARTIFACTS"
+  }
+  source {
+    type      = "GITHUB"
+    location  = var.repository_url
+    buildspec = "buildspec.yml"
+  }
+  environment {
+    compute_type    = "BUILD_GENERAL1_SMALL"
+    image           = "aws/codebuild/standard:7.0"
+    type            = "LINUX_CONTAINER"
+    privileged_mode = true
+  }
+}
+```
+
+> - [codebuild_project - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project)
+
+<br>
+
 ## 04. CodeBuild によるビルド
 
 ### `buildspec.yml` ファイル

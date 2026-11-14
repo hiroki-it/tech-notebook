@@ -23,6 +23,38 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の CloudWatch モジュールを使用し、既存の EC2 の平均 CPU 使用率が 80%を 3 回連続で超えると、SNS へ通知するアラームを作成する。
+
+```terraform
+variable "instance_id" {
+  type = string
+}
+
+variable "sns_topic_arn" {
+  type = string
+}
+
+module "cpu_alarm" {
+  source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarm"
+  version = "6.0.0"
+
+  alarm_name          = "foo-ec2-cpu-high"
+  comparison_operator = "GreaterThanThreshold"
+  evaluation_periods  = 3
+  threshold           = 80
+  period              = 300
+  statistic           = "Average"
+  namespace           = "AWS/EC2"
+  metric_name         = "CPUUtilization"
+  dimensions          = { InstanceId = var.instance_id }
+  alarm_actions       = [var.sns_topic_arn]
+}
+```
+
+> - [terraform-aws-modules/cloudwatch/aws//modules/metric-alarm (6.0.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/cloudwatch/aws/6.0.0/submodules/metric-alarm)
+
+<br>
+
 ## 04. ビジネス成果メトリクスの監視
 
 ### ▼ ビジネス成果の監視とは

@@ -79,6 +79,26 @@ AZ に跨いで冗長化すると、いずれかのデータセンターで障�
 
 ### Terraformによる構築
 
+terraform-aws-modules の IAM Account モジュールを使用し、既存の AWS アカウントにエイリアスと IAM ユーザーのパスワードポリシーを設定する。エイリアスには一意の名前を指定する。
+
+```terraform
+variable "account_alias" {
+  type = string
+}
+
+module "iam_account" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-account"
+  version = "6.8.2"
+
+  account_alias           = var.account_alias
+  minimum_password_length = 14
+}
+```
+
+> - [terraform-aws-modules/iam/aws//modules/iam-account (6.8.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/6.8.2/submodules/iam-account)
+
+<br>
+
 ## 04. タグによるリソースの分類
 
 ### タグ付け戦略

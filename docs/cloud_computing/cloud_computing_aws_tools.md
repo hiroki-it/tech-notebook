@@ -32,6 +32,33 @@ tags:
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーから AWS 提供の CloudFormation テンプレートを使用し、Distributed Load Testing on AWS を構築する。管理者のメールアドレスとユーザー名を指定する。
+
+```terraform
+variable "admin_name" {
+  type = string
+}
+
+variable "admin_email" {
+  type = string
+}
+
+resource "aws_cloudformation_stack" "load_testing" {
+  name         = "foo-load-testing"
+  template_url = "https://s3.amazonaws.com/solutions-reference/distributed-load-testing-on-aws/v4.3.6/distributed-load-testing-on-aws.template"
+  capabilities = ["CAPABILITY_NAMED_IAM", "CAPABILITY_AUTO_EXPAND"]
+  parameters = {
+    AdminName  = var.admin_name
+    AdminEmail = var.admin_email
+  }
+}
+```
+
+> - [cloudformation_stack - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudformation_stack)
+> - [Distributed Load Testing on AWS - AWS](https://docs.aws.amazon.com/solutions/latest/distributed-load-testing-on-aws/welcome.html)
+
+<br>
+
 ## 04. 分散負荷テスト
 
 ### Distributed Load Testing (分散ロードテスト)

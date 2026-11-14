@@ -27,6 +27,47 @@ tags:
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、既存リソースを毎日 18 時 UTC（日本時間 3 時）にバックアップし、30 日間保管する。AWS Backup が引き受けられ、対象リソースのバックアップ権限を持つ IAM ロールを指定する。
+
+```terraform
+variable "backup_role_arn" {
+  type = string
+}
+
+variable "resource_arns" {
+  type = list(string)
+}
+
+resource "aws_backup_vault" "this" {
+  name = "foo-backup"
+}
+
+resource "aws_backup_plan" "this" {
+  name = "foo-daily"
+  rule {
+    rule_name         = "daily"
+    target_vault_name = aws_backup_vault.this.name
+    schedule          = "cron(0 18 * * ? *)"
+    lifecycle {
+      delete_after = 30
+    }
+  }
+}
+
+resource "aws_backup_selection" "this" {
+  name         = "foo-resources"
+  plan_id      = aws_backup_plan.this.id
+  iam_role_arn = var.backup_role_arn
+  resources    = var.resource_arns
+}
+```
+
+> - [backup_vault - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_vault)
+> - [backup_plan - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_plan)
+> - [backup_selection - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_selection)
+
+<br>
+
 
 
 ## 04. リソースのバックアップ

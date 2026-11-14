@@ -24,6 +24,27 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の ECS モジュールを使用し、Fargate のマイクロサービスを配置するためのクラスターを作成する。個々のサービスやタスク定義は別途設定する。
+
+```terraform
+module "ecs_cluster" {
+  source  = "terraform-aws-modules/ecs/aws//modules/cluster"
+  version = "7.6.1"
+
+  name                       = "foo-microservices"
+  cluster_capacity_providers = ["FARGATE"]
+  default_capacity_provider_strategy = {
+    FARGATE = {
+      base = 1
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/ecs/aws//modules/cluster (7.6.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/7.6.1/submodules/cluster)
+
+<br>
+
 ## 04. Amazon EKS によるリクエスト駆動型アーキテクチャ
 
 自著『クラウドネイティブ技術とマイクロサービスアーキテクチャーのつながり』を確認する。

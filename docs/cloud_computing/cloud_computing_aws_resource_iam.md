@@ -31,6 +31,31 @@ AWS リソースへのアクセスに関する認証/認可を制御する。
 
 ### Terraformによる構築
 
+terraform-aws-modules の IAM Role モジュールを使用し、EC2 が引き受ける IAM ロールとインスタンスプロファイルを作成する。プロファイルを EC2 へ紐付けると、SSM Agent が Systems Manager へ接続するための権限を付与できる。
+
+```terraform
+module "ec2_role" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role"
+  version = "6.8.2"
+
+  name                    = "foo-ec2"
+  create_instance_profile = true
+  trust_policy_permissions = {
+    ec2 = {
+      actions    = ["sts:AssumeRole"]
+      principals = [{ type = "Service", identifiers = ["ec2.amazonaws.com"] }]
+    }
+  }
+  policies = {
+    SSM = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  }
+}
+```
+
+> - [terraform-aws-modules/iam/aws//modules/iam-role (6.8.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/6.8.2/submodules/iam-role)
+
+<br>
+
 
 
 ## 04. ユーザー管理

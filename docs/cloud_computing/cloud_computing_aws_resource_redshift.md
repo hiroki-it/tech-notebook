@@ -39,3 +39,41 @@ Apache Spark を使用して、大きなサイズのデータを高速に並列�
 ## 03. セットアップ
 
 ### Terraformによる構築
+
+terraform-aws-modules の Redshift モジュールを使用し、既存のプライベートサブネットに暗号化したクラスターを作成する。管理者パスワードは Secrets Manager で管理し、接続元の CIDR を指定する。
+
+```terraform
+variable "vpc_id" {
+  type = string
+}
+
+variable "private_subnet_ids" {
+  type = list(string)
+}
+
+variable "client_cidr" {
+  type = string
+}
+
+module "redshift" {
+  source  = "terraform-aws-modules/redshift/aws"
+  version = "7.1.1"
+
+  cluster_identifier = "foo-warehouse"
+  node_type          = "ra3.xlplus"
+  number_of_nodes    = 2
+  database_name      = "foo"
+  master_username    = "admin"
+  vpc_id             = var.vpc_id
+  subnet_ids         = var.private_subnet_ids
+  security_group_ingress_rules = {
+    sql = { cidr_ipv4 = var.client_cidr }
+  }
+  skip_final_snapshot       = false
+  final_snapshot_identifier = "foo-warehouse-final"
+}
+```
+
+> - [terraform-aws-modules/redshift/aws (7.1.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/redshift/aws/7.1.1)
+
+<br>

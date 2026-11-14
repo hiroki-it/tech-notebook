@@ -118,6 +118,38 @@ AWS リソースごとにセキュリティを考慮する。
 
 ### Terraformによる構築
 
+terraform-aws-modules の Security Group モジュールを使用し、指定した CIDR からの HTTPS 通信だけを受信するセキュリティグループを作成する。既存の VPC を指定し、作成後に対象リソースへ紐付ける。
+
+```terraform
+variable "vpc_id" {
+  type = string
+}
+
+variable "allowed_cidr" {
+  type = string
+}
+
+module "security_group" {
+  source  = "terraform-aws-modules/security-group/aws"
+  version = "6.0.0"
+
+  name   = "foo-https"
+  vpc_id = var.vpc_id
+  ingress_rules = {
+    https = {
+      ip_protocol = "tcp"
+      from_port   = 443
+      to_port     = 443
+      cidr_ipv4   = var.allowed_cidr
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/security-group/aws (6.0.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/6.0.0)
+
+<br>
+
 ## 04. CIDR によるアドレス管理
 
 `1` 個の Amazon VPC 内には複数のサブネットが入る。

@@ -53,6 +53,22 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の KMS モジュールを使用し、自動ローテーションを有効にした対称暗号化キーとエイリアスを作成する。
+
+```terraform
+module "kms" {
+  source  = "terraform-aws-modules/kms/aws"
+  version = "4.2.2"
+
+  description = "Encryption key for foo"
+  aliases     = ["foo-key"]
+}
+```
+
+> - [terraform-aws-modules/kms/aws (4.2.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/kms/aws/4.2.2)
+
+<br>
+
 ## 04. マルチリージョンキー
 
 複数のリージョンで横断的に使用できる暗号化キーを作成できる。

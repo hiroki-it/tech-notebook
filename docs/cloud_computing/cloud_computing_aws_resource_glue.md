@@ -35,6 +35,37 @@ Apache Spark を使用して、大きなサイズのデータを高速に並列�
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、S3 に配置済みの Python スクリプトを実行する Glue の Spark ジョブを作成する。Glue が引き受けられ、スクリプトと処理対象データへアクセスできる IAM ロールを指定する。
+
+```terraform
+variable "glue_role_arn" {
+  type = string
+}
+
+variable "script_s3_uri" {
+  type = string
+}
+
+resource "aws_glue_job" "this" {
+  name              = "foo-etl"
+  role_arn          = var.glue_role_arn
+  glue_version      = "5.0"
+  worker_type       = "G.1X"
+  number_of_workers = 2
+  command {
+    python_version  = "3"
+    script_location = var.script_s3_uri
+  }
+  default_arguments = {
+    "--job-language" = "python"
+  }
+}
+```
+
+> - [glue_job - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_job)
+
+<br>
+
 ## 04. ETL の入出力設定
 
 ### ▼ 設定項目と説明

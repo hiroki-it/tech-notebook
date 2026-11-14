@@ -71,6 +71,28 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 ### Terraformによる構築
 
+terraform-aws-modules の SNS モジュールを使用し、メールアドレスを購読先とするトピックを作成する。作成後に届く確認メールで購読を承認する。
+
+```terraform
+variable "email_address" {
+  type = string
+}
+
+module "sns" {
+  source  = "terraform-aws-modules/sns/aws"
+  version = "7.2.0"
+
+  name = "foo-notifications"
+  subscriptions = {
+    email = { protocol = "email", endpoint = var.email_address }
+  }
+}
+```
+
+> - [terraform-aws-modules/sns/aws (7.2.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/sns/aws/7.2.0)
+
+<br>
+
 ## 04. トピックとサブスクリプションの構成
 
 <table>

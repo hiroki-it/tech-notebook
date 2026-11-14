@@ -23,6 +23,23 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の SSM Parameter モジュールを使用し、パラメーターストアにアプリケーション設定を保管する。
+
+```terraform
+module "parameter" {
+  source  = "terraform-aws-modules/ssm-parameter/aws"
+  version = "2.1.2"
+
+  name        = "/foo/production/log-level"
+  description = "Log level for foo"
+  value       = "INFO"
+}
+```
+
+> - [terraform-aws-modules/ssm-parameter/aws (2.1.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/ssm-parameter/aws/2.1.2)
+
+<br>
+
 ## 04. チェンジカレンダー
 
 他の AWS リソース (例：SM オートメーション、Amazon EventBridge など) を定期的に実行する Cron として使用する。

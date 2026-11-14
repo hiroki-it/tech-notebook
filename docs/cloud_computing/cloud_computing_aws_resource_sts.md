@@ -223,6 +223,34 @@ aws s3 ls --profile <プロファイル名> <tfstateファイルが管理され�
 
 ### Terraformによる構築
 
+terraform-aws-modules の IAM Role モジュールを使用し、指定した IAM ロールだけが STS で引き受けられるロールを作成する。呼び出し元にも、作成先ロールに対する sts:AssumeRole 権限を設定しておく。
+
+```terraform
+variable "caller_role_arn" {
+  type = string
+}
+
+module "assumable_role" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-role"
+  version = "6.8.2"
+
+  name = "foo-assumable"
+  trust_policy_permissions = {
+    caller = {
+      actions    = ["sts:AssumeRole"]
+      principals = [{ type = "AWS", identifiers = [var.caller_role_arn] }]
+    }
+  }
+  policies = {
+    S3ReadOnly = "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess"
+  }
+}
+```
+
+> - [terraform-aws-modules/iam/aws//modules/iam-role (6.8.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/iam/aws/6.8.2/submodules/iam-role)
+
+<br>
+
 ## 04. 一時認証情報の発行と更新
 
 ### Trusted Entity の事前作成

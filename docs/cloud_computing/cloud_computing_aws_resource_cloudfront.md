@@ -98,6 +98,45 @@ $ nslookup <発行されたランダム文字列>.cloudfront.net
 
 ### Terraformによる構築
 
+terraform-aws-modules の CloudFront モジュールを使用し、既存の HTTPS オリジンへリクエストを転送するディストリビューションを作成する。オリジンの DNS 名を指定し、閲覧には CloudFront の標準ドメインと証明書を使用する。
+
+```terraform
+variable "origin_domain_name" {
+  type = string
+}
+
+data "aws_cloudfront_cache_policy" "this" {
+  name = "Managed-CachingOptimized"
+}
+
+module "cloudfront" {
+  source  = "terraform-aws-modules/cloudfront/aws"
+  version = "6.7.1"
+
+  origin_access_control = {}
+  origin = {
+    app = {
+      domain_name = var.origin_domain_name
+      custom_origin_config = {
+        http_port              = 80
+        https_port             = 443
+        origin_protocol_policy = "https-only"
+      }
+    }
+  }
+  default_cache_behavior = {
+    target_origin_id       = "app"
+    viewer_protocol_policy = "redirect-to-https"
+    cache_policy_id        = data.aws_cloudfront_cache_policy.this.id
+  }
+  viewer_certificate = { cloudfront_default_certificate = true }
+}
+```
+
+> - [terraform-aws-modules/cloudfront/aws (6.7.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/cloudfront/aws/6.7.1)
+
+<br>
+
 ## 04. ディストリビューションの設定
 
 ### ▼ Distributions

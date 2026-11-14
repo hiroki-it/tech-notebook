@@ -68,6 +68,57 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の Auto Scaling モジュールを使用し、平日の日本時間 9 時に起動し、19 時に停止する開発環境を作成する。AMI とプライベートサブネット、セキュリティグループは既存のものを指定する。
+
+```terraform
+variable "ami_id" {
+  type = string
+}
+
+variable "private_subnet_ids" {
+  type = list(string)
+}
+
+variable "security_group_id" {
+  type = string
+}
+
+module "development_asg" {
+  source  = "terraform-aws-modules/autoscaling/aws"
+  version = "9.3.2"
+
+  name                = "foo-development"
+  image_id            = var.ami_id
+  instance_type       = "t3.micro"
+  vpc_zone_identifier = var.private_subnet_ids
+  security_groups     = [var.security_group_id]
+  min_size            = 0
+  max_size            = 1
+  desired_capacity    = 0
+
+  schedules = {
+    start = {
+      min_size         = 1
+      max_size         = 1
+      desired_capacity = 1
+      recurrence       = "0 9 * * 1-5"
+      time_zone        = "Asia/Tokyo"
+    }
+    stop = {
+      min_size         = 0
+      max_size         = 0
+      desired_capacity = 0
+      recurrence       = "0 19 * * 1-5"
+      time_zone        = "Asia/Tokyo"
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/autoscaling/aws (9.3.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/autoscaling/aws/9.3.2)
+
+<br>
+
 ## 04. クオータの管理 (Service Quotas)
 
 ### Service Quotast とは

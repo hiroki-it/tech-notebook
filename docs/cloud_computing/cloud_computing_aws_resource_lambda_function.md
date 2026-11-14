@@ -177,6 +177,31 @@ AWS Lambda で関数を作成すると、Amazon CloudWatch Logs のロググル�
 
 ### Terraformによる構築
 
+terraform-aws-modules の Lambda モジュールを使用し、Go で実装したハンドラをデプロイする。Linux の arm64 向けにビルドした bootstrap を ZIP の直下に配置し、ZIP ファイルのパスを指定する。
+
+```terraform
+variable "package_path" {
+  type = string
+}
+
+module "go_lambda" {
+  source  = "terraform-aws-modules/lambda/aws"
+  version = "8.13.0"
+
+  function_name                     = "foo-go-function"
+  runtime                           = "provided.al2023"
+  handler                           = "bootstrap"
+  architectures                     = ["arm64"]
+  create_package                    = false
+  local_existing_package            = var.package_path
+  cloudwatch_logs_retention_in_days = 30
+}
+```
+
+> - [terraform-aws-modules/lambda/aws (8.13.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/lambda/aws/8.13.0)
+
+<br>
+
 ## 04. Go によるハンドラ実装
 
 ### aws-lambda-go

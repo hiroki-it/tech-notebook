@@ -23,6 +23,43 @@ tags:
 
 ### Terraformによる構築
 
+terraform-aws-modules の KMS モジュールと S3 モジュールを使用し、カスタマーマネージドキーによる暗号化とバージョニングを有効にした非公開バケットを作成する。バケット名には一意の名前を指定する。
+
+```terraform
+variable "bucket_name" {
+  type = string
+}
+
+module "kms" {
+  source  = "terraform-aws-modules/kms/aws"
+  version = "4.2.2"
+
+  aliases = ["foo-storage"]
+}
+
+module "bucket" {
+  source  = "terraform-aws-modules/s3-bucket/aws"
+  version = "5.17.0"
+
+  bucket     = var.bucket_name
+  versioning = { enabled = true }
+  server_side_encryption_configuration = {
+    rule = {
+      apply_server_side_encryption_by_default = {
+        sse_algorithm     = "aws:kms"
+        kms_master_key_id = module.kms.key_arn
+      }
+      bucket_key_enabled = true
+    }
+  }
+}
+```
+
+> - [terraform-aws-modules/kms/aws (4.2.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/kms/aws/4.2.2)
+> - [terraform-aws-modules/s3-bucket/aws (5.17.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/s3-bucket/aws/5.17.0)
+
+<br>
+
 ## 04. キーバリューデータの保管と暗号化
 
 AWS Secrets Manager は、機密データをキーバリュー単位で保管できるキーバリューストレージである。

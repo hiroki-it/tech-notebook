@@ -30,6 +30,40 @@ SNS を経由して、Amazon CloudWatch からの通知をチャットアプリ�
 
 ### Terraformによる構築
 
+hashicorp/aws プロバイダーを使用し、既存の SNS トピックを Slack チャンネルに紐付ける。Slack ワークスペースは事前に AWS Chatbot（Amazon Q Developer in chat applications）で認可し、chatbot.amazonaws.com が引き受けられる IAM ロールを指定する。
+
+```terraform
+variable "slack_workspace_id" {
+  type = string
+}
+
+variable "slack_channel_id" {
+  type = string
+}
+
+variable "chatbot_role_arn" {
+  type = string
+}
+
+variable "sns_topic_arn" {
+  type = string
+}
+
+resource "aws_chatbot_slack_channel_configuration" "this" {
+  configuration_name    = "foo-notifications"
+  slack_team_id         = var.slack_workspace_id
+  slack_channel_id      = var.slack_channel_id
+  iam_role_arn          = var.chatbot_role_arn
+  sns_topic_arns        = [var.sns_topic_arn]
+  logging_level         = "ERROR"
+  guardrail_policy_arns = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
+}
+```
+
+> - [chatbot_slack_channel_configuration - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/chatbot_slack_channel_configuration)
+
+<br>
+
 ## 04. チャットクライアントとの連携
 
 ### ▼ Slack 通知の場合
