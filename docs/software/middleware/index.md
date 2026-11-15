@@ -17,181 +17,178 @@ tags:
 
 ### Web 系
 
-- #### <u>Nginx</u>
+<div class="grid cards compact" markdown>
 
-  > - ##### [︎Nginx](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx.html)
-  > - ##### [︎nginx.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_conf.html)
-  > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_command.html)
-  > - ##### [ビルトインモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_builtin.html)
-  > - ##### [ユーティリティモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_utility.html)
+- **Nginx**
 
-- #### <u>Apache</u>
-  > - ##### [︎Apache](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache.html)
-  > - ##### [︎apache.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_conf.html)
-  > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_command.html)
+  [Nginx](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx.html) ・ [nginx.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_conf.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_command.html) ・ [ビルトインモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_builtin.html) ・ [ユーティリティモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_utility.html)
+
+- **Apache**
+
+  [Apache](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache.html) ・ [apache.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_conf.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_command.html)
+
+</div>
 
 <br>
 
 ### アプリケーション系
 
-- #### <u>PHP-FPM</u>
+<div class="grid cards compact" markdown>
 
-  > - ##### [︎PHP-FPM](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html)
-  > - ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
+- **PHP-FPM**
 
-- #### <u>︎uWSGI</u>
+  [PHP-FPM](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
 
-  > - ##### [︎uWSGI](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi.html)
-  > - ##### [︎設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi_conf.html)
+- **uWSGI**
 
-- #### <u>︎Uvicorn</u>
+  [uWSGI](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi_conf.html)
 
-  > - ##### [︎Uvicorn](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_asgi_uvicorn.html)
+- **Uvicorn**
+
+  [Uvicorn](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_asgi_uvicorn.html)
+
+</div>
 
 <br>
 
 ### リレーショナル DB 系
 
-- #### <u>︎RDBMS</u>
+<div class="grid cards compact" markdown>
 
-  > - ##### [︎RDBMS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html)
-  > - ##### [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html)
-  > - ##### [︎ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
+- **RDBMS**
 
-- #### <u>MySQL</u>
+  [RDBMS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html) ・ [ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
 
-  > - ##### [My︎SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html)
-  > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html)
-  > - ##### <u>SQL</u>
-  >   > - ##### [DML](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html)
-  >   > - ##### [DCL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html)
-  >   > - ##### [DDL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html)
+- **MySQL**
 
-- #### <u>PostgreSQL</u>
+  [My︎SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html) ・ SQL（[DML](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html)・[DCL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html)・[DDL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html)）
 
-  > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html)
-  > - ##### [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
+- **PostgreSQL**
 
-- #### [アンチパターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_antipatterns.html)
+  [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html) ・ [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
 
-- #### [ER 図](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_er.html)
+- **[アンチパターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_antipatterns.html)**
+
+- **[ER 図](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_er.html)**
+
+</div>
 
 <br>
 
 ### <u>接続プールプロキシ系</u>
 
-- #### <u>PgBouncer</u>
+<div class="grid cards compact" markdown>
 
-  > - ##### [PgBouncer](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html)
-  > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html)
+- **PgBouncer**
+
+  [PgBouncer](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html)
+
+</div>
 
 <br>
 
 ### <u>NoSQL DB 系</u>
 
-- #### [NoSQL DB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb.html)
+<div class="grid cards compact" markdown>
 
-- #### <u>Redis</u>
+- **[NoSQL DB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb.html)**
 
-  > - ##### [Redis](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis.html)
-  > - ##### [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis_command.html)
+- **Redis**
+
+  [Redis](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis_command.html)
+
+</div>
 
 <br>
 
 ### 時系列 DB 系
 
-- #### [TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)
+<div class="grid cards compact" markdown>
 
-- #### <u>VictoriaMetrics</u>
+- **[TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)**
 
-  > - ##### [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html)
-  > - ##### [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics_command.html)
+- **VictoriaMetrics**
+
+  [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics_command.html)
+
+</div>
 
 <br>
 
 ### サービスメッシュ系
 
-- #### <u>︎サービスメッシュ</u>
+<div class="grid cards compact" markdown>
 
-  > - ##### [︎サービスメッシュ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh.html)
-  > - ##### [︎サービスメッシュの担う責務](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_responsibility.html)
+- **サービスメッシュ**
 
-- #### <u>Envoy</u>
+  [サービスメッシュ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh.html) ・ [サービスメッシュの担う責務](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_responsibility.html)
 
-  > - ##### [︎Envoy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy.html)
-  > - ##### [︎envoy.yaml](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_envoy_yaml.html)
-  > - ##### [テレメトリー](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_telemetry.html)
-  > - ##### [︎API](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_api.html)
-  > - ##### [プラクティス](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_practice.html)
+- **Envoy**
 
-- #### <u>Istio</u>
-  > - ##### [︎Istio](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio.html)
-  > - ##### <u>サイドカーモード</u>
-  >   > - ##### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_control_plane.html)
-  >   > - ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_data_plane.html)
-  > - ##### <u>アンビエントモード</u>
-  >   > - ##### [コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_control_plane.html)
-  >   > - ##### [データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_data_plane.html)
-  > - ##### [Istio を採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html)
-  > - ##### [︎コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html)
-  > - ##### [︎プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html)
-  > - ##### [︎リソース](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource.html)
-  > - ##### [設計パターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_patterns.html)
-  > - ##### <u>リソース定義</u>
-  >   > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition.html)
-  >   > - ##### [共通項目](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_common.html)
-  >   > - ##### [ConfigMap 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)
-  >   > - ##### [Secret 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)
-  > - ##### <u>︎IstioOperator</u>
-  >   > - ##### [︎IstioOperator](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator.html)
-  >   > - ##### [リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html)
+  [Envoy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy.html) ・ [envoy.yaml](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_envoy_yaml.html) ・ [テレメトリー](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_telemetry.html) ・ [API](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_api.html) ・ [プラクティス](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_practice.html)
+
+- **Istio**
+
+  [Istio](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio.html) ・ サイドカーモード（[コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_control_plane.html)・[データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_data_plane.html)） ・ アンビエントモード（[コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_control_plane.html)・[データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_data_plane.html)） ・ [Istio を採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html) ・ [リソース](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource.html) ・ [設計パターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_patterns.html) ・ リソース定義（[リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition.html)・[共通項目](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_common.html)・[ConfigMap 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)・[Secret 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)） ・ IstioOperator（[IstioOperator](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator.html)・[リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html)）
+
+</div>
 
 <br>
 
 ### DNS 系
 
-- #### <u>CoreDNS</u>
-  > - ##### [CoreDNS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns.html)
-  > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns_conf.html)
+<div class="grid cards compact" markdown>
+
+- **CoreDNS**
+
+  [CoreDNS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns_conf.html)
+
+</div>
 
 <br>
 
 ### セキュリティ系
 
-- #### <u>Cert Manager</u>
+<div class="grid cards compact" markdown>
 
-  > - ##### [︎Cert Manager](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager.html)
-  > - ##### [︎リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager_resource_definition.html)
+- **Cert Manager**
 
-- #### <u>Falco</u>
+  [Cert Manager](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager_resource_definition.html)
 
-  > - ##### [Falco](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco.html)
-  > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco_conf.html)
+- **Falco**
 
-- #### <u>Keycloak</u>
+  [Falco](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco_conf.html)
 
-  > - ##### [Keycloak](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak.html)
-  > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_conf.html)
-  > - ##### <u>クライアント</u>
-  >   > - ##### [JavaScript](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_client_package_javascript.html)
+- **Keycloak**
 
-- #### <u>OAuth2 Proxy</u>
+  [Keycloak](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_conf.html) ・ クライアント（[JavaScript](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_client_package_javascript.html)）
 
-  > - ##### [OAuth2 Proxy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy.html)
-  > - ##### [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy_conf.html)
+- **OAuth2 Proxy**
+
+  [OAuth2 Proxy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy_conf.html)
+
+</div>
 
 <br>
 
 ### メッセージング系
 
-- #### [︎RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html)
+<div class="grid cards compact" markdown>
 
-- #### [Apache Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_apache_kafka.html)
+- **[RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html)**
+
+- **[Apache Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_apache_kafka.html)**
+
+</div>
 
 <br>
 
 ### データ分析系
 
-- #### [データ分析](https://hiroki-it.github.io/tech-notebook/software/software_middleware_data_analysis.html)
+<div class="grid cards compact" markdown>
+
+- **[データ分析](https://hiroki-it.github.io/tech-notebook/software/software_middleware_data_analysis.html)**
+
+</div>
 
 <br>

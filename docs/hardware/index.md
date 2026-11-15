@@ -9,14 +9,18 @@ tags:
 
 ## 💻 ハードウェア
 
-- #### [︎ハードウェア](https://hiroki-it.github.io/tech-notebook/hardware/hardware.html)
+<div class="grid cards compact" markdown>
 
-- #### [CPU](https://hiroki-it.github.io/tech-notebook/hardware/hardware_cpu.html)
+- **[ハードウェア](https://hiroki-it.github.io/tech-notebook/hardware/hardware.html)**
 
-- #### [メモリ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_memory.html)
+- **[CPU](https://hiroki-it.github.io/tech-notebook/hardware/hardware_cpu.html)**
 
-- #### [ストレージ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_storage.html)
+- **[メモリ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_memory.html)**
 
-- #### [︎組み込み機器](https://hiroki-it.github.io/tech-notebook/hardware/hardware_embedded_system.html)
+- **[ストレージ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_storage.html)**
+
+- **[組み込み機器](https://hiroki-it.github.io/tech-notebook/hardware/hardware_embedded_system.html)**
+
+</div>
 
 <br>

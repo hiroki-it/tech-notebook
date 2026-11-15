@@ -11,34 +11,44 @@ tags:
 
 ### DevOps
 
-- #### [︎DevOps](https://hiroki-it.github.io/tech-notebook/devops/devops.html)
+<div class="grid cards compact" markdown>
 
-- #### <u>SREing</u>
+- **[DevOps](https://hiroki-it.github.io/tech-notebook/devops/devops.html)**
 
-  > - ##### [︎SREing](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing.html)
-  > - ##### [︎アンチパターン](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing_antipattern.html)
+- **SREing**
 
-- #### <u>Platform Engineering</u>
+  [SREing](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing.html) ・ [アンチパターン](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing_antipattern.html)
 
-  > - ##### [Platform Engineering](https://hiroki-it.github.io/tech-notebook/devops/devops_platform_engineering.html)
+- **Platform Engineering**
+
+  [Platform Engineering](https://hiroki-it.github.io/tech-notebook/devops/devops_platform_engineering.html)
+
+</div>
 
 <br>
 
 ### 技術的要素
 
-- #### <u>CI/CD</u>
+<div class="grid cards compact" markdown>
 
-  > - ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html)
+- **CI/CD**
 
-- #### <u>︎ドキュメンテーション</u>
+  [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html)
 
-  > - ##### [︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation.html)
-  > - ##### [Mermaid](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation_mermaid.html)
+- **ドキュメンテーション**
+
+  [ドキュメンテーション](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation.html) ・ [Mermaid](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation_mermaid.html)
+
+</div>
 
 <br>
 
 ### 組織文化的要素
 
-- #### [文化](https://hiroki-it.github.io/tech-notebook/devops/devops_culture.html)
+<div class="grid cards compact" markdown>
+
+- **[文化](https://hiroki-it.github.io/tech-notebook/devops/devops_culture.html)**
+
+</div>
 
 <br>

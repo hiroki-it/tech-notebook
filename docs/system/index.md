@@ -9,8 +9,12 @@ tags:
 
 ## 🌳 システム
 
-- #### [︎システム](https://hiroki-it.github.io/tech-notebook/system/system.html)
+<div class="grid cards compact" markdown>
 
-- #### [︎アーキテクチャ特性](https://hiroki-it.github.io/tech-notebook/system/system_architecture_characteristics.html)
+- **[システム](https://hiroki-it.github.io/tech-notebook/system/system.html)**
+
+- **[アーキテクチャ特性](https://hiroki-it.github.io/tech-notebook/system/system_architecture_characteristics.html)**
+
+</div>
 
 <br>
