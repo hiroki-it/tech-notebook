@@ -10,7 +10,6 @@ tags:
 ## 🧬 ソフトウェア
 
 ### ソフトウェア
-
 <div class="grid cards compact" markdown>
 
 - **[ソフトウェア](https://hiroki-it.github.io/tech-notebook/software/software.html)**
@@ -29,7 +28,7 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **[量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/software/application/index.html)**
+- **[アプリケーションソフトウェア](https://hiroki-it.github.io/tech-notebook/software/application/index.html)**
 
   アプリのノート一覧
 
@@ -38,10 +37,9 @@ tags:
 <br>
 
 ### ミドルウェア
-
 <div class="grid cards compact" markdown>
 
-- **[量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/software/middleware/index.html)**
+- **[ミドルウェア](https://hiroki-it.github.io/tech-notebook/software/middleware/index.html)**
 
   ミドルウェアのノート一覧
 
@@ -50,10 +48,9 @@ tags:
 <br>
 
 ### 基本ソフトウェア (OS)
-
 <div class="grid cards compact" markdown>
 
-- **[量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/software/basic/index.html)**
+- **[基本ソフトウェア (OS)](https://hiroki-it.github.io/tech-notebook/software/basic/index.html)**
 
   OS のノート一覧
 

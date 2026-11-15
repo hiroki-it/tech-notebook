@@ -35,17 +35,17 @@ tags:
 
   Ingress を監視してルーティングする Ingress Controller
 
-- **AWS Load Balancer Controller**
+- **[AWS Load Balancer Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)**
 
   AWS のロードバランサーと連携する Ingress Controller
 
-  [AWS Load Balancer Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html)
+  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html)
 
-- **Nginx Ingress Controller**
+- **[Nginx Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html)**
 
   Nginx を使用する Ingress Controller
 
-  [Nginx Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html)
+  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html)
 
 </div>
 
@@ -71,11 +71,11 @@ tags:
 
   メトリクスの収集と kubectl top、Pod の自動スケーリング
 
-- **Karpenter**
+- **[Karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html)**
 
   Karpenter による Node の自動プロビジョニング
 
-  [Karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html)
+  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html)
 
 </div>
 
@@ -105,11 +105,9 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **ストレージ CSI ドライバー**
+- **[ストレージ CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html)**
 
   Pod にストレージをマウントする CSI ドライバー
-
-  [ストレージ CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html)
 
 </div>
 
@@ -119,17 +117,15 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **Secrets ストア CSI ドライバー**
+- **[Secrets ストア CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html)**
 
   外部のシークレットをボリュームとしてマウント
 
-  [Secrets ストア CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html)
+  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html)
 
-- **External Secrets Operator**
+- **[External Secrets Operator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html)**
 
   外部のシークレットを Secret として同期
-
-  [External Secrets Operator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html)
 
 </div>
 

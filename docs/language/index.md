@@ -33,17 +33,15 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **JSON**
+- **[JSON](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json.html)**
 
   JSON の書き方と JSON クエリ
 
-  [JSON](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json.html) ・ [JSON クエリ](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json_query.html)
+  [JSON クエリ](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_json_query.html)
 
-- **YAML**
+- **[YAML](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_yaml.html)**
 
   YAML の書き方
-
-  [YAML](https://hiroki-it.github.io/tech-notebook/language/language_data_description_language_yaml.html)
 
 </div>
 

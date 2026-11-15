@@ -25,11 +25,11 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **Ansible**
+- **[Ansible](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible.html)**
 
   Ansible の Playbook と Ansible Galaxy
 
-  [Ansible](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_command.html) ・ [Playbook](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_playbook.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_cfg.html) ・ [Ansible Galaxy](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_galaxy.html)
+  [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_command.html) ・ [Playbook](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_playbook.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_cfg.html) ・ [Ansible Galaxy](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_galaxy.html)
 
 - **Docker**
 
@@ -51,23 +51,21 @@ tags:
 
   [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_command.html) ・ [docker-compose.yml](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
 
-- **Kaniko**
+- **[Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko.html)**
 
   Kaniko によるデーモン不要のイメージビルド
 
-  [Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_conf.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_command.html)
+  [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_conf.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_command.html)
 
-- **Kubernetes**
+- **[Kubernetes](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/kubernetes/index.html)**
 
   量が多いため、K8s セクションに切り分け
 
-  [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/kubernetes/index.html)
-
-- **Packer**
+- **[Packer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer.html)**
 
   Packer によるマシンイメージの作成
 
-  [Packer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_command.html) ・ [テンプレート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_template.html)
+  [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_command.html) ・ [テンプレート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_template.html)
 
 - **Serverless Framework**
 

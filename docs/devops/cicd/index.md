@@ -47,11 +47,11 @@ tags:
 
   Capistrano によるインプレースデプロイ
 
-- **CircleCI**
+- **[CircleCI](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci.html)**
 
   CircleCI の config.yml と orbs
 
-  [CircleCI](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci.html) ・ [config.yml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_config_yml.html) ・ [orbs](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_orbs.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_practices.html)
+  [config.yml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_config_yml.html) ・ [orbs](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_orbs.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_practices.html)
 
 - **Skaffold**
 
@@ -67,17 +67,17 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **ArgoCD**
+- **[ArgoCD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd.html)**
 
   ArgoCD の仕組み、リソース定義、運用のプラクティス
 
-  [ArgoCD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_command.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_practices.html) ・ リソース定義（[リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)・[共通項目](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)・[プラグイン](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)・[認証／認可系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)・[ConfigMap 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)・[Secret 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)・[Job 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)） ・ [Image Updater](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_image_updater_resource_definition.html)
+  [コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_command.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_practices.html) ・ リソース定義（[リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)・[共通項目](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)・[プラグイン](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)・[認証／認可系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)・[ConfigMap 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)・[Secret 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)・[Job 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)） ・ [Image Updater](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_image_updater_resource_definition.html)
 
-- **Argo Rollouts**
+- **[Argo Rollouts](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts.html)**
 
   Argo Rollouts によるカナリアなどの段階的リリース
 
-  [Argo Rollouts](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)
+  [リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)
 
 </div>
 

@@ -41,23 +41,23 @@ tags:
 
   OSI 参照モデルの各層の責務とパケット
 
-- **`L5` ~ `L7`**
+- **[`L5` ~ `L7`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l5_l7.html)**
 
   セッション層からアプリケーション層と HTTP
 
-  [`L5` ~ `L7`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l5_l7.html) ・ [HTTP](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l5_l7_http.html)
+  [HTTP](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l5_l7_http.html)
 
-- **`L4`**
+- **[`L4`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l4.html)**
 
   トランスポート層、TCP、ポート
 
-  [`L4`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l4.html) ・ [TCP](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l4_tcp.html) ・ [ポート](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l4_port.html)
+  [TCP](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l4_tcp.html) ・ [ポート](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l4_port.html)
 
-- **`L3`**
+- **[`L3`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3.html)**
 
   ネットワーク層、IP アドレス、ルーター
 
-  [`L3`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3.html) ・ [IP アドレス](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3_ip_address.html) ・ [ルーター](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3_router.html)
+  [IP アドレス](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3_ip_address.html) ・ [ルーター](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l3_router.html)
 
 - **[`L2`](https://hiroki-it.github.io/tech-notebook/network/network_model_osi_l2.html)**
 

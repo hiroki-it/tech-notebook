@@ -53,11 +53,11 @@ tags:
 
   プロジェクトマネジメントとプロダクトグロース
 
-- **プロジェクトマネジメント**
+- **[プロジェクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management.html)**
 
   タスク管理、見積もり、合意形成
 
-  [プロジェクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management.html) ・ [タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_task_management.html) ・ [見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_estimate.html) ・ [合意形成](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_negotiation.html)
+  [タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_task_management.html) ・ [見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_estimate.html) ・ [合意形成](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_negotiation.html)
 
 </div>
 

@@ -31,23 +31,23 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **オブジェクト指向**
+- **[オブジェクト指向](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation.html)**
 
   オブジェクト指向の分析、設計、クラス
 
-  [オブジェクト指向](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation.html) ・ [オブジェクト指向分析](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_analysis.html) ・ [オブジェクト指向設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html) ・ [クラス](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_class.html)
+  [オブジェクト指向分析](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_analysis.html) ・ [オブジェクト指向設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_design.html) ・ [クラス](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_object_orientation_class.html)
 
-- **ドメイン駆動設計**
+- **[ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html)**
 
   ドメイン駆動設計の戦略的設計と戦術的設計
 
-  [ドメイン駆動設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design.html) ・ [戦略的設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_strategic_design.html) ・ [戦術的設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_tactical_design.html)
+  [戦略的設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_strategic_design.html) ・ [戦術的設計](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_tactical_design.html)
 
-- **クリーンアーキテクチャ**
+- **[クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html)**
 
   クリーンアーキテクチャの各層とエラー処理
 
-  [クリーンアーキテクチャ](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture.html) ・ [インターフェース層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html) ・ [ユースケース層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html) ・ [ドメイン層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html) ・ [インフラストラクチャ層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html) ・ [エラー](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html)
+  [インターフェース層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_interface.html) ・ [ユースケース層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_usecase.html) ・ [ドメイン層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_domain.html) ・ [インフラストラクチャ層](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_infrastructure.html) ・ [エラー](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_domain_driven_design_clean_architecture_errors.html)
 
 - **[CQRS](https://hiroki-it.github.io/tech-notebook/software/software_application_architecture_backend_cqrs.html)**
 
@@ -169,11 +169,11 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **RESTful-API**
+- **[RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful.html)**
 
   RESTful-API の設計と OpenAPI
 
-  [RESTful-API](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful.html) ・ API 仕様書（[OpenAPI](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification_openapi.html)）
+  API 仕様書（[OpenAPI](https://hiroki-it.github.io/tech-notebook/software/software_application_api_restful_api_specification_openapi.html)）
 
 - **RPC-API**
 
@@ -181,11 +181,11 @@ tags:
 
   [gRPC](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc.html) ・ API 仕様書（Protocol Buffer（[Protocol Buffer](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer.html)・[コマンド](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer_command.html)・Protocol Buffer コンパイラー（[Go プラグイン](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_specification_protocol_buffer_compiler_go.html)））） ・ クライアントパッケージ（[Go](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_go.html)・[クライアントツール](https://hiroki-it.github.io/tech-notebook/software/software_application_api_rpc_api_grpc_client_package_tools.html)）
 
-- **GraphQL-API**
+- **[GraphQL-API](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api.html)**
 
   GraphQL-API と API スキーマ
 
-  [GraphQL-API](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api.html) ・ API 仕様書（[API スキーマ](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_specification_schema.html)）
+  API 仕様書（[API スキーマ](https://hiroki-it.github.io/tech-notebook/software/software_application_api_graphql_api_specification_schema.html)）
 
 </div>
 
@@ -195,16 +195,16 @@ tags:
 
 <div class="grid cards compact" markdown>
 
-- **Argo Workflows**
+- **[Argo Workflows](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_argoworkflow.html)**
 
   Argo Workflows によるワークフローの定義
 
-  [Argo Workflows](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_argoworkflow.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_argoworkflow_resource_definition.html)
+  [リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_argoworkflow_resource_definition.html)
 
-- **Temporal**
+- **[Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal.html)**
 
   Temporal によるワークフローの実行
 
-  [Temporal](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal.html) ・ 設定ファイル（[Cluster スコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_cluster.html)・[Web スコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_web.html)）
+  設定ファイル（[Cluster スコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_cluster.html)・[Web スコープ](https://hiroki-it.github.io/tech-notebook/software/software_application_workflow_temporal_conf_web.html)）
 
 </div>

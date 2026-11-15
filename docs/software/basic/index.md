@@ -77,11 +77,11 @@ tags:
 
   [メモリ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_memory.html) ・ [ネットワーク系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_network.html) ・ [セキュリティ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_security.html) ・ [ストレージ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_storage.html)
 
-- **パッケージ管理ユーティリティ**
+- **[パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html)**
 
   apt や yum などのパッケージ管理ユーティリティ
 
-  [パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html) ・ [Linux 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html) ・ [RedHat 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html) ・ [Debian 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)
+  [Linux 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html) ・ [RedHat 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html) ・ [Debian 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)
 
 </div>
 
