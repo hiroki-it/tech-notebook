@@ -17,88 +17,198 @@ tags:
 
 ### CI/CD
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-pipe: CI/CD"
 
-- **[CI/CD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd.html)**
+    <div class="grid cards compact" markdown>
 
-  CI/CD の必要性、パイプライン設計、CIOps と GitOps
+    - **[CI/CD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd.html)**
 
-- **[デプロイ手法](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_deploy.html)**
+      CI/CD の必要性、パイプライン設計、CIOps と GitOps
 
-  ローリング、ブルー/グリーン、カナリアなどのデプロイ手法
+    </div>
 
-</div>
+!!! cards ":material-rocket-launch-outline: デプロイ手法"
+
+    <div class="grid cards compact" markdown>
+
+    - **[デプロイ手法](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_deploy.html)**
+
+      ローリング、ブルー/グリーン、カナリアなどのデプロイ手法
+
+    </div>
 
 <br>
 
 ### CI ツール
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-githubactions: GitHub Actions"
 
-- **[GitHub Actions](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_github_actions.html)**
+    <div class="grid cards compact" markdown>
 
-  GitHub Actions のワークフローの書き方と仕組み
+    - **[GitHub Actions](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_github_actions.html)**
 
-- **[GitLab CI](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_gitlab_ci.html)**
+      GitHub Actions のワークフローの書き方と仕組み
 
-  GitLab CI のジョブ定義と処理の共通化
+    </div>
 
-- **[Capistrano](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_capistrano.html)**
+!!! cards ":simple-gitlab: GitLab CI"
 
-  Capistrano によるインプレースデプロイ
+    <div class="grid cards compact" markdown>
 
-- **[CircleCI](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci.html)**
+    - **[GitLab CI](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_gitlab_ci.html)**
 
-  CircleCI の config.yml と orbs
+      GitLab CI のジョブ定義と処理の共通化
 
-  [config.yml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_config_yml.html) ・ [orbs](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_orbs.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_practices.html)
+    </div>
 
-- **Skaffold**
+!!! cards ":material-rocket-launch-outline: Capistrano"
 
-  Skaffold による Kubernetes 開発の自動化
+    <div class="grid cards compact" markdown>
 
-  [skaffold.yaml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_skaffold_yaml.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_skaffold_command.html)
+    - **[Capistrano](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_capistrano.html)**
 
-</div>
+      Capistrano によるインプレースデプロイ
+
+    </div>
+
+!!! cards ":simple-circleci: CircleCI"
+
+    <div class="grid cards compact" markdown>
+
+    - **[CircleCI](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci.html)**
+
+      CircleCI の config.yml と orbs
+
+    - **[config.yml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_config_yml.html)**
+
+      jobs、commands、workflow などの config.yml
+
+    - **[orbs](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_orbs.html)**
+
+      aws-ecr や slack などの orbs
+
+    - **[プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_circleci_practices.html)**
+
+      CircleCI の脆弱性対策と事後処理
+
+    </div>
+
+!!! cards ":simple-skaffold: Skaffold"
+
+    Skaffold による Kubernetes 開発の自動化
+
+    <div class="grid cards compact" markdown>
+
+    - **[skaffold.yaml](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_skaffold_yaml.html)**
+
+      build、test、deploy などのステージの設定
+
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_ci_skaffold_command.html)**
+
+      skaffold コマンドとポートフォワーディング
+
+    </div>
 
 <br>
 
 ### CD ツール
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-argo: ArgoCD"
 
-- **[ArgoCD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd.html)**
+    <div class="grid cards compact" markdown>
 
-  ArgoCD の仕組み、リソース定義、運用のプラクティス
+    - **[ArgoCD](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd.html)**
 
-  [コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_command.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_practices.html) ・ リソース定義（[リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)・[共通項目](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)・[プラグイン](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)・[認証／認可系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)・[ConfigMap 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)・[Secret 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)・[Job 系](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)） ・ [Image Updater](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_image_updater_resource_definition.html)
+      ArgoCD の仕組み、リソース定義、運用のプラクティス
 
-- **[Argo Rollouts](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts.html)**
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_command.html)**
 
-  Argo Rollouts によるカナリアなどの段階的リリース
+      argocd app、cluster、repo コマンド
 
-  [リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)
+    - **[プラクティス集](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_practices.html)**
 
-</div>
+      コンポーネントの冗長化と Cluster の設計パターン
+
+    - **[リソース定義 (リソース定義)](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition.html)**
+
+      Application、ApplicationSet、AppProject
+
+    - **[共通項目 (リソース定義)](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_common.html)**
+
+      ArgoCD のラベル
+
+    - **[プラグイン (リソース定義)](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_plugin.html)**
+
+      Helm や Helmfile と連携するプラグイン
+
+    - **[認証／認可系 (リソース定義)](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_auth.html)**
+
+      ArgoCD の Role、RoleBinding、ServiceAccount
+
+    - **[ConfigMap 系 (リソース定義)](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_configmap.html)**
+
+      argocd-cm、argocd-rbac-cm などの ConfigMap
+
+    - **[Secret 系 (リソース定義)](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_secret.html)**
+
+      argocd-repo などの Secret
+
+    - **[Job 系 (リソース定義)](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_resource_definition_job.html)**
+
+      Sync に伴う処理を実行する Job
+
+    - **[Image Updater](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argocd_image_updater_resource_definition.html)**
+
+      コンテナイメージの自動更新
+
+    </div>
+
+!!! cards ":simple-argo: Argo Rollouts"
+
+    <div class="grid cards compact" markdown>
+
+    - **[Argo Rollouts](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts.html)**
+
+      Argo Rollouts によるカナリアなどの段階的リリース
+
+    - **[リソース定義](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_cd_argorollouts_resource_definition.html)**
+
+      Rollout による段階的なリリース
+
+    </div>
 
 <br>
 
 ### 自動レビューツール
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-github: github-comment"
 
-- **[github-comment](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_github_comment.html)**
+    <div class="grid cards compact" markdown>
 
-  ツールの実行結果を GitHub にコメントするツール
+    - **[github-comment](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_github_comment.html)**
 
-- **[reviewdog](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_reviewdog.html)**
+      ツールの実行結果を GitHub にコメントするツール
 
-  静的解析の結果を GitHub のレビューにコメントするツール
+    </div>
 
-- **[tfnotify](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_tfnotify.html)**
+!!! cards ":material-dog: reviewdog"
 
-  Terraform の実行結果を通知するツール
+    <div class="grid cards compact" markdown>
 
-</div>
+    - **[reviewdog](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_reviewdog.html)**
+
+      静的解析の結果を GitHub のレビューにコメントするツール
+
+    </div>
+
+!!! cards ":simple-terraform: tfnotify"
+
+    <div class="grid cards compact" markdown>
+
+    - **[tfnotify](https://hiroki-it.github.io/tech-notebook/devops/devops_cicd_auto_review_tfnotify.html)**
+
+      Terraform の実行結果を通知するツール
+
+    </div>
 
 <br>

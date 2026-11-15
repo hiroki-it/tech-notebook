@@ -17,76 +17,152 @@ tags:
 
 ### Kubernetes
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-kubernetes: Kubernetes"
 
-- **[Kubernetes](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes.html)**
+    <div class="grid cards compact" markdown>
 
-  Kubernetes の仕組み、証明書、マルチテナント
+    - **[Kubernetes](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes.html)**
 
-- **[コントロールプレーンコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.html)**
+      Kubernetes の仕組み、証明書、マルチテナント
 
-  kube-apiserver などのコントロールプレーンのコンポーネント
+    </div>
 
-- **[Node コンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)**
+!!! cards ":material-server-network: コントロールプレーンコンポーネント"
 
-  kubelet、kube-proxy、コンテナランタイム
+    <div class="grid cards compact" markdown>
 
-- **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html)**
+    - **[コントロールプレーンコンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_control_plane.html)**
 
-  kubectl コマンドの使い方
+      kube-apiserver などのコントロールプレーンのコンポーネント
 
-- **[ネットワーク](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)**
+    </div>
 
-  Node、Service、Pod のネットワークと Pod 間通信
+!!! cards ":material-server: Node コンポーネント"
 
-- **[クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_client_package.html)**
+    <div class="grid cards compact" markdown>
 
-  client-go による kube-apiserver との通信
+    - **[Node コンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_component_node.html)**
 
-- **[プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html)**
+      kubelet、kube-proxy、コンテナランタイム
 
-  Kubernetes リソース、Cluster、コンポーネントの設計
+    </div>
 
-  [K8s リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html) ・ [K8s Cluster](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html) ・ [K8s コンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.html)
+!!! cards ":material-console: コマンド"
 
-</div>
+    <div class="grid cards compact" markdown>
+
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_command.html)**
+
+      kubectl コマンドの使い方
+
+    </div>
+
+!!! cards ":material-lan: ネットワーク"
+
+    <div class="grid cards compact" markdown>
+
+    - **[ネットワーク](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_network.html)**
+
+      Node、Service、Pod のネットワークと Pod 間通信
+
+    </div>
+
+!!! cards ":material-package-variant: クライアントパッケージ"
+
+    <div class="grid cards compact" markdown>
+
+    - **[クライアントパッケージ](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_client_package.html)**
+
+      client-go による kube-apiserver との通信
+
+    </div>
+
+!!! cards ":material-lightbulb-outline: プラクティス集"
+
+    <div class="grid cards compact" markdown>
+
+    - **[プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices.html)**
+
+      Kubernetes リソース、Cluster、コンポーネントの設計
+
+    - **[K8s リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_resource.html)**
+
+      Cluster、Node、Etcd の設計
+
+    - **[K8s Cluster](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_cluster.html)**
+
+      Cluster の運用とアップグレード
+
+    - **[K8s コンポーネント](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_practices_component.html)**
+
+      コントロールプレーン Node、ワーカーNode、コンテナ
+
+    </div>
 
 <br>
 
 ### Kubernetes リソース
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-cube-outline: Kubernetes リソース"
 
-- **[Kubernetes リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)**
+    <div class="grid cards compact" markdown>
 
-  Workload、ネットワーク、設定、ストレージ系のリソース
+    - **[Kubernetes リソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource.html)**
 
-- **[リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)**
+      Workload、ネットワーク、設定、ストレージ系のリソース
 
-  Kubernetes リソースのマニフェストの書き方
+    </div>
 
-  [共通項目](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html) ・ [Amazon EKS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.html)
+!!! cards ":material-file-code-outline: リソース定義"
 
-</div>
+    <div class="grid cards compact" markdown>
+
+    - **[リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition.html)**
+
+      Kubernetes リソースのマニフェストの書き方
+
+    - **[共通項目](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_common.html)**
+
+      apiVersion、kind、metadata などの共通キー
+
+    - **[Amazon EKS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_resource_definition_aws_eks.html)**
+
+      Amazon EKS 固有のラベル
+
+    </div>
 
 <br>
 
 ### カスタムリソース
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-cube-unfolded: カスタムリソース"
 
-- **[カスタムリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)**
+    <div class="grid cards compact" markdown>
 
-  カスタムリソースと CRD
+    - **[カスタムリソース](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource.html)**
 
-- **[Custom Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.html)**
+      カスタムリソースと CRD
 
-  Custom Controller、reconciliation、Operator パターン
+    </div>
 
-- **[ロジック](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.html)**
+!!! cards ":material-sync: Custom Controller"
 
-  Custom Controller の実装例
+    <div class="grid cards compact" markdown>
 
-</div>
+    - **[Custom Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_custom_controller.html)**
+
+      Custom Controller、reconciliation、Operator パターン
+
+    </div>
+
+!!! cards ":material-code-braces: ロジック"
+
+    <div class="grid cards compact" markdown>
+
+    - **[ロジック](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_custom_resource_logic.html)**
+
+      Custom Controller の実装例
+
+    </div>
 
 <br>

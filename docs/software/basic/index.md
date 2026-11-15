@@ -17,88 +17,188 @@ tags:
 
 ### Linux カーネル
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-linux: Linux カーネル"
 
-- **[Linux カーネル](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel.html)**
+    <div class="grid cards compact" markdown>
 
-  Linux カーネルの仕組み
+    - **[Linux カーネル](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel.html)**
 
-- **[プロセス管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html)**
+      Linux カーネルの仕組み
 
-  プロセス、スレッド、CPU 上のプロセス管理方式
+    </div>
 
-- **[メモリ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_memory_management.html)**
+!!! cards ":material-cogs: プロセス管理"
 
-  物理メモリと仮想メモリの管理方式
+    <div class="grid cards compact" markdown>
 
-- **[ストレージ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_storage_management.html)**
+    - **[プロセス管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_process_management.html)**
 
-  パーティション、論理ボリューム、ファイルシステム
+      プロセス、スレッド、CPU 上のプロセス管理方式
 
-- **[I/O (入出力) 管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_io_management.html)**
+    </div>
 
-  標準入出力、リダイレクト、パイプライン
+!!! cards ":material-memory: メモリ管理"
 
-- **[ジョブ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html)**
+    <div class="grid cards compact" markdown>
 
-  ジョブとバッチ処理の管理
+    - **[メモリ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_memory_management.html)**
 
-- **[セキュリティ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_security_management.html)**
+      物理メモリと仮想メモリの管理方式
 
-  リソース制限と SELinux
+    </div>
 
-</div>
+!!! cards ":material-harddisk: ストレージ管理"
+
+    <div class="grid cards compact" markdown>
+
+    - **[ストレージ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_storage_management.html)**
+
+      パーティション、論理ボリューム、ファイルシステム
+
+    </div>
+
+!!! cards ":material-swap-vertical: I/O (入出力) 管理"
+
+    <div class="grid cards compact" markdown>
+
+    - **[I/O (入出力) 管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_io_management.html)**
+
+      標準入出力、リダイレクト、パイプライン
+
+    </div>
+
+!!! cards ":material-calendar-clock: ジョブ管理"
+
+    <div class="grid cards compact" markdown>
+
+    - **[ジョブ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_job_management.html)**
+
+      ジョブとバッチ処理の管理
+
+    </div>
+
+!!! cards ":material-shield-lock-outline: セキュリティ管理"
+
+    <div class="grid cards compact" markdown>
+
+    - **[セキュリティ管理](https://hiroki-it.github.io/tech-notebook/software/software_basic_linux_kernel_security_management.html)**
+
+      リソース制限と SELinux
+
+    </div>
 
 <br>
 
 ### <u>ユーティリティ</u>
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-tools: ユーティリティ"
 
-- **[ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility.html)**
+    <div class="grid cards compact" markdown>
 
-  ユーティリティの種類とバイナリファイルの場所
+    - **[ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility.html)**
 
-- **[Unix 系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)**
+      ユーティリティの種類とバイナリファイルの場所
 
-  chmod、cron、curl などの Unix 系コマンド
+    </div>
 
-- **[シェル](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html)**
+!!! cards ":material-console: Unix 系標準ユーティリティ"
 
-  シェルの起動方法、終了ステータス、実行タイミング
+    <div class="grid cards compact" markdown>
 
-- **[スクリプト](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_script.html)**
+    - **[Unix 系標準ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_unix.html)**
 
-  シェルスクリプトと Makefile
+      chmod、cron、curl などの Unix 系コマンド
 
-- **パッケージ**
+    </div>
 
-  メモリ、ネットワーク、セキュリティ、ストレージ系のツール
+!!! cards ":simple-gnubash: シェル"
 
-  [メモリ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_memory.html) ・ [ネットワーク系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_network.html) ・ [セキュリティ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_security.html) ・ [ストレージ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_storage.html)
+    <div class="grid cards compact" markdown>
 
-- **[パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html)**
+    - **[シェル](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_shell.html)**
 
-  apt や yum などのパッケージ管理ユーティリティ
+      シェルの起動方法、終了ステータス、実行タイミング
 
-  [Linux 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html) ・ [RedHat 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html) ・ [Debian 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)
+    </div>
 
-</div>
+!!! cards ":material-script-text-outline: スクリプト"
+
+    <div class="grid cards compact" markdown>
+
+    - **[スクリプト](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_script.html)**
+
+      シェルスクリプトと Makefile
+
+    </div>
+
+!!! cards ":material-package-variant: パッケージ"
+
+    メモリ、ネットワーク、セキュリティ、ストレージ系のツール
+
+    <div class="grid cards compact" markdown>
+
+    - **[メモリ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_memory.html)**
+
+      pstree、supervisor、systemctl
+
+    - **[ネットワーク系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_network.html)**
+
+      dig、tcpdump、traceroute などのツール
+
+    - **[セキュリティ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_security.html)**
+
+      SOPS によるファイルの暗号化
+
+    - **[ストレージ系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_storage.html)**
+
+      growpart、resize2fs、tree
+
+    </div>
+
+!!! cards ":material-package-down: パッケージ管理ユーティリティ"
+
+    <div class="grid cards compact" markdown>
+
+    - **[パッケージ管理ユーティリティ](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management.html)**
+
+      apt や yum などのパッケージ管理ユーティリティ
+
+    - **[Linux 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_linux.html)**
+
+      apk、brew、asdf、mise、direnv
+
+    - **[RedHat 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_redhat.html)**
+
+      rpm、yum、dnf とリポジトリ
+
+    - **[Debian 系](https://hiroki-it.github.io/tech-notebook/software/software_basic_utility_package_management_debian.html)**
+
+      apt-file によるパッケージの検索
+
+    </div>
 
  <br>
 
 ### 言語プロセッサー
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-translate: 言語プロセッサー"
 
-- **[言語プロセッサー](https://hiroki-it.github.io/tech-notebook/software/software_basic_language_processor.html)**
+    <div class="grid cards compact" markdown>
 
-  アセンブラ、コンパイラ、インタプリタ方式
+    - **[言語プロセッサー](https://hiroki-it.github.io/tech-notebook/software/software_basic_language_processor.html)**
 
-- **[機械語と進数](https://hiroki-it.github.io/tech-notebook/software/software_basic_language_processor_machine_language_and_radix.html)**
+      アセンブラ、コンパイラ、インタプリタ方式
 
-  機械語命令と 2 進数
+    </div>
 
-</div>
+!!! cards ":material-numeric: 機械語と進数"
+
+    <div class="grid cards compact" markdown>
+
+    - **[機械語と進数](https://hiroki-it.github.io/tech-notebook/software/software_basic_language_processor_machine_language_and_radix.html)**
+
+      機械語命令と 2 進数
+
+    </div>
 
 <br>

@@ -11,80 +11,210 @@ tags:
 
 ### IaC
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-file-code-outline: IaC"
 
-- **[IaC](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code.html)**
+    <div class="grid cards compact" markdown>
 
-  IaC の手続き型と宣言型、プロビジョニング
+    - **[IaC](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code.html)**
 
-</div>
+      IaC の手続き型と宣言型、プロビジョニング
+
+    </div>
 
 <br>
 
 ### 手続き型
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-ansible: Ansible"
 
-- **[Ansible](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible.html)**
+    <div class="grid cards compact" markdown>
 
-  Ansible の Playbook と Ansible Galaxy
+    - **[Ansible](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible.html)**
 
-  [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_command.html) ・ [Playbook](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_playbook.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_cfg.html) ・ [Ansible Galaxy](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_galaxy.html)
+      Ansible の Playbook と Ansible Galaxy
 
-- **Docker**
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_command.html)**
 
-  Dockerfile の書き方とコマンド
+      ansible-playbook や ansible-vault などのコマンド
 
-  [Dockerfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_command.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_practices.html)
+    - **[Playbook](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_playbook.html)**
 
-</div>
+      playbook ファイルと role の構成
+
+    - **[設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_cfg.html)**
+
+      ansible.cfg と inventory の設定
+
+    - **[Ansible Galaxy](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_ansible_galaxy.html)**
+
+      Ansible Galaxy による role の共有
+
+    </div>
+
+!!! cards ":simple-docker: Docker"
+
+    Dockerfile の書き方とコマンド
+
+    <div class="grid cards compact" markdown>
+
+    - **[Dockerfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_dockerfile.html)**
+
+      FROM、COPY、CMD などの命令
+
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_command.html)**
+
+      Docker コマンド (仮想化セクションを参照)
+
+    - **[プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_practices.html)**
+
+      イメージの分割、サイズ削減、脆弱性対策
+
+    </div>
 
 <br>
 
 ### 宣言型
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-docker: Docker Compose"
 
-- **Docker Compose**
+    docker-compose.yml によるコンテナの構成管理
 
-  docker-compose.yml によるコンテナの構成管理
+    <div class="grid cards compact" markdown>
 
-  [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_command.html) ・ [docker-compose.yml](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_command.html)**
 
-- **[Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko.html)**
+      docker compose コマンド
 
-  Kaniko によるデーモン不要のイメージビルド
+    - **[docker-compose.yml](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_compose_yml.html)**
 
-  [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_conf.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_command.html)
+      services や networks によるコンテナの定義
 
-- **[Kubernetes](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/kubernetes/index.html)**
+    </div>
 
-  量が多いため、K8s セクションに切り分け
+!!! cards ":simple-kaniko: Kaniko"
 
-- **[Packer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer.html)**
+    <div class="grid cards compact" markdown>
 
-  Packer によるマシンイメージの作成
+    - **[Kaniko](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko.html)**
 
-  [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_command.html) ・ [テンプレート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_template.html)
+      Kaniko によるデーモン不要のイメージビルド
 
-- **Serverless Framework**
+    - **[設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_conf.html)**
 
-  serverless.yml によるサーバーレス環境の構築
+      config.json によるレジストリの認証
 
-  [serverless.yml](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html)
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_docker_kaniko_command.html)**
 
-- **Terraform**
+      executor のビルドオプション
 
-  Terraform のブロック、モジュール、プロバイダー、tfstate 分割
+    </div>
 
-  [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_command.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_conf.html) ・ tf ファイル（[ブロック](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_block.html)・[モジュール](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_module.html)） ・ プロバイダー（[独自プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_self.html)・[AWS プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html)・[Kubernetes プロバイダー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html)） ・ [CI/CD パイプライン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html) ・ プラクティス集（[プラクティス集](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices.html)・[tfstate ファイル分割](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html)）
+!!! cards ":simple-kubernetes: Kubernetes"
 
-- **Vagrant**
+    <div class="grid cards compact" markdown>
 
-  Vagrantfile による仮想マシンの構築
+    - **[Kubernetes](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/kubernetes/index.html)**
 
-  [Vagrantfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_vagrant_command.html)
+      量が多いため、K8s セクションに切り分け
 
-</div>
+    </div>
+
+!!! cards ":simple-packer: Packer"
+
+    <div class="grid cards compact" markdown>
+
+    - **[Packer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer.html)**
+
+      Packer によるマシンイメージの作成
+
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_command.html)**
+
+      packer コマンドの使い方
+
+    - **[テンプレート](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_packer_template.html)**
+
+      source、build、provisioner によるイメージ定義
+
+    </div>
+
+!!! cards ":simple-serverless: Serverless Framework"
+
+    serverless.yml によるサーバーレス環境の構築
+
+    <div class="grid cards compact" markdown>
+
+    - **[serverless.yml](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_yml.html)**
+
+      functions や provider などの設定
+
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_serverless_framework_serverless_command.html)**
+
+      serverless コマンドの使い方
+
+    </div>
+
+!!! cards ":simple-terraform: Terraform"
+
+    Terraform のブロック、モジュール、プロバイダー、tfstate 分割
+
+    <div class="grid cards compact" markdown>
+
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_command.html)**
+
+      terraform コマンドと tfstate へのインポート
+
+    - **[設定ファイル](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_conf.html)**
+
+      バックエンドと資格情報のファイル
+
+    - **[ブロック (tf ファイル)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_block.html)**
+
+      resource、data、variable などのブロック
+
+    - **[モジュール (tf ファイル)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_tf_module.html)**
+
+      ルートモジュールとチャイルドモジュール
+
+    - **[独自プロバイダー (プロバイダー)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_self.html)**
+
+      Terraform Plugin Framework による独自プロバイダー
+
+    - **[AWS プロバイダー (プロバイダー)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html)**
+
+      AWS プロバイダーによる各 AWS リソースの定義
+
+    - **[Kubernetes プロバイダー (プロバイダー)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.html)**
+
+      Kubernetes プロバイダーの設定
+
+    - **[CI/CD パイプライン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.html)**
+
+      CircleCI による Terraform のパイプライン
+
+    - **[プラクティス集 (プラクティス集)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices.html)**
+
+      リポジトリ、ディレクトリ構成、命名規則
+
+    - **[tfstate ファイル分割 (プラクティス集)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_practices_tfstate.html)**
+
+      tfstate ファイルの分割パターン
+
+    </div>
+
+!!! cards ":simple-vagrant: Vagrant"
+
+    Vagrantfile による仮想マシンの構築
+
+    <div class="grid cards compact" markdown>
+
+    - **[Vagrantfile](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_vagrant_vagrantfile.html)**
+
+      Vagrant.configure と config.vm の設定
+
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_vagrant_command.html)**
+
+      vagrant コマンドの使い方
+
+    </div>
 
 <br>

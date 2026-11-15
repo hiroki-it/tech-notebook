@@ -17,152 +17,248 @@ tags:
 
 ### コントロールプレーン系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-shield-check-outline: admission-controllers"
 
-- **[admission-controllers](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html)**
+    <div class="grid cards compact" markdown>
 
-  admission プラグインによるリクエストの検証と変更
+    - **[admission-controllers](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html)**
 
-</div>
+      admission プラグインによるリクエストの検証と変更
+
+    </div>
 
 <br>
 
 ### Ingress Controller 系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-door-open: Ingress Controller"
 
-- **[Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)**
+    <div class="grid cards compact" markdown>
 
-  Ingress を監視してルーティングする Ingress Controller
+    - **[Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html)**
 
-- **[AWS Load Balancer Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)**
+      Ingress を監視してルーティングする Ingress Controller
 
-  AWS のロードバランサーと連携する Ingress Controller
+    </div>
 
-  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html)
+!!! cards ":material-aws: AWS Load Balancer Controller"
 
-- **[Nginx Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html)**
+    <div class="grid cards compact" markdown>
 
-  Nginx を使用する Ingress Controller
+    - **[AWS Load Balancer Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html)**
 
-  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html)
+      AWS のロードバランサーと連携する Ingress Controller
 
-</div>
+    - **[リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html)**
+
+      ALB のルーティングを決める Ingress の設定
+
+    </div>
+
+!!! cards ":simple-nginx: Nginx Ingress Controller"
+
+    <div class="grid cards compact" markdown>
+
+    - **[Nginx Ingress Controller](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html)**
+
+      Nginx を使用する Ingress Controller
+
+    - **[リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html)**
+
+      Nginx のルーティングを決める Ingress の設定
+
+    </div>
 
 <br>
 
 ### ︎ハードウェアリソース管理系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-arrow-expand-vertical: addon-resizer"
 
-- **[addon-resizer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html)**
+    <div class="grid cards compact" markdown>
 
-  コンテナのリソース要求量を動的に垂直スケーリング
+    - **[addon-resizer](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html)**
 
-- **[cluster-autoscaler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html)**
+      コンテナのリソース要求量を動的に垂直スケーリング
 
-  Node グループの Node 数を自動スケーリング
+    </div>
 
-- **[descheduler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html)**
+!!! cards ":material-arrow-expand-horizontal: cluster-autoscaler"
 
-  不適切な Node から Pod を退避させるアドオン
+    <div class="grid cards compact" markdown>
 
-- **[metrics-server](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html)**
+    - **[cluster-autoscaler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html)**
 
-  メトリクスの収集と kubectl top、Pod の自動スケーリング
+      Node グループの Node 数を自動スケーリング
 
-- **[Karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html)**
+    </div>
 
-  Karpenter による Node の自動プロビジョニング
+!!! cards ":material-swap-horizontal: descheduler"
 
-  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html)
+    <div class="grid cards compact" markdown>
 
-</div>
+    - **[descheduler](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html)**
+
+      不適切な Node から Pod を退避させるアドオン
+
+    </div>
+
+!!! cards ":material-chart-line: metrics-server"
+
+    <div class="grid cards compact" markdown>
+
+    - **[metrics-server](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html)**
+
+      メトリクスの収集と kubectl top、Pod の自動スケーリング
+
+    </div>
+
+!!! cards ":material-server-plus: Karpenter"
+
+    <div class="grid cards compact" markdown>
+
+    - **[Karpenter](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html)**
+
+      Karpenter による Node の自動プロビジョニング
+
+    - **[リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html)**
+
+      EC2NodeClass と NodePool
+
+    </div>
 
 <br>
 
 ### ネットワーク系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-lan: CNI"
 
-- **[CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)**
+    <div class="grid cards compact" markdown>
 
-  CNI のオーバーレイ、ルーティング、アンダーレイモード
+    - **[CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html)**
 
-- **[Cilium](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.html)**
+      CNI のオーバーレイ、ルーティング、アンダーレイモード
 
-  Cilium の仕組みと Cilium サービスメッシュ
+    </div>
 
-- **[ExternalDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html)**
+!!! cards ":simple-cilium: Cilium"
 
-  Kubernetes リソースから DNS レコードを自動作成
+    <div class="grid cards compact" markdown>
 
-</div>
+    - **[Cilium](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.html)**
+
+      Cilium の仕組みと Cilium サービスメッシュ
+
+    </div>
+
+!!! cards ":material-dns: ExternalDNS"
+
+    <div class="grid cards compact" markdown>
+
+    - **[ExternalDNS](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html)**
+
+      Kubernetes リソースから DNS レコードを自動作成
+
+    </div>
 
 <br>
 
 ### ストレージ系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-harddisk: ストレージ CSI ドライバー"
 
-- **[ストレージ CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html)**
+    <div class="grid cards compact" markdown>
 
-  Pod にストレージをマウントする CSI ドライバー
+    - **[ストレージ CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html)**
 
-</div>
+      Pod にストレージをマウントする CSI ドライバー
+
+    </div>
 
 <br>
 
 ### Secret 系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-key-variant: Secrets ストア CSI ドライバー"
 
-- **[Secrets ストア CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html)**
+    <div class="grid cards compact" markdown>
 
-  外部のシークレットをボリュームとしてマウント
+    - **[Secrets ストア CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html)**
 
-  [リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html)
+      外部のシークレットをボリュームとしてマウント
 
-- **[External Secrets Operator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html)**
+    - **[リソース定義](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html)**
 
-  外部のシークレットを Secret として同期
+      SecretProviderClass と Pod の設定
 
-</div>
+    </div>
+
+!!! cards ":material-key-chain: External Secrets Operator"
+
+    <div class="grid cards compact" markdown>
+
+    - **[External Secrets Operator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html)**
+
+      外部のシークレットを Secret として同期
+
+    </div>
 
 <br>
 
 ### デバッグ系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-bug-outline: Telepresence"
 
-- **[Telepresence](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_debug_telepresence.html)**
+    <div class="grid cards compact" markdown>
 
-  Cluster 内の通信をローカル PC で確認するツール
+    - **[Telepresence](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_debug_telepresence.html)**
 
-</div>
+      Cluster 内の通信をローカル PC で確認するツール
+
+    </div>
 
 <br>
 
 ### AWS 系
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-aws: Amazon EKS アドオン"
 
-- **[Amazon EKS アドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)**
+    <div class="grid cards compact" markdown>
 
-  CoreDNS や kube-proxy などの Amazon EKS アドオン
+    - **[Amazon EKS アドオン](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html)**
 
-- **[Amazon VPC CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html)**
+      CoreDNS や kube-proxy などの Amazon EKS アドオン
 
-  Pod に VPC の IP アドレスを割り当てる CNI
+    </div>
 
-- **[AWS EBS CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html)**
+!!! cards ":material-aws: Amazon VPC CNI"
 
-  AWS EBS を PersistentVolume として使用
+    <div class="grid cards compact" markdown>
 
-- **[AWS OpenTelemetry Collector Operator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html)**
+    - **[Amazon VPC CNI](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html)**
 
-  OpenTelemetry Collector を管理する Operator
+      Pod に VPC の IP アドレスを割り当てる CNI
 
-</div>
+    </div>
+
+!!! cards ":material-aws: AWS EBS CSI ドライバー"
+
+    <div class="grid cards compact" markdown>
+
+    - **[AWS EBS CSI ドライバー](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html)**
+
+      AWS EBS を PersistentVolume として使用
+
+    </div>
+
+!!! cards ":simple-opentelemetry: AWS OpenTelemetry Collector Operator"
+
+    <div class="grid cards compact" markdown>
+
+    - **[AWS OpenTelemetry Collector Operator](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html)**
+
+      OpenTelemetry Collector を管理する Operator
+
+    </div>
 
 <br>

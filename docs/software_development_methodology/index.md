@@ -11,80 +11,112 @@ tags:
 
 ### 開発手法論
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-strategy: 開発手法論"
 
-- **[開発手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)**
+    <div class="grid cards compact" markdown>
 
-  ウォーターフォールやアジャイルなどの開発手法
+    - **[開発手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)**
 
-</div>
+      ウォーターフォールやアジャイルなどの開発手法
+
+    </div>
 
 <br>
 
 ### 組織論
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-account-group-outline: 組織論"
 
-- **[組織論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_organization.html)**
+    <div class="grid cards compact" markdown>
 
-  エンジニアチームの作り方とキャリアパス
+    - **[組織論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_organization.html)**
 
-</div>
+      エンジニアチームの作り方とキャリアパス
+
+    </div>
 
 <br>
 
 ### OSS コントリビューション
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-source-pull: OSS コントリビューション"
 
-- **[OSS コントリビューション](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_oss_contribution.html)**
+    <div class="grid cards compact" markdown>
 
-  OSS コントリビューションのコツ
+    - **[OSS コントリビューション](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_oss_contribution.html)**
 
-</div>
+      OSS コントリビューションのコツ
+
+    </div>
 
 <br>
 
 ### プロダクトマネジメント
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-bullseye-arrow: プロダクトマネジメント"
 
-- **[プロダクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management.html)**
+    <div class="grid cards compact" markdown>
 
-  プロジェクトマネジメントとプロダクトグロース
+    - **[プロダクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management.html)**
 
-- **[プロジェクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management.html)**
+      プロジェクトマネジメントとプロダクトグロース
 
-  タスク管理、見積もり、合意形成
+    </div>
 
-  [タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_task_management.html) ・ [見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_estimate.html) ・ [合意形成](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_negotiation.html)
+!!! cards ":material-calendar-check-outline: プロジェクトマネジメント"
 
-</div>
+    <div class="grid cards compact" markdown>
+
+    - **[プロジェクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management.html)**
+
+      タスク管理、見積もり、合意形成
+
+    - **[タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_task_management.html)**
+
+      全体像の把握、タスクの洗い出し、進捗管理
+
+    - **[見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_estimate.html)**
+
+      見積もりの指標と手法
+
+    - **[合意形成](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_negotiation.html)**
+
+      異なる視点を統合する合意形成
+
+    </div>
 
 <br>
 
 ### テクノロジーマネジメント
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-compass-outline: テクノロジーマネジメント"
 
-- **[テクノロジーマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_technology_management.html)**
+    <div class="grid cards compact" markdown>
 
-  システムの設計から運用保守までのリード
+    - **[テクノロジーマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_technology_management.html)**
 
-</div>
+      システムの設計から運用保守までのリード
+
+    </div>
 
 <br>
 
 ### バージョン管理
 
-<div class="grid cards compact" markdown>
+!!! cards ":simple-git: Git"
 
-- **Git**
+    Git のコマンドと GitHub
 
-  Git のコマンドと GitHub
+    <div class="grid cards compact" markdown>
 
-  [コマンド](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_command.html) ・ [GitHub](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_github.html)
+    - **[コマンド](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_command.html)**
 
-</div>
+      add、branch、clone などの git コマンド
+
+    - **[GitHub](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_github.html)**
+
+      Issue、プルリクエスト、Git-flow
+
+    </div>
 
 <br>

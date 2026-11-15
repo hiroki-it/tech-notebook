@@ -10,50 +10,64 @@ tags:
 ## 🧬 ソフトウェア
 
 ### ソフトウェア
-<div class="grid cards compact" markdown>
+!!! cards ":material-application-outline: ソフトウェア"
 
-- **[ソフトウェア](https://hiroki-it.github.io/tech-notebook/software/software.html)**
+    <div class="grid cards compact" markdown>
 
-  アプリケーション、ミドルウェア、OS などのソフトウェアの分類
+    - **[ソフトウェア](https://hiroki-it.github.io/tech-notebook/software/software.html)**
 
-- **[プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_practices.html)**
+      アプリケーション、ミドルウェア、OS などのソフトウェアの分類
 
-  ソフトウェアのアップグレードなどのプラクティス
+    </div>
 
-</div>
+!!! cards ":material-lightbulb-outline: プラクティス集"
+
+    <div class="grid cards compact" markdown>
+
+    - **[プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_practices.html)**
+
+      ソフトウェアのアップグレードなどのプラクティス
+
+    </div>
 
 <br>
 
 ### アプリケーションソフトウェア
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-application-brackets-outline: アプリケーションソフトウェア"
 
-- **[アプリケーションソフトウェア](https://hiroki-it.github.io/tech-notebook/software/application/index.html)**
+    <div class="grid cards compact" markdown>
 
-  アプリのノート一覧
+    - **[アプリケーションソフトウェア](https://hiroki-it.github.io/tech-notebook/software/application/index.html)**
 
-</div>
+      アプリのノート一覧
+
+    </div>
 
 <br>
 
 ### ミドルウェア
-<div class="grid cards compact" markdown>
+!!! cards ":material-server-network: ミドルウェア"
 
-- **[ミドルウェア](https://hiroki-it.github.io/tech-notebook/software/middleware/index.html)**
+    <div class="grid cards compact" markdown>
 
-  ミドルウェアのノート一覧
+    - **[ミドルウェア](https://hiroki-it.github.io/tech-notebook/software/middleware/index.html)**
 
-</div>
+      ミドルウェアのノート一覧
+
+    </div>
 
 <br>
 
 ### 基本ソフトウェア (OS)
-<div class="grid cards compact" markdown>
+!!! cards ":simple-linux: 基本ソフトウェア (OS)"
 
-- **[基本ソフトウェア (OS)](https://hiroki-it.github.io/tech-notebook/software/basic/index.html)**
+    <div class="grid cards compact" markdown>
 
-  OS のノート一覧
+    - **[基本ソフトウェア (OS)](https://hiroki-it.github.io/tech-notebook/software/basic/index.html)**
 
-</div>
+      OS のノート一覧
+
+    </div>
 
 <br>

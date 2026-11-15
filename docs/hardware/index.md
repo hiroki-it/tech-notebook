@@ -9,28 +9,54 @@ tags:
 
 ## 💻 ハードウェア
 
-<div class="grid cards compact" markdown>
+!!! cards ":material-desktop-tower: ハードウェア"
 
-- **[ハードウェア](https://hiroki-it.github.io/tech-notebook/hardware/hardware.html)**
+    <div class="grid cards compact" markdown>
 
-  システムのうちソフトウェア以外の要素
+    - **[ハードウェア](https://hiroki-it.github.io/tech-notebook/hardware/hardware.html)**
 
-- **[CPU](https://hiroki-it.github.io/tech-notebook/hardware/hardware_cpu.html)**
+      システムのうちソフトウェア以外の要素
 
-  CPU の仕組みと性能
+    </div>
 
-- **[メモリ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_memory.html)**
+!!! cards ":material-cpu-64-bit: CPU"
 
-  メインメモリ、キャッシュメモリ、VRAM
+    <div class="grid cards compact" markdown>
 
-- **[ストレージ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_storage.html)**
+    - **[CPU](https://hiroki-it.github.io/tech-notebook/hardware/hardware_cpu.html)**
 
-  ストレージとディスクドライブ
+      CPU の仕組みと性能
 
-- **[組み込み機器](https://hiroki-it.github.io/tech-notebook/hardware/hardware_embedded_system.html)**
+    </div>
 
-  組み込み機器と入出力インターフェイス
+!!! cards ":material-memory: メモリ"
 
-</div>
+    <div class="grid cards compact" markdown>
+
+    - **[メモリ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_memory.html)**
+
+      メインメモリ、キャッシュメモリ、VRAM
+
+    </div>
+
+!!! cards ":material-harddisk: ストレージ"
+
+    <div class="grid cards compact" markdown>
+
+    - **[ストレージ](https://hiroki-it.github.io/tech-notebook/hardware/hardware_storage.html)**
+
+      ストレージとディスクドライブ
+
+    </div>
+
+!!! cards ":material-chip: 組み込み機器"
+
+    <div class="grid cards compact" markdown>
+
+    - **[組み込み機器](https://hiroki-it.github.io/tech-notebook/hardware/hardware_embedded_system.html)**
+
+      組み込み機器と入出力インターフェイス
+
+    </div>
 
 <br>
