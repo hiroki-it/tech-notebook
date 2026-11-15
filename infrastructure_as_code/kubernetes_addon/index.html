@@ -35747,7 +35747,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 20:49:53 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 20:55:47 JST">2026-11-15</span>
   </span>
 
     
@@ -35782,24 +35782,32 @@
 <h3 id="_2">コントロールプレーン系<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <div class="grid cards compact">
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html">admission-controllers</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_component_control_plane_admission_controllers.html">admission-controllers</a></strong></p>
+<p>admission プラグインによるリクエストの検証と変更</p>
+</li>
 </ul>
 </div>
 <p><br></p>
 <h3 id="ingress-controller">Ingress Controller 系<a class="headerlink" href="#ingress-controller" title="Permanent link">&para;</a></h3>
 <div class="grid cards compact">
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html">Ingress Controller</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller.html">Ingress Controller</a></strong></p>
+<p>Ingress を監視してルーティングする Ingress Controller</p>
+</li>
 </ul>
 <ul>
 <li>
 <p><strong>AWS Load Balancer Controller</strong></p>
+<p>AWS のロードバランサーと連携する Ingress Controller</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb.html">AWS Load Balancer Controller</a> ・ <a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_alb_resource_definition.html">リソース定義</a></p>
 </li>
 </ul>
 <ul>
 <li>
 <p><strong>Nginx Ingress Controller</strong></p>
+<p>Nginx を使用する Ingress Controller</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx.html">Nginx Ingress Controller</a> ・ <a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_ingress_controller_nginx_resource_definition.html">リソース定義</a></p>
 </li>
 </ul>
@@ -35808,20 +35816,33 @@
 <h3 id="_3">︎ハードウェアリソース管理系<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="grid cards compact">
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html">addon-resizer</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_addon_resizer.html">addon-resizer</a></strong></p>
+<p>コンテナのリソース要求量を動的に垂直スケーリング</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html">cluster-autoscaler</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_cluster_autoscaler.html">cluster-autoscaler</a></strong></p>
+<p>Node グループの Node 数を自動スケーリング</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html">descheduler</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_descheduler.html">descheduler</a></strong></p>
+<p>不適切な Node から Pod を退避させるアドオン</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html">metrics-server</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_metrics_server.html">metrics-server</a></strong></p>
+<p>メトリクスの収集と kubectl top、Pod の自動スケーリング</p>
+</li>
 </ul>
 <ul>
 <li>
 <p><strong>Karpenter</strong></p>
+<p>Karpenter による Node の自動プロビジョニング</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter.html">Karpenter</a> ・ <a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_hardware_resource_management_karpenter_resource_definition.html">リソース定義</a></p>
 </li>
 </ul>
@@ -35830,13 +35851,22 @@
 <h3 id="_4">ネットワーク系<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <div class="grid cards compact">
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html">CNI</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cni.html">CNI</a></strong></p>
+<p>CNI のオーバーレイ、ルーティング、アンダーレイモード</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.html">Cilium</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_cilium.html">Cilium</a></strong></p>
+<p>Cilium の仕組みと Cilium サービスメッシュ</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html">ExternalDNS</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_network_external_dns.html">ExternalDNS</a></strong></p>
+<p>Kubernetes リソースから DNS レコードを自動作成</p>
+</li>
 </ul>
 </div>
 <p><br></p>
@@ -35845,6 +35875,7 @@
 <ul>
 <li>
 <p><strong>ストレージ CSI ドライバー</strong></p>
+<p>Pod にストレージをマウントする CSI ドライバー</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_storage_csi_driver.html">ストレージ CSI ドライバー</a></p>
 </li>
 </ul>
@@ -35855,12 +35886,14 @@
 <ul>
 <li>
 <p><strong>Secrets ストア CSI ドライバー</strong></p>
+<p>外部のシークレットをボリュームとしてマウント</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver.html">Secrets ストア CSI ドライバー</a> ・ <a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_secrets_store_csi_driver_resource_definition.html">リソース定義</a></p>
 </li>
 </ul>
 <ul>
 <li>
 <p><strong>External Secrets Operator</strong></p>
+<p>外部のシークレットを Secret として同期</p>
 <p><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_secret_external_secrets_oprator.html">External Secrets Operator</a></p>
 </li>
 </ul>
@@ -35869,23 +35902,38 @@
 <h3 id="_6">デバッグ系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <div class="grid cards compact">
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_debug_telepresence.html">Telepresence</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_debug_telepresence.html">Telepresence</a></strong></p>
+<p>Cluster 内の通信をローカル PC で確認するツール</p>
+</li>
 </ul>
 </div>
 <p><br></p>
 <h3 id="aws">AWS 系<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <div class="grid cards compact">
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html">Amazon EKS アドオン</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks.html">Amazon EKS アドオン</a></strong></p>
+<p>CoreDNS や kube-proxy などの Amazon EKS アドオン</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html">Amazon VPC CNI</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_vpc_cni.html">Amazon VPC CNI</a></strong></p>
+<p>Pod に VPC の IP アドレスを割り当てる CNI</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html">AWS EBS CSI ドライバー</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_ebs_csi_driver.html">AWS EBS CSI ドライバー</a></strong></p>
+<p>AWS EBS を PersistentVolume として使用</p>
+</li>
 </ul>
 <ul>
-<li><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html">AWS OpenTelemetry Collector Operator</a></strong></li>
+<li>
+<p><strong><a href="https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_kubernetes_addon_cloud_provider_aws_eks_open_telemetry_collector_operator.html">AWS OpenTelemetry Collector Operator</a></strong></p>
+<p>OpenTelemetry Collector を管理する Operator</p>
+</li>
 </ul>
 </div>
 <p><br></p>
