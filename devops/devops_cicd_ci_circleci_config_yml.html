@@ -37683,7 +37683,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -38021,7 +38021,7 @@
 <p>複数の <code>job</code> を定義する。</p>
 <p>workflows を使用しない場合は、少なくとも <code>1</code> 個の <code>job</code> には <code>build</code> という名前を使用しなければならない。</p>
 <h4 id="job">▼ job の粒度<a class="headerlink" href="#job" title="Permanent link">&para;</a></h4>
-<p><img alt="cicd_pipeline" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cicd_pipeline.png" /></p>
+<p><img alt="cicd_pipeline" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/cicd_pipeline.png" /></p>
 <table>
   <thead>
     <tr>
@@ -38061,7 +38061,7 @@
 <p><code>machine</code> タイプを選択した場合、<code>setup_remote_docker</code> は不要である。</p>
 <p>ただし、ボリュームマウントを使用できなくなるので注意する。</p>
 <p>また、Dockerfile の COPY コマンドが動作しなくなる。</p>
-<p><img alt="docker_executor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png" /></p>
+<p><img alt="docker_executor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/docker_executor.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -38090,7 +38090,7 @@
 </blockquote>
 <h4 id="machine">▼ machine タイプとは<a class="headerlink" href="#machine" title="Permanent link">&para;</a></h4>
 <p>Linux サーバーを実行環境として設定する。</p>
-<p><img alt="machine_executor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine_executor.png" /></p>
+<p><img alt="machine_executor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/machine_executor.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
 <span class="nt">jobs</span><span class="p">:</span>
@@ -38164,7 +38164,7 @@
 <span class="w">          </span><span class="nt">custom_checkout_parameters</span><span class="p">:</span><span class="w"> </span><span class="s">"true"</span>
 </code></pre></div>
 <h4 id="restore_cachesave_cache">▼ restore_cache、save_cache<a class="headerlink" href="#restore_cachesave_cache" title="Permanent link">&para;</a></h4>
-<p><img alt="circleci_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_cache.png" /></p>
+<p><img alt="circleci_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/circleci_cache.png" /></p>
 <p>Workflow 間で使いまわせるキャッシュを作成する。</p>
 <p><code>resource_class</code> キーによる実行環境のスペック設定と同様にして、ビルドの完了までの速さを改善できる。</p>
 <p>これを使用しない場合、例えば、CircleCI コンテナで <code>composer install</code> コマンドを実行することで、毎回の workflow で同じパッケージがインストールされる。</p>
@@ -38260,7 +38260,7 @@
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">save_vendor</span>
 </code></pre></div>
 <h4 id="persist_to_workspaceattach_workspace">▼ persist_to_workspace、attach_workspace<a class="headerlink" href="#persist_to_workspaceattach_workspace" title="Permanent link">&para;</a></h4>
-<p><img alt="workflow_workspace_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/workflow_workspace_cache.png" /></p>
+<p><img alt="workflow_workspace_cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/workflow_workspace_cache.png" /></p>
 <p>CircleCI では、job ごとに異なる仮想環境を作成するため、他の <code>jobs</code> キーで使用された一時ファイルを再利用したい場合、これを使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>
 
@@ -38894,7 +38894,7 @@
 <p>CircleCI でコンテナイメージをビルドした後、各イメージレイヤーのキャッシュを DLC ボリュームに作成する。</p>
 <p>そして、次回以降のビルド時、差分がないイメージレイヤーを DLC ボリュームからプルして再利用する。</p>
 <p>これにより、コンテナイメージのビルド時間を短縮できる。</p>
-<p><img alt="docker-layer-cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-layer-cache.png" /></p>
+<p><img alt="docker-layer-cache" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/docker-layer-cache.png" /></p>
 <h4 id="_16">▼ 使用例<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>machine タイプで使用する場合、machine キーの下で <code>docker_layer_caching</code> を使用する。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2.1</span>

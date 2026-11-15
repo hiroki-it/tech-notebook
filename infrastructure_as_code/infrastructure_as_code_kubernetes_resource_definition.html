@@ -46319,7 +46319,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -47059,7 +47059,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>get<span class="w"> </sp
 <p><code>.spec.strategy.rollingUpdate.maxSurge</code> キーにより、<code>10</code> 個の新しい Pod を並行的に作成する (つまり、デプロイ時に新旧 Pod が合計 <code>20</code> 個ある) 。</p>
 <p><code>.spec.strategy.rollingUpdate.maxUnavailable</code> キーにより、<code>0</code> 個が停止している状態を避ける (停止する Pod がない)。</p>
 <p>また、Pod の停止数がレプリカ数を下回らないようになる。</p>
-<p><img alt="kubernetes_deployment_strategy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png" /></p>
+<p><img alt="kubernetes_deployment_strategy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_deployment_strategy.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kakakakakku.hatenablog.com/entry/2021/09/06/173014">Deployment の maxUnavailable と maxSurge : ロールアウト中の割合を設定する - kakakakakku blog</a></li>
@@ -50093,7 +50093,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 <p><br></p>
 <h3 id="specterminationgraceperiodseconds">.spec.terminationGracePeriodSeconds<a class="headerlink" href="#specterminationgraceperiodseconds" title="Permanent link">&para;</a></h3>
 <h4 id="terminationgraceperiodseconds_2">▼ terminationGracePeriodSeconds とは<a class="headerlink" href="#terminationgraceperiodseconds_2" title="Permanent link">&para;</a></h4>
-<p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
+<p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/pod_terminating_process.png" /></p>
 <p>Pod の終了プロセスを開始するまで待機時間を設定する。</p>
 <p>この時間を超えても Pod を終了できていない場合は、コンテナを強制的に停止する。</p>
 <p>なお、<code>.spec.containers[*].xxxProbe.terminationGracePeriodSeconds</code> キーでコンテナ単位での待機時間を設定できる。</p>
@@ -50116,7 +50116,7 @@ bar-pod<span class="w">    </span><span class="m">0</span>/1<span class="w">    
 </blockquote>
 <h4 id="_8">▼ コンテナが複数個ある場合<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>Pod 内にアプリ以外のコンテナ (istio-proxy など) がある場合、すべてのコンテナについて終了プロセスの時間を考慮する必要がある。</p>
-<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png" /></p>
+<p><img alt="pod_terminating_process_istio-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/pod_terminating_process_istio-proxy.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://sreake.com/blog/istio-proxy-stop-behavior/">istio-proxy 停止時の挙動 | sreake.com | 株式会社スリーシェイク</a></li>

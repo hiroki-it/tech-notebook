@@ -36242,7 +36242,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36278,7 +36278,7 @@
 <p>kubelet は、設定ファイルで指定された CNI を実行する。</p>
 <p>その後、CNI は Pod に仮想 NIC を紐付け、Node 内の Cluster ネットワークの IP アドレスを Pod の仮想 NIC に割り当てる。</p>
 <p>Pod を Node 内の Cluster ネットワークに参加させると、異なる Node 上の Pod 間で通信できるようになる。</p>
-<p><img alt="kubernetes_cni-plugin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png" /></p>
+<p><img alt="kubernetes_cni-plugin" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-plugin.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29">整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck</a></li>
@@ -36318,7 +36318,7 @@
 <h3 id="_2">オーバーレイモードとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>オーバーレイモードは、複数のコンポーネントから構成される。例えば、Pod のネットワークインターフェース (<code>eth</code>) 、Node の仮想ネットワークインターフェース (<code>veth</code>) 、Node のブリッジ (<code>cni</code>) がある。また、NAT ルーター (Cilium 以外の CNI は iptables、Cilium CNI は Cilium) と、Node のネットワークインターフェース (<code>eth</code>) がある。</p>
 <p>オーバーレイネットワークを使用して、Cluster ネットワークを作成し、異なる Node 上の Pod 間を接続する。</p>
-<p><img alt="kubernetes_cni-addon_overlay-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png" /></p>
+<p><img alt="kubernetes_cni-addon_overlay-mode" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-addon_overlay-mode.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/</a></li>
@@ -36349,7 +36349,7 @@
 <h3 id="_3">オーバーレイモードの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="node-pod_2">▼ 同一 Node 上の Pod 間通信<a class="headerlink" href="#node-pod_2" title="Permanent link">&para;</a></h4>
 <p>Pod のネットワークインターフェース (<code>eth</code>) 、Node の仮想ネットワークインターフェース (<code>veth</code>) 、Node のブリッジ (<code>cni</code>) を使用して、同じ Node 上の Pod 間でパケットを送受信する。</p>
-<p><img alt="kubernetes_cni-addon_overlay-mode_same-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png" /></p>
+<p><img alt="kubernetes_cni-addon_overlay-mode_same-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-addon_overlay-mode_same-node.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode">Kubernetes Network Deep Dive (NodePort, ClusterIP, Flannel) #Docker - Qiita</a></li>
@@ -36357,7 +36357,7 @@
 </blockquote>
 <h4 id="node-pod_3">▼ 異なる Node 上の Pod 間通信<a class="headerlink" href="#node-pod_3" title="Permanent link">&para;</a></h4>
 <p>Pod のネットワークインターフェース (<code>eth</code>) 、Node の仮想ネットワークインターフェース (<code>veth</code>) 、Node のブリッジ (<code>cni</code>) を使用する。また、NAT ルーター (Cilium 以外は iptables、Cilium) と Node のネットワークインターフェース (<code>eth</code>) を使用する。そして、異なる Node 上の Pod 間でパケットを送受信する。</p>
-<p><img alt="kubernetes_cni-addon_overlay-mode_diff-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png" /></p>
+<p><img alt="kubernetes_cni-addon_overlay-mode_diff-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-addon_overlay-mode_diff-node.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode">Kubernetes Network Deep Dive (NodePort, ClusterIP, Flannel) #Docker - Qiita</a></li>

@@ -38122,7 +38122,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -38153,7 +38153,7 @@
 <p><br></p>
 <h2 id="01">01. 仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <h3 id="_3">バックエンド<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p><img alt="datadog_log-collection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-collection.png" /></p>
+<p><img alt="datadog_log-collection" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_log-collection.png" /></p>
 <ol>
 <li>
 <p>サーバーの場合、稼働する datadog エージェントが、datadog-API にアプリケーションログを送信する。コンテナの場合、FluentBit が代わりにアプリケーションログを送信する。</p>
@@ -38193,7 +38193,7 @@
 <h3 id="_5">ログエージェントとは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>デーモンである datadog エージェントに含まれている。</p>
 <p>アプリケーションからログを収集し、Datadog にフォワーディングする。</p>
-<p><img alt="datadog-agent_on-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png" /></p>
+<p><img alt="datadog-agent_on-server" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on-server.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/">https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/</a></li>
@@ -38227,7 +38227,7 @@
 <h3 id="clusternode">Cluster/Node エージェントとは<a class="headerlink" href="#clusternode" title="Permanent link">&para;</a></h3>
 <h4 id="kubernetes">▼ Kubernetes の場合<a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h4>
 <p>Cluster やワーカーNode からメトリクスを受信し、コントロールプレーン Node の kube-apiserver にフォワーディングする。</p>
-<p><img alt="datadog-agent_on_kubernetes" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png" /></p>
+<p><img alt="datadog-agent_on_kubernetes" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on_kubernetes.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.datadoghq.com/ja/blog/datadog-cluster-agent/">Datadog Cluster Agent のご紹介 | Datadog</a></li>
@@ -38236,7 +38236,7 @@
 </blockquote>
 <h4 id="kubernetes-istio">▼ Kubernetes + Istio の場合<a class="headerlink" href="#kubernetes-istio" title="Permanent link">&para;</a></h4>
 <p>Node エージェントは、Kubernetes のメトリクスに加えて、istiod や istio-proxy が公開するメトリクスを収集し、Datadog に送信する。</p>
-<p><img alt="datadog-agent_on_kubernetes_istio" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png" /></p>
+<p><img alt="datadog-agent_on_kubernetes_istio" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on_kubernetes_istio.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/">みんなの銀行に学ぶ、マイクロサービス時代のシステム監視 | 日経クロステック（xTECH）</a></li>
@@ -38622,7 +38622,7 @@
 <p>指定した属性/タグに割り当てられた値を、ルールを基に、ステータスファセットの各ステータス (<code>INFO</code>、<code>WARNING</code>、<code>ERROR</code> など) として登録する。</p>
 <p>ログコンソール画面にて、ステータスファセットとして表示される。</p>
 <p>判定ルールについては、以下のリンクを参考にせよ。</p>
-<p><img alt="datadog_status-facet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_status-facet.png" /></p>
+<p><img alt="datadog_status-facet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_status-facet.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper">https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper</a></li>
@@ -38630,7 +38630,7 @@
 </blockquote>
 <h4 id="_20">▼ サービスリマッパー<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>指定した属性/タグに割り当てられた値を、サービスファセットのサービス名として登録する。</p>
-<p><img alt="datadog_service-facet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_service-facet.png" /></p>
+<p><img alt="datadog_service-facet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_service-facet.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper">https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper</a></li>
@@ -39135,7 +39135,7 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 <p>リマッパーでは、<code>Force attribute type</code> の項目で、再配置する属性のデータ型を指定できる。</p>
 <p>ログコンソールでフィルタリングするときに、ファセットで設定したデータ型と実際のデータ型が一致しないとフィルタリングできない。</p>
 <p>そのため、リマッパーを使用するときは明示的にデータ型を設定する。</p>
-<p><img alt="datadog_log-pipeline_data-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-pipeline_data-type.png" /></p>
+<p><img alt="datadog_log-pipeline_data-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_log-pipeline_data-type.png" /></p>
 <p><br></p>
 <h3 id="_36">パーサーについて<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h3>
 <h4 id="grok_2">▼ Grok パーサーのルールにコメント<a class="headerlink" href="#grok_2" title="Permanent link">&para;</a></h4>
@@ -39219,12 +39219,12 @@ autoFilledRule3<span class="w"> </span>...
 <p>検索条件として属性名と値を補完入力できる。</p>
 <p>オートコンプリートの使用時は、小文字で入力した属性名の頭文字が画面上で大文字に変換される。</p>
 <p>『<code>service:foo</code>』をオートコンプリートで入力する。</p>
-<p><img alt="log-query_auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_auto-complete.png" /></p>
+<p><img alt="log-query_auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/log-query_auto-complete.png" /></p>
 <h4 id="_49">▼ 非オートコンプリート<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
 <p>入力欄右のアイコンで切り替える。</p>
 <p>検索条件として属性名と値をそのまま入力する。</p>
 <p>『<code>service:foo</code>』を非オートコンプリートで入力する。</p>
-<p><img alt="log-query_non-auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_non-auto-complete.png" /></p>
+<p><img alt="log-query_non-auto-complete" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/log-query_non-auto-complete.png" /></p>
 <h4 id="_50">▼ 文法<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
 <table>
   <thead>
@@ -39260,10 +39260,10 @@ autoFilledRule3<span class="w"> </span>...
 </blockquote>
 <h4 id="_53">▼ 属性のファセット化<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
 <p>Path の値に属性までのアクセスを『<code>@</code>』から入力すると、ログの属性がファセットの値に登録される。</p>
-<p><img alt="datadog_facet_attribute" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_attribute.png" /></p>
+<p><img alt="datadog_facet_attribute" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_facet_attribute.png" /></p>
 <h4 id="_54">▼ タグのファセット化<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
 <p>Path の値にタグ名をそのまま入力すると、タグがファセットの値に登録される。</p>
-<p><img alt="datadog_facet_tag" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_tag.png" /></p>
+<p><img alt="datadog_facet_tag" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_facet_tag.png" /></p>
 <p><br></p>
 
   

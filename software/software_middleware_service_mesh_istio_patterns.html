@@ -36431,7 +36431,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36493,7 +36493,7 @@
 <h4 id="_3">▼ 同じプライベートネットワーク内の場合<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h4>
 <p>異なる Cluster が同じプライベートネットワーク内に所属している場合、各 Cluster の Istiod が kube-apiserver からリソース設定を取得し、データプレーンへ Envoy の設定値を配布する。</p>
 <p>このとき、IngressGateway を使用せずに、異なる Cluster のコンテナが直接通信できる。</p>
-<p><img alt="istio_multi-service-mesh_cluster_same-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_same-network.png" /></p>
+<p><img alt="istio_multi-service-mesh_cluster_same-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_cluster_same-network.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/kuchima/articles/asm-hybrid-mesh">Google Cloud とオンプレミス環境間でマルチクラスタ サービスメッシュ (ハイブリッドメッシュ) を構成する</a></li>
@@ -36502,7 +36502,7 @@
 <h4 id="_4">▼ 異なるプライベートネットワーク内の場合<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>異なる Cluster が異なるプライベートネットワーク内に所属している場合、各 Cluster の Istiod が kube-apiserver からリソース設定を取得し、データプレーンへ Envoy の設定値を配布する。</p>
 <p>このとき、IngressGateway を経由して、異なる Cluster のコンテナが間接的に通信できる。</p>
-<p><img alt="istio_multi-service-mesh_cluster_difficult-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_difficult-network.png" /></p>
+<p><img alt="istio_multi-service-mesh_cluster_difficult-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_cluster_difficult-network.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/kuchima/articles/asm-hybrid-mesh">Google Cloud とオンプレミス環境間でマルチクラスタ サービスメッシュ (ハイブリッドメッシュ) を構成する</a></li>
@@ -36534,7 +36534,7 @@
 <p>仮想サーバーがコントロールプレーン Node と同じプライベートネットワーク内に所属している場合、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
 <p>コントロールプレーン側では WorkloadGroup の作成、仮想サーバー側では istio デーモンプロセスの実行が必要である。</p>
 <p>このとき、IngressGateway を使用せずに、Kubernetes 上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。</p>
-<p><img alt="istio_multi-service-mesh_vm_same-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png" /></p>
+<p><img alt="istio_multi-service-mesh_vm_same-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_vm_same-network.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/vm-architecture/">Istio / Virtual Machine Architecture</a></li>
@@ -36545,7 +36545,7 @@
 <p>仮想サーバーがコントロールプレーン Node と異なるプライベートネットワーク内に所属している場合、仮想サーバー上のコンテナをサービスメッシュに参加させる。</p>
 <p>コントロールプレーン側では WorkloadGroup の作成、仮想サーバー側では istio デーモンプロセスの実行が必要である。</p>
 <p>このとき、IngressGateway を経由して、Kubernetes 上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。</p>
-<p><img alt="istio_multi-service-mesh_vm_difficult-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_difficult-network.png" /></p>
+<p><img alt="istio_multi-service-mesh_vm_difficult-network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_vm_difficult-network.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/docs/ops/deployment/vm-architecture/">Istio / Virtual Machine Architecture</a></li>

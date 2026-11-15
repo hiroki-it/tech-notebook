@@ -36200,7 +36200,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36230,7 +36230,7 @@
 <p>本サイトにつきまして、<a href="https://hiroki-it.github.io/tech-notebook/">【IT技術の知見】はじめに - 俺の技術ノート</a> をご認識のほど宜しくお願いいたします。</p>
 <p><br></p>
 <h2 id="01">01. アンビエントモードのデータプレーンの仕組み<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
-<p><img alt="istio_ambient-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_architecture.png" /></p>
+<p><img alt="istio_ambient-mesh_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_ambient-mesh_architecture.png" /></p>
 <p>アンビエントモードは、データプレーンとコントロールプレーンから構成される。データプレーンでは、各 Node の ztunnel と必要に応じて配置する waypoint-proxy を使用して、サービスメッシュを実装する。</p>
 <p>マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービス検出の必要性、パケットのアプリケーションデータの暗号化、テレメトリー作成など) を解決する責務を持つ。</p>
 <p>L7 トラフィック管理が必要な通信は、ztunnel Pod から waypoint-proxy Pod に中継される。L4 トラフィック管理のみの場合、waypoint-proxy Pod は経由しない。</p>
@@ -36340,7 +36340,7 @@
 <h4 id="inpod-redirection">▼ 新しい仕組み (inpod redirection)<a class="headerlink" href="#inpod-redirection" title="Permanent link">&para;</a></h4>
 <p>ztunnel へのリダイレクトの仕組みは一度リプレイスされている。</p>
 <p>新しい仕組みでは、サイドカーパターンでマイクロサービスからの通信が istio-proxy にリダイレクトされるのと同じような仕組みになっている。</p>
-<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview.png" /></p>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_ambient-mesh_ztunnel_inpod-redirection_l4_overview.png" /></p>
 <p>アウトバウンド通信の仕組みは以下の通りである。</p>
 <ol>
 <li>Pod 内マイクロサービスが <code>L4</code> アウトバウンド通信を送信する。</li>
@@ -36353,7 +36353,7 @@
 <li>Pod 内 iptables が通信を ztunnel Pod にリダイレクトする。</li>
 <li>ztunnel Pod が Pod 内マイクロサービスへ <code>L4</code> インバウンド通信を中継する。</li>
 </ol>
-<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png" /></p>
+<p><img alt="istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_ambient-mesh_ztunnel_inpod-redirection_l4_detail.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/istio-ambient-mesh-any-cni">Running Istio Ambient Mesh With Any CNI | Solo.io</a></li>
@@ -36627,7 +36627,7 @@
 <h4 id="_5">▼ 仕組み<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>送信元 ztunnel から <code>L7</code> トラフィックを HBONE を経由して受信し、宛先側の ztunnel に中継する。</p>
 <p>waypoint-proxy は、サービス検出により宛先情報を取得し、証明書を管理する。</p>
-<p><img alt="istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png" /></p>
+<p><img alt="istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_ambient-mesh_waypoint-proxy_inpod-redirection_l7_overview.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.anyflow.net/sw-engineer/istio-ambient-mode">Istio Internals: Ambient mode</a></li>
@@ -36637,7 +36637,7 @@
 <p>waypoint-proxy は、Namespace のリバースプロキシである。</p>
 <p>アウトバウンド通信には関与せず、宛先リバースプロキシとしてのみ機能する。</p>
 <p>マイクロサービス Pod がいる Namespace 単位で waypoint-proxy を作成するとよい。</p>
-<p><img alt="istio_ambient-mesh_waypoint-proxy_reverse-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png" /></p>
+<p><img alt="istio_ambient-mesh_waypoint-proxy_reverse-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_ambient-mesh_waypoint-proxy_reverse-proxy.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.solo.io/blog/traffic-ambient-mesh-ztunnel-ebpf-waypoint">Traffic in ambient mesh: Ztunnel, eBPF configuration, and waypoint proxies | Solo.io</a></li>

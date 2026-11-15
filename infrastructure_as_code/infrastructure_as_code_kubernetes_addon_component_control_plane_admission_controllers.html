@@ -36288,7 +36288,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36320,7 +36320,7 @@
 <h2 id="01-admission-controllers">01. admission-controllers アドオン<a class="headerlink" href="#01-admission-controllers" title="Permanent link">&para;</a></h2>
 <h3 id="admission-controllers_1">admission-controllers アドオンとは<a class="headerlink" href="#admission-controllers_1" title="Permanent link">&para;</a></h3>
 <p>有効化すると、kube-apiserver にて、認証ステップと認可ステップの後に admission プラグインを実行できる。</p>
-<p><img alt="kubernetes_admission-controllers" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png" /></p>
+<p><img alt="kubernetes_admission-controllers" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/">Admission Control in Kubernetes | Kubernetes</a></li>
@@ -36334,7 +36334,7 @@
 <p>mutating-admission ステップは、リクエストの内容を変更する。</p>
 <p>また validating-admission ステップは、リクエストを許可するか否かを決める。</p>
 <p>kube-apiserver クライアント (<code>kubectl</code> クライアント、Kubernetes リソース) からのリクエスト (例：Kubernetes リソースに対する作成/更新/削除、kube-apiserver からのプロキシへのフォワーディング) 時、各ステップで admission プラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。</p>
-<p><img alt="kubernetes_admission-controllers_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png" /></p>
+<p><img alt="kubernetes_admission-controllers_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/">A Guide to Kubernetes Admission Controllers | Kubernetes</a></li>
@@ -36391,7 +36391,7 @@ ValidatingAdmissionWebhook,
 <p>MutatingAdmissionWebhook プラグインを使用すると、mutating-admission ステップ時、webhook サーバーに AdmissionReview のリクエストが送信され、ユーザー定義の処理を発火させられる。</p>
 <p>ユーザー定義の処理が定義された webhook サーバーを別途用意しておく必要がある。</p>
 <p>webhook サーバーから返信された AdmissionReview を含むレスポンスに基づいて、kube-apiserver に対するリクエストの内容を変更する。</p>
-<p><img alt="kubernetes_admission-controllers_admission-review" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png" /></p>
+<p><img alt="kubernetes_admission-controllers_admission-review" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_admission-review.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://gashirar.hatenablog.com/entry/2020/10/31/141357">Kubernetes Admission Webhook覚書き - gashirar's blog</a></li>
@@ -36401,7 +36401,7 @@ ValidatingAdmissionWebhook,
 <h4 id="mutatingwebhookconfiguration">▼ MutatingWebhookConfiguration<a class="headerlink" href="#mutatingwebhookconfiguration" title="Permanent link">&para;</a></h4>
 <p>MutatingWebhookConfiguration で、MutatingAdmissionWebhook プラグインの発火条件や webhook サーバーの宛先情報を設定する。</p>
 <p>webhook サーバーは、Cluster 内部に配置することが多い。</p>
-<p><img alt="kubernetes_admission-controllers_webhook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png" /></p>
+<p><img alt="kubernetes_admission-controllers_webhook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_webhook.png" /></p>
 <p>Istio の MutatingWebhookConfiguration は以下の通りである。</p>
 <p>Pod を作成するための kube-apiserver のコール自体がエラーとなる。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1beta1</span>
@@ -36459,7 +36459,7 @@ ValidatingAdmissionWebhook,
 </ul>
 </blockquote>
 <h4 id="validatingwebhookconfiguration">▼ ValidatingWebhookConfiguration<a class="headerlink" href="#validatingwebhookconfiguration" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_admission-controllers_webhook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png" /></p>
+<p><img alt="kubernetes_admission-controllers_webhook" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_webhook.png" /></p>
 <p>ValidatingWebhookConfiguration で、ValidatingAdmissionWebhook プラグインの発火条件や webhook サーバーの宛先情報を設定する。</p>
 <p>webhook サーバーは、Cluster 内部に配置することが多い。</p>
 <div class="highlight"><pre><span></span><code><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">admissionregistration.k8s.io/v1</span>

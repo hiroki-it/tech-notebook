@@ -37555,7 +37555,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -37586,7 +37586,7 @@
 <p><br></p>
 <h2 id="01-envoy">01. Envoy の仕組み<a class="headerlink" href="#01-envoy" title="Permanent link">&para;</a></h2>
 <h3 id="_2">アーキテクチャ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><img alt="envoy_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_structure.png" /></p>
+<p><img alt="envoy_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_structure.png" /></p>
 <p>Envoy は、データプレーンで通信を処理するプロキシツールである。コントロールプレーンの xDS サーバーから設定を取得する。</p>
 <p>Envoy には静的/動的な設定がある。</p>
 <p>静的な設定は、Envoy の起動時に適用される。</p>
@@ -37606,7 +37606,7 @@
 <p>現在のプロセスを残したまま、新しいプロセスを起動し、旧プロセスで既存通信を完了させながら、新プロセスで新規通信を処理する。</p>
 <p>コントロールプレーンから取得した動的な設定の更新には、ホットリスタートは必要ない。</p>
 <p>Istio 管理下では、pilot-agent が Envoy のホットリスタートを無効化している。ブートストラップ構成の変更を反映するには、Pod のロールアウトなどによる istio-proxy の再起動が必要である。</p>
-<p><img alt="envoy_hot-reload" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png" /></p>
+<p><img alt="envoy_hot-reload" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_hot-reload.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart">Hot restart — envoy 1.40.0-dev-e07c88 documentation</a></li>
@@ -37781,7 +37781,7 @@
 <h2 id="03">03. データプレーン<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_6">データプレーンとは<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ データプレーンの仕組み<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><img alt="envoy_data-plane_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_data-plane_architecture.png" /></p>
+<p><img alt="envoy_data-plane_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_data-plane_architecture.png" /></p>
 <p>データプレーンでは、Envoy が稼働し、通信を宛先にルーティングする。</p>
 <p>データプレーンの処理は、コンポーネント (リスナー、ルート、クラスター、エンドポイント) から構成される。</p>
 <blockquote>
@@ -38631,7 +38631,7 @@
 <p>メモリ上のプロセス内の各ワーカースレッドが独立してリクエストを待ち受ける。</p>
 <p>通信をリスナー/フィルター/ルート/クラスター/エンドポイントで処理し、宛先にロードバランシングする。</p>
 <p><code>--concurrency</code> オプションで並列処理数を設定できる。</p>
-<p><img alt="envoy_thread" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png" /></p>
+<p><img alt="envoy_thread" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_thread.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310">https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310</a></li>
@@ -38653,7 +38653,7 @@
 <p>Envoy は、リバースプロキシとして、外部 (例：ロードバランサー、他の Envoy) からインバウンド通信を待ち受ける。</p>
 <p>このとき、Envoy は <code>http://localhost:&lt;ポート番号&gt;</code> で待ち受け、一方で外部が指定する URL も <code>http://localhost:&lt;ポート番号&gt;</code> である。</p>
 <p>サービスメッシュ外や他の Pod からリクエストを受信するために使用する。</p>
-<p><img alt="envoy_ingress-listener" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png" /></p>
+<p><img alt="envoy_ingress-listener" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_ingress-listener.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener">Service to service only — envoy 1.40.0-dev-e07c88 documentation</a></li>
@@ -38666,7 +38666,7 @@
 <p>Envoy は、リバースプロキシとして、ローカルホストにあるマイクロサービスからアウトバウンド通信を待ち受ける。</p>
 <p>このとき、Envoy は <code>http://0.0.0.0:&lt;ポート番号&gt;</code> で待ち受け、一方でローカルホストにあるマイクロサービスが指定する URL は <code>http://&lt;マイクロサービスのホスト&gt;:&lt;ポート番号&gt;</code> である。</p>
 <p>サービスメッシュ外や他の Pod にリクエストを送信するために使用する。</p>
-<p><img alt="envoy_egress-listener" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png" /></p>
+<p><img alt="envoy_egress-listener" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_egress-listener.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener">Service to service only — envoy 1.40.0-dev-e07c88 documentation</a></li>
@@ -38706,7 +38706,7 @@
 <h3 id="l4l7"><code>L4</code>/<code>L7</code> ロードバランサーのミドルウェアとして<a class="headerlink" href="#l4l7" title="Permanent link">&para;</a></h3>
 <p>Envoy の文脈では、ロードバランサーとしての使い方を『フロントプロキシ』『エッジプロキシ』とも呼んでいる。</p>
 <p>Istio Ingress Gateway で Envoy を使用するユースケースは、これに属する。</p>
-<p><img alt="envoy_loadbalancer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png" /></p>
+<p><img alt="envoy_loadbalancer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_loadbalancer.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy">Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation</a></li>

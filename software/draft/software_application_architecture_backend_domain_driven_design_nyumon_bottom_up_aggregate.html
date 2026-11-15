@@ -35724,7 +35724,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -35793,7 +35793,7 @@
 <li>境界：枠</li>
 <li>集約ルート：User オブジェクト</li>
 </ul>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-01.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-01.png" /></p>
 <p>集約内のドメインオブジェクトは集約ルートを通じてのみ操作できる。</p>
 <div class="highlight"><pre><span></span><code>“親のオブジェクトを通じて、親が所有する子のオブジェクトを操作するべき”
 というプラクティスを『デメテルの法則』という。
@@ -35839,7 +35839,7 @@
 </div>
 <p>次に、サークル集約と Circle 集約ルートを考えてみる。</p>
 <p>Circle と User は異なる集約に属し、それぞれが集約ルートである。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-02.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-02.png" /></p>
 <p>このとき、ユーザーを作成し、メンバーとして所属させるようなユースケースを考える。</p>
 <p>Members を作成したいとき、次のような処理はダメである。</p>
 <p>なぜなら、サークル集約内のドメインオブジェクトの操作は Circle 集約ルートが実施しないといけない</p>
@@ -35974,7 +35974,7 @@
 <p>一方で、Members という User 配列を定義しない方法もある。</p>
 <p>この方法は誤っているわけではない。</p>
 <p>ただ、Members を介さずに Circle が User を直接操作できてしまうため、サークル集約とユーザー集約の境界が曖昧になってしまう。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-03.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-03.png" /></p>
 <p>リスト 12.5：データストアを直接操作してコレクションを生成する</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Go</label><label for="__tabbed_5_2">TypeScript</label><label for="__tabbed_5_3">PHP</label></div>
 <div class="tabbed-content">
@@ -36672,7 +36672,7 @@
 <h2 id="122">12.2 集約をどう区切るか<a class="headerlink" href="#122" title="Permanent link">&para;</a></h2>
 <p>データ変更の単位は、集約の単位に合わせるべきである。</p>
 <p>データ変更の単位を集約の単位を合わせないとどのような問題が起こるかを見ていく。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-04.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-04.png" /></p>
 <p>次の実装では、Circle が Members 内の User の名前を変更しようとしている。</p>
 <p>Circle では、User を Members 配列で保持することで、Circle から User を操作できる。</p>
 <p>リスト 12.16：サークル集約を通じてユーザ集約のふるまいを呼び出す</p>
@@ -37381,7 +37381,7 @@
 <p><strong>コラム</strong></p>
 <p>なんらかの事情で、Repository による永続化の対象が複数の集約にどうしてもまたがってしまう場合、結果整合性で辻褄合わせしてもよい。</p>
 <p>例えば、Cron 処理で一日 1 回データベースを検査し、不整合のあるデータを書き換えてしまう。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-05.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_12-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-05.png" /></p>
 <h2 id="124">12.4 言葉との齟齬を消す<a class="headerlink" href="#124" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>前章の「ドメインルールの漏れだし」の続き？
 </code></pre></div>

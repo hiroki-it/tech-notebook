@@ -39302,7 +39302,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -39334,7 +39334,7 @@
 <h2 id="01-kubernetes">01. Kubernetes リソースとオブジェクト<a class="headerlink" href="#01-kubernetes" title="Permanent link">&para;</a></h2>
 <h3 id="kubernetes_1">Kubernetes リソース<a class="headerlink" href="#kubernetes_1" title="Permanent link">&para;</a></h3>
 <p>Kubernetes 上でアプリケーションを稼働させる概念のこと。</p>
-<p><img alt="kubernetes_workload-resource" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_workload-resource.png" /></p>
+<p><img alt="kubernetes_workload-resource" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_workload-resource.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://developers.redhat.com/articles/2023/04/05/kubernetes-patterns-path-cloud-native#discussion">https://developers.redhat.com/articles/2023/04/05/kubernetes-patterns-path-cloud-native#discussion</a></li>
@@ -39352,7 +39352,7 @@
 <h3 id="_2">スコープ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>特定の Namespace に所属する Namespaced スコープな Kubernetes リソースと、Namespace に所属しない Cluster スコープな Kubernetes リソースがある。</p>
 <p>スコープは通信先の制限を表すものではなく、異なる Namespace の Pod 間でも Service のホスト名を使用して通信できる。</p>
-<p><img alt="namespaced-scope_vs_cluster-scoped" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png" /></p>
+<p><img alt="namespaced-scope_vs_cluster-scoped" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/namespaced-scope_vs_cluster-scoped.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html">10.1 Organizing objects into Namespaces · Kubernetes实战（第二版）</a></li>
@@ -39429,7 +39429,7 @@
   </tbody>
 </table>
 
-<p><img alt="kubernetes_deployment_replace_replicaset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png" /></p>
+<p><img alt="kubernetes_deployment_replace_replicaset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_deployment_replace_replicaset.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a">Kubernetes: Deployment の仕組み #kubernetes - Qiita</a></li>
@@ -39599,7 +39599,7 @@
 </ul>
 </blockquote>
 <p>PHP-FPM コンテナと Nginx コンテナを稼働させる場合、これら同じ Pod 内に配置する。</p>
-<p><img alt="kubernetes_pod_php-fpm_nginx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_php-fpm_nginx.png" /></p>
+<p><img alt="kubernetes_pod_php-fpm_nginx" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_pod_php-fpm_nginx.png" /></p>
 <h4 id="node-pod">▼ 例外的なコントロールプレーン Node 上の Pod<a class="headerlink" href="#node-pod" title="Permanent link">&para;</a></h4>
 <p>脆弱性の観点で、デフォルトではコントロールプレーン Node に Pod はスケジューリングされない。</p>
 <p>これは、コントロールプレーン Node には Taint (<code>node-role.kubernetes.io/master:NoSchedule</code>) が設定されているためである。</p>
@@ -39839,7 +39839,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <p>また、コンテナの正常な終了後に Pod を終了できるように、<code>.spec.terminationGracePeriodSeconds</code> キーに任意の秒数を設定し、Pod の終了に伴う一連のプロセスの完了を待機する必要がある。</p>
 <p>これらの適切な秒数は、ユーザーがそのシステムに応じて調節するしかない。</p>
 <p><code>.spec.terminationGracePeriodSeconds</code> キーを長めに設定し、<code>.spec.containers[*].lifecycle.preStop</code> キーの秒数も含めて、すべてが完了したうえで Pod を終了可能にする。</p>
-<p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png" /></p>
+<p><img alt="pod_terminating_process" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/pod_terminating_process.png" /></p>
 <ol>
 <li>
 <p>クライアントは、<code>kubectl</code> コマンドを使用して、Pod を終了するリクエストを kube-apiserver に送信する。</p>
@@ -39921,7 +39921,7 @@ Taints:<span class="w"> </span>&lt;none&gt;
 <p>コンテナランタイムは、コンテナの標準出力または標準エラー出力に出力したログを<code>/var/log/container</code>ディレクトリ配下に保管する。</p>
 <p><code>/var/log/container</code>ディレクトリのログは、Pod全体のログを<code>/var/log/pods/&lt;Namespace名&gt;_&lt;Pod名&gt;_&lt;UID&gt;/&lt;コンテナ名&gt;/&lt;数字&gt;.log</code>ファイルのシンボリックになっている。</p>
 <p>なお、削除されたPodのログは、引き続き<code>/var/log/pods</code>ディレクトリ配下に保管されている。</p>
-<p><img alt="kubernetes_pod_logging" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png" /></p>
+<p><img alt="kubernetes_pod_logging" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_pod_logging.png" /></p>
 </li>
 </ol>
 <blockquote>
@@ -40060,7 +40060,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>そのため、Pod に紐づく PersistentVolume は別々になる。</p>
 <p>Pod が別の Node に再スケジューリングされても、Pod に同じ PersistentVolume をマウントできる。</p>
 <p>Pod が削除されても PersistentVolumeClaims は削除されないため、新しい Pod も同じ PersistentVolume をマウントできる。</p>
-<p><img alt="kubernetes_deployment_persistent-volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png" /></p>
+<p><img alt="kubernetes_deployment_persistent-volume" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_deployment_persistent-volume.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.com/dp/1617297615">https://www.amazon.com/dp/1617297615</a></li>
@@ -40077,7 +40077,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>kube-proxy によるルーティングのために、Pod の宛先情報を提供する。</p>
 <p>Kubernetes の v1.6 より前は Endpoints が使用されていた。</p>
 <p>しかし、Endpoints では Pod の宛先情報を一括管理しなければならず、これを分割して管理できるように、Endpoints の代わりとして EndpointSlice が導入された。</p>
-<p><img alt="kubernetes_endpoint-slices" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_endpoint-slices.png" /></p>
+<p><img alt="kubernetes_endpoint-slices" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_endpoint-slices.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api">Scaling Kubernetes Networking With EndpointSlices | Kubernetes</a></li>
@@ -40106,7 +40106,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>Ingress は、<code>L7</code> プロトコルの通信の受信ルールを定義する。</p>
 <p>Ingress を使用する場合、宛先の Service は、Cluster IP Service とする。</p>
 <p>NodePort Service や LoadBalancer Service と同様に、外部からのリクエストを受信する方法の 1 つである。</p>
-<p><img alt="kubernetes_ingress" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png" /></p>
+<p><img alt="kubernetes_ingress" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress">Ingress | Kubernetes</a></li>
@@ -40120,7 +40120,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>また、Ingress それ自体はルールのみを持ち、Ingress Controller がロードバランサーとして機能する。</p>
 <h4 id="_10">▼ パスベースルーティング<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>パスの値に基づいて、Service にルーティングする。</p>
-<p><img alt="kubernetes_ingress_path" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_path.png" /></p>
+<p><img alt="kubernetes_ingress_path" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress_path.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout">Ingress | Kubernetes</a></li>
@@ -40129,7 +40129,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <h4 id="_11">▼ ホストベースルーティング<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
 <p><code>Host</code> ヘッダー値に基づいて、Service にルーティングする。</p>
 <p>本番環境では、ドメインを指定した各種ダッシュボードにリクエストを送信できる必要がある。</p>
-<p><img alt="kubernetes_ingress_host" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png" /></p>
+<p><img alt="kubernetes_ingress_host" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress_host.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting">Ingress | Kubernetes</a></li>
@@ -40159,7 +40159,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 <p>kube-proxy が更新した iptables を使用し、また負荷分散方式によるルーティング先 Pod の決定に基づいて、Pod に通信をルーティングする。</p>
 <p>DaemonSet や Job で使用する例は少ないが、Pod さえあればすべての Workload (例：Deployment、DaemonSet、StatefulSet、Job など) で Service を使用できる。</p>
 <p>マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。</p>
-<p><img alt="kubernetes_kube-proxy_service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png" /></p>
+<p><img alt="kubernetes_kube-proxy_service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_service.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/">Service | Kubernetes</a></li>
@@ -40169,7 +40169,7 @@ tcp6<span class="w">       </span><span class="m">0</span><span class="w">      
 </ul>
 </blockquote>
 <h4 id="clusterip-service">▼ ClusterIP Service<a class="headerlink" href="#clusterip-service" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_clusterip-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png" /></p>
+<p><img alt="kubernetes_clusterip-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_clusterip-service.png" /></p>
 <p><code>L4</code> ロードバランサーとして、Service に対する通信を、Cluster-IP を経由して Pod にルーティングする。</p>
 <p>Cluster-IP は Service の <code>.spec.clusterIP</code> キーを指定しない限りランダムで決まる。また、Pod の <code>/etc/resolv.conf</code> ファイルに記載される。</p>
 <p>Pod 内に複数のコンテナがある場合、各コンテナに同じ内容の <code>/etc/resolv.conf</code> ファイルが配置される。</p>
@@ -40203,7 +40203,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </ul>
 </blockquote>
 <h4 id="nodeport-service">▼ NodePort Service<a class="headerlink" href="#nodeport-service" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_nodeport-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png" /></p>
+<p><img alt="kubernetes_nodeport-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_nodeport-service.png" /></p>
 <p><code>L4</code> ロードバランサーとして、Service に対する通信を、Node の NIC の宛先情報 (IP アドレス、ポート番号) 、Cluster-IP を経由して Pod にルーティングする。</p>
 <p>Node の NIC の宛先情報は、Node 外から宛先 IP アドレスとして指定できるため、通信に Ingress を必要としない。</p>
 <div class="highlight"><pre><span></span><code><span class="l l-Scalar l-Scalar-Plain">パブリックネットワーク</span>
@@ -40302,7 +40302,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <span class="w">      </span><span class="nt">nodePort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30200</span>
 </code></pre></div>
 <h4 id="loadbalancer-service">▼ LoadBalancer Service<a class="headerlink" href="#loadbalancer-service" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_loadbalancer-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png" /></p>
+<p><img alt="kubernetes_loadbalancer-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_loadbalancer-service.png" /></p>
 <p><code>L4</code> ロードバランサーとして、Service に対する通信を、External-IP、Node の NIC の宛先情報 (IP アドレス、ポート番号)、Cluster-IP を経由して Pod にルーティングする。</p>
 <p>External-IP は Node 外から宛先 IP アドレスとして指定できる。</p>
 <p>そのため、通信に Ingress を必要としないが、外部のロードバランサーのみが宛先 IP アドレスを指定できる。</p>
@@ -40331,7 +40331,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p>例えば、<code>foo-db-service</code> という ExternalName Service を作成したとする。</p>
 <p>この場合、<code>foo-db-service.default.svc.cluster.local</code> を指定すると、指定した CNAME レコードに問い合わせる。</p>
 <p>マイクロサービスが外部のドメインに直接リクエストを送信できるが、これを Service のドメインに抽象化できる。</p>
-<p><img alt="kubernetes_externalname-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png" /></p>
+<p><img alt="kubernetes_externalname-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_externalname-service.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/13739">KubernetesのDiscovery＆LBリソース（その2） | 今こそ始めよう！ Kubernetes入門 | Think IT（シンクイット）</a></li>
@@ -40339,7 +40339,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 </ul>
 </blockquote>
 <h4 id="headless-service">▼ Headless Service<a class="headerlink" href="#headless-service" title="Permanent link">&para;</a></h4>
-<p><img alt="kuberentes_headless-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kuberentes_headless-service.png" /></p>
+<p><img alt="kuberentes_headless-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kuberentes_headless-service.png" /></p>
 <p>Headless Service 以外の Service は、負荷分散方式により、配下のいずれかの Pod の IP アドレスを返却する。</p>
 <p>その一方で、Headless Service は配下のすべての Pod の IP アドレスを同時に返却する。</p>
 <p>DNS サーバーが Headless Service から IP アドレスを取得する様子を、次のコマンドで確認できる。</p>
@@ -40377,7 +40377,7 @@ options<span class="w"> </span>ndots:5<span class="w"> </span><span class="c1">#
 <p><br></p>
 <h2 id="03-04-service">03-04. Service の仕組み<a class="headerlink" href="#03-04-service" title="Permanent link">&para;</a></h2>
 <h3 id="_12">パケットの処理方法<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p><img alt="kube-proxy_iptables" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png" /></p>
+<p><img alt="kube-proxy_iptables" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kube-proxy_iptables.png" /></p>
 <p>Service は、パケットの <code>L4</code> に関するヘッダーの持つ情報を見て、Pod に <code>L4</code> ロードバランシングする。</p>
 <p>Service が Pod と紐づいたり、切り離したりした後、kube-procy が iptables を変更する。</p>
 <p>受信したリクエストをパケットとして処理していく流れを見ていく。</p>
@@ -40620,7 +40620,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <h2 id="06">06. ストレージ系リソース<a class="headerlink" href="#06" title="Permanent link">&para;</a></h2>
 <h3 id="_18">ストレージ系リソースの種類<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>Kubernetes で作成できるストレージは、作成場所で種類を分けられる。</p>
-<p><img alt="kubernetes_storage_resource_types" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png" /></p>
+<p><img alt="kubernetes_storage_resource_types" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_storage_resource_types.png" /></p>
 <table>
   <thead>
     <tr>
@@ -40656,7 +40656,7 @@ coredns-69c47794-cgn9k<span class="w">   </span><span class="m">1</span>/1<span 
 <p><br></p>
 <h3 id="persistentvolume_1">PersistentVolume<a class="headerlink" href="#persistentvolume_1" title="Permanent link">&para;</a></h3>
 <h4 id="persistentvolume_2">▼ PersistentVolume とは<a class="headerlink" href="#persistentvolume_2" title="Permanent link">&para;</a></h4>
-<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png" /></p>
 <p>Node 上のストレージ上に Volume を作成する。</p>
 <p>Node 上の Pod 間で Volume を共有でき、同一 Pod 内のコンテナ間でも Volume を共有できる。</p>
 <p>Pod が PersistentVolume を使用するためには、PersistentVolumeClaim に PersistentVolume を要求させておき、Pod でこの PersistentVolumeClaim を指定する必要がある。</p>
@@ -40744,11 +40744,11 @@ Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span cl
 <p>Node 外ストレージツール (例：AWS EBS、NFS、iSCSI、Ceph など) が提供する Volume をコンテナにマウントする。</p>
 <p>StorageClass と PersistentVolumeClaim を経由して、PersistentVolume と Node 外ストレージツールを紐付け、Volume としてコンテナにマウントする。</p>
 <p>また、Node 外ストレージを使用する場合には、CSI ドライバーも必要である。</p>
-<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png" /></p>
 <p><br></p>
 <h3 id="volume">Volume<a class="headerlink" href="#volume" title="Permanent link">&para;</a></h3>
 <h4 id="volume_1">▼ Volume とは<a class="headerlink" href="#volume_1" title="Permanent link">&para;</a></h4>
-<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png" /></p>
 <p>Node 外ストレージツール (例：AWS EBS、NFS、iSCSI、Ceph など) をそのまま Kubernetes の Volume として使用する。</p>
 <p>Pod の <code>.spec.volumes</code> キーで指定する。</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Podに接続する</span>
@@ -40878,7 +40878,7 @@ $<span class="w"> </span>docker<span class="w"> </span>inspect<span class="w"> <
 <h3 id="persistentvolumeclaim">PersistentVolumeClaim<a class="headerlink" href="#persistentvolumeclaim" title="Permanent link">&para;</a></h3>
 <h4 id="persistentvolumeclaim_1">▼ PersistentVolumeClaim とは<a class="headerlink" href="#persistentvolumeclaim_1" title="Permanent link">&para;</a></h4>
 <p>設定された条件に基づいて、Kubernetes で作成済みの PersistentVolume を要求し、指定した Kubernetes リソースに割り当てる。</p>
-<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html">Kubernetes で 永続データ を取り扱う方法 - galife</a></li>
@@ -40987,7 +40987,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p>Node 外ストレージツール (例：AWS EBS、Azure Disk など) を要求し、これを Volume として PersistentVolumeClaim に提供する。</p>
 <p>そのため、PersistentVolume も合わせて作成する必要がある。</p>
 <p>StorageClass を使用する場合は、PersistentVolumeClaim ではなく StorageClass 側で <code>reclaimPolicy</code> キーとして設定する。</p>
-<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png" /></p>
+<p><img alt="storage_class" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning">Dynamic Volume Provisioning | Kubernetes</a></li>
@@ -41016,7 +41016,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><br></p>
 <h3 id="serviceaccount">ServiceAccount<a class="headerlink" href="#serviceaccount" title="Permanent link">&para;</a></h3>
 <h4 id="serviceaccount_1">▼ ServiceAccount とは<a class="headerlink" href="#serviceaccount_1" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png" /></p>
+<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png" /></p>
 <p>kube-apiserver が、クライアント側を認証可能にする。</p>
 <p>kube-apiserver が、Kubernetes リソース (特に Pod) を認証可能にする。</p>
 <p>別途、RoleBinding や ClusterRoleBinding を使用して Kubernetes リソースに認可スコープを設定する必要がある。</p>
@@ -41069,7 +41069,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <p><br></p>
 <h3 id="useraccount">UserAccount<a class="headerlink" href="#useraccount" title="Permanent link">&para;</a></h3>
 <h4 id="useraccount_1">▼ UserAccount とは<a class="headerlink" href="#useraccount_1" title="Permanent link">&para;</a></h4>
-<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png" /></p>
+<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png" /></p>
 <p>kube-apiserver が、クライアント側を認証可能にする。</p>
 <p>kube-apiserver が、クライアントを認証可能にする。別途、RoleBinding や ClusterRoleBinding を使用して、クライアントに認可スコープを設定する必要がある。</p>
 <p>クライアントの認証に必要なクライアント証明書は、<code>kubeconfig</code> ファイルに登録する必要がある。</p>
@@ -41094,7 +41094,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 <h3 id="roleclusterrole">Role、ClusterRole<a class="headerlink" href="#roleclusterrole" title="Permanent link">&para;</a></h3>
 <h4 id="role">▼ Role<a class="headerlink" href="#role" title="Permanent link">&para;</a></h4>
 <p>Namespaced スコープな Kubernetes リソースやカスタムリソース (Namespace を設定できる Kubernetes リソース) に関する認可スコープを設定する。</p>
-<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png" /></p>
+<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">Using RBAC Authorization | Kubernetes</a></li>
@@ -41103,7 +41103,7 @@ $<span class="w"> </span>kubectl<span class="w"> </span>delete<span class="w"> <
 </blockquote>
 <h4 id="clusterrole">▼ ClusterRole とは<a class="headerlink" href="#clusterrole" title="Permanent link">&para;</a></h4>
 <p>Cluster スコープな Kubernetes リソースやカスタムリソース (Namespace を設定できない Kubernetes リソース) に関する認可スコープを設定する。</p>
-<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png" /></p>
+<p><img alt="kubernetes_authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole">Using RBAC Authorization | Kubernetes</a></li>

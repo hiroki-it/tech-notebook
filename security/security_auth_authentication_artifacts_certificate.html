@@ -37012,7 +37012,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -37046,7 +37046,7 @@
 <h4 id="_4">▼ 暗号ダイジェスト (署名) とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>『公開鍵暗号方式とは逆の仕組み (※つまり、公開鍵暗号方式ではない) 』と『ハッシュ関数』を利用した暗号化。</p>
 <p>『なりすまし』と『改竄』を防げる。</p>
-<p><img alt="digital-signature" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/digital-signature.png" /></p>
+<p><img alt="digital-signature" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/digital-signature.png" /></p>
 <p><strong>＊サーバーが実行すること＊</strong></p>
 <ol>
 <li>
@@ -37094,7 +37094,7 @@
 <p><br></p>
 <h3 id="_7">暗号ダイジェスト (署名) と公開鍵暗号方式を使用した暗号化技術<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>『なりすまし』と『改竄』を防げる署名に、『情報漏洩』を防げる公開鍵暗号方式を組み込んだ暗号化技術。</p>
-<p><img alt="digital-signature_encryption" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/digital-signature_encryption.png" /></p>
+<p><img alt="digital-signature_encryption" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/digital-signature_encryption.png" /></p>
 <p><br></p>
 <h2 id="02">02. ドメイン認証<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <p>認証局は、『署名』された『証明書』を作成する。</p>
@@ -37105,11 +37105,11 @@
 <p>公開鍵検証を使用して、秘密鍵と証明書はドメインの正当性 (偽のサイトではないこと) を担保する仕組みのこと。</p>
 <p>署名に使用した秘密鍵とペアになる公開鍵は、なりすました人物による偽の公開鍵の可能性がある。</p>
 <p>第三者機関の認証局によって、署名済み証明書を発行し、通信のたびに署名を検証する仕組みを、公開鍵基盤という。</p>
-<p><img alt="ssl-certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.png" /></p>
+<p><img alt="ssl-certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/ssl-certificate.png" /></p>
 <p><br></p>
 <h3 id="_9">公開鍵基盤の仕組み<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <p>公開鍵基盤には、証明書の『署名』と『検証』のフェーズがある。</p>
-<p><img alt="public-key-infrastructure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-key-infrastructure.gif" /></p>
+<p><img alt="public-key-infrastructure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/public-key-infrastructure.gif" /></p>
 <p><br></p>
 <h3 id="_10">サーバー認証の場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <h4 id="_11">▼ 証明書の署名<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
@@ -37127,7 +37127,7 @@
 </li>
 <li>
 <p>サーバーに署名済み証明書 (S/MIME 証明書、サーバー証明書) をインストールする。</p>
-<p><img alt="certificate_sign" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_sign.png" /></p>
+<p><img alt="certificate_sign" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/certificate_sign.png" /></p>
 </li>
 </ol>
 <blockquote>
@@ -37147,7 +37147,7 @@
 </li>
 <li>
 <p>クライアントは、ルート認証局の CA 証明書に含まれる公開鍵を使用して、署名済み証明書のハッシュ値を復号する。また、署名済み証明書のもとになった証明書署名要求からハッシュ値を算出する。復号したハッシュ値と算出したハッシュ値が同じなら、正しい証明書であると判定する。</p>
-<p><img alt="certificate_validate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_validate.png" /></p>
+<p><img alt="certificate_validate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/certificate_validate.png" /></p>
 </li>
 </ol>
 <blockquote>
@@ -37206,7 +37206,7 @@
 <p>証明書 (S/MIME 証明書、サーバー証明書) を発行する中間認証局そのものが、なりすましの可能性がある。</p>
 <p>そこで、認証局をランク付けし、ルート認証局が下位ランクの認証局に権限を与えることにより、下位の認証局の信頼性を持たせている。</p>
 <p>注意点として、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましの可能性は非常に低い。</p>
-<p><img alt="certificate-authority_spoofing-prevention" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate-authority_spoofing-prevention.png" /></p>
+<p><img alt="certificate-authority_spoofing-prevention" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/certificate-authority_spoofing-prevention.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zeropasoakita.livedoor.blog/archives/20294837.html">【素朴な疑問】ルート証明書って何？【今さら聞けない】 : 0から楽しむパソコン講座のブログ</a></li>
@@ -37291,7 +37291,7 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>リクエストの送信元に配置する証明書である。</p>
 <p>サーバー証明書をサーバー側へ配置したうえで、クライアント証明書を持つクライアントだけが HTTPS リクエストでサーバー側へ通信できるようにする。</p>
 <p>ペアになる秘密鍵もクライアント側に配置する。そのため、クライアント側にはクライアント証明書と秘密鍵の両方を配置する。</p>
-<p><img alt="client-certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client-certificate.png" /></p>
+<p><img alt="client-certificate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/client-certificate.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.cybertrust.co.jp/blog/certificate-authority/client-authentication/client-certificate-authentication.html">クライアント認証とは？｜BLOG｜サイバートラスト</a></li>

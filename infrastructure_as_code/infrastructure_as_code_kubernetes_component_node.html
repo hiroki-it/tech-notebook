@@ -36890,7 +36890,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -37033,7 +37033,7 @@
 <p>各ワーカーNode 上で DaemonSet として稼働する。</p>
 <p>Service ネットワークさえ作成できていれば、Service と Pod が同じワーカーNode 上にあるか否かにかかわらず、Service はワーカーNode の転送ルールを使用して Pod に通信をルーティングできる。</p>
 <p>サービス検出には、別途 CoreDNS などの権威 DNS ツールを使用する。</p>
-<p><img alt="kubernetes_kube-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png" /></p>
+<p><img alt="kubernetes_kube-proxy" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b">https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b</a></li>
@@ -37086,7 +37086,7 @@
   </tbody>
 </table>
 
-<p><img alt="kubernetes_kube-proxy_iptables" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png" /></p>
+<p><img alt="kubernetes_kube-proxy_iptables" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_iptables.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables">Service | Kubernetes</a></li>
@@ -37148,7 +37148,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
   </tbody>
 </table>
 
-<p><img alt="kubernetes_kube-proxy_userspace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png" /></p>
+<p><img alt="kubernetes_kube-proxy_userspace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_userspace.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace">Service | Kubernetes</a></li>
@@ -37178,7 +37178,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
   </tbody>
 </table>
 
-<p><img alt="kubernetes_kube-proxy_ipvs" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png" /></p>
+<p><img alt="kubernetes_kube-proxy_ipvs" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_ipvs.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88">Kubernetes v1.8: 主な変更点 (Major Themes) #kubernetes - Qiita</a></li>
@@ -37191,7 +37191,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <h3 id="kubelet">kubelet とは<a class="headerlink" href="#kubelet" title="Permanent link">&para;</a></h3>
 <p>各ワーカーNode 上で直接デーモンとして常駐し、コンテナランタイムを操作することにより、Pod を作成する。</p>
 <p>また、ワーカーNode や Pod を監視し、メトリクスの元になるデータポイントを kube-apiserver に提供する。</p>
-<p><img alt="kubernetes_kubelet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet.png" /></p>
+<p><img alt="kubernetes_kubelet" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kubelet.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/17453">コンテナを使いこなすための心強い味方!「Kubernetes」(前編) | 初心者のためのコンテナ入門教室 | Think IT（シンクイット）</a></li>
@@ -37286,7 +37286,7 @@ num<span class="w">  </span>target<span class="w">                     </span>pr
 <p>また、ログローテーションの結果で作成されるファイルの世代数が一定数を超過すると、古い世代順に削除する。</p>
 <p>これらは、<code>containerLogMaxSize</code> と <code>containerLogMaxFiles</code> で設定できる。</p>
 <p>kubelet ではログの保管期間を設定できないため、もし保管期間を設定したい場合は Node 上にログローテーションツール (例：logrotate) をインストールする必要がある。</p>
-<p><img alt="kubernetes_kubelet_log-rotation" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png" /></p>
+<p><img alt="kubernetes_kubelet_log-rotation" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kubelet_log-rotation.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/">Kubeletのログ管理を追ってみる</a></li>

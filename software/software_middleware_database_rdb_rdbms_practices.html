@@ -36209,7 +36209,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36305,37 +36305,37 @@
 <ol>
 <li>
 <p>エクセルで表を作成する。 エクセルで作られた以下の表があると仮定する。</p>
-<p><img alt="rdb_unnormalized-form" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_unnormalized-form.png" /></p>
+<p><img alt="rdb_unnormalized-form" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_unnormalized-form.png" /></p>
 </li>
 <li>
 <p>第一正規化 (繰り返し要素の排除) を実施する。レコードを 1 つずつに分割する。</p>
-<p><img alt="rdb_first-normal-form" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_first-normal-form.png" /></p>
+<p><img alt="rdb_first-normal-form" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_first-normal-form.png" /></p>
 </li>
 <li>
 <p>第二正規化 (主キーの関数従属性を排除) を実施する。主キーと特定のカラムは連動することがある (関数従属性あり) 。その場合は、カラムを左表として独立させる。今回、主キーは 2 つあるため、まず受注 No から関数従属性を排除していく。受注 No と他 3 カラムは連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。最後に、主キーの重複行を削除する。</p>
-<p><img alt="rdb_second-normal-form_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_second-normal-form_1.png" /></p>
+<p><img alt="rdb_second-normal-form_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_1.png" /></p>
 </li>
 <li>
 <p>商品 ID の関数従属性を排除していく。商品 ID と他 2 カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。</p>
-<p><img alt="rdb_second-normal-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_second-normal-form_2.png" /></p>
-<p><img alt="rdb_second-normal-form_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_second-normal-form_3.png" /></p>
+<p><img alt="rdb_second-normal-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_2.png" /></p>
+<p><img alt="rdb_second-normal-form_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_3.png" /></p>
 </li>
 <li>
 <p>第三正規化 (主キー以外のカラムの関数従属性を排除) を実施する。 主キー以外のカラムの関数従属性を排除していく。上記で独立させた <code>3</code> 個の表のうち、一番左の表で、顧客 ID と顧客名に関数従属性があるため、顧客 ID を新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。</p>
-<p><img alt="rdb_third-normal-form_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_third-normal-form_1.png" /></p>
-<p><img alt="rdb_third-normal-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_third-normal-form_2.png" /></p>
+<p><img alt="rdb_third-normal-form_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_third-normal-form_1.png" /></p>
+<p><img alt="rdb_third-normal-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_third-normal-form_2.png" /></p>
 </li>
 <li>
 <p>主キーの関数従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関数従属性の排除によって、顧客 ID を新しい主キーとした顧客表に分割できた。</p>
-<p><img alt="rdb_normalization_result" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_normalization_result.png" /></p>
+<p><img alt="rdb_normalization_result" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_normalization_result.png" /></p>
 </li>
 <li>
 <p>エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。</p>
-<p><img alt="rdb_unnormalized-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_unnormalized-form_2.png" /></p>
+<p><img alt="rdb_unnormalized-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_unnormalized-form_2.png" /></p>
 </li>
 <li>
 <p>第一正規化 (繰り返し要素の排除) を実施する。</p>
-<p><img alt="rdb_first-normal-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_first-normal-form_2.png" /></p>
+<p><img alt="rdb_first-normal-form_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_first-normal-form_2.png" /></p>
 </li>
 </ol>
 <p><br></p>
@@ -36343,22 +36343,22 @@
 <p>DB データを作成するあるいは削除する場合、カラムではなく、レコードの増減をする。</p>
 <p>カラムの増減の処理には時間がかかる。</p>
 <p>一方で、レコードの増減の処理には時間がかからない。</p>
-<p><img alt="rdb_add-records-not-columns_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_add-records-not-columns_1.png" /></p>
+<p><img alt="rdb_add-records-not-columns_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_add-records-not-columns_1.png" /></p>
 <p>賞与を年 1 回から、2 回・3 回と変える場合、主キーを繰り返し、新しく賞与区分と金額区分を作る。</p>
-<p><img alt="rdb_add-records-not-columns_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_add-records-not-columns_2.png" /></p>
+<p><img alt="rdb_add-records-not-columns_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_add-records-not-columns_2.png" /></p>
 <p><br></p>
 <h2 id="02">02. アルゴリズム設計<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_11">突き合わせ処理<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ 突き合わせ処理とは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>ビジネスの基盤となるマスタデータ (例：商品データ、取引先データなど) と、日々更新されるトランザクションデータ (例：販売履歴、入金履歴など) を突き合わせ、新しいデータを作成する処理のこと。</p>
-<p><img alt="rdb_matching_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_matching_1.png" /></p>
+<p><img alt="rdb_matching_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_matching_1.png" /></p>
 <h4 id="_13">▼ アルゴリズム<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>マスタデータとトランザクションデータの両方が終端に達するまでキーを比較し続け、キーの大小に応じてマスタのみ、一致、トランザクションのみのいずれかの処理を実行してから次のレコードを読み込む。</p>
-<p><img alt="rdb_matching_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_matching_4.png" /></p>
+<p><img alt="rdb_matching_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_matching_4.png" /></p>
 <h4 id="_14">▼ 具体例<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p>とある生命保険会社では、顧客の保険契約データを契約マスタテーブルで管理している。またそれとは別に、保険契約データの変更点 (異動事由) を異動トランザクションテーブルで管理している。</p>
 <p>毎日、契約マスタテーブルと異動トランザクションテーブルにおける前日レコードを突き合わせ、各契約の異動事由に応じて、変更後契約データとして、新契約マスタテーブルに挿入する。</p>
-<p><img alt="rdb_matching_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_matching_2.png" /></p>
+<p><img alt="rdb_matching_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_matching_2.png" /></p>
 <p>前処理として、契約マスタデータと異動トランザクションデータに共通する識別子が同じ順番で並んでいる必要がある。</p>
 <ol>
 <li>
@@ -36375,7 +36375,7 @@
 </li>
 <li>
 <p>最終的に、変更後マスタテーブルは以下の通りになる。</p>
-<p><img alt="rdb_matching_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdb_matching_3.png" /></p>
+<p><img alt="rdb_matching_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_matching_3.png" /></p>
 </li>
 </ol>
 <p><br></p>

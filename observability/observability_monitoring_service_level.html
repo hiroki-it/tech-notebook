@@ -36476,7 +36476,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36590,7 +36590,7 @@
 <p>これは SLO が厳しすぎる状況であるため、下方修正してもよい。</p>
 <p>SLO だけがユーザーの満足度を決めるわけではなく、新機能のリリースがユーザーの満足度を高めることがあるため、問題ない。</p>
 <p>また、サイトの一部の機能が社内部署向け (例：マーケティング部) の場合は、社内向けの SLO となる。</p>
-<p><img alt="slo_user-happiness" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_user-happiness.png" /></p>
+<p><img alt="slo_user-happiness" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/slo_user-happiness.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en">Shrinking the impact of production incidents using SRE principles—CRE Life Lessons | Google Cloud Blog</a></li>
@@ -36618,7 +36618,7 @@
 <p>バーンレートを使用すれば、エラーバジェットの消費速度をエラーイベントとして通知できる。</p>
 <p>バーンレートはどんなに大きくても、<code>1</code> ヶ月分の SLO を <code>1</code> ヶ月で消費する大きさ出なければならない。</p>
 <p>もし、バーンレートが <code>2</code> 倍の大きさになれば、半月で SLO を消費してしまうことになる。</p>
-<p><img alt="burn-rate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burn-rate.png" /></p>
+<p><img alt="burn-rate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/burn-rate.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://sre.google/workbook/alerting-on-slos/">Google SRE - Prometheus Alerting: Turn SLOs into Alerts</a></li>
@@ -36765,7 +36765,7 @@
 <p>単なる最小値/最大値/中央値/平均値であると表面的な結果しか得られない。</p>
 <p>しかし、このようなヒストグラムを使用すれば、各リクエストがどの程度のレイテンシー (≒レスポンスタイム) に、どのくらい分布しているかを正確に把握できる。</p>
 <p>例えば、SLO を『<code>5</code>ms 未満のレイテンシー (≒レスポンスタイム) 』に設定したとして、ヒストグラムから <code>99.4597</code>%がこれを満たしていると結論付けられる。</p>
-<p><img alt="slo_histogram" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_histogram.png" /></p>
+<p><img alt="slo_histogram" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/slo_histogram.png" /></p>
 <p><br></p>
 <h2 id="03-slaservice-level-agreement">03. SLA：Service Level Agreement (サービスレベル合意)<a class="headerlink" href="#03-slaservice-level-agreement" title="Permanent link">&para;</a></h2>
 <h3 id="sla">SLA とは<a class="headerlink" href="#sla" title="Permanent link">&para;</a></h3>

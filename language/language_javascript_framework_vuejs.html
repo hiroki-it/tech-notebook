@@ -36924,7 +36924,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36991,7 +36991,7 @@
 </li>
 <li>
 <p>この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。</p>
-<p><img alt="vue_mvvm" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_mvvm.png" /></p>
+<p><img alt="vue_mvvm" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_mvvm.png" /></p>
 </li>
 </ol>
 <h3 id="_2">親子コンポーネント間のデータ渡し<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
@@ -36999,8 +36999,8 @@
 <p>まず、双方向データバインディングとは異なる概念なため、混乱しないように注意する。</p>
 <p>コンポーネント (<code>foo-component.vue</code>) の <code>script</code> タグ部分 (ViewModel) の親子間では、<code>props</code> と <code>$emit</code> 関数を使用して、データを渡す。</p>
 <p>この仕組みを、Props Down, Events Up という。</p>
-<p><img alt="vue_two-way-data-binding" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_two-way-data-binding.png" /></p>
-<p><img alt="component-tree_communication" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/component-tree_communication.png" /></p>
+<p><img alt="vue_two-way-data-binding" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_two-way-data-binding.png" /></p>
+<p><img alt="component-tree_communication" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/component-tree_communication.png" /></p>
 <p><br></p>
 <h3 id="mvvm_3">MVVM アーキテクチャの実装例<a class="headerlink" href="#mvvm_3" title="Permanent link">&para;</a></h3>
 <h4 id="1-view-foohtmlfootwig">(1) 【View】テンプレート (<code>foo.html</code>、<code>foo.twig</code>)<a class="headerlink" href="#1-view-foohtmlfootwig" title="Permanent link">&para;</a></h4>
@@ -37038,7 +37038,7 @@
 <span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
 </code></pre></div>
 <h4 id="1-2-viewmodel-vue-indexjs">(1-2) 【ViewModel】データの初期化を実行する Vue コンストラクタ関数 (<code>index.js</code>)<a class="headerlink" href="#1-2-viewmodel-vue-indexjs" title="Permanent link">&para;</a></h4>
-<p><img alt="vue-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-instance.png" /></p>
+<p><img alt="vue-instance" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue-instance.png" /></p>
 <p>Vue コンストラクタ関数を使用して、インスタンス化することによって、ルート Vue インスタンスが作成される。</p>
 <p>インスタンスの変数名 <code>vm</code> は VIewModel の意味である。</p>
 <p>インスタンス化時、すべてのコンポーネントのデータが初期化される。</p>
@@ -37219,7 +37219,7 @@
 <h2 id="02-view-viewmodel">02. View と ViewModel の間での双方向データバインディングの方法<a class="headerlink" href="#02-view-viewmodel" title="Permanent link">&para;</a></h2>
 <h3 id="_3">イベントハンドリング<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="v-on">▼ <code>v-on:</code> とは<a class="headerlink" href="#v-on" title="Permanent link">&para;</a></h4>
-<p><img alt="vue_emit_v-on" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_emit_v-on.png" /></p>
+<p><img alt="vue_emit_v-on" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_emit_v-on.png" /></p>
 <p>View (<code>template</code> タグ部分) のイベントを、ViewModel (<code>script</code> タグ部分) のイベントハンドラ関数 (<code>methods:</code> 内にある関数) やインライン JS ステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。</p>
 <p>コンポーネントの <code>script</code> タグ部分 (ViewModel) の親子間データ渡しである『Props Down, Events Up』とは異なる概念なので注意する。</p>
 <div class="highlight"><pre><span></span><code>v-on:{イベント名}="{イベントハンドラ関数 (methods: 内にある関数) }"

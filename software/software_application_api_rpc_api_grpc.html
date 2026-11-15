@@ -36779,7 +36779,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36814,7 +36814,7 @@
 <p>従来の HTTP/1.1 ではなく、HTTP/2 (例：gRPC、GraphQL など) を使用する。</p>
 <p>RESTful-API に対するリクエストではリクエストのヘッダーやボディを作成する必要がある。</p>
 <p>一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。</p>
-<p><img alt="grpc_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png" /></p>
+<p><img alt="grpc_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96">いまさらだけどgRPCに入門したので分かりやすくまとめてみた #Go - Qiita</a></li>
@@ -36838,7 +36838,7 @@
 <h3 id="grpc_1">gRPC の通信方式とは<a class="headerlink" href="#grpc_1" title="Permanent link">&para;</a></h3>
 <p>gRPC では、gRPC クライアントと gRPC サーバーの間の通信方式に種類がある。</p>
 <p>通信方式は、<code>proto</code> ファイルで定義する。</p>
-<p><img alt="grpc_connection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png" /></p>
+<p><img alt="grpc_connection-type" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_connection-type.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://fintan.jp/page/1521/">gRPCのServer-Streaming RPCを用いたPUSH通知の実現事例 | Fintan</a></li>
@@ -36848,7 +36848,7 @@
 <p><br></p>
 <h3 id="unary-rpc-rpc">Unary RPC (単項 RPC)<a class="headerlink" href="#unary-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc">▼ 単項 RPC とは<a class="headerlink" href="#rpc" title="Permanent link">&para;</a></h4>
-<p><img alt="grpc_unary-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png" /></p>
+<p><img alt="grpc_unary-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_unary-rpc.png" /></p>
 <p>リクエスト／レスポンス方式の通信を実施する。</p>
 <p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに <code>1</code> 個のストリームを作成する。</p>
 <p>次に、gRPC クライアントが <code>1</code> 個のリクエストを送信し、これが終えると受信後に <code>1</code> 個のレスポンスを返信する。</p>
@@ -36872,7 +36872,7 @@
 <p><br></p>
 <h3 id="server-streaming-rpc-rpc">Server Streaming RPC (サーバーストリーミング RPC)<a class="headerlink" href="#server-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_1">▼ サーバーストリーミング RPC とは<a class="headerlink" href="#rpc_1" title="Permanent link">&para;</a></h4>
-<p><img alt="grpc_server-streaming" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png" /></p>
+<p><img alt="grpc_server-streaming" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_server-streaming.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
 <p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに <code>1</code> 個の HTTP/2 ストリームを作成する。</p>
 <p>次に、gRPC クライアントがストリーム上で <code>1</code> 個のリクエストを送信し、これが終えるとサーバーは複数個のレスポンスを並行的に返信する。</p>
@@ -36896,7 +36896,7 @@
 <p><br></p>
 <h3 id="client-streaming-rpc-rpc">Client Streaming RPC (クライアントストリーミング RPC)<a class="headerlink" href="#client-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_2">▼ クライアントストリーミング RPC とは<a class="headerlink" href="#rpc_2" title="Permanent link">&para;</a></h4>
-<p><img alt="grpc_client-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png" /></p>
+<p><img alt="grpc_client-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_client-streaming-rpc.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
 <p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに <code>1</code> 個の HTTP/2 ストリームを作成する。</p>
 <p>次に、gRPC クライアントがストリーム上で複数個のリクエストを並行的に送信し、これが終えるとサーバーは <code>1</code> 個のレスポンスを返信する。</p>
@@ -36920,7 +36920,7 @@
 <p><br></p>
 <h3 id="bidirectional-streaming-rpc-rpc">Bidirectional Streaming RPC (双方向ストリーミング RPC)<a class="headerlink" href="#bidirectional-streaming-rpc-rpc" title="Permanent link">&para;</a></h3>
 <h4 id="rpc_3">▼ 双方向ストリーミング RPC とは<a class="headerlink" href="#rpc_3" title="Permanent link">&para;</a></h4>
-<p><img alt="grpc_bidrectional-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png" /></p>
+<p><img alt="grpc_bidrectional-streaming-rpc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_bidrectional-streaming-rpc.png" /></p>
 <p>ストリーミング方式の通信を実施する。</p>
 <p>まず、<code>1</code> 個の TCP 接続を確立し、そのなかに <code>1</code> 個の HTTP/2 ストリームを作成する。</p>
 <p>次に、gRPC クライアントがストリーム上で複数個のリクエストを並行的に送信する。</p>
@@ -37095,7 +37095,7 @@
 <p>一方でストリーミング RPC の場合、複数個のリクエストとレスポンスを並行的に送受信する (多重化)。</p>
 <p>そのため、重複しない通信時間が合計のレスポンスタイムになる。</p>
 <p>このとき、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。</p>
-<p><img alt="grpc_streaming-rpc_response-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png" /></p>
+<p><img alt="grpc_streaming-rpc_response-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_streaming-rpc_response-time.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one">Scaling microservices with gRPC: part one | Thoughtworks</a></li>

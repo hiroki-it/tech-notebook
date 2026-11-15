@@ -37416,7 +37416,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -37478,7 +37478,7 @@
 <h3 id="gateway">Gateway とは<a class="headerlink" href="#gateway" title="Permanent link">&para;</a></h3>
 <h4 id="_6">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h4>
 <p>Gateway は、Istio Ingress Gateway の一部として、Node 外から受信した通信をフィルタリングする能力を担う。</p>
-<p><img alt="istio_gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png" /></p>
+<p><img alt="istio_gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_gateway.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/latest/blog/2018/v1alpha3-routing/">Istio / Introducing the Istio v1alpha3 routing API</a></li>
@@ -37564,7 +37564,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="istio-ingress-gateway_1">Istio Ingress Gateway の仕組み<a class="headerlink" href="#istio-ingress-gateway_1" title="Permanent link">&para;</a></h3>
-<p><img alt="istio_ingress-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png" /></p>
+<p><img alt="istio_ingress-gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_ingress-gateway.png" /></p>
 <p>Istio Ingress Gateway は、以下から構成される。</p>
 <ul>
 <li><code>istio-ingressgateway</code> という Service (NodePort Service または LoadBalancer Service)</li>
@@ -37655,7 +37655,7 @@
 <h3 id="istio-ingress-gateway_2">複数の Istio Ingress Gateway<a class="headerlink" href="#istio-ingress-gateway_2" title="Permanent link">&para;</a></h3>
 <p>もし複数の Istio Ingress Gateway Deployment を Helm でデプロイする場合は、Istio Ingress Gateway ごとに、gateway チャートのリリースを分けることになる。</p>
 <p>チャートのアップグレードの作業が増えるが、責務 (パブリック/プライベート、宛先) を切り分けるユースケースがあってもよい。</p>
-<p><img alt="istio_multiple_istio-ingressgateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multiple_istio-ingressgateway.png" /></p>
+<p><img alt="istio_multiple_istio-ingressgateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multiple_istio-ingressgateway.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://alibaba-cloud.medium.com/traffic-management-with-istio-1-unified-management-of-tcp-ingress-traffic-routing-based-on-909d961a3893">https://alibaba-cloud.medium.com/traffic-management-with-istio-1-unified-management-of-tcp-ingress-traffic-routing-based-on-909d961a3893</a></li>
@@ -37706,7 +37706,7 @@
 <p>送信元マイクロサービスは HTTP を指定し、istio-proxy のクライアント証明書と Istio Egress Gateway のサーバー証明書で相互 TLS 認証を実施する。</p>
 <p>Istio Egress Gateway はアプリケーションデータを復号できるため、プロトコルを HTTP として扱う。</p>
 <p>そのため、Istio のメトリクスでは HTTP として処理され、また Istio Egress Gateway ではスパンを作成できる。</p>
-<p><img alt="istio-egressgateway_mtls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_mtls.png" /></p>
+<p><img alt="istio-egressgateway_mtls" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio-egressgateway_mtls.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control">https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control</a></li>
@@ -37717,7 +37717,7 @@
 <p>送信元マイクロサービスは HTTPS を指定し、サービスメッシュ外の宛先が持つサーバー証明書でサーバー認証を実施する。</p>
 <p>Istio Egress Gateway はアプリケーションデータを復号できないため、プロトコルを TCP として扱う。</p>
 <p>そのため、Istio Egress Gateway 上を通過する TLS は Istio のメトリクスでは TCP として処理され、また Istio Egress Gateway ではスパンを作成できない。</p>
-<p><img alt="istio-egressgateway_tls_passthrough" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png" /></p>
+<p><img alt="istio-egressgateway_tls_passthrough" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio-egressgateway_tls_passthrough.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control">https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control</a></li>
@@ -37748,7 +37748,7 @@
 <h3 id="virtualservice">VirtualService とは<a class="headerlink" href="#virtualservice" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ ロードバランサーで使用する場合<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>VirtualService は、Istio Ingress Gateway の一部として、受信した <code>L4</code>/<code>L7</code> 通信を DestinationRule に紐づく Pod へルーティングする。</p>
-<p><img alt="istio_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png" /></p>
+<p><img alt="istio_virtual-service" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_virtual-service.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://tech.uzabase.com/entry/2018/11/26/110407">Kubernetes + Istioでblue-green deploymentを実現する - Uzabase for Engineers</a></li>
@@ -38021,7 +38021,7 @@ httpbin-app-service.services.svc.cluster.local<span class="w">                  
 <p>DestinationRule は、Istio Ingress Gateway (VirtualService + DestinationRule) で受信した <code>L4</code>/<code>L7</code> 通信を、いずれの Pod にルーティングするかを決める。</p>
 <p>Istio Ingress Gateway の実体は Pod のため、ロードバランサーというよりは実際は Pod 間通信で使用していると言える。</p>
 <p>Pod の宛先情報は、Kubernetes の Service から取得する。</p>
-<p><img alt="istio_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png" /></p>
+<p><img alt="istio_destination-rule_subset" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_destination-rule_subset.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy">Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation</a></li>
@@ -38185,7 +38185,7 @@ baz-service.baz-namespace.svc.cluster.local<span class="w">   </span><span class
 <p>しかし、<code>v1.3</code> 以降、ServiceEntry でマイクロサービスを登録しなくても、サービスメッシュ外部の任意のマイクロサービスと通信できるようになった。</p>
 <p>ただし、登録しない限り、マイクロサービスを個別に認識できず、すべて <code>PassthroughCluster</code> として扱う。</p>
 <p>類似する ExternalName Service でも同じことを実現できるが、Istio の機能を使用できない。</p>
-<p><img alt="istio_service-entry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png" /></p>
+<p><img alt="istio_service-entry" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_service-entry.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://tech.uzabase.com/entry/2018/11/26/110407">Kubernetes + Istioでblue-green deploymentを実現する - Uzabase for Engineers</a></li>

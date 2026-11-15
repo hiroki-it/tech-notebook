@@ -38242,7 +38242,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -38338,7 +38338,7 @@
 <h2 id="02-input">02. INPUT<a class="headerlink" href="#02-input" title="Permanent link">&para;</a></h2>
 <h3 id="input">INPUT とは<a class="headerlink" href="#input" title="Permanent link">&para;</a></h3>
 <p>ログのパイプラインへのインプット方法を設定する。</p>
-<p><img alt="fluent-bit_input" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png" /></p>
+<p><img alt="fluent-bit_input" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_input.png" /></p>
 <p>プラグインを使用して、ログのインプット方法を設定する。</p>
 <p>コマンドの <code>-i</code> オプションで INPUT 名を指定し、実行もできる。</p>
 <div class="highlight"><pre><span></span><code>Inputs
@@ -38578,7 +38578,7 @@
 <h2 id="03-parser">03. PARSER<a class="headerlink" href="#03-parser" title="Permanent link">&para;</a></h2>
 <h3 id="parser">PARSER とは<a class="headerlink" href="#parser" title="Permanent link">&para;</a></h3>
 <p>非構造化ログを構造化ログに変換する。</p>
-<p><img alt="fluent-bit_parser" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_parser.png" /></p>
+<p><img alt="fluent-bit_parser" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_parser.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/parser">https://docs.fluentbit.io/manual/concepts/data-pipeline/parser</a></li>
@@ -38635,7 +38635,7 @@
 <h2 id="04-filter">04. FILTER<a class="headerlink" href="#04-filter" title="Permanent link">&para;</a></h2>
 <h3 id="filter">FILTER とは<a class="headerlink" href="#filter" title="Permanent link">&para;</a></h3>
 <p>ログのキーや値を加工する。</p>
-<p><img alt="fluent-bit_filter" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png" /></p>
+<p><img alt="fluent-bit_filter" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_filter.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/filter">https://docs.fluentbit.io/manual/concepts/data-pipeline/filter</a></li>
@@ -38907,7 +38907,7 @@
 <div class="highlight"><pre><span></span><code><span class="o">[</span>SERVICE<span class="o">]</span>
 <span class="w">    </span>Streams_File<span class="w"> </span>stream_processor.conf
 </code></pre></div>
-<p><img alt="fluent-bit_stream-task" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png" /></p>
+<p><img alt="fluent-bit_stream-task" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_stream-task.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor">Overview | Fluent Bit: Official Manual</a></li>
@@ -38963,7 +38963,7 @@
 <h2 id="06-buffer">06. BUFFER<a class="headerlink" href="#06-buffer" title="Permanent link">&para;</a></h2>
 <h3 id="buffer">BUFFER とは<a class="headerlink" href="#buffer" title="Permanent link">&para;</a></h3>
 <p>ログを蓄え、これを順番に ROUTING へ渡す。</p>
-<p><img alt="fluent-bit_buffer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png" /></p>
+<p><img alt="fluent-bit_buffer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_buffer.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer">https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer</a></li>
@@ -39028,7 +39028,7 @@ drwxr-xr-x.<span class="w"> </span><span class="m">11</span><span class="w"> </s
 <p>ログのアウトプット先を設定する。</p>
 <p>設定できるアウトプット先の種類については、以下のリンクを参考にせよ。</p>
 <p>コマンドの <code>-o</code> オプションで OUTPUT 名を指定し、実行もできる。</p>
-<p><img alt="fluent-bit_output" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png" /></p>
+<p><img alt="fluent-bit_output" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_output.png" /></p>
 <div class="highlight"><pre><span></span><code>Outputs
 <span class="w">  </span>azure<span class="w">                   </span>Send<span class="w"> </span>events<span class="w"> </span>to<span class="w"> </span>Azure<span class="w"> </span>HTTP<span class="w"> </span>Event<span class="w"> </span>Collector
 <span class="w">  </span>azure_blob<span class="w">              </span>Azure<span class="w"> </span>Blob<span class="w"> </span>Storage

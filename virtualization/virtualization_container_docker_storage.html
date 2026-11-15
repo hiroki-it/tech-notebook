@@ -36189,7 +36189,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36221,7 +36221,7 @@
 <h2 id="01-docker">01. Docker マウント<a class="headerlink" href="#01-docker" title="Permanent link">&para;</a></h2>
 <h3 id="docker">Docker マウントとは<a class="headerlink" href="#docker" title="Permanent link">&para;</a></h3>
 <p>コンテナのファイルデータをホストのストレージに一時化/非永続化/永続化するための方法である。</p>
-<p><img alt="docker_storage" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png" /></p>
+<p><img alt="docker_storage" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_storage.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/">What is Docker storage? Learn Everything about Docker storage (Theory) - GeekyLane</a></li>
@@ -36234,7 +36234,7 @@
 <p>ホスト側のストレージ上のディレクトリを、コンテナ側にマウントすることで、データを永続化する。</p>
 <p>ホストで作成されるデータが継続的に変化する場合に適しており、例えば開発環境でアプリケーションをホストコンテナ間と共有する方法として推奨である。</p>
 <p>しかし、ホスト側のデータを永続化する方法には適さない。</p>
-<p><img alt="docker_bind-mount" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png" /></p>
+<p><img alt="docker_bind-mount" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_bind-mount.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/storage/bind-mounts/">https://docs.docker.com/storage/bind-mounts/</a></li>
@@ -36275,7 +36275,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <h3 id="_5">マウント元として指定できるディレクトリ<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>以下の通り、ホスト側のマウント元のディレクトリにはいくつか選択肢がある。</p>
 <p>Docker for Desktop の設定画面で変更する。</p>
-<p><img alt="mount_host-directory" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mount_host-directory.png" /></p>
+<p><img alt="mount_host-directory" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/mount_host-directory.png" /></p>
 <p>マウント元の詳細なディレクトリ名は、<code>/Users/&lt;ユーザー名&gt;/Library/Group Containers/group.com.docker/setting.json</code> ファイルから確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>cat<span class="w"> </span>settings.json
 
@@ -36304,7 +36304,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p>ホスト側のストレージ上にある docker エリア (<code>/var/lib/docker/volumes</code> ディレクトリ) のマウントポイント (<code>/var/lib/docker/volumes/&lt;ボリューム名&gt;/_data</code>) を、コンテナ側にマウントすることで、データを永続化する。</p>
 <p>ホストで作成されるデータをめったに変更しない場合に適しており、例えば DB レコードをホストコンテナ間と共有する方法として推奨である。</p>
 <p>しかし、例えばアプリケーションやパッケージのような変更されやすいデータを共有する方法には適さない。</p>
-<p><img alt="docker_volume-mount" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png" /></p>
+<p><img alt="docker_volume-mount" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_volume-mount.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.docker.com/storage/volumes/">https://docs.docker.com/storage/volumes/</a></li>
@@ -36362,7 +36362,7 @@ $<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </spa
 <p>ボリュームを使用する場合のコンテナ配置手法の一種。</p>
 <p>docker エリアのボリュームを Data Volume をコンテナのディレクトリにマウントしておく。</p>
 <p>ボリュームを使用するときは、docker エリアを参照するのではなく、Data Volume コンテナを参照する。</p>
-<p><img alt="docker_data-volume-container" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_data-volume-container.png" /></p>
+<p><img alt="docker_data-volume-container" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_data-volume-container.png" /></p>
 <p><br></p>
 <h2 id="04-tmpfs">04. tmpfs マウント<a class="headerlink" href="#04-tmpfs" title="Permanent link">&para;</a></h2>
 <h3 id="tmpfs">tmpfs マウントとは<a class="headerlink" href="#tmpfs" title="Permanent link">&para;</a></h3>

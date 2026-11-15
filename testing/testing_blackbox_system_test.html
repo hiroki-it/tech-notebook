@@ -37269,7 +37269,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -37299,7 +37299,7 @@
 <h3 id="_2">システムテストとは<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>『総合テスト』ともいう。</p>
 <p>既存機能/追加/変更を含むすべてのコンポーネントを組み合わせ、すべてのコンポーネント間の連携が正しく動作しているかを検証する。</p>
-<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png" /></p>
+<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_blackbox-test_unit_integration_system.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://pm-rasinban.com/ut-it-st">単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する | 若手エンジニアの羅針盤</a></li>
@@ -37394,9 +37394,9 @@
 <h4 id="_8">▼ バグ管理図<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>プロジェクトのとき、残存テスト数と不良摘出数 (バグ発見数) を縦軸にとり、時間を横軸にとることにより、バグ管理図を作成する。</p>
 <p>それぞれの曲線の状態から、プロジェクトの進捗状況を読み取られる。</p>
-<p><img alt="quality-control-chart" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quality-control-chart.jpg" /></p>
+<p><img alt="quality-control-chart" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/quality-control-chart.jpg" /></p>
 <p>不良摘出実績線 (信頼度成長曲線) は、プログラムの品質の状態を表し、S 字型でないものはプログラムの品質がよくないことを表す。</p>
-<p><img alt="reliability-growth-curve_bad-example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reliability-growth-curve_bad-example.jpg" /></p>
+<p><img alt="reliability-growth-curve_bad-example" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/reliability-growth-curve_bad-example.jpg" /></p>
 <p><br></p>
 <h2 id="02">02. 機能テスト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_9">機能テストとは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
@@ -37459,7 +37459,7 @@
 <p><br></p>
 <h2 id="03">03. 性能テスト<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_11">性能テストとは<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
-<p><img alt="performance-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/performance-test.png" /></p>
+<p><img alt="performance-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/performance-test.png" /></p>
 <p>一定時間内に、ユーザーが一連のリクエスト (例：ログイン、参照、登録、ログアウト) を行ったとき、あらかじめ定めた指標にどのような変化があるかを検証する。</p>
 <p>具体的にはテスト時、アクセス数を段階的に増加させて、テストレポートとしてグラフ化する。</p>
 <p>テストレポートを元に、想定されるリクエスト数が現在の性能にどの程度の負荷をかけるのかを確認し、加えて最大負荷の場合でも性能目標を満たしているかを確認する。</p>
@@ -37557,7 +37557,7 @@
 <p>システムが外部 API と接続する場合、外部 API に影響を与えないようにモックサーバーを用意する。</p>
 <p>ブラックボックステスト時は、外部 API へのドメインをモックサーバーのドメインに切り替える。</p>
 <p>マイクロサービスアーキテクチャの場合、モックマイクロサービスを用意する。</p>
-<p><img alt="microservices_blackbox-test_external-api-mock" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_blackbox-test_external-api-mock.png" /></p>
+<p><img alt="microservices_blackbox-test_external-api-mock" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_blackbox-test_external-api-mock.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://semaphore.io/blog/test-microservices">How to Test Microservices</a></li>
@@ -38079,14 +38079,14 @@
 <h2 id="07">07. ペネトレーションテスト<a class="headerlink" href="#07" title="Permanent link">&para;</a></h2>
 <p>既知のサイバー攻撃を意図的に行い、システムの脆弱性を確認するテストのこと。</p>
 <p>株式会社 LAC によるペネトレーションテストサービス</p>
-<p><img alt="penetration-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/penetration-test.png" /></p>
+<p><img alt="penetration-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/penetration-test.png" /></p>
 <p><br></p>
 <h2 id="08">08. ポートミラーリング (ミラーリング、トラフィクミラーリング、トラフィックシャドーイング)<a class="headerlink" href="#08" title="Permanent link">&para;</a></h2>
 <p>『ミラーリング』『トラフィックミラーリング』『トラフィックシャドーイング』ともいう。</p>
 <p>特定のポートで送受信されるパケットをコピーし、別のポートに送信する。</p>
 <p>本番環境に対するリクエストのコピーをテスト環境にミラーリングし、テスト環境を検証できる。</p>
 <p>テスト環境からのレスポンスは破棄されるので、ユーザーに影響がない。</p>
-<p><img alt="test_traffic-mirroring" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_traffic-mirroring.png" /></p>
+<p><img alt="test_traffic-mirroring" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/test_traffic-mirroring.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/mirror-production-traffic-to-test-environment-with-vpc-traffic-mirroring/">Mirror production traffic to test environment with VPC Traffic Mirroring | Networking &amp; Content Delivery</a></li>

@@ -36552,7 +36552,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36585,7 +36585,7 @@
 <h3 id="_3">ブラックボックステストとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>実装内容は気にせず、入力に対して、適切な出力が行われているかを検証する。</p>
 <p>ユニットテストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。</p>
-<p><img alt="testing_black-box-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_black-box-test.png" /></p>
+<p><img alt="testing_black-box-test" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_black-box-test.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://service.shiftinc.jp/column/4801/">ホワイトボックステストとは？ブラックボックステストとの違いやその手順、よく使われる手法を解説｜ソフトウェアテストのSHIFT</a></li>
@@ -36607,7 +36607,7 @@
 </blockquote>
 <p><br></p>
 <h3 id="_5">ブラックボックスの環境<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
-<p><img alt="environments" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/environments.png" /></p>
+<p><img alt="environments" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/environments.png" /></p>
 <table>
   <thead>
     <tr>
@@ -36653,7 +36653,7 @@
 <p>『単体テスト』ともいう。</p>
 <p>機能追加/変更を含むコンポーネントのみが単体で正常に動作するかを検証する。</p>
 <p>ホワイトボックステストのユニットテストとは意味合いが異なることに注意する。</p>
-<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png" /></p>
+<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_blackbox-test_unit_integration_system.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://pm-rasinban.com/ut-it-st">単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する | 若手エンジニアの羅針盤</a></li>
@@ -36711,7 +36711,7 @@
 <p>『統合テスト』ともいう。</p>
 <p>機能追加/変更を含む特定のコンポーネントを組み合わせ、特定のコンポーネント間の連携が正しく動作しているかを検証する。</p>
 <p>注意点として、特定の機能に関するすべてのコンポーネント間の連携をテストする『E2E テスト』とは異なる。</p>
-<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png" /></p>
+<p><img alt="testing_blackbox-test_unit_integration_system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_blackbox-test_unit_integration_system.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://pm-rasinban.com/ut-it-st">単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する | 若手エンジニアの羅針盤</a></li>
@@ -36768,11 +36768,11 @@
 <h4 id="_15">▼ トップダウンテスト<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <p>上層のコンポーネントから下層のコンポーネントに向かって、結合テストを実施する。</p>
 <p>下層にはテストダブルのスタブを作成する。</p>
-<p><img alt="test_top-down" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_top-down.jpg" /></p>
+<p><img alt="test_top-down" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/test_top-down.jpg" /></p>
 <h4 id="_16">▼ ボトムアップテスト<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>下層のコンポーネントから上層のコンポーネントに向かって、結合テストを実施する。</p>
 <p>上層にはテストダブルのドライバーを作成する。</p>
-<p><img alt="test_bottom-up" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_bottom-up.jpg" /></p>
+<p><img alt="test_bottom-up" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/test_bottom-up.jpg" /></p>
 <p><br></p>
 <h3 id="_17">シナリオテスト<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <p>実際の業務フローを参考にし、ユーザーが操作する順にテストを実施する。</p>
@@ -36781,7 +36781,7 @@
 <h3 id="_18">回帰テストとは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h3>
 <p>既存コンポーネントの機能テストと非機能テストをあらためて実施する。</p>
 <p>機能追加/変更を含むコンポーネントが既存のコンポーネントに影響を与えていないか (既存の機能でデグレーションが起こっていないか) を検証する。</p>
-<p><img alt="p496" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p496.jpg" /></p>
+<p><img alt="p496" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/p496.jpg" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4297124513">キタミ式イラストIT塾 基本情報技術者 令和04年 | きたみ りゅうじ |本 | 通販 | Amazon</a></li>

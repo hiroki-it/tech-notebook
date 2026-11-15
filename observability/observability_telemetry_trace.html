@@ -36608,7 +36608,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36641,7 +36641,7 @@
 <h3 id="_3">分散トレースとは<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>マイクロサービスから収集したスパンのセットのこと。</p>
 <p>スパンをトレース ID で紐付けると、<code>1</code> 個のリクエストで発生したマイクロサービスを横断する処理を一繋ぎで表現できるようになる。</p>
-<p><img alt="distributed-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png" /></p>
+<p><img alt="distributed-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/">https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/</a></li>
@@ -36657,7 +36657,7 @@
 <p>例えば、性能テストでシステム全体の性能のデグレーションがあったとする。</p>
 <p>分散トレースで特定のマイクロサービス間でレスポンスタイムを可視化できるため、いずれのマイクロサービス間の通信がボトルネックになっているかがわかる。</p>
 <p>その送信元マイクロサービスのリクエストまたは宛先マイクロサービスのレスポンスについて、性能に問題がないかを調査する必要がある。</p>
-<p><img alt="distributed-trace_connection-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png" /></p>
+<p><img alt="distributed-trace_connection-time" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace_connection-time.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing">How to Use SkyWalking for Distributed Tracing in Istio? | …</a></li>
@@ -36670,7 +36670,7 @@
 <h3 id="_7">分散トレースの読み方<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>上から下に読むと、送信元マイクロサービス (上位スパン) が宛先マイクロサービス (下位スパン) の処理をコールしていることを確認できる。</p>
 <p>下から上に読むと、宛先マイクロサービス (下位スパン) から送信元マイクロサービス (上位スパン) に結果を返却していることを確認できる。</p>
-<p><img alt="distributed-trace_reading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png" /></p>
+<p><img alt="distributed-trace_reading" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace_reading.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace">https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace</a></li>
@@ -36705,7 +36705,7 @@
 </li>
 <li>
 <p><code>a3</code>：アプリケーションがレスポンスをクライアントに返信する。</p>
-<p><img alt="monolith-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png" /></p>
+<p><img alt="monolith-trace" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/monolith-trace.png" /></p>
 </li>
 </ol>
 <p><br></p>
@@ -36721,7 +36721,7 @@
 <p>リクエストを最初に処理するコンポーネントが、ルートスパンとトレースコンテキストを作成する。例えば、フロントエンドアプリケーションやロードバランサー (例：Istio Ingress Gateway、AWS ALB) 、API ゲートウェイ (例：Amazon API Gateway) が該当する。</p>
 <p>これらは、トレースコンテキストが ID を持っているかを検証する。</p>
 <p>もし ID がなければ、スパンに ID を新しく割り当てる。</p>
-<p><img alt="distributed-tracing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png" /></p>
+<p><img alt="distributed-tracing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-tracing.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B">分散トレーシングの仕組み 「ログの対応付け」と「受け渡すHTTPヘッダー」を大体5分で理解する</a></li>
@@ -36909,7 +36909,7 @@
 <h4 id="carrier_1">▼ Carrier とは<a class="headerlink" href="#carrier_1" title="Permanent link">&para;</a></h4>
 <p>トレースコンテキストを宛先マイクロサービスに伝播させる処理を持つ。</p>
 <p>伝播に使用する媒体 (例：HTTP ヘッダー、メッセージボディ、gRPC メタデータなど) を『Carrier』という。</p>
-<p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png" /></p>
+<p><img alt="distributed-trace_propagated" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace_propagated.png" /></p>
 <h4 id="_15">▼ 標準ヘッダー<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
 <table>
   <thead>

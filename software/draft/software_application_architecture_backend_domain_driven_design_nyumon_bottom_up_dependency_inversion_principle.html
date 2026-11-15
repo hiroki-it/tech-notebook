@@ -35735,7 +35735,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -35777,7 +35777,7 @@
 <p>オブジェクト C を変更すると、オブジェクト A や B に影響する。</p>
 <p>積み木に例えると、重要なブロック（依存されるオブジェクト）を抜き出す。</p>
 <p>すると、上にあるブロック（依存するオブジェクト）は崩れてしまう。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-01.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-01.png" /></p>
 <p><br></p>
 <h2 id="72">7.2 依存とは<a class="headerlink" href="#72" title="Permanent link">&para;</a></h2>
 <h3 id="_3">依存関係のある例<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
@@ -35810,7 +35810,7 @@
 </div>
 </div>
 </div>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-02.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-02.png" /></p>
 <p>次の例では、実装リポジトリはインターフェースリポジトリの実装である。</p>
 <p>これも、UserRepository が IUserRepository に依存している状況である。</p>
 <p>リスト 7.2：UserRepository は IUserRepository に依存する</p>
@@ -35862,7 +35862,7 @@
 </div>
 </div>
 </div>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-03.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-03.png" /></p>
 <h3 id="_4">よくない依存関係<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>次の例では、UserApplicationService は UserRepository（実装リポジトリ）に依存している。</p>
 <p>この状態では、UserApplicationService の処理を実行するときに、DB が必要になってしまう。</p>
@@ -35910,7 +35910,7 @@
 </div>
 </div>
 </div>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-04.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-04.png" /></p>
 <p>代わりに、IUserRepository（インターフェースリポジトリ）に依存させる。</p>
 <p>インメモリ実装リポジトリに差し替えられるため、テスト時などで DB がなくても UserApplicationService の処理を実行できるようになる。</p>
 <p>リスト 7.4：リポジトリのインターフェースを参照する</p>
@@ -36007,13 +36007,13 @@
 </div>
 </div>
 </div>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-05.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-05.png" /></p>
 <h2 id="73">7.3 依存関係逆転の原則とは<a class="headerlink" href="#73" title="Permanent link">&para;</a></h2>
 <p>次に示す２つの条件のことである。</p>
 <p>A：上位レベルのモジュールは下位レベルのモジュールに依存してはならない、どちらのモジュールも抽象に依存すべきである。</p>
 <p>B：抽象は、実装の詳細に依存してはならない。実装の詳細が抽象に依存すべきである。</p>
 <h3 id="731">7.3.1 抽象に依存せよ<a class="headerlink" href="#731" title="Permanent link">&para;</a></h3>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-06" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-06.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-06" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-06.png" /></p>
 <p>A を満たす。</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Go</label><label for="__tabbed_6_2">TypeScript</label><label for="__tabbed_6_3">PHP</label></div>
 <div class="tabbed-content">
@@ -36277,7 +36277,7 @@
 </div>
 </div>
 </div>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-07" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-07.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-07" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-07.png" /></p>
 <p>ServiceLocator パターンを実装した ServiceLocator オブジェクトには、呼び出しの紐づけを事前に登録しておく。</p>
 <p>例えば、テスト時は IUserRepository を呼び出すと InMemoryUserRepository が返却されるように実装しておく。</p>
 <p>リスト 7.8：事前にインスタンスを登録する</p>
@@ -36333,7 +36333,7 @@
 </div>
 </div>
 <p>これらの対応関係を実環境とテスト時で切り替えられるようにしておく。</p>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-08" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-08.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-08" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-08.png" /></p>
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
 ServiceLocator オブジェクトには、呼び出しの紐づけを事前に登録しておく。
@@ -36893,7 +36893,7 @@ UserApplicationService のなかでは、依存先の UserRepository がすで�
 </div>
 </div>
 </div>
-<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-09" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-09.png" /></p>
+<p><img alt="domain_driven_design_nyumon_bottom_up_chapter_07-09" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-09.png" /></p>
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
 === "Go"

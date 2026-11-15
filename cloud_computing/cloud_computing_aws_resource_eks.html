@@ -38443,7 +38443,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 19:00:22 JST">2026-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -38492,7 +38492,7 @@
 </blockquote>
 <h4 id="_4">▼ コントロールプレーンの仕組み<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>Amazon EKS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、接続を API にルーティングする NLB、データプレーンを管理するコンポーネントからなる。</p>
-<p><img alt="eks_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png" /></p>
+<p><img alt="eks_control-plane" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_control-plane.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.sunnycloud.jp/column/20210315-01/">EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） | SunnyCloud</a></li>
@@ -38542,7 +38542,7 @@
 <p><br></p>
 <h3 id="_9">データプレーンのコンポーネント<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
 <h4 id="_10">▼ 対応関係<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
-<p><img alt="eks" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks.png" /></p>
+<p><img alt="eks" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks.png" /></p>
 <table>
   <thead>
     <tr>
@@ -38806,7 +38806,7 @@
 <p><br></p>
 <h3 id="kube-apiserver">kube-apiserver の認証と認可<a class="headerlink" href="#kube-apiserver" title="Permanent link">&para;</a></h3>
 <h4 id="aws-auth-configmap-kubernetes-rbac">▼ aws-auth (ConfigMap) を経由した Kubernetes RBAC との連携<a class="headerlink" href="#aws-auth-configmap-kubernetes-rbac" title="Permanent link">&para;</a></h4>
-<p><img alt="eks_auth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png" /></p>
+<p><img alt="eks_auth_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_auth_architecture.png" /></p>
 <p>ConfigMap を経由して Kubernetes の RBAC と連携することにより、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。</p>
 <p>新しいアクセスエントリーよりもセットアップが難しい。</p>
 <ol>
@@ -39005,7 +39005,7 @@
 <h2 id="05-pod-aws">05. Pod から AWS リソースへのアクセス<a class="headerlink" href="#05-pod-aws" title="Permanent link">&para;</a></h2>
 <h3 id="irsaiam-roles-for-service-accounts">IRSA：IAM Roles for Service Accounts<a class="headerlink" href="#irsaiam-roles-for-service-accounts" title="Permanent link">&para;</a></h3>
 <h4 id="irsa">▼ IRSA とは<a class="headerlink" href="#irsa" title="Permanent link">&para;</a></h4>
-<p><img alt="eks_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png" /></p>
+<p><img alt="eks_oidc" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_oidc.png" /></p>
 <p>特に Kubernetes リソースの認可スコープを制御する仕組みのこと。</p>
 <p>Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープは、RBAC で制御する。</p>
 <p>Amazon EKS を SSO の ID プロバイダーとして使用することで、IAM の認証フェーズを Amazon EKS に委譲する。</p>
@@ -39211,7 +39211,7 @@
 <h4 id="_20">▼ プライベートサブネット内のデータプレーンからのリクエスト<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <h5 id="pod">▼ Pod 外から内へのリクエスト<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h5>
 <p>Pod をプライベートサブネットに配置した場合、プライベートサブネット外から内のデータプレーンへのリクエストを AWS Load Balancer Controller で受信し、AWS ALB を使用して Pod にルーティングする。</p>
-<p><img alt="eks_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png" /></p>
+<p><img alt="eks_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html">Deploy a gRPC-based application on an Amazon EKS cluster and access it with an Application Load Balancer - AWS Prescriptive Guidance</a></li>
@@ -39313,7 +39313,7 @@
 <p><code>kubectl</code> コマンドやワーカーNode からのリクエストのエンドポイントとして NLB が配置されている。</p>
 <p>この NLB を経由して、コントロールプレーン内の kube-apiserver にリクエストを送信できる。</p>
 <p>Amazon VPC 外から NLB への <code>443</code> 番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。</p>
-<p><img alt="eks_control-plane_worker_network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png" /></p>
+<p><img alt="eks_control-plane_worker_network" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_control-plane_worker_network.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Cluster API server endpoint - Amazon EKS</a></li>
@@ -39336,7 +39336,7 @@
 <li>AWS NAT Gateway を経由して、AWS NAT Gateway を経由して、パブリック制限を通過する</li>
 <li>ENI (Interface 型の Amazon VPC エンドポイント) を経由して、プライベート制限を通過する</li>
 </ul>
-<p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
+<p><img alt="eks_control-plane_worker_network_public_private_endpoint" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_control-plane_worker_network_public_private_endpoint.png" /></p>
 <p>Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) にリクエストを送信する場合、専用の Amazon VPC エンドポイントを設ける必要がある。</p>
 <table>
   <thead>
@@ -39413,7 +39413,7 @@
 <h3 id="node_2">マルチワーカーNode<a class="headerlink" href="#node_2" title="Permanent link">&para;</a></h3>
 <h4 id="node_3">▼ マルチワーカーNode とは<a class="headerlink" href="#node_3" title="Permanent link">&para;</a></h4>
 <p>マルチワーカーNode を作成する場合、AZ ごとに Node を作成する。</p>
-<p><img alt="eks_multi-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_multi-node.png" /></p>
+<p><img alt="eks_multi-node" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_multi-node.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html">Configure networking for Amazon EKS clusters - Amazon EKS</a></li>
@@ -39435,7 +39435,7 @@
 <p>Amazon EC2 で稼働する Kubernetes のホストのこと。</p>
 <p>Fargate と比べてカスタマイズ性が高く、ワーカーNode 当たりで稼働する Pod 数に重み付けを設定できる。</p>
 <p>一方で、各 Amazon EC2 のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetes のホストの管理が大変である。</p>
-<p><img alt="eks_on_ec2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_ec2.png" /></p>
+<p><img alt="eks_on_ec2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_on_ec2.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.sunnycloud.jp/column/20210315-01/">EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） | SunnyCloud</a></li>
@@ -40036,7 +40036,7 @@ sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">en
 <p><br></p>
 <h4 id="fargate-node">▼ Fargate ワーカーNode<a class="headerlink" href="#fargate-node" title="Permanent link">&para;</a></h4>
 <h5 id="fargate-node_1">▼ Fargate ワーカーNode とは<a class="headerlink" href="#fargate-node_1" title="Permanent link">&para;</a></h5>
-<p><img alt="eks_on_fargate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_fargate.png" /></p>
+<p><img alt="eks_on_fargate" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_on_fargate.png" /></p>
 <p>Fargate 上で稼働する Kubernetes のホストのこと。</p>
 <p>Kubernetes のワーカーNode に相当する。</p>
 <p>Amazon EC2 ワーカーNode と比べてカスタマイズ性が低く、ワーカーNode 当たりで稼働する Pod 数は AWS が管理する。</p>

@@ -36464,7 +36464,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36570,7 +36570,7 @@
 <p>また、静的ファイルの部分的な作成は、MVVM アーキテクチャによって実現する。</p>
 <p>CSR では、ページ全体の静的ファイルをリクエストするのは最初のみで、それ以降はページ全体をリクエストすることはない。</p>
 <p>２回目以降は、ページ部分的にリクエストを行い、サーバー側から JSON を受け取っていく。</p>
-<p><img alt="spa_data-communication" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/spa_data-communication.png" /></p>
+<p><img alt="spa_data-communication" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/spa_data-communication.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications">https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications</a></li>
@@ -36586,7 +36586,7 @@
 <p>最初に取得する html ファイルはほぼ空で、ブラウザ上で javascript ファイルを実行し、html ファイルをすべて作成する。</p>
 <p>その後、クライアントの操作で部分的にデータをリクエストし、html ファイルを部分的に変更する。</p>
 <p>大きな javascript ファイルを最初に読み込むため、初回の読み込み時間が長くなる。</p>
-<p><img alt="csr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png" /></p>
+<p><img alt="csr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/csr.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/bitarts/articles/37260ddb28ae5d">図解 CSR, SSR, SG(SSG), ISR</a></li>
@@ -36597,7 +36597,7 @@
 <h3 id="_5">ブラウザとバックエンド間の通信<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>CSR では、ブラウザ上の JavaScript がバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) をブラウザ上でクライアントレンダリングする。</p>
 <p>そのため SSR や SSG とは異なり、ブラウザ上でバックエンドアプリケーションと通信する。</p>
-<p><img alt="csr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png" /></p>
+<p><img alt="csr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/csr.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#1-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-csr">Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita</a></li>
@@ -36659,7 +36659,7 @@
 <h3 id="csr-spa-mpa">CSR による SPA と従来 MPA の比較<a class="headerlink" href="#csr-spa-mpa" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 処理速度<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>MPA と比較して、データを非同期的に通信できるため、1 つの Web ページのなかで必要なデータのみを通信すればよく、クライアントレンダリングが速い。</p>
-<p><img alt="web-app_spa_speed-comparison" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-app_spa_speed-comparison.png" /></p>
+<p><img alt="web-app_spa_speed-comparison" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/web-app_spa_speed-comparison.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.switchitmaker2.com/seo/spa/">SPAとは？メリット・デメリットや、SEO対策で重要なポイントも紹介 | 東京SEOメーカーAIO戦略室｜AI検索最適化（LLMO/AIO/GEO/AEO/SEO）専門会社［国内・海外］アドマノ株式会社</a></li>
@@ -36728,7 +36728,7 @@
 <p>SSR では、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>また、ブラウザ上で静的ファイルのハイドレーションを実施する。</p>
 <p>広義の SSR と異なる点は、ブラウザ側にサーバーレンダリングされた後、アイソモーフィック JavaScript という仕組みで CSR として動作する。</p>
-<p><img alt="ssr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png" /></p>
+<p><img alt="ssr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssr.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/rita0222/items/66fec6e7be5987bace3c">Server-Side Renderingって何なのさ ～あるいは雑な用語定義に対するお気持ち表明～ #JavaScript - Qiita</a></li>
@@ -36740,7 +36740,7 @@
 <p>SSR では、フロントエンドアプリケーションへのリクエスト時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>また、ブラウザ上で静的ファイルのハイドレーションを実施する。</p>
 <p>そのため CSR とは異なり、フロントエンドアプリケーション上での静的ファイルのレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。</p>
-<p><img alt="ssr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png" /></p>
+<p><img alt="ssr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssr.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#2-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-ssr">Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita</a></li>
@@ -36768,12 +36768,12 @@
 <li><a href="https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg">Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita</a></li>
 </ul>
 </blockquote>
-<p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png" /></p>
+<p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssg.png" /></p>
 <p><br></p>
 <h3 id="_11">ブラウザとバックエンド間の通信<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>SSG では、フロントエンドアプリケーションのビルド時にバックエンドからデータを取得し、データの出力された静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) をフロントエンドアプリケーション上でサーバーレンダリングする。</p>
 <p>そのため CSR とは異なり、フロントエンドアプリケーション上での静的ファイルのサーバーレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。</p>
-<p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png" /></p>
+<p><img alt="ssg" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssg.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg">Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita</a></li>
@@ -36793,7 +36793,7 @@
 <p>SSG の発展型。</p>
 <p>SSG と同じで事前にビルドし、静的ファイル (例：<code>html</code> ファイル、<code>css</code> ファイル、画像、動画、メールなど) をサーバーレンダリングする。</p>
 <p>また、静的ファイルのキャッシュを作成しておき、静的ファイルを再作成することで定期的にキャッシュを更新する。</p>
-<p><img alt="isr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png" /></p>
+<p><img alt="isr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/isr.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration">https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration</a></li>
@@ -36803,7 +36803,7 @@
 <p><br></p>
 <h3 id="_13">ブラウザとバックエンド間の通信<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
 <p>ISR では、ブラウザは通常は CDN にキャッシュされた静的ファイルを受け取り、キャッシュが古いか存在しない場合にのみ、サーバーがページを再生成する。</p>
-<p><img alt="isr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png" /></p>
+<p><img alt="isr" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/isr.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg">Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita</a></li>

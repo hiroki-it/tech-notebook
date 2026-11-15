@@ -38007,7 +38007,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -38075,7 +38075,7 @@
 <h3 id="http-keepalive">HTTP KeepAlive<a class="headerlink" href="#http-keepalive" title="Permanent link">&para;</a></h3>
 <p>HTTP リクエストのたびに、送信元と宛先間で TCP スリーウェイハンドシェイクと TCP 接続を実施し直すのは非効率である。</p>
 <p>そこで、宛先がレスポンスの <code>Connection</code> ヘッダーで <code>keep-alive</code> を送信元に返信し、1 つの TCP 接続中に複数の HTTP リクエストを送受信できるようにする。</p>
-<p><img alt="http-keepalive" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png" /></p>
+<p><img alt="http-keepalive" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/http-keepalive.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://server-setting.info/centos/nginx-keepalive-setting.html">nginx でKeepAliveを設定してみる | レンタルサーバー・自宅サーバー設定・構築のヒント</a></li>
@@ -38582,7 +38582,7 @@
 <p>誤ったリクエストである。</p>
 <p>読み取りタイムアウト (Read timeout) が起こっており、リクエストがプロキシを経由して他のシステムにリダイレクトされる場合、プロキシまではリクエストが送信されている。</p>
 <p>しかし、<code>502</code> ステータスとは異なり、その先のシステムからレスポンスが全く返信されないことを表す。</p>
-<p><img alt="status-code_504" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/status-code_504.png" /></p>
+<p><img alt="status-code_504" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/status-code_504.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://dotnetblog.asphostportal.com/steps-to-fix-504-bad-gateway-timeout-error/">Steps to Fix 504 Bad Gateway Timeout Error - ASP.NET Hosting Tips &amp; Guides</a></li>
@@ -38786,7 +38786,7 @@
 <span class="nv">$_COOKIE</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"Cookie名"</span> <span class="o">=&gt;</span> <span class="s2">"値"</span><span class="p">];</span>
 </code></pre></div>
 <h4 id="_13">▼ 擬似ステートフル化の仕組み<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
-<p><img alt="cookie" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cookie.png" /></p>
+<p><img alt="cookie" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/cookie.png" /></p>
 <ol>
 <li>
 <p>最初、ブラウザはリクエストを送信する。</p>
@@ -38849,7 +38849,7 @@
 <p><br></p>
 <h2 id="05-02">05-02. セッション<a class="headerlink" href="#05-02" title="Permanent link">&para;</a></h2>
 <h3 id="_14">セッションとは<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
-<p><img alt="session-id_page-transition" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id_page-transition.png" /></p>
+<p><img alt="session-id_page-transition" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/session-id_page-transition.png" /></p>
 <p>特定のサイトを訪問してから、離脱するまでの一連のユーザー操作を『セッション』という。</p>
 <p>このとき、セッション ID を使用すると、セッションの各クライアント側を同一クライアントとして識別できる。</p>
 <p>HTTP はステートレスなプロトコルであるが、セッション ID により擬似的にステートフルな通信ができる。</p>
@@ -38949,7 +38949,7 @@ php_value<span class="o">[</span>session.save_path<span class="o">]</span><span 
 </blockquote>
 <p><br></p>
 <h3 id="_20">セッションの仕組み<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
-<p><img alt="session-id" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id.png" /></p>
+<p><img alt="session-id" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/session-id.png" /></p>
 <ol>
 <li>
 <p>最初、ブラウザはリクエストを送信する。</p>

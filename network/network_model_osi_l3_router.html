@@ -36445,7 +36445,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36506,7 +36506,7 @@
 </ul>
 <p>プライベートネットワークの入り口に配置する場合、例えば、自宅内に配置するルーターがある。</p>
 <p>インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。</p>
-<p><img alt="router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router.png" /></p>
+<p><img alt="router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/router.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/">異なるネットワークをつなぐ中継器、「ルーター」とは | 日経クロステック（xTECH）</a></li>
@@ -36565,7 +36565,7 @@
 </blockquote>
 <h4 id="_13">▼ ホップバイホップルーティング<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>ネットワーク内でルーターがルーターに通信をルーティングするとき、各ルーターが最適なルーティング先を選択すること。</p>
-<p><img alt="router_hop-by-hop-routing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpg" /></p>
+<p><img alt="router_hop-by-hop-routing" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/router_hop-by-hop-routing.jpg" /></p>
 <blockquote>
 <ul>
 <li><a href="https://ascii.jp/elem/000/000/444/444681/3/">ASCII.jp：ルーティングとレイヤ3スイッチの関係とは (3/8)</a></li>
@@ -36601,7 +36601,7 @@
 <p><code>1</code> 個の IP アドレスに対して、<code>1</code> 個の内部 IP アドレスを紐付けられる。</p>
 <p>図で言う上側のアウトバウンド通信時の送信元 IP アドレスの変換を『SNAT 処理』といい、下側のインバウンド通信時の宛先 IP アドレスの変換を『DNAT 処理』という。</p>
 <p><code>1</code> 個の通信で両方が必要である。</p>
-<p><img alt="nat-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png" /></p>
+<p><img alt="nat-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/nat-router.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html">MCU入門 第9回 NAT/FW トラバーサル 3. NAT/FW トラバーサルの仕組み “NATとは” ｜オンライン会議・Web会議のVTVジャパン</a></li>
@@ -36611,7 +36611,7 @@
 <h4 id="dnat-destination-nat">▼ DNAT 処理：Destination NAT<a class="headerlink" href="#dnat-destination-nat" title="Permanent link">&para;</a></h4>
 <p>NAT 処理のうち、宛先 IP アドレスを変換すること (<code>グローバルIPアドレス</code> ➡️ <code>プライベートIPアドレス</code>、<code>プライベートIPアドレス</code> ➡️ <code>プライベートIPアドレス</code>) 。</p>
 <p>NAT ルーター自体を複数のプライベートネットワークで共有することがある。</p>
-<p><img alt="nat_global-to-private" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat_global-to-private.png" /></p>
+<p><img alt="nat_global-to-private" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/nat_global-to-private.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://rainbow-engine.com/dnat-snat-difference/">DNATとSNATの違いやそれぞれの特徴について – Rainbow Engine</a></li>
@@ -36619,7 +36619,7 @@
 </blockquote>
 <p>NAT ルーターは、プライベートネットワークに入るとき、パケットのヘッダー情報における『宛先』のグローバル IP アドレスをプライベート IP アドレスに変換する。</p>
 <h4 id="snat-source-nat">▼ SNAT 処理：Source NAT<a class="headerlink" href="#snat-source-nat" title="Permanent link">&para;</a></h4>
-<p><img alt="nat_private-to-global" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat_private-to-global.png" /></p>
+<p><img alt="nat_private-to-global" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/nat_private-to-global.png" /></p>
 <p>NAT 処理のうち送信元 IP アドレスを変換すること (<code>プライベートIPアドレス</code> ➡️ <code>グローバルIPアドレス</code>、<code>プライベートIPアドレス</code> ➡️ <code>プライベートIPアドレス</code>) 。</p>
 <p>NAT ルーター自体を複数のプライベートネットワークで共有することがある。</p>
 <ol>
@@ -36727,7 +36727,7 @@
 <p>種類の異なるネットワーク間で、IP アドレスとポート番号を変換すること。</p>
 <p><code>1</code> 個の IP アドレスに対して、複数の内部 IP アドレスを紐付けられる。</p>
 <p>AWS や GCP などで使用されているような NAT ルーターはこちらであり、IP アドレスとポート番号の両方を指定することで、VPC 内のプライベート IP アドレスに単一のパブリック IP アドレスを割り当てるようになっている。</p>
-<p><img alt="napt-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png" /></p>
+<p><img alt="napt-router" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/napt-router.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html">MCU入門 第9回 NAT/FW トラバーサル 3. NAT/FW トラバーサルの仕組み “NATとは” ｜オンライン会議・Web会議のVTVジャパン</a></li>
@@ -36765,10 +36765,10 @@
   </tbody>
 </table>
 
-<p><img alt="napt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt.png" /></p>
+<p><img alt="napt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/napt.png" /></p>
 <h4 id="snat">▼ SNAT 処理の場合<a class="headerlink" href="#snat" title="Permanent link">&para;</a></h4>
 <p>プライベートネットワークに入るとき、付け加えられたポート番号を基に、パケットのヘッダー情報にある『宛先』のグローバル IP アドレスを、異なるプライベート IP アドレスに変換し分ける。</p>
-<p><img alt="napt_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt_2.png" /></p>
+<p><img alt="napt_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/napt_2.png" /></p>
 <p><br></p>
 <h3 id="napt_2">標準的 NAPT ルーター<a class="headerlink" href="#napt_2" title="Permanent link">&para;</a></h3>
 <h4 id="iptables-linuxubuntu-napt">▼ iptables (Linux/Ubuntu) による標準的 NAPT ルーター<a class="headerlink" href="#iptables-linuxubuntu-napt" title="Permanent link">&para;</a></h4>

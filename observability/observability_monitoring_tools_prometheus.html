@@ -36681,7 +36681,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36715,7 +36715,7 @@
 <p>Prometheus は、prometheus サーバー (Retrieval、ローカルのとき系列ストレージ、HTTP サーバー) から構成されている。</p>
 <p>Kubernetes リソースに関するメトリクスの元になるデータポイントを収集し、分析する。</p>
 <p>また設定された条件下でアラートを作成し、Alertmanager に送信する。</p>
-<p><img alt="prometheus_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_architecture.png" /></p>
+<p><img alt="prometheus_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus_architecture.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://danielfm.me/prometheus-for-developers/">https://danielfm.me/posts/prometheus-for-developers/</a></li>
@@ -36893,7 +36893,7 @@ drwxrwsr-x<span class="w">    </span><span class="m">3</span><span class="w"> </
 <p>remote-write-receiver を有効化すると、リモートストレージの種類によらず、エンドポイントが『<code>https://&lt;IPアドレス&gt;/api/v1/write</code>』になる (ポート番号はリモートストレージごとに異なる) 。</p>
 <p>Prometheus と外部の TSDB の両方を冗長化する場合、冗長化された Prometheus では、片方の DB のみに送信しないと、メトリクスが重複してしまう Grafana のようにリアルタイムにデータを取得し続けることはできない。</p>
 <p>リモート読み出しを使用する場合、Prometheus のダッシュボード上で PromQL を使用することなく、Grafana のようにリアルタイムにデータを取得できるようになる。</p>
-<p><img alt="prometheus_remote-storage" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_remote-storage.png" /></p>
+<p><img alt="prometheus_remote-storage" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus_remote-storage.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations">Storage | Prometheus</a></li>
@@ -36906,7 +36906,7 @@ drwxrwsr-x<span class="w">    </span><span class="m">3</span><span class="w"> </
 <h4 id="_10">▼ ダイナミックキューとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>リモートストレージにメトリクスを送信する場合、送信前にメトリクス (実体は WAL ファイル) をキューイングする。</p>
 <p>ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。</p>
-<p><img alt="prometheus_dynamic-queues_shard" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png" /></p>
+<p><img alt="prometheus_dynamic-queues_shard" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus_dynamic-queues_shard.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52">[Prometheus Meetup#3] Victoria Metricsで作りあげる大規模・超負荷システムモニタリング基盤 / Monitoring Platform With Victoria Metrics - Speaker Deck</a></li>
@@ -36947,7 +36947,7 @@ drwxrwsr-x<span class="w">    </span><span class="m">3</span><span class="w"> </
 <h3 id="alertmanager">Alertmanager とは<a class="headerlink" href="#alertmanager" title="Permanent link">&para;</a></h3>
 <p>Prometheus のアラートを受信し、特定の条件下で通知する。</p>
 <p>受信したアラートは、Alertmanager の UI 上に表示される。</p>
-<p><img alt="alertmanager" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alertmanager.png" /></p>
+<p><img alt="alertmanager" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/alertmanager.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://prometheus.io/docs/alerting/latest/alertmanager/">Alertmanager | Prometheus</a></li>

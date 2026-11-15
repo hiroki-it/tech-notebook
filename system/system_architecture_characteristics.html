@@ -37403,7 +37403,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -37559,7 +37559,7 @@
 <p>複数の稼働中インスタンスを配置する冗長化方法のこと。</p>
 <p>平常時はいずれかの稼働中インスタンスのロードバランシングする。</p>
 <p>いずれかの稼働中インスタンスで障害が発生した場合、障害が発生したインスタンスをロードバランサーから切り離す。</p>
-<p><img alt="dual-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png" /></p>
+<p><img alt="dual-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/dual-system.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.fe-siken.com/kakomon/29_aki/q13.html">基本情報技術者平成29年秋期問13 デュアルシステムの説明｜基本情報技術者試験.com</a></li>
@@ -37568,7 +37568,7 @@
 <p><br></p>
 <h3 id="_14">デュプレックスシステム<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ デュプレックスシステムとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
-<p><img alt="duplex-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/duplex-system.png" /></p>
+<p><img alt="duplex-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/duplex-system.png" /></p>
 <p>稼働中インスタンスと待機中インスタンス (ホットスタンバイ/コールドスタンバイ) を配置する冗長化方法のこと。</p>
 <p>平常時は稼働中インスタンスのみにルーティングするようにしておく。</p>
 <p>稼働中インスタンスで障害が発生した場合、待機中インスタンスを稼働中インスタンスに昇格させ、インバウンド通信のルーティング先をこれに切り替える。</p>
@@ -37590,7 +37590,7 @@
 <h3 id="_17">垂直スケーリング<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
 <h4 id="_18">▼ 垂直スケーリング (スケールアップ ⇔ スケールダウン) とは<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
 <p>仮想環境のコンポーネント自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。</p>
-<p><img alt="scale-up" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scale-up.png" /></p>
+<p><img alt="scale-up" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/scale-up.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.idcf.jp/words/scale-out.html">https://www.idcf.jp/words/scale-out.html</a></li>
@@ -37600,7 +37600,7 @@
 <h3 id="_19">水平スケーリング<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
 <h4 id="_20">▼ 水平スケーリング (スケールアウト ⇔ スケールイン) とは<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
 <p>仮想環境のコンポーネントのインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。</p>
-<p><img alt="scale-out" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scale-out.png" /></p>
+<p><img alt="scale-out" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/scale-out.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.idcf.jp/words/scale-out.html">https://www.idcf.jp/words/scale-out.html</a></li>
@@ -37612,7 +37612,7 @@
 <p><code>1</code> 個の処理を分担できる複数の稼働中ノードと待機中ノードを配置する冗長化方法のこと。</p>
 <p>平常時は稼働中ノードのみにルーティングするようにしておき、<code>1</code> 個の処理を分担させる。</p>
 <p>稼働中ノードで障害が発生した場合、待機中ノードを稼働中ノードに昇格させ、インバウンド通信のルーティング先をこれに切り替える。</p>
-<p><img alt="ha-cluster-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system.png" /></p>
+<p><img alt="ha-cluster-system" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/ha-cluster-system.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA">クラスタシステムとは？概要や目的、歴史、種類を解説 | ビジネス継続とITについて考える</a></li>
@@ -37850,7 +37850,7 @@
 <li>ソースコードのサイズ</li>
 <li>SREing の文脈でのユーザーからの満足度</li>
 </ul>
-<p><img alt="software-quality-attributes_measurement" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png" /></p>
+<p><img alt="software-quality-attributes_measurement" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/software-quality-attributes_measurement.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://iso25000.com/index.php/en/iso-25000-standards/iso-25010">https://iso25000.com/index.php/en/iso-25000-standards/iso-25010</a></li>

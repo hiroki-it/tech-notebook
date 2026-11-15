@@ -36525,7 +36525,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
   </span>
 
     
@@ -36581,7 +36581,7 @@
 </blockquote>
 <h3 id="sso_1">SSO パターンの仕組み<a class="headerlink" href="#sso_1" title="Permanent link">&para;</a></h3>
 <p>各マイクロサービスは、SSO の ID プロバイダーに認証を委譲する。</p>
-<p><img alt="microservices_authentication_type_sso" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso.png" /></p>
+<p><img alt="microservices_authentication_type_sso" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authentication_type_sso.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://please-sleep.cou929.nu/microservices-auth-design.html">Microservices における認証と認可の設計パターン - Please Sleep</a></li>
@@ -36595,7 +36595,7 @@
 <p>その後、Cookie に JWT を保管する。</p>
 <p>次回、Kong Gateway (API ゲートウェイ) は Keycloak から取得した公開鍵を使用し、フロントエンドから受信した JWT トークンの署名を検証する。</p>
 <p>結果に応じて、宛先マイクロサービスにルーティングするかどうかを決める。</p>
-<p><img alt="microservices_authentication_type_sso_gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_sso_gateway.png" /></p>
+<p><img alt="microservices_authentication_type_sso_gateway" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authentication_type_sso_gateway.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.jerney.io/secure-apis-kong-keycloak-1/">Securing APIs with Kong and Keycloak - Part 1</a></li>
@@ -36625,7 +36625,7 @@
 <p><code>1</code> 個のセッション中の認証アーティファクトをマイクロサービス間で共有するために、セッション ID を保管できるストレージ (例：Infinispan、Redis など) を <code>1</code> 個だけ配置する。</p>
 <p>セッションベース認証は、コンテナの相性が悪く、各マイクロサービスがセッション ID を持つ必要がある。</p>
 <p>そのため、SessionStorage が必要になるというデメリットがある。</p>
-<p><img alt="microservices_authentication_type_session" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session.png" /></p>
+<p><img alt="microservices_authentication_type_session" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authentication_type_session.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://please-sleep.cou929.nu/microservices-auth-design.html">Microservices における認証と認可の設計パターン - Please Sleep</a></li>
@@ -36644,7 +36644,7 @@
 <li>フロントエンドアプリケーションは、セッション ID を Cookie ヘッダーで運搬する。</li>
 <li>マイクロサービスは、セッション ID に対応するセッションデータがストレージにあるか、またセッション ID が失効していないかを検証する。セッション ID は Cookie ヘッダーで運搬し、後続のマイクロサービスに伝播させる。</li>
 </ol>
-<p><img alt="microservices_authentication_type_session_cookie-header" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_session_cookie-header.png" /></p>
+<p><img alt="microservices_authentication_type_session_cookie-header" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authentication_type_session_cookie-header.png" /></p>
 <p><br></p>
 <h2 id="01-04-jwt">01-04. JWT パターン (分散パターン)<a class="headerlink" href="#01-04-jwt" title="Permanent link">&para;</a></h2>
 <h3 id="jwt">JWT パターンとは<a class="headerlink" href="#jwt" title="Permanent link">&para;</a></h3>
@@ -36664,7 +36664,7 @@
 <p>トークンベース認証の場合に、コンテナの相性がよく、各マイクロサービスは JWT を持つ必要がない。</p>
 <p>クライアントのフロントエンドアプリケーション側に保管した JWT トークンの失効が難しいというデメリットがある。</p>
 <p>その解決策として、Opaque トークンパターン (ゲートウェイ集中パターン) がある。</p>
-<p><img alt="microservices_authentication_type_jwt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_jwt.png" /></p>
+<p><img alt="microservices_authentication_type_jwt" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authentication_type_jwt.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://please-sleep.cou929.nu/microservices-auth-design.html">Microservices における認証と認可の設計パターン - Please Sleep</a></li>
@@ -36695,7 +36695,7 @@
 <p>クライアントのフロントエンドアプリケーション側には JWT とペアになる Opaque トークンを保管する。</p>
 <p>また、API ゲートウェイやロードバランサーで、Opaque トークンと JWT トークンの間の相互変換を通信のたびに実行する。</p>
 <p>トークンベース認証の場合に、コンテナの相性がよく、各マイクロサービスは Opaque トークンを持つ必要がない。</p>
-<p><img alt="microservices_authentication_type_opaque-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authentication_type_opaque-token.png" /></p>
+<p><img alt="microservices_authentication_type_opaque-token" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authentication_type_opaque-token.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://zenn.dev/maronn/articles/aboun-microservices-auth-in-app#jwt%2Bapi-gateway-%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%9F%E7%AE%A1%E7%90%86">マイクロサービスにおける認証・認可を考える</a></li>
@@ -36718,7 +36718,7 @@
 <li>バックエンドは、Amazon API Gateway にレスポンスを返信する。</li>
 <li>Amazon API Gateway は、クライアントのフロントエンドアプリケーションにレスポンスを返信する。</li>
 </ol>
-<p><img alt="aws_jwt-authorizer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_jwt-authorizer.png" /></p>
+<p><img alt="aws_jwt-authorizer" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/aws_jwt-authorizer.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/KWS_0901/items/9b37712ed4bff75e1d4f">API Gateway JWT Authorizerメモ #AWS - Qiita</a></li>
@@ -36731,7 +36731,7 @@
 <h3 id="_6">集中パターン<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ 集中パターンとは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>認可スコープを定義する認可マイクロサービス (例：自前、Open Policy Agent など) を <code>1</code> 個だけ配置し、認可処理を実行する。</p>
-<p><img alt="microservices_authorization_centralized-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization.png" /></p>
+<p><img alt="microservices_authorization_centralized-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authorization_centralized-authorization.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.osohq.com/academy/what-is-authorization">Authorization Academy - What is Authorization?</a></li>
@@ -36741,7 +36741,7 @@
 <h4 id="_8">▼ 認可プロバイダーへの委譲<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>認可マイクロサービスとして認可プロバイダーを配置する。</p>
 <p>認可プロバイダーは、アカウント属性やワークロード ID の認可スコープに基づいて操作の許否を決定し、その結果をマイクロサービスに返信する。マイクロサービスは結果に応じてリクエストを許可または拒否する。</p>
-<p><img alt="microservices_authorization_centralized-authorization_external-provider" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_centralized-authorization_external-provider.png" /></p>
+<p><img alt="microservices_authorization_centralized-authorization_external-provider" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authorization_centralized-authorization_external-provider.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://thinkit.co.jp/article/22484">Keycloakと認可プロダクトを利用したマイクロサービスにおける認証認可の実現 | CNCF IncubatingプロジェクトになったKeycloak入門 | Think IT（シンクイット）</a></li>
@@ -36753,7 +36753,7 @@
 <h4 id="_10">▼ 分散パターンとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>認可処理を各マイクロサービスに実装する。</p>
 <p>認可処理はドメインと結びつきが強いので、マイクロサービス側に実装すると拡張性が高くなる。</p>
-<p><img alt="microservices_authorization_decentralized-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_decentralized-authorization.png" /></p>
+<p><img alt="microservices_authorization_decentralized-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authorization_decentralized-authorization.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.osohq.com/academy/what-is-authorization">Authorization Academy - What is Authorization?</a></li>
@@ -36764,7 +36764,7 @@
 <h3 id="_11">ハイブリッドパターン<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ ハイブリッドパターンとは<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>認可処理を各マイクロサービスに実装しつつ、ほかのマイクロサービスの認可の判定結果も使用して操作の許否を決定する。</p>
-<p><img alt="microservices_authorization_hybrid-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_authorization_hybrid-authorization.png" /></p>
+<p><img alt="microservices_authorization_hybrid-authorization" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_authorization_hybrid-authorization.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.osohq.com/academy/what-is-authorization">Authorization Academy - What is Authorization?</a></li>
