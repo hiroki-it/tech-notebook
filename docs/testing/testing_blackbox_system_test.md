@@ -120,11 +120,11 @@ tags:
 
 それぞれの曲線の状態から、プロジェクトの進捗状況を読み取られる。
 
-![品質管理図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/品質管理図.jpg)
+![quality-control-chart](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quality-control-chart.jpg)
 
 不良摘出実績線 (信頼度成長曲線) は、プログラムの品質の状態を表し、S 字型でないものはプログラムの品質がよくないことを表す。
 
-![信頼度成長曲線の悪い例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/信頼度成長曲線の悪い例.jpg)
+![reliability-growth-curve_bad-example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reliability-growth-curve_bad-example.jpg)
 
 <br>
 
@@ -855,7 +855,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 株式会社 LAC によるペネトレーションテストサービス
 
-![ペネトレーションテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ペネトレーションテスト.png)
+![penetration-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/penetration-test.png)
 
 <br>
 

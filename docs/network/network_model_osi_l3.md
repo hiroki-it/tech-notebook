@@ -27,7 +27,7 @@ tags:
 
 ### ネットワーク層の仕組み
 
-![ネットワークにおけるTCP_IPを使用したデータ通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネットワークにおけるTCP_IPを使用したデータ通信.png)
+![tcp-ip_data-communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_data-communication.png)
 
 IP パケットのヘッダー情報を使用して、宛先認識する。
 

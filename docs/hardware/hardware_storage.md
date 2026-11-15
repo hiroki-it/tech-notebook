@@ -85,7 +85,7 @@ Google Drive のストリーミング機能では、仮想ドライブをロー�
   </tbody>
 </table>
 
-![RAIDの種類](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RAIDの種類.png)
+![raid_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/raid_types.png)
 
 > - https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 

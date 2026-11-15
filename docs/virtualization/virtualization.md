@@ -34,7 +34,7 @@ tags:
 
 #### ▼ ホスト型仮想化とは
 
-![ホスト型仮想化](https://user-images.githubusercontent.com/42175286/60386396-3afbd080-9acf-11e9-9094-f61aa839dc04.png)
+![virtualization_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_host.png)
 
 物理サーバーのホスト上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。
 
@@ -85,7 +85,7 @@ tags:
 
 #### ▼ ハイパーバイザー型仮想化とは
 
-![ハイパーバイザー型仮想化](https://user-images.githubusercontent.com/42175286/60386395-3afbd080-9acf-11e9-9fbe-6287753cb43a.png)
+![virtualization_hypervisor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_hypervisor.png)
 
 物理サーバーの BIOS から起動したハイパーバイザー上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。
 
@@ -114,7 +114,7 @@ tags:
 
 #### ▼ コンテナ型仮想化とは
 
-![コンテナ型仮想化](https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png)
+![virtualization_container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_container.png)
 
 物理サーバーのホスト上で、OS のユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。
 
@@ -141,7 +141,7 @@ tags:
 
 一方で、コンテナ型では、OS のユーザー空間を分割するだけのため、仮想化のセットアップが速い。
 
-![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png)
+![virtualization_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_comparison.png)
 
 <br>
 
@@ -155,7 +155,7 @@ tags:
 
 一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、オーバーヘッドが小さい。
 
-![仮想化の比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png)
+![virtualization_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_comparison.png)
 
 #### ▼ オーバーヘッドの比較
 
@@ -163,6 +163,6 @@ sysbench というベンチマークツールを使用して、CPU・メモリ�
 
 > - https://codezine.jp/article/detail/7894
 
-![overhead](https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png)
+![virtualization_overhead](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_overhead.png)
 
 <br>

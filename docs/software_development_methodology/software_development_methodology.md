@@ -21,13 +21,13 @@ tags:
 
 要件定義から運用・保守までの工程を、上流工程から下流工程に向かって順番に進める開発手法である。
 
-![ウォーターフォール型](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ウォーターフォール型.png)
+![waterfall-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waterfall-model.png)
 
 #### ▼ 外部設計の詳細
 
 外部設計では、ユーザ向けにソフトウェアを設計する。
 
-![外部設計の詳細](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/外部設計の詳細.png)
+![external-design_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-design_detail.png)
 
 <br>
 

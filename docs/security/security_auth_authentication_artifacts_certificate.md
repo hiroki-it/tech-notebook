@@ -26,7 +26,7 @@ tags:
 
 『なりすまし』と『改竄』を防げる。
 
-![署名](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名.png)
+![digital-signature](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/digital-signature.png)
 
 **＊サーバーが実行すること＊**
 
@@ -74,7 +74,7 @@ tags:
 
 『なりすまし』と『改竄』を防げる署名に、『情報漏洩』を防げる公開鍵暗号方式を組み込んだ暗号化技術。
 
-![署名と暗号化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デジタル署名と暗号化.png)
+![digital-signature_encryption](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/digital-signature_encryption.png)
 
 <br>
 
@@ -208,7 +208,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 注意点として、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましの可能性は非常に低い。
 
-![認証局自体のなりすまし防止](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/認証局自体の成りすまし防止.png)
+![certificate-authority_spoofing-prevention](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate-authority_spoofing-prevention.png)
 
 > - [【素朴な疑問】ルート証明書って何？【今さら聞けない】 : 0から楽しむパソコン講座のブログ](https://zeropasoakita.livedoor.blog/archives/20294837.html)
 

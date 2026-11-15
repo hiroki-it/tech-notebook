@@ -261,15 +261,15 @@ tags:
 
 ### キュー型
 
-![Queue1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue1.gif)
+![queue_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/queue_1.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![Queue2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue2.gif)
+![queue_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/queue_2.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![Queue3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Queue3.gif)
+![queue_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/queue_3.gif)
 
 配列の最後に要素を追加する処理と、配列の最初の要素を取り出す処理を組み合わせることにより、実装できる。
 
@@ -365,7 +365,7 @@ tags:
 
 また、宛先の好きなタイミングでメッセージを取り出せる。
 
-![メッセージキュー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メッセージキュー.jpg)
+![message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/message-queue.jpg)
 
 <br>
 
@@ -373,15 +373,15 @@ tags:
 
 配列の最後に要素を追加する処理と、配列の最後の要素を取り出す処理で実装可能。
 
-![Stack1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack1.gif)
+![stack_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stack_1.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![Stack2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack2.gif)
+![stack_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stack_2.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![Stack3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Stack3.gif)
+![stack_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stack_3.gif)
 
 <br>
 
@@ -391,7 +391,7 @@ tags:
 
 各ノードにデータが格納されている。
 
-![二分探索木](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索木1.gif)
+![binary-search-tree_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary-search-tree_1.gif)
 
 #### ▼ ヒープ
 
@@ -399,18 +399,18 @@ tags:
 
 各ノードにデータが格納されている。
 
-![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ1.gif)
+![heap_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/heap_1.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![ヒープ1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ2.gif)
+![heap_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/heap_2.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![ヒープ2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ3.gif)
+![heap_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/heap_3.gif)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![. ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ヒープ4.gif)
+![heap_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/heap_4.gif)
 
 <br>

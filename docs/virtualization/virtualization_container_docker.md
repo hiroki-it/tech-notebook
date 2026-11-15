@@ -48,7 +48,7 @@ namespace では、カーネルを分離できるため、カーネルの要素 
 
 #### ▼ イメージレイヤー
 
-![イメージレイヤーからなるコンテナイメージのビルド](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージのビルド.png)
+![container-image_build](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-image_build.png)
 
 イメージレイヤーの実体は、`/var/lib/docker/overlay2` ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。
 
@@ -74,7 +74,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 コンテナイメージからコンテナを作成するときに、コンテナイメージレイヤーのうえにコンテナレイヤーが積み重ねられる。
 
-![コンテナイメージ上へのコンテナレイヤーの積み重ね](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コンテナイメージ上へのコンテナレイヤーの積み重ね.png)
+![container-image_container-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-image_container-layer.png)
 
 > - [Dockerのイメージとコンテナの違い \| CodeCampus](https://blog.codecamp.jp/programming-docker-image-container)
 
@@ -118,7 +118,7 @@ root ユーザーで実行したコンテナのこと。
 
 docker クライアントは、`docker` コマンドを使用して docker デーモン API をコールできる。
 
-![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png)
+![docker-client](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png)
 
 > - https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle#8
 

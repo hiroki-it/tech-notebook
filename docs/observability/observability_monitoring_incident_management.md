@@ -375,7 +375,7 @@ Slack をインシデント管理ツールとして、Slack に通知された�
 1 - (1-0.81) × (1-0.64) = 0.9316
 ```
 
-![稼働率の計算](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/稼働率の計算.jpg)
+![availability_calculation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/availability_calculation.jpg)
 
 #### ▼ MTxx メトリクスのインシデント管理への適用
 

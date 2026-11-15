@@ -187,7 +187,7 @@ docker エリアのボリュームを Data Volume をコンテナのディレク
 
 ボリュームを使用するときは、docker エリアを参照するのではなく、Data Volume コンテナを参照する。
 
-![data-volumeコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/data-volumeコンテナ.png)
+![docker_data-volume-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_data-volume-container.png)
 
 <br>
 

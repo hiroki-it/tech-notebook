@@ -35,7 +35,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 データ発生源、データの流れ、処理、データストアを基に、ソフトウェアの処理間でデータがどのように受け渡されるかを表す。
 
-![データフロー図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データフロー図.jpg)
+![data-flow-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/data-flow-diagram.jpg)
 
 <br>
 
@@ -215,7 +215,7 @@ graph LR
 
 ビジネスロジックや業務フローを手続き的に表記する。
 
-![アクティビティ図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アクティビティ図.png)
+![uml_activity-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_activity-diagram.png)
 
 ## 05. システムシーケンス図
 
@@ -270,11 +270,11 @@ stateDiagram-v2
 
 ストップウォッチのステートマシン図がある。
 
-![ストップウォッチのステートマシン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン図.jpg)
+![uml_state-machine-diagram_stopwatch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_state-machine-diagram_stopwatch.jpg)
 
 ステートマシン表を作成してみると、ステートマシン図では、9 つあるセルのうち `4` 個のセルしか表現できておらず、残り 5 つのセルは表現されていないことに気づける。
 
-![ストップウォッチのステートマシン表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ストップウォッチのステートマシン表.jpg)
+![state-machine-table_stopwatch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/state-machine-table_stopwatch.jpg)
 
 <br>
 

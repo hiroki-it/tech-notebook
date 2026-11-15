@@ -166,7 +166,7 @@ Sandbox モードでは以下の制限がかかっており。
 
 ## 04. メールの送受信設定
 
-![Amazon SES とは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon SES とは.png)
+![ses](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ses.png)
 
 <table>
   <thead>

@@ -25,7 +25,7 @@ tags:
 
 リポジトリは、ドメイン層のエンティティの永続化をインフラストラクチャ層の実装に任せることにより、ドメイン層が RDBMS や外部システムなどの永続化先に依存しないようにする。
 
-![Repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Repository.png)
+![repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repository.png)
 
 ### リポジトリパターンとは
 
@@ -270,7 +270,7 @@ tags:
 
 ### DB に対する書き込み責務 (CREATE／UPDATE／DELETE)
 
-![ドメイン駆動設計_リポジトリ_データ更新](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ更新.png)
+![ddd_repository_write](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_repository_write.png)
 
 DB に対する書き込み操作をする。
 
@@ -598,7 +598,7 @@ DB に対する書き込み操作をする。
 
 ### DB に対する読み出し責務 (Read)
 
-![ドメイン駆動設計_リポジトリ_データ取得](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_リポジトリ_データ取得.jpg)
+![ddd_repository_read](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_repository_read.jpg)
 
 DB に対する読み出し操作をする。
 

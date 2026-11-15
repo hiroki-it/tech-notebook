@@ -908,7 +908,7 @@ git push origin HEAD
 
 作業中のローカルブランチで、指定の履歴を削除する。
 
-![revert](https://qiita-image-store.s3.amazonaws.com/0/292201/995d8f16-0a3e-117f-945f-c20a511edeaf.png)
+![git_revert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git_revert.png)
 
 <br>
 
@@ -967,7 +967,7 @@ $ git revert -m 1 xyz
 
 作業中のローカルブランチで、指定の履歴まで戻し、それ以降を削除する。
 
-![reset](https://qiita-image-store.s3.amazonaws.com/0/292201/e96468c4-57cc-bf2b-941a-d179ac829627.png)
+![git_reset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git_reset.png)
 
 <br>
 

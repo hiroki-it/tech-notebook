@@ -23,7 +23,7 @@ TypeScript の例では、インターフェースと生成関数でオブジェ
 
 クラスがほかのクラスを状態として保持する関係性のことで、ライフサイクルの依存の有無によって Association、Aggregation、Composition に分類できる。
 
-![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
+![relationship_data-holding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_data-holding.png)
 
 <br>
 
@@ -438,7 +438,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 クラスがほかのクラスの性質を継承する、またはその振る舞いを実装する関係性のことで、Generalization と Realization に分類できる。
 
-![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
+![group-member_relationship](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/group-member_relationship.png)
 
 <br>
 
@@ -632,7 +632,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 このとき、『働く関数』は部署ごとに異なってしまうが、どう実装したらよいのか…
 
-![抽象クラスと抽象関数-1](https://user-images.githubusercontent.com/42175286/59590447-12ff8b00-9127-11e9-802e-126279fcb0b1.PNG)
+![abstract-class_abstract-function_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/abstract-class_abstract-function_1.png)
 
 これを解決するために、例えば、次の 2 つの実装方法が考えられる。
 
@@ -652,7 +652,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 抽象オブジェクトと抽象関数を使用すると、`2` 個のメリットを生かしつつ、デメリットを解決可能。
 
-![抽象クラスと抽象関数-2](https://user-images.githubusercontent.com/42175286/59590387-e8adcd80-9126-11e9-87b3-7659468af2f6.PNG)
+![abstract-class_abstract-function_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/abstract-class_abstract-function_2.png)
 
 === "Go"
 
@@ -880,7 +880,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 プリウスと各世代プリウスが、抽象クラスと子クラスの関係にある。
 
-![抽象クラス](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/抽象クラス.png)
+![abstract-class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/abstract-class.png)
 
 <br>
 
@@ -898,7 +898,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 そこで、モーター機能に最低限必要な関数の実装を強制する。
 
-![インターフェースとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースとは.png)
+![interface-class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface-class.png)
 
 実装クラスに処理内容を記述しなければならない。
 
@@ -906,7 +906,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 多重継承できる。
 
-![子インターフェースの多重継承_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/子インターフェースの多重継承_2.png)
+![interface-class_multiple-inheritance_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface-class_multiple-inheritance_2.png)
 
 === "Go"
 
@@ -1080,7 +1080,7 @@ Car クラスは Lock クラスを状態として保持する。
 
     そこで、抽象関数によって、エンジン機能に最低限必要な関数の実装を強制する。
 
-    ![インターフェースと抽象クラスの使い分け](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インターフェースと抽象クラスの使い分け.png)
+    ![interface-class_abstract-class_usage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface-class_abstract-class_usage.png)
 
 <br>
 
@@ -1350,7 +1350,7 @@ PHP では、集約や合成の関係性を作り、委譲元クラスの関数�
 
 #### ▼ Dependency とは
 
-![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
+![relationship_argument-or-return-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_argument-or-return-type.png)
 
 クラス A がクラス B を引数型/返却値型として使用する関係性のこと。
 
@@ -2046,7 +2046,7 @@ Service Locator パターンはアンチパターンである。
 
 これによって、上位レイヤーのクラスは下位レイヤーのクラスへ依存する関係性になる。
 
-![DIPに基づかない設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づかない設計の場合.png)
+![dip_without](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dip_without.png)
 
 #### ▼ DIP を満たす実装の場合
 
@@ -2064,7 +2064,7 @@ Service Locator パターンはアンチパターンである。
 
 > - https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
-![DIPに基づく設計の場合](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DIPに基づく設計の場合.png)
+![dip_with](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dip_with.png)
 
 #### ▼ DIP に基づくドメイン駆動設計の場合
 
@@ -2076,7 +2076,7 @@ Service Locator パターンはアンチパターンである。
 
 4. 2 と 3 により、インフラストラクチャ層とユースケース層の両方は、ドメイン層のインターフェース (抽象クラス) に依存する。これは原則 1 を満たす。
 
-    ![ドメイン駆動設計_逆転依存性の原則](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_依存性逆転の原則.jpg)
+    ![ddd_dependency-inversion-principle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_dependency-inversion-principle.jpg)
 
 <br>
 
@@ -2461,6 +2461,6 @@ LCOM4 は、クラスの各関数内で、保持するすべてのデータに�
 
 例として、以下の画像では、道具モジュールをキッチン引き出しモジュールとガレージ工具箱モジュールに分けている。これにより、各クラスの結合度を低くし、凝集度を高くできる。
 
-![低結合度高凝集度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/低結合度高凝集度.png)
+![loose-coupling_high-cohesion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/loose-coupling_high-cohesion.png)
 
 <br>

@@ -101,7 +101,7 @@ View と Model の間に ViewModel を配置し、View と ViewModel の間で�
 
 Vue.js では、意識せずに MVVM アーキテクチャで実装できるようになっている。
 
-![一般的なMVVMアーキテクチャ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/一般的なMVVMアーキテクチャ.png)
+![mvvm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mvvm.png)
 
 <br>
 

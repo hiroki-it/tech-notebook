@@ -21,7 +21,7 @@ tags:
 
 回帰分析を実行するか否かの判断材料になる。
 
-![相関分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/相関分析.png)
+![correlation-analysis](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/correlation-analysis.png)
 
 ```r
 # データを読み込む。
@@ -60,11 +60,11 @@ cor(ts, method = "pearson")
 
 原因と結果が 1 つずつと仮定したときに、もっとも当てはまりのよい線形モデルを推定できる。
 
-![単回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単回帰分析.png)
+![simple-regression-analysis](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simple-regression-analysis.png)
 
 #### ▼ 回帰方程式
 
-![単回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単回帰式.png)
+![simple-regression-formula](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simple-regression-formula.png)
 
 ```r
 # データを読み込む。
@@ -99,11 +99,11 @@ summary(Reg)
 
 ただし、グラフでは、モデルは平面で表す。
 
-![重回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/重回帰分析.png)
+![multiple-regression-analysis](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multiple-regression-analysis.png)
 
 #### ▼ 回帰方程式
 
-![重回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/重回帰式.png)
+![multiple-regression-formula](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multiple-regression-formula.png)
 
 ```r
 # データを読み込む。
@@ -165,11 +165,11 @@ summary(Reg)
 
 説明変数が質的変数の場合、もっとも当てはまりのよい非線形モデル (ロジスティック分布) を推定する。
 
-![ロジスティック回帰分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロジスティック回帰分析.png)
+![logistic-regression-analysis](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logistic-regression-analysis.png)
 
 #### ▼ 回帰方程式
 
-![ロジスティック回帰式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ロジスティック回帰式.png)
+![logistic-regression-formula](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logistic-regression-formula.png)
 
 ```r
 # データを読み込む。
@@ -205,11 +205,11 @@ exp(result_lg2$coefficients)
 
 青い点：被験者が暑くないと感じた日
 
-![決定木分析_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定木分析_1.png)
+![decision-tree-analysis_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/decision-tree-analysis_1.png)
 
-![矢印_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg)
+![arrow_80x82](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg)
 
-![決定木分析_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定木分析_2.png)
+![decision-tree-analysis_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/decision-tree-analysis_2.png)
 
 ```r
 # データを読み込む。
@@ -240,7 +240,7 @@ fancyRpartPlot(tree)
 
 データ間の同一性を明らかにできる。
 
-![階層クラスター分析](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/階層クラスター分析.png)
+![hierarchical-cluster-analysis](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hierarchical-cluster-analysis.png)
 
 ```r
 # データを読み込む。

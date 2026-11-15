@@ -112,7 +112,7 @@ traversal は、横断する (ディレクトリを乗り越える) の意味。
 
 パス名を使用してファイルを指定し、管理者の意図していないファイルを不正に参照またはダウンロードする。
 
-![ディレクトリトラバーサル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ディレクトリトラバーサル.jpg)
+![directory-traversal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/directory-traversal.jpg)
 
 <br>
 
@@ -128,7 +128,7 @@ Dos 攻撃は IP アドレスを指定して防御できるが、DDos 攻撃は�
 
 そのため、同一 IP アドレスのリクエスト数制限や特定の国を指定した IP アドレス制限が必要になる。
 
-![DoS攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DoS攻撃.png)
+![dos-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dos-attack.png)
 
 > - https://ja.m.wikipedia.org/wiki/DoS 攻撃
 
@@ -148,7 +148,7 @@ DB のクエリのパラメーターとなる入力に、不正な文字列を�
 
 ただし、近年は減少傾向にある。
 
-![SQLインジェクション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SQLインジェクション.jpg)
+![sql-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sql-injection.jpg)
 
 #### ▼ 攻撃例
 
@@ -216,7 +216,7 @@ Web アプリによる HTML 出力のエスケープ処理の欠陥を悪用し�
 
 漏洩したパスワードを使用して、正面から正々堂々とアクセスする手法。
 
-![パスワードリスト攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パスワードリスト攻撃.png)
+![password-list-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/password-list-attack.png)
 
 <br>
 
@@ -236,7 +236,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 パスワードに使用できる文字の種類数を `n`、パスワードの桁数を `m` とすると、パスワードのパターン数は `n` の `m` 乗通りになる。
 
-![パスワードのパターン数](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パスワードのパターン数.png)
+![password_pattern-count](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/password_pattern-count.png)
 
 <br>
 
@@ -246,7 +246,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 レインボーテーブルの文字列とハッシュ値の対応関係を元にして、ハッシュ化された暗号からパスワードを推測する手法。
 
-![レインボー攻撃](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Rainbow攻撃.png)
+![rainbow-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rainbow-attack.png)
 
 <br>
 
@@ -256,7 +256,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 技術的な手法ではなく、物理的な手法 (例：盗み見、盗み聞き、なりすまし、詐欺など) によってパスワードを取得する。これによりアクセスする手法である。
 
-![ソーシャルエンジニアリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソーシャルエンジニアリング.png)
+![social-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/social-engineering.png)
 
 <br>
 
@@ -274,7 +274,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 キャッシュ DNS サーバーが持つ IP アドレスを偽の IP アドレスに変え、偽のサイトに強制的に接続させる手法。
 
-![DNSキャッシュポイズニング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DNSキャッシュポイズニング.gif)
+![dns-cache-poisoning](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dns-cache-poisoning.gif)
 
 <br>
 
@@ -284,6 +284,6 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 例えば、サイトのカード決済画面やサーバーに潜ませることによって、カード情報を第三者に送信する手法。
 
-![バックドア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バックドア.png)
+![backdoor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/backdoor.png)
 
 <br>

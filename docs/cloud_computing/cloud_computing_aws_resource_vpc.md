@@ -26,7 +26,7 @@ tags:
 
 EKS の場合、Amazon VPC (`L3`) 上に Amazon VPC CNI を配置することにより、クラスターネットワークを作成できる。
 
-![Amazon VPC が提供できるネットワークの範囲](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC が提供できるネットワークの範囲.png)
+![vpc_network-scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_network-scope.png)
 
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 > - https://d1.awsstatic.com/webinars/jp/pdf/services/20180515_AWS-BlackBelt_Networking-for-RFP.pdf#page=51
@@ -299,7 +299,7 @@ Gateway 型と Interface 型がある。
 
 Amazon VPC エンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet Gateway と AWS NAT Gateway を使用する必要がある。
 
-![Amazon VPC エンドポイント](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC エンドポイント.png)
+![vpc_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_endpoint.png)
 
 <br>
 
@@ -438,7 +438,7 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 異なる Amazon VPC のネットワークを接続する。
 
-![Amazon VPC ピアリング接続](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC ピアリング接続.png)
+![vpc_peering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_peering.png)
 
 #### ▼ Amazon VPC ピアリング接続とは
 
@@ -471,11 +471,11 @@ Amazon VPC に複数の IPv4 CIDR ブロック ブロックがあり、1 つで�
   </tbody>
 </table>
 
-![Amazon VPC ピアリング接続不可の場合-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC ピアリング接続不可の場合-1.png)
+![vpc_peering_unavailable_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_peering_unavailable_1.png)
 
 たとえ、IPv6 が異なっていても、同様である。
 
-![Amazon VPC ピアリング接続不可の場合-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon VPC ピアリング接続不可の場合-2.png)
+![vpc_peering_unavailable_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_peering_unavailable_2.png)
 
 <br>
 

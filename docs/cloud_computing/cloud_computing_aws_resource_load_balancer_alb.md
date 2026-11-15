@@ -435,7 +435,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 ### アプリケーションにおける対処方法
 
-![ALBからEC2に対するリクエストのプロトコルをHTTPSプロトコルと見なす](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ALBからEC2に対するリクエストのプロトコルをHTTPSと見なす.png)
+![alb_https-to-ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_https-to-ec2.png)
 
 ALB を経由したリクエストには、リクエストヘッダーに `HTTP_X_FORWARDED_PROTO` ヘッダーが付与される。
 

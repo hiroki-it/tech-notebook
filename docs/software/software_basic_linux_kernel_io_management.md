@@ -422,6 +422,6 @@ Spooler は、すべてのデータをまとめて出力するのではなく、
 
 その後、少しずつ印刷デバイスにデータを出力 (Spooling) し、印刷デバイスにデータを印刷させる。
 
-![スプーリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スプーリング.jpg)
+![spooling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/spooling.jpg)
 
 <br>

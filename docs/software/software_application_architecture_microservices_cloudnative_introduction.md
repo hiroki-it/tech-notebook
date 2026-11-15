@@ -4,7 +4,7 @@
 
 どうも、Istio のマスコットやってますカイルくんです。
 
-![Windowsイルカ.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/Windows%E3%82%A4%E3%83%AB%E3%82%AB.png)
+![windows-dolphin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/windows-dolphin.png)
 
 近年、先輩エンジニアのおかげで、マイクロサービスアーキテクチャの実装方法やより最適なデザインパターンの情報を得られるようになりました。
 
@@ -37,7 +37,7 @@
 
 ## アーキテクチャスタイルとは
 
-![architecture_map.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/a19bfc23-74da-4347-b34d-3fe523fbe866.png)
+![a19bfc23-74da-4347-b34d-3fe523fbe866](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/a19bfc23-74da-4347-b34d-3fe523fbe866.png)
 
 アーキテクチャスタイルは、ソフトウェアアーキテクチャを取り巻く技術的なトピックの 1 つです。
 
@@ -124,7 +124,7 @@
 
 取り上げるデザインパターンの多くは、 https://www.amazon.co.jp/dp/1617294543 にも登場します。
 
-![MicroservicePatternLanguage.jpg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/MicroservicePatternLanguage.jpg)
+![microservice-pattern-language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/microservice-pattern-language.jpg)
 
 [Microservices Pattern: A pattern language for microservices](https://microservices.io/patterns/)
 
@@ -370,7 +370,7 @@ flowchart LR
 
 マイクロサービスアーキテクチャをシステム全体から概説します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio%20%281%29.png)
+![ddd-cloudnative_cloud-infrastructure-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cloud-infrastructure-design.png)
 
 主に以下のツールからなります。
 
@@ -441,7 +441,7 @@ flowchart LR
 
 マイクロサービスアーキテクチャをより詳細に概説します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-アプリ全体設計.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%89%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%96%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A2%E3%83%97%E3%83%AA%E5%85%A8%E4%BD%93%E8%A8%AD%E8%A8%88.drawio.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
 
 主に以下のツールからなります。(五十音順)
 

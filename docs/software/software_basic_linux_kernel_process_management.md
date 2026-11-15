@@ -391,7 +391,7 @@ CPU のコアは、メモリ上のプロセス内にある複数のスレッド�
 
 CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとする。
 
-![優先順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_1.png)
+![scheduling_priority_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_priority_1.png)
 
 1. プロセス A が `0` 秒に待ち行列へ登録される。
 
@@ -401,7 +401,7 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 4. `40` 秒時点で、プロセス C は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス A へ CPU を割り当てる。
 
-    ![優先順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/優先順方式_2.png)
+    ![scheduling_priority_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_priority_2.png)
 
 <br>
 
@@ -409,11 +409,11 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 待ち行列に登録されたプロセスから順に、CPU をプロセスに割り当てる。
 
-![到着順方式_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_1.png)
+![scheduling_fcfs_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_fcfs_1.png)
 
 以下のように、プロセスが CPU に割り当てられていく。
 
-![到着順方式_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/到着順方式_2.png)
+![scheduling_fcfs_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_fcfs_2.png)
 
 <br>
 
@@ -425,6 +425,6 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 交代するように、CPU をプロセスに割り当てる。
 
-![ラウンドロビン方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ラウンドロビン方式.png)
+![scheduling_round-robin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_round-robin.png)
 
 <br>

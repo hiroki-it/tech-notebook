@@ -33,7 +33,7 @@ tags:
 
 暗号アルゴリズムに基づく暗号方式を使用してアプリケーションデータを暗号化することによって、アプリケーションデータの情報漏洩を防ぐ。
 
-![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_1.png)
+![eavesdropping_tampering_spoofing_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eavesdropping_tampering_spoofing_1.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -46,7 +46,7 @@ tags:
 
 署名とハッシュ関数を使用して、送信したアプリケーションデータと受信したアプリケーションデータが同じか否かを確認することによって、アプリケーションデータの改竄を防ぐ。
 
-![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_2.png)
+![eavesdropping_tampering_spoofing_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eavesdropping_tampering_spoofing_2.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -59,7 +59,7 @@ tags:
 
 署名を使用して正しい相手であることを認証することによって、なりすましを防ぐ。
 
-![情報漏洩_改竄_なりすまし](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/盗聴_改竄_成りすまし_3.png)
+![eavesdropping_tampering_spoofing_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eavesdropping_tampering_spoofing_3.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -85,7 +85,7 @@ tags:
 
 暗号化ダイジェスト (署名) を含む証明書をメールに添付することによって、公開鍵のなりすましを防ぐセキュリティ技術。
 
-![S_MIME](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/S_MIME.png)
+![s-mime](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/s-mime.png)
 
 #### ▼ S/MIME における証明書
 
@@ -179,7 +179,7 @@ SSH の能力をより拡張したプロトコルである。
 
 2. サーバーは、Shell を使用して SCP プログラムを起動し、クライアントにファイルを送信する。
 
-    ![SCPの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SCPの仕組み.png)
+    ![scp_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scp_architecture.png)
 
 #### ▼ ファイルを要求する側に必要なソフトウェア
 
@@ -326,7 +326,7 @@ SSL/TLS を使用した通信では、TLS ライブラリ (例：OpenSSL、Borin
 
 Chrome では、HTTPS リクエストの使用時にサーバー証明書の不備 (例：自己署名サーバー証明書を使用している場合) があると、以下のような警告が表示される。
 
-![SSL接続に不備がある場合の警告](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSL接続に不備がある場合の警告.jpg)
+![ssl_invalid-connection-warning](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_invalid-connection-warning.jpg)
 
 > - [TLSはWeb専用なの？ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/)
 
@@ -400,7 +400,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 情報漏洩を防げる。
 
-![IPsecによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるインターネットVPN.jpg)
+![internet-vpn_ipsec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-vpn_ipsec.jpg)
 
 > - [伝送データを暗号化しなければならない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/)
 
@@ -408,7 +408,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 IPsec では、元の IP ヘッダーを含むデータに ESP トレーラを付加して全体を暗号化し、ESP の認証データとヘッダー、新しい IP ヘッダーを付加することで、パケットをカプセル化する。
 
-![IPsecによるカプセル化](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPsecによるカプセル化.jpg)
+![ipsec_encapsulation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ipsec_encapsulation.jpg)
 
 <br>
 
@@ -466,7 +466,7 @@ IPsec では、元の IP ヘッダーを含むデータに ESP トレーラを�
 
 接続先のネットワーク内のサーバがリクエストを受信するとき、リクエストの IP アドレスは VPN ゲートウェイのものになっている。
 
-![SSLによるインターネットVPN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SSLによるインターネットVPN.jpg)
+![internet-vpn_ssl](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-vpn_ssl.jpg)
 
 > - [SSL-VPNの実現方式 \| インターネットVPN \| ネットワークのおべんきょしませんか？](https://www.n-study.com/internet-vpn/ssl-vpn-overview/)
 

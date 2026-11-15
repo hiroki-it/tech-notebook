@@ -19,7 +19,7 @@ tags:
 
 ### `ggplot()` 関数
 
-![ggplotの概念](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ggplotの概念.png)
+![ggplot_concept](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ggplot_concept.png)
 
 1. `ggplot()` 関数：グラフのキャンバスを準備
 

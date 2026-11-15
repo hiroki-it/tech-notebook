@@ -20,7 +20,7 @@ tags:
 
 他の AWS リソースのイベントによって駆動する関数を管理できる。
 
-![サーバーレスアーキテクチャとは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/サーバーレスアーキテクチャとは.png)
+![serverless-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/serverless-architecture.png)
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
 
@@ -50,7 +50,7 @@ AWS Lambda は、API (ランタイム API、ログ API、拡張 API) と実行�
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle>
 
-![lambda-execution-environment-life-cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png)
+![lambda-execution-environment-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png)
 
 #### ▼ Init フェーズ
 

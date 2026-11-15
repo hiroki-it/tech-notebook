@@ -82,7 +82,7 @@ AWS IAM ユーザーをグループ化したもの。
 
 AWS IAM グループごとに AWS IAM ロールを紐付けすれば、AWS IAM ユーザーの AWS IAM ロールを管理しやすくなる。
 
-![グループ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループ.png)
+![iam_group](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_group.png)
 
 <br>
 
@@ -92,7 +92,7 @@ AWS IAM グループに対して、AWS IAM ロールを紐付ける。
 
 その AWS IAM グループに対して、AWS IAM ロールを紐付けしたい AWS IAM ユーザーを追加していく。
 
-![グループに属するユーザにロールを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループに所属するユーザーにロールを付与.png)
+![iam_group_user_role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_group_user_role.png)
 
 <br>
 
@@ -555,7 +555,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 
 AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM ユーザーは紐付けた AWS IAM ポリシーの認可スコープをもち、同じ AWS IAM ポリシーを複数の AWS IAM ユーザーで共有できる。
 
-![AWS IAMユーザにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMユーザーにポリシーを付与.jpeg)
+![iam_user_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_user_policy.jpg)
 
 <br>
 
@@ -563,7 +563,7 @@ AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM �
 
 AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グループに所属する AWS IAM ユーザーがまとめて同じ認可スコープをもつため、AWS IAM ユーザーごとに AWS IAM ポリシーを紐付けずに済む。
 
-![AWS IAMグループにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMグループにポリシーを付与.jpeg)
+![iam_group_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_group_policy.jpg)
 
 <br>
 
@@ -571,6 +571,6 @@ AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グル�
 
 AWS IAM ロールに AWS IAM ポリシーを紐付けると、AWS IAM ロールを割り当てた EC2 などの AWS リソースが、AWS IAM ポリシーの認可スコープで他の AWS リソースを操作できる。
 
-![AWS IAMロールにポリシーを付与](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IAMロールにポリシーを付与.jpeg)
+![iam_role_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_role_policy.jpg)
 
 <br>

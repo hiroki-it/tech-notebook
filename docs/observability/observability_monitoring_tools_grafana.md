@@ -23,7 +23,7 @@ Grafana は、ダッシュボードとストレージから構成されている
 
 監視フロントエンドとして、監視バックエンドで保管したメトリクスを可視化する。
 
-![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images//grafana_architecture.png)
+![grafana_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grafana_architecture.png)
 
 > - [Architecture of Grafana - Developers & API - Grafana Labs Community Forums](https://community.grafana.com/t/architecture-of-grafana/50090)
 

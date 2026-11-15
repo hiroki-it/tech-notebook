@@ -954,7 +954,7 @@ Fargate は動的パブリック IP アドレス (Fargate の再作成後に変�
 
 これによって、AWS NAT Gateway の Elastic IP アドレスが送信元パケットに付加されるため、Fargate の送信元 IP アドレスを見かけ上静的に扱えるようになる。
 
-![NatGatewayを経由したFargateから外部サービスへのリクエスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NatGatewayを介したFargateから外部サービスへのリクエスト.png)
+![ecs_fargate_nat-gateway_external-request](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_fargate_nat-gateway_external-request.png)
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 

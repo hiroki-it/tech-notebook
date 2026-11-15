@@ -34,7 +34,7 @@ tags:
 
 これらのプロセスは、同じコンテナに共存させることなく、各コンテナで稼働させ、ネットワークで接続する。
 
-![プロセス単位のコンテナ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロセス単位のコンテナ.png)
+![docker_container-per-process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_container-per-process.png)
 
 #### ▼ コンテナのプロセスの関係
 

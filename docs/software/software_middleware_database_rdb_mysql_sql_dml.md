@@ -178,13 +178,13 @@ FROM
 
 `JOIN` の種類によって 2 つのテーブルから取得するレコードの範囲が異なり、`WHERE` で `NULL` を条件にすると片方のテーブルにしか存在しないレコードのみを取得できる。
 
-![内部結合のベン図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/内部結合のベン図.jpg)
+![sql_inner-join_venn-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sql_inner-join_venn-diagram.jpg)
 
 #### ▼ `LEFT JOIN` (左外部結合)
 
 『users』テーブルと『items』テーブルの商品 ID が一致しているデータと、元となる『users』テーブルにしか存在しないデータが、セットで取得される。
 
-![LEFT_JOIN](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEFT_JOIN.png)
+![sql_left-join](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sql_left-join.png)
 
 #### ▼ `INNER JOIN` (内部結合)
 

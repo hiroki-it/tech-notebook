@@ -80,7 +80,7 @@ tags:
 
 ネットワークファイアウォールと Web サーバーの間には、NAT ルーターや NAPT ルーターが配置されている。
 
-![パケットフィルタリング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリング.gif)
+![packet-filtering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packet-filtering.gif)
 
 > - [ファイアウォール（FW）とは？仕組みや機能と併せてWAFなどとの違いについても解説 \| クラウド導入・システム運用ならアールワークスへ](https://www.rworks.jp/system/system-column/sys-entry/21277/)
 > - [ファイアウォールの種類を詳しく解説｜導入の必要性やメリットについても紹介 \| テックマガジン from FEnetインフラ](https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/)
@@ -187,7 +187,7 @@ public
 
 Windows ネットワークファイアウォールは、Windows におけるネットワークファイアウォールである。
 
-![パケットフィルタリングの設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パケットフィルタリングの設定.gif)
+![packet-filtering_setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packet-filtering_setting.gif)
 
 > - [Windows 10 - ファイアウォールの特定ポート番号の通信を許可する方法 - PC設定のカルマ](https://pc-karuma.net/windows-10-firewall-open-port/)
 
@@ -233,7 +233,7 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 
 あくまで通知するのみで、攻撃を防御することはしない。
 
-![IDS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IDS.png)
+![ids](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ids.png)
 
 <br>
 

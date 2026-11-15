@@ -54,7 +54,7 @@ exe ファイルとなる。
 
 また、ビルドによって作成されたファイルを『アーティファクト (成果物) 』という。
 
-![ビルドとコンパイル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ビルドとコンパイル.jpg)
+![build_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/build_compile.jpg)
 
 <br>
 
@@ -74,7 +74,7 @@ exe ファイルとなる。
 
 解析器のルーツを辿れない問題をブートストラップ問題という。
 
-![構文規則と説明](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/構文規則と説明.png)
+![syntax-rule](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/syntax-rule.png)
 
 > - [Flex (lexical analyzer generator) - Wikipedia](<https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)>)
 
@@ -180,6 +180,6 @@ JVM 言語 (例：Java、Scala、Kotlin など) に当てはまる。
 
 C 言語のプログラムは OS ごとの機械語にコンパイルされるため OS に依存するが、Java のプログラムは JVM 上で実行する中間コードにコンパイルされるため、JVM があれば OS に依存せずに実行できる。
 
-![CとJavaのOSへの依存度比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CとJavaのOSへの依存度比較.png)
+![c-and-java_os-dependency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/c-and-java_os-dependency.png)
 
 <br>

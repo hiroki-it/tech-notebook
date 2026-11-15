@@ -58,7 +58,7 @@ tags:
 
 一度ダウンロードしてしまえば、インターネットに繋がっていなくとも、使用できる。
 
-![ネイティブアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ネイティブアプリ.png)
+![native-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/native-app.png)
 
 > - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
@@ -70,7 +70,7 @@ Office、BookLive のアプリ版
 
 Web アプリケーションは、端末の種類によらず、ブラウザから Web サーバーにアクセスするだけで利用できる。
 
-![Webアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webアプリ.png)
+![web-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-app.png)
 
 #### ▼ Web アプリケーション
 
@@ -100,9 +100,9 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 
 端末で Webview を稼働させ、ソフトウェアの `html` ファイルのレンダリングを Webview 上で実行するアプリケーションのこと。
 
-![Webviewよるアプリパッケージ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Webviewよるアプリパッケージ.png)
+![webview_app-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/webview_app-package.png)
 
-![ハイブリッドアプリ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ハイブリッドアプリ.png)
+![hybrid-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hybrid-app.png)
 
 > - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
@@ -173,7 +173,7 @@ MS-DOS を源流として派生した OS。今では、すべての派生が Win
 
 基本ソフトウェアは広義の OS であり、ユーティリティ、言語プロセッサ、制御プログラムの 3 つから構成される。
 
-![基本ソフトウェアの構成](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/基本ソフトウェアの構成.png)
+![basic-software_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/basic-software_structure.png)
 
 > - http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
@@ -252,7 +252,7 @@ ROM に組み込まれている。
 
 BIOS は、OS の起動前にハードウェアを制御し、その設定画面から CPU や周辺機器の設定を変更できる。
 
-![BIOS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/BIOS.jpg)
+![bios](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bios.jpg)
 
 <br>
 
@@ -260,7 +260,7 @@ BIOS は、OS の起動前にハードウェアを制御し、その設定画面
 
 Windows 8 以降で採用されている新しい Firmware
 
-![UEFIとセキュアブート](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/UEFIとセキュアブート.jpg)
+![uefi_secure-boot](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uefi_secure-boot.jpg)
 
 <br>
 
@@ -287,7 +287,7 @@ Windows 8 以降で採用されている新しい Firmware
 
 OSS は、OS やデータベースからクラウド構築や機械学習まで、さまざまな分野に存在する。
 
-![OSS一覧](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/OSS一覧.png)
+![oss_list](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oss_list.png)
 
 > - [オープンソースソフトウェア（OSS）一覧 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/)
 

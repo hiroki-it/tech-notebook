@@ -49,7 +49,7 @@ tags:
 
 #### ▼ has-one、has-many (状態として保持する関係性)
 
-![データとして保持する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/データとして保持する関係性.png)
+![relationship_data-holding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_data-holding.png)
 
 『has-one』『has-many』な関係と表現され、より具体的に説明すると、状態として保持する関係性である。
 
@@ -59,7 +59,7 @@ Association (関連) 、Aggregation (集約) 、Composition (合成) が使用�
 
 #### ▼ is-a-kind-of (グループとメンバーの関係性)
 
-![グループとメンバーの関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グループとメンバーの関係性.png)
+![group-member_relationship](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/group-member_relationship.png)
 
 『is-a-kind-of』な関係と表現され、より具体的に説明すると、グループとメンバーの関係性である。
 
@@ -67,7 +67,7 @@ Generalization (汎化) 、Realization (実現) が使用される。
 
 #### ▼ use (引数型/返却値型として使用する関係性)
 
-![引数型または返却値型として使用する関係性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/引数型または返却値型として使用する関係性.png)
+![relationship_argument-or-return-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_argument-or-return-type.png)
 
 『use』な関係と表現され、より具体的に説明すると、引数型/返却値型として使用する関係性である。
 
@@ -134,7 +134,7 @@ Dependency (依存) が使用される。
 
 よって、会社クラスに『`0..*`』を付記する。
 
-![多重度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重度.png)
+![multiplicity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multiplicity.png)
 
 <br>
 
@@ -160,7 +160,7 @@ Dependency (依存) が使用される。
 
 テーブルに相当するエンティティと、カラムに相当する属性がある。
 
-![エンティティとアトリビュート](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/エンティティとアトリビュート.png)
+![entity_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/entity_attribute.png)
 
 #### ▼ リレーション、カーディナリティ
 
@@ -168,7 +168,7 @@ Dependency (依存) が使用される。
 
 `(カラム数/レコード数)` で導かれ、カーディナリティが高いほど、より効率的な DB インデックスを作成できる。
 
-![リレーションとカーディナリティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リレーションとカーディナリティ.png)
+![relation_cardinality](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relation_cardinality.png)
 
 > - https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb>
 
@@ -180,19 +180,19 @@ Dependency (依存) が使用される。
 
 日本語名称マスタと中国語名称マスタのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが必ず 1 つだけ対応する関係性のこと。
 
-![1対1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1.png)
+![relationship_one-to-one](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_one-to-one.png)
 
 #### ▼ 1：多 (リレーションが曖昧な状態)
 
 オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化していく。
 
-![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png)
+![relationship_one-to-one-or-more](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_one-to-one-or-more.png)
 
 #### ▼ 1：1 以上
 
 注文テーブルと注文明細テーブルのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが 1 つ以上対応する関係性のこと。
 
-![1対1以上](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/1対1以上.png)
+![relationship_one-to-one-or-more](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_one-to-one-or-more.png)
 
 <br>
 
@@ -276,13 +276,13 @@ Dependency (依存) が使用される。
 
 2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-    ![シーケンス図](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図.png)
+    ![uml_sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_sequence-diagram.png)
 
 1. `3` 個のライフラインを設定する。
 
 2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-    ![シーケンス図_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シーケンス図_2.png)
+    ![uml_sequence-diagram_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_sequence-diagram_2.png)
 
 <br>
 

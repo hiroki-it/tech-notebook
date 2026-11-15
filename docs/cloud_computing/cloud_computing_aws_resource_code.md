@@ -225,7 +225,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 #### ▼ ブルー/グリーンデプロイメントの仕組み
 
-![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blue-green-deployment.jpeg)
+![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blue-green-deployment.jpg)
 
 以下の手順でデプロイする。
 

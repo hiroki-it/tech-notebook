@@ -119,7 +119,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 他からの影響を受けたスループットを、特に『実効スループット』という。
 
-![伝送速度](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/伝送速度.png)
+![transmission-speed](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transmission-speed.png)
 
 > - https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html
 > - [スループットとレイテンシー - コンピュータネットワークパフォーマンスの違い - AWS](https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput)
@@ -141,13 +141,13 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 とあるネットワーク地点でのスループットのこと。
 
-![トラフィック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィック.png)
+![traffic](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traffic.png)
 
 > - [トラフィック \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Keyword/20070222/262872/)
 
 総務省のパケットペイロードで、日本のブロードバンド大手 5 社の総トラフィックを年次でグラフ化したものがある。
 
-![トラフィックのグラフ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トラフィックのグラフ.png)
+![traffic_graph](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traffic_graph.png)
 
 > - [トラフィック年3割増でも大丈夫、光インターネットの姿 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/)
 

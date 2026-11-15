@@ -20,7 +20,7 @@ tags:
 
 認証済みの AWS IAM ユーザーに対して、特定の AWS アカウントの AWS リソースに認可スコープを持つ一時的な資格情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つ AWS IAM ユーザーを発行する。
 
-![STS](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/STS.jpg)
+![sts](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts.jpg)
 
 <br>
 
@@ -259,7 +259,7 @@ AssumeRole によるスイッチロールの仕組みでは、まず Trusted Ent
 
 Trusted Entity を使って、必要な AWS IAM ロールを STS から発行し、一時的な AWS IAM ユーザーを作成する。
 
-![AssumeRole](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AssumeRole.png)
+![sts_assume-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_assume-role.png)
 
 > - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role#10
 > - [AssumeRole（スイッチロール）で複数AWSアカウント運用【ビギナー向け】 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/tech/2020/02/03/multipleawsaccount/)
@@ -328,7 +328,7 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
 
 #### ▼ Amazon EKS を ID プロバイダーとする場合
 
-![Amazon EKS_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
 
 Amazon EKS を ID プロバイダーとして使用するように、`Federated` キーで Amazon EKS Cluster の識別子を設定する。
 

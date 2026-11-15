@@ -128,7 +128,7 @@ Nginx は、HTTP/HTTPS リクエストをルーティングする。
 
 以降に同じ静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) に関するインバウンド通信があった場合、Nginx は App サーバーへルーティングせず、保管したキャッシュを取得し、レスポンスとして返信する。
 
-![リバースプロキシサーバーとしてのNginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/リバースプロキシサーバーとしてのNginx.png)
+![nginx_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nginx_reverse-proxy.png)
 
 ```nginx
 #-------------------------------------
@@ -227,7 +227,7 @@ http {
 
 #### ▼ FastCGI プロトコルの場合
 
-![NginxとPHP-FPMの組み合わせ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/NginxとPHP-FPMの組み合わせ.png)
+![nginx_php-fpm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nginx_php-fpm.png)
 
 PHP-FPM は FastCGI プロトコルでリクエストを受信するため、これに変換する必要がある。
 

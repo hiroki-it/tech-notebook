@@ -174,11 +174,11 @@ EC サイトを運営するアスクルの例。
 
 議論のなかで発生したドメインイベントを線で結ぶ。
 
-![event-storming_domain-event.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
+![event-storming_domain-event](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
 
 Figma などのツールを使用して、画面ごとにドメインイベントをつなげ、フロントエンドやバックエンドの機能ロジックを設計していく。
 
-![event-storming_domain-event.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
+![event-storming_domain-event](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
 
 > - https://www.amazon.co.jp/dp/483998820X
 

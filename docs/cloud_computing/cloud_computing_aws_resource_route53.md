@@ -29,7 +29,7 @@ tags:
 
 ## 02. 仕組み
 
-![Amazon Route 53を含む名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Route53を含む名前解決の仕組み.png)
+![route53_name-resolution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route53_name-resolution.png)
 
 1. クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。キャッシュが無ければ、クライアント PC はドメイン名をキャッシュ DNS サーバーに問い合わせる。
 
@@ -188,7 +188,7 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 ### AWS リソースの DNS 名、ドメイン名、エンドポイント名
 
-![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
+![url_email_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/url_email_structure.png)
 
 <table>
   <thead>

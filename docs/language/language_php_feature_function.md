@@ -474,7 +474,7 @@ $D = objB()->objC()->objD();
 
 ある関数 `f` の定義のなかに `f` 自身を呼び出している箇所がある。
 
-![再帰的](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再帰的.png)
+![recursion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/recursion.png)
 
 1. 適当な値を基準値 (Pivot) とする (※できれば中央値が望ましい)
 

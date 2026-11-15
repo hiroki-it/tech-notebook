@@ -52,7 +52,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 4. この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。
 
-    ![Vueコンポーネントツリーにおけるコンポーネント間の通信](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VueにおけるMVVMアーキテクチャ.png)
+    ![vue_mvvm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_mvvm.png)
 
 ### 親子コンポーネント間のデータ渡し
 
@@ -64,7 +64,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 この仕組みを、Props Down, Events Up という。
 
-![親子コンポーネント間の双方向データバインディング](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/親子コンポーネント間の双方向データバインディング.png)
+![vue_two-way-data-binding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_two-way-data-binding.png)
 
 ![component-tree_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/component-tree_communication.png)
 
@@ -314,7 +314,7 @@ class Foo {
 
 #### ▼ `v-on:` とは
 
-![Vueにおけるemitとv-onの連携](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Vueにおけるemitとv-onの連携.png)
+![vue_emit_v-on](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_emit_v-on.png)
 
 View (`template` タグ部分) のイベントを、ViewModel (`script` タグ部分) のイベントハンドラ関数 (`methods:` 内にある関数) やインライン JS ステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
 

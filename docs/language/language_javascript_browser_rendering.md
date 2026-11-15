@@ -488,7 +488,7 @@ DOM のインターフェースについては、以下のリンクを参考に�
 
 レンダリングエンジンは、最初に出現するルート要素を根 (ルート) として扱う。さらに、すべての要素や属性を、そこから延びる枝葉として意味づける。これにより、レンダリングツリーを作成する。
 
-![DOMによるツリー構造化](https://user-images.githubusercontent.com/42175286/59778015-a59f5600-92f0-11e9-9158-36cc937876fb.png)
+![browser-rendering_dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering_dom-tree.png)
 
 > - https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
 
@@ -520,7 +520,7 @@ JavaScript エンジンは、レンダリングエンジンから `html` ファ�
 
 JavaScript エンジンは、これを機械語に翻訳し、ハードウェアに対して命令する。
 
-![JavaScriptEngine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/JavascriptEngine.png)
+![javascript-engine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/javascript-engine.png)
 
 #### ▼ 機械語翻訳
 
@@ -647,7 +647,7 @@ CalculateStyle 処理と Layout 処理に分けられる。
 
 レンダリングエンジンは、DOM ツリーのルートのノードから順に CSSOS ツリーを適用し、Render ツリーを作成する。
 
-![Renderツリー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Renderツリー.png)
+![browser-rendering_render-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering_render-tree.png)
 
 <br>
 
@@ -661,7 +661,7 @@ CalculateStyle 処理と Layout 処理に分けられる。
 
 この親に含まれている 2 つ目 (子) の `div` より、その幅を親の 50%、つまりビューポートの幅の 25%になるようにレイアウトされる。
 
-![Layout処理](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Layout処理.png)
+![browser-rendering_layout](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering_layout.png)
 
 <br>
 

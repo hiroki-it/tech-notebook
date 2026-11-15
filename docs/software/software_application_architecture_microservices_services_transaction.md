@@ -388,7 +388,7 @@ Saga オーケストレーターは、メッセージブローカーに対して
 
 補償トランザクションによって、各ローカルトランザクション処理を元に戻す逆順のトランザクション処理を実行する。
 
-![saga-pattern_compensating_transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
+![saga-pattern_compensating-transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
 
 > - [クラウドネイティブ データ パターン - .NET \| Microsoft Learn](https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions)
 

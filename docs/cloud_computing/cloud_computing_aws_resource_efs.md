@@ -24,7 +24,7 @@ tags:
 
 再接続すると、切断直前のファイルが再び表示されようになる。
 
-![AWS EFSのファイル共有機能](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/EFSのファイル共有機能.png)
+![efs_file-sharing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/efs_file-sharing.png)
 
 <br>
 
@@ -115,13 +115,13 @@ module "efs" {
 
 また、ベースライン未満の分は残高として蓄積されていく。
 
-![burst-mode_balance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-algorithm.png)
+![burst-mode_credit-balance-algorithm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-algorithm.png)
 
 元の残高は、ファイルシステムのスタンダードストレージクラスのサイズに応じて大きくなる。
 
 > - [Amazon EFS performance specifications - Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/performance.html#efs-burst-credits)
 
-![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-size.png)
+![burst-mode_credit-balance-size](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burst-mode_credit-balance-size.png)
 
 残高は、`BurstCreditBalance` メトリクスから確認できる。
 
@@ -135,7 +135,7 @@ module "efs" {
 
 スループット性能のオートスケーリング機能はないが、一定の性能は保証されている。
 
-![burst-mode_credit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
+![provisioning-mode_credit-balance-size](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/provisioning-mode_credit-balance-size.png)
 
 > - [Amazon EFS performance specifications - Amazon Elastic File System](https://docs.aws.amazon.com/efs/latest/ug/performance.html#provisioned-throughput)
 

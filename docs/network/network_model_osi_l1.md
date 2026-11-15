@@ -34,7 +34,7 @@ LAN 内では、各機器はプライベート IP アドレスで識別されて
 
 LAN 内に配置された NAT ルーターが、WAN 内のグローバル IP アドレスと LAN 内のプライベート IP アドレスを相互変換する。
 
-![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_lan.jpeg)
+![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_lan.jpg)
 
 > - [【ご参考】いまさら聞けないインターネット・ネットワーク概論 4／5](http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152)
 

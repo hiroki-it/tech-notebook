@@ -29,7 +29,7 @@ tags:
 
 ユーザーの操作による命令が、ソフトウェアを経由して、ハードウェアに伝わるまでを以下に示す。
 
-![ソフトウェアとハードウェア](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソフトウェアとハードウェア.png)
+![software_hardware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_hardware.png)
 
 <br>
 
@@ -182,7 +182,7 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 #### ▼ ロードバランシング
 
-![フォワードプロキシサーバーとリバースプロキシサーバー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/フォワードプロキシサーバーとリバースプロキシサーバー.png)
+![forward-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/forward-proxy_reverse-proxy.png)
 
 <table>
   <thead>
@@ -211,7 +211,7 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 以前に Web サーバーが返却した静的コンテンツのキャッシュを作成する。
 
-![プロキシサーバーのキャッシュ能力](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プロキシサーバーのキャッシュ能力.png)
+![proxy-server_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/proxy-server_cache.png)
 
 <table>
   <thead>

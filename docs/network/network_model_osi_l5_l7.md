@@ -117,7 +117,7 @@ SMTP に認証を組み込んだ仕組みのこと。
 
 クライアント (メール送信できるアプリ) からメールサーバーにメールデータを SMTP 送信するとき、メールサーバーがクライアントに対して認証する。
 
-![SMTP-AUTH](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SMTP-AUTH.png)
+![smtp-auth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp-auth.png)
 
 <br>
 
@@ -141,7 +141,7 @@ SMTP に認証を組み込んだ仕組みのこと。
 
 Gmail で POP か IMAP を設定できる。
 
-![GmailでPOPorIMAPを設定](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GmailでPOPかIMAPを設定.jpg)
+![gmail_pop-imap-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gmail_pop-imap-setting.jpg)
 
 #### ▼ IMAP4 の仕組み
 

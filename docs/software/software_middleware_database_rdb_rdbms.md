@@ -48,7 +48,7 @@ tags:
 
 RDBMS は、リレーショナルエンジン、DB エンジン (ストレージエンジン) から構成される。
 
-![DB管理システムの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DB管理システムの仕組み.png)
+![dbms_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dbms_architecture.png)
 
 > - [基礎から理解するデータベースのしくみ（1） \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/)
 > - [内部動作を知らずしてチューニングは語れない：真・Dr. K's SQL Serverチューニング研修（3）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html)

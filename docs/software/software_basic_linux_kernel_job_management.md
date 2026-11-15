@@ -44,7 +44,7 @@ Unix では `at` や `cron` に、また Windows ではタスクスケジュー�
 
 ジョブ管理は、マスタスケジューラー、ジョブスケジューラーから構成される。
 
-![ジョブ管理とタスク管理の概要](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ジョブ管理とタスク管理の概要.jpg)
+![job-management_task-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/job-management_task-management.jpg)
 
 <br>
 
@@ -80,7 +80,7 @@ Unix では `at` や `cron` に、また Windows ではタスクスケジュー�
 
 ジョブをジョブステップに分解する。
 
-![ジョブからジョブステップへの分解](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ジョブからジョブステップへの分解.png)
+![job_job-step_decomposition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/job_job-step_decomposition.png)
 
 #### ▼ ターミネーター
 

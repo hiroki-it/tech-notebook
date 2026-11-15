@@ -2318,7 +2318,7 @@ flowchart LR
 
 図 38. 宛先検出と宛先登録のデザインパターンの種類
 
-![38](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/19.png)
+![19](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering-on-kubernetes/19.png)
 
 <br>
 

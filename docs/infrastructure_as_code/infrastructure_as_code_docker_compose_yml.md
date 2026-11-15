@@ -389,7 +389,7 @@ services:
 
 ### `networks`
 
-![dockerエンジン内の仮想ネットワーク](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Dockerエンジン内の仮想ネットワーク.jpg)
+![docker-engine_virtual-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-engine_virtual-network.jpg)
 
 コンテナを接続するうち/外ネットワークのエイリアスを設定する。
 

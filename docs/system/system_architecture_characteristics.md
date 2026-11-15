@@ -199,7 +199,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 仮想環境のコンポーネント自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-![スケールアップ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアップ.png)
+![scale-up](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scale-up.png)
 
 > - https://www.idcf.jp/words/scale-out.html
 
@@ -211,7 +211,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 仮想環境のコンポーネントのインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-![スケールアウト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スケールアウト.png)
+![scale-out](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scale-out.png)
 
 > - https://www.idcf.jp/words/scale-out.html
 
@@ -227,7 +227,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 稼働中ノードで障害が発生した場合、待機中ノードを稼働中ノードに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
 
-![ha-cluster-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system,png.png)
+![ha-cluster-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system.png)
 
 > - [クラスタシステムとは？概要や目的、歴史、種類を解説 \| ビジネス継続とITについて考える](https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA)
 

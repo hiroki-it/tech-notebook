@@ -35,7 +35,7 @@ tags:
 
 このとき、各アプリケーションはプロセスとして稼働していることに留意する。
 
-![トランスポート層からアプリケーション層へのパケットの移動](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランスポート層からアプリケーション層へのパケットの移動.PNG)
+![osi_l4-to-l7_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi_l4-to-l7_packet.png)
 
 #### ▼ クライアントからのリクエスト時 (図の 『➡️』 )
 

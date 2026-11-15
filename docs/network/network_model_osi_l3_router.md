@@ -125,7 +125,7 @@ URL を基点としたパスに応じて、通信のルーティング先を決�
 
 ネットワーク内でルーターがルーターに通信をルーティングするとき、各ルーターが最適なルーティング先を選択すること。
 
-![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpeg)
+![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpg)
 
 > - [ASCII.jp：ルーティングとレイヤ3スイッチの関係とは (3/8)](https://ascii.jp/elem/000/000/444/444681/3/)
 
@@ -181,7 +181,7 @@ NAT 処理のうち、宛先 IP アドレスを変換すること (`グローバ
 
 NAT ルーター自体を複数のプライベートネットワークで共有することがある。
 
-![グローバルからプライベートへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/グローバルからプライベートへのnat変換.png)
+![nat_global-to-private](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat_global-to-private.png)
 
 > - [DNATとSNATの違いやそれぞれの特徴について – Rainbow Engine](https://rainbow-engine.com/dnat-snat-difference/)
 
@@ -189,7 +189,7 @@ NAT ルーターは、プライベートネットワークに入るとき、パ�
 
 #### ▼ SNAT 処理：Source NAT
 
-![プライベートからグローバルへのnat変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プライベートからグローバルへのnat変換.png)
+![nat_private-to-global](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat_private-to-global.png)
 
 NAT 処理のうち送信元 IP アドレスを変換すること (`プライベートIPアドレス` ➡️ `グローバルIPアドレス`、`プライベートIPアドレス` ➡️ `プライベートIPアドレス`) 。
 
@@ -353,13 +353,13 @@ AWS や GCP などで使用されているような NAT ルーターはこちら
   </tbody>
 </table>
 
-![napt変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換.png)
+![napt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt.png)
 
 #### ▼ SNAT 処理の場合
 
 プライベートネットワークに入るとき、付け加えられたポート番号を基に、パケットのヘッダー情報にある『宛先』のグローバル IP アドレスを、異なるプライベート IP アドレスに変換し分ける。
 
-![napt変換_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt変換_2.png)
+![napt_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt_2.png)
 
 <br>
 

@@ -211,7 +211,7 @@ tags:
 
 下層にはテストダブルのスタブを作成する。
 
-![トップダウンテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トップダウンテスト.jpg)
+![test_top-down](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_top-down.jpg)
 
 #### ▼ ボトムアップテスト
 
@@ -219,7 +219,7 @@ tags:
 
 上層にはテストダブルのドライバーを作成する。
 
-![ボトムアップテスト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ボトムアップテスト.jpg)
+![test_bottom-up](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_bottom-up.jpg)
 
 <br>
 

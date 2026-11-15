@@ -88,7 +88,7 @@ LAN 内で使用される。
 
 補足として、`172` から始まる IP アドレスは、クラス B である。
 
-![IPアドレスとbitの関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPアドレスとbitの関係.png)
+![ip-address_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_bit.png)
 
 <br>
 
@@ -384,7 +384,7 @@ IP アドレスから、その IP アドレスがいずれの国のネットワ�
 
 URL は『`プロトコル + 完全修飾ドメイン名 + パス`』から、メールアドレスは『`ユーザー名 + 完全修飾ドメイン名`』から構成される。
 
-![URLと電子メールの構造](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/URLと電子メールの構造.png)
+![url_email_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/url_email_structure.png)
 
 <br>
 
@@ -468,7 +468,7 @@ GET https://example.com:80/users/777?text1=a&text2=b
 
 ### 名前解決、正引き、逆引きとは
 
-![IPアドレスと完全修飾ドメイン名のマッピング1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/IPアドレスと完全修飾ドメイン名のマッピング4.png)
+![ip-address_fqdn-mapping](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_fqdn-mapping.png)
 
 URL やメールアドレスのドメイン名と IP アドレスを相互変換すること。
 
@@ -573,7 +573,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 ### 名前解決の仕組み
 
-![名前解決の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/名前解決の仕組み.png)
+![name-resolution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/name-resolution.png)
 
 1. クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。
 

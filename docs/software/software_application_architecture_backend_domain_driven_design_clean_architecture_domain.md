@@ -1197,7 +1197,7 @@ Specification パターンを検索条件オブジェクトとして使った場
 
 一意で識別できるデータ (例：`id` データ) を持つ
 
-![ドメイン駆動設計_エンティティ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_エンティティ.jpg)
+![ddd_entity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_entity.jpg)
 
 <br>
 
@@ -1555,7 +1555,7 @@ abstract class Id
 
 すべてのプリミティブを値オブジェクトにするとコード量が増えてしまうため、どこまでを値オブジェクトにするのか判断が必要である。
 
-![ドメイン駆動設計_バリューオブジェクト](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_バリューオブジェクト.jpg)
+![ddd_value-object](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_value-object.jpg)
 
 <br>
 
@@ -2789,7 +2789,7 @@ $foo->bar; // __get関数が代わりにコールされ、プロパティ値が�
 
 #### ▼ ルートエンティティとは
 
-![ドメイン駆動設計_集約関係](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドメイン駆動設計_集約関係.jpg)
+![ddd_aggregate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_aggregate.jpg)
 
 エンティティや値オブジェクトからなる集約のなかで、最終的にユースケース層へレスポンスされる集約を、『ルートエンティティ』という。
 

@@ -62,7 +62,7 @@ CI/CD の一連の流れ (パイプライン) のなかでこれらのステッ�
 
 CI パイプラインと CD パイプラインを組み合わせた手法のこと。
 
-![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
+![cicd_pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cicd_pipeline.png)
 
 > - [CI/CD パイプラインとは](https://www.redhat.com/ja/topics/devops/what-cicd-pipeline)
 

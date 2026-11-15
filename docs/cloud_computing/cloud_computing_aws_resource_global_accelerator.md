@@ -28,7 +28,7 @@ tags:
 
 ### レスポンスを高速化する仕組み
 
-![GlobalAccelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator.png)
+![global-accelerator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/global-accelerator.png)
 
 最初、クライアント PC からのリクエストはエッジロケーションで受信される。
 
@@ -36,11 +36,11 @@ tags:
 
 パブリックネットワークを使用しないため、小さなレイテシーでトラフィックをルーティングできる。
 
-![GlobalAccelerator導入後](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入後.png)
+![global-accelerator_after](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/global-accelerator_after.png)
 
 Global Accelerator を使用しない場合、クライアント PC のリージョンから指定したリージョンに至るまで、いくつもパブリックネットワークを経由する必要があり、時間がかかってしまう。
 
-![GlobalAccelerator導入前](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/GlobalAccelerator導入前.png)
+![global-accelerator_before](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/global-accelerator_before.png)
 
 以下のサイトで、Global Accelerator を使用した場合としなかった場合のレスポンスタイムを比較できる。
 

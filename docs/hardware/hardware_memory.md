@@ -23,7 +23,7 @@ tags:
 
 データを保管できる揮発的な記憶装置のこと。
 
-![Dynamic RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Dynamic_RAM.jpg)
+![dynamic-ram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dynamic-ram.jpg)
 
 <br>
 
@@ -65,11 +65,11 @@ tags:
 
 CPU とメインメモリの間に、キャッシュメモリを何段階か配置し、CPU とメインメモリの間の読み出しと書き込みの処理速度の差を緩和させる。
 
-![メモリキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリキャッシュ.gif)
+![memory-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-cache.gif)
 
 実際に、タスクマネージャのパフォーマンスタブで、`n` 次キャッシュメモリがどのくらい使われているのかを確認できる。
 
-![キャッシュメモリの実例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/キャッシュメモリの実例.png)
+![cache-memory_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cache-memory_example.png)
 
 <br>
 
@@ -91,13 +91,13 @@ CPU とメインメモリの間に、キャッシュメモリを何段階か配�
 
 6. CPU は、命令する。
 
-    ![メモリとキャッシュメモリ_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_1.jpg)
+    ![memory_cache-memory_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_cache-memory_1.jpg)
 
 #### ▼ 二度目
 
 一次キャッシュメモリ ➔ 二次キャッシュメモリ ➔ メインメモリの順で命令を探すため、一度目よりも速く命令を実行できる。
 
-![メモリとキャッシュメモリ_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリとキャッシュメモリ_2.jpg)
+![memory_cache-memory_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_cache-memory_2.jpg)
 
 <br>
 
@@ -109,7 +109,7 @@ CPU は、命令をメインメモリとキャッシュメモリの両方に書�
 
 常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが、メモリへの書き込みが頻繁に行われるので遅い。
 
-![Write-through方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-through方式.jpg)
+![cache_write-through](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cache_write-through.jpg)
 
 #### ▼ Write-back 方式
 
@@ -119,7 +119,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 メインメモリとキャッシュメモリの内容が一致している状態を必ずしも確保できないが、メインメモリへの書き込み回数が少ないため速い
 
-![Write-back方式](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Write-back方式.jpg)
+![cache_write-back](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cache_write-back.jpg)
 
 <br>
 
@@ -139,7 +139,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 キャッシュメモリとして使用される。
 
-![Static RAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Static_RAM.jpg)
+![static-ram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/static-ram.jpg)
 
 <br>
 
@@ -149,7 +149,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 キャッシュは、クライアント、CDN、ロードバランサー、API ゲートウェイ、アプリケーション、データベースなど、リクエストの経路上のさまざまな場所に保管できる。
 
-![what_and_where_to_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpeg)
+![what_and_where_to_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpg)
 
 > - https://twitter.com/pvergadia/status/1633216210308595712/photo/1
 
@@ -238,7 +238,7 @@ DB サーバーの使用するメモリ上で、テーブルのデータやイ�
 
 ブラウザは、Etag 値を使用してキャッシュを実現する。
 
-![EtagとIf-NoneMach](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ETagとIf-None-Match.png)
+![etag_if-none-match](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/etag_if-none-match.png)
 
 #### `(1)` キャッシュの有効時間が切れるまで
 
@@ -342,7 +342,7 @@ Expires: Sat, 01 Jan 2000 00:00:00 GMT
 
 読み出しと書き込みの処理速度の差を緩和させる。
 
-![ディスクキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ディスクキャッシュ.gif)
+![disk-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/disk-cache.gif)
 
 <br>
 
@@ -366,11 +366,11 @@ GPU が画像処理で使用する専用のメモリであり、描画する画�
 
 GPU と VRAM のサイズによって、扱うことのできる解像度と色数が決まる。
 
-![VRAM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/VRAM.jpg)
+![vram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vram.jpg)
 
 富士通 PC の GPU と VRAM のサイズは、以下の通り。
 
-![本パソコンのVRAMスペック](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/本パソコンのVRAMスペック.jpg)
+![vram_spec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vram_spec.jpg)
 
 色数によって、`1` ドット当たりに必要なビット数が異なる。
 

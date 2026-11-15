@@ -294,7 +294,7 @@ DB で、アプリケーションの CRUD 処理に対するバリデーショ�
 
 また、親テーブルの参照元カラムは外部キーに参照されているため、参照元カラムは削除できない。
 
-![外部キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/外部キー.png)
+![foreign-key](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/foreign-key.png)
 
 <table>
   <thead>
@@ -327,7 +327,7 @@ DB で、アプリケーションの CRUD 処理に対するバリデーショ�
 
 テーブルのなかで、レコードを一意に識別できる値を『プライマリーキー』の値と呼ぶ。
 
-![主キー](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/主キー.jpg)
+![primary-key](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/primary-key.jpg)
 
 #### ▼ プライマリーキーとして使用できるもの
 

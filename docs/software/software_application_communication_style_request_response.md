@@ -97,7 +97,7 @@ JavaScript、HTML、XHTML、CSS、DOM、XML、XSLT を組み合わせる。
 
 ### Ajax の仕組み
 
-![AJAXの処理フロー](https://user-images.githubusercontent.com/42175286/58467340-6741cb80-8176-11e9-9692-26e6401f1de9.png)
+![ajax_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ajax_flow.png)
 
 1. url に接続することにより、サーバーからデータがレスポンスされる。
 

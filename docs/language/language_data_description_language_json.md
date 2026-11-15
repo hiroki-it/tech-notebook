@@ -89,7 +89,7 @@ JavaScript のオブジェクト型を JSON に変換する処理はシリアラ
 
 反対に、JSON を JavaScript のオブジェクト型に変換する処理はデシリアライズである。
 
-![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シリアライズとデシリアライズ.png)
+![serialize_deserialize](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/serialize_deserialize.png)
 
 <br>
 
@@ -101,7 +101,7 @@ JSON を PHP のオブジェクト型に変換する処理はデシリアライ�
 
 反対に、PHP のオブジェクト型を JSON に変換する処理はシリアライズである。
 
-![シリアライズとデシリアライズ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/シリアライズとデシリアライズ.png)
+![serialize_deserialize](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/serialize_deserialize.png)
 
 <br>
 

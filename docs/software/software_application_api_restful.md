@@ -25,7 +25,7 @@ tags:
 
 REST は、以下の特徴を持つ。
 
-![REST](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/REST.jpg)
+![rest](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rest.jpg)
 
 #### ▼ RESTful と RESTful-API とは
 
@@ -35,7 +35,7 @@ RESTful 設計が使用された WebAPI を RESTful-API という。
 
 例えば、RESTful-API の場合、DB における UserInfo の CRUD に対して、`1` 個の『/UserInfo』という URI を対応づけている。
 
-![RESTfulAPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/RESTfulAPI.png)
+![restful-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/restful-api.png)
 
 <br>
 

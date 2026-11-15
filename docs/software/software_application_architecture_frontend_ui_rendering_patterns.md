@@ -101,7 +101,7 @@ CSR では、ページ全体の静的ファイルをリクエストするのは�
 
 ２回目以降は、ページ部分的にリクエストを行い、サーバー側から JSON を受け取っていく。
 
-![SPアプリにおけるデータ通信の仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/SPアプリにおけるデータ通信の仕組み.png)
+![spa_data-communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/spa_data-communication.png)
 
 > - https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 > - [図解 CSR, SSR, SG(SSG), ISR](https://zenn.dev/bitarts/articles/37260ddb28ae5d)
@@ -206,7 +206,7 @@ function App() {
 
 MPA と比較して、データを非同期的に通信できるため、1 つの Web ページのなかで必要なデータのみを通信すればよく、クライアントレンダリングが速い。
 
-![従来WebアプリとSPAの処理速度の違い](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/従来WebアプリとSPアプリの処理速度の違い.png)
+![web-app_spa_speed-comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-app_spa_speed-comparison.png)
 
 > - [SPAとは？メリット・デメリットや、SEO対策で重要なポイントも紹介 \| 東京SEOメーカーAIO戦略室｜AI検索最適化（LLMO/AIO/GEO/AEO/SEO）専門会社［国内・海外］アドマノ株式会社](https://www.switchitmaker2.com/seo/spa/)
 

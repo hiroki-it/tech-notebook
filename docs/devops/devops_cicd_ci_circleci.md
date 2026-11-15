@@ -33,7 +33,7 @@ CircleCI では、VCS からコードを取得した Services Cluster がビル�
 
 5. 結果を通知することも可能。
 
-    ![継続的インテグレーション](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/継続的インテグレーション.png)
+    ![continuous-integration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/continuous-integration.png)
 
 <br>
 

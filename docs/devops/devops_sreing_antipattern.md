@@ -38,7 +38,7 @@ tags:
   - ヒーローパターンでは作業が属人化するため、チームが育たず、またドキュンメントが残らずに本人がいなくなってしまうことがある。
   - > - https://medium.com/@lucas.hendrich/we-dont-need-another-hero-or-the-hero-anti-pattern-771d42b1b99c
 
-![noc_ntt-docomo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/noc_ntt-docomo.jpeg)
+![noc_ntt-docomo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/noc_ntt-docomo.jpg)
 
 #### ▼ 解決策
 
@@ -171,7 +171,7 @@ tags:
 
 インフラのプロビジョニングツールを、イミュータブルなインフラを構築するためではなく、既存のミュータブルなインフラを冗長化させるために使用してしまうこと。
 
-![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_mutable_immutable.jpeg)
+![infrastructure_mutable_immutable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_mutable_immutable.jpg)
 
 > - [ITインフラは使い捨てへ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atcl/ncd/14/082500015/)
 

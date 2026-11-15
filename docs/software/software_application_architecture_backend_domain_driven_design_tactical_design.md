@@ -23,7 +23,7 @@ tags:
 
 しかし、特に Model の役割が抽象的過ぎたため、開発規模が大きくなるにつれて、Model に役割を集中させ過ぎてしまうことがあった。
 
-![MVCモデル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/MVCモデル.png)
+![mvc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mvc.png)
 
 ### MVC からレイヤードアーキテクチャへの移行
 
@@ -31,7 +31,7 @@ tags:
 
 Model の肥大化は、Model が持つビジネスロジックをドメイン層、また CRUD 処理をインフラストラクチャ層として分割することによって、対処された。
 
-![ドメイン駆動設計](https://user-images.githubusercontent.com/42175286/58724663-2ec11c80-8418-11e9-96e9-bfc6848e9374.png)
+![ddd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd.png)
 
 <br>
 
@@ -278,7 +278,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 6. 集約間の関係性のみに着目すると、オブジェクト間の関係性は複雑であるが、集約間は単純であることがわかる。
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
+    ![ticket-modeling_little-hands_domain-model-diagram_example-5](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
 
 <br>
 
@@ -549,7 +549,7 @@ MVC との関係は次のとおりである。
 
 本質的には、他の『ヘキサゴナルアーキテクチャ』『オニオンアーキテクチャ』に同じである。
 
-![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpeg)
+![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpg)
 
 > - [Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 

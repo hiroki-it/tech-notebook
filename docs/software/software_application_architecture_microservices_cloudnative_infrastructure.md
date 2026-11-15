@@ -54,7 +54,7 @@ flowchart LR
 
 (例) Istio、AWS ALB など
 
-![service-discovery-pattern_server-side.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_server-side.png)
+![service-discovery-pattern_server-side](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_server-side.png)
 
 [Microservices Pattern: Pattern: Server-side service discovery](https://microservices.io/patterns/server-side-discovery.html)
 
@@ -64,7 +64,7 @@ flowchart LR
 
 (例) Netflix の Eureka など
 
-![service-discovery-pattern_client-side.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_client-side.png)
+![service-discovery-pattern_client-side](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/service-discovery-pattern_client-side.png)
 
 [Microservices Pattern: Pattern: Client-side service discovery](https://microservices.io/patterns/client-side-discovery.html)
 
@@ -112,7 +112,7 @@ VPC CNI アドオンは、kubelet や AWS ENI と連携し、マイクロサー�
 
 kube-proxy は Node 内の iptables を更新し、Amazon EKS クラスター内で各ツールがトラフィック管理できるようにする。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L3管理.drawio.png)
+![ddd-cloudnative_l3-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_l3-management.png)
 
 <table>
   <thead>
@@ -147,7 +147,7 @@ Istio は、指定した Namespace に属する Pod へサービスメッシュ�
 
 istio-proxy は、Pod のアウトバウンド通信を L4 / L7 ロードバランシングします。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L4_L7トラフィック管理 (サービスメッシュ内).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L4_L7トラフィック管理_(サービスメッシュ内).drawio.png>)
+![ddd-cloudnative_l4-l7-traffic-management_inside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_l4-l7-traffic-management_inside-service-mesh.png>)
 
 <table>
   <thead>
@@ -209,7 +209,7 @@ Istio IngressGateway がサービスメッシュ外からの通信をサービ�
   </tbody>
 </table>
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トラフィック管理 (南北).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%83%88%E3%83%A9%E3%83%95%E3%82%A3%E3%83%83%E3%82%AF%E7%AE%A1%E7%90%86_(%E5%8D%97%E5%8C%97).drawio.png>)
+![ddd-cloudnative_traffic-management_north-south](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_traffic-management_north-south.png>)
 
 Istio IngressGateway については、以下のブログで解説しているため、5000 兆回ブックマークしてくれると嬉しいです！
 
@@ -221,7 +221,7 @@ Istio は、指定した Namespace 以外に属する Pod にはサービスメ�
 
 サービスメッシュ外の Namespace では、CoreDNS で宛先を名前解決し、Service と kube-proxy でトラフィックを管理します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理 (サービスメッシュ外).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-L7トラフィック管理_(サービスメッシュ外).drawio.png>)
+![ddd-cloudnative_l7-traffic-management_outside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_l7-traffic-management_outside-service-mesh.png>)
 
 <table>
   <thead>
@@ -305,7 +305,7 @@ Istio は、指定した Namespace に属する Pod へサービスメッシュ�
 
 そこで、社外公開用と社内公開用の AWS ALB を配置し、AWS WAF を紐づけるとよいです。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-エッジセキュリティ (サービスメッシュ内).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A8%E3%83%83%E3%82%B7%E3%82%99%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3_(%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5%E5%86%85).drawio.png>)
+![ddd-cloudnative_edge-security_inside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_edge-security_inside-service-mesh.png>)
 
 <table>
   <thead>
@@ -366,7 +366,7 @@ Istio は、指定した Namespace 以外に属する Pod にはサービスメ�
 
 そこで、社内公開用の AWS ALB を配置し、AWS WAF を紐づけるとよいです。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-エッジセキュリティ (サービスメッシュ外).drawio.png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%A8%E3%83%83%E3%82%B7%E3%82%99%E3%82%BB%E3%82%AD%E3%83%A5%E3%83%AA%E3%83%86%E3%82%A3_(%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%83%A1%E3%83%83%E3%82%B7%E3%83%A5%E5%A4%96).drawio.png>)
+![ddd-cloudnative_edge-security_outside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_edge-security_outside-service-mesh.png>)
 
 <table>
   <thead>
@@ -450,7 +450,7 @@ Istio は、指定した Namespace に属する Pod へサービスメッシュ�
 
 istio-proxy はクライアント証明書 / SSL 証明書を持ち、アップストリームとダウンストリームの istio-proxy と相互 TLS 認証するします。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-証明書管理.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-証明書管理.drawio.png)
+![ddd-cloudnative_certificate-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_certificate-management.png)
 
 <table>
   <thead>
@@ -548,7 +548,7 @@ flowchart LR
 
 各手順には対応するツールがあり、よりよく監視するためには適切なツールを採用しなければなりません。
 
-![クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-可観測性ツール一覧.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-可観測性ツール一覧.drawio.png)
+![ddd-cloudnative_observability-tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_observability-tools.png)
 
 [入門 監視 ―モダンなモニタリングのためのデザインパターン](https://www.amazon.co.jp/dp/4873118646)
 
@@ -583,7 +583,7 @@ Fluentd / FluentBit の配置方法には、エージェントパターン (Daem
 - istio-proxy のアクセスログ
 - EKS コントロールプレーンのログ (実行ログ、監査ログなど)
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-ログ.drawio.png)
+![ddd-cloudnative_log](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_log.png)
 
 <table>
   <thead>
@@ -666,7 +666,7 @@ Fluentd / FluentBit の配置方法には、エージェントパターン (Daem
 
 Prometheus Server を使用して、Amazon EKS クラスター内で作成されるメトリクスを収集します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-メトリクス.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-メトリクス.drawio.png)
+![ddd-cloudnative_metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_metrics.png)
 
 <table>
   <thead>
@@ -763,7 +763,7 @@ Prometheus Server を使用して、Amazon EKS クラスター内で作成され
 
 OpenTelemetry Collector を介して、Amazon EKS クラスター内のスパンを AWS X-Ray に送信します。
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トレース.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-トレース.drawio.png)
+![ddd-cloudnative_trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_trace.png)
 
 <table>
   <thead>
@@ -812,7 +812,7 @@ flowchart LR
 
 なぜなら、インシデント管理をセルフホストにすると、インシデント管理システムで障害が起こったことを検知できなくなるになるためです。
 
-![クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-インシデント管理ツール一覧.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/クラウドネイティブ技術とドメイン駆動設計によるマイクロサービスアーキテクチャ設計の概説-インシデント管理ツール一覧.drawio.png)
+![ddd-cloudnative_incident-management-tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_incident-management-tools.png)
 
 ## インシデント対処フローパターン
 
@@ -825,7 +825,7 @@ flowchart LR
 
 ## AWS リソース、Prometheus、Slack によるインシデント管理
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-インシデント管理フロー.drawio.png](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-インシデント管理フロー.drawio.png)
+![ddd-cloudnative_incident-management-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_incident-management-flow.png)
 
 <table>
   <thead>
@@ -893,7 +893,7 @@ flowchart LR
 - Prometheus (Alertmanager を含む)
 - インシデント管理ツール
 
-![DDDとクラウドネイティブによるマイクロサービスアーキテクチャ設計の概説-クラウドインフラ設計.drawio (1).png](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/DDD%E3%81%A8%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%83%8D%E3%82%A4%E3%83%86%E3%82%A3%E3%83%95%E3%82%99%E3%81%AB%E3%82%88%E3%82%8B%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%92%E3%82%99%E3%82%B9%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3%E8%A8%AD%E8%A8%88%E3%81%AE%E6%A6%82%E8%AA%AC-%E3%82%AF%E3%83%A9%E3%82%A6%E3%83%88%E3%82%99%E3%82%A4%E3%83%B3%E3%83%95%E3%83%A9%E8%A8%AD%E8%A8%88.drawio_(1).png>)
+![ddd-cloudnative_cloud-infrastructure-design](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cloud-infrastructure-design.png>)
 
 # 20-26. 横断領域を参照
 

@@ -27,7 +27,7 @@ tags:
 
 インターフェース層からユースケース層までの処理の流れを以下に示す。
 
-![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master//images/clean-architecture_flow.png)
+![clean-architecture_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture_flow.png)
 
 > - [Implementing Clean Architecture - Of controllers and presenters](http://www.plainionist.net/Implementing-Clean-Architecture-Controller-Presenter/)
 

@@ -404,7 +404,7 @@ workflows を使用しない場合は、少なくとも `1` 個の `job` には 
 
 #### ▼ job の粒度
 
-![CICDパイプライン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CICDパイプライン.png)
+![cicd_pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cicd_pipeline.png)
 
 <table>
   <thead>
@@ -457,7 +457,7 @@ job を実行する仮想環境を選択できる。
 
 また、Dockerfile の COPY コマンドが動作しなくなる。
 
-![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png)
+![docker_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png)
 
 ```yaml
 version: 2.1
@@ -578,7 +578,7 @@ workflows:
 
 #### ▼ restore_cache、save_cache
 
-![CircleCIキャッシュ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/CircleCIキャッシュ.png)
+![circleci_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_cache.png)
 
 Workflow 間で使いまわせるキャッシュを作成する。
 
@@ -1451,7 +1451,7 @@ CircleCI でコンテナイメージをビルドした後、各イメージレ�
 
 これにより、コンテナイメージのビルド時間を短縮できる。
 
-![DockerLayerCache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DockerLayerCache.png)
+![docker-layer-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-layer-cache.png)
 
 #### ▼ 使用例
 

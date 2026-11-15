@@ -30,7 +30,7 @@ VPC の外側 (パブリックネットワーク) に配置されている。
 
 次回以降の静的コンテンツのリンクエストは、Amazon CloudFront がレンスポンスを実行する。
 
-![AWS のクラウドデザイン一例](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon CloudFront によるリクエストの振り分け.png)
+![cloudfront_request-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_request-routing.png)
 
 <br>
 

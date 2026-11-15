@@ -77,7 +77,7 @@ tags:
 = (ｋステップ行数)
 ```
 
-![kステップ行数による開発規模](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kステップ行数による開発規模.png)
+![estimate_development-scale_k-step](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_development-scale_k-step.png)
 
 #### ▼ 工数の定量化
 
@@ -148,7 +148,7 @@ tags:
 = (プログラム本数による開発規模) ÷ (工数)
 ```
 
-![プログラム本数による生産性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プログラム本数による生産性.png)
+![estimate_productivity_program-count](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_productivity_program-count.png)
 
 ```mathematica
 (kステップ行数の生産性)
@@ -156,13 +156,13 @@ tags:
 = (ｋステップ行数による開発規模) ÷ (工数)
 ```
 
-![kステップ行数による生産性](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kステップ行数による生産性.png)
+![estimate_productivity_k-step](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_productivity_k-step.png)
 
 #### ▼ 進捗率の定量化
 
 第 8 週末時点の進捗率と以降の予測時間をメンバーごとに並べると、全体の進捗率が約 77% で、残りの作業が第 12 週まで続くことがわかる。
 
-![進捗率](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/進捗率.png)
+![estimate_progress-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_progress-rate.png)
 
 <br>
 

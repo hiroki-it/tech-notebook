@@ -266,7 +266,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 ### サービス検出の要素
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern.png" alt="service-discovery-pattern.png" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern.png" alt="service-discovery-pattern" style="zoom:60%;">
 
 サービス検出の仕組みは、次の要素からなる。
 

@@ -252,7 +252,7 @@ class Example
 
 3. 決定表を、流れ図で表す。
 
-    ![決定表](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/決定表.png)
+    ![decision-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/decision-table.png)
 
 #### ▼ if-elseif-else は使用しない
 
@@ -410,7 +410,7 @@ function leapYear(int $year): string
 
 下図では、連想配列が表現されている。
 
-![配列の走査](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/配列の走査.png)
+![array_traversal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/array_traversal.png)
 
 #### ▼ 内部ポインタと配列の関係
 
@@ -459,7 +459,7 @@ foreach ($array as &$value) {
 
 #### ▼ 制御文
 
-![流れ図_foreach文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_foreach文.png)
+![flowchart_foreach](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/flowchart_foreach.png)
 
 ```injectablephp
 <?php
@@ -683,7 +683,7 @@ echo $count;
 
 #### ▼ 制御文
 
-![流れ図_while文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_while文.png)
+![flowchart_while](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/flowchart_while.png)
 
 ```injectablephp
 <?php
@@ -747,7 +747,7 @@ echo $count;
 
 #### ▼ 制御文
 
-![流れ図_for文](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/流れ図_for文.png)
+![flowchart_for](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/flowchart_for.png)
 
 ```injectablephp
 <?php

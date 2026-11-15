@@ -21,7 +21,7 @@ tags:
 
 ※パソコンは、汎用機器 (汎用的な用途向けに多様な機能を果たすことを目的とした機器) に分類される。
 
-![組み込みシステム](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/組み込みシステム.png)
+![embedded-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/embedded-system.png)
 
 <br>
 
@@ -29,7 +29,7 @@ tags:
 
 CPU として、『マイクロプロセッサ』を使用したコンピュータのこと。
 
-![マイコン](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/マイコン.png)
+![microcomputer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microcomputer.png)
 
 <br>
 
@@ -51,7 +51,7 @@ CPU として、『マイクロプロセッサ』を使用したコンピュー�
 
 A/D 変換器は、連続的に変化するアナログ信号を一定の間隔で区切り、段階的な値を持つデジタル信号に変換する。
 
-![AD変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/AD変換.png)
+![ad-conversion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ad-conversion.png)
 
 <br>
 
@@ -59,7 +59,7 @@ A/D 変換器は、連続的に変化するアナログ信号を一定の間隔�
 
 D/A 変換器は、段階的な値を持つデジタル信号をなめらかにつなぎ、連続的に変化するアナログ信号に戻す。
 
-![DA変換](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DA変換.png)
+![da-conversion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/da-conversion.png)
 
 <br>
 
@@ -117,7 +117,7 @@ D/A 変換器は、段階的な値を持つデジタル信号をなめらかに�
 
 マークシートの塗り潰し位置を読み取る機器。
 
-![ORM](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ORM.png)
+![orm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orm.png)
 
 #### ▼ キャプチャカード
 
@@ -135,19 +135,19 @@ D/A 変換器は、段階的な値を持つデジタル信号をなめらかに�
 
 外部からの光によって画面を表示させる。
 
-![液晶分子](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/液晶分子.png)
+![liquid-crystal-molecule](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/liquid-crystal-molecule.png)
 
-![液晶ディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/液晶ディスプレイ.jpg)
+![lcd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lcd.jpg)
 
 #### ▼ 有機 EL ディスプレイ
 
 有機化合物に電圧を加えることによって発光させ、画面を表示させる。
 
-![有機ELディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/有機ELディスプレイ.jpg)
+![oled-display](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oled-display.jpg)
 
 #### ▼ プラズマディスプレイ
 
-![プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/プラズマディスプレイ.gif)
+![plasma-display](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/plasma-display.gif)
 
 `2` 枚のガラスの間に、封入された希ガスに電圧をかけると放電し、紫外線が出る。
 
@@ -155,11 +155,11 @@ D/A 変換器は、段階的な値を持つデジタル信号をなめらかに�
 
 液晶ディスプレイとのシェア差が大きくなり、2014 年に世界的に生産が終了された。
 
-![パナソニック製プラズマディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パナソニック製プラズマディスプレイ.jpg)
+![plasma-display_panasonic](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/plasma-display_panasonic.jpg)
 
 #### ▼ LED ディスプレイ
 
-![LEDディスプレイ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/LEDディスプレイ.jpg)
+![led-display](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/led-display.jpg)
 
 2018 年 1 月に開催された『CES 2018』でサムスンが発表した“マイクロ LED テレビ”『The Wall』は、従来の『液晶』や『有機 EL』とは異なる新たな表示方式を採用したテレビとして、大きな話題となった。
 
@@ -171,25 +171,25 @@ D/A 変換器は、段階的な値を持つデジタル信号をなめらかに�
 
 ドット単位でピンが飛び出す印字ヘッドでインクリボンを用紙に叩きつけ、インクを転写して印字するプリンタ。
 
-![ドットインパクトプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドットインパクトプリンタ.jpg)
+![printer_dot-impact](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/printer_dot-impact.jpg)
 
-![ドットインパクトプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ドットインパクトプリンタの仕組み.jpg)
+![printer_dot-impact_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/printer_dot-impact_architecture.jpg)
 
 #### ▼ インクジェットプリンタ
 
 印字ヘッドのノズルから各色のインクを用紙に吐出して印字するプリンタ。
 
-![インクジェットプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インクジェットプリンタ.jpg)
+![printer_inkjet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/printer_inkjet.jpg)
 
-![インクジェットプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/インクジェットプリンタの仕組み.jpg)
+![printer_inkjet_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/printer_inkjet_architecture.jpg)
 
 #### ▼ レーザプリンタ
 
 感光ドラムにレーザを照射してトナーを引き寄せ、そのトナーを用紙に転写して印字するプリンタ。
 
-![レーザプリンタ](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/レーザプリンタ.jpg)
+![printer_laser](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/printer_laser.jpg)
 
-![レーザプリンタの仕組み](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/レーザプリンタの仕組み.jpg)
+![printer_laser_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/printer_laser_architecture.jpg)
 
 #### ▼ プリンタの解像度
 
@@ -197,11 +197,11 @@ D/A 変換器は、段階的な値を持つデジタル信号をなめらかに�
 
 復習ではあるが、PC 上では、ドット数がどのくらいのビット数を持つかで、解像度が変わる。
 
-![DPI](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DPI.jpg)
+![dpi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dpi.jpg)
 
 dpi が大きくなるにつれて、解像度は大きくなる。
 
-![DPIの比較](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DPIの比較.jpg)
+![dpi_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dpi_comparison.jpg)
 
 #### ▼ プリンタの印字速度
 
@@ -225,9 +225,9 @@ dpi が大きくなるにつれて、解像度は大きくなる。
 
 動作クロックが速ければ速いほど、配線間の同時フォワーディングに誤差が生じてしまうため、現代の高スペックパソコンには向いていない。
 
-![パラレルインターフェイスは配線の長さが関係してくる](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/パラレルインターフェイスは配線の長さが関係してくる.png)
+![parallel-interface_wiring-length](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parallel-interface_wiring-length.png)
 
-![serial_parallel](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/serial_parallel.jpeg)
+![serial_parallel](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/serial_parallel.jpg)
 
 <br>
 
@@ -237,13 +237,13 @@ dpi が大きくなるにつれて、解像度は大きくなる。
 
 USB のコネクタには、A コネクタ、B コネクタ、C コネクタ、マイクロ B コネクタ、ミニ USB コネクタなどの形状の種類がある。
 
-![usbケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usbインターフェイス.png)
+![interface_usb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface_usb.png)
 
 #### ▼ IEEE1394
 
 ビデオカメラとの接続に使用されるインターフェイス
 
-![ieeeケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ieeeインターフェイス.jpg)
+![interface_ieee](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface_ieee.jpg)
 
 <br>
 
@@ -253,13 +253,13 @@ USB のコネクタには、A コネクタ、B コネクタ、C コネクタ、�
 
 ストレージとの接続に使用されるインターフェイス。
 
-![ideケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ideインターフェイス.jpg)
+![interface_ide](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface_ide.jpg)
 
 #### ▼ SCSI (Small Computer System Interface)
 
 ストレージ、CD-ROM、イメージスキャナなど、さまざまな周辺機器をデイジーチェーンするために使用するインターフェイス。
 
-![scsiケーブル](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scsiインターフェイス.jpg)
+![interface_scsi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface_scsi.jpg)
 
 <br>
 
@@ -269,7 +269,7 @@ USB のコネクタには、A コネクタ、B コネクタ、C コネクタ、�
 
 赤外線を使用して、無線通信するためのインターフェイス。
 
-![irDAインターフェイス](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/irDAインターフェイス.jpg)
+![interface_irda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface_irda.jpg)
 
 #### ▼ Bluetooth
 

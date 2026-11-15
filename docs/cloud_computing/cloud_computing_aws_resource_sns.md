@@ -61,7 +61,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 パブリッシャーがパブリッシュしたメッセージをトピック (サブスクリプションのグループ) で受信し、サブスクライバーにフォワーディングする。
 
-![Amazon SNS とは](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/Amazon SNS とは.png)
+![sns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sns.png)
 
 > - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
 
