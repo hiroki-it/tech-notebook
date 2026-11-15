@@ -531,9 +531,15 @@ blockquote {
     margin: 0.2em 0;
 }
 
-/* 子ノートを持つグループのカードは、行全体に広げる */
-.md-typeset .grid.cards.compact > ul > li:has(> p:nth-of-type(3)) {
-    grid-column: 1 / -1;
+/* すべてのカードの見出しを、リンクと同じ色で統一する */
+.md-typeset .grid.cards.compact > ul > li > p:first-child strong {
+    color: var(--md-typeset-a-color);
+}
+
+/* 子ノートのリンクは、カードの幅に収まるように小さく表示する */
+.md-typeset .grid.cards.compact > ul > li > p:nth-of-type(3) {
+    font-size: 0.68rem;
+    line-height: 1.5;
 }
 
 /* カードの説明文は、見出しと区別するため小さく控えめに表示する */
