@@ -548,3 +548,25 @@ blockquote {
     line-height: 1.4;
     color: var(--md-default-fg-color--light);
 }
+
+/* カードをグループにまとめる囲みは、色を付けずに、帯を薄いグレーにする */
+.md-typeset .admonition.cards {
+    border-color: var(--md-default-fg-color--lightest);
+    box-shadow: none;
+}
+
+.md-typeset .admonition.cards > .admonition-title {
+    padding-left: 0.6rem;
+    background-color: var(--md-default-fg-color--lightest);
+}
+
+/* 囲みの種類を表すアイコンは表示せず、帯の技術のロゴだけを表示する */
+.md-typeset .admonition.cards > .admonition-title::before {
+    display: none;
+}
+
+/* 技術のロゴは、文字と同じ単色で表示する */
+.md-typeset .admonition.cards > .admonition-title .twemoji svg,
+.md-typeset .admonition.cards > .admonition-title .twemoji svg * {
+    fill: currentColor;
+}
