@@ -36207,7 +36207,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
   </span>
 
     
@@ -36251,7 +36251,7 @@
 <p><br></p>
 <h3 id="_4">ホスト型仮想化<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ ホスト型仮想化とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p><img alt="ホスト型仮想化" src="https://user-images.githubusercontent.com/42175286/60386396-3afbd080-9acf-11e9-9094-f61aa839dc04.png" /></p>
+<p><img alt="virtualization_host" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_host.png" /></p>
 <p>物理サーバーのホスト上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。</p>
 <h4 id="provider">▼ Provider 例<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h4>
 <table>
@@ -36296,7 +36296,7 @@
 <p><br></p>
 <h3 id="_6">ハイパーバイザー型仮想化<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <h4 id="_7">▼ ハイパーバイザー型仮想化とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
-<p><img alt="ハイパーバイザー型仮想化" src="https://user-images.githubusercontent.com/42175286/60386395-3afbd080-9acf-11e9-9fbe-6287753cb43a.png" /></p>
+<p><img alt="virtualization_hypervisor" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_hypervisor.png" /></p>
 <p>物理サーバーの BIOS から起動したハイパーバイザー上で、ハードウェアとソフトウェアの要素が完全に仮想化されたサーバー (マシン) を作成する。</p>
 <p>このとき、ホストは使用しない。</p>
 <h4 id="provider_1">▼ Provider 例<a class="headerlink" href="#provider_1" title="Permanent link">&para;</a></h4>
@@ -36318,7 +36318,7 @@
 <p><br></p>
 <h3 id="_8">コンテナ型仮想化<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
 <h4 id="_9">▼ コンテナ型仮想化とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
-<p><img alt="コンテナ型仮想化" src="https://user-images.githubusercontent.com/42175286/60386394-3afbd080-9acf-11e9-96fd-321a88dbadc5.png" /></p>
+<p><img alt="virtualization_container" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_container.png" /></p>
 <p>物理サーバーのホスト上で、OS のユーザー空間を分割し、独立した各ユーザー空間上でコンテナを作成する。</p>
 <blockquote>
 <ul>
@@ -36344,14 +36344,14 @@
 <h3 id="_10">セットアップの速さの違い<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>ホスト型とハイパーバイザ型では、ハードウェア要素 (例：CPU、メモリ、ストレージ) とソフトウェア (例：ゲスト OS) を仮想化する必要がある。</p>
 <p>一方で、コンテナ型では、OS のユーザー空間を分割するだけのため、仮想化のセットアップが速い。</p>
-<p><img alt="仮想化の比較" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png" /></p>
+<p><img alt="virtualization_comparison" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_comparison.png" /></p>
 <p><br></p>
 <h3 id="_11">処理速度の違い<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <h4 id="_12">▼ オーバーヘッドの小ささ<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
 <p>ゲスト OS 上のアプリケーションを操作する場合、ホスト型とハイパーバイザ型では、ハードウェアやハイパーバイザーを経由する必要がある。</p>
 <p>この分だけ、時間 (オーバーヘッド) を要する。</p>
 <p>一方で、コンテナ型では、各コンテナがホストとカーネルを共有するため、オーバーヘッドが小さい。</p>
-<p><img alt="仮想化の比較" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想化の比較.png" /></p>
+<p><img alt="virtualization_comparison" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_comparison.png" /></p>
 <h4 id="_13">▼ オーバーヘッドの比較<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>sysbench というベンチマークツールを使用して、CPU・メモリ・I/O 処理に着目し、物理サーバー・コンテナ型仮想化 (Docker) ・ホスト型仮想化 (VirtualBox) の性能を比較すると、コンテナ型である Docker はもっともオーバーヘッドが小さい。</p>
 <blockquote>
@@ -36359,7 +36359,7 @@
 <li><a href="https://codezine.jp/article/detail/7894">https://codezine.jp/article/detail/7894</a></li>
 </ul>
 </blockquote>
-<p><img alt="overhead" src="https://user-images.githubusercontent.com/42175286/60386476-27049e80-9ad0-11e9-92d8-76eed8927392.png" /></p>
+<p><img alt="virtualization_overhead" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization_overhead.png" /></p>
 <p><br></p>
 
   

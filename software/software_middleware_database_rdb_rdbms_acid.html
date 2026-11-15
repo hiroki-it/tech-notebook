@@ -37279,7 +37279,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
   </span>
 
     
@@ -37340,7 +37340,7 @@
 <p><br></p>
 <h2 id="02-db">02. DB の処理フロー<a class="headerlink" href="#02-db" title="Permanent link">&para;</a></h2>
 <h3 id="_2">一連の流れ<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p><img alt="コミット制御" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/コミット制御.jpg" /></p>
+<p><img alt="transaction_commit-control" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transaction_commit-control.jpg" /></p>
 <table>
   <thead>
     <tr>
@@ -37491,7 +37491,7 @@
 <h4 id="_8">▼ メモリ書き込み<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
 <p>コミットの結果をメモリ上で管理し、ある程度まとまってから DB ファイルに書き込む。</p>
 <p>これにより、書き込み後にすぐ読み出しが必要な場合、読み出しが速くなる。</p>
-<p><img alt="DBMSによるメモリとディスクの使い分け" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/DBMSによるメモリとディスクの使い分け.jpg" /></p>
+<p><img alt="dbms_memory-and-disk" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dbms_memory-and-disk.jpg" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.kimullaa.com/posts/201910271500/">PostgreSQL WALログの仕組みとタイミングを理解したい</a></li>
@@ -37514,7 +37514,7 @@
 <h4 id="_10">▼ チェックポイントとは<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
 <p>チェックポイントで、ストレージ上のジャーナルファイルの更新後ログをストレージ上の DB ファイルに反映させる。</p>
 <p>このとき、チェックポイントは、自動実行または手動実行で作成する。</p>
-<p><img alt="トランザクション" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/トランザクション.jpg" /></p>
+<p><img alt="transaction" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transaction.jpg" /></p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html">耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT</a></li>
@@ -37533,7 +37533,7 @@
 </blockquote>
 <h4 id="_13">▼ システム障害からの回復<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
 <p>『<code>b</code>』の値を更新する SQL ステートメントを含むトランザクションの途中に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新前ログ『<code>b = 1</code>』を使用して、障害発生前の状態に戻す。</p>
-<p><img alt="障害回復機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg" /></p>
+<p><img alt="rdbms_system-failure-recovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdbms_system-failure-recovery.jpg" /></p>
 <p><br></p>
 <h3 id="_14">ロールフォワード<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
 <h4 id="_15">▼ ロールフォワードとは<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
@@ -37546,11 +37546,11 @@
 </blockquote>
 <h4 id="_16">▼ システム障害からの回復<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
 <p>『<code>a</code>』の値を更新する SQL ステートメントを含むトランザクションの後に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新後ログ『<code>a = 5</code>』を使用して、ストレージ上の DB ファイルに更新結果を反映させる。</p>
-<p><img alt="障害回復機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/システム障害の障害回復機能.jpg" /></p>
+<p><img alt="rdbms_system-failure-recovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdbms_system-failure-recovery.jpg" /></p>
 <h4 id="_17">▼ 媒体障害からの回復<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>ストレージを初期化/交換した後、バックアップファイルから DB を修復する。</p>
 <p>ストレージ上のジャーナルファイルの更新後ログ『<code>a = 5</code>』『<code>b = 1</code>』を使用して、修復できる限りロールフォワードを行う。</p>
-<p><img alt="媒体障害の障害回復機能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/媒体障害の障害回復機能.jpg" /></p>
+<p><img alt="rdbms_media-failure-recovery" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdbms_media-failure-recovery.jpg" /></p>
 <blockquote>
 <ul>
 <li><a href="https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html">耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT</a></li>
@@ -37640,9 +37640,9 @@
 <p>ソフトウェアのユーザ A と B がおり、ユーザ B が <code>UPDATE</code> 処理時に取得しなければならないレコードの状態は、ユーザ A が <code>UPDATE</code> 処理を終えた後のものである。</p>
 <p>しかし、ユーザ A がレコードを取得してから更新を終えるまでの間に、ユーザ B が同じくレコードを取得してしまうことがある。</p>
 <p>結果として、ユーザ B の <code>UPDATE</code> 処理によって、ユーザ A の処理が上書きされ、無かったことになってしまう。</p>
-<p><img alt="排他制御-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-1.png" /></p>
+<p><img alt="exclusive-control_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_1.png" /></p>
 <p>ユーザ A とユーザ B の <code>UPDATE</code> 処理が並行したとしても、ユーザ A の処理が無かったことにならないよう保証する方法として、『排他制御』がある。</p>
-<p><img alt="排他制御-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-2.png" /></p>
+<p><img alt="exclusive-control_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_2.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc">排他制御（楽観ロック・悲観ロック）の基礎 #SQL - Qiita</a></li>
@@ -37706,7 +37706,7 @@
 <p>レコードの <code>READ</code> 処理を実行するときに、他者によって <code>UPDATE</code> 処理されたくない場合に使用する。</p>
 <p>『共有』の名の通り、共有ロックされているレコードに対して、他の人も共有ロックを行える。</p>
 <p>MySQL では、『<code>SELECT ... LOCK IN SHARE MODE</code>』を使用する。</p>
-<p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
+<p><img alt="exclusive-control_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_3.gif" /></p>
 <blockquote>
 <ul>
 <li><a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html</a></li>
@@ -37719,7 +37719,7 @@
 <p>DB で、CRUD のすべての処理を実行不可能にする。</p>
 <p>レコードの <code>UPDATE</code> 処理を実行するときに、他者によって UPDATE/<code>READ</code> 処理の両方を実行させない場合に使用する。</p>
 <p>MySQL では、『<code>SELECT ... FOR UPDATE</code>』を使用する。</p>
-<p><img alt="排他制御-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/排他制御-3.gif" /></p>
+<p><img alt="exclusive-control_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_3.gif" /></p>
 <blockquote>
 <ul>
 <li><a href="https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html">https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html</a></li>
@@ -37753,7 +37753,7 @@
 
 <p>複数のトランザクションが、互いに他者が使いたいレコードをロックしてしまい、お互いのロック解除を待ち続ける状態のこと。</p>
 <p>もう一方のレコードのロックが解除されないと、自身のレコードのロックを解除できないとき、トランザクションが停止する。</p>
-<p><img alt="Null" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/デッドロック.gif" /></p>
+<p><img alt="deadlock" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/deadlock.gif" /></p>
 <p><br></p>
 <h2 id="03-03">03-03. アプリケーションによる排他制御<a class="headerlink" href="#03-03" title="Permanent link">&para;</a></h2>
 <h3 id="_30">アプリケーションによる排他制御<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h3>

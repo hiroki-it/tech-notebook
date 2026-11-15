@@ -36189,7 +36189,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
   </span>
 
     
@@ -36220,7 +36220,7 @@
 <p><br></p>
 <h2 id="01">01. 並び替えのアルゴリズム<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>例えば、次のような表では、どのような仕組みで『昇順』『降順』に並び替えるのだろうか。</p>
-<p><img alt="ソートの仕組み" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ソートの仕組み.gif" /></p>
+<p><img alt="sort_architecture" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sort_architecture.gif" /></p>
 <p><br></p>
 <h3 id="_3">基本選択法 (選択ソート)<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <h4 id="_4">▼ 最小選択法<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
@@ -36287,13 +36287,13 @@
 <p><strong>＊アルゴリズム解説＊</strong></p>
 <p>データ中の最小値を求め、次にそれを除いた部分のなかから最小値を求める。</p>
 <p>この操作を繰り返していく。</p>
-<p><img alt="選択ソート1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/選択ソート1.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="選択ソート2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/選択ソート2.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="選択ソート3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/選択ソート3.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="選択ソート4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/選択ソート4.gif" /></p>
+<p><img alt="selection-sort_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/selection-sort_1.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="selection-sort_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/selection-sort_2.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="selection-sort_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/selection-sort_3.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="selection-sort_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/selection-sort_4.gif" /></p>
 <p><br></p>
 <h3 id="_5">クイックソート<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <ol>
@@ -36368,42 +36368,42 @@
 <p>適当な値を基準値 (Pivot) とし、それより小さな値のグループと大きな値のグループに分割する。</p>
 <p>同様にして、両グループのなかで Pivot を選択し、<code>2</code> 個のグループに分割する。</p>
 <p>グループ内の値が 1 つになるまで、この処理を繰り返していく。</p>
-<p><img alt="クイックソート-1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-1.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-2.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-3.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-4.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-5.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-6.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-7" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-7.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-8" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-8.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-9" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-9.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-10" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-10.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-11" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-11.jpg" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="クイックソート-12" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/クイックソート-12.jpg" /></p>
+<p><img alt="quick-sort_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_1.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_2.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_3.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_4.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_5.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_6.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_7" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_7.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_8" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_8.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_9" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_9.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_10" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_10.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_11" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_11.jpg" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="quick-sort_12" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quick-sort_12.jpg" /></p>
 <h3 id="_6">基本交換法 (バブルソート)<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
 <p>隣り合ったデータの比較と入替えを繰り返すことによって、小さな値のデータを次第に端のほうに移していく。</p>
-<p><img alt="バブルソート1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バブルソート1.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="バブルソート2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バブルソート2.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="バブルソート3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バブルソート3.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="バブルソート4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バブルソート4.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="バブルソート5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バブルソート5.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="バブルソート6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/バブルソート6.gif" /></p>
+<p><img alt="bubble-sort_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bubble-sort_1.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="bubble-sort_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bubble-sort_2.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="bubble-sort_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bubble-sort_3.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="bubble-sort_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bubble-sort_4.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="bubble-sort_5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bubble-sort_5.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="bubble-sort_6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bubble-sort_6.gif" /></p>
 <p><br></p>
 <h3 id="_7">基本挿入法 (挿入ソート)<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
 <p>すでに整列済みのデータ列の正しい位置に、データを追加する操作を繰り返していく。</p>
@@ -36415,33 +36415,33 @@
 <h2 id="02">02. 配列内探索のアルゴリズム<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_10">線形探索法<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>今回は、配列内で『６』を探す。</p>
-<p><img alt="線形探索法1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/線形探索法1.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="線形探索法2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/線形探索法2.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="線形探索法3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/線形探索法3.gif" /></p>
+<p><img alt="linear-search_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linear-search_1.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="linear-search_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linear-search_2.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="linear-search_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linear-search_3.gif" /></p>
 <h3 id="_11">二分探索法<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>前提として、ソートによって、すでにデータが整列させられているとする。</p>
 <p>今回は、配列内で『<code>6</code>』を探す。</p>
-<p><img alt="二分探索法1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索法1.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="二分探索法2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索法2.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="二分探索法3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索法3.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="二分探索法4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索法4.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="二分探索法5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索法5.gif" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="二分探索法6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/二分探索法6.gif" /></p>
+<p><img alt="binary-search_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary-search_1.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="binary-search_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary-search_2.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="binary-search_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary-search_3.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="binary-search_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary-search_4.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="binary-search_5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary-search_5.gif" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="binary-search_6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary-search_6.gif" /></p>
 <p><br></p>
 <h2 id="03">03. グラフ探索のアルゴリズム (難し過ぎで記入途中)<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="_12">ダイクストラ法による最良優先探索<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
-<p><img alt="経路図" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/経路図.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
+<p><img alt="route-map" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-map.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
 <p>地点間の距離を表で表す。ただし、同地点間の距離は『0』、隣り合わない地点間の距離は『-1』とする。</p>
-<p><img alt="ダイクストラ法_距離テーブル" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_距離テーブル.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
+<p><img alt="dijkstra_distance-table" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_distance-table.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
 <div class="highlight"><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="c1">// 各地点間の距離を二次元の連想配列で定義</span>
 <span class="nv">$matrix</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
@@ -36523,46 +36523,46 @@
 <p>$startPoint = 0</p>
 <p>$goalPoint = 6</p>
 <p>としたとき、出発地点 (0) から 1 ステップ行ける地点までの距離 (pDist) を取得し、確定させる。</p>
-<p><img alt="最短経路探索処理ループ_1回目" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/最短経路探索処理ループ_1回目.png" /></p>
-<p><img alt="最短経路探索処理ループ_2回目" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/最短経路探索処理ループ_2回目.png" /></p>
-<p><img alt="最短経路探索処理ループ_3回目" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/最短経路探索処理ループ_3回目.png" /></p>
-<p><img alt="最短経路探索処理ループ_4-6回目" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/最短経路探索処理ループ_4-6回目.png" /></p>
-<p><img alt="最短経路探索処理ループ_7回目" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/最短経路探索処理ループ_7回目.png" /></p>
+<p><img alt="shortest-path_loop_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shortest-path_loop_1.png" /></p>
+<p><img alt="shortest-path_loop_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shortest-path_loop_2.png" /></p>
+<p><img alt="shortest-path_loop_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shortest-path_loop_3.png" /></p>
+<p><img alt="shortest-path_loop_4-6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shortest-path_loop_4-6.png" /></p>
+<p><img alt="shortest-path_loop_7" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shortest-path_loop_7.png" /></p>
 <p><strong>＊アルゴリズム解説＊</strong></p>
 <p>正のコストを持つ経路のみの場合、使用される方法。</p>
-<p><img alt="ダイクストラ法_01" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_01.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_02" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_02.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_03" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_03.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_04" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_04.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_05" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_05.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_06" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_06.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_07" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_07.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_08" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_08.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_10" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_10.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_11" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_11.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_12" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_12.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_14" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_14.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_16" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_16.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_17" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_17.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_18" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_18.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_19" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_19.png" /></p>
-<p><img alt="矢印_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/矢印_80x82.jpg" /></p>
-<p><img alt="ダイクストラ法_20" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ダイクストラ法_20.png" /></p>
+<p><img alt="dijkstra_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_1.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_2" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_2.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_3.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_4.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_5" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_5.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_6" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_6.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_7" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_7.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_8" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_8.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_10" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_10.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_11" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_11.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_12" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_12.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_14" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_14.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_16" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_16.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_17" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_17.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_18" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_18.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_19" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_19.png" /></p>
+<p><img alt="arrow_80x82" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/arrow_80x82.jpg" /></p>
+<p><img alt="dijkstra_20" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dijkstra_20.png" /></p>
 <p><br></p>
 <h2 id="04">04. 誤り検出と訂正のアルゴリズム<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
 <h3 id="check-digit-check">Check Digit Check<a class="headerlink" href="#check-digit-check" title="Permanent link">&para;</a></h3>
@@ -36573,7 +36573,7 @@
 </li>
 <li>
 <p>算出された Check Digit が正しいかを検証する。</p>
-<p><img alt="チェックディジット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/チェックディジット.gif" /></p>
+<p><img alt="check-digit" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/check-digit.gif" /></p>
 </li>
 </ol>
 <p><br></p>

@@ -36700,7 +36700,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:49:44 JST">2026-11-15</span>
   </span>
 
     
@@ -36731,7 +36731,7 @@
 <p><br></p>
 <h2 id="01">01. メモリ管理の種類<a class="headerlink" href="#01" title="Permanent link">&para;</a></h2>
 <p>メモリ管理は、物理メモリと仮想メモリで管理方式がある。</p>
-<p><img alt="アドレス空間管理の種類" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/アドレス空間管理の種類.png" /></p>
+<p><img alt="address-space-management_types" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/address-space-management_types.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://itmanabi.com/real-memory-mng/">メモリの実記憶管理の種類とメリット、デメリットを学ぼう！（スワッピング、オーバーレイとは？） - ITの学び</a></li>
@@ -36743,7 +36743,7 @@
 <h4 id="_4">▼ 単一区画方式とは<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <p>物理メモリのアドレス空間を <code>1</code> 個の区画として扱い、プロセスに割り当てる。</p>
 <p>単一のプロセスしか読み込めず、物理メモリの余ったアドレス空間は利用できない。</p>
-<p><img alt="単一区画方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/単一区画方式.png" /></p>
+<p><img alt="memory-partition_single" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-partition_single.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/">記憶管理 | ITの基礎知識｜ITパスポート・基本情報</a></li>
@@ -36752,7 +36752,7 @@
 <h4 id="_5">▼ 多重区画方式とは<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
 <p>物理メモリのアドレス空間を複数の同じ大きさの区画に分割し、各区画をプロセスに割り当てる。</p>
 <p>複数のプロセスを読み込めるが、単一区画方式と同様に、物理メモリの余ったアドレス空間は利用できない。</p>
-<p><img alt="多重区画方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/多重区画方式.png" /></p>
+<p><img alt="memory-partition_multiple" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-partition_multiple.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/">記憶管理 | ITの基礎知識｜ITパスポート・基本情報</a></li>
@@ -36763,7 +36763,7 @@
 <h4 id="_7">▼ 可変区画方式とは<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <p>物理メモリのアドレス空間をプロセスの大きさに応じたさまざまな区画へ分割し、各区画をプロセスに割り当てる。</p>
 <p>固定区画方式とは異なり、物理メモリのアドレス空間を有効に利用できる。</p>
-<p><img alt="可変区画方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/可変区画方式.png" /></p>
+<p><img alt="memory-partition_variable" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-partition_variable.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/">記憶管理 | ITの基礎知識｜ITパスポート・基本情報</a></li>
@@ -36774,7 +36774,7 @@
 <h4 id="_9">▼ スワッピング方式とは<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
 <p>物理メモリのアドレス空間の区画を優先度の高いプロセスに割り当て、反対に優先度が低いプロセスはストレージ上のスワップファイルに退避させる。</p>
 <p>これにより、物理メモリのアドレス空間を確保できる。</p>
-<p><img alt="スワッピング方式" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/スワッピング方式.png" /></p>
+<p><img alt="memory_swapping" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_swapping.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://itmanabi.com/real-memory-mng/">メモリの実記憶管理の種類とメリット、デメリットを学ぼう！（スワッピング、オーバーレイとは？） - ITの学び</a></li>
@@ -36816,7 +36816,7 @@
 <h3 id="_16">ページング方式<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
 <h4 id="_17">▼ ページング方式とは<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
 <p>仮想メモリのアドレス空間を『固定長』の区画 (ページ) 、また物理メモリのアドレス空間を『固定長』の区画 (ページフレーム) に分割し、管理する。</p>
-<p><img alt="ページの構造" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png" /></p>
+<p><img alt="memory_page_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page_structure.png" /></p>
 <blockquote>
 <ul>
 <li><a href="http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html">メモリ管理</a></li>
@@ -36826,7 +36826,7 @@
 <p>仮想メモリは、CPU の処理によって稼働したプロセスの要求を、物理メモリの代理として受け付ける。</p>
 <p>ストレージから物理メモリのページフレームにページを読み込むことを『Page-in』という。</p>
 <p>また、物理メモリのページフレームからストレージにページを追い出すことを『Page-out』という。</p>
-<p><img alt="ページインとページアウト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページインとページアウト.png" /></p>
+<p><img alt="memory_page-in_page-out" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page-in_page-out.png" /></p>
 <blockquote>
 <ul>
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
@@ -36839,9 +36839,9 @@
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
 </ul>
 </blockquote>
-<p><img alt="仮想メモリとのマッピングによる大容量アドレス空間の再現_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_1.png" /></p>
+<p><img alt="virtual-memory_mapping_1" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_mapping_1.png" /></p>
 <p>補足として、富士通の仮想メモリのサイズは、以下の通り。</p>
-<p><img alt="仮想メモリのアドレス空間の容量設定" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリのアドレス空間の容量設定.png" /></p>
+<p><img alt="virtual-memory_address-space-setting" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_address-space-setting.png" /></p>
 <p><br></p>
 <h3 id="_20">セグメント方式<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
 <h4 id="_21">▼ セグメント方式とは<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
@@ -36857,19 +36857,19 @@
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
 </ul>
 </blockquote>
-<p><img alt="メモリ管理ユニット" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/メモリ管理ユニット.png" /></p>
+<p><img alt="memory-management-unit" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-management-unit.png" /></p>
 <h4 id="_22">▼ アドレス変換の仕組み (ページング方式型/セグメント方式型)<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
 <p>仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。</p>
-<p><img alt="ページの構造" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページの構造.png" /></p>
+<p><img alt="memory_page_structure" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page_structure.png" /></p>
 </li>
 <li>
 <p>ページテーブルを使用して、仮想アドレスのページ番号に対応する物理アドレスのページ番号を探す。</p>
 </li>
 <li>
 <p>物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。</p>
-<p><img alt="仮想メモリとのマッピングによる大容量アドレス空間の再現_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_3.png" /></p>
+<p><img alt="virtual-memory_mapping_3" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_mapping_3.png" /></p>
 </li>
 </ol>
 <h4 id="_23">▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
@@ -36879,13 +36879,13 @@
 <li><a href="https://www.amazon.co.jp/dp/4297124513">https://www.amazon.co.jp/dp/4297124513</a></li>
 </ul>
 </blockquote>
-<p><img alt="仮想メモリとのマッピングによる大容量アドレス空間の再現_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/仮想メモリとのマッピングによる大容量アドレス空間の再現_4.png" /></p>
+<p><img alt="virtual-memory_mapping_4" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_mapping_4.png" /></p>
 <p><br></p>
 <h2 id="02">02. アドレス空間のページフォールト<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h3 id="_24">ページフォールトとは<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
 <p>ストレージから物理メモリのアドレス空間への割り込み処理のこと。</p>
 <p>CPU によって稼働したプロセスが、仮想メモリのアドレス空間のページにアクセスし、そのページが物理メモリのアドレス空間にマッピングされていなかった場合、ストレージから物理メモリのアドレス空間に『ページイン』が起こる。</p>
-<p><img alt="ページフォールト" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ページフォールト.png" /></p>
+<p><img alt="memory_page-fault" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page-fault.png" /></p>
 <p><br></p>
 <h3 id="page-replacement">Page Replacement アルゴリズム<a class="headerlink" href="#page-replacement" title="Permanent link">&para;</a></h3>
 <p>ページアウトのアルゴリズムのこと。</p>
@@ -36912,15 +36912,15 @@
 <h2 id="03">03. アドレス空間管理におけるプログラムの種類<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="reusable">Reusable (再使用可能プログラム)<a class="headerlink" href="#reusable" title="Permanent link">&para;</a></h3>
 <p>一度実行すれば、再び、ストレージから物理メモリにページインを行わずに、実行を繰り返せるプログラムのこと。</p>
-<p><img alt="再使用可能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再使用可能.gif" /></p>
+<p><img alt="program_reusable" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/program_reusable.gif" /></p>
 <p><br></p>
 <h3 id="reentrant">Reentrant (再入可能プログラム)<a class="headerlink" href="#reentrant" title="Permanent link">&para;</a></h3>
 <p>再使用可能の性質をもち、また複数のプログラムから呼び出されても、互いの呼び出しが干渉せず、同時に実行できるプログラムのこと。</p>
-<p><img alt="再入可能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再入可能.gif" /></p>
+<p><img alt="program_reentrant" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/program_reentrant.gif" /></p>
 <p><br></p>
 <h3 id="relocatable">Relocatable (再配置可能プログラム)<a class="headerlink" href="#relocatable" title="Permanent link">&para;</a></h3>
 <p>ストレージから物理メモリにページインを行うときに、アドレス空間上のどこに配置されても実行できるプログラムのこと。</p>
-<p><img alt="再配置可能" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/再配置可能.gif" /></p>
+<p><img alt="program_relocatable" src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/program_relocatable.gif" /></p>
 <p><br></p>
 
   
