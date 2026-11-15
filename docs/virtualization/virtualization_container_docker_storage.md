@@ -21,7 +21,7 @@ tags:
 
 コンテナのファイルデータをホストのストレージに一時化/非永続化/永続化するための方法である。
 
-![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_storage.png)
+![docker_storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_storage.png)
 
 > - [What is Docker storage? Learn Everything about Docker storage (Theory) - GeekyLane](https://geekylane.com/what-is-docker-storage-learn-everything-about-docker-storage-theory/)
 > - [https://maku77.github.io/p/hxhzgxf/](https://maku77.github.io/docker/mount/)
@@ -38,7 +38,7 @@ tags:
 
 しかし、ホスト側のデータを永続化する方法には適さない。
 
-![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bind-mount.png)
+![docker_bind-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_bind-mount.png)
 
 > - https://docs.docker.com/storage/bind-mounts/
 > - [【初心者向け】実際に動かしながらDockerを学ぶ〜後編〜 - First Draft](https://www.takapy.work/entry/2019/02/24/110932)
@@ -83,7 +83,7 @@ services:
 
 Docker for Desktop の設定画面で変更する。
 
-![mount_host-directory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mount_host-directory.png)
+![mount_host-directory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/mount_host-directory.png)
 
 マウント元の詳細なディレクトリ名は、`/Users/<ユーザー名>/Library/Group Containers/group.com.docker/setting.json` ファイルから確認できる。
 
@@ -122,7 +122,7 @@ $ cat settings.json
 
 しかし、例えばアプリケーションやパッケージのような変更されやすいデータを共有する方法には適さない。
 
-![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_volume-mount.png)
+![docker_volume-mount](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_volume-mount.png)
 
 > - https://docs.docker.com/storage/volumes/
 > - [【初心者向け】実際に動かしながらDockerを学ぶ〜後編〜 - First Draft](https://www.takapy.work/entry/2019/02/24/110932)
@@ -187,7 +187,7 @@ docker エリアのボリュームを Data Volume をコンテナのディレク
 
 ボリュームを使用するときは、docker エリアを参照するのではなく、Data Volume コンテナを参照する。
 
-![docker_data-volume-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_data-volume-container.png)
+![docker_data-volume-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_data-volume-container.png)
 
 <br>
 

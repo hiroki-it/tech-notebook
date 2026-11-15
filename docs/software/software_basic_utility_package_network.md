@@ -474,7 +474,7 @@ $ tcpdump src port 80
 
 宛先に UDP プロトコル/ICMP プロトコル (デフォルトは UDP プロトコル) でパケットを送信し、通信の送信元から宛先までに通過するルーターの送信元 IP アドレスを取得する。
 
-![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traceroute.png)
+![traceroute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/traceroute.png)
 
 > - [Linuxコマンド【 traceroute 】ホストまでの経路を表示する - Linux入門 - Webkaru](https://webkaru.net/linux/traceroute-command/)
 > - [コンテンツが存在しません｜よくあるご質問｜法人向けクラウドサービスのbit-drive](https://faq2.bit-drive.ne.jp/support/traina-faq/result/19-1647?ds=&receptionId=2760&receptionNum=1607536654139&page=1&inquiryWord=&categoryPath=102&selectedDataSourceId=&sort=_score&order=desc&attachedFile=false)

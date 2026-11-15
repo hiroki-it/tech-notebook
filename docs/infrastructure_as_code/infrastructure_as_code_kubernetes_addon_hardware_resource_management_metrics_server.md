@@ -36,7 +36,7 @@ Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外
 
 4. APIService は、クライアントにメトリクスを返信する。
 
-    ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_metrics-server.png)
+    ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_metrics-server.png)
 
 > - [Metrics Server - Speaker Deck](https://speakerdeck.com/bells17/metrics-server?slide=20)
 > - [metrics-server/manifests/base at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base)
@@ -71,7 +71,7 @@ kubelet のデーモンはデータポイント収集用エンドポイント (�
 
 そのため、Pod や Node にデータポイント収集用エンドポイント (例：`/metrics`) を設ける必要はない。
 
-![metrics-server_scraper](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics-server_scraper.png)
+![metrics-server_scraper](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/metrics-server_scraper.png)
 
 > - [Resource metrics pipeline \| Kubernetes](https://kubernetes.io/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/)
 > - https://luandy-4171.medium.com/the-kubernetes-metrics-and-monitoring-architecture-8999c4bb5a04
@@ -197,7 +197,7 @@ baz-node   352m         4%     9430Mi          33%
 
 また、クライアントが HorizontalPodAutoscaler や VerticalPodAutoscaler の場合は、kube-apiserver を介して拡張 API サーバーから Node や Pod のメトリクスを取得する。そして、Pod をオートスケーリングする。
 
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/horizontal-pod-autoscaler.png)
 
 > - [AWS EKS Kubernetes Horizontal Pod Autoscaler HPA - StackSimplify](https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/)
 
@@ -274,7 +274,7 @@ metrics-server から取得した Pod に関するメトリクス値とターゲ
 
 HorizontalPodAutoscaler を使用するためには、metrics-server も別途インストールしておく必要がある。
 
-![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/horizontal-pod-autoscaler.png)
+![horizontal-pod-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/horizontal-pod-autoscaler.png)
 
 > - [AWS EKS Kubernetes Horizontal Pod Autoscaler HPA - StackSimplify](https://www.stacksimplify.com/aws-eks/aws-eks-kubernetes-autoscaling/learn-to-master-horizontal-pod-autoscaling-on-aws-eks/)
 > - [EKSのAuto Scalingを試してみた \| DevelopersIO](https://dev.classmethod.jp/articles/trying-auto-scaling-eksworkshop/)

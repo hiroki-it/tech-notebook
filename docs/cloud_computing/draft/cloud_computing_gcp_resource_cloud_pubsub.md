@@ -15,7 +15,7 @@ description: Cloud Pub/Subの知見を記録しています。
 
 パブリッシャーからのメッセージをトピックで受信し、サブスクライバーにこれを送信する。
 
-![google_cloud_pub_sub](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_pub_sub.png)
+![google_cloud_pub_sub](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/google_cloud_pub_sub.png)
 
 > - [Pub/Sub サービスの概要 \| Google Cloud Documentation](https://cloud.google.com/pubsub/docs/pubsub-basics?hl=ja)
 

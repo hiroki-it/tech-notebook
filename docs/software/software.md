@@ -21,7 +21,7 @@ tags:
 
 『OS』『ミドルウェア』『ハードウェア』をインフラとも呼ぶ。
 
-![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
+![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/software.png)
 
 > - [ITインフラの全体像を理解しよう \| 新人エンジニアのためのインフラ入門 ーBFT道場 Think IT支部 \| Think IT（シンクイット）](https://thinkit.co.jp/article/11526)
 
@@ -58,7 +58,7 @@ tags:
 
 一度ダウンロードしてしまえば、インターネットに繋がっていなくとも、使用できる。
 
-![native-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/native-app.png)
+![native-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/native-app.png)
 
 > - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
@@ -70,7 +70,7 @@ Office、BookLive のアプリ版
 
 Web アプリケーションは、端末の種類によらず、ブラウザから Web サーバーにアクセスするだけで利用できる。
 
-![web-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-app.png)
+![web-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/web-app.png)
 
 #### ▼ Web アプリケーション
 
@@ -100,9 +100,9 @@ Web サーバー上のソフトウェアによって稼働するアプリケー�
 
 端末で Webview を稼働させ、ソフトウェアの `html` ファイルのレンダリングを Webview 上で実行するアプリケーションのこと。
 
-![webview_app-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/webview_app-package.png)
+![webview_app-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/webview_app-package.png)
 
-![hybrid-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hybrid-app.png)
+![hybrid-app](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/hybrid-app.png)
 
 > - [HTML5によるハイブリッドアプリ開発の「Apache Cordova」とは？IBMやSAPがなぜ注目？ 企業向けモバイルアプリ開発の問題が決着か｜ビジネス+IT](https://www.sbbit.jp/article/cont1/28197)
 
@@ -159,13 +159,13 @@ Unix を源流として派生した OS。
 
 ※補足として、MacOS は BSD 系統
 
-![os_unix-like_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/os_unix-like_history.png)
+![os_unix-like_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/os_unix-like_history.png)
 
 #### ▼ WindowsOS
 
 MS-DOS を源流として派生した OS。今では、すべての派生が Windows 10 に集約された。
 
-![os_windows_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/os_windows_history.png)
+![os_windows_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/os_windows_history.png)
 
 <br>
 
@@ -173,7 +173,7 @@ MS-DOS を源流として派生した OS。今では、すべての派生が Win
 
 基本ソフトウェアは広義の OS であり、ユーティリティ、言語プロセッサ、制御プログラムの 3 つから構成される。
 
-![basic-software_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/basic-software_structure.png)
+![basic-software_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/basic-software_structure.png)
 
 > - http://kccn.konan-u.ac.jp/information/cs/cyber06/cy6_os.htm
 
@@ -187,7 +187,7 @@ MS-DOS を源流として派生した OS。今では、すべての派生が Win
 
 Unix から分岐した Linux は、加えて 3 系統 (Debian、RedHat、Slackware) に分岐する。
 
-![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux-distribution.png)
+![linux-distribution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/linux-distribution.png)
 
 > - http://officemiyajima.com/index.php?What%20is%20Linux
 
@@ -252,7 +252,7 @@ ROM に組み込まれている。
 
 BIOS は、OS の起動前にハードウェアを制御し、その設定画面から CPU や周辺機器の設定を変更できる。
 
-![bios](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bios.jpg)
+![bios](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/bios.jpg)
 
 <br>
 
@@ -260,7 +260,7 @@ BIOS は、OS の起動前にハードウェアを制御し、その設定画面
 
 Windows 8 以降で採用されている新しい Firmware
 
-![uefi_secure-boot](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uefi_secure-boot.jpg)
+![uefi_secure-boot](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uefi_secure-boot.jpg)
 
 <br>
 
@@ -287,7 +287,7 @@ Windows 8 以降で採用されている新しい Firmware
 
 OSS は、OS やデータベースからクラウド構築や機械学習まで、さまざまな分野に存在する。
 
-![oss_list](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oss_list.png)
+![oss_list](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/oss_list.png)
 
 > - [オープンソースソフトウェア（OSS）一覧 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/)
 

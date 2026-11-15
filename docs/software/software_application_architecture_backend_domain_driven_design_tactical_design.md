@@ -23,7 +23,7 @@ tags:
 
 しかし、特に Model の役割が抽象的過ぎたため、開発規模が大きくなるにつれて、Model に役割を集中させ過ぎてしまうことがあった。
 
-![mvc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mvc.png)
+![mvc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/mvc.png)
 
 ### MVC からレイヤードアーキテクチャへの移行
 
@@ -31,7 +31,7 @@ tags:
 
 Model の肥大化は、Model が持つビジネスロジックをドメイン層、また CRUD 処理をインフラストラクチャ層として分割することによって、対処された。
 
-![ddd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd.png)
+![ddd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd.png)
 
 <br>
 
@@ -69,7 +69,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 ドメインモデル図を基に、コアドメイン/サブドメインのモデリングを実行する。
 
-![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context_modeling.png)
+![core-domain_sub-domain_bounded-context_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/core-domain_sub-domain_bounded-context_modeling.png)
 
 > - [DDDのドメイン・サブドメイン・ユビキタス言語・境界づけられたコンテキストを整理する #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4)
 
@@ -108,7 +108,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 2. ドメインエキスパートへの要件定義を終えた想定で、ユースケース図を作成する。
     オブジェクト図は省略する。
 
-    ![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_usecase-diagram_example.jpg)
+    ![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_usecase-diagram_example.jpg)
 
 3. 暫定的なドメインモデル図を作成する。
 `little_hands_s` さんは、ID のみを使用する関係であれば『実線矢印』とし、加えてオブジェクト全体を使用する関係であれば『黒塗りの菱形』としている。
@@ -135,7 +135,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
   </tbody>
 </table>
 
-![ticket-modeling_little-hands_domain-model-diagram_example-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
+![ticket-modeling_little-hands_domain-model-diagram_example-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-1.jpg)
 
 3. ドメインモデル図を更新する。
 
@@ -175,7 +175,7 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
       </tbody>
     </table>
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
+    ![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
 
 4. ドメインモデル図を更新する。
 
@@ -220,11 +220,11 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
       </tbody>
     </table>
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
+    ![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
 
     実装フェーズに入ってからの話になるが、料金区分オブジェクトは enum 型として実装することになり、以下のようになる。
 
-    ![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_enum_example.jpg)
+    ![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_enum_example.jpg)
 
 5. ドメインモデル図を更新する。
 
@@ -274,11 +274,11 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
       </tbody>
     </table>
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
+    ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
 
 6. 集約間の関係性のみに着目すると、オブジェクト間の関係性は複雑であるが、集約間は単純であることがわかる。
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-5](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
+    ![ticket-modeling_little-hands_domain-model-diagram_example-5](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
 
 <br>
 
@@ -458,7 +458,7 @@ Git のようにして過去の状態を参照できる。
 
 最初に提唱された実現方法。
 
-![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/layered-architecture.png)
+![layered-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/layered-architecture.png)
 
 レイヤードアーキテクチャのインフラストラクチャ層に対して、依存性逆転を組み込むかどうかには言及していない。
 
@@ -538,7 +538,7 @@ MVC との関係は次のとおりである。
 
 本質的には、他の『ヘキサゴナルアーキテクチャ』『クリーンアーキテクチャ』に同じである。
 
-![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/onion-architecture.png)
+![onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/onion-architecture.png)
 
 > - [The Onion Architecture : part 1 \| Programming with Palermo](https://jeffreypalermo.com/2008/07/the-onion-architecture-part-1/)
 > - [ドメイン駆動 + オニオンアーキテクチャ概略\[DDD\] - little hands' lab](https://little-hands.hatenablog.com/entry/2017/10/11/075634)
@@ -549,7 +549,7 @@ MVC との関係は次のとおりである。
 
 本質的には、他の『ヘキサゴナルアーキテクチャ』『オニオンアーキテクチャ』に同じである。
 
-![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/clean-architecture.jpg)
+![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/clean-architecture.jpg)
 
 > - [Clean Coder Blog](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
 

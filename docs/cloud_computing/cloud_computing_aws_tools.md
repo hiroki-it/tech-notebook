@@ -69,6 +69,6 @@ CloudFormation で作成でき、Amazon ECS Fargate を使用して、ユーザ�
 
 分散ロードテストは、フロントエンドの Web コンソールや API で受け付けたテストを、バックエンドの Lambda が Fargate のタスクとして実行し、その結果を DynamoDB や S3 に保存する構成である。
 
-![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed_load_testing.png)
+![distributed_load_testing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/distributed_load_testing.png)
 
 <br>

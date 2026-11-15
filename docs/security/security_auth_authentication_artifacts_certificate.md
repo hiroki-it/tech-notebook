@@ -26,7 +26,7 @@ tags:
 
 『なりすまし』と『改竄』を防げる。
 
-![digital-signature](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/digital-signature.png)
+![digital-signature](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/digital-signature.png)
 
 **＊サーバーが実行すること＊**
 
@@ -74,7 +74,7 @@ tags:
 
 『なりすまし』と『改竄』を防げる署名に、『情報漏洩』を防げる公開鍵暗号方式を組み込んだ暗号化技術。
 
-![digital-signature_encryption](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/digital-signature_encryption.png)
+![digital-signature_encryption](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/digital-signature_encryption.png)
 
 <br>
 
@@ -96,7 +96,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 第三者機関の認証局によって、署名済み証明書を発行し、通信のたびに署名を検証する仕組みを、公開鍵基盤という。
 
-![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl-certificate.png)
+![ssl-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/ssl-certificate.png)
 
 <br>
 
@@ -104,7 +104,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 公開鍵基盤には、証明書の『署名』と『検証』のフェーズがある。
 
-![public-key-infrastructure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-key-infrastructure.gif)
+![public-key-infrastructure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/public-key-infrastructure.gif)
 
 <br>
 
@@ -124,7 +124,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 4. サーバーに署名済み証明書 (S/MIME 証明書、サーバー証明書) をインストールする。
 
-    ![certificate_sign](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_sign.png)
+    ![certificate_sign](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/certificate_sign.png)
 
 > - [SSL証明書の署名と検証 \| DevelopersIO](https://dev.classmethod.jp/articles/ssl-certificate-system/)
 > - [【初心者向け】サーバ証明書の検証の流れについてまとめてみた - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/server-cert-verification)
@@ -143,7 +143,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 2. クライアントは、ルート認証局の CA 証明書に含まれる公開鍵を使用して、署名済み証明書のハッシュ値を復号する。また、署名済み証明書のもとになった証明書署名要求からハッシュ値を算出する。復号したハッシュ値と算出したハッシュ値が同じなら、正しい証明書であると判定する。
 
-    ![certificate_validate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate_validate.png)
+    ![certificate_validate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/certificate_validate.png)
 
 > - [SSL証明書の署名と検証 \| DevelopersIO](https://dev.classmethod.jp/articles/ssl-certificate-system/)
 > - [【初心者向け】サーバ証明書の検証の流れについてまとめてみた - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/server-cert-verification)
@@ -208,7 +208,7 @@ CA 証明書や署名済みの証明書を通信の送受信者に配置し、�
 
 注意点として、ルート認証局は専門機関から厳しい審査を受けているため、ルート認証局自体がなりすましの可能性は非常に低い。
 
-![certificate-authority_spoofing-prevention](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/certificate-authority_spoofing-prevention.png)
+![certificate-authority_spoofing-prevention](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/certificate-authority_spoofing-prevention.png)
 
 > - [【素朴な疑問】ルート証明書って何？【今さら聞けない】 : 0から楽しむパソコン講座のブログ](https://zeropasoakita.livedoor.blog/archives/20294837.html)
 
@@ -311,7 +311,7 @@ Web サイトのドメインの購入者が、ペアになる秘密鍵と組み�
 
 ペアになる秘密鍵もクライアント側に配置する。そのため、クライアント側にはクライアント証明書と秘密鍵の両方を配置する。
 
-![client-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client-certificate.png)
+![client-certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/client-certificate.png)
 
 > - [クライアント認証とは？｜BLOG｜サイバートラスト](https://www.cybertrust.co.jp/blog/certificate-authority/client-authentication/client-certificate-authentication.html)
 

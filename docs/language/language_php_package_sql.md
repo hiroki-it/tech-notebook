@@ -21,7 +21,7 @@ SQL を抽象化する API をアプリケーションに提供する。
 
 SQL の種類が異なっていても、共通のロジックでクエリを送信できる。
 
-![php_sql_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php_sql_package.png)
+![php_sql_package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/php_sql_package.png)
 
 > - https://thinkit.co.jp/free/marugoto/1/4/1/
 

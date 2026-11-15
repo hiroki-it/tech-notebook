@@ -39,7 +39,7 @@ tags:
 
 マイクロサービスアーキテクチャ固有のインフラ領域の問題 (例：サービス検出の必要性、パケットのアプリケーションデータの暗号化、テレメトリー作成、認証など) を解決するためのロジックを切り分け、各マイクロサービスに共通的に提供できる。
 
-![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mesh.png)
+![mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/mesh.png)
 
 > - https://solace.com/blog/event-mesh-service-mesh-for-microservices/
 > - [サービスメッシュ、Istioがマイクロサービスのトラフィック制御、セキュリティ、可観測性に欠かせない理由：Cloud Nativeチートシート（9） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2110/15/news007.html)
@@ -65,7 +65,7 @@ tags:
 
 サービスメッシュの概念が提唱される前、これらのロジックを持つライブラリを各マイクロサービスに持たせていた。
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service-mesh_layer.png" alt="service-mesh_layer" style="zoom:60%;">
 
 サービスメッシュの概念が提唱され、アーキテクチャのインフラストラクチャ層としてリバースプロキシサイドカーをインジェクションするようになった。
 
@@ -99,7 +99,7 @@ tags:
 
 マイクロサービス間の通信を透過的にする (サイドカープロキシの存在を意識せずに通信できる) ことを思想としている。
 
-![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-discovery_kubernetes_vs_istio.png)
+![service-discovery_kubernetes_vs_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service-discovery_kubernetes_vs_istio.png)
 
 > - https://www.ibm.com/blogs/think/jp-ja/cloud-native-concept-03/#servicemesh
 > - [Service Mesh 通信インフラストラクチャ - .NET \| Microsoft Learn](https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/service-mesh-communication-infrastructure)
@@ -118,7 +118,7 @@ tags:
 
 Envoy、Nginx、HAProxy のレイテンシーの比較では、Envoy のレイテンシーがもっとも小さいとの結果が出ている。
 
-![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_sidecar-proxy_reverse-proxy.png)
+![service-mesh_sidecar-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service-mesh_sidecar-proxy_reverse-proxy.png)
 
 > - https://www.getambassador.io/resources/envoyproxy-performance-on-k8s/
 
@@ -195,7 +195,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 サイドカープロキシが稼働する領域を『データプレーン』、中央集中的に管理する領域を『コントロールプレーン』という。
 
-![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service-mesh_control-plane.png)
+![service-mesh_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service-mesh_control-plane.png)
 
 > - https://www.xlsoft.com/jp/blog/blog/2021/09/08/post-23549/
 
@@ -266,7 +266,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 ### サービス検出の要素
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern.png" alt="service-discovery-pattern" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service-discovery-pattern.png" alt="service-discovery-pattern" style="zoom:60%;">
 
 サービス検出の仕組みは、次の要素からなる。
 
@@ -286,7 +286,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 #### ▼ クライアントサイドパターン
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_client-side" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service-discovery-pattern_client-side.png" alt="service-discovery-pattern_client-side" style="zoom:60%;">
 
 サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務は、クライアント側マイクロサービスにある。
 
@@ -311,7 +311,7 @@ Node 上にエージェントを配置し、これを経由してマイクロサ
 
 #### ▼ サーバーサイドパターンとは
 
-<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/istio/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_server-side" style="zoom:60%;">
+<img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service-discovery-pattern_server-side.png" alt="service-discovery-pattern_server-side" style="zoom:60%;">
 
 サービスレジストリ (例：etcd) に宛先を問い合わせ、宛先にルーティングする責務が、クライアント側から切り離されている。
 

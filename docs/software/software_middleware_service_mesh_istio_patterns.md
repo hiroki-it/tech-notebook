@@ -65,7 +65,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 このとき、IngressGateway を使用せずに、異なる Cluster のコンテナが直接通信できる。
 
-![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_same-network.png)
+![istio_multi-service-mesh_cluster_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_cluster_same-network.png)
 
 > - [Google Cloud とオンプレミス環境間でマルチクラスタ サービスメッシュ (ハイブリッドメッシュ) を構成する](https://zenn.dev/kuchima/articles/asm-hybrid-mesh)
 
@@ -75,7 +75,7 @@ Kubernetes Cluster ごとに Istiod コントロールプレーンを作成す�
 
 このとき、IngressGateway を経由して、異なる Cluster のコンテナが間接的に通信できる。
 
-![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_cluster_difficult-network.png)
+![istio_multi-service-mesh_cluster_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_cluster_difficult-network.png)
 
 > - [Google Cloud とオンプレミス環境間でマルチクラスタ サービスメッシュ (ハイブリッドメッシュ) を構成する](https://zenn.dev/kuchima/articles/asm-hybrid-mesh)
 
@@ -114,7 +114,7 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 このとき、IngressGateway を使用せずに、Kubernetes 上のコンテナと仮想サーバー上のコンテナが直接的に通信できる。
 
-![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_same-network.png)
+![istio_multi-service-mesh_vm_same-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_vm_same-network.png)
 
 > - [Istio / Virtual Machine Architecture](https://istio.io/latest/docs/ops/deployment/vm-architecture/)
 > - [Istio / Virtual Machine Installation](https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine)
@@ -127,7 +127,7 @@ Istio コントロールプレーンとデータプレーンを異なるクラ�
 
 このとき、IngressGateway を経由して、Kubernetes 上のコンテナと仮想サーバー上のコンテナが間接的に通信できる。
 
-![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multi-service-mesh_vm_difficult-network.png)
+![istio_multi-service-mesh_vm_difficult-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multi-service-mesh_vm_difficult-network.png)
 
 > - [Istio / Virtual Machine Architecture](https://istio.io/latest/docs/ops/deployment/vm-architecture/)
 > - [Istio / Virtual Machine Installation](https://istio.io/latest/docs/setup/install/virtual-machine/#start-istio-within-the-virtual-machine)

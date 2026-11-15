@@ -24,7 +24,7 @@ tags:
 
 注意点として、DirectConnect は、それ専用の中継 Amazon VPC 内に作成する。
 
-![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/direct-connect.png)
+![direct-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/direct-connect.png)
 
 > - [AWS認定プレミアコンサルティングパートナーのcloudpack AWSを専用線で直結する『AWS Direct Connect』を利用するためのノウハウを記したホワイトペーパーを公開 \| KDDIアイレット株式会社のプレスリリース](https://prtimes.jp/main/html/rd/p/000000050.000009999.html)
 

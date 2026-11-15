@@ -27,7 +27,7 @@ aws-load-balancer-controller は、etcd 上の Ingress のマニフェストを�
 
 これらにより、Cluster 外からのリクエストを Pod へルーティングできるようにする。
 
-![aws_load_balancer_controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_architecture.png)
+![aws_load_balancer_controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws_load_balancer_controller_architecture.png)
 
 > - [How it works - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/)
 > - [NLB - AWS Load Balancer Controller](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.2/guide/service/nlb/)
@@ -182,7 +182,7 @@ metadata:
 
 IRSA により、ServiceAccount に AWS の IAM ロールが紐づく。
 
-![aws_load_balancer_controller_irsa](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_load_balancer_controller_irsa.png)
+![aws_load_balancer_controller_irsa](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws_load_balancer_controller_irsa.png)
 
 > - [【EKS】AWS Load Balancer Controller導入手順 #kubernetes - Qiita](https://qiita.com/crml1206/items/3f5ceeaae27bba033bb1#ingress%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%82%92%E6%A4%9C%E7%9F%A5%E3%81%97%E3%81%A6alb%E3%81%8C%E4%BD%9C%E6%88%90%E3%81%95%E3%82%8C%E3%82%8B)
 
@@ -561,7 +561,7 @@ spec:
   targetGroupARN: <ターゲットグループのARN>
 ```
 
-![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_targetgroupbinding.png)
+![alb_targetgroupbinding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/alb_targetgroupbinding.png)
 
 > - [Workshop Studio](https://catalog.workshops.aws/eks-immersionday/en-US/services-and-ingress/targetgroupbinding)
 

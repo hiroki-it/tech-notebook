@@ -162,7 +162,7 @@ type MyAppWriter io.Writer
 
 `1` 個のメモリアドレス当たり `1` バイトに相当する。
 
-![basic-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/basic-variable_memory.png)
+![basic-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/basic-variable_memory.png)
 
 <br>
 
@@ -347,7 +347,7 @@ func main() {
 
 要素、各要素のメモリアドレスからなるデータのこと。
 
-![aggregate-type_array](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregate-type_array.png)
+![aggregate-type_array](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/aggregate-type_array.png)
 
 <br>
 
@@ -419,7 +419,7 @@ func main() {
 
 `1` 個のメモリアドレス当たり `1` バイトに相当する。
 
-![array-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/array-variable_memory.png)
+![array-variable_memory](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/array-variable_memory.png)
 
 <br>
 
@@ -542,7 +542,7 @@ type slice struct {
 }
 ```
 
-![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reference-types_slice.png)
+![reference-types_slice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/reference-types_slice.png)
 
 > - [go/src/runtime/slice.go at go1.20.7 · golang/go · GitHub](https://github.com/golang/go/blob/go1.20.7/src/runtime/slice.go#L15-L19)
 

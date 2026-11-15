@@ -163,7 +163,7 @@ tags:
 
 `/dev` ディレクトリ配下にストレージへ紐づくデバイスファイルがあり、デバイスファイル内でパーティションが設定されている。
 
-![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/partition_volume.png)
+![partition_volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/partition_volume.png)
 
 > - [ディスク、パーティション、ドライブ、ボリュームの違い \| Windows 実践ガイド](https://win2012r2.com/2018/05/13/post-268/)
 > - http://www.miloweb.net/partition.html
@@ -262,7 +262,7 @@ $ diskutil list
 
 異なる物理ボリュームにまたがる領域を組み合わせ、`1` 個の仮想的なボリュームとした扱ったもの。
 
-![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logical-volume.png)
+![logical-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logical-volume.png)
 
 > - [LVM \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Keyword/20071012/284413/)
 

@@ -183,6 +183,6 @@ DBG プロトコルを使用して、エディタ仮想環境とデバッガー�
 
 デバッガーエンジンは、Breakpoint までの各変数の中身を解析し、エディタ仮想環境に返信する。
 
-![xdebug_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/xdebug_architecture.png)
+![xdebug_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/xdebug_architecture.png)
 
 <br>

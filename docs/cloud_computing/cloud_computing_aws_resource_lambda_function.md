@@ -791,7 +791,7 @@ exports.handler = (event, context, callback) => {
 
 ## 09. Lambda@Edge による S3 オリジンの選択
 
-![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge_dynamic-origin.png)
+![lambda-edge_dynamic-origin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/lambda-edge_dynamic-origin.png)
 
 event オブジェクトの `domainName` と `host.value` に代入されたバケットのドメイン名によって、フォワーディング先のバケットが決まる。
 

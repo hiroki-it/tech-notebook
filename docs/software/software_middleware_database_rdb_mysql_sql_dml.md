@@ -178,13 +178,13 @@ FROM
 
 `JOIN` の種類によって 2 つのテーブルから取得するレコードの範囲が異なり、`WHERE` で `NULL` を条件にすると片方のテーブルにしか存在しないレコードのみを取得できる。
 
-![sql_inner-join_venn-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sql_inner-join_venn-diagram.jpg)
+![sql_inner-join_venn-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/sql_inner-join_venn-diagram.jpg)
 
 #### ▼ `LEFT JOIN` (左外部結合)
 
 『users』テーブルと『items』テーブルの商品 ID が一致しているデータと、元となる『users』テーブルにしか存在しないデータが、セットで取得される。
 
-![sql_left-join](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sql_left-join.png)
+![sql_left-join](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/sql_left-join.png)
 
 #### ▼ `INNER JOIN` (内部結合)
 
@@ -716,7 +716,7 @@ ANALYZE TABLE foos;
 
 あらかじめ一連の SQL 文を DB に格納しておき、Call 文でコールする方式。
 
-![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p325.gif)
+![p325](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p325.gif)
 
 > - https://www.amazon.co.jp/dp/4297124513
 

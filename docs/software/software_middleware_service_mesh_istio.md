@@ -296,7 +296,7 @@ p99、1000 req/sec、240 秒間の負荷の場合である。
   </tbody>
 </table>
 
-![istio_sidecar-mode_latency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mode_latency.png)
+![istio_sidecar-mode_latency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_sidecar-mode_latency.png)
 
 > - [Istio / Best Practices: Benchmarking Service Mesh Performance](https://istio.io/latest/blog/2019/performance-best-practices/)
 
@@ -541,7 +541,7 @@ JWT トークンの取得方法として、例えば以下の方法がある。
 
 Pod 間通信時、AuthorizationPolicy を使用して、JWT トークンのアカウント属性や通信元ワークロードの SPIFFE ID などに基づいて通信を認可する。
 
-![istio_authorization-policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_authorization-policy.png)
+![istio_authorization-policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_authorization-policy.png)
 
 > - [Istio / Security](https://istio.io/latest/docs/concepts/security/#authorization-policies)
 > - https://www.styra.com/blog/authorize-better-istio-traffic-policies-with-opa-styra-das/
@@ -582,7 +582,7 @@ Istio は、istio-proxy 間の通信で相互 TLS を使用し、パケットの
 5. istio-proxy 間で相互 TLS 認証できるようになる。
 6. 証明書の有効期限が切れる前に、istio-proxy は秘密鍵から証明書署名要求を再作成して Istiod に送信し、新しい証明書を取得する。Pod の再起動は不要である。
 
-![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
+![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_istio-ca-root-cert.png)
 
 > - [Istio / Security](https://istio.io/latest/docs/concepts/security/#pki)
 > - https://developers.redhat.com/articles/2023/08/24/integrate-openshift-service-mesh-cert-manager-and-vault#default_and_pluggable_ca_scenario
@@ -1037,7 +1037,7 @@ istio-proxy は、アクセスログをログ収集ツール (例：OpenTelemetr
 
 #### ▼ スパンの作成
 
-![istio_distributed_tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_distributed_tracing.png)
+![istio_distributed_tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_distributed_tracing.png)
 
 istio-proxy は、スパンを作成する。
 

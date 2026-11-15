@@ -70,7 +70,7 @@ tags:
 
 ### 一連の流れ
 
-![transaction_commit-control](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transaction_commit-control.jpg)
+![transaction_commit-control](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/transaction_commit-control.jpg)
 
 <table>
   <thead>
@@ -236,13 +236,13 @@ SELECT txid_current();
 
 これにより、書き込み後にすぐ読み出しが必要な場合、読み出しが速くなる。
 
-![dbms_memory-and-disk](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dbms_memory-and-disk.jpg)
+![dbms_memory-and-disk](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/dbms_memory-and-disk.jpg)
 
 > - [PostgreSQL WALログの仕組みとタイミングを理解したい](https://www.kimullaa.com/posts/201910271500/)
 
 #### ▼ WAL：Write ahead log (ログ先行書き込み)
 
-![wal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/wal.png)
+![wal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/wal.png)
 
 コミット時にメモリへ書き込む仕組みの前に、ストレージ上のジャーナルファイルに更新前ログを書き込む。
 
@@ -265,7 +265,7 @@ SELECT txid_current();
 
 このとき、チェックポイントは、自動実行または手動実行で作成する。
 
-![transaction](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transaction.jpg)
+![transaction](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/transaction.jpg)
 
 > - [耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html)
 
@@ -286,7 +286,7 @@ SELECT txid_current();
 
 『`b`』の値を更新する SQL ステートメントを含むトランザクションの途中に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新前ログ『`b = 1`』を使用して、障害発生前の状態に戻す。
 
-![rdbms_system-failure-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdbms_system-failure-recovery.jpg)
+![rdbms_system-failure-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdbms_system-failure-recovery.jpg)
 
 <br>
 
@@ -304,7 +304,7 @@ SELECT txid_current();
 
 『`a`』の値を更新する SQL ステートメントを含むトランザクションの後に、ソフトウェアが異常終了した場合、ジャーナルファイルの更新後ログ『`a = 5`』を使用して、ストレージ上の DB ファイルに更新結果を反映させる。
 
-![rdbms_system-failure-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdbms_system-failure-recovery.jpg)
+![rdbms_system-failure-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdbms_system-failure-recovery.jpg)
 
 #### ▼ 媒体障害からの回復
 
@@ -312,7 +312,7 @@ SELECT txid_current();
 
 ストレージ上のジャーナルファイルの更新後ログ『`a = 5`』『`b = 1`』を使用して、修復できる限りロールフォワードを行う。
 
-![rdbms_media-failure-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rdbms_media-failure-recovery.jpg)
+![rdbms_media-failure-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdbms_media-failure-recovery.jpg)
 
 > - [耐久性を確保する「障害回復機能」を理解する：「データベーススペシャリスト試験」戦略的学習のススメ（25） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1703/01/news198.html)
 
@@ -409,11 +409,11 @@ RDBMS またはアプリケーションによる `UPDATE` 処理競合問題を�
 
 結果として、ユーザ B の `UPDATE` 処理によって、ユーザ A の処理が上書きされ、無かったことになってしまう。
 
-![exclusive-control_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_1.png)
+![exclusive-control_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/exclusive-control_1.png)
 
 ユーザ A とユーザ B の `UPDATE` 処理が並行したとしても、ユーザ A の処理が無かったことにならないよう保証する方法として、『排他制御』がある。
 
-![exclusive-control_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_2.png)
+![exclusive-control_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/exclusive-control_2.png)
 
 > - [排他制御（楽観ロック・悲観ロック）の基礎 #SQL - Qiita](https://qiita.com/NagaokaKenichi/items/73040df85b7bd4e9ecfc)
 
@@ -489,7 +489,7 @@ DB で、CRUD の `READ` 処理以外の処理を実行不可能にする。
 
 MySQL では、『`SELECT ... LOCK IN SHARE MODE`』を使用する。
 
-![exclusive-control_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_3.gif)
+![exclusive-control_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/exclusive-control_3.gif)
 
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 > - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
@@ -506,7 +506,7 @@ DB で、CRUD のすべての処理を実行不可能にする。
 
 MySQL では、『`SELECT ... FOR UPDATE`』を使用する。
 
-![exclusive-control_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/exclusive-control_3.gif)
+![exclusive-control_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/exclusive-control_3.gif)
 
 > - https://dev.mysql.com/doc/refman/5.7/en/innodb-locking-reads.html
 > - [共有ロック・排他ロックとレコードロック｜概観 トランザクションとロック - 用語整理と最初の一歩 -](https://zenn.dev/suzuki_hoge/books/2024-12-mysql-tx-a6ea4d00e8bd70/viewer/2-shared-and-exclusive-locks-and-record-locks)
@@ -543,7 +543,7 @@ MySQL では、『`SELECT ... FOR UPDATE`』を使用する。
 
 もう一方のレコードのロックが解除されないと、自身のレコードのロックを解除できないとき、トランザクションが停止する。
 
-![deadlock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/deadlock.gif)
+![deadlock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/deadlock.gif)
 
 <br>
 
@@ -610,7 +610,7 @@ PHP の ORM である Doctrine のロック機能については、以下のリ�
 
 #### ▼ ポイントインタイムリカバリーとは
 
-![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_point-in-time-recovery.png)
+![db_point-in-time-recovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/db_point-in-time-recovery.png)
 
 特定の時点のベースバックアップ (例：SQL によって異なり、MySQL の場合は `mysqldump` コマンドの出力) と、ベースバックアップの時点以降の変更点を含む差分バックアップ (例：SQL によって異なり、MySQL の場合はバイナリーログ) を使用する。そして、DB を任意の時点の状態に戻す。
 

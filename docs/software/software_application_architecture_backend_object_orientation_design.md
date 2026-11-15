@@ -49,7 +49,7 @@ tags:
 
 #### ▼ has-one、has-many (状態として保持する関係性)
 
-![relationship_data-holding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_data-holding.png)
+![relationship_data-holding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relationship_data-holding.png)
 
 『has-one』『has-many』な関係と表現され、より具体的に説明すると、状態として保持する関係性である。
 
@@ -59,7 +59,7 @@ Association (関連) 、Aggregation (集約) 、Composition (合成) が使用�
 
 #### ▼ is-a-kind-of (グループとメンバーの関係性)
 
-![group-member_relationship](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/group-member_relationship.png)
+![group-member_relationship](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/group-member_relationship.png)
 
 『is-a-kind-of』な関係と表現され、より具体的に説明すると、グループとメンバーの関係性である。
 
@@ -67,7 +67,7 @@ Generalization (汎化) 、Realization (実現) が使用される。
 
 #### ▼ use (引数型/返却値型として使用する関係性)
 
-![relationship_argument-or-return-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_argument-or-return-type.png)
+![relationship_argument-or-return-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relationship_argument-or-return-type.png)
 
 『use』な関係と表現され、より具体的に説明すると、引数型/返却値型として使用する関係性である。
 
@@ -134,7 +134,7 @@ Dependency (依存) が使用される。
 
 よって、会社クラスに『`0..*`』を付記する。
 
-![multiplicity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multiplicity.png)
+![multiplicity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/multiplicity.png)
 
 <br>
 
@@ -154,13 +154,13 @@ Dependency (依存) が使用される。
 
 エンティティ、属性、リレーション、カーディナリティを組み合わせて、テーブル間の関係性を表す記法のこと。
 
-![er-diagram_ie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/er-diagram_ie.png)
+![er-diagram_ie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/er-diagram_ie.png)
 
 #### ▼ エンティティ、属性
 
 テーブルに相当するエンティティと、カラムに相当する属性がある。
 
-![entity_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/entity_attribute.png)
+![entity_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/entity_attribute.png)
 
 #### ▼ リレーション、カーディナリティ
 
@@ -168,7 +168,7 @@ Dependency (依存) が使用される。
 
 `(カラム数/レコード数)` で導かれ、カーディナリティが高いほど、より効率的な DB インデックスを作成できる。
 
-![relation_cardinality](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relation_cardinality.png)
+![relation_cardinality](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relation_cardinality.png)
 
 > - https://qiita.com/soyanchu/items/034be19a2e3cb87b2efb>
 
@@ -180,19 +180,19 @@ Dependency (依存) が使用される。
 
 日本語名称マスタと中国語名称マスタのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが必ず 1 つだけ対応する関係性のこと。
 
-![relationship_one-to-one](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_one-to-one.png)
+![relationship_one-to-one](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relationship_one-to-one.png)
 
 #### ▼ 1：多 (リレーションが曖昧な状態)
 
 オブジェクト指向分析が進むにつれ、『1：0 以上の関係』『1：1 以上の関係』のように具体化していく。
 
-![relationship_one-to-one-or-more](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_one-to-one-or-more.png)
+![relationship_one-to-one-or-more](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relationship_one-to-one-or-more.png)
 
 #### ▼ 1：1 以上
 
 注文テーブルと注文明細テーブルのように、一方のエンティティのレコードに対して、もう一方のエンティティのレコードが 1 つ以上対応する関係性のこと。
 
-![relationship_one-to-one-or-more](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_one-to-one-or-more.png)
+![relationship_one-to-one-or-more](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relationship_one-to-one-or-more.png)
 
 <br>
 
@@ -276,13 +276,13 @@ Dependency (依存) が使用される。
 
 2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-    ![uml_sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_sequence-diagram.png)
+    ![uml_sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_sequence-diagram.png)
 
 1. `3` 個のライフラインを設定する。
 
 2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-    ![uml_sequence-diagram_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_sequence-diagram_2.png)
+    ![uml_sequence-diagram_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_sequence-diagram_2.png)
 
 <br>
 

@@ -20,7 +20,7 @@ tags:
 
 実装内容が適切かを確認しながら、入力に対して、適切な出力が行われているかを検証する。
 
-![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_whitebox-test.png)
+![testing_whitebox-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_whitebox-test.png)
 
 > - [みんな知ってるホワイトボックステスト、ブラックボックステスト。でもグレーボックステストとは…？ \| ハートランド・ザ・ワールド](https://hldc.co.jp/blog/2018/05/25/1387/)
 
@@ -212,7 +212,7 @@ Fooクラスやfoo関数の内部処理
 
 例えば、Go では構造体をテストスイートとして扱う。
 
-![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test-plan_test-suite_test-case.jpg)
+![test-plan_test-suite_test-case](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/test-plan_test-suite_test-case.jpg)
 
 <br>
 
@@ -451,7 +451,7 @@ services:
 
 #### ▼ C０：Statement Coverage (命令網羅)
 
-![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-1.png)
+![p494-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/p494-1.png)
 
 すべての命令が実行されるかを検証する。
 
@@ -476,7 +476,7 @@ A と B は、『1』または『0』になり得るとする。
 
 #### ▼ C１：Decision Coverage (判定条件網羅/分岐網羅)
 
-![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-2.png)
+![p494-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/p494-2.png)
 
 すべての判定が実行されるかを検証する。
 
@@ -505,7 +505,7 @@ A と B は、『1』または『0』になり得るとする。
 
 #### ▼ C２：Condition Coverage (条件網羅)
 
-![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-3.png)
+![p494-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/p494-3.png)
 
 各条件が、取り得るすべての値で実行されるかを検証する。
 
@@ -555,7 +555,7 @@ A と B は、『1』または『0』になり得るとする。
 
 #### ▼ MCC：Multiple Condition Coverage (複数条件網羅)
 
-![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p494-4.png)
+![p494-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/p494-4.png)
 
 各条件が、取り得るすべての値で、かつすべての組み合わせが実行されるかを検証する。
 

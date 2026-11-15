@@ -28,7 +28,7 @@ kubelet は、設定ファイルで指定された CNI を実行する。
 
 Pod を Node 内の Cluster ネットワークに参加させると、異なる Node 上の Pod 間で通信できるようになる。
 
-![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-plugin.png)
+![kubernetes_cni-plugin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-plugin.png)
 
 > - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29)
 > - [Cluster Networking \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/networking/)
@@ -66,7 +66,7 @@ Pod を Node 内の Cluster ネットワークに参加させると、異なる 
 
 オーバーレイネットワークを使用して、Cluster ネットワークを作成し、異なる Node 上の Pod 間を接続する。
 
-![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode.png)
+![kubernetes_cni-addon_overlay-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-addon_overlay-mode.png)
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191226-1/
 > - [3.《CNI および CNI プラグインについて》 - NETSTARS](https://www.netstars.co.jp/kubestarblog/k8s-3/)
@@ -98,7 +98,7 @@ CNI によって、`L2` または `L3` を提供する。
 
 Pod のネットワークインターフェース (`eth`) 、Node の仮想ネットワークインターフェース (`veth`) 、Node のブリッジ (`cni`) を使用して、同じ Node 上の Pod 間でパケットを送受信する。
 
-![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_same-node.png)
+![kubernetes_cni-addon_overlay-mode_same-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-addon_overlay-mode_same-node.png)
 
 > - [Kubernetes Network Deep Dive (NodePort, ClusterIP, Flannel) #Docker - Qiita](https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E5%90%8C%E4%B8%80%E3%81%AEnode)
 
@@ -106,7 +106,7 @@ Pod のネットワークインターフェース (`eth`) 、Node の仮想ネ�
 
 Pod のネットワークインターフェース (`eth`) 、Node の仮想ネットワークインターフェース (`veth`) 、Node のブリッジ (`cni`) を使用する。また、NAT ルーター (Cilium 以外は iptables、Cilium) と Node のネットワークインターフェース (`eth`) を使用する。そして、異なる Node 上の Pod 間でパケットを送受信する。
 
-![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cni-addon_overlay-mode_diff-node.png)
+![kubernetes_cni-addon_overlay-mode_diff-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cni-addon_overlay-mode_diff-node.png)
 
 > - [Kubernetes Network Deep Dive (NodePort, ClusterIP, Flannel) #Docker - Qiita](https://qiita.com/sugimount/items/ed07a3e77a6d4ab409a8#pod%E5%90%8C%E5%A3%AB%E3%81%AE%E9%80%9A%E4%BF%A1%E7%95%B0%E3%81%AA%E3%82%8Bnode)
 

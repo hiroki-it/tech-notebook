@@ -48,7 +48,7 @@ tags:
    - リリース規約
    - アップグレード規約
 
-![project-management-skills_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_2.png)
+![project-management-skills_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/project-management-skills_2.png)
 
 > - https://www.amazon.co.jp/dp/4798177415
 

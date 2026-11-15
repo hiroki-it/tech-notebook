@@ -62,7 +62,7 @@ CI/CD の一連の流れ (パイプライン) のなかでこれらのステッ�
 
 CI パイプラインと CD パイプラインを組み合わせた手法のこと。
 
-![cicd_pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cicd_pipeline.png)
+![cicd_pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/cicd_pipeline.png)
 
 > - [CI/CD パイプラインとは](https://www.redhat.com/ja/topics/devops/what-cicd-pipeline)
 
@@ -466,7 +466,7 @@ DevOps を実現する技術的要素の 1 つ。
 
 CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tekton など) を使用して、CI パイプラインと CD パイプラインの両方を実行する手法のこと。
 
-![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_ciops.png)
+![devops_ciops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/devops_ciops.png)
 
 > - [「Kubernetes Native」なCI/CDとは何か――クラウドネイティブ時代に至る歴史、主要ツール、パイプラインとフローの在り方：Cloud Nativeチートシート（5） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html)
 > - [Medium](https://medium.com/orangesys/kubernetes-anti-patterns-lets-do-gitops-not-ciops-62cfecd1c1a9)
@@ -525,7 +525,7 @@ DevOps を実現する技術的要素の 1 つ。
 
 CI ツール (例：GitHub Actions、CircleCI、GitLab CI、Argo Workflows、Tekton など) を使用して CI パイプラインを、または CD ツール (例：ArgoCD、Flux など) を使用して CD パイプラインを、実装する手法のこと。
 
-![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops_gitops.png)
+![devops_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/devops_gitops.png)
 
 > - [「Kubernetes Native」なCI/CDとは何か――クラウドネイティブ時代に至る歴史、主要ツール、パイプラインとフローの在り方：Cloud Nativeチートシート（5） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/2105/26/news005.html)
 > - [gitops-engine/specs/design.md at v0.6.2 · argoproj/gitops-engine · GitHub](https://github.com/argoproj/gitops-engine/blob/v0.6.2/specs/design.md)

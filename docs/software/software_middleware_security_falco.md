@@ -19,7 +19,7 @@ tags:
 
 ### アーキテクチャ
 
-![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/falco_architecture.png)
+![falco_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/falco_architecture.png)
 
 コンテナ上のプロセスは、コンテナのカーネルに対してシステムコールを実行する。
 

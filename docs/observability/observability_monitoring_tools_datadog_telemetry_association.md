@@ -333,7 +333,7 @@ FluentBit の設定ファイルからタグ付けする。
 
 これにより、その構造化ログが、いずれのマイクロサービスで、またどのタイミングで発生したものかを確認できる。
 
-![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_trace-viewer.png)
+![datadog_trace-viewer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_trace-viewer.png)
 
 > - https://docs.datadoghq.com/tracing/visualization/trace/?tab=logs
 

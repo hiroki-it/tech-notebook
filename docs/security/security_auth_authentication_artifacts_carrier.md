@@ -153,7 +153,7 @@ CSRF トークンと組み合わせるとさらによくなる。
 
 また、スマホアプリも `Cookie` ヘッダーより `Authorization` ヘッダーがいいらしい。
 
-![jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt.png)
+![jwt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/jwt.png)
 
 > - [JWT(JSON Web Token)を理解する。 - Fendo181](<https://scrapbox.io/fendo181/JWT(JSON_Web_Token)%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B%E3%80%82>)
 > - https://softwareengineering.stackexchange.com/a/141434

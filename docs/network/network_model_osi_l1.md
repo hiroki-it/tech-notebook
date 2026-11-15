@@ -34,7 +34,7 @@ LAN 内では、各機器はプライベート IP アドレスで識別されて
 
 LAN 内に配置された NAT ルーターが、WAN 内のグローバル IP アドレスと LAN 内のプライベート IP アドレスを相互変換する。
 
-![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_lan.jpg)
+![network_lan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/network_lan.jpg)
 
 > - [【ご参考】いまさら聞けないインターネット・ネットワーク概論 4／5](http://qa.elecom.co.jp/faq_detail.html?id=4159&category=152)
 
@@ -48,7 +48,7 @@ LAN は、バリアセグメント、パブリックサブネット (非武装�
 
 AWS や Google Cloud でも、VPC を同様のサブネットに分割するとよい。
 
-![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internal_dmz_external.png)
+![internal_dmz_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/internal_dmz_external.png)
 
 > - https://www.techtarget.com/searchsecurity/definition/DMZ
 > - [ファイアウォール(Fire Wall)とは? 設定方法､しくみや種類を簡単に解説 \| NTTドコモビジネス 法人のお客さま](https://www.ntt.com/business/services/network/internet-connect/ocn-business/bocn/knowledge/archive_09.html)
@@ -71,7 +71,7 @@ AWS や Google Cloud でも、VPC を同様のサブネットに分割すると�
 
 ### WAN とは
 
-![network_wan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_wan.png)
+![network_wan](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/network_wan.png)
 
 特定の LAN 間のハブになるプライベートネットワークのこと。
 
@@ -110,7 +110,7 @@ WAN を経由したプライベートな通信時、パケットの送信元と�
 
 少数対少数でパケット通信するため、送信時、送信者と受信者の宛先情報は不要である。
 
-![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_circuit-switching-system.png)
+![waf_circuit-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/waf_circuit-switching-system.png)
 
 > - [ITパスポート平成28年春期問71 ネットワークの変換方式に関する記述｜ITパスポート試験ドットコム](https://www.itpassportsiken.com/kakomon/28_haru/q71.html)
 > - [WAN - 専用線、PSTN、ISDN](https://www.infraexpert.com/study/wan3.html)
@@ -123,7 +123,7 @@ WAN を経由したプライベートな通信時、パケットの送信元と�
 
 対多数でパケット通信するため、送信時、送信者と受信者の宛先情報が必要になる。
 
-![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waf_packet-switching-system.png)
+![waf_packet-switching-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/waf_packet-switching-system.png)
 
 > - [ITパスポート平成28年春期問71 ネットワークの変換方式に関する記述｜ITパスポート試験ドットコム](https://www.itpassportsiken.com/kakomon/28_haru/q71.html)
 > - [WAN - 専用線、PSTN、ISDN](https://www.infraexpert.com/study/wan3.html)
@@ -136,6 +136,6 @@ WAN の実現は、`1980` 年代のアナログ専用線から始まった。
 
 現在は、広域イーサネットや VPN (仮想プライベートネットワーク) を使用して、WAN を実現するようになった。
 
-![network_wan_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network_wan_history.png)
+![network_wan_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/network_wan_history.png)
 
 <br>

@@ -45,7 +45,7 @@ Redis をキャッシュエンジンとして使用し、インメモリデー�
 
 `1` 個のリクエストを処理するグループ単位である。
 
-![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/redis-cluster.png)
+![redis-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/redis-cluster.png)
 
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Terms.html
 > - https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/WhatIs.Components.html#WhatIs.Components.Clusters
@@ -205,7 +205,7 @@ module "redis" {
 
 冗長化されたそれぞれのアプリケーションは、ユーザーのログイン後に、Amazon ElastiCache から共通のセッション ID を取得する。
 
-![elasticache_session-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/elasticache_session-management.png)
+![elasticache_session-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/elasticache_session-management.png)
 
 ### Amazon ElastiCache を使用しない場合
 
@@ -223,7 +223,7 @@ Amazon RDS に対する SQL と読み出されたデータを、キャッシュ�
 
 DB 側でのクエリキャッシュはパフォーマンス上の問題から廃止になっており、DB からクエリキャッシュ機能を切り分けた Amazon ElastiCache が必要になる。
 
-![elasticache_query-cache_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/elasticache_query-cache_1.png)
+![elasticache_query-cache_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/elasticache_query-cache_1.png)
 
 > - [Amazon ElastiCache を使用して RDS for MySQL ワークロードのコストを最適化し、パフォーマンスを向上させる \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/optimize-cost-and-boost-performance-of-rds-for-mysql-using-amazon-elasticache-for-redis/)
 > - [MySQL 8.0 : クエリーキャッシュのサポート終了 \| Yakst](https://yakst.com/ja/posts/4612)
@@ -260,7 +260,7 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
     {"id"=>"10", "name"=>"jonny"}
     ```
 
-    ![elasticache_query-cache_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/elasticache_query-cache_2.png)
+    ![elasticache_query-cache_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/elasticache_query-cache_2.png)
 
 6. 次回、アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
 

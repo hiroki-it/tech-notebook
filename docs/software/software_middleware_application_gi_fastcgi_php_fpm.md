@@ -23,7 +23,7 @@ PHP-FPM は、Server API、Zend Engine、といったコンポーネントから
 
 FastCGI プロトコルを使用したアプリケーション系ミドルウェアである。
 
-![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_architecture.png)
+![php-fpm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/php-fpm_architecture.png)
 
 > - https://qiita.com/taichitk/items/5cf2e6778f1209620e72#php-fpm%E3%81%AE%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AD%98
 
@@ -53,7 +53,7 @@ PHP-FPM と PHP は、それぞれ独立した子プロセスとして実行さ�
 
 例えば、ログの出力先はそれぞれ個別に設定する必要がある。
 
-![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/php-fpm_fastcgi.png)
+![php-fpm_fastcgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/php-fpm_fastcgi.png)
 
 > - https://developpaper.com/shared-cgi-fastcgi-and-php-fpm-1/
 

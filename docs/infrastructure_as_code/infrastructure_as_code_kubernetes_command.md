@@ -559,7 +559,7 @@ Node が他に存在すれば、その Node 上で Pod をスケジューリン�
 $ kubectl drain <Node名>
 ```
 
-![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_drain_node.png)
+![kubernetes_drain_node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_drain_node.png)
 
 > - [Safely Drain a Node \| Kubernetes](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
 > - https://amazon.co.jp/dp/1491979682

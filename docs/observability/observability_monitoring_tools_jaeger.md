@@ -28,7 +28,7 @@ Jaeger は複数のコンポーネントから構成されている。
 - jaeger クエリ
 - ダッシュボード (UI)
 
-![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jaeger_architecture.png)
+![jaeger_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/jaeger_architecture.png)
 
 > - https://www.jaegertracing.io/docs/latest/architecture/
 

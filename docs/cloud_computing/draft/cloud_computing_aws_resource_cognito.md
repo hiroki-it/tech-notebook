@@ -17,7 +17,7 @@ description: AWS Cognitoの知見を記録しています。
 
 クラウド認証プロキシまたはクラウド ID プロバイダーとして機能する。
 
-![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
+![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_cognito_lambda.png)
 
 > - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
 
@@ -59,7 +59,7 @@ AWS Lambda オーソライザーは認可だけでなく認証も実施するた
   </tbody>
 </table>
 
-![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
+![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_cognito_lambda.png)
 
 > - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
 > - [Amazon Cognito オーソライザーによる Amazon API Gatewayへのアクセス制御](https://techblog.asia-quest.jp/202503/amazon-cognito-authorizer-to-control-access-to-amazon-api-gateway)

@@ -17,12 +17,12 @@ description: IntelliJの知見を記録しています。
 
 IntelliJ でローカル DB に接続する場合、次の図のとおりに設定する。
 
-![port-forward_local](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/port-forward_local.png)
+![port-forward_local](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/port-forward_local.png)
 
 ### aws
 
 IntelliJ で Amazon Aurora に接続する場合、次の図のとおりに設定する。
 
-![port-forward_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/port-forward_aws.png)
+![port-forward_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/port-forward_aws.png)
 
 <br>

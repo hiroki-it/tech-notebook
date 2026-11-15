@@ -31,7 +31,7 @@ Ansible は、コントロールノード (ansible デプロイサーバー) と
 
 設定ファイルの実装の変更によって、プロセスの再起動を伴うプロビジョニングが実行される場合、ダウンタイムを考慮する必要がある。
 
-![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible.png)
+![ansible](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/ansible.png)
 
 > - https://www.softek.co.jp/SID/support/ansible/guide/install-ansible-control-node.html
 
@@ -210,7 +210,7 @@ Ansible の実行時にパスワードを要求し、これが正しければ復
 
 パスワード自体をファイル上でバージョン管理したい場合、暗号化ツール (例：SOPS、kubesec) で暗号化できる。
 
-![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ansible_ansible-vault.png)
+![ansible_ansible-vault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/ansible_ansible-vault.png)
 
 > - [Ansible Vaultの使い方の調査 - Jaybanuan's Blog](https://redj.hatenablog.com/entry/2020/05/02/044527)
 

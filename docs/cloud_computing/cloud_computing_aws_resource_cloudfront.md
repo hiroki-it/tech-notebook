@@ -30,7 +30,7 @@ VPC の外側 (パブリックネットワーク) に配置されている。
 
 次回以降の静的コンテンツのリンクエストは、Amazon CloudFront がレンスポンスを実行する。
 
-![cloudfront_request-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_request-routing.png)
+![cloudfront_request-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/cloudfront_request-routing.png)
 
 <br>
 
@@ -51,7 +51,7 @@ Amazon CloudFront のドメイン (`<発行されたランダム文字列>.cloud
 
 Amazon CloudFront のドメインは、Amazon Route 53 の DNS レコードとして登録する。
 
-![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudfront_architecture.png)
+![cloudfront_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/cloudfront_architecture.png)
 
 > - [AWS テクニカルトレーナーと学ぶ Amazon CloudFront ~ エッジロケーションを使った通信の仕組み - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202311/learn-cloudfront-with-trainer/?awsf.filter-name)
 > - [How CloudFront delivers content - Amazon CloudFront](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/HowCloudFrontWorks.html)

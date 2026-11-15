@@ -24,7 +24,7 @@ AWS ALB を使用して、起動テンプレートを基にした Amazon EC2 の
 
 言い換えると、オートスケーリングにターゲットグループを紐付けて初めて、ターゲットへルーティングできるようになる。
 
-![auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/auto-scaling.png)
+![auto-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/auto-scaling.png)
 
 > - [エーフロンティア｜EC2 AutoScaling環境を構築しスケールアウト・スケールインの動作を確認する](https://www.a-frontier.jp/technology/aws10/)
 

@@ -141,7 +141,7 @@ tags:
 
 UML、概念データモデリング、構造化分析、リアルタイム分析がある。
 
-![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/diagrams.png)
+![diagrams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/diagrams.png)
 
 > - https://home.jeita.or.jp/page_file/20151221161211_Pkr0lJhRIV.pdf
 

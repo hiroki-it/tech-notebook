@@ -77,7 +77,7 @@ IT エンジニアには、さまざまなキャリアパスがある。
 
 メンバーの IT エンジニアから始まって、例えば以下のパスがある (他にもたくさん) 。
 
-![engineer_carrier-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/engineer_carrier-path.png)
+![engineer_carrier-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/engineer_carrier-path.png)
 
 > - [【読んでみた】エンジニアのためのマネジメントキャリアパス ―テックリードからCTOまでマネジメントスキル向上ガイド - どこにでもいるSEの備忘録](https://www.nogawanogawa.work/entry/management_career)
 > - [エンジニアのキャリアパスの種類は？ 目標の決め方と職種別の事例も紹介 \| ITコラム \| ネットビジョンアカデミー【公式】｜新宿のネットワークエンジニア講座](https://www.netvisionacademy.com/column/910/)

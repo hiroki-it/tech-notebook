@@ -28,7 +28,7 @@ Knative を使用しない場合、イベント駆動関数の公開に必要な
 
 Knative は、Service、Route、Configuration、Revision から構成される。
 
-![knative_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture.png)
+![knative_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/knative_architecture.png)
 
 > - [How Knative unleashes the power of serverless \| Opensource.com](https://opensource.com/article/21/11/knative-serving-serverless)
 > - https://www.syntio.net/en/labs-musings/knative-overview/
@@ -47,7 +47,7 @@ Knative のイベントメッシュ (Knative Eventing) は、イベントブロ�
 
 そのため、我々で導入する必要がある。
 
-![knative_architecture_event-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/knative_architecture_event-mesh.png)
+![knative_architecture_event-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/knative_architecture_event-mesh.png)
 
 > - [Redirecting...](https://knative.dev/docs/eventing/event-mesh/)
 > - [Event-Driven applications with CloudEvents on Kubernetes \| Salaboy](https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/)

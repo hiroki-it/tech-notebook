@@ -29,7 +29,7 @@ tags:
 - Docker Engine
 - Podman
 
-![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
+![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/container_overview.png)
 
 > - [Docker一強の終焉にあたり、押さえるべきContainer事情](https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7)
 > - [Container engines, runtimes and orchestrators: an overview - Stefano Alberto Russo](https://sarusso.github.io/blog/container-engines-runtimes-orchestrators.html)
@@ -54,7 +54,7 @@ tags:
 - CRI-O
 - Docker runtime
 
-![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
+![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/container_overview.png)
 
 > - [Kubernetes 1.20から始まるDockerランタイムの非推奨化に備えよう！我々が知っておくべきこと・すべきこと \| イベント・セミナー2020 \| Think IT（シンクイット）](https://thinkit.co.jp/article/18024)
 > - [Docker一強の終焉にあたり、押さえるべきContainer事情](https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7)
@@ -68,7 +68,7 @@ tags:
 
 OCI ランタイム (例：runC) と単一／複数の CNI プラグイン (例：flannel) のバイナリを実行し、コンテナを起動する。
 
-![container-runtime_run-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-runtime_run-container.png)
+![container-runtime_run-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/container-runtime_run-container.png)
 
 > - [How a Container Runtime is using CNI • Konstantinos Karampogias](https://karampok.me/posts/container-networking-with-cni/)
 > - [cni/SPEC.md at main · containernetworking/cni · GitHub](https://github.com/containernetworking/cni/blob/main/SPEC.md#lifecycle--ordering)
@@ -94,7 +94,7 @@ OCI ランタイム (例：runC) と単一／複数の CNI プラグイン (例�
 - gVisor
 - Kata Containers Runtime
 
-![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container_overview.png)
+![container_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/container_overview.png)
 
 > - [Kubernetes 1.20から始まるDockerランタイムの非推奨化に備えよう！我々が知っておくべきこと・すべきこと \| イベント・セミナー2020 \| Think IT（シンクイット）](https://thinkit.co.jp/article/18024)
 > - [Docker一強の終焉にあたり、押さえるべきContainer事情](https://zenn.dev/ttnt_1013/articles/f36e251a0cd24e#3.4.-docker%E4%BB%A5%E5%A4%96%E3%81%AEcontainer-runtime%E3%81%AE%E6%88%90%E9%95%B7)

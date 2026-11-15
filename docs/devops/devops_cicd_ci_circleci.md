@@ -15,7 +15,7 @@ tags:
 
 CircleCI では、VCS からコードを取得した Services Cluster がビルド環境にジョブを振り分け、ビルド環境やリモートの実行環境がジョブを実行する。
 
-![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_architecture.png)
+![circleci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/circleci_architecture.png)
 
 > - https://circleci.com/docs/2.0/server-3-overview/
 
@@ -33,7 +33,7 @@ CircleCI では、VCS からコードを取得した Services Cluster がビル�
 
 5. 結果を通知することも可能。
 
-    ![continuous-integration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/continuous-integration.png)
+    ![continuous-integration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/continuous-integration.png)
 
 <br>
 

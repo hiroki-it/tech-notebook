@@ -25,7 +25,7 @@ Kubernetes リソースに関するメトリクスの元になるデータポイ
 
 また設定された条件下でアラートを作成し、Alertmanager に送信する。
 
-![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_architecture.png)
+![prometheus_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus_architecture.png)
 
 > - [https://danielfm.me/posts/prometheus-for-developers/](https://danielfm.me/prometheus-for-developers/)
 > - [Overview \| Prometheus](https://prometheus.io/docs/introduction/overview/)
@@ -241,7 +241,7 @@ Prometheus と外部の TSDB の両方を冗長化する場合、冗長化され
 
 リモート読み出しを使用する場合、Prometheus のダッシュボード上で PromQL を使用することなく、Grafana のようにリアルタイムにデータを取得できるようになる。
 
-![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_remote-storage.png)
+![prometheus_remote-storage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus_remote-storage.png)
 
 > - [Storage \| Prometheus](https://prometheus.io/docs/prometheus/latest/storage/#remote-storage-integrations)
 > - [Integrations \| Prometheus](https://prometheus.io/docs/operating/integrations/#remote-endpoints-and-storage)
@@ -257,7 +257,7 @@ Prometheus と外部の TSDB の両方を冗長化する場合、冗長化され
 
 ダイナミックキューは、メトリクスのスループットの高さに応じて、キューイングの実行単位であるシャードを増減させる。
 
-![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus_dynamic-queues_shard.png)
+![prometheus_dynamic-queues_shard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus_dynamic-queues_shard.png)
 
 > - [\[Prometheus Meetup#3\] Victoria Metricsで作りあげる大規模・超負荷システムモニタリング基盤 / Monitoring Platform With Victoria Metrics - Speaker Deck](https://speakerdeck.com/inletorder/monitoring-platform-with-victoria-metrics?slide=52)
 
@@ -305,7 +305,7 @@ Prometheus のアラートを受信し、特定の条件下で通知する。
 
 受信したアラートは、Alertmanager の UI 上に表示される。
 
-![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alertmanager.png)
+![alertmanager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/alertmanager.png)
 
 > - [Alertmanager \| Prometheus](https://prometheus.io/docs/alerting/latest/alertmanager/)
 > - [OSSのアラート管理〜Alertmanager〜 \| OSSのデージーネット](https://www.designet.co.jp/ossinfo/alertmanager/)

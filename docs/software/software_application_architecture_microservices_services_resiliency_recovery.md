@@ -198,7 +198,7 @@ Istio では、外れ値検出に加えて、接続プールの上限に基づ�
 
 blast-radius を最小限にできる。
 
-![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circuit-breaker.png)
+![circuit-breaker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/circuit-breaker.png)
 
 > - https://www.geeksforgeeks.org/retry-pattern-in-microservices/
 > - [What is Circuit Breaker Design Pattern? - Digital Varys](https://digitalvarys.com/what-is-circuit-breaker-design-pattern/)
@@ -336,7 +336,7 @@ DB 更新系の処理の途中にエラーが発生すると、DB が中途半�
 
 最終的に、フロントエンドアプリでステータスコードを、ユーザーがわかるメッセージに変換する。
 
-![microservices_status-code_propagation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_status-code_propagation.png)
+![microservices_status-code_propagation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_status-code_propagation.png)
 
 > - https://medium.com/@jameszheng66/microservices-error-propagation-2a847feeb3f
 

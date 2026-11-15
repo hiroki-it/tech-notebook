@@ -46,7 +46,7 @@ Istio コントロールプレーンのログから、CA 証明書の作成を�
 
 ```
 
-![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
+![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_istio-ca-root-cert.png)
 
 > - [Replacing Istio CA Certificate · Zufar Dhiyaulhaq](https://zufardhiyaulhaq.com/Replacing-Istio-CA-certificate/)
 > - https://training.linuxfoundation.cn/news/407
@@ -304,7 +304,7 @@ istio-proxy のアウトバウンド通信時リトライ条件は以下であ�
 
 `503` と `reset` によるリトライは冪等性に問題があり、設定に注意が必要である。
 
-![istio_inbound-retry_reset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_inbound-retry_reset.png)
+![istio_inbound-retry_reset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_inbound-retry_reset.png)
 
 <table>
   <thead>
@@ -1258,7 +1258,7 @@ data:
 
 ### `EXIT_ON_ZERO_ACTIVE_CONNECTIONS`
 
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/pod_terminating_process_istio-proxy.png)
 
 デフォルト値は `false` である。
 
@@ -1504,7 +1504,7 @@ spec:
 
 ### `MINIMUM_DRAIN_DURATION`
 
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/pod_terminating_process_istio-proxy.png)
 
 デフォルト値は `5` である (対応する `.metadata.annotations.proxy.istio.io/config.terminationDrainDuration` キーと同じ) 。
 

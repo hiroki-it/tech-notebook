@@ -31,7 +31,7 @@ repmgr は、PostgreSQL の DB をクラスタリングし、クラスターの�
 
 また、インスタンス間でレプリケーション通信を実施し、データを同期する。
 
-![repmgr_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgr_architecture.png)
+![repmgr_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/repmgr_architecture.png)
 
 > - https://www.2ndquadrant.com/en/resources-old/repmgr/
 > - https://medium.com/@kiwiv/implement-replication-with-repmgr-and-barman-f1643d3ba9b7
@@ -44,7 +44,7 @@ repmgrd は、DB インスタンス間でフェイルオーバーできるよう
 
 プライマリインスタンスで障害が起こった場合、フェイルオーバーを実行し、スタンバイインスタンスをプライマリインスタンスに昇格させる。
 
-![repmgrd_fail-over](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repmgrd_fail-over.png)
+![repmgrd_fail-over](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/repmgrd_fail-over.png)
 
 > - https://radondb.com/posts/211201_%E5%B7%A5%E5%85%B7_-pg-%E9%9B%86%E7%BE%A4%E5%A4%8D%E5%88%B6%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7-repmgr/
 

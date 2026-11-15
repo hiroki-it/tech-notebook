@@ -20,7 +20,7 @@ tags:
 
 GitLab Runner は、GitLab リポジトリの `gitlab-ci.yml` ファイルを HTTPS で参照し、定義したパイプラインを実行する。
 
-![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab-ci_architecture.png)
+![gitlab-ci_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/gitlab-ci_architecture.png)
 
 > - https://subscription.packtpub.com/book/cloud-&-networking/9781789531282/19/ch19lvl1sec32/the-runner-client-architecture
 > - https://www.insight-tec.com/tech-blog/ci-cd/20201222_gitlab_runner/
@@ -1050,7 +1050,7 @@ gemerate_template:
 
 #### ▼ services
 
-![gitlab_service-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitlab_service-container.png)
+![gitlab_service-container](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/gitlab_service-container.png)
 
 Job の CI の実行コンテナとは別のサービスコンテナを作成する。
 

@@ -18,7 +18,7 @@ tags:
 
 ## 01. サイドカーモードのデータプレーンの仕組み
 
-![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_sidecar-mesh_architecture.png)
+![istio_sidecar-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_sidecar-mesh_architecture.png)
 
 サイドカーモードのデータプレーンは、istio-iptables、 `istio-init` コンテナ、istio-proxy、といったコンポーネントから構成される。
 
@@ -42,7 +42,7 @@ UDP には対応していない。
 
 コンテナの起動時、`istio-iptables` コマンドを実行することで、istio-iptables を Pod に適用する。
 
-![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-init.png)
+![istio_istio-init](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_istio-init.png)
 
 > - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 
@@ -163,7 +163,7 @@ Pod 外からマイクロサービスへのインバウンド通信は、istio-i
 
 istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<マイクロサービスのポート番号>`) のマイクロサービスにルーティングする。
 
-![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_inbound.png)
+![istio_iptables_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_iptables_inbound.png)
 
 > - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-1-remote-pod---local-pod
@@ -174,7 +174,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 
 サービス検出によって Pod 等の宛先情報が、istio-proxy 内の Envoy に登録されており、istio-proxy はアウトバウンド通信を Pod に向けてルーティングする。
 
-![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_other.png)
+![istio_iptables_outbound_other](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_iptables_outbound_other.png)
 
 > - [Istio Sidecar's interception mechanism for traffic - SoByte](https://www.sobyte.net/post/2022-07/istio-sidecar-proxy/#sidecar-traffic-interception-basic-process)
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-2-local-pod---remote-pod
@@ -183,7 +183,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 
 マイクロサービスからローカルホスト (`http://127.0.0.6:<ポート番号>`) へのアウトバウンド通信は、istio-iptables により、istio-proxy の `15001` 番ポートにリダイレクトされる。
 
-![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_iptables_outbound_self.png)
+![istio_iptables_outbound_self](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_iptables_outbound_self.png)
 
 > - https://jimmysong.io/en/blog/istio-sidecar-traffic-types/#type-4-local-pod---local-pod
 
@@ -193,7 +193,7 @@ istio-proxy はこれを受信し、ローカルホスト (`http://127.0.0.6:<�
 
 #### ▼ istio-proxy とは
 
-![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-proxy.png)
+![istio_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_istio-proxy.png)
 
 リバースプロキシの能力を持つサイドカーコンテナである。
 
@@ -332,7 +332,7 @@ spec:
 
 #### ▼ istio-ini との関係性
 
-![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-cni.png)
+![istio_istio-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_istio-cni.png)
 
 `istio-init` コンテナは、Pod のネットワーク名前空間内で `istio-iptables` を実行し、iptables ルールを設定する。
 
@@ -590,7 +590,7 @@ kubelet は、対象のポート番号でプロセスがリクエストを待ち
 
 ### istio-proxy が終了するまでの仕組み
 
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/pod_terminating_process_istio-proxy.png)
 
 istio-proxy は、Envoy プロセスを安全に停止するためにドレイン処理を実行する。
 

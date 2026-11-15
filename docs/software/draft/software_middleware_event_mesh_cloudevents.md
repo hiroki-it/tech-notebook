@@ -21,7 +21,7 @@ description: CloudEventsの知見を記録しています。
 
 異なる言語間でもメッセージの仕様は同じであるため、言語をまたいでメッセージを送受信できる。
 
-![cloudevents_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudevents_architecture.png)
+![cloudevents_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cloudevents_architecture.png)
 
 > - [GitHub - cloudevents/spec: CloudEvents Specification · GitHub](https://github.com/cloudevents/spec)
 > - [Event-Driven applications with CloudEvents on Kubernetes \| Salaboy](https://www.salaboy.com/2022/01/29/event-driven-applications-with-cloudevents-on-kubernetes/)

@@ -38,7 +38,7 @@ tags:
 
 命令の結果はメモリに保管される。
 
-![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/compiler_language.png)
+![compiler_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/compiler_language.png)
 
 > - [誰でも機械語が読めてパソコンの基本的な仕組みが理解できるようになりそうな記事を書きました #CPU - Qiita](https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF)
 
@@ -54,7 +54,7 @@ exe ファイルとなる。
 
 また、ビルドによって作成されたファイルを『アーティファクト (成果物) 』という。
 
-![build_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/build_compile.jpg)
+![build_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/build_compile.jpg)
 
 <br>
 
@@ -62,7 +62,7 @@ exe ファイルとなる。
 
 コードは、字句解析でトークンの列に分解され、構文解析でツリー構造に変換された後、意味解析やコード最適化を経てバイナリ形式のコードに変換される。
 
-![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lexical_syntax_semantics.png)
+![lexical_syntax_semantics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/lexical_syntax_semantics.png)
 
 #### `(1)` Lexical analysis (字句解析)
 
@@ -74,7 +74,7 @@ exe ファイルとなる。
 
 解析器のルーツを辿れない問題をブートストラップ問題という。
 
-![syntax-rule](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/syntax-rule.png)
+![syntax-rule](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/syntax-rule.png)
 
 > - [Flex (lexical analyzer generator) - Wikipedia](<https://en.wikipedia.org/wiki/Flex_(lexical_analyser_generator)>)
 
@@ -130,7 +130,7 @@ exe ファイルとなる。
 
 命令の結果はメモリに保管される。
 
-![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interpreted_language.png)
+![interpreted_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/interpreted_language.png)
 
 > - [誰でも機械語が読めてパソコンの基本的な仕組みが理解できるようになりそうな記事を書きました #CPU - Qiita](https://qiita.com/tk_01/items/a84408b5436ec97bfbe1#%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF)
 
@@ -180,6 +180,6 @@ JVM 言語 (例：Java、Scala、Kotlin など) に当てはまる。
 
 C 言語のプログラムは OS ごとの機械語にコンパイルされるため OS に依存するが、Java のプログラムは JVM 上で実行する中間コードにコンパイルされるため、JVM があれば OS に依存せずに実行できる。
 
-![c-and-java_os-dependency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/c-and-java_os-dependency.png)
+![c-and-java_os-dependency](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/c-and-java_os-dependency.png)
 
 <br>

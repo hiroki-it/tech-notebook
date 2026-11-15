@@ -66,7 +66,7 @@ tags:
 
 クラウドコンピューティングには提供範囲の異なるサービスがあり、XaaS で表現される。
 
-![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/on-premises_iaas_caas_paas_faas_saas.png)
+![on-premises_iaas_caas_paas_faas_saas](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/on-premises_iaas_caas_paas_faas_saas.png)
 
 > - [CaaS Services Through AWS, Azure, and Google Cloud](https://dzone.com/articles/caas-services-through-aws-azure-and-google-cloud)
 > - [Google Search](https://www.google.com/search?q=gcp+paas&source=lnms&tbm=isch&sa=X&ved=2ahUKEwj6y9r0-8r3AhXBdN4KHftqAxsQ_AUoAXoECAEQAw&biw=1600&bih=912&dpr=1.8#imgrc=thXAUUoo_mfDCM)

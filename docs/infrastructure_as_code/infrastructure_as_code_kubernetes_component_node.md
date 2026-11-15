@@ -149,7 +149,7 @@ Service ネットワークさえ作成できていれば、Service と Pod が�
 
 サービス検出には、別途 CoreDNS などの権威 DNS ツールを使用する。
 
-![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy.png)
+![kubernetes_kube-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy.png)
 
 > - https://www.getambassador.io/blog/load-balancing-strategies-kubernetes#body__1adfdbd8255b
 > - [CoreDNS GA for Kubernetes Cluster DNS \| Kubernetes](https://kubernetes.io/blog/2018/07/10/coredns-ga-for-kubernetes-cluster-dns/#introduction)
@@ -209,7 +209,7 @@ $ kube-proxy \
   </tbody>
 </table>
 
-![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_iptables.png)
+![kubernetes_kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_iptables.png)
 
 > - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-iptables)
 > - [【Kubernetes】kube-proxy停止時はServiceとPodのIPアドレスが新たに紐づかなくなる - (O+P)ut](https://www.mtioutput.com/entry/kube-proxy-iptable)
@@ -275,7 +275,7 @@ iptable 方式の場合、kube-proxy によって検出された Pod の IP ア�
   </tbody>
 </table>
 
-![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_userspace.png)
+![kubernetes_kube-proxy_userspace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_userspace.png)
 
 > - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-userspace)
 > - [Adding EndpointSlice support for kube-proxy ipvs and iptables proxiers by robscott · Pull Request #81430 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/pull/81430)
@@ -307,7 +307,7 @@ kube-proxy の起動時に、`--feature-gates` オプションに `SupportIPVSPr
   </tbody>
 </table>
 
-![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_ipvs.png)
+![kubernetes_kube-proxy_ipvs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_ipvs.png)
 
 > - [Kubernetes v1.8: 主な変更点 (Major Themes) #kubernetes - Qiita](https://qiita.com/superbrothers/items/5a6a34c5eb919ce872aa#kube-proxy-alpha-ipvs-%E3%83%A2%E3%83%BC%E3%83%89%E3%82%92%E3%82%B5%E3%83%9D%E3%83%BC%E3%83%88)
 > - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/#proxy-mode-ipvs)
@@ -323,7 +323,7 @@ kube-proxy の起動時に、`--feature-gates` オプションに `SupportIPVSPr
 
 また、ワーカーNode や Pod を監視し、メトリクスの元になるデータポイントを kube-apiserver に提供する。
 
-![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet.png)
+![kubernetes_kubelet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kubelet.png)
 
 > - [コンテナを使いこなすための心強い味方!「Kubernetes」(前編) \| 初心者のためのコンテナ入門教室 \| Think IT（シンクイット）](https://thinkit.co.jp/article/17453)
 
@@ -430,7 +430,7 @@ kubelet は、Pod 内のコンテナが標準出力に出力したログを取�
 
 kubelet ではログの保管期間を設定できないため、もし保管期間を設定したい場合は Node 上にログローテーションツール (例：logrotate) をインストールする必要がある。
 
-![kubernetes_kubelet_log-rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kubelet_log-rotation.png)
+![kubernetes_kubelet_log-rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kubelet_log-rotation.png)
 
 > - [Kubeletのログ管理を追ってみる](https://blog.mosuke.tech/entry/2021/09/08/kubelet-log-management/)
 > - [kubernetes/pkg/kubelet/logs/container_log_manager.go at v1.24.0 · kubernetes/kubernetes · GitHub](https://github.com/kubernetes/kubernetes/blob/v1.24.0/pkg/kubelet/logs/container_log_manager.go)

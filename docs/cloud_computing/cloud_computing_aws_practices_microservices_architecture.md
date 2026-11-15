@@ -81,7 +81,7 @@ Amazon ECS サービスをマイクロサービス単位で稼働させる。
 
 Kubernetes Cluster 上でこれを稼働させることが推奨である。
 
-![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-fargate_microservices.png)
+![ecs-fargate_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs-fargate_microservices.png)
 
 > - [AI-Powered Martech Solutions \| TangoCode](https://tangocode.com/2018/11/when-to-use-lambdas-vs-ecs-docker-containers/)
 
@@ -91,7 +91,7 @@ AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に A
 
 これにより、Amazon ECS タスクは他の ECS タスクと通信できる。
 
-![aws_ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-discovery.png)
+![aws_ecs_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_ecs_service-discovery.png)
 
 > - https://practical-aws.dev/p/ecs-service-discovery/
 > - https://medium.com/@toddrosner/ecs-service-discovery-1366b8a75ad6
@@ -102,7 +102,7 @@ AWS CloudMap を使用して、Amazon ECS タスクの宛先情報を動的に A
 
 Amazon ECS Service Connect では、Amazon ECS タスクの宛先情報が AWS Cloud Map に登録され、送信元の Amazon ECS タスクのサイドカーの Envoy がその宛先情報を使用して他の Amazon ECS タスクにリクエストを送信する。
 
-![aws_ecs_service-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ecs_service-connect.png)
+![aws_ecs_service-connect](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_ecs_service-connect.png)
 
 > - [Web アプリケーションにおける Amazon ECS / AWS Fargate アーキテクチャデザインパターン - builders.flash☆ - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202409/web-app-architecture-design-pattern/)
 
@@ -150,7 +150,7 @@ Lambda Layer を使用し、サービスコンポーネントがレイヤーコ�
 
 AWS Cognito ユーザープールを使用する。
 
-![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
+![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_cognito_lambda.png)
 
 > - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
 
@@ -160,7 +160,7 @@ AWS Cognito ユーザープールを使用する。
 
 AWS Cognito オーソライザーを使用する。
 
-![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_cognito_lambda.png)
+![aws_cognito_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_cognito_lambda.png)
 
 > - [API GatewayのオーソライザーにCognitoを使用してみた \| DevelopersIO](https://dev.classmethod.jp/articles/tried-using-cognito-as-api-gateway-authorizer/#toc-cognito-api-gateway)
 
@@ -178,7 +178,7 @@ AWS Cognito オーソライザーを使用する。
 
 Amazon RDS には DB 接続の上限数があり、前段に Amazon RDS プロキシーがないとすぐに上限数に達してしまう。
 
-![aws_rds-proxy_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy_lambda.png)
+![aws_rds-proxy_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_rds-proxy_lambda.png)
 
 > - [Lambda+RDSはアンチパターン #AWS - Qiita](https://qiita.com/teradonburi/items/86400ea82a65699672ad)
 

@@ -15,7 +15,7 @@ description: GI：Gateway Interfaceの知見を記録しています。
 
 Web サーバーが、リクエストを受信するたびに外部のプログラムをプロセスとして起動し、プログラムの標準出力をレスポンスとして返信するためのインターフェース仕様のこと。
 
-![cgi_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cgi_architecture.png)
+![cgi_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cgi_architecture.png)
 
 <br>
 

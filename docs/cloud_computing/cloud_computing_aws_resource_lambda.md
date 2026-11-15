@@ -20,7 +20,7 @@ tags:
 
 他の AWS リソースのイベントによって駆動する関数を管理できる。
 
-![serverless-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/serverless-architecture.png)
+![serverless-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/serverless-architecture.png)
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/applications-usecases.html
 
@@ -32,7 +32,7 @@ tags:
 
 AWS Lambda サービスは、Init フェーズ、Invoke フェーズ、Shutdown フェーズのそれぞれで、API を経由してランタイムと拡張機能にイベントを送信し、関数の実行環境を制御する。
 
-![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-api-flow.png)
+![lambda-execution-environment-api-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/lambda-execution-environment-api-flow.png)
 
 #### ▼ AWS Lambda サービス
 
@@ -50,7 +50,7 @@ AWS Lambda は、API (ランタイム API、ログ API、拡張 API) と実行�
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/runtimes-context.html#runtimes-lifecycle>
 
-![lambda-execution-environment-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-execution-environment-lifecycle.png)
+![lambda-execution-environment-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/lambda-execution-environment-lifecycle.png)
 
 #### ▼ Init フェーズ
 
@@ -246,7 +246,7 @@ AWS Lambda は、関数の実行中に再びリクエストを受信すると、
 
 > - https://docs.aws.amazon.com/lambda/latest/dg/configuration-concurrency.html#configuration-concurrency-reserved>
 
-![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda_concurrency-model.png)
+![lambda_concurrency-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/lambda_concurrency-model.png)
 
 <br>
 
@@ -394,7 +394,7 @@ Amazon CloudFront に統合された AWS Lambda を、特別に AWS Lambda@Edge 
 
 ##### ▼ トリガーの種類
 
-![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-edge.png)
+![lambda-edge](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/lambda-edge.png)
 
 Amazon CloudFront のビューワーリクエスト、オリジンリクエスト、オリジンレスポンス、ビューワーレスポンスをトリガーとする。
 
@@ -477,7 +477,7 @@ AWS Lambda の拡張機能である。
 
 アプリケーションのプロセスの前段でリクエストを変換し、アプリケーションがリクエストを処理できるようにする。
 
-![lambda-web-adapter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/lambda-web-adapter.png)
+![lambda-web-adapter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/lambda-web-adapter.png)
 
 > - [Lambda Web Adapter でウェブアプリを (ほぼ) そのままサーバーレス化する (2025 年改訂版) - 変化を求めるデベロッパーを応援するウェブマガジン \| AWS](https://aws.amazon.com/jp/builders-flash/202301/lambda-web-adapter/)
 > - https://github.com/awslabs/aws-lambda-web-adapter

@@ -127,7 +127,7 @@ Saga オーケストレーターにコールされるマイクロサービスへ
 
 Saga オーケストレーターは、これらのマイクロサービスをコールし、ローカルトランザクション処理を連続的に実行する。
 
-![saga-pattern_usecase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_usecase.png)
+![saga-pattern_usecase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_usecase.png)
 
 > - https://iorilan.medium.com/i-asked-this-system-design-question-to-3-guys-during-a-developer-interview-and-none-of-them-gave-9c23abe45687
 > - [マイクロサービスの適用基準 \| Think IT（シンクイット）](https://thinkit.co.jp/article/14639?page=0%2C1)
@@ -163,7 +163,7 @@ Saga オーケストレーターをステートマシン図や State パター�
 
 各マイクロサービス間の通信方式は、リクエスト／レスポンス方式またはパブリッシュ／サブスクライブ方式のどちらでもよい。
 
-![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration.png)
+![orchestration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/orchestration.png)
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga
 > - [【図解】コレ１枚でわかるオーケストレーションとコレオグラフィ：ITソリューション塾：オルタナティブ・ブログ](https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html)
@@ -186,7 +186,7 @@ Saga オーケストレーターは、Order サービス (`T1`) 、Inventory サ
 
 例えば、Payment サービスのローカルトランザクション (`T3`) が失敗した場合、Order サービスと Payment サービスのローカルトランザクション処理をロールバックする補償トランザクション (`C1`、`C2`) を実行する。
 
-![saga-pattern_orchestrator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator.png)
+![saga-pattern_orchestrator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_orchestrator.png)
 
 > - [Saga orchestration pattern - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/cloud-design-patterns/saga-orchestration.html#saga-orchestration-implementation)
 > - [Modeling Saga as a State Machine](https://dzone.com/articles/modelling-saga-as-a-state-machine)
@@ -328,7 +328,7 @@ AWS StepFunctions のステートも設計例として、参考になる。
 
 Saga ステータスチェッカーは、トランザクション ID を使用してワークフローの処理結果を DB から読み込む。
 
-![saga-pattern_orchestrator_status-checker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_status-checker.jpg)
+![saga-pattern_orchestrator_status-checker](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_orchestrator_status-checker.jpg)
 
 > - [saga-orchestration-serverless/docs/architecture/workflows.md at main · Azure-Samples/saga-orchestration-serverless · GitHub](https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/workflows.md)
 > - [saga-orchestration-serverless/docs/architecture/additional-patterns.md at main · Azure-Samples/saga-orchestration-serverless · GitHub](https://github.com/Azure-Samples/saga-orchestration-serverless/blob/main/docs/architecture/additional-patterns.md)
@@ -361,7 +361,7 @@ Saga オーケストレーターは、メッセージブローカーに対して
 
 サブスクライブしたメッセージに応じて、次のメッセージをパブリッシュする。
 
-![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/orchestration_message-queue.png)
+![orchestration_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/orchestration_message-queue.png)
 
 > - [\[SAGAパターン\]コレオグラフィとオーケストレーションのメリット・デメリット - TeDokology](https://www.12-technology.com/2021/08/dbsaga.html)
 > - [\[golang\] オーケストレーションベースのサーガパターンに優しく入門する #マイクロサービス - Qiita](https://qiita.com/somen440/items/a6c323695627235128e9)
@@ -384,11 +384,11 @@ Saga オーケストレーターは、メッセージブローカーに対して
 
 受注に関するトランザクションが異なるマイクロサービスにまたがる例。
 
-![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_example.png)
+![saga-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_example.png)
 
 補償トランザクションによって、各ローカルトランザクション処理を元に戻す逆順のトランザクション処理を実行する。
 
-![saga-pattern_compensating-transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_compensating-transaction_example.png)
+![saga-pattern_compensating-transaction_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_compensating-transaction_example.png)
 
 > - [クラウドネイティブ データ パターン - .NET \| Microsoft Learn](https://docs.microsoft.com/ja-jp/dotnet/architecture/cloud-native/distributed-data#distributed-transactions)
 
@@ -850,7 +850,7 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 そのために、マイクロサービス間にメッセージ中継システムを配置する。
 
-![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography.png)
+![choreography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/choreography.png)
 
 > - https://learn.microsoft.com/ja-jp/azure/architecture/reference-architectures/saga/saga
 > - [【図解】コレ１枚でわかるオーケストレーションとコレオグラフィ：ITソリューション塾：オルタナティブ・ブログ](https://blogs.itmedia.co.jp/itsolutionjuku/2019/08/post_729.html)
@@ -867,7 +867,7 @@ func (c *Controller) PostReservation(ctx context.Context, cmd model.ReservationC
 
 以下のリポジトリを参考にせよ。
 
-![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_example.png)
+![choreography_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/choreography_example.png)
 
 > - [GitHub - fedeoliv/microservices-transactions: Choreography-based sagas to maintain data consistency in a microservice architecture. · GitHub](https://github.com/fedeoliv/microservices-transactions)
 
@@ -896,9 +896,9 @@ Saga オーケストレーターのドメインモデリングにイベントソ
 
 各マイクロサービスにパブリッシュとサブスクライブを処理する責務を持たせる。
 
-![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/choreography_message-queue.png)
+![choreography_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/choreography_message-queue.png)
 
-![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern.png)
+![saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern.png)
 
 > - [\[SAGAパターン\]コレオグラフィとオーケストレーションのメリット・デメリット - TeDokology](https://www.12-technology.com/2021/08/dbsaga.html)
 
@@ -1010,7 +1010,7 @@ Outbox パターンでは、Saga ログテーブルに加えて、Outbox テー�
   </tbody>
 </table>
 
-![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern.png)
+![saga-pattern_orchestrator_outbox-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_orchestrator_outbox-pattern.png)
 
 > - [Pattern: Transactional outbox](https://microservices.io/patterns/data/transactional-outbox.html)
 > - [マイクロサービスアーキテクチャにおけるデータ整合性について #microservices - Qiita](https://qiita.com/jokoshi/items/5016c3226f3009ddee10#31-transactional-messaging%E4%B8%8D%E6%95%B4%E5%90%88%E7%99%BA%E7%94%9F%E3%82%B1%E3%83%BC%E3%82%B91%E3%81%B8%E3%81%AE%E5%87%A6%E6%96%B9%E7%AE%8B)
@@ -1024,7 +1024,7 @@ Outbox パターンでは、Saga ログテーブルに加えて、Outbox テー�
 - Outbox パターンを使う
   - パブリッシュ処理をメッセージリレージョブに切り分け、カタログコンテキストには永続化処理だけをもたせる。
 
-![saga-pattern_orchestrator_outbox-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_example.png)
+![saga-pattern_orchestrator_outbox-pattern_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_orchestrator_outbox-pattern_example.png)
 
 > - https://www.amazon.co.jp/dp/483998820X
 
@@ -1040,7 +1040,7 @@ DB のイベントチェッカー (例：Debezium) を使用して、Outbox テ�
 
 Saga オーケストレーターのクライアントやマイクロサービス側では、これをポーリングする。
 
-![saga-pattern_orchestrator_outbox-pattern_polling-publisher](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png)
+![saga-pattern_orchestrator_outbox-pattern_polling-publisher](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/saga-pattern_orchestrator_outbox-pattern_polling-publisher.png)
 
 > - [Reliable Microservices Data Exchange With the Outbox Pattern](https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/)
 > - [Pattern: Polling publisher](https://microservices.io/patterns/data/polling-publisher.html)

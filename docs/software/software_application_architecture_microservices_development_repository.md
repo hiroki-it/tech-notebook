@@ -42,7 +42,7 @@ Google ではモノレポによるマイクロサービスアーキテクチャ�
 
 その他にも、アメリカの IT 大企業 (例：Facebook、Microsoft、Uber、Airbnb、Twitter など) でもモノリポを採用している。
 
-![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monorepo.png)
+![monorepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/monorepo.png)
 
 > - [Monorepo - Wikipedia](https://en.wikipedia.org/w/index.php?title=Monorepo)
 > - https://www.fourtheorem.com/blog/monorepo
@@ -52,7 +52,7 @@ Google ではモノレポによるマイクロサービスアーキテクチャ�
 
 マイクロサービスごとに異なるリポジトリで管理する。
 
-![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/polyrepo.png)
+![polyrepo](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/polyrepo.png)
 
 > - https://www.fourtheorem.com/blog/monorepo
 

@@ -18,7 +18,7 @@ tags:
 
 ### API ゲートウェイとは
 
-![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_api-gateway-pattern.png)
+![microservices_api-gateway-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_api-gateway-pattern.png)
 
 クリーンアーキテクチャでいうインフラストラクチャ層とインターフェース層のような機能を担う。
 
@@ -49,7 +49,7 @@ API ゲートウェイの責務をどのように分割するかに応じて、�
 
 マイクロサービスにリクエストを送信するアプリケーションの種類に関係なく、API ゲートウェイを `1` 個だけ作成する。
 
-![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_public-api-pattern.png)
+![apigateway_public-api-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/apigateway_public-api-pattern.png)
 
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 > - [Nobody likes making 20 calls to render a page. 3 Aggregation Patterns your consumers will love. 1. Central Aggregating Gateway It is middleware between user interfaces and microservices… \| Raul Junco \| 42 comments](https://www.linkedin.com/posts/raul-junco_nobody-likes-making-20-calls-to-render-a-activity-7198293633882632192-3QS4/)
@@ -66,7 +66,7 @@ API ゲートウェイの責務をどのように分割するかに応じて、�
 
 もし、後続のマイクロサービスが gRPC-API で待ち受けているようなら、BFF で gRPC クライアントを実装する必要がある。
 
-![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apigateway_bff-pattern.png)
+![apigateway_bff-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/apigateway_bff-pattern.png)
 
 > - https://www.mobilelive.ca/blog/why-backend-for-frontend-application-architecture/
 > - https://codezine.jp/article/detail/11305?p=4

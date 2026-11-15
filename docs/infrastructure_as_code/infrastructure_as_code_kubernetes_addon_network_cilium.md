@@ -92,7 +92,7 @@ Cilium Service Mesh は、eBPF と Envoy を使用して通信を処理する。
 
 Node 上の Pod 間の通信を IPSec や WireGuard で暗号化する。
 
-![cilium-service-mesh_tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cilium-service-mesh_tls.png)
+![cilium-service-mesh_tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/cilium-service-mesh_tls.png)
 
 > - [Next-Generation Mutual Authentication (mTLS) with Cilium Service Mesh](https://isovalent.com/blog/post/2022-05-03-servicemesh-security/)
 

@@ -20,7 +20,7 @@ tags:
 
 有効化すると、kube-apiserver にて、認証ステップと認可ステップの後に admission プラグインを実行できる。
 
-![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers.png)
+![kubernetes_admission-controllers](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers.png)
 
 > - [Admission Control in Kubernetes \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/admission-controllers/)
 > - [Kubernetesのユーザー管理と認証・権限確認機構を理解しよう \| さくらのナレッジ](https://knowledge.sakura.ad.jp/21129/)
@@ -38,7 +38,7 @@ mutating-admission ステップは、リクエストの内容を変更する。
 
 kube-apiserver クライアント (`kubectl` クライアント、Kubernetes リソース) からのリクエスト (例：Kubernetes リソースに対する作成/更新/削除、kube-apiserver からのプロキシへのフォワーディング) 時、各ステップで admission プラグインによる処理 (例：アドオンビルトイン処理、ユーザー定義の処理) を発火させられる。
 
-![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_architecture.png)
+![kubernetes_admission-controllers_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_architecture.png)
 
 > - [A Guide to Kubernetes Admission Controllers \| Kubernetes](https://kubernetes.io/blog/2019/03/21/a-guide-to-kubernetes-admission-controllers/)
 > - [Kubernetes Admission Control](https://www.digihunch.com/2022/01/kubernetes-admission-control/)
@@ -105,7 +105,7 @@ MutatingAdmissionWebhook プラグインを使用すると、mutating-admission 
 
 webhook サーバーから返信された AdmissionReview を含むレスポンスに基づいて、kube-apiserver に対するリクエストの内容を変更する。
 
-![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_admission-review.png)
+![kubernetes_admission-controllers_admission-review](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_admission-review.png)
 
 > - [Kubernetes Admission Webhook覚書き - gashirar's blog](https://gashirar.hatenablog.com/entry/2020/10/31/141357)
 > - https://medium.com/ibm-cloud/diving-into-kubernetes-mutatingadmissionwebhook-6ef3c5695f74
@@ -116,7 +116,7 @@ MutatingWebhookConfiguration で、MutatingAdmissionWebhook プラグインの�
 
 webhook サーバーは、Cluster 内部に配置することが多い。
 
-![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_webhook.png)
 
 Istio の MutatingWebhookConfiguration は以下の通りである。
 
@@ -179,7 +179,7 @@ ValidatingAdmissionWebhook プラグインを使用すると、validating-admiss
 
 #### ▼ ValidatingWebhookConfiguration
 
-![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_admission-controllers_webhook.png)
+![kubernetes_admission-controllers_webhook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_admission-controllers_webhook.png)
 
 ValidatingWebhookConfiguration で、ValidatingAdmissionWebhook プラグインの発火条件や webhook サーバーの宛先情報を設定する。
 

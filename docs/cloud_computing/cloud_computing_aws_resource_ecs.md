@@ -94,7 +94,7 @@ tags:
 
 Amazon ECS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、データプレーンを管理するコンポーネントからなる。
 
-![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane.png)
+![ecs_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_control-plane.png)
 
 > - [詳解: Amazon Elastic Container Service と AWS Fargate のタスク起動レートの向上 \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-amazon-elastic-container-service-and-aws-fargate-increase-task-launch-rates/)
 
@@ -120,7 +120,7 @@ Amazon ECS のコントロールプレーンは AWS が管理しており、ユ�
 
 Amazon ECS サービスの管理グループ単位のこと。
 
-![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_cluster.png)
+![ecs_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_cluster.png)
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/clusters.html
 
@@ -146,7 +146,7 @@ Amazon ECS タスクへのロードバランシング、タスクの数の維持
 
 Amazon ECS タスク定義を基に作成される。
 
-![ecs_task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task.png)
+![ecs_task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_task.png)
 
 ##### ▼ Amazon ECS コンテナエージェント
 
@@ -154,7 +154,7 @@ Amazon ECS タスク実行ロールを使用して、Amazon ECS タスクのラ�
 
 Fargate の場合、Amazon ECS コンテナエージェントがプリインストールされている。
 
-![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png)
+![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_task-execution-role.png)
 
 > - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
 > - [詳解: Amazon ECSのタスクネットワーク \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-task-networking-for-amazon-ecs/)
@@ -169,7 +169,7 @@ Amazon ECS タスク定義を削除するには、すべてのリビジョンの
 
 ##### ▼ Amazon ECS タスクのライフサイクルフェーズ
 
-![ecs_task_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task_lifecycle_phase.png)
+![ecs_task_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_task_lifecycle_phase.png)
 
 Amazon ECS タスクのライフサイクルにはフェーズがある。
 
@@ -580,7 +580,7 @@ EC2 のみで使用できる。
 
 Docker の host ネットワークに相当する。
 
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png)
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/network-mode_host-mode.png)
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-host
 
@@ -590,7 +590,7 @@ EC2 のみで使用できる。
 
 Docker の bridge ネットワークに相当する。
 
-![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_host-mode.png)
+![network-mode_host-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/network-mode_host-mode.png)
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-bridge
 
@@ -610,7 +610,7 @@ Fargate の場合、同じタスクに属するコンテナ間は、localhost �
 
 しかし、awsvpc モードではコンテナポートを開放する必要はない。
 
-![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-mode_awsvpc.png)
+![network-mode_awsvpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/network-mode_awsvpc.png)
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-networkmode.html#networking-networkmode-awsvpc
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/fargate-task-networking.html
@@ -645,7 +645,7 @@ Amazon ECS Service Connect を使用する。
 
 この場合、VPC エンドポイントよりも AWS NAT Gateway のほうが高く、AWS リソースに対する通信でも AWS NAT Gateway を通過するため、高額料金を請求されてしまう。
 
-![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_nat-gateway.png)
+![ecs_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_nat-gateway.png)
 
 > - [ECS FargateでVPCエンドポイントを使用する](https://zenn.dev/yoshinori_satoh/articles/ecs-fargate-vpc-endpoint)
 
@@ -653,7 +653,7 @@ Amazon ECS Service Connect を使用する。
 
 より低額でデータプレーンが VPC 外の AWS リソースのリクエストできるようになる。
 
-![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_control-plane_vpc-endpoint.png)
+![ecs_control-plane_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_control-plane_vpc-endpoint.png)
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/bestpracticesguide/networking-connecting-vpc.html#networking-connecting-privatelink
 
@@ -678,7 +678,7 @@ Amazon ECS サービスが Amazon ECS タスクを操作するために必要な
 
 Fargate の場合、不要である。
 
-![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_container-instance-role.png)
+![ecs_container-instance-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_container-instance-role.png)
 
 > - [ECS(Fargate)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_fargate_iamrole/)
 > - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
@@ -689,7 +689,7 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 
 アプリケーションに Amazon S3 や AWS Systems Manager への認可スコープを与えたい場合は、タスク実行ロールではなくタスクロールに認可スコープを紐付ける。
 
-![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-role.png)
+![ecs_task-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_task-role.png)
 
 > - [ECS(Fargate)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_fargate_iamrole/)
 > - [ECS(EC2)で利用するIAMロールを整理する \| DevelopersIO](https://dev.classmethod.jp/articles/ecs_ec2_iamrole/)
@@ -722,7 +722,7 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 
 #### ▼ タスク実行ロール
 
-![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_task-execution-role.png)
+![ecs_task-execution-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_task-execution-role.png)
 
 Amazon ECS タスク内の Amazon ECS コンテナエージェントが、他の AWS リソースにリクエストを送信するために必要なロールのこと。
 
@@ -922,7 +922,7 @@ Fargate をホストとして、コンテナを作成する。
 
 Fargate の実体は EC2 である (ドキュメントに記載がないが、AWS サポートに確認済み) 。
 
-![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_data-plane.png)
+![fargate_data-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/fargate_data-plane.png)
 
 > - [詳細: Fargate データプレーン \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/under-the-hood-fargate-data-plane/)
 
@@ -954,7 +954,7 @@ Fargate は動的パブリック IP アドレス (Fargate の再作成後に変�
 
 これによって、AWS NAT Gateway の Elastic IP アドレスが送信元パケットに付加されるため、Fargate の送信元 IP アドレスを見かけ上静的に扱えるようになる。
 
-![ecs_fargate_nat-gateway_external-request](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_fargate_nat-gateway_external-request.png)
+![ecs_fargate_nat-gateway_external-request](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_fargate_nat-gateway_external-request.png)
 
 > - https://aws.amazon.com/jp/premiumsupport/knowledge-center/ecs-fargate-static-elastic-ip-address/
 
@@ -1068,7 +1068,7 @@ exit ${EXIT_STATUS}
 
 6. すべての既存タスクが新タスクに置き換わる。
 
-    ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rolling-update.png)
+    ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rolling-update.png)
 
 > - [Amazon ECS でのコンテナデプロイの高速化 \| トリの部屋](https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/)
 
@@ -1080,7 +1080,7 @@ CodeDeploy を使用してデプロイする。
 
 ## 13. VPC 外のリソースへのアクセス
 
-![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs_vpc-endpoint.png)
+![ecs_vpc-endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs_vpc-endpoint.png)
 
 <table>
   <thead>
@@ -1143,7 +1143,7 @@ AWS NAT Gateway と VPC エンドポイントの両方を作成している場�
 
 ### AWS SSM Session Manager を使用した Amazon ECS Exec
 
-![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fargate_ecs-exec.png)
+![fargate_ecs-exec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/fargate_ecs-exec.png)
 
 AWS SSM Session Manager を使用して Amazon ECS タスク内のコンテナに接続し、コンテナのログインシェルを起動する。
 

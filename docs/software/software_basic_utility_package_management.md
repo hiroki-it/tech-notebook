@@ -21,7 +21,7 @@ tags:
 
 さまざまな粒度のプログラムを対象にした管理ユーティリティがある。
 
-![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/library_package_module.png)
+![library_package_module](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/library_package_module.png)
 
 <br>
 

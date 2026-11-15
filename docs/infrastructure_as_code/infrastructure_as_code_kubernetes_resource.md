@@ -20,7 +20,7 @@ tags:
 
 Kubernetes 上でアプリケーションを稼働させる概念のこと。
 
-![kubernetes_workload-resource](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_workload-resource.png)
+![kubernetes_workload-resource](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_workload-resource.png)
 
 > - https://developers.redhat.com/articles/2023/04/05/kubernetes-patterns-path-cloud-native#discussion
 
@@ -40,7 +40,7 @@ Kubernetes 上でアプリケーションを稼働させる概念のこと。
 
 スコープは通信先の制限を表すものではなく、異なる Namespace の Pod 間でも Service のホスト名を使用して通信できる。
 
-![namespaced-scope_vs_cluster-scoped](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespaced-scope_vs_cluster-scoped.png)
+![namespaced-scope_vs_cluster-scoped](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/namespaced-scope_vs_cluster-scoped.png)
 
 > - [10.1 Organizing objects into Namespaces · Kubernetes实战（第二版）](https://wangwei1237.github.io/Kubernetes-in-Action-Second-Edition/docs/Organizing_objects_into_Namespaces.html)
 
@@ -126,7 +126,7 @@ Deployment では、以下の設定値の変更で、ReplicaSet の置き換え�
   </tbody>
 </table>
 
-![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_replace_replicaset.png)
+![kubernetes_deployment_replace_replicaset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_deployment_replace_replicaset.png)
 
 > - [Kubernetes: Deployment の仕組み #kubernetes - Qiita](https://qiita.com/tkusumi/items/01cd18c59b742eebdc6a)
 
@@ -325,7 +325,7 @@ Pod を単位として、コンテナ起動/停止や水平スケールアウト
 
 PHP-FPM コンテナと Nginx コンテナを稼働させる場合、これら同じ Pod 内に配置する。
 
-![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_php-fpm_nginx.png)
+![kubernetes_pod_php-fpm_nginx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_pod_php-fpm_nginx.png)
 
 #### ▼ 例外的なコントロールプレーン Node 上の Pod
 
@@ -584,7 +584,7 @@ Pod の終了プロセスが始まると、以下の一連のプロセスも開�
 
 `.spec.terminationGracePeriodSeconds` キーを長めに設定し、`.spec.containers[*].lifecycle.preStop` キーの秒数も含めて、すべてが完了したうえで Pod を終了可能にする。
 
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/pod_terminating_process.png)
 
 1. クライアントは、`kubectl` コマンドを使用して、Pod を終了するリクエストを kube-apiserver に送信する。
 
@@ -656,7 +656,7 @@ Pod の終了プロセスが始まると、以下の一連のプロセスも開�
 
     なお、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
 
-    ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod_logging.png)
+    ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_pod_logging.png)
 
 > - https://www.creationline.com/lab/29281
 > - [Logging Architecture \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-location-node)
@@ -824,7 +824,7 @@ Pod が別の Node に再スケジューリングされても、Pod に同じ Pe
 
 Pod が削除されても PersistentVolumeClaims は削除されないため、新しい Pod も同じ PersistentVolume をマウントできる。
 
-![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_persistent-volume.png)
+![kubernetes_deployment_persistent-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_deployment_persistent-volume.png)
 
 > - https://www.amazon.com/dp/1617297615
 
@@ -850,7 +850,7 @@ Kubernetes の v1.6 より前は Endpoints が使用されていた。
 
 しかし、Endpoints では Pod の宛先情報を一括管理しなければならず、これを分割して管理できるように、Endpoints の代わりとして EndpointSlice が導入された。
 
-![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_endpoint-slices.png)
+![kubernetes_endpoint-slices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_endpoint-slices.png)
 
 > - [Scaling Kubernetes Networking With EndpointSlices \| Kubernetes](https://kubernetes.io/blog/2020/09/02/scaling-kubernetes-networking-with-endpointslices/#splitting-endpoints-up-with-the-endpointslice-api)
 
@@ -892,7 +892,7 @@ Ingress を使用する場合、宛先の Service は、Cluster IP Service と�
 
 NodePort Service や LoadBalancer Service と同様に、外部からのリクエストを受信する方法の 1 つである。
 
-![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress.png)
+![kubernetes_ingress](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress.png)
 
 > - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#what-is-ingress)
 > - [Kubernetes上のコンテナをIngressでインターネットに公開するまで \| ステップアップしながら段階的に学ぶ Kubernetes実践入門 \| Think IT（シンクイット）](https://thinkit.co.jp/article/18263)
@@ -909,7 +909,7 @@ NodePort Service や LoadBalancer Service と同様に、外部からのリク�
 
 パスの値に基づいて、Service にルーティングする。
 
-![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_path.png)
+![kubernetes_ingress_path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress_path.png)
 
 > - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#simple-fanout)
 
@@ -919,7 +919,7 @@ NodePort Service や LoadBalancer Service と同様に、外部からのリク�
 
 本番環境では、ドメインを指定した各種ダッシュボードにリクエストを送信できる必要がある。
 
-![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress_host.png)
+![kubernetes_ingress_host](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress_host.png)
 
 > - [Ingress \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/ingress/#name-based-virtual-hosting)
 
@@ -963,7 +963,7 @@ DaemonSet や Job で使用する例は少ないが、Pod さえあればすべ�
 
 マイクロサービスアーキテクチャのコンポーネントである『Service』とは区別する。
 
-![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_kube-proxy_service.png)
+![kubernetes_kube-proxy_service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_kube-proxy_service.png)
 
 > - [Service \| Kubernetes](https://kubernetes.io/docs/concepts/services-networking/service/)
 > - [【Kubernetes】kube-proxy停止時はServiceとPodのIPアドレスが新たに紐づかなくなる - (O+P)ut](https://www.mtioutput.com/entry/kube-proxy-iptable)
@@ -972,7 +972,7 @@ DaemonSet や Job で使用する例は少ないが、Pod さえあればすべ�
 
 #### ▼ ClusterIP Service
 
-![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_clusterip-service.png)
+![kubernetes_clusterip-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_clusterip-service.png)
 
 `L4` ロードバランサーとして、Service に対する通信を、Cluster-IP を経由して Pod にルーティングする。
 
@@ -1016,7 +1016,7 @@ Ingress がないと Cluster ネットワーク内からしかアクセスでき
 
 #### ▼ NodePort Service
 
-![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_nodeport-service.png)
+![kubernetes_nodeport-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_nodeport-service.png)
 
 `L4` ロードバランサーとして、Service に対する通信を、Node の NIC の宛先情報 (IP アドレス、ポート番号) 、Cluster-IP を経由して Pod にルーティングする。
 
@@ -1133,7 +1133,7 @@ spec:
 
 #### ▼ LoadBalancer Service
 
-![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_loadbalancer-service.png)
+![kubernetes_loadbalancer-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_loadbalancer-service.png)
 
 `L4` ロードバランサーとして、Service に対する通信を、External-IP、Node の NIC の宛先情報 (IP アドレス、ポート番号)、Cluster-IP を経由して Pod にルーティングする。
 
@@ -1173,14 +1173,14 @@ Cluster 内 DNS 名と Cluster 外 CNAME レコードを対応づけ、Service �
 
 マイクロサービスが外部のドメインに直接リクエストを送信できるが、これを Service のドメインに抽象化できる。
 
-![kubernetes_externalname-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_externalname-service.png)
+![kubernetes_externalname-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_externalname-service.png)
 
 > - [KubernetesのDiscovery＆LBリソース（その2） \| 今こそ始めよう！ Kubernetes入門 \| Think IT（シンクイット）](https://thinkit.co.jp/article/13739)
 > - [Kubernetes、ExternalName Serviceの検証と利用時の注意事項](https://blog.mosuke.tech/entry/2021/08/26/kubernetes-externalname-service/)
 
 #### ▼ Headless Service
 
-![kuberentes_headless-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kuberentes_headless-service.png)
+![kuberentes_headless-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kuberentes_headless-service.png)
 
 Headless Service 以外の Service は、負荷分散方式により、配下のいずれかの Pod の IP アドレスを返却する。
 
@@ -1224,7 +1224,7 @@ $ dig <Pod名>.<Serviceの完全修飾ドメイン名>
 
 ### パケットの処理方法
 
-![kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kube-proxy_iptables.png)
+![kube-proxy_iptables](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kube-proxy_iptables.png)
 
 Service は、パケットの `L4` に関するヘッダーの持つ情報を見て、Pod に `L4` ロードバランシングする。
 
@@ -1504,7 +1504,7 @@ Secret に永続化された値を復号し、`kubectl` コマンドにパラメ
 
 Kubernetes で作成できるストレージは、作成場所で種類を分けられる。
 
-![kubernetes_storage_resource_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_storage_resource_types.png)
+![kubernetes_storage_resource_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_storage_resource_types.png)
 
 <table>
   <thead>
@@ -1541,7 +1541,7 @@ Kubernetes で作成できるストレージは、作成場所で種類を分け
 
 #### ▼ PersistentVolume とは
 
-![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png)
 
 Node 上のストレージ上に Volume を作成する。
 
@@ -1641,7 +1641,7 @@ StorageClass と PersistentVolumeClaim を経由して、PersistentVolume と No
 
 また、Node 外ストレージを使用する場合には、CSI ドライバーも必要である。
 
-![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png)
 
 <br>
 
@@ -1649,7 +1649,7 @@ StorageClass と PersistentVolumeClaim を経由して、PersistentVolume と No
 
 #### ▼ Volume とは
 
-![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png)
 
 Node 外ストレージツール (例：AWS EBS、NFS、iSCSI、Ceph など) をそのまま Kubernetes の Volume として使用する。
 
@@ -1798,7 +1798,7 @@ Pod の `.spec.volumes` キーで PersistentVolumeClaim を宣言すれば、Vol
 
 設定された条件に基づいて、Kubernetes で作成済みの PersistentVolume を要求し、指定した Kubernetes リソースに割り当てる。
 
-![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png)
 
 > - [Kubernetes で 永続データ を取り扱う方法 - galife](https://garafu.blogspot.com/2019/07/k8s-pv-and-pvc.html)
 
@@ -1929,7 +1929,7 @@ Node 外ストレージツール (例：AWS EBS、Azure Disk など) を要求�
 
 StorageClass を使用する場合は、PersistentVolumeClaim ではなく StorageClass 側で `reclaimPolicy` キーとして設定する。
 
-![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/storage_class.png)
+![storage_class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/storage_class.png)
 
 > - [Dynamic Volume Provisioning \| Kubernetes](https://kubernetes.io/docs/concepts/storage/dynamic-provisioning/#using-dynamic-provisioning)
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20191206-1/
@@ -1962,7 +1962,7 @@ StorageClass を使用する場合は、PersistentVolumeClaim ではなく Stora
 
 #### ▼ ServiceAccount とは
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png)
 
 kube-apiserver が、クライアント側を認証可能にする。
 
@@ -2022,7 +2022,7 @@ AdmissionWebhook の仕組みのなかで、Pod の作成時に Volume 上の `/
 
 #### ▼ UserAccount とは
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png)
 
 kube-apiserver が、クライアント側を認証可能にする。
 
@@ -2053,7 +2053,7 @@ kube-apiserver が、クライアントを認証可能にする。別途、RoleB
 
 Namespaced スコープな Kubernetes リソースやカスタムリソース (Namespace を設定できる Kubernetes リソース) に関する認可スコープを設定する。
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png)
 
 > - [Using RBAC Authorization \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole)
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html
@@ -2062,7 +2062,7 @@ Namespaced スコープな Kubernetes リソースやカスタムリソース (N
 
 Cluster スコープな Kubernetes リソースやカスタムリソース (Namespace を設定できない Kubernetes リソース) に関する認可スコープを設定する。
 
-![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_authorization.png)
+![kubernetes_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_authorization.png)
 
 > - [Using RBAC Authorization \| Kubernetes](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#role-and-clusterrole)
 > - https://support.huaweicloud.com/intl/en-us/usermanual-cce/cce_01_0189.html

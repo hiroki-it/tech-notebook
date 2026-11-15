@@ -32,7 +32,7 @@ tags:
 
 Keycloak は、認証処理サービス、Infinispan、アカウント管理用の RDBMS、といったコンポーネントから構成されている。
 
-![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_architecture.png)
+![keycloak_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/keycloak_architecture.png)
 
 > - https://blog.palark.com/ha-keycloak-infinispan-kubernetes/
 
@@ -66,7 +66,7 @@ Keycloak クラスターでは、JGroups は Infinispan クラスターインス
 
 レプリケーション通信によって、Keycloak クラスター内の Infinispan クラスターインスタンス間でセッションデータを同期する。
 
-![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_clustering.png)
+![keycloak_clustering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/keycloak_clustering.png)
 
 > - [Page Redirection](https://www.keycloak.org/2019/05/keycloak-cluster-setup)
 > - [Keycloakを冗長構成で動かしてみる #SSO - Qiita](https://qiita.com/yoonis/items/4f4a9df0f6f8e858bd4a#keycloak%E5%86%97%E9%95%B7%E6%A7%8B%E6%88%90%E3%81%AE%E6%A6%82%E8%A6%81)
@@ -254,7 +254,7 @@ Keycloak を認証を担うマイクロサービスとして配置し、各マ�
 
 認可スコープの適用するエンドポイントを設定する。
 
-![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
+![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/keycloak_authorization.png)
 
 > - [Keycloakで認可サービスを試してみよう［前編］：Keycloak超入門（8）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html)
 > - [keyclaokの認可機能を利用する #JavaScript - Qiita](https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E8%AA%8D%E5%8F%AF%E8%A8%AD%E5%AE%9A)
@@ -265,7 +265,7 @@ Keycloak を認証を担うマイクロサービスとして配置し、各マ�
 
 リソースとポリシーの紐付けを設定する。
 
-![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
+![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/keycloak_authorization.png)
 
 > - [Keycloakで認可サービスを試してみよう［前編］：Keycloak超入門（8）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html)
 > - [keyclaokの認可機能を利用する #JavaScript - Qiita](https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%91%E3%83%BC%E3%83%9F%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%AE%E5%AE%9A%E7%BE%A9)
@@ -276,7 +276,7 @@ Keycloak を認証を担うマイクロサービスとして配置し、各マ�
 
 認可スコープを設定する。
 
-![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/keycloak_authorization.png)
+![keycloak_authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/keycloak_authorization.png)
 
 > - [Keycloakで認可サービスを試してみよう［前編］：Keycloak超入門（8）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1904/03/news003.html)
 > - [keyclaokの認可機能を利用する #JavaScript - Qiita](https://qiita.com/m-masataka/items/e99cb38fc995d40b680b#%E3%83%9D%E3%83%AA%E3%82%B7%E3%83%BC%E3%81%AE%E5%AE%9A%E7%BE%A9)

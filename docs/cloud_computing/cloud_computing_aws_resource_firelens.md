@@ -28,7 +28,7 @@ Fluent Bit や Fluentd を使用し、Amazon ECS のコンテナログを AWS �
 
 ### アーキテクチャ
 
-![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_aws-firelens.png)
+![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/fluent-bit_aws-firelens.png)
 
 1. awsfirelens ドライバーは Fluentd ログドライバーをラッピングしたものであり、ログを FireLens コンテナに送信する。Fluentd ログドライバーについては、以下のリンクを参考にせよ。
 
@@ -263,7 +263,7 @@ log_router という名前以外を設定できないことに注意する。
     </tr>
     <tr>
       <td><code>enable-ecs-log-metadata</code> (デフォルトで <code>true</code>)</td>
-      <td>有効化した場合、Datadog のログコンソールで、例えば以下のようなタグが付けられる。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_true.png" alt="ecs-meta-data_true"><br>反対に無効にした場合、以下のようなタグが付けられる。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ecs-meta-data_false.png" alt="ecs-meta-data_false"><br>- <a href="https://tech.spacely.co.jp/entry/2020/11/28/173356">https://tech.spacely.co.jp/entry/2020/11/28/173356</a></td>
+      <td>有効化した場合、Datadog のログコンソールで、例えば以下のようなタグが付けられる。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs-meta-data_true.png" alt="ecs-meta-data_true"><br>反対に無効にした場合、以下のようなタグが付けられる。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ecs-meta-data_false.png" alt="ecs-meta-data_false"><br>- <a href="https://tech.spacely.co.jp/entry/2020/11/28/173356">https://tech.spacely.co.jp/entry/2020/11/28/173356</a></td>
     </tr>
     <tr>
       <td><code>environment</code>、<code>secrets</code></td>

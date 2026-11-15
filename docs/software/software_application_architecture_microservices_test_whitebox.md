@@ -119,7 +119,7 @@ Fooクラスやfoo関数の内部処理
 
 コントラクトサービス上で、双方のリクエスト／レスポンスの内容が期待値に合致するかを検証する。
 
-![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test.png)
+![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cdc-test.png)
 
 > - [Pact (Consumer-Driven Contract Testing) を使ってサーバーレスの非同期テストのやりづらさを解決できるか \| Slides \| Riotz.works](https://riotz.works/slides/2020-serverless-meetup-japan-virtual-4/#13)
 > - [マイクロサービス間の整合性を守る、消費者駆動契約テストをNode.jsで試してみる](https://zenn.dev/hedrall/articles/cdc-test-20220614)
@@ -132,7 +132,7 @@ Fooクラスやfoo関数の内部処理
 
 例えば、Pact はコントラクトサービスを Pact Broker として提供する。
 
-![cdc-test_contract-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cdc-test_contract-service.png)
+![cdc-test_contract-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cdc-test_contract-service.png)
 
 > - [Webhooks \| Pact Docs](https://docs.pact.io/pact_broker/webhooks#example-cicd-and-webhook-configuration)
 

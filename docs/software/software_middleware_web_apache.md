@@ -21,7 +21,7 @@ tags:
 
 Apache は、Apache コアとモジュールから構成される。
 
-![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/apache_architecture.png)
+![apache_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/apache_architecture.png)
 
 > - [モジュールのインストール！ \| Apacheモジュールを使い倒す！ \| Think IT（シンクイット）](https://thinkit.co.jp/article/120/1)
 

@@ -306,7 +306,7 @@ import "<パッケージ名>"
 
 インターフェースと構造体の両方を同じパッケージに配置していると、インターフェースが他からインポートされ、構造体が他をインポートするようになり、発生しやすい。
 
-![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/golang_import_cycle.png)
+![golang_import_cycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/golang_import_cycle.png)
 
 #### ▼ 他の言語で Go 製パッケージをインポートする
 

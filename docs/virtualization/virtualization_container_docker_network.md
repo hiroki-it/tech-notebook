@@ -21,7 +21,7 @@ tags:
 
 #### ▼ bridge ネットワークとは
 
-![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_bridge-network.png)
+![docker_bridge-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_bridge-network.png)
 
 bridge ネットワークについて、以下に示す。
 
@@ -191,7 +191,7 @@ NETWORK ID          NAME                    DRIVER              SCOPE
 
 #### ▼ host ネットワークとは
 
-![docker_host-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_host-network.png)
+![docker_host-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_host-network.png)
 
 host ネットワークは、コンテナのネットワークインターフェース (`eth`) 、ホストのネットワークインターフェース (`eth*`) 、といったコンポーネントから構成される。
 

@@ -20,7 +20,7 @@ tags:
 
 また、とある期間を単位としてとき系列データをグループ化し、一連の連続データとして表現する。
 
-![tsdb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tsdb.png)
+![tsdb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/tsdb.png)
 
 > - [What is Time Series Database (TSDB)?](https://thecustomizewindows.com/2019/10/what-is-time-series-database-tsdb/)
 

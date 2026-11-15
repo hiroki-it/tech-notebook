@@ -20,7 +20,7 @@ tags:
 
 インプレースデプロイメントを実装する。
 
-![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capistrano_ec2.png)
+![capistrano_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/capistrano_ec2.png)
 
 1. 自身のパソコンからデプロイサーバーにリモート通信する。
 

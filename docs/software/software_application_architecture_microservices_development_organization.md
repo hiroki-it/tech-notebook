@@ -21,7 +21,7 @@ tags:
 
 ストリームアラインドチームがプロダクトを開発し、その他のチーム (イネーブルメントチーム、プラットフォームチーム、複雑サブシステムチーム) はこれを後押しする。
 
-![organization_team-topology](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/organization_team-topology.png)
+![organization_team-topology](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/organization_team-topology.png)
 
 <br>
 
@@ -46,7 +46,7 @@ tags:
 - QA エンジニア
 - Embedded SRE
 
-![organization_team-topology_stream-aligned-team](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/organization_team-topology_stream-aligned-team.png)
+![organization_team-topology_stream-aligned-team](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/organization_team-topology_stream-aligned-team.png)
 
 > - [Team Topologies: Platform teamはStream aligned teamである - APC 技術ブログ](https://techblog.ap-com.co.jp/entry/2023/05/22/105800)
 > - https://medium.com/beyond-agile-leadership/team-topologies-stream-aligned-team-58faaf5729a8

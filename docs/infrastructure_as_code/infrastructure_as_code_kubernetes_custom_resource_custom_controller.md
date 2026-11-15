@@ -30,7 +30,7 @@ tags:
 
 Custom Controller は、client-go コンポーネントと custom-controller コンポーネントから構成される。
 
-![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
+![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_custome-controller_architecture.png)
 
 <br>
 
@@ -95,7 +95,7 @@ Informer から Kubernetes リソースの作成、更新、削除のイベン�
 
 ### 処理の仕組み
 
-![custom_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/custom_controller.png)
+![custom_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/custom_controller.png)
 
 1. Custom Controller は、kube-apiserver を介して、etcd に watch イベントを送信している。
 
@@ -161,7 +161,7 @@ Custom Controller を内蔵し、特定のカスタムリソースをセット�
 
 Operator パターンは、カスタムリソース、Custom Controller の Operator、認可スコープ付与リソース、といったコンポーネントから構成されている。
 
-![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator_architecture.png)
+![kubernetes_operator_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_operator_architecture.png)
 
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20200629-1/
@@ -184,7 +184,7 @@ Operator に不具合があると、etcd 上の CRD の通りにカスタムリ�
 
 Operator は関連するすべての CRD を要求し、たとえその CRD に対応するカスタムリソースを作成しないとしても、CRD だけは永続化しておく必要がある。(例：Prometheus 系の CRD をすべて作成しないと、PrometheusOperator がエラーになる)
 
-![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_operator-controller.png)
+![kubernetes_operator-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_operator-controller.png)
 
 > - https://developers.redhat.com/articles/2021/06/22/kubernetes-operators-101-part-2-how-operators-work
 > - https://stackoverflow.com/questions/47848258/what-is-the-difference-between-a-kubernetes-controller-and-a-kubernetes-operator

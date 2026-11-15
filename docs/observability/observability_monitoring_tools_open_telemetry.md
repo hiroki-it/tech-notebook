@@ -23,7 +23,7 @@ OpenTelemetry は、テレメトリーソース (例：サードパーティパ�
 
 OpenTelemetry を導入することで、テレメトリーごとに異なるインスツルメント化ツール (テレメトリーを収集できる状態にするツール) を使用せずに、一括してインスツルメント化できるようになる。
 
-![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_architecture.png)
+![open-telemetry_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/open-telemetry_architecture.png)
 
 > - [Documentation \| OpenTelemetry](https://opentelemetry.io/docs/)
 > - [Getting Started With OpenTelemetry - DZone Refcards](https://dzone.com/refcardz/getting-started-with-opentelemetry)
@@ -48,7 +48,7 @@ otel クライアントパッケージは、テレメトリーデータを API �
 
 サービスメッシュツール (例：Istio、Linkerd など) のサイドカーモデルと OpenTelemetry の両方を採用する場合、サイドカーでアクセスログ、メトリクス、スパンを記録できる。ただし、アプリケーション固有のスパンを記録する場合や、トレースコンテキストをアプリケーション間で伝播する場合は、otel クライアントパッケージなどによる実装が必要である。
 
-![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_client-package.png)
+![open-telemetry_client-package](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/open-telemetry_client-package.png)
 
 > - [opentelemetry-specification/specification/library-guidelines.md at main · open-telemetry/opentelemetry-specification · GitHub](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/library-guidelines.md#opentelemetry-client-generic-design)
 
@@ -79,7 +79,7 @@ otel クライアントパッケージは、テレメトリーデータを API �
 5. バックエンドは、自身のスキーマファイルに応じてテレメトリーをストレージに保管する。
 6. バックエンドのダッシュボードは、自身のスキーマファイルに応じてストレージからテレメトリーを取得する。
 
-![open-telemetry_schema](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_schema.png)
+![open-telemetry_schema](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/open-telemetry_schema.png)
 
 > - [Telemetry Schemas \| OpenTelemetry](https://opentelemetry.io/docs/specs/otel/schemas/#full-schema-aware)
 > - [opentelemetry-go/semconv/v1.20.0/schema.go at v1.25.0 · open-telemetry/opentelemetry-go · GitHub](https://github.com/open-telemetry/opentelemetry-go/blob/v1.25.0/semconv/v1.20.0/schema.go)

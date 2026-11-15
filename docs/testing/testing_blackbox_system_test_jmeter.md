@@ -38,7 +38,7 @@ $ tar xvzf apache-jmeter-5.2.1.tgz
 
 JMeter は、以下のコンポーネントから構成されている。
 
-![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jmeter_architecuture.png)
+![jmeter_architecuture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/jmeter_architecuture.png)
 
 > - [JMeter Elements & Components: Thread Group, Samplers](https://www.guru99.com/jmeter-element-reference.html)
 
@@ -50,7 +50,7 @@ JMeter は、以下のコンポーネントから構成されている。
 
 JMeter が送信するリクエストの総数はスレッド数とループ数の積であり、それらのリクエストをランプアップ秒の期間で送信する。
 
-![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/stress-test_parameter.png)
+![stress-test_parameter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/stress-test_parameter.png)
 
 > - [【図解】はじめてでもわかるJMeterの使い方 - RAKUS Developers Blog \| ラクス エンジニアブログ](https://tech-blog.rakus.co.jp/entry/2017/08/24/111332)
 

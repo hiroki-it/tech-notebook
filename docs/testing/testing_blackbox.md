@@ -22,7 +22,7 @@ tags:
 
 ユニットテストとホワイト/ブラックボックステストの関係性については、以下の書籍を参考にせよ。
 
-![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_black-box-test.png)
+![testing_black-box-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_black-box-test.png)
 
 > - [ホワイトボックステストとは？ブラックボックステストとの違いやその手順、よく使われる手法を解説｜ソフトウェアテストのSHIFT](https://service.shiftinc.jp/column/4801/)
 
@@ -43,7 +43,7 @@ tags:
 
 ### ブラックボックスの環境
 
-![environments](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/environments.png)
+![environments](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/environments.png)
 
 <table>
   <thead>
@@ -93,7 +93,7 @@ tags:
 
 ホワイトボックステストのユニットテストとは意味合いが異なることに注意する。
 
-![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_blackbox-test_unit_integration_system.png)
 
 > - [単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する \| 若手エンジニアの羅針盤](https://pm-rasinban.com/ut-it-st)
 
@@ -153,7 +153,7 @@ tags:
 
 注意点として、特定の機能に関するすべてのコンポーネント間の連携をテストする『E2E テスト』とは異なる。
 
-![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_blackbox-test_unit_integration_system.png)
 
 > - [単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する \| 若手エンジニアの羅針盤](https://pm-rasinban.com/ut-it-st)
 
@@ -211,7 +211,7 @@ tags:
 
 下層にはテストダブルのスタブを作成する。
 
-![test_top-down](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_top-down.jpg)
+![test_top-down](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/test_top-down.jpg)
 
 #### ▼ ボトムアップテスト
 
@@ -219,7 +219,7 @@ tags:
 
 上層にはテストダブルのドライバーを作成する。
 
-![test_bottom-up](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_bottom-up.jpg)
+![test_bottom-up](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/test_bottom-up.jpg)
 
 <br>
 
@@ -237,7 +237,7 @@ tags:
 
 機能追加/変更を含むコンポーネントが既存のコンポーネントに影響を与えていないか (既存の機能でデグレーションが起こっていないか) を検証する。
 
-![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p496.jpg)
+![p496](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/p496.jpg)
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 

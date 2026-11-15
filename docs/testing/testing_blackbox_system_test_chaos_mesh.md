@@ -23,7 +23,7 @@ Chaos Mesh は、chaos-dashboard、chaos-controller-manager、chaos-daemon、と
 
 他のカオスエンジニアリングツール (例：Chaos monkey、Chaos Kong) と比べて、Kubernetes により合った手法でカオスエンジニアリングを実行できる。
 
-![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/chaos-mesh_architecture.png)
+![chaos-mesh_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/chaos-mesh_architecture.png)
 
 > - [Chaos Mesh Overview \| Chaos Mesh](https://chaos-mesh.org/docs/)
 > - [KubernetesのPodやネットワークをわざと落としまくってカオスエンジニアリングのテストができる「Chaos Mesh」がバージョン1.0に到達 － Publickey](https://www.publickey1.jp/blog/20/kubernetespodchaos_mesh10.html)

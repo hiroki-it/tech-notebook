@@ -79,7 +79,7 @@ module "kms" {
 
 もしマルチリージョン化したい場合、暗号化キーを再作成する必要がある。
 
-![kms_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_multi-region.png)
+![kms_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/kms_multi-region.png)
 
 > - [Multi-Region keys in AWS KMS - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
 
@@ -163,7 +163,7 @@ AWS KMS のリクエスト制限を設定する。
 
 暗号化キーのキーマテリアルを一定期間で自動的に更新する。
 
-![kms_key_rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kms_key_rotation.png)
+![kms_key_rotation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/kms_key_rotation.png)
 
 > - [Rotate AWS KMS keys - AWS Key Management Service](https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html)
 

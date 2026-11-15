@@ -25,7 +25,7 @@ Cert Manager はクライアント／サーバー証明書を作成し、Secret 
 
 Pod 内のコンテナに Secret をマウントし、Pod 間の通信でサーバー認証を実施する。
 
-![cert-manager_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cert-manager_architecture.png)
+![cert-manager_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cert-manager_architecture.png)
 
 > - https://piotrminkowski.com/2022/12/02/renew-certificates-on-kubernetes-with-cert-manager-and-reloader/
 > - https://youtu.be/rOe9UpHcnKk?t=301

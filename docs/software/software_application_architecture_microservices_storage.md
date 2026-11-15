@@ -40,7 +40,7 @@ tags:
 
 Shared Database の場合に、マイクロサービス別に DB スキーマを作成する。
 
-![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-table.png)
+![microservices_share-db_diff-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_share-db_diff-table.png)
 
 > - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)
 
@@ -48,7 +48,7 @@ Shared Database の場合に、マイクロサービス別に DB スキーマを
 
 Shared Database の場合に、マイクロサービス別にテーブルを作成する。
 
-![microservices_share-db_diff-scheme](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_share-db_diff-scheme.png)
+![microservices_share-db_diff-scheme](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_share-db_diff-scheme.png)
 
 > - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)
 
@@ -62,7 +62,7 @@ Shared Database の場合に、マイクロサービス別にテーブルを作�
 
 ローカルトランザクションや分散トランザクションを処理する必要がある。
 
-![microservices_diff-db](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_diff-db.png)
+![microservices_diff-db](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_diff-db.png)
 
 > - [Pattern: Database per service](https://microservices.io/patterns/data/database-per-service.html)
 > - [🐾 Does your microservice deserve its own database? - DEV Community](https://dev.to/lbelkind/does-your-microservice-deserve-its-own-database-np2)

@@ -299,13 +299,13 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
   </tbody>
 </table>
 
-![subnet_accsess-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_accsess-type.png)
+![subnet_accsess-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/subnet_accsess-type.png)
 
 > - [AWS はじめてのネットワーク構築 1 – ほのぼの万事屋 \| ほのぼの万事屋](https://mihono-bourbon.com/aws-network-1/)
 
 ### コンポーネントタイプ別の命名
 
-![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png)
+![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/subnet_component-type.png)
 
 配置するコンポーネントの種類に関する名前をつける。
 
@@ -344,7 +344,7 @@ Amazon VPC の IP アドレスの最初から、パブリックサブネット�
 
 サブネットに紐付けるルートテーブルの宛先を制限することで、サブネット内のリクエストを Amazon VPC 内に閉じるか、パブリックネットワークに公開するかを制御できる。
 
-![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route-table.png)
+![route-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/route-table.png)
 
 ### プライベートサブネットのリクエストをパブリックネットワークに公開する場合
 

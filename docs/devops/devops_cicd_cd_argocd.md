@@ -23,7 +23,7 @@ ArgoCD は、argocd-server、repo-server、redis-server、dex-server、applicati
 
 永続化するための DB を持っておらず、ステートレスである。
 
-![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/drawio/blog/argocd/argocd_architecture.png)
+![argocd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_architecture.png)
 
 > - https://www.amazon.co.jp/dp/1617297275
 > - https://blog.searce.com/argocd-gitops-continuous-delivery-approach-on-google-kubernetes-engine-2a6b3f6813c0
@@ -155,11 +155,11 @@ Argo Rollouts をダッシュボードで操作する場合、執筆時点 (2023
 
 image-updater を採用しない場合、GitOps のステップのなかで、マニフェストリポジトリ上にプルリクエストを作成するステップがある。
 
-![gitops_without-image-updater](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_without-image-updater.png)
+![gitops_without-image-updater](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/gitops_without-image-updater.png)
 
 一方で、image-updater を採用すると、GitOps のステップのなかで、マニフェストリポジトリ上にプルリクエストを作成するステップを省略できる。
 
-![gitops_with-image-updater](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gitops_with-image-updater.png)
+![gitops_with-image-updater](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/gitops_with-image-updater.png)
 
 image-updater は、アプリリポジトリからイメージリポジトリにコンテナイメージをプッシュした後、イメージリポジトリの更新を検知し、Cluster 内のマニフェストを自動的に書き換える。
 
@@ -212,7 +212,7 @@ $ kubectl -it exec foo-argocd-repo-server \
 
 プッシュによってコードが変更された場合、Kubernetes の状態をこれに Sync する。
 
-![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd.png)
+![argocd](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd.png)
 
 > - https://blog.vpantry.net/2021/01/cicd-2/
 > - https://qiita.com/kanazawa1226/items/bb760bddf8bd594379cb
@@ -236,7 +236,7 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 #### ▼ テンプレート構成管理ツールを使用しない場合
 
-![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks.png)
+![argocd_eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_eks.png)
 
 1. アプリケーションリポジトリで、開発者がアプリケーションの変更を `main` ブランチにマージする。
 
@@ -258,7 +258,7 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 #### ▼ テンプレート構成管理ツールを使用した場合
 
-![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_eks_helm.png)
+![argocd_eks_helm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_eks_helm.png)
 
 1. 同じ
 
@@ -281,7 +281,7 @@ Application さえ削除しなければ、Kubernetes リソースをダッシュ
 
 ### マニフェストリポジトリ起点
 
-![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_gcp.png)
+![argocd_gcp](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_gcp.png)
 
 1. マニフェストリポジトリで、開発者がマニフェストの変更を `main` ブランチにマージする。
 

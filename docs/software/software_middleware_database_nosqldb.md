@@ -40,7 +40,7 @@ RDB とは異なり、データをメインメモリに保管する。
 - MongoDB
 - Apache Cassandra
 
-![nosql_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nosql_types.jpg)
+![nosql_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/nosql_types.jpg)
 
 <br>
 

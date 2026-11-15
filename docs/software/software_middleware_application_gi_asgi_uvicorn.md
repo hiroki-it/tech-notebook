@@ -73,7 +73,7 @@ if __name__ == "__main__":
 
 #### ▼ Gunicorn を使用する場合
 
-![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uvicorn_with-gunicorn.png)
+![uvicorn_with-gunicorn](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uvicorn_with-gunicorn.png)
 
 性能上の理由で、本番環境では Gunicorn を使用して Uvicorn のプロセスを管理し、プロセスを間接的に実行したほうがよい。
 

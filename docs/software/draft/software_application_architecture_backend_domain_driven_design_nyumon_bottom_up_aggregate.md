@@ -54,7 +54,7 @@ description: 12章の知見を記録しています。
 - 境界：枠
 - 集約ルート：User オブジェクト
 
-![domain_driven_design_nyumon_bottom_up_chapter_12-01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-01.png)
+![domain_driven_design_nyumon_bottom_up_chapter_12-01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-01.png)
 
 集約内のドメインオブジェクトは集約ルートを通じてのみ操作できる。
 
@@ -112,7 +112,7 @@ UserName の状態を変更するときは、User に UserName を渡さない�
 
 Circle と User は異なる集約に属し、それぞれが集約ルートである。
 
-![domain_driven_design_nyumon_bottom_up_chapter_12-02](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-02.png)
+![domain_driven_design_nyumon_bottom_up_chapter_12-02](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-02.png)
 
 このとき、ユーザーを作成し、メンバーとして所属させるようなユースケースを考える。
 
@@ -268,7 +268,7 @@ Circle が Members を作成しないといけないはずが、Circle 内の Me
 
 ただ、Members を介さずに Circle が User を直接操作できてしまうため、サークル集約とユーザー集約の境界が曖昧になってしまう。
 
-![domain_driven_design_nyumon_bottom_up_chapter_12-03](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-03.png)
+![domain_driven_design_nyumon_bottom_up_chapter_12-03](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-03.png)
 
 リスト 12.5：データストアを直接操作してコレクションを生成する
 
@@ -1025,7 +1025,7 @@ public class User (
 
 データ変更の単位を集約の単位を合わせないとどのような問題が起こるかを見ていく。
 
-![domain_driven_design_nyumon_bottom_up_chapter_12-04](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-04.png)
+![domain_driven_design_nyumon_bottom_up_chapter_12-04](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-04.png)
 
 次の実装では、Circle が Members 内の User の名前を変更しようとしている。
 
@@ -1780,7 +1780,7 @@ UserId を使用するようにしたメリットはほかにもある。
 
 例えば、Cron 処理で一日 1 回データベースを検査し、不整合のあるデータを書き換えてしまう。
 
-![domain_driven_design_nyumon_bottom_up_chapter_12-05](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_12-05.png)
+![domain_driven_design_nyumon_bottom_up_chapter_12-05](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_12-05.png)
 
 ## 12.4 言葉との齟齬を消す
 

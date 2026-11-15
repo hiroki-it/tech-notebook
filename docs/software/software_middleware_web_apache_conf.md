@@ -54,7 +54,7 @@ Include ディレクティブを使用すれば、任意の名前で設定ファ
 
 すべてのファイルに対して、ディレクティブが適用される。
 
-![htaccess_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess_scope.png)
+![htaccess_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/htaccess_scope.png)
 
 > - [htaccess留意事項](https://htaccess.cman.jp/attention/)
 
@@ -62,7 +62,7 @@ Include ディレクティブを使用すれば、任意の名前で設定ファ
 
 配置したディレクトリ配下の階層のファイルに対して適用される。
 
-![htaccess_scope_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/htaccess_scope_2.png)
+![htaccess_scope_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/htaccess_scope_2.png)
 
 > - [htaccess留意事項](https://htaccess.cman.jp/attention/)
 

@@ -19,7 +19,7 @@ description: 自己完結アーキテクチャの知見を記録しています�
 
 UIはマイクロフロントエンドとしてUIレンダリングする。
 
-![self-contained-systems](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/self-contained-systems.png)
+![self-contained-systems](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/self-contained-systems.png)
 
 > - [Self-contained service](https://microservices.io/patterns/decomposition/self-contained-service.html)
 > - [Self Contained Systems (SCS): Microservices Done Right - InfoQ](https://www.infoq.com/articles/scs-microservices-done-right/)

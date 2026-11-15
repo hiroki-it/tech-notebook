@@ -33,7 +33,7 @@ WSGI プロトコルを使用したアプリケーション系ミドルウェア
 
 この場合、uWSGI をパブリックネットワークに公開しさえすれば、パブリックネットワークから uWSGI を経由して、後段の Web サーバーにリクエストを送信できるようになる。
 
-![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uwsgi.png)
+![uwsgi](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uwsgi.png)
 
 > - https://stackoverflow.com/questions/36475380/what-are-the-advantages-of-connecting-uwsgi-to-nginx-using-the-uwsgi-protocol
 

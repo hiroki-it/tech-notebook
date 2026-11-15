@@ -15,7 +15,7 @@ description: Cloud Monitoringの知見を記録しています。
 
 複数のプロジェクトのメトリクスを監視用のプロジェクトに集約し、アラートポリシーに合致した場合に通知チャンネルを介して外部サービスに通知する。
 
-![google_cloud_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_monitoring.png)
+![google_cloud_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/google_cloud_monitoring.png)
 
 > - [How To Manage Cloud Build Alerts \| Xebia](https://xebia.com/blog/how-to-manage-cloud-build-notifications/)
 

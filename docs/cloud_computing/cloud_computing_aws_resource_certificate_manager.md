@@ -211,7 +211,7 @@ Chrome を例に挙げると、サーバー証明書は URL の鍵マークか�
 
 CircleCI のサイトは、サーバー証明書のために AWS Certificate Manager を使用している。
 
-![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_certificate_chrome.png)
+![ssl_certificate_chrome](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ssl_certificate_chrome.png)
 
 #### ▼ ダウンタイム
 

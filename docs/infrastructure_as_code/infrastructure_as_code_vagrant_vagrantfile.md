@@ -33,7 +33,7 @@ Vagrantfile 自体をプロビジョナーとして使用もできる。
 
 ただし、Vagrant は仮想サーバーの作成のために使用することが多い。
 
-![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vagrant_provider_provisioner.png)
+![vagrant_provider_provisioner](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/vagrant_provider_provisioner.png)
 
 > - https://computationalmodelling.bitbucket.io/tools/vagrant.html
 

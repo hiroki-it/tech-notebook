@@ -23,7 +23,7 @@ TypeScript の例では、インターフェースと生成関数でオブジェ
 
 クラスがほかのクラスを状態として保持する関係性のことで、ライフサイクルの依存の有無によって Association、Aggregation、Composition に分類できる。
 
-![relationship_data-holding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_data-holding.png)
+![relationship_data-holding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relationship_data-holding.png)
 
 <br>
 
@@ -49,7 +49,7 @@ TypeScript の例では、インターフェースと生成関数でオブジェ
 
 #### ▼ 例
 
-![aggregation_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aggregation_example.png)
+![aggregation_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/aggregation_example.png)
 
 User は UserName を状態として保持する。
 
@@ -268,7 +268,7 @@ User は UserName を状態として保持する。
 
 #### ▼ 例
 
-![composition_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composition_example.png)
+![composition_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/composition_example.png)
 
 User クラスは UserName クラスを状態として保持する。
 
@@ -438,7 +438,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 クラスがほかのクラスの性質を継承する、またはその振る舞いを実装する関係性のことで、Generalization と Realization に分類できる。
 
-![group-member_relationship](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/group-member_relationship.png)
+![group-member_relationship](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/group-member_relationship.png)
 
 <br>
 
@@ -632,7 +632,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 このとき、『働く関数』は部署ごとに異なってしまうが、どう実装したらよいのか…
 
-![abstract-class_abstract-function_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/abstract-class_abstract-function_1.png)
+![abstract-class_abstract-function_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/abstract-class_abstract-function_1.png)
 
 これを解決するために、例えば、次の 2 つの実装方法が考えられる。
 
@@ -652,7 +652,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 抽象オブジェクトと抽象関数を使用すると、`2` 個のメリットを生かしつつ、デメリットを解決可能。
 
-![abstract-class_abstract-function_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/abstract-class_abstract-function_2.png)
+![abstract-class_abstract-function_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/abstract-class_abstract-function_2.png)
 
 === "Go"
 
@@ -880,7 +880,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 プリウスと各世代プリウスが、抽象クラスと子クラスの関係にある。
 
-![abstract-class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/abstract-class.png)
+![abstract-class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/abstract-class.png)
 
 <br>
 
@@ -898,7 +898,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 そこで、モーター機能に最低限必要な関数の実装を強制する。
 
-![interface-class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface-class.png)
+![interface-class](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/interface-class.png)
 
 実装クラスに処理内容を記述しなければならない。
 
@@ -906,7 +906,7 @@ Car クラスは Lock クラスを状態として保持する。
 
 多重継承できる。
 
-![interface-class_multiple-inheritance_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface-class_multiple-inheritance_2.png)
+![interface-class_multiple-inheritance_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/interface-class_multiple-inheritance_2.png)
 
 === "Go"
 
@@ -1080,7 +1080,7 @@ Car クラスは Lock クラスを状態として保持する。
 
     そこで、抽象関数によって、エンジン機能に最低限必要な関数の実装を強制する。
 
-    ![interface-class_abstract-class_usage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/interface-class_abstract-class_usage.png)
+    ![interface-class_abstract-class_usage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/interface-class_abstract-class_usage.png)
 
 <br>
 
@@ -1350,7 +1350,7 @@ PHP では、集約や合成の関係性を作り、委譲元クラスの関数�
 
 #### ▼ Dependency とは
 
-![relationship_argument-or-return-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/relationship_argument-or-return-type.png)
+![relationship_argument-or-return-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/relationship_argument-or-return-type.png)
 
 クラス A がクラス B を引数型/返却値型として使用する関係性のこと。
 
@@ -1359,7 +1359,7 @@ PHP では、集約や合成の関係性を作り、委譲元クラスの関数�
 
 #### ▼ 例
 
-![dependency_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dependency_example.png)
+![dependency_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/dependency_example.png)
 
 User は UserName を引数として使用する。
 
@@ -2046,7 +2046,7 @@ Service Locator パターンはアンチパターンである。
 
 これによって、上位レイヤーのクラスは下位レイヤーのクラスへ依存する関係性になる。
 
-![dip_without](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dip_without.png)
+![dip_without](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/dip_without.png)
 
 #### ▼ DIP を満たす実装の場合
 
@@ -2064,7 +2064,7 @@ Service Locator パターンはアンチパターンである。
 
 > - https://speakerdeck.com/hiroki_hasegawa/domeinqu-dong-she-ji-falseakitekutiyabian-qian-toyi-cun-xing-ni-zhuan-falseyuan-ze
 
-![dip_with](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dip_with.png)
+![dip_with](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/dip_with.png)
 
 #### ▼ DIP に基づくドメイン駆動設計の場合
 
@@ -2076,7 +2076,7 @@ Service Locator パターンはアンチパターンである。
 
 4. 2 と 3 により、インフラストラクチャ層とユースケース層の両方は、ドメイン層のインターフェース (抽象クラス) に依存する。これは原則 1 を満たす。
 
-    ![ddd_dependency-inversion-principle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_dependency-inversion-principle.jpg)
+    ![ddd_dependency-inversion-principle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd_dependency-inversion-principle.jpg)
 
 <br>
 
@@ -2461,6 +2461,6 @@ LCOM4 は、クラスの各関数内で、保持するすべてのデータに�
 
 例として、以下の画像では、道具モジュールをキッチン引き出しモジュールとガレージ工具箱モジュールに分けている。これにより、各クラスの結合度を低くし、凝集度を高くできる。
 
-![loose-coupling_high-cohesion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/loose-coupling_high-cohesion.png)
+![loose-coupling_high-cohesion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/loose-coupling_high-cohesion.png)
 
 <br>

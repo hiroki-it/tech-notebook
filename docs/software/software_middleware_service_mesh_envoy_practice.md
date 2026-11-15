@@ -66,7 +66,7 @@ Envoy
 ... # 宛先
 ```
 
-![envoy_upstream-request-timeout_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_outbound.png)
+![envoy_upstream-request-timeout_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_upstream-request-timeout_outbound.png)
 
 > - [IstioやEnvoyで発生するネットワーク系エラー - Carpe Diem](https://christina04.hatenablog.com/entry/istio-and-envoy-errors)
 > - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage)
@@ -86,7 +86,7 @@ Envoy
 マイクロサービス # 宛先
 ```
 
-![envoy_upstream-request-timeout_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_upstream-request-timeout_inbound.png)
+![envoy_upstream-request-timeout_inbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_upstream-request-timeout_inbound.png)
 
 > - [IstioやEnvoyで発生するネットワーク系エラー - Carpe Diem](https://christina04.hatenablog.com/entry/istio-and-envoy-errors)
 > - [Access logging — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/configuration/observability/access_log/usage)

@@ -29,7 +29,7 @@ description: Websocket-APIの知見を記録しています。
 
 一方で、Websocket-API では HTTP を拡張し、双方向通信は実施できるようにしている。
 
-![websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/websocket.png)
+![websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/websocket.png)
 
 > - [web開発における双方向通信プロトコルまとめ #初心者 - Qiita](https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket)
 > - https://zenn.dev/nameless_sn/articles/websocket_tutorial#websocket%E3%81%8C%E5%8B%95%E3%81%8F%E4%BB%95%E7%B5%84%E3%81%BF
@@ -198,7 +198,7 @@ const wss = new WebSocket("wss://localhost:8080");
 
 これにより、ブラウザから MQTT プロトコルでリクエストを送信できるようになる。
 
-![mqtt-over-websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket.png)
+![mqtt-over-websocket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/mqtt-over-websocket.png)
 
 > - [Understanding the Differences between MQTT and WebSockets for IoT \| HiveMQ](https://www.hivemq.com/blog/understanding-the-differences-between-mqtt-and-websockets-for-iot/)
 > - [web開発における双方向通信プロトコルまとめ #初心者 - Qiita](https://qiita.com/theFirstPenguin/items/55dd1daa9313f6b90e2f#websocket)
@@ -213,7 +213,7 @@ AWS ALB からブラウザへのレスポンス後に、ブラウザは Websocke
 
 ブラウザは、AWS ALB の HTTPS のリスナールールを介して、MQTT プロトコルで Emqx にイベントを送信する。
 
-![mqtt-over-websocket-on-aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mqtt-over-websocket-on-aws.png)
+![mqtt-over-websocket-on-aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/mqtt-over-websocket-on-aws.png)
 
 <br>
 

@@ -26,7 +26,7 @@ JVM 言語 (例：Java、Scala、Kotlin など) のコードを、Java バイト
 
 ## 03. Java のコンパイルの仕組み
 
-![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
+![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/java_compile.png)
 
 Java では、コードの実行前と実行中の二段階で機械語を翻訳する。
 
@@ -38,7 +38,7 @@ Java では、コードの実行前と実行中の二段階で機械語を翻訳
 
     クラスローダーの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
 
-    ![java_class-loader](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_class-loader.png)
+    ![java_class-loader](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/java_class-loader.png)
 
 4. アプリケーションの実行中に、JVM 内の JIT コンパイラは実行中関数のみを機械語に翻訳する。
 
@@ -70,7 +70,7 @@ JVM 言語 (例：Java、Scala、Kotlin など) 製のアプリケーション�
 
 ウォームアップを済ませたつもりでいて、実は完全に済んでいない場合に備えて、スロースタートな負荷分散も採用するとよい。
 
-![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/java_compile.png)
+![java_compile](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/java_compile.png)
 
 > - https://stackoverflow.com/a/1481903/12771072
 > - [How to Warm Up the JVM \| Baeldung](https://www.baeldung.com/java-jvm-warmup)

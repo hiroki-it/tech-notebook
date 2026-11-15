@@ -30,7 +30,7 @@ otel クライアントパッケージからのテレメトリーデータを、
 
 サービスメッシュツール (例：Istio、Linkerd など) のサイドカーモデルと OpenTelemetry の両方を採用する場合、サイドカーは自身が記録したアクセスログやスパンなどを OpenTelemetry Collector に送信できる。一方、アプリケーションが記録したテレメトリーデータは、otel クライアントパッケージなどから OpenTelemetry Collector に送信する。
 
-![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-telemetry_collector.png)
+![open-telemetry_collector](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/open-telemetry_collector.png)
 
 > - https://www.logicmonitor.com/blog/what-is-an-otel-collector
 > - [Istio / OpenTelemetry](https://istio.io/latest/docs/tasks/observability/logs/otel-provider/)

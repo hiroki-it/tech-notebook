@@ -23,7 +23,7 @@ description: 15章の知見を記録しています。
 - 外部システム
 - テストクライアントなど
 
-![software_application_architecture_backend_domain_driven_design_practice_presentation_15-1-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_presentation_15-1-1.png)
+![software_application_architecture_backend_domain_driven_design_practice_presentation_15-1-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/software_application_architecture_backend_domain_driven_design_practice_presentation_15-1-1.png)
 
 プレゼンテーション層の責務は、主に次のとおりである。
 

@@ -21,7 +21,7 @@ tags:
 
 #### ▼ マイクロサービスとは
 
-![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anti-corruption-layer.png)
+![anti-corruption-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/anti-corruption-layer.png)
 
 マイクロサービスアーキテクチャで、分散システム状に構成されたバックエンドのコンポーネントのこと。
 
@@ -47,7 +47,7 @@ EC サイトがあり、その商品販売ドメインを販売サブドメイ�
 
 このとき、それぞれのサブドメインの問題を解決する販売コンテキストと配送コンテキストがマイクロサービスの粒度となる。オニオンアーキテクチャのアプリケーション間で同期通信/非同期通信をする。
 
-![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices-architecture_onion-architecture.png)
+![microservices-architecture_onion-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices-architecture_onion-architecture.png)
 
 > - [境界づけられたコンテキスト 実装編 - ドメイン駆動設計用語解説 \[DDD\] - little hands' lab](https://little-hands.hatenablog.com/entry/2017/12/07/bouded-context-implementation)
 
@@ -102,7 +102,7 @@ EC サイトがあり、その商品販売ドメインを販売サブドメイ�
 
 加えて小さな粒度に分割する方法として、ルートエンティティを粒度ともできる。
 
-![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_bounded-context.png)
+![service_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_bounded-context.png)
 
 > - [各マイクロサービスのドメイン モデル境界の識別 - .NET \| Microsoft Learn](https://docs.microsoft.com/ja-jp/dotnet/architecture/microservices/architect-microservice-container-applications/identify-microservice-domain-model-boundaries)
 > - [Pattern: Decompose by subdomain](https://microservices.io/patterns/decomposition/decompose-by-subdomain.html)

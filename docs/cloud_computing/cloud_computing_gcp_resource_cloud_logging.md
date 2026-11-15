@@ -114,7 +114,7 @@ module "destination" {
 
 ログの特定の文字列を発火条件として、各種 Google Cloud リソース (例：Cloud Pub/Sub、BigQuery、Cloud Storage、Cloud Monitoring など) にログイベントを送信する。
 
-![google_cloud_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_logging.png)
+![google_cloud_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/google_cloud_logging.png)
 
 > - [GCP Cloud Logging: The Basis - DEV Community](https://dev.to/alvardev/gcp-cloud-logging-the-basis-45eh)
 > - [Cloud Logging のイベントをリアルタイムで検出して対応する \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/products/management-tools/automate-your-response-to-a-cloud-logging-event)

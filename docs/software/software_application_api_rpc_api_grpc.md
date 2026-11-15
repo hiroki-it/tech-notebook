@@ -27,7 +27,7 @@ RESTful-API に対するリクエストではリクエストのヘッダーや�
 
 一方で、リモートプロシージャーコールであれば通信先の関数を指定して引数を渡せばよく、まるで自身の関数のようにコールできる。
 
-![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_architecture.png)
+![grpc_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_architecture.png)
 
 > - [いまさらだけどgRPCに入門したので分かりやすくまとめてみた #Go - Qiita](https://qiita.com/gold-kou/items/a1cc2be6045723e242eb#%E3%82%B7%E3%83%AA%E3%82%A2%E3%83%A9%E3%82%A4%E3%82%BA%E3%81%A7%E9%AB%98%E9%80%9F%E5%8C%96)
 > - [gRPCとは？詳細情報を解説 \| OSSサポートのOpenStandia™【NRI】](https://openstandia.jp/oss_info/grpc/)
@@ -55,7 +55,7 @@ gRPC では、gRPC クライアントと gRPC サーバーの間の通信方式�
 
 通信方式は、`proto` ファイルで定義する。
 
-![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_connection-type.png)
+![grpc_connection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_connection-type.png)
 
 > - [gRPCのServer-Streaming RPCを用いたPUSH通知の実現事例 \| Fintan](https://fintan.jp/page/1521/)
 > - https://www.oreilly.com/library/view/grpc-up-and/9781492058328/ch04.html
@@ -66,7 +66,7 @@ gRPC では、gRPC クライアントと gRPC サーバーの間の通信方式�
 
 #### ▼ 単項 RPC とは
 
-![grpc_unary-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_unary-rpc.png)
+![grpc_unary-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_unary-rpc.png)
 
 リクエスト／レスポンス方式の通信を実施する。
 
@@ -97,7 +97,7 @@ service Request {
 
 #### ▼ サーバーストリーミング RPC とは
 
-![grpc_server-streaming](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_server-streaming.png)
+![grpc_server-streaming](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_server-streaming.png)
 
 ストリーミング方式の通信を実施する。
 
@@ -129,7 +129,7 @@ service Notification {
 
 #### ▼ クライアントストリーミング RPC とは
 
-![grpc_client-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_client-streaming-rpc.png)
+![grpc_client-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_client-streaming-rpc.png)
 
 ストリーミング方式の通信を実施する。
 
@@ -161,7 +161,7 @@ service Upload {
 
 #### ▼ 双方向ストリーミング RPC とは
 
-![grpc_bidrectional-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_bidrectional-streaming-rpc.png)
+![grpc_bidrectional-streaming-rpc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_bidrectional-streaming-rpc.png)
 
 ストリーミング方式の通信を実施する。
 
@@ -351,7 +351,7 @@ HTTP/1.1 の場合、`1` 個のリクエストとレスポンスを送受信す�
 
 このとき、リクエストとレスポンスの多重化により、帯域幅を無駄なく使用できるため、レスポンスタイムが短くなる。
 
-![grpc_streaming-rpc_response-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grpc_streaming-rpc_response-time.png)
+![grpc_streaming-rpc_response-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/grpc_streaming-rpc_response-time.png)
 
 > - [Scaling microservices with gRPC: part one \| Thoughtworks](https://www.thoughtworks.com/insights/blog/microservices/scaling-microservices-gRPC-part-one)
 > - https://levelup.gitconnected.com/scaling-microservices-with-grpc-and-envoy-72a64fc5bbb6

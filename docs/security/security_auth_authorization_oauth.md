@@ -19,7 +19,7 @@ tags:
 
 ### OAuth とは
 
-![oauth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_architecture.png)
+![oauth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/oauth_architecture.png)
 
 SSO の一種であり、バージョンによって『OAuth 1.0』と『OAuth 2.0』がある。
 
@@ -108,7 +108,7 @@ OAuth では、OIDC とは異なり、アクセストークン (JWT 仕様かど
 
 OAuth には脆弱性があるが、OIDC であればこれに対処できる。
 
-![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
+![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/oidc_vs_oauth.png)
 
 > - [一番分かりやすい OpenID Connect の説明 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe)
 > - [Auth0 を使って ID Token と Access Token の違いをざっくり理解する \| DevelopersIO](https://dev.classmethod.jp/articles/auth0-access-token-id-token-difference/#toc-2)
@@ -179,7 +179,7 @@ OAuth では、認証スキーマとして Bearer 認証の採用例が多い。
 
 リフレッシュトークンを含むアクセストークンを発行するために、短命な認可コードを発行する。
 
-![oauth_authorization-code](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code.png)
+![oauth_authorization-code](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/oauth_authorization-code.png)
 
 > - https://cloudentity.com/developers/basics/oauth-grant-types/authorization-code-flow/
 > - https://kb.authlete.com/ja/s/oauth-and-openid-connect/a/how-to-choose-the-appropriate-oauth-2-flow
@@ -195,7 +195,7 @@ Facebook で認証フェーズのみでログインし、連携先の免許証�
 
 OIDC ではなく OAuth のため、ID トークンではなく、リフレッシュトークンを含むアクセストークンであることに注意する。
 
-![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth_authorization-code_facebook.png)
+![oauth_authorization-code_facebook](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/oauth_authorization-code_facebook.png)
 
 > - [OAuthの仕組み丸分かり体験サイト](https://contents.saitolab.org/oauth/)
 

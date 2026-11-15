@@ -22,7 +22,7 @@ IAM ユーザーによる操作や、ロールの紐付けの履歴 (証跡) を
 
 Amazon CloudWatch と連携もできる。
 
-![cloudtrail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudtrail.jpg)
+![cloudtrail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/cloudtrail.jpg)
 
 <br>
 

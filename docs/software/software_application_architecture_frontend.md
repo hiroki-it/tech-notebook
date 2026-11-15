@@ -107,7 +107,7 @@ Nuxt.js と Atomic Design のレイヤーは以下のように対応する。
 
 静的ファイル (例：`html` ファイル、`css` ファイル、画像、動画、メールなど) のコンポーネントを、各マイクロサービスに対応するように分割する設計方法。
 
-![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/composite-ui.png)
+![composite-ui](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/composite-ui.png)
 
 <br>
 

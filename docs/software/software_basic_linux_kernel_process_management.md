@@ -136,7 +136,7 @@ PID  TTY  TIME     CMD
 
 現代のハードウェアのほとんどがマルチプロセシングの機能を持つ。
 
-![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/process.png)
+![process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/process.png)
 
 > - https://linuxjf.osdn.jp/JFdocs/The-Linux-Kernel-5.html
 > - [プロセスとスレッドの違いとは？超わかりやすく解説！【図解とプログラム付き】 \| Webpia](https://webpia.jp/thread_process/)
@@ -178,7 +178,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 この処理実行単位を『スレッド』という。
 
-![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/thread.png)
+![thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/thread.png)
 
 > - [第1回 マルチスレッドはこんなときに使う：連載.NETマルチスレッド・プログラミング入門 - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/0503/12/news025.html)
 > - [プロセスとスレッドの違いとは？超わかりやすく解説！【図解とプログラム付き】 \| Webpia](https://webpia.jp/thread_process/)
@@ -197,7 +197,7 @@ Jan  1 00:00:00 localhost kernel: Killed process 17143 (java), UID 1001, total-v
 
 これらのスレッドは、そのプロセスに割り当てられているアドレスを共有する。
 
-![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multi-thread.png)
+![multi-thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/multi-thread.png)
 
 > - [プロセスとスレッドの違いとは？超わかりやすく解説！【図解とプログラム付き】 \| Webpia](https://webpia.jp/thread_process/)
 
@@ -367,7 +367,7 @@ Go では、goroutine が Node.js 環境を実行すると、親プロセス上�
 
 CPU のコアは、メモリ上のプロセス内にある単一のスレッドが紐付く。
 
-![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/multithreading.png)
+![multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/multithreading.png)
 
 > - [【図解】ハイパースレッディング(SMT)の仕組み ~メリットとデメリット,悪影響や脆弱性などの問題~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/)
 
@@ -375,7 +375,7 @@ CPU のコアは、メモリ上のプロセス内にある単一のスレッド�
 
 CPU のコアは、メモリ上のプロセス内にある複数のスレッドと紐付く。
 
-![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/simultaneous-multithreading.png)
+![simultaneous-multithreading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/simultaneous-multithreading.png)
 
 > - [【図解】ハイパースレッディング(SMT)の仕組み ~メリットとデメリット,悪影響や脆弱性などの問題~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/architecture/hyper-threading-smt/)
 
@@ -391,7 +391,7 @@ CPU のコアは、メモリ上のプロセス内にある複数のスレッド�
 
 CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとする。
 
-![scheduling_priority_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_priority_1.png)
+![scheduling_priority_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/scheduling_priority_1.png)
 
 1. プロセス A が `0` 秒に待ち行列へ登録される。
 
@@ -401,7 +401,7 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 4. `40` 秒時点で、プロセス C は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス A へ CPU を割り当てる。
 
-    ![scheduling_priority_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_priority_2.png)
+    ![scheduling_priority_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/scheduling_priority_2.png)
 
 <br>
 
@@ -409,11 +409,11 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 待ち行列に登録されたプロセスから順に、CPU をプロセスに割り当てる。
 
-![scheduling_fcfs_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_fcfs_1.png)
+![scheduling_fcfs_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/scheduling_fcfs_1.png)
 
 以下のように、プロセスが CPU に割り当てられていく。
 
-![scheduling_fcfs_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_fcfs_2.png)
+![scheduling_fcfs_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/scheduling_fcfs_2.png)
 
 <br>
 
@@ -425,6 +425,6 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 交代するように、CPU をプロセスに割り当てる。
 
-![scheduling_round-robin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scheduling_round-robin.png)
+![scheduling_round-robin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/scheduling_round-robin.png)
 
 <br>

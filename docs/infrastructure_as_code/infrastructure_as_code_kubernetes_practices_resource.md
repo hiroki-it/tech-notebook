@@ -1023,7 +1023,7 @@ Node とコンテナのプロセス ID が同じになるため、コンテナ�
 
 ### ヘルスチェックを設定する
 
-![kubernetes_probe](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_probe.png)
+![kubernetes_probe](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_probe.png)
 
 kubelet は、コンテナをヘルスチェック (例：StartupProbe ➡️ LivenessProbe／ReadinessProbe) し、障害を防ぐ。
 
@@ -1102,7 +1102,7 @@ kubelet により、Pod の終了プロセスが始まると、以下の一連�
 
 長くとも `120` 秒以内にするとよい。
 
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/pod_terminating_process.png)
 
 > - [KubernetesのPodを安全に終了する - Carpe Diem](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
 

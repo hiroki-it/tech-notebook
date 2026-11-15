@@ -22,7 +22,7 @@ tags:
 
 ### アーキテクチャ
 
-![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kyverno_architecture.png)
+![kyverno_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/kyverno_architecture.png)
 
 Kyverno は、admission-controllers アドオン、webhook サーバー、Controller などのコンポーネトから構成されている。
 

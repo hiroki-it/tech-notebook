@@ -24,7 +24,7 @@ Ingress のルールに応じたリバースプロキシやロードバランサ
 
 Kubernetes の周辺ツール (例：Prometheus、AlertManager、Grafana、ArgoCD など) のダッシュボードを複数人で共有して参照する場合には、何らかのアクセス制限を付与した Ingress を作成することになる。
 
-![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller.png)
+![kubernetes_ingress-controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress-controller.png)
 
 > - https://cloud.google.com/community/tutorials/nginx-ingress-gke
 > - [KubernetesでのService公開方法に関する検証 - Ingress Controllerの活用 - freee Developers Hub](https://developers.freee.co.jp/entry/kubernetes-ingress-controller)
@@ -175,7 +175,7 @@ Ingress Controller は、『`***-controller-admission`』という Service で w
 
 Ingress Controller は、Secret に設定されたサーバー証明書を参照し、これを自身のロードバランサー (例：Nginx) に渡す。
 
-![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_ingress-controller_certificate.png)
+![kubernetes_ingress-controller_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_ingress-controller_certificate.png)
 
 > - [Ingress Nginxは何をしてるのか - ストイックに生きたい](https://blog.sakamo.dev/post/ingress-nginx/)
 > - [Ingress - HTTPS通信(Cert Manager) \| 豆蔵デベロッパーサイト](https://developer.mamezou-tech.com/containers/k8s/tutorial/ingress/https/)

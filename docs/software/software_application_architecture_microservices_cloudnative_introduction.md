@@ -4,7 +4,7 @@
 
 どうも、Istio のマスコットやってますカイルくんです。
 
-![windows-dolphin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/windows-dolphin.png)
+![windows-dolphin](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/windows-dolphin.png)
 
 近年、先輩エンジニアのおかげで、マイクロサービスアーキテクチャの実装方法やより最適なデザインパターンの情報を得られるようになりました。
 
@@ -37,7 +37,7 @@
 
 ## アーキテクチャスタイルとは
 
-![a19bfc23-74da-4347-b34d-3fe523fbe866](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/a19bfc23-74da-4347-b34d-3fe523fbe866.png)
+![a19bfc23-74da-4347-b34d-3fe523fbe866](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/a19bfc23-74da-4347-b34d-3fe523fbe866.png)
 
 アーキテクチャスタイルは、ソフトウェアアーキテクチャを取り巻く技術的なトピックの 1 つです。
 
@@ -124,7 +124,7 @@
 
 取り上げるデザインパターンの多くは、 https://www.amazon.co.jp/dp/1617294543 にも登場します。
 
-![microservice-pattern-language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/microservice-pattern-language.jpg)
+![microservice-pattern-language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservice-pattern-language.jpg)
 
 [Microservices Pattern: A pattern language for microservices](https://microservices.io/patterns/)
 
@@ -370,7 +370,7 @@ flowchart LR
 
 マイクロサービスアーキテクチャをシステム全体から概説します。
 
-![ddd-cloudnative_cloud-infrastructure-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cloud-infrastructure-design.png)
+![ddd-cloudnative_cloud-infrastructure-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cloud-infrastructure-design.png)
 
 主に以下のツールからなります。
 
@@ -441,7 +441,7 @@ flowchart LR
 
 マイクロサービスアーキテクチャをより詳細に概説します。
 
-![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-overall-design.png)
 
 主に以下のツールからなります。(五十音順)
 

@@ -218,7 +218,7 @@ $ kubectl get csv -n operators
 
 #### ▼ 共通の手順
 
-![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argocd-server_dashboard.png)
+![argocd_argocd-server_dashboard](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_argocd-server_dashboard.png)
 
 Node の外から ArgoCD のダッシュボードをネットワークに公開する場合、Node 外から argocd-server にインバウンド通信が届くようにする必要がある。
 

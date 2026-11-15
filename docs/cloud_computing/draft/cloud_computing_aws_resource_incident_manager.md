@@ -13,7 +13,7 @@ description: Incident Managementの知見を記録しています。
 
 ## 01. Incident Manager とは
 
-![aws_incident_manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_incident_manager.png)
+![aws_incident_manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_incident_manager.png)
 
 Incident Manager をインシデント管理ツールとして使用する。
 

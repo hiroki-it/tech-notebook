@@ -21,7 +21,7 @@ tags:
 
 Node 内の権威 DNS サーバーとして、Kubernetes リソースの名前解決する。
 
-![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_coredns.png)
+![kubernetes_coredns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/kubernetes_coredns.png)
 
 > - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=29)
 
@@ -100,7 +100,7 @@ data:
 
 #### ▼ アーキテクチャ
 
-![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/coredns_service-discovery.png)
+![coredns_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/coredns_service-discovery.png)
 
 CoreDNS は、kube-apiserver から必要な Kubernetes リソース (Service、Endpoints) を取得する。
 

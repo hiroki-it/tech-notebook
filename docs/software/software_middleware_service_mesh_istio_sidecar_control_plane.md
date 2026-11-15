@@ -24,7 +24,7 @@ tags:
 
 語尾の『`d`』は、デーモンの意味であるが、Istiod コントロールプレーンの実体は、Deployment である。
 
-![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_ports.png)
+![istio_control-plane_ports](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_control-plane_ports.png)
 
 > - https://www.amazon.co.jp/dp/1617295825
 > - https://istio.io/latest/docs/ops/deployment/requirements/#ports-used-by-istio
@@ -276,7 +276,7 @@ webhooks:
 
 Istio (`v1.1`) の `discovery` コンテナは、Config Ingestion レイヤー、Core Data Model レイヤー、Proxy Serving レイヤー、インメモリストレージ、といった要素からなる。
 
-![istio_control-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_architecture.png)
+![istio_control-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_control-plane_architecture.png)
 
 > - [Pilot Decomposition - Google Docs](https://docs.google.com/document/d/1S5ygkxR1alNI8cWGG4O4iV8zp8dA6Oc23zQCvFxr83U/edit#heading=h.a1bsj2j5pan1)
 > - [istio 庖丁解牛(四) pilot discovery - zhonghua \| 钟华的博客 \| zhongfox](https://zhonghua.io/2019/05/12/istio-analysis-4/)
@@ -473,7 +473,7 @@ ControlZ ダッシュボードでは、istiod コントロールプレーンの�
 
 ### `15010` 番
 
-![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_service-discovery.png)
+![istio_control-plane_service-discovery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_control-plane_service-discovery.png)
 
 `discovery` コンテナの `15010` 番ポートでは、istio-proxy からの xDS サーバーに対するリモートプロシージャーコールを待ち受け、`discovery` コンテナ内のプロセスに渡す。
 
@@ -483,7 +483,7 @@ Envoy は pilot-agent を介してこれを受信し、自身の宛先情報設�
 
 > - [How to Integrate Your Service Registry with Istio? \| 赵化冰的博客 \| Zhaohuabing Blog](https://www.zhaohuabing.com/post/2020-06-12-third-party-registry-english/)
 
-![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-registry.png)
+![istio_service-registry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_service-registry.png)
 
 Istiod コントロールプレーンは、サービスレジストリ (例：etcd、consul catalog、nocos、cloud foundry) に登録された情報や、コンフィグストレージに永続化されたマニフェストの宣言 (ServiceEntry、WorkloadEntry) から、他のサービス (Pod、Node) の宛先情報を取得する。
 
@@ -507,7 +507,7 @@ istio-proxy はこれを受信し、pilot-agent は Envoy にこれらを紐付�
 
 また、証明書の有効期限が切れる前に、istio-proxy は秘密鍵から証明書署名要求を再作成して送信し、新しい署名済み証明書を取得する。
 
-![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_control-plane_certificate.png)
+![istio_control-plane_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_control-plane_certificate.png)
 
 > - [Istio / Security](https://istio.io/latest/docs/concepts/security/#pki)
 

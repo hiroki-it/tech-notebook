@@ -54,7 +54,7 @@ tags:
    - 提携会社との契約
    - SaaS との契約
 
-![project-management-skills_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project-management-skills_1.png)
+![project-management-skills_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/project-management-skills_1.png)
 
 > - [プロジェクトマネジメントの基本が全部わかる本 交渉・タスクマネジメント・計画立案から見積り・契約・要件定義・設計・テスト・保守改善まで \| 橋本 将功 \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4798177415)
 

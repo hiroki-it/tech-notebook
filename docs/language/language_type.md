@@ -19,7 +19,7 @@ tags:
 
 プログラミングを行うときの様式のこと。
 
-![programming-language_design-method_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/programming-language_design-method_history.png)
+![programming-language_design-method_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/programming-language_design-method_history.png)
 
 > - [What exactly is a programming paradigm?](https://www.freecodecamp.org/news/what-exactly-is-a-programming-paradigm/)
 > - [プログラミングパラダイム一覧！種類やそれぞれの概要を簡単に解説！ ｜ 案件評判](https://anken-hyouban.com/blog/2020/10/09/programming-paradigm/)
@@ -234,7 +234,7 @@ tags:
 
 機械語に変換されるまでの処理方式には種類がある。
 
-![compiled-and-interpreted-language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/compiled-and-interpreted-language.jpg)
+![compiled-and-interpreted-language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/compiled-and-interpreted-language.jpg)
 
 <br>
 

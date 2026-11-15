@@ -77,7 +77,7 @@ tags:
 = (ｋステップ行数)
 ```
 
-![estimate_development-scale_k-step](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_development-scale_k-step.png)
+![estimate_development-scale_k-step](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/estimate_development-scale_k-step.png)
 
 #### ▼ 工数の定量化
 
@@ -138,7 +138,7 @@ tags:
   </tbody>
 </table>
 
-![project_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/project_management.png)
+![project_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/project_management.png)
 
 #### ▼ 生産性の定量化
 
@@ -148,7 +148,7 @@ tags:
 = (プログラム本数による開発規模) ÷ (工数)
 ```
 
-![estimate_productivity_program-count](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_productivity_program-count.png)
+![estimate_productivity_program-count](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/estimate_productivity_program-count.png)
 
 ```mathematica
 (kステップ行数の生産性)
@@ -156,13 +156,13 @@ tags:
 = (ｋステップ行数による開発規模) ÷ (工数)
 ```
 
-![estimate_productivity_k-step](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_productivity_k-step.png)
+![estimate_productivity_k-step](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/estimate_productivity_k-step.png)
 
 #### ▼ 進捗率の定量化
 
 第 8 週末時点の進捗率と以降の予測時間をメンバーごとに並べると、全体の進捗率が約 77% で、残りの作業が第 12 週まで続くことがわかる。
 
-![estimate_progress-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/estimate_progress-rate.png)
+![estimate_progress-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/estimate_progress-rate.png)
 
 <br>
 
@@ -174,7 +174,7 @@ tags:
 
 この経路を、クリティカルパスという。
 
-![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p509.jpg)
+![p509](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p509.jpg)
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -184,7 +184,7 @@ tags:
 
 クリティカルパスに影響されるので注意。
 
-![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-1.jpg)
+![p510-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p510-1.jpg)
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -192,7 +192,7 @@ tags:
 
 全体的な工程のなかで、任意の結合点へ取り掛かるために必要な最多日数のこと。
 
-![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p510-2.jpg)
+![p510-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p510-2.jpg)
 
 > - https://www.amazon.co.jp/dp/4297124513
 

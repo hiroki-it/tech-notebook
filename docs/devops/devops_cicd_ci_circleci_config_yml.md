@@ -404,7 +404,7 @@ workflows を使用しない場合は、少なくとも `1` 個の `job` には 
 
 #### ▼ job の粒度
 
-![cicd_pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cicd_pipeline.png)
+![cicd_pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/cicd_pipeline.png)
 
 <table>
   <thead>
@@ -457,7 +457,7 @@ job を実行する仮想環境を選択できる。
 
 また、Dockerfile の COPY コマンドが動作しなくなる。
 
-![docker_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_executor.png)
+![docker_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/docker_executor.png)
 
 ```yaml
 version: 2.1
@@ -488,7 +488,7 @@ jobs:
 
 Linux サーバーを実行環境として設定する。
 
-![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine_executor.png)
+![machine_executor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/machine_executor.png)
 
 ```yaml
 version: 2.1
@@ -578,7 +578,7 @@ workflows:
 
 #### ▼ restore_cache、save_cache
 
-![circleci_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/circleci_cache.png)
+![circleci_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/circleci_cache.png)
 
 Workflow 間で使いまわせるキャッシュを作成する。
 
@@ -688,7 +688,7 @@ jobs:
 
 #### ▼ persist_to_workspace、attach_workspace
 
-![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/workflow_workspace_cache.png)
+![workflow_workspace_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/workflow_workspace_cache.png)
 
 CircleCI では、job ごとに異なる仮想環境を作成するため、他の `jobs` キーで使用された一時ファイルを再利用したい場合、これを使用する。
 
@@ -1451,7 +1451,7 @@ CircleCI でコンテナイメージをビルドした後、各イメージレ�
 
 これにより、コンテナイメージのビルド時間を短縮できる。
 
-![docker-layer-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-layer-cache.png)
+![docker-layer-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/docker-layer-cache.png)
 
 #### ▼ 使用例
 

@@ -56,7 +56,7 @@ descheduler を CronJob として定期的に起動させ、Pod を自動的に�
 
 このことからもわかるように、障害回復後すぐに descheduler が起動するわけではなく、CronJob の実行を待つ必要がある。
 
-![descheduler_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/descheduler_architecture.png)
+![descheduler_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/descheduler_architecture.png)
 
 > - [Descheduler for Kubernetes で Pod の再配置 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/kubernetes-descheduler/)
 

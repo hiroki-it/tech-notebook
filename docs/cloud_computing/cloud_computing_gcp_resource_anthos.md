@@ -39,7 +39,7 @@ on-オンプレミスは、各 Cluster を作成するワークステーショ�
 
 Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理できる。
 
-![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_on-premises_architecture.png)
+![anthos_on_on-premises_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_on_on-premises_architecture.png)
 
 > - https://cloud.google.com/anthos/clusters/docs/on-prem/latest/how-to/minimal-infrastructure
 
@@ -55,7 +55,7 @@ Google Cloud の API を経由して、ベアメタルプロバイダーの API 
 
 Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理できる。
 
-![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_multi-cluster.png)
+![anthos_on_bare-metal_multi-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_on_bare-metal_multi-cluster.png)
 
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
@@ -68,7 +68,7 @@ Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理�
 
 Google Anthos GKE Cluster のライフサイクルも Google Cloud から管理できる。
 
-![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_bare-metal_standalone-cluster.png)
+![anthos_on_bare-metal_standalone-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_on_bare-metal_standalone-cluster.png)
 
 > - https://itnext.io/anthos-on-bare-metal-and-akri-managing-leaf-devices-on-edge-kubernetes-clusters-from-cloud-222ff17dd7b8
 > - https://medium.com/google-cloud-jp/%E7%B0%A1%E5%8D%98%E6%A7%8B%E7%AF%89-nuc-%E3%81%A7%E3%81%8A%E3%81%86%E3%81%A1-anthos-%E3%82%92%E5%8B%95%E3%81%8B%E3%81%97%E3%81%A6%E3%81%BF%E3%82%88%E3%81%86-682e95112116
@@ -87,7 +87,7 @@ Google Cloud の API を経由して、他のクラウドプロバイダー (例
 
 ただし他のクラウドプロバイダーでは、専用 Kubernetes 実行環境 (例：Amazon EKS、Google Cloud GKE、Azure AKS など) を使用すればよいため、Google Cloud 環境、オンプレミス環境、ベアメタル環境、で Anthos を使用することが多い。
 
-![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_on_cloud-provider.png)
+![anthos_on_cloud-provider](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_on_cloud-provider.png)
 
 <br>
 
@@ -158,7 +158,7 @@ Anthos の Google GKE Cluster 部分の能力を、Kubernetes のほかの実行
 
 Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対応する Kubernetes のバージョンに依存する。
 
-![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_attached_cluster.png)
+![anthos_attached_cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_attached_cluster.png)
 
 > - https://cloud.google.com/anthos/clusters/docs/multi-cloud/attached/previous-generation/how-to/attach-kubernetes-clusters
 > - [Anthos アタッチ クラスタを使用してすべての Kubernetes クラスタを管理 \| Google Cloud 公式ブログ](https://cloud.google.com/blog/ja/topics/anthos/getting-to-know-anthos-attached-clusters)
@@ -177,7 +177,7 @@ Anthos の Kubernetes のバージョンは、各実行環境の Cluster が対�
 
 Traffic Director、Mesh CA、Managed backends、といったコンポーネントから構成される。
 
-![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_service_mesh.png)
+![anthos_service_mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_service_mesh.png)
 
 > - [Service Management - Cloud Solutions](https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/service-management/)
 > - https://lp.cloudplatformonline.com/rs/808-GJW-314/images/App_Modernization_Session_06.pdf#page=20
@@ -204,7 +204,7 @@ Traffic Director、Mesh CA、Managed backends、といったコンポーネン�
 
 一連の acm-operator (cluster-operator など) から構成される。
 
-![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management.png)
+![anthos_config-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_config-management.png)
 
 > - [Anthos Config Management (ACM) - Cloud Solutions](https://cloudsolutions.academy/how-to/anthos-in-a-nutshell/introducing-anthos/anthos-config-management-acm/)
 
@@ -216,7 +216,7 @@ Git リポジトリで管理された ACM カスタムリソースの GitOps を
 
 注意点として、サポートしているのは ACM カスタムリソースのみで、通常の Kubernetes リソースをデプロイできない。
 
-![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_config-management_gitops.png)
+![anthos_config-management_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_config-management_gitops.png)
 
 > - https://cloud.google.com/anthos-config-management/docs/concepts/best-practices-for-policy-management-with-anthos-config-management
 > - https://cloud.google.com/architecture/modern-cicd-anthos-reference-architecture
@@ -244,7 +244,7 @@ Google Anthos GKE Cluster が Google Cloud 以外 (オンプレミス、ベア�
 
 Google Cloud 上で `kubectl` コマンドを実行して各クラウドプロバイダー上の Google Anthos GKE Cluster の kube-apiserver にリクエストを送信するときに、各クラウドプロバイダーごとの API の違いを吸収してくれる。
 
-![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/anthos_connect-gateway.png)
+![anthos_connect-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/anthos_connect-gateway.png)
 
 > - https://www.topgate.co.jp/anthos-gke#connect-gateway
 

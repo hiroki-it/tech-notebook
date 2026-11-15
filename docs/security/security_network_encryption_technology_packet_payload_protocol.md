@@ -19,7 +19,7 @@ tags:
 
 プロトコルとしての暗号化技術である『暗号化プロトコル』は、赤色で示してある。
 
-![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/encryption_protocol.png)
 
 > - [it-shikaku.jp - 技術要素 - 11.セキュリティ - 5.セキュリティ実装技術 - 1.ネットワークセキュリティ](https://www.it-shikaku.jp/top30.php?hidari=11-05-01.php&migi=km11-05.php)
 
@@ -33,7 +33,7 @@ tags:
 
 暗号アルゴリズムに基づく暗号方式を使用してアプリケーションデータを暗号化することによって、アプリケーションデータの情報漏洩を防ぐ。
 
-![eavesdropping_tampering_spoofing_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eavesdropping_tampering_spoofing_1.png)
+![eavesdropping_tampering_spoofing_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/eavesdropping_tampering_spoofing_1.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -46,7 +46,7 @@ tags:
 
 署名とハッシュ関数を使用して、送信したアプリケーションデータと受信したアプリケーションデータが同じか否かを確認することによって、アプリケーションデータの改竄を防ぐ。
 
-![eavesdropping_tampering_spoofing_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eavesdropping_tampering_spoofing_2.png)
+![eavesdropping_tampering_spoofing_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/eavesdropping_tampering_spoofing_2.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -59,7 +59,7 @@ tags:
 
 署名を使用して正しい相手であることを認証することによって、なりすましを防ぐ。
 
-![eavesdropping_tampering_spoofing_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eavesdropping_tampering_spoofing_3.png)
+![eavesdropping_tampering_spoofing_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/eavesdropping_tampering_spoofing_3.png)
 
 > - [情報セキュリティの基本について \| 日本レコードマネジメント株式会社](https://nrm.recruitment.jp/column/detail/id=631)
 > - [STRIDEモデルでセキュリティ対策 - ネットセキュリティ情報と説明](https://secure.stylemap.co.jp/enforce-security/security-measures-using-the-stride-model/)
@@ -85,7 +85,7 @@ tags:
 
 暗号化ダイジェスト (署名) を含む証明書をメールに添付することによって、公開鍵のなりすましを防ぐセキュリティ技術。
 
-![s-mime](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/s-mime.png)
+![s-mime](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/s-mime.png)
 
 #### ▼ S/MIME における証明書
 
@@ -117,7 +117,7 @@ ISP が、動的 IP アドレスを割り当てた利用者のネットワーク
 
 #### ▼ SSH とは
 
-![ssh_public-key-authentication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh_public-key-authentication.png)
+![ssh_public-key-authentication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/ssh_public-key-authentication.png)
 
 公開鍵暗号方式に基づく暗号化プロトコル。
 
@@ -157,13 +157,13 @@ ISP が、動的 IP アドレスを割り当てた利用者のネットワーク
 
 ローカルマシンと踏み台サーバーの SSH 公開鍵認証と、ポートフォワーディングを組み合わせることによって、外部ネットワークのプライベートネットワーク内リモートサーバーに間接的にパケットを送受信する。
 
-![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ssh-port-forward.png)
 
 このリモートサーバーが、仮想環境の場合もあり、ホストと仮想環境の接続でも SSH ポートフォワーディングを使用している。
 
 ホスト外部のパソコンから、ホスト上の仮想環境に接続したい場合、SSH ポートフォワーディングを使用することによって、ホストを踏み台とした仮想環境への接続が行えるようになる。
 
-![docker_port-forwarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_port-forwarding.png)
+![docker_port-forwarding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/docker_port-forwarding.png)
 
 <br>
 
@@ -179,7 +179,7 @@ SSH の能力をより拡張したプロトコルである。
 
 2. サーバーは、Shell を使用して SCP プログラムを起動し、クライアントにファイルを送信する。
 
-    ![scp_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scp_architecture.png)
+    ![scp_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/scp_architecture.png)
 
 #### ▼ ファイルを要求する側に必要なソフトウェア
 
@@ -226,7 +226,7 @@ SSH と FTP を組み合わせたプロトコルではなく、SSH の能力を�
 
 #### ▼ リモートデスクトップとは
 
-![encryption_protocol_remote-desktop](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_remote-desktop.png)
+![encryption_protocol_remote-desktop](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/encryption_protocol_remote-desktop.png)
 
 ゲートウェイマシン上で稼働するブラウザを経由して、異なるネットワーク内の Web アプリと通信する。
 
@@ -297,7 +297,7 @@ SSL/TLS を使用した通信では、TLS ライブラリ (例：OpenSSL、Borin
 
 パケットペイロード全体を暗号化したい場合は、IPSec を使用する必要がある。
 
-![encryption_protocol_ssh-tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol_ssh-tls.png)
+![encryption_protocol_ssh-tls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/encryption_protocol_ssh-tls.png)
 
 > - [伝送データを暗号化しなければならない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/)
 
@@ -326,7 +326,7 @@ SSL/TLS を使用した通信では、TLS ライブラリ (例：OpenSSL、Borin
 
 Chrome では、HTTPS リクエストの使用時にサーバー証明書の不備 (例：自己署名サーバー証明書を使用している場合) があると、以下のような警告が表示される。
 
-![ssl_invalid-connection-warning](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssl_invalid-connection-warning.jpg)
+![ssl_invalid-connection-warning](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/ssl_invalid-connection-warning.jpg)
 
 > - [TLSはWeb専用なの？ \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/atcl/column/16/072100153/072100007/)
 
@@ -360,7 +360,7 @@ SSL/TLS プロトコルで暗号化するために、VPN ツール (例：Zscale
 
 Docker であればプロキシを設定するか、Dockerfile にルート証明書を組み込む必要がある。
 
-![vpn_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_certificate.png)
+![vpn_certificate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/vpn_certificate.png)
 
 > - https://www.nrapki.jp/client-certificate/telework/
 > - https://help.zscaler.com/zia/about-ssl-inspection
@@ -376,7 +376,7 @@ TLS ハンドシェイクで、双方向のピア認証を実施する。
 
 一方で、相互 TLS 認証では送信元がクライアント証明書を、宛先がサーバー証明書を提示し、双方が相手の証明書を検証する。
 
-![mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtls.png)
+![mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/mtls.png)
 
 > - [TLS相互認証（mTLS）とは、APIのmTLSを実装する](https://apidog.com/jp/blog/how-to-proceed-mtls-api/#mtls%E3%81%AE%E4%BB%95%E7%B5%84%E3%81%BF)
 
@@ -400,7 +400,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 情報漏洩を防げる。
 
-![internet-vpn_ipsec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-vpn_ipsec.jpg)
+![internet-vpn_ipsec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/internet-vpn_ipsec.jpg)
 
 > - [伝送データを暗号化しなければならない \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20080609/307119/)
 
@@ -408,7 +408,7 @@ VPN 接続されると、自宅 PC からの TCP スリーウェイハンドシ�
 
 IPsec では、元の IP ヘッダーを含むデータに ESP トレーラを付加して全体を暗号化し、ESP の認証データとヘッダー、新しい IP ヘッダーを付加することで、パケットをカプセル化する。
 
-![ipsec_encapsulation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ipsec_encapsulation.jpg)
+![ipsec_encapsulation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/ipsec_encapsulation.jpg)
 
 <br>
 
@@ -416,7 +416,7 @@ IPsec では、元の IP ヘッダーを含むデータに ESP トレーラを�
 
 #### ▼ VPN とは
 
-![vpn_between_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpn_between_network.png)
+![vpn_between_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/vpn_between_network.png)
 
 異なるネットワーク間で安全な通信をするための仕組み。
 
@@ -466,7 +466,7 @@ IPsec では、元の IP ヘッダーを含むデータに ESP トレーラを�
 
 接続先のネットワーク内のサーバがリクエストを受信するとき、リクエストの IP アドレスは VPN ゲートウェイのものになっている。
 
-![internet-vpn_ssl](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-vpn_ssl.jpg)
+![internet-vpn_ssl](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/internet-vpn_ssl.jpg)
 
 > - [SSL-VPNの実現方式 \| インターネットVPN \| ネットワークのおべんきょしませんか？](https://www.n-study.com/internet-vpn/ssl-vpn-overview/)
 

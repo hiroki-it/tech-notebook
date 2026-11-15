@@ -94,7 +94,7 @@ DB への書き込みの最大同時実行数を設定する。
 
 最大同時実行数を制限することで、CPU やメモリのスパイクと、それに伴うクラッシュを防げる。
 
-![victoria-metrics_ingestion-spike](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_ingestion-spike.png)
+![victoria-metrics_ingestion-spike](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/victoria-metrics_ingestion-spike.png)
 
 ```bash
 $ victoria-metrics-prod -maxConcurrentInserts=<ホストマシンのCPUのコア数に応じて自動的に設定される>

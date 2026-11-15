@@ -16,7 +16,7 @@ tags:
 
 ## 01. PagerDuty の仕組み
 
-![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_on-call.png)
+![pagerduty_on-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/pagerduty_on-call.png)
 
 PagerDuty をインシデント管理ツールとして使用する。
 
@@ -80,7 +80,7 @@ PagerDuty では、以下の解決フェーズを設定できる。
   </tbody>
 </table>
 
-![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pagerduty_incident_phase.png)
+![pagerduty_incident_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/pagerduty_incident_phase.png)
 
 > - [PagerDutyのエスカレーションポリシーとサービス \| 統合インシデント管理サービスPagerDuty \| Think IT（シンクイット）](https://thinkit.co.jp/article/13420)
 > - https://support.pagerduty.com/docs/incidents#incident-statuses

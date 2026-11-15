@@ -129,7 +129,7 @@ Auto Scaling Group では、Amazon EC2 のハードウェアリソース (CPU、
 
 ### バックアップリストア構成
 
-![dr-architecture_backup-restore](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_backup-restore.png)
+![dr-architecture_backup-restore](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/dr-architecture_backup-restore.png)
 
 DR リージョンにメインリージョンの AWS リソース (例：EBS ボリューム、RDS) のスナップショットを定期的に作成しておく。
 
@@ -151,7 +151,7 @@ RPO は最後のバックアップ時点である。
 
 ### パイロットライト構成
 
-![dr-architecture_pilot-light](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_pilot-light.png)
+![dr-architecture_pilot-light](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/dr-architecture_pilot-light.png)
 
 DR リージョンに低スペックな DB を作成しておき、メインリージョンと DR リージョンの DB を定期的に同期しておく。
 
@@ -172,7 +172,7 @@ RPO は最後の同期時点である。
 
 ### ウォームスタンバイ構成
 
-![dr-architecture_warm-standby](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_warm-standby.png)
+![dr-architecture_warm-standby](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/dr-architecture_warm-standby.png)
 
 DR リージョンにメインリージョンよりも低スペックなアプリケーションと DB を作成しておき、メインリージョンと DR リージョンの DB を定期的に同期しておく。
 
@@ -193,7 +193,7 @@ RPO は最後の同期時点である。
 
 ### マルチサイトアクティブ構成
 
-![dr-architecture_multi-site-active](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dr-architecture_multi-site-active.png)
+![dr-architecture_multi-site-active](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/dr-architecture_multi-site-active.png)
 
 DR リージョンにメインリージョンと同等のアプリケーションと DB を作成しておき、メインリージョンと DR リージョンの DB を定期的に同期しておく。
 

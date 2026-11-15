@@ -24,7 +24,7 @@ tags:
 
 基本的には、いずれのシェルも同じ仕組みである。
 
-![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell.png)
+![shell](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shell.png)
 
 > - [シェルの概念と機能](http://www.cc.kyoto-su.ac.jp/~hirai/text/shell.html)
 
@@ -152,7 +152,7 @@ echo $0 # foo.sh
 
 シェルは sh 系と csh 系に分かれ、zsh は sh 系の bash の後継でありながら csh 系の構文にも対応している。
 
-![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_history.png)
+![shell_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shell_history.png)
 
 > - [メジャーなshellの種類まとめ \| KENGOの気まぐれブログ](https://kengoyamamoto.com/%E3%83%A1%E3%82%B8%E3%83%A3%E3%83%BC%E3%81%AAshell%E3%81%AE%E7%A8%AE%E9%A1%9E%E3%81%BE%E3%81%A8%E3%82%81/)
 
@@ -221,7 +221,7 @@ $ echo $SHELL
 
 シェルでは、変数のスコープがプロセスの親子関係によって決まる。
 
-![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shell_variable_scope.png)
+![shell_variable_scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shell_variable_scope.png)
 
 > - [シェル変数と環境変数の違いをコマンドラインで確認する #Linux - Qiita](https://qiita.com/kure/items/f76d8242b97280a247a1)
 

@@ -884,7 +884,7 @@ spec:
 
 また、Pod の停止数がレプリカ数を下回らないようになる。
 
-![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_deployment_strategy.png)
+![kubernetes_deployment_strategy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_deployment_strategy.png)
 
 > - [Deployment の maxUnavailable と maxSurge : ロールアウト中の割合を設定する - kakakakakku blog](https://kakakakakku.hatenablog.com/entry/2021/09/06/173014)
 > - [kubernetesでのPodアップデート戦略 #container - Qiita](https://qiita.com/mochizuki875/items/239c0e93c30f720e687e#rollingupdate)
@@ -4446,7 +4446,7 @@ spec:
 
 #### ▼ terminationGracePeriodSeconds とは
 
-![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process.png)
+![pod_terminating_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/pod_terminating_process.png)
 
 Pod の終了プロセスを開始するまで待機時間を設定する。
 
@@ -4474,7 +4474,7 @@ spec:
 
 Pod 内にアプリ以外のコンテナ (istio-proxy など) がある場合、すべてのコンテナについて終了プロセスの時間を考慮する必要がある。
 
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/pod_terminating_process_istio-proxy.png)
 
 > - [istio-proxy 停止時の挙動 \| sreake.com \| 株式会社スリーシェイク](https://sreake.com/blog/istio-proxy-stop-behavior/)
 > - [KubernetesのPodを安全に終了する（istio-proxy編） - Carpe Diem](https://christina04.hatenablog.com/entry/k8s-graceful-stop-with-istio-proxy)

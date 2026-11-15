@@ -24,7 +24,7 @@ IstioOperator は執筆時点 (2025/03/06) で非推奨であり、代わりに 
 
 もし、IstioOperator と同じようなツールを使用したい場合、SailOperator を使用するとよい。
 
-![istio_istio-operator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-operator.png)
+![istio_istio-operator](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_istio-operator.png)
 
 > - [What is an Istio Operator?](https://tetrate.io/blog/what-is-istio-operator/)
 > - https://github.com/istio-ecosystem/sail-operator/blob/main/docs/README.md#migrating-from-istio-in-cluster-operator

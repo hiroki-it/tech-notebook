@@ -42,7 +42,7 @@ tags:
 
 ブラックボックステスト時は、外部 API へのドメインをモックマイクロサービスのドメインに切り替える。
 
-![microservices_blackbox-test_external-api-mock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_blackbox-test_external-api-mock.png)
+![microservices_blackbox-test_external-api-mock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_blackbox-test_external-api-mock.png)
 
 > - [How to Test Microservices](https://semaphore.io/blog/test-microservices)
 

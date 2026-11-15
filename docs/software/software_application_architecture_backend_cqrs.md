@@ -18,7 +18,7 @@ tags:
 
 ### CQRS とは
 
-![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cqrs.png)
+![cqrs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cqrs.png)
 
 『Command Query Responsibility Segregation (コマンドクエリ責務分離) 』の略。
 

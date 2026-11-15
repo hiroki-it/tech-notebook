@@ -22,7 +22,7 @@ ExternalDNS Controller は、ネットワークからのリクエストに DNS �
 
 Ingress Controller (例：aws-load-balancer-controller、glb-controller) と合わせて使用し、パブリックネットワークからのリクエストを ArgoCD のダッシュボード (argocd-server) へルーティング可能にする。
 
-![external-dns_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-dns_architecture.png)
+![external-dns_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/external-dns_architecture.png)
 
 > - [Self-hosted external DNS resolver for Kubernetes \| networkop](https://networkop.co.uk/post/2020-08-k8s-gateway/)
 

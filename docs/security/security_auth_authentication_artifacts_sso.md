@@ -35,7 +35,7 @@ Web サイトごとに認証フェーズと認可フェーズを行うのでは�
 
 ### SSO の仕組み
 
-![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sso.jpg)
+![sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/sso.jpg)
 
 1. API クライアント (あるいは認証プロキシ) が、HTTP リクエストに ID とパスワードを設定し、IP プロバイダーにリクエストを送信する。
 
@@ -108,7 +108,7 @@ API クライアントは、ID プロバイダーに資格情報 (例：クラ�
 - AWS Cognito (代わりに認証プロキシとしても使用できる)
 - Google Cloud Auth
 
-![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/auth0_sso.png)
+![auth0_sso](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/auth0_sso.png)
 
 > - [Auth0を使った認証基盤導入の取り組みとシングルログアウトの話 / ginzarails_vol35_presentation - Speaker Deck](https://speakerdeck.com/lmi/ginzarails-vol35-presentation?slide=25)
 

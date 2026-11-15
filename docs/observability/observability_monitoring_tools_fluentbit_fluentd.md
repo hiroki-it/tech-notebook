@@ -19,7 +19,7 @@ tags:
 
 ### アーキテクチャ
 
-![fluent-bit_fluentd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture.png)
+![fluent-bit_fluentd_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_fluentd_architecture.png)
 
 FluentBit/Fluentd は、インプットフェーズ、バッファーフェーズ、アウトプットレイヤーから構成される。
 
@@ -47,7 +47,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 バッファーは、ステージ、キュー、といったコンポーネントから構成される。ログは、『`*-*.*.flb`』という名前のチャンクとして扱われ、メモリやファイル上に保管される。
 
-![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_architecture_buffer.png)
+![fluent-bit_fluentd_architecture_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_fluentd_architecture_buffer.png)
 
 > - [クラウドにログを保管する仕組みから、敢えてKinesis Data Firehoseを外す - アルファテックブログ](https://www.alpha.co.jp/blog/202103_01)
 
@@ -61,7 +61,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 またメッセージキューによって、アウトプット先のレートリミットを超過しないように、一定の間隔でログを送信できる。
 
-![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_message-queue.png)
+![fluent-bit_fluentd_message-queue](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_fluentd_message-queue.png)
 
 > - [フォルシアのログ分析基盤チームがアーキテクチャを振り返る│FORCIA CUBE│フォルシア株式会社](https://www.forcia.com/blog/001316.html)
 
@@ -125,7 +125,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 さらに、エージェントはログを監視バックエンドに送信する。
 
-![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_agent-pattern.png)
+![fluent-bit_fluentd_agent-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_fluentd_agent-pattern.png)
 
 > - [Common Architecture Patterns with Fluentd and Fluent Bit](https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/)
 
@@ -196,7 +196,7 @@ FluentBit/Fluentd は、インプットフェーズ、バッファーフェー�
 
 アグリゲーターはログを集約し、監視バックエンドにログを送信する。
 
-![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
+![fluent-bit_fluentd_forwarder-aggregator-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_fluentd_forwarder-aggregator-pattern.png)
 
 > - [Common Architecture Patterns with Fluentd and Fluent Bit](https://fluentbit.io/blog/2020/12/03/common-architecture-patterns-with-fluentd-and-fluent-bit/)
 > - https://cloud.google.com/anthos/clusters/docs/attached/how-to/logging-and-monitoring#how_it_works

@@ -33,7 +33,7 @@ tags:
 
 ### Amazon EC2 のライフサイクルフェーズ
 
-![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_ec2_lifecycle_phase.png)
+![aws_ec2_lifecycle_phase](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_ec2_lifecycle_phase.png)
 
 Amazon EC2 のライフサイクルにはフェーズがある。
 
@@ -530,7 +530,7 @@ WantedBy=multi-user.target
 
 その後、Amazon Route 53、ALB を経由せず、そのまま Amazon EC2 へ向かう。
 
-![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssh-port-forward.png)
+![ssh-port-forward](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ssh-port-forward.png)
 
 <br>
 
@@ -558,7 +558,7 @@ $ openssl pkcs8 \
 
 AWS SSM Session Manager を使用して Amazon EC2 に接続し、ログインシェルを起動する。
 
-![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_session-manager.png)
+![ec2_session-manager](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ec2_session-manager.png)
 
 > - [Session Manager を使って Private EC2 にアクセスする方法 - galife](https://garafu.blogspot.com/2020/08/connect-private-ec2-with-ssm.html)
 > - [セッションマネージャー越しにSSHアクセスすると何が嬉しいのか \| DevelopersIO](https://dev.classmethod.jp/articles/ssh-through-session-manager/)
@@ -730,7 +730,7 @@ Amazon EC2 では、ブロックデバイスにルートデバイスボリュー
 
 #### ▼ AWS EBS ボリューム
 
-![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_ebs-backed-instance.png)
+![ec2_ebs-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ec2_ebs-backed-instance.png)
 
 名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。
 
@@ -748,7 +748,7 @@ AWS EBS で保管されているルートデバイスボリュームで、推奨
 
 #### ▼ インスタンスストアボリューム
 
-![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ec2_instance-store-backed-instance.png)
+![ec2_instance-store-backed-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ec2_instance-store-backed-instance.png)
 
 名前がややこしいが、Amazon EC2 における仮想ストレージに相当し、仮想ボリュームではない。
 
@@ -1203,7 +1203,7 @@ ENI が必要な AWS リソースには、デフォルトでプライマリーEN
 
 プライマリーENI は、Amazon EC2 から解除できない。
 
-![aws_eni_primary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_primary-eni.png)
+![aws_eni_primary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_eni_primary-eni.png)
 
 > - [Elastic network interfaces - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#eni-basics)
 > - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0
@@ -1214,7 +1214,7 @@ ENI が必要な AWS リソースには、デフォルトでプライマリーEN
 
 セカンダリーENI は、Amazon EC2 から解除できる。
 
-![aws_eni_secondary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eni_secondary-eni.png)
+![aws_eni_secondary-eni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_eni_secondary-eni.png)
 
 > - [Multiple network interfaces for your Amazon EC2 instances - Amazon Elastic Compute Cloud](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/scenarios-enis.html)
 > - https://crishantha.medium.com/handling-elastic-network-interface-s-enis-in-aws-part-01-9696fe6f6df0
@@ -1279,7 +1279,7 @@ ENI を経由して、同じ Amazon VPC 内の異なるインスタンスなど�
 
 Amazon VPC エンドポイントを経由すれば異なる Amazon VPC に送信できる。
 
-![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_traffic-mirroring.png)
+![vpc_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc_traffic-mirroring.png)
 
 > - [【ハンズオン】VPCトラフィクミラーリングを使ってEC2にログインせずにパケットキャプチャする方法を学ぼう#AWSSummit \| DevelopersIO](https://dev.classmethod.jp/articles/how-to-capture-packets-outside-ec2-with-vpc-traffic-mirroring/)
 > - [\[アップデート\] Amazon VPC Traffic Mirroring が Gateway Load Balancer へのトラフィックの送信をサポートしました \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-vpc-traffic-mirroring-supports-sending-mirrored-traffic-gateway-load-balancer/)

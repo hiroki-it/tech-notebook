@@ -33,7 +33,7 @@ tags:
 
 代わりに、Prometheus のダッシュボードで PromQL を実行し、読み出しエンドポイントからその都度データを取得できる。
 
-![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_remote-storage_architecture.png)
+![victoria-metrics_remote-storage_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/victoria-metrics_remote-storage_architecture.png)
 
 > - [VictoriaMetrics: Cluster version](https://docs.victoriametrics.com/Cluster-VictoriaMetrics.html#architecture-overview)
 > - [VictoriaMetrics: FAQ](https://docs.victoriametrics.com/FAQ.html#why-doesnt-victoriametrics-support-the-prometheus-remote-read-api)
@@ -53,7 +53,7 @@ VictoriaMetrics を監視バックエンドかつ監視フロントエンドと�
 
 各コンポーネントがメモリを使用する。
 
-![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_monitoring_architecture.png)
+![victoria-metrics_monitoring_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/victoria-metrics_monitoring_architecture.png)
 
 > - [モニタリング入門 / Monitoring Feat. VictoriaMetrics - Speaker Deck](https://speakerdeck.com/cybozuinsideout/monitoring-feat-victoriametrics?slide=10)
 > - [Use vmalert instead of Prometheus to monitor alarms - SoByte](https://www.sobyte.net/post/2022-05/vmalert/)
@@ -167,7 +167,7 @@ VictoriaMetrics は、クエリの実行前に、ディスクに永続化した�
 
 この断片数が多くなる程、読み出しで負荷がかかる。
 
-![victoria-metrics_cardinality](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/victoria-metrics_cardinality.png)
+![victoria-metrics_cardinality](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/victoria-metrics_cardinality.png)
 
 > - [Cardinality explorer](https://victoriametrics.com/blog/cardinality-explorer/)
 

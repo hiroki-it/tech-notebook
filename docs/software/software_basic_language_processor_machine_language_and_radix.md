@@ -20,7 +20,7 @@ tags:
 
 あらゆる情報を『0』と『1』の 2 進数を機械語として、CPU に対して、命令が実行される。
 
-![binary_cpu](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/binary_cpu.jpg)
+![binary_cpu](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/binary_cpu.jpg)
 
 <br>
 
@@ -32,9 +32,9 @@ tags:
 
 `8` 進数の 1 ケタは `2` 進数の 3 ケタ (=`3`bit) に相当し、`16` 進数の 1 ケタは `2` 進数の 4 ケタ (`4`bit) に相当する。
 
-![bit_byte](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bit_byte.png)
+![bit_byte](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/bit_byte.png)
 
-![radix_table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/radix_table.png)
+![radix_table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/radix_table.png)
 
 <br>
 
@@ -44,7 +44,7 @@ tags:
 
 これは、半角英数字一文字が８bit のデータサイズを持つからである。
 
-![one-byte-per-alphanumeric](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/one-byte-per-alphanumeric.png)
+![one-byte-per-alphanumeric](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/one-byte-per-alphanumeric.png)
 
 <br>
 
@@ -54,7 +54,7 @@ tags:
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p106](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p106.png)
+![p106](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p106.png)
 
 <br>
 
@@ -72,19 +72,19 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 実効アドレスの値そのものがレジスタの内容になり、メモリの番地は参照しない。
 
-![addressing_effective-address-to-register](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/addressing_effective-address-to-register.jpg)
+![addressing_effective-address-to-register](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/addressing_effective-address-to-register.jpg)
 
 #### ▼ 実効アドレスが指す語の内容をレジスタに設定する場合
 
 実効アドレスをメモリの番地として扱い、その番地に格納された語の内容がレジスタに設定される。
 
-![addressing_effective-address-word-to-register](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/addressing_effective-address-word-to-register.jpg)
+![addressing_effective-address-word-to-register](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/addressing_effective-address-word-to-register.jpg)
 
 #### ▼ レジスタの内容を実効アドレスに格納する場合
 
 設定命令とは逆向きに、レジスタの内容が実効アドレスの指す番地に書き込まれる。
 
-![addressing_register-content-to-effective-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/addressing_register-content-to-effective-address.jpg)
+![addressing_register-content-to-effective-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/addressing_register-content-to-effective-address.jpg)
 
 <br>
 
@@ -128,13 +128,13 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 00011100
 
-![shift_positive_logical-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_positive_logical-left.jpg)
+![shift_positive_logical-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_positive_logical-left.jpg)
 
 #### ▼ 負の数の場合
 
 11100100
 
-![shift_negative_logical-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_negative_logical-left.png)
+![shift_negative_logical-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_negative_logical-left.png)
 
 <br>
 
@@ -154,7 +154,7 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 00011100
 
-![shift_positive_logical-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_positive_logical-right.jpg)
+![shift_positive_logical-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_positive_logical-right.jpg)
 
 #### ▼ 負の数の場合 (計算はできない)
 
@@ -164,7 +164,7 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 こういう場合、算術シフトが使用される。
 
-![shift_negative_logical-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_negative_logical-right.png)
+![shift_negative_logical-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_negative_logical-right.png)
 
 ### 算術左シフト
 
@@ -190,13 +190,13 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 00011100
 
-![shift_positive_arithmetic-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_positive_arithmetic-left.png)
+![shift_positive_arithmetic-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_positive_arithmetic-left.png)
 
 #### ▼ 負の数の場合
 
 00011100
 
-![shift_negative_arithmetic-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_negative_arithmetic-left.png)
+![shift_negative_arithmetic-left](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_negative_arithmetic-left.png)
 
 <br>
 
@@ -216,13 +216,13 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 00011100
 
-![shift_positive_arithmetic-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_positive_arithmetic-right.png)
+![shift_positive_arithmetic-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_positive_arithmetic-right.png)
 
 #### ▼ 負の数の場合
 
 符号 bit をシフトせずに残し、空いた bit に符号 bit と同じ `1` を入れるため、負の数でも `-28` が `-14` になり、正しく『1/2』を計算できる。
 
-![shift_negative_arithmetic-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/shift_negative_arithmetic-right.png)
+![shift_negative_arithmetic-right](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/shift_negative_arithmetic-right.png)
 
 <br>
 
@@ -230,7 +230,7 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 ### 実行手順
 
-![machine-instruction_execution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine-instruction_execution.jpg)
+![machine-instruction_execution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/machine-instruction_execution.jpg)
 
 1. 16 進数が 2 進数に変換され、記号へ値が割り当てられる。 (ビット分割)
 
@@ -250,13 +250,13 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 命令の `20B3h` を 2 進数の `0010 0000 1011 0011` に変換すると、左から区切った bit の並びが命令の種類やレジスタの番号を表す。
 
-![machine-instruction_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine-instruction_structure.gif)
+![machine-instruction_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/machine-instruction_structure.gif)
 
 #### ▼ 記号への値の割り当て
 
 2 進数にした命令を命令語の形式に沿って OP、R、X、F、I の記号に割り当てることで、実効アドレスの計算方法を選ぶための値が決まる。
 
-![machine-instruction_fetch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/machine-instruction_fetch.gif)
+![machine-instruction_fetch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/machine-instruction_fetch.gif)
 
 <br>
 
@@ -268,7 +268,7 @@ CPU では、各データは 2 進法によって区別されている。CPU は
 
 『X=2』、『I = 1』より、表の網掛けの計算式を選択。
 
-![effective-address_formula](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/effective-address_formula.gif)
+![effective-address_formula](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/effective-address_formula.gif)
 
 #### ▼ 実効アドレスの計算の実行
 
@@ -340,13 +340,13 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 正規化した数式の符号、指数、仮数をそれぞれ決まったルールで変換し、32 bit の符号部、指数部、仮数部に順に並べると浮動小数点数になる。
 
-![floating-point_normalized-formula-to-floating-point](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/floating-point_normalized-formula-to-floating-point.png)
+![floating-point_normalized-formula-to-floating-point](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/floating-point_normalized-formula-to-floating-point.png)
 
 #### ▼ 浮動小数点数から正規化した数式への変換
 
 指数部と仮数部を調節し、できるだけ仮数部の上位桁へ 0 が入らないようにして、誤差を少なくすること。例えば、ある計算の結果が `0.012345×10^-3` だった場合、仮数部を 0.1～1 の範囲に収めるため、`0.12345×10^-4` に変更する。
 
-![floating-point_floating-point-to-normalized-formula](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/floating-point_floating-point-to-normalized-formula.png)
+![floating-point_floating-point-to-normalized-formula](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/floating-point_floating-point-to-normalized-formula.png)
 
 <br>
 
@@ -360,7 +360,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p067-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p067-1.png)
+![p067-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p067-1.png)
 
 <br>
 
@@ -374,7 +374,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p068](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p068.png)
+![p068](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p068.png)
 
 <br>
 
@@ -384,7 +384,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p069](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p069.png)
+![p069](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p069.png)
 
 <br>
 
@@ -394,7 +394,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p070-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p070-1.png)
+![p070-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p070-1.png)
 
 <br>
 
@@ -404,7 +404,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p070-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p070-2.png)
+![p070-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p070-2.png)
 
 <br>
 
@@ -414,7 +414,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p071](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p071.png)
+![p071](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p071.png)
 
 <br>
 
@@ -460,7 +460,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 3. 余りを並べ、答えは『1B』
 
-    ![radix_decimal-to-hexadecimal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/radix_decimal-to-hexadecimal.gif)
+    ![radix_decimal-to-hexadecimal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/radix_decimal-to-hexadecimal.gif)
 
 #### ▼ 小数
 
@@ -480,7 +480,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 **＊例＊**『109』
 
-![radix_decimal-to-binary](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/radix_decimal-to-binary.gif)
+![radix_decimal-to-binary](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/radix_decimal-to-binary.gif)
 
 #### ▼ 小数
 
@@ -538,7 +538,7 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 ### 論理式
 
-![logic-operation_list](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-operation_list.png)
+![logic-operation_list](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-operation_list.png)
 
 以下のベン図では、集合 A と集合 B は入力が『`1`』の場合、外側は入力が『`0`』の場合を表している。
 
@@ -550,9 +550,9 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 丸い記号が否定を表す。
 
-![logic-circuit_not_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_not_bit.png)
+![logic-circuit_not_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_not_bit.png)
 
-![logic-circuit_not](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_not.png)
+![logic-circuit_not](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_not.png)
 
 <br>
 
@@ -560,9 +560,9 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 `2` 個の bit を比較して、どちらも『`1`』なら『`1`』を出力。
 
-![logic-circuit_and_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_and_bit.png)
+![logic-circuit_and_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_and_bit.png)
 
-![logic-circuit_and](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_and.png)
+![logic-circuit_and](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_and.png)
 
 <br>
 
@@ -572,9 +572,9 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 ベン図では両方が『`1`』以外の場合を指しているが、回路の出力をうまく説明できない…。
 
-![logic-circuit_nand_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_nand_bit.png)
+![logic-circuit_nand_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_nand_bit.png)
 
-![logic-circuit_nand](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_nand.png)
+![logic-circuit_nand](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_nand.png)
 
 <br>
 
@@ -582,9 +582,9 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 `2` 個の bit を比較して、どちらかが『`1`』なら『`1`』を出力。
 
-![logic-circuit_or_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_or_bit.png)
+![logic-circuit_or_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_or_bit.png)
 
-![logic-circuit_or](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_or.png)
+![logic-circuit_or](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_or.png)
 
 <br>
 
@@ -592,9 +592,9 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 `2` 個の bit を比較して、どちらかだけが『`1`』なら『`1`』を出力。
 
-![logic-circuit_xor_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_xor_bit.png)
+![logic-circuit_xor_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_xor_bit.png)
 
-![logic-circuit_xor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_xor.png)
+![logic-circuit_xor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_xor.png)
 
 <br>
 
@@ -602,9 +602,9 @@ CPU は、数値に対し、特定の位置に小数点を打つ。
 
 `2` 個の bit を比較して、どちらも『`0`』なら『`1`』を出力。
 
-![logic-circuit_nor_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_nor_bit.png)
+![logic-circuit_nor_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_nor_bit.png)
 
-![logic-circuit_nor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-circuit_nor.png)
+![logic-circuit_nor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-circuit_nor.png)
 
 <br>
 
@@ -618,11 +618,11 @@ Set 側に初期値『`1`』が入力される。
 
 入力を『`0`』に変えても、両方の出力結果は変わらず、安定している。
 
-![flip-flop-circuit_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/flip-flop-circuit_2.png)
+![flip-flop-circuit_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/flip-flop-circuit_2.png)
 
 Reset 側に『1』を入力すると、両方の出力結果は変化する。
 
-![flip-flop-circuit_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/flip-flop-circuit_3.png)
+![flip-flop-circuit_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/flip-flop-circuit_3.png)
 
 <br>
 
@@ -660,7 +660,7 @@ Reset 側に『1』を入力すると、両方の出力結果は変化する。
 
 **＊例題＊**
 
-![logic-operation_and](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-operation_and.jpg)
+![logic-operation_and](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-operation_and.jpg)
 
 <br>
 
@@ -672,7 +672,7 @@ Reset 側に『1』を入力すると、両方の出力結果は変化する。
 
 実効アドレスの値とレジスタの内容を bit ごとに OR 演算し、どちらかが `1` の bit を `1` とした結果がレジスタに格納される。
 
-![logic-operation_or](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-operation_or.jpg)
+![logic-operation_or](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-operation_or.jpg)
 
 <br>
 
@@ -680,7 +680,7 @@ Reset 側に『1』を入力すると、両方の出力結果は変化する。
 
 実効アドレスの値とレジスタの内容を bit ごとに EOR 演算し、値が異なる bit だけを `1` とした結果がレジスタに格納される。
 
-![logic-operation_xor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/logic-operation_xor.jpg)
+![logic-operation_xor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/logic-operation_xor.jpg)
 
 <br>
 

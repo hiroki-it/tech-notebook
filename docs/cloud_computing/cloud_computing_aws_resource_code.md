@@ -26,7 +26,7 @@ CodeCommit、CodeBuild、CodeDeploy を連携させて AWS に対する CI/CD �
 
 CodeCommit は、他のコード管理サービスで代用できる。
 
-![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-pipeline.png)
+![code-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/code-pipeline.png)
 
 #### ▼ CodeCommit
 
@@ -150,7 +150,7 @@ artifacts:
 
 CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージェントが S3 バケットからソースコードの圧縮ファイルをプルする。
 
-![code-deploy_agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/code-deploy_agent.png)
+![code-deploy_agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/code-deploy_agent.png)
 
 > - [Working with on-premises instances for CodeDeploy - AWS CodeDeploy](https://docs.aws.amazon.com/codedeploy/latest/userguide/instances-on-premises.html)
 > - [CodeDeploy をオンプレミス環境で利用してみる - ようへいの日々精進XP](https://inokara.hateblo.jp/entry/2015/07/15/175955)
@@ -225,7 +225,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 #### ▼ ブルー/グリーンデプロイメントの仕組み
 
-![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/blue-green-deployment.jpg)
+![blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/blue-green-deployment.jpg)
 
 以下の手順でデプロイする。
 

@@ -37,7 +37,7 @@ TCP/IP モデルで使用されるプロトコルのうち、もっとも代表�
 
 暗号化プロトコルを使用している場合は、`L6` にて `L7` のアプリケーションデータを暗号化/復号する。
 
-![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/encryption_protocol.png)
 
 <br>
 
@@ -45,7 +45,7 @@ TCP/IP モデルで使用されるプロトコルのうち、もっとも代表�
 
 送信元で作成されたパケットは、非カプセル化されながら、通信機器に認識される。
 
-![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-ip_structure.png)
+![tcp-ip_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/tcp-ip_structure.png)
 
 > - [ルーター - Wikipedia](https://ja.wikipedia.org/wiki/%E3%83%AB%E3%83%BC%E3%82%BF%E3%83%BC)
 

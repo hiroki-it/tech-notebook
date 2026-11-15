@@ -21,7 +21,7 @@ tags:
 
 Karpenter は、Karpenter Controller から構成される。
 
-![karpenter_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_architecture.png)
+![karpenter_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/karpenter_architecture.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#karpenter-controller
 
@@ -39,7 +39,7 @@ Karpenter Controller は、Karpenter の Custom Controller として、カスタ
 
 なお、NodePool 配下の Amazon EC2 Node は起動テンプレートから作成するが、起動テンプレート自体は Amazon EC2 Node 作成後に削除する。
 
-![karpenter_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_controller.png)
+![karpenter_controller](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/karpenter_controller.png)
 
 > - https://karpenter.sh/preview/reference/threat-model/#architecture--actors
 > - [Auto ALB Target Group registration · Issue #1381 · aws/karpenter-provider-aws · GitHub](https://github.com/aws/karpenter-provider-aws/issues/1381#issuecomment-1046299921)
@@ -259,7 +259,7 @@ Karpenter では、作成される Node のスペックを事前に指定する�
 
 そのため、必要なスペックの上限がわかっている場合はもちろん、上限を決めきれないような要件 (例：負荷が激しく変化するようなシステム) でも合っている。
 
-![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/karpenter_vs_cluster-autoscaler.png)
 
 > - [Karpenter - умное масштабирование Kubernetes кластера](https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru)
 
@@ -273,7 +273,7 @@ cluster-autoscaler はクラウドプロバイダーによらず使用できる�
 
 そのため、より柔軟な Node 数にスケーリングでき、マネージド Node グループを介さない分 Node の起動が早い。
 
-![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/karpenter_vs_cluster-autoscaler.png)
 
 > - https://awstip.com/this-code-works-autoscaling-an-amazon-eks-cluster-with-karpenter-part-1-3-40c7bed26cfd
 > - [Karpenter - умное масштабирование Kubernetes кластера](https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru)

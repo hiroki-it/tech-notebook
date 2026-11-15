@@ -21,7 +21,7 @@ Grafana OnCall は、監視ツールから受信したアラートをグルー�
 
 Grafana OnCall は、Grafana OnCall Engine、DB から構成されている。
 
-![grafana-oncall_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/grafana-oncall_architecture.png)
+![grafana-oncall_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/grafana-oncall_architecture.png)
 
 > - https://github.com/grafana/oncall/blob/dev/docs/img/architecture_diagram.png
 

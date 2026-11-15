@@ -21,13 +21,13 @@ tags:
 
 要件定義から運用・保守までの工程を、上流工程から下流工程に向かって順番に進める開発手法である。
 
-![waterfall-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/waterfall-model.png)
+![waterfall-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/waterfall-model.png)
 
 #### ▼ 外部設計の詳細
 
 外部設計では、ユーザ向けにソフトウェアを設計する。
 
-![external-design_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/external-design_detail.png)
+![external-design_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/external-design_detail.png)
 
 <br>
 
@@ -39,7 +39,7 @@ tags:
 
 UI や API のモックを作成することになる。
 
-![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p456.png)
+![p456](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p456.png)
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -65,9 +65,9 @@ UI や API のモックを作成することになる。
 
 Visual Basic などの開発支援ツールを使用して、短期間で設計～テストまでを繰り返す。
 
-![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p462-1.png)
+![p462-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p462-1.png)
 
-![p462-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p462-2.png)
+![p462-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p462-2.png)
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -79,7 +79,7 @@ Visual Basic などの開発支援ツールを使用して、短期間で設計�
 
 ソフトウェアをいくつかのサブシステムに分割し、ウォーターフォール型開発で各サブシステムを開発していく。
 
-![p457](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p457.png)
+![p457](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p457.png)
 
 <br>
 
@@ -91,7 +91,7 @@ Visual Basic などの開発支援ツールを使用して、短期間で設計�
 
 スパイラルモデルよりも短い期間で、設計～テストまでを繰り返す。
 
-![p463](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p463.png)
+![p463](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p463.png)
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -115,7 +115,7 @@ Visual Basic などの開発支援ツールを使用して、短期間で設計�
 
 そのため、SRE の実践になる。
 
-![full-cycle-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/full-cycle-engineering.png)
+![full-cycle-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/full-cycle-engineering.png)
 
 <br>
 
@@ -139,7 +139,7 @@ Visual Basic などの開発支援ツールを使用して、短期間で設計�
 
 リバースエンジニアリング
 
-![p459](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p459.png)
+![p459](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/p459.png)
 
 > - https://www.amazon.co.jp/dp/4297124513
 

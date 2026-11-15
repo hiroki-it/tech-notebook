@@ -21,7 +21,7 @@ tags:
 
 Helm は、helm クライアント、チャートレジストリ、複数のチャートリポジトリ、チャート、といったコンポーネントから構成される。
 
-![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/helm_architecture.png)
+![helm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/helm_architecture.png)
 
 > - [Architecture - Introduction to Helm Lesson \| QA Learning Platform](https://cloudacademy.com/course/introduction-to-helm-1034/helm-architecture/)
 > - [Glossary \| Helm](https://helm.sh/ja/docs/glossary/)

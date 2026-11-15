@@ -43,7 +43,7 @@ AWS AMI の作成後、Amazon EC2 を削除する。
 
 既存の Amazon EC2 のバックアップツールには使用できない。
 
-![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packer_aws.png)
+![packer_aws](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/packer_aws.png)
 
 > - [Migrating from HashiCorp Packer to EC2 Image Builder \| AWS Cloud Operations Blog](https://aws.amazon.com/jp/blogs/mt/migrating-from-hashicorp-packer-to-ec2-image-builder/)
 > - [Packer初歩的な利用方法 #AWS - Qiita](https://qiita.com/mitzi2funk/items/c963483a11a1912e3c44#01-2-use-case)

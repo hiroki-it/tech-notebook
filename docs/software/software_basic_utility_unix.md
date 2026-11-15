@@ -1824,7 +1824,7 @@ $ mkdir -p /<ディレクトリ名1>/<ディレクトリ名2>
 
 物理メモリでのアドレス空間管理方法の一種。
 
-![memory_swapping](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_swapping.png)
+![memory_swapping](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_swapping.png)
 
 <br>
 

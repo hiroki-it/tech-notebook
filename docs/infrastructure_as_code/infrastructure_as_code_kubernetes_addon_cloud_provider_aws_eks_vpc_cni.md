@@ -20,7 +20,7 @@ Amazon VPC CNI が Amazon EKS Cluster 内にない場合、EC2 ワーカーNode 
 
 そのため、何も通信ができなくなるため、Pod や Service に IP アドレスが自動的に割り当てられないため、必須である。
 
-![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_eks-vpc-cni.png)
+![aws_eks-vpc-cni](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws_eks-vpc-cni.png)
 
 > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
 > - https://docs.aws.amazon.com/eks/latest/userguide/pod-networking.html
@@ -610,7 +610,7 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
 執筆時点 (2022/09/24) の Fargate では、インスタンスタイプに限らず Node 当たり `1` 個しか Pod をスケジューリングさせられない。
 
-![aws-eks-vpc-cni-addon_standard-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode.png)
+![aws-eks-vpc-cni-addon_standard-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni-addon_standard-mode.png)
 
 > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
 > - https://itnext.io/kubernetes-is-hard-why-eks-makes-it-easier-for-network-and-security-architects-ea6d8b2ca965
@@ -635,7 +635,7 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
     反対に、NodeのENIを解放し、ENIのプールに戻す。
 
-    ![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
+    ![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
 
 3. kubelet は、セカンダリープライベート IP アドレスの `ADD`/`DEL` リクエストを、CNI バイナリに送信する。
 
@@ -645,7 +645,7 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
     必要に応じて、
 
-    ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
+    ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
     > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
     > - [amazon-vpc-cni-k8s/docs/cni-proposal.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam)
@@ -705,7 +705,7 @@ ENI の個数を増やすごとに、`16` 個分の IP アドレス (サブネ�
 
 Prefix delegation モードを使用する場合、Node を配置する AWS サブネットの CIDR を `*.*.*.*/28` よりも大きくしておく必要がある。
 
-![aws-eks-vpc-cni_prefix-delegation-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws-eks-vpc-cni_prefix-delegation-mode.png)
+![aws-eks-vpc-cni_prefix-delegation-mode](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni_prefix-delegation-mode.png)
 
 > - [Prefix Mode for Linux - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/prefix-mode/index_linux/)
 > - [Amazon VPC CNI プラグインでノード 1 台に配置可能な Pod 数を増やすために \| Amazon Web Services ブログ](https://aws.amazon.com/jp/blogs/news/amazon-vpc-cni-increases-pods-per-node-limits/)

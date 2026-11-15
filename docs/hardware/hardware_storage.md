@@ -52,9 +52,9 @@ Google Drive のストリーミング機能では、仮想ドライブをロー�
 
 断片化されたデータ領域を整理整頓する。
 
-![p184-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p184-1.png)
+![p184-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/p184-1.png)
 
-![p184-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p184-2.png)
+![p184-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/p184-2.png)
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -85,7 +85,7 @@ Google Drive のストリーミング機能では、仮想ドライブをロー�
   </tbody>
 </table>
 
-![raid_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/raid_types.png)
+![raid_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/raid_types.png)
 
 > - https://www.pro.logitec.co.jp/houjin/usernavigation/hddssd/20190809/
 

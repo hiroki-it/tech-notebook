@@ -21,7 +21,7 @@ tags:
 
 Docker は、ホスト OS、Docker コンテナ (ベースイメージ、コンテナイメージレイヤー、コンテナレイヤー) といったコンポーネントから構成される。
 
-![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker_architecture.png)
+![docker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker_architecture.png)
 
 > - https://ragin.medium.com/docker-what-it-is-how-images-are-structured-docker-vs-vm-and-some-tips-part-1-d9686303590f
 
@@ -48,7 +48,7 @@ namespace では、カーネルを分離できるため、カーネルの要素 
 
 #### ▼ イメージレイヤー
 
-![container-image_build](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-image_build.png)
+![container-image_build](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/container-image_build.png)
 
 イメージレイヤーの実体は、`/var/lib/docker/overlay2` ディレクトリ配下にハッシュ値の名前からなるファイルとして保管されている。
 
@@ -74,7 +74,7 @@ $ docker container inspect foo-container -f "{{json .GraphDriver.Data}}" | jq .
 
 コンテナイメージからコンテナを作成するときに、コンテナイメージレイヤーのうえにコンテナレイヤーが積み重ねられる。
 
-![container-image_container-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/container-image_container-layer.png)
+![container-image_container-layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/container-image_container-layer.png)
 
 > - [Dockerのイメージとコンテナの違い \| CodeCampus](https://blog.codecamp.jp/programming-docker-image-container)
 
@@ -118,7 +118,7 @@ root ユーザーで実行したコンテナのこと。
 
 docker クライアントは、`docker` コマンドを使用して docker デーモン API をコールできる。
 
-![docker-client](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-client.png)
+![docker-client](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker-client.png)
 
 > - https://www.slideshare.net/zembutsu/docker-underlying-and-containers-lifecycle#8
 
@@ -134,7 +134,7 @@ docker クライアントに docker デーモン API を公開する。
 
 クライアントが `docker` コマンドを実行することで、docker デーモン API がコールされ、コマンドに沿ってコンテナが操作される。
 
-![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-daemon.png)
+![docker-daemon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtualization/docker-daemon.png)
 
 <br>
 

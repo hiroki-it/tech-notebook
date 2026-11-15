@@ -31,7 +31,7 @@ HAProxy は、frontend セクションでクライアントからのリクエス
 
 `L4` ロードバランサーとして使用できる。
 
-![haproxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/haproxy_architecture.png)
+![haproxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/haproxy_architecture.png)
 
 > - https://www.serverlab.ca/tutorials/linux/network-services/haproxy-loadbalancer-ubuntu-14-server/
 

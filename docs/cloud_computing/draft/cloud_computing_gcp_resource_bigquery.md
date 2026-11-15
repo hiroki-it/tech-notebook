@@ -19,7 +19,7 @@ description: BigQueryの知見を記録しています。
 
 可視化には BI ツール (例：Google Cloud Looker) が必要になる。
 
-![bigquery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bigquery.png)
+![bigquery](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/bigquery.png)
 
 > - https://eh-career.com/engineerhub/entry/2022/12/22/093000
 

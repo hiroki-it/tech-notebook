@@ -1220,7 +1220,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 たとえば 1000 件のイベントがある集約でも、あらかじめ 800 件目時点の状態を保存しておけば、オブジェクトの最新の状態を取得する際には残り 200 件の履歴だけを適用すればよい。
 
-![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1.png)
+![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-1.png)
 
 ### 21-7-2 スナップショットの作成タイミング
 
@@ -1255,7 +1255,7 @@ Date:   Sun Jan 3 10:15:30 2023 +0900
 
 新しいイベントを保存する際に、再構築時のイベント数が閾値の 100 件を超えていれば、同じトランザクション内でイベントストアがスナップショットストアにスナップショットを保存する。
 
-![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png)
+![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-7-2.png)
 
 ### 21-7-4 スナップショットの導入検討
 
@@ -1556,7 +1556,7 @@ BookRecommendation を取得するためのクエリモデル設計例として�
 3. イベントから必要情報を抽出する
 4. クエリモデルを更新する
 
-![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5.png)
+![software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/software_application_architecture_backend_domain_driven_design_practice_domain_event_sourcing_21-8-5.png)
 
 ### 21-8-6 クエリサイドのデータストアの選択
 

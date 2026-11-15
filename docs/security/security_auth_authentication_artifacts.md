@@ -158,7 +158,7 @@ tags:
 
 #### ▼ ベーシック認証の仕組み
 
-![authentication_basic](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/authentication_basic.png)
+![authentication_basic](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/authentication_basic.png)
 
 <table>
   <thead>

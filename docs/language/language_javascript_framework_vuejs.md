@@ -52,7 +52,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 4. この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。
 
-    ![vue_mvvm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_mvvm.png)
+    ![vue_mvvm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_mvvm.png)
 
 ### 親子コンポーネント間のデータ渡し
 
@@ -64,9 +64,9 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 この仕組みを、Props Down, Events Up という。
 
-![vue_two-way-data-binding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_two-way-data-binding.png)
+![vue_two-way-data-binding](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_two-way-data-binding.png)
 
-![component-tree_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/component-tree_communication.png)
+![component-tree_communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/component-tree_communication.png)
 
 <br>
 
@@ -114,7 +114,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 #### (1-2) 【ViewModel】データの初期化を実行する Vue コンストラクタ関数 (`index.js`)
 
-![vue-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-instance.png)
+![vue-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue-instance.png)
 
 Vue コンストラクタ関数を使用して、インスタンス化することによって、ルート Vue インスタンスが作成される。
 
@@ -314,7 +314,7 @@ class Foo {
 
 #### ▼ `v-on:` とは
 
-![vue_emit_v-on](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_emit_v-on.png)
+![vue_emit_v-on](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_emit_v-on.png)
 
 View (`template` タグ部分) のイベントを、ViewModel (`script` タグ部分) のイベントハンドラ関数 (`methods:` 内にある関数) やインライン JS ステートメントにバインディングし、イベントが発火した時点でイベントハンドラ関数をコールする。
 

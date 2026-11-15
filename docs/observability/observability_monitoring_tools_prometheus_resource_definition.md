@@ -969,7 +969,7 @@ Prometheus は、Pod から直接的にデータポイントを収集できる�
 - Kubernetes コンポーネント (例：kube-apiserver、kubelet に内蔵された cAdvisor など)
 - Prometheus の Exporter (例：Node Exporter、kube-state-metrics など)
 
-![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor.png)
+![prometheus-operator_service-monitor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus-operator_service-monitor.png)
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
@@ -1209,7 +1209,7 @@ metadata:
 
 #### ▼ matchLabels
 
-![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/prometheus-operator_service-monitor_match-labels.png)
+![prometheus-operator_service-monitor_match-labels](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/prometheus-operator_service-monitor_match-labels.png)
 
 収集の対象とする Service に付与された `.metadata.labels` キーを設定する。
 

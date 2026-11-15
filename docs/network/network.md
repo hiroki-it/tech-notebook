@@ -19,7 +19,7 @@ tags:
 
 自宅内 LAN、学内 LAN、企業内 LAN、企業 WAN など、さまざまなネットワークがあり、インターネットは、それぞれのネットワークを互いに接続しているネットワークである。
 
-![network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network.png)
+![network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/network.png)
 
 <br>
 
@@ -43,7 +43,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 反対に、サーバーから流出する方向をアウトバウンドという。
 
-![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/inbound_outbound.png)
+![inbound_outbound](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/inbound_outbound.png)
 
 > - https://www.amazon.co.jp/dp/B0043D2EKO/
 > - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
@@ -56,7 +56,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 反対に、通信が受信される後半の位置を相対的にダウンストリームという。
 
-![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/upstream_downstream.png)
+![upstream_downstream](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/upstream_downstream.png)
 
 > - https://www.amazon.co.jp/dp/B0043D2EKO/
 > - https://www.oreilly.com/library/view/http-the-definitive/1565925092/ch03s01.html
@@ -119,7 +119,7 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 他からの影響を受けたスループットを、特に『実効スループット』という。
 
-![transmission-speed](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transmission-speed.png)
+![transmission-speed](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/transmission-speed.png)
 
 > - https://techtarget.itmedia.co.jp/tt/news/2211/07/news04.html
 > - [スループットとレイテンシー - コンピュータネットワークパフォーマンスの違い - AWS](https://aws.amazon.com/jp/compare/the-difference-between-throughput-and-latency/#seo-faq-pairs#relationship-between-bandwidth-latency-and-throughput)
@@ -141,13 +141,13 @@ WAN と比較して、通信の利用者が限定されていないため、サ�
 
 とあるネットワーク地点でのスループットのこと。
 
-![traffic](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traffic.png)
+![traffic](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/traffic.png)
 
 > - [トラフィック \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/Keyword/20070222/262872/)
 
 総務省のパケットペイロードで、日本のブロードバンド大手 5 社の総トラフィックを年次でグラフ化したものがある。
 
-![traffic_graph](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/traffic_graph.png)
+![traffic_graph](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/traffic_graph.png)
 
 > - [トラフィック年3割増でも大丈夫、光インターネットの姿 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/00525/112900001/)
 

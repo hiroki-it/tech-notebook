@@ -101,7 +101,7 @@ AWS リソースで発生したメトリクスの元になるデータポイン�
 
 Amazon CloudWatch は、データポイントからメトリクスの元になるデータポイントを作成しつつ、特定のグループ (例：ディメンション、名前空間) に集約できる。
 
-![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/metrics_namespace_dimension.png)
+![metrics_namespace_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/metrics_namespace_dimension.png)
 
 > - [Metrics concepts - Amazon CloudWatch](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html)
 > - https://www.slideshare.net/AmazonWebServicesJapan/20190326-aws-black-belt-online-seminar-amazon-cloudwatch#18
@@ -134,7 +134,7 @@ Amazon CloudWatch は、データポイントからメトリクスの元にな�
 
 Amazon CloudWatch Metrics 上では、各集約を以下のように確認できる。
 
-![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudwatch_namespace_metric_dimension.png)
+![cloudwatch_namespace_metric_dimension](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/cloudwatch_namespace_metric_dimension.png)
 
 > - [\[アップデート\] CloudWatch Logs メトリクスフィルターでディメンションがサポートされました！ \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-cloudwatch-logs-announces-dimension-support-for-metric-filters/)
 

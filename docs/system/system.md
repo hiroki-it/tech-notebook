@@ -19,7 +19,7 @@ tags:
 
 ソフトウェア (OS、ミドルウェア、アプリケーション) とハードウェアの要素と合わせたグループのこと。
 
-![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software.png)
+![software](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/software.png)
 
 > - [ITインフラの全体像を理解しよう \| 新人エンジニアのためのインフラ入門 ーBFT道場 Think IT支部 \| Think IT（シンクイット）](https://thinkit.co.jp/article/11526)
 
@@ -29,7 +29,7 @@ tags:
 
 ユーザーの操作による命令が、ソフトウェアを経由して、ハードウェアに伝わるまでを以下に示す。
 
-![software_hardware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_hardware.png)
+![software_hardware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/software_hardware.png)
 
 <br>
 
@@ -45,7 +45,7 @@ tags:
 
 そのため、Web/App/DB サーバーではなく、仮想 Web/App/DB 環境と呼ぶほうが適切かもしれない。
 
-![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-server_app-server_db-server.png)
+![web-server_app-server_db-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/web-server_app-server_db-server.png)
 
 > - http://www.iwass.co.jp/dev/devweb.html
 
@@ -182,7 +182,7 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 #### ▼ ロードバランシング
 
-![forward-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/forward-proxy_reverse-proxy.png)
+![forward-proxy_reverse-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/forward-proxy_reverse-proxy.png)
 
 <table>
   <thead>
@@ -211,7 +211,7 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 以前に Web サーバーが返却した静的コンテンツのキャッシュを作成する。
 
-![proxy-server_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/proxy-server_cache.png)
+![proxy-server_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/proxy-server_cache.png)
 
 <table>
   <thead>
@@ -250,7 +250,7 @@ Web サーバーとは異なり、静的ファイル (例：`html` ファイル�
 
 フォワードプロキシサーバーはプロバイダの会社に、リバースプロキシサーバーはリクエスト先の社内ネットワークに配置されている。
 
-![proxy-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/proxy-server.png)
+![proxy-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/proxy-server.png)
 
 #### ▼ クラウド上の場合
 

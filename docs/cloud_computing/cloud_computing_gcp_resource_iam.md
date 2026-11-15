@@ -244,7 +244,7 @@ GoogleCloud 外リソース (例：AWS、Azure、Kubernetes など) から Googl
 7. GoogleCloud 以外リソースは、トークンを使用して GoogleCloud リソースのサービスアカウントに紐づく。
 8. GoogleCloud リソースの API にリクエストを送信できるようになる。
 
-![google-cloud_workload-identity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google-cloud_workload-identity.png)
+![google-cloud_workload-identity](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/google-cloud_workload-identity.png)
 
 > - [Workload Identity Federationを図で理解する - Carpe Diem](https://christina04.hatenablog.com/entry/workload-identity-federation)
 > - [GKE のワークロードから GCP サービスへ 安全 にアクセスする 〜 Workload Identity 入門 〜](https://zenn.dev/k6s4i53rx/articles/18a72c2db8c9e9)

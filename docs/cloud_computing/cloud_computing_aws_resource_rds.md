@@ -144,7 +144,7 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 ### 『保留中の変更』『保留中のメンテナンス』
 
-![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance.png)
+![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds_pending-maintenance.png)
 
 ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWS が定期的に実施するハードウェア/OS/DB エンジンの強制バージョンアップは『保留中のメンテナンス』として表示される。
 
@@ -154,7 +154,7 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 補足として保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
 
-![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_pending-maintenance_action.png)
+![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds_pending-maintenance_action.png)
 
 > - [【速報】Amazon RDS：メンテナンスへの柔軟な対応が可能に（pending-maintenance） \| DevelopersIO](https://dev.classmethod.jp/articles/rds-pending-maintenance-actions/)
 
@@ -274,7 +274,7 @@ $ aws rds modify-db-instance \
     <tr>
       <td>インスタンスクラス</td>
       <td>あり</td>
-      <td>・<code>2</code> 個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかるとおり、長いダウンタイム (約 <code>6</code>～<code>8</code> 分) が発生する。そのため、フェイルオーバーを利用してダウンタイムを最小化する。<br>・<a href="https://dev.classmethod.jp/articles/rds-scaleup-instancetype/">https://dev.classmethod.jp/articles/rds-scaleup-instancetype/</a> <br>・プライマリーインスタンスのイベント<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_primary-instance.png" alt="rds_change-instance-class_primary-instance"><br>・リードレプリカのイベント<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_change-instance-class_read-replica.png" alt="rds_change-instance-class_read-replica"></td>
+      <td>・<code>2</code> 個のインスタンスで同時にインスタンスクラスを変更すると、次のようなイベントを確認できる。インスタンスが複数回再起動することからわかるとおり、長いダウンタイム (約 <code>6</code>～<code>8</code> 分) が発生する。そのため、フェイルオーバーを利用してダウンタイムを最小化する。<br>・<a href="https://dev.classmethod.jp/articles/rds-scaleup-instancetype/">https://dev.classmethod.jp/articles/rds-scaleup-instancetype/</a> <br>・プライマリーインスタンスのイベント<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds_change-instance-class_primary-instance.png" alt="rds_change-instance-class_primary-instance"><br>・リードレプリカのイベント<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds_change-instance-class_read-replica.png" alt="rds_change-instance-class_read-replica"></td>
     </tr>
     <tr>
       <td>サブネットグループ</td>
@@ -383,7 +383,7 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 Amazon RDS プロキシは、Amazon RDS の同時接続の上限数を考慮しつつ、接続プールから非アクティブな接続を再利用するため、アプリケーションが Amazon RDS の同時接続の上限数を超えて接続することがない。
 
-![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy.png)
+![aws_rds-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_rds-proxy.png)
 
 > - [【RDS】AWSサービスしりとりリレー 第11日目 - DENET 技術ブログ](https://blog.denet.co.jp/service-relay-2021-0711/)
 > - https://blog.sgnet.co.jp/2020/10/java-db.html
@@ -400,7 +400,7 @@ Amazon RDS プロキシは、Amazon RDS の同時接続の上限数を考慮し�
 
 Amazon RDS には DB 接続の上限数があり、前段に Amazon RDS プロキシーがないとすぐに上限数に達してしまう。
 
-![aws_rds-proxy_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_rds-proxy_lambda.png)
+![aws_rds-proxy_lambda](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_rds-proxy_lambda.png)
 
 > - [Lambda+RDSはアンチパターン #AWS - Qiita](https://qiita.com/teradonburi/items/86400ea82a65699672ad)
 

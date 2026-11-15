@@ -271,7 +271,7 @@ done
 
 カーネルは、受け取ったリクエストをルーティングやコントローラーアクションに渡し、その結果をレスポンスとして返すアプリケーションの中心である。
 
-![symfony_http-kernel_request-response](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/symfony_http-kernel_request-response.png)
+![symfony_http-kernel_request-response](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/symfony_http-kernel_request-response.png)
 
 #### ▼ カーネルに必要なオブジェクト
 
@@ -434,7 +434,7 @@ $request->get('foo');
 
 HttpKernel は、リクエストを RouterListener や ControllerResolver などに順番に渡してコントローラーと引数を決定し、コントローラーの実行結果をレスポンスとして返す。
 
-![symfony_http-kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/symfony_http-kernel_architecture.png)
+![symfony_http-kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/symfony_http-kernel_architecture.png)
 
 <br>
 

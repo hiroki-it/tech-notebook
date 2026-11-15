@@ -241,7 +241,7 @@ rate(<Counter型メトリクス名>[1h])
 
 **例**
 
-![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
+![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/istio_request_duration_milliseconds_sum.png)
 
 `reporter="source"` の場合、送信元 istio-proxy からメトリクスを取得することになり、宛先 istio-proxy の先にあるアプリがレスポンスを返信する平均レスポンスタイムを集約する。
 
@@ -267,7 +267,7 @@ rate(istio_request_duration_milliseconds_sum{reporter="destination"}[5m])/ rate(
 
 **例**
 
-![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
+![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/istio_request_duration_milliseconds_sum.png)
 
 400 ステータスのレスポンスを集約する。
 
@@ -294,7 +294,7 @@ sum(rate(istio_requests_total{reporter="destination", response_code=~"4.*"}[5m])
 
 **例**
 
-![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_request_duration_milliseconds_sum.png)
+![istio_request_duration_milliseconds_sum](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/istio_request_duration_milliseconds_sum.png)
 
 レスポンスのなかったリクエスト数 (`0` ステータス) を集約する。
 

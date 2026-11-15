@@ -19,7 +19,7 @@ tags:
 
 ### リクエスト／レスポンス方式とは
 
-![service_request_response](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_request_response.png)
+![service_request_response](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_request_response.png)
 
 マイクロサービス間で同期的に双方向で通信する。
 
@@ -95,7 +95,7 @@ Saga オーケストレーターの宛先マイクロサービスの間にメッ
 
 ### パブリッシュ／サブスクライブ方式とは
 
-![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_event_driven.png)
+![service_event_driven](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_event_driven.png)
 
 マイクロサービスからマイクロサービスに非同期的に単方向で通信する。
 

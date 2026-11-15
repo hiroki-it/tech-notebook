@@ -99,7 +99,7 @@ resource "aws_backup_selection" "this" {
 
 ## 05. リージョン間のバックアップコピー
 
-![backup_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/backup_multi-region.png)
+![backup_multi-region](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/backup_multi-region.png)
 
 リージョン内の AWS リソースで障害が発生すると、データが失われる可能性もある。
 

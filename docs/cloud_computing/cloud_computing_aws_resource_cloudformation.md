@@ -78,7 +78,7 @@ CloudFormation では、通常の Stack を作成したリージョンでプロ�
 
 StackSets を使用すると、複数のリージョンのみでなく、複数のアカウント間でもプロビジョニングを実行できる。
 
-![cloudformation_stacksets](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudformation_stacksets.png)
+![cloudformation_stacksets](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/cloudformation_stacksets.png)
 
 > - [Managing stacks across accounts and Regions with StackSets - AWS CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/what-is-cfnstacksets.html)
 > - https://dev.classmethod.jp/articles/introducing-cloudformation-stacksets/clou

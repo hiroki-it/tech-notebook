@@ -67,7 +67,7 @@ AWS のクラウドメッセージブローカー (例：AWS MQ) よりも機能
 
 異なる VPC 間でも、メッセージキューを同期できる。
 
-![sqs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sqs.jpg)
+![sqs](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/sqs.jpg)
 
 > - https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-difference-from-amazon-mq-sns.html
 

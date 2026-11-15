@@ -162,7 +162,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 いずれかの稼働中インスタンスで障害が発生した場合、障害が発生したインスタンスをロードバランサーから切り離す。
 
-![dual-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dual-system.png)
+![dual-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/dual-system.png)
 
 > - [基本情報技術者平成29年秋期問13 デュアルシステムの説明｜基本情報技術者試験.com](https://www.fe-siken.com/kakomon/29_aki/q13.html)
 
@@ -172,7 +172,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 #### ▼ デュプレックスシステムとは
 
-![duplex-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/duplex-system.png)
+![duplex-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/duplex-system.png)
 
 稼働中インスタンスと待機中インスタンス (ホットスタンバイ/コールドスタンバイ) を配置する冗長化方法のこと。
 
@@ -199,7 +199,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 仮想環境のコンポーネント自体のスペックをより高くすることにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-![scale-up](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scale-up.png)
+![scale-up](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/scale-up.png)
 
 > - https://www.idcf.jp/words/scale-out.html
 
@@ -211,7 +211,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 仮想環境のコンポーネントのインスタンス数を増やすことにより、インスタンス当たりの負荷を小さくし、障害が起こらないようにする。
 
-![scale-out](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/scale-out.png)
+![scale-out](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/scale-out.png)
 
 > - https://www.idcf.jp/words/scale-out.html
 
@@ -227,7 +227,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 
 稼働中ノードで障害が発生した場合、待機中ノードを稼働中ノードに昇格させ、インバウンド通信のルーティング先をこれに切り替える。
 
-![ha-cluster-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ha-cluster-system.png)
+![ha-cluster-system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/ha-cluster-system.png)
 
 > - [クラスタシステムとは？概要や目的、歴史、種類を解説 \| ビジネス継続とITについて考える](https://bcblog.sios.jp/drbd-what-is-clustersystem/#HA)
 
@@ -515,7 +515,7 @@ IPA が公開している非機能要件の種類を参考にするとよい。
 - ソースコードのサイズ
 - SREing の文脈でのユーザーからの満足度
 
-![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software-quality-attributes_measurement.png)
+![software-quality-attributes_measurement](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system/software-quality-attributes_measurement.png)
 
 > - https://iso25000.com/index.php/en/iso-25000-standards/iso-25010
 > - [List of system quality attributes - Wikipedia](https://en.wikipedia.org/wiki/List_of_system_quality_attributes)

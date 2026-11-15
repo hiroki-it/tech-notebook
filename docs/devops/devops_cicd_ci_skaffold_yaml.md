@@ -33,13 +33,13 @@ build/test/deploy ステージに加えて、継続的な開発に役立つス�
 
 ただし、Skaffold は基本的には開発環境でしか使用しないため、ユースケースが限定的なステージもある。
 
-![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline.png)
+![skaffold-pipeline](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/skaffold-pipeline.png)
 
 #### ▼ 各ステージのツールの選択
 
 Skaffold の各ステージでは、それ専用のツールをコールできる。
 
-![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/skaffold-pipeline_tools.png)
+![skaffold-pipeline_tools](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/skaffold-pipeline_tools.png)
 
 > - [Skaffold 2.0 Documentation \| Skaffold](https://skaffold.dev/docs/#skaffold-workflow-and-architecture)
 

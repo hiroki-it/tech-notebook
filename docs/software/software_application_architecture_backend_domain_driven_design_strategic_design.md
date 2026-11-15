@@ -49,13 +49,13 @@ tags:
 
 これにより、インターネット広告代理店のビジネスモデルは、各担当者に対応するドメインへ分割できる。
 
-![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet_advertising_agency_domain.png)
+![internet_advertising_agency_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/internet_advertising_agency_domain.png)
 
 > - [ドメイン駆動設計(DDD)との格闘 - 広義のドメイン・狭義のドメインの理解 - FLINTERS Engineer's Blog](https://labs.septeni.co.jp/entry/2021/04/15/130000)
 
 ### 例：完全個室ジムを運営するハコジム
 
-![hacogym_business_model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_business_model.png)
+![hacogym_business_model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/hacogym_business_model.png)
 
 完全個室ジムを運営するハコジムの例。
 
@@ -65,7 +65,7 @@ tags:
 
 これにより、ハコジムのビジネスモデルは、各担当者に対応するドメインへ分割できる。
 
-![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_domain.png)
+![hacogym_domain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/hacogym_domain.png)
 
 > - [24時間個室ジム・パーソナルトレーニングジム \| ハコジム](https://hacogym.jp/)
 > - [実際の業務とDDD - スマートロック開発日誌 #2](https://zenn.dev/hsshss/articles/e11efefc7011ab)
@@ -98,7 +98,7 @@ tags:
 
 広義のドメインの問題領域のうち、他と差別化する最も重要な業務領域がコアドメイン、コアドメインから使われる支援的または汎用的な業務領域がサブドメインである。
 
-![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/core-domain_sub-domain_bounded-context.png)
+![core-domain_sub-domain_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/core-domain_sub-domain_bounded-context.png)
 
 > - [DDDのドメイン・サブドメイン・ユビキタス言語・境界づけられたコンテキストを整理する #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4)
 > - [ドメイン駆動設計(DDD)との格闘 - 広義のドメイン・狭義のドメインの理解 - FLINTERS Engineer's Blog](https://labs.septeni.co.jp/entry/2021/04/15/130000)
@@ -141,7 +141,7 @@ tags:
 
 コアドメインは予約ドメイン、それ以外はサブドメインとしている。
 
-![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain.png)
+![hacogym_subdomain](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/hacogym_subdomain.png)
 
 > - [24時間個室ジム・パーソナルトレーニングジム \| ハコジム](https://hacogym.jp/)
 > - [実際の業務とDDD - スマートロック開発日誌 #2](https://zenn.dev/hsshss/articles/e11efefc7011ab)
@@ -164,7 +164,7 @@ EC サイトを運営するアスクルの例。
 
 ドメインエキスパート間で、特定の『名詞』や『動詞』の意味合い/定義づけが異なる場合、これを異なる名前からなるユビキタス言語として定義づける。
 
-![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain-model.png)
+![domain-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain-model.png)
 
 > - [ユビキタス言語についての知見を共有します #DDD - Qiita](https://qiita.com/kmdsbng/items/bf415afbeec239a7fd63)
 
@@ -174,11 +174,11 @@ EC サイトを運営するアスクルの例。
 
 議論のなかで発生したドメインイベントを線で結ぶ。
 
-![event-storming_domain-event](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
+![event-storming_domain-event](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/event-storming_domain-event.png)
 
 Figma などのツールを使用して、画面ごとにドメインイベントをつなげ、フロントエンドやバックエンドの機能ロジックを設計していく。
 
-![event-storming_domain-event](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/event-storming_domain-event.png)
+![event-storming_domain-event](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/event-storming_domain-event.png)
 
 > - https://www.amazon.co.jp/dp/483998820X
 
@@ -591,7 +591,7 @@ flowchart LR
   marketing -.->|在庫状況を参照| inventoryManagement
 ```
 
-![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/book_ec_ubiquitous_language.png)
+![book_ec_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/book_ec_ubiquitous_language.png)
 
 > - https://kenta-kosugi.medium.com/%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B5%E3%83%BC%E3%83%93%E3%82%B9%E3%81%AE%E4%B8%8A%E6%89%8B%E3%81%AA%E5%88%86%E5%89%B2-ff5bb01d1062
 
@@ -855,7 +855,7 @@ flowchart LR
   </tbody>
 </table>
 
-![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_bounded-context.png)
+![hacogym_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/hacogym_bounded-context.png)
 
 > - [24時間個室ジム・パーソナルトレーニングジム \| ハコジム](https://hacogym.jp/)
 > - [実際の業務とDDD - スマートロック開発日誌 #2](https://zenn.dev/hsshss/articles/e11efefc7011ab)
@@ -937,7 +937,7 @@ flowchart LR
   billing -.->|契約の請求条件を参照| contract
 ```
 
-![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/contract_billing_management_ubiquitous_language.png)
+![contract_billing_management_ubiquitous_language](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/contract_billing_management_ubiquitous_language.png)
 
 > - [全社員ユビキタス言語で話す！？ドメイン勉強会レポート｜Scalebase株式会社](https://note.com/alpinc/n/nab47ab9273c6)
 > - [Scalebase株式会社](https://thealp.co.jp/)
@@ -1015,7 +1015,7 @@ flowchart LR
   workflow -.->|申請者と承認者の従業員情報を参照| employee
 ```
 
-![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/freee_bounded-context.png)
+![freee_bounded-context](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/freee_bounded-context.png)
 
 > - [freee会計からマイクロサービスを切り出すのに4年かかりました / 4 Years for Carving Out A Micro Service from freee Accounting. - Speaker Deck](https://speakerdeck.com/him0/4-years-for-carving-out-a-micro-service-from-freee-accounting?slide=22)
 
@@ -1691,7 +1691,7 @@ flowchart LR
 
 特定の境界づけられたコンテキストのみで使用するドメインモデルのこと。
 
-![bounded-context_domain-model_type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
+![bounded-context_domain-model_type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/bounded-context_domain-model_type.png)
 
 ### 共有モデル
 
@@ -1699,7 +1699,7 @@ flowchart LR
 
 図では、在庫品目モデルがそれに相当する。
 
-![bounded-context_domain-model_type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/bounded-context_domain-model_type.png)
+![bounded-context_domain-model_type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/bounded-context_domain-model_type.png)
 
 <br>
 
@@ -1718,7 +1718,7 @@ flowchart LR
 できる限り、各境界づけられたコンテキストでは異なるユビキタス言語を使用する。
 そして、境界づけられたコンテキストが複数のサブドメインへまたがらないようにしたほうがよい (これ重要) 。
 
-![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/context-map.png)
+![context-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/context-map.png)
 
 > - [DDDのドメイン・サブドメイン・ユビキタス言語・境界づけられたコンテキストを整理する #ドメイン駆動設計 - Qiita](https://qiita.com/crossroad0201/items/875c5f76ed3794ed56c4)
 
@@ -1732,7 +1732,7 @@ flowchart LR
 
 一方で、それ以外の境界づけられたコンテキストは外製化している。
 
-![hacogym_subdomain_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hacogym_subdomain_modeling.png)
+![hacogym_subdomain_modeling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/hacogym_subdomain_modeling.png)
 
 ### コンテキストマップとテーブルの関係
 

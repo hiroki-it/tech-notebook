@@ -64,7 +64,7 @@ tags:
   </tbody>
 </table>
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/security_protection-type.png)
 
 > - [WAFとは?~WAFの概要と機能、導入時のポイントについて解説～ - 情シスのデジタル化](https://digital-jyoshisu.com/archives/468)
 
@@ -80,7 +80,7 @@ tags:
 
 ネットワークファイアウォールと Web サーバーの間には、NAT ルーターや NAPT ルーターが配置されている。
 
-![packet-filtering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packet-filtering.gif)
+![packet-filtering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/packet-filtering.gif)
 
 > - [ファイアウォール（FW）とは？仕組みや機能と併せてWAFなどとの違いについても解説 \| クラウド導入・システム運用ならアールワークスへ](https://www.rworks.jp/system/system-column/sys-entry/21277/)
 > - [ファイアウォールの種類を詳しく解説｜導入の必要性やメリットについても紹介 \| テックマガジン from FEnetインフラ](https://www.fenet.jp/infla/column/network/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%82%A6%E3%82%A9%E3%83%BC%E3%83%AB%E3%81%AE%E7%A8%AE%E9%A1%9E5%E3%81%A4%EF%BD%9C%E6%B3%A8%E6%84%8F%E7%82%B9%E3%82%84%E3%83%A1%E3%83%AA%E3%83%83%E3%83%88%E3%81%AB/)
@@ -187,7 +187,7 @@ public
 
 Windows ネットワークファイアウォールは、Windows におけるネットワークファイアウォールである。
 
-![packet-filtering_setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packet-filtering_setting.gif)
+![packet-filtering_setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/packet-filtering_setting.gif)
 
 > - [Windows 10 - ファイアウォールの特定ポート番号の通信を許可する方法 - PC設定のカルマ](https://pc-karuma.net/windows-10-firewall-open-port/)
 
@@ -217,7 +217,7 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 
 > - [WAFとは?~WAFの概要と機能、導入時のポイントについて解説～ - 情シスのデジタル化](https://digital-jyoshisu.com/archives/468)
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/security_protection-type.png)
 
 <br>
 
@@ -233,7 +233,7 @@ Windows ネットワークファイアウォールは、Windows におけるネ�
 
 あくまで通知するのみで、攻撃を防御することはしない。
 
-![ids](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ids.png)
+![ids](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/ids.png)
 
 <br>
 
@@ -261,7 +261,7 @@ IP アドレスの制限は `L3` 防御、プロトコルとポート番号制�
 
 `L7` を防御できていない場合、より低いレイヤー (例：`L3`) を突破できれば (例：送信元 IP アドレスの乗っ取り) 、`L7` のサイバー攻撃を実施できてしまうことになる。
 
-![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security_protection-type.png)
+![security_protection-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/security_protection-type.png)
 
 > - [WAFとは?~WAFの概要と機能、導入時のポイントについて解説～ - 情シスのデジタル化](https://digital-jyoshisu.com/archives/468)
 > - https://www.geeksforgeeks.org/difference-between-waf-and-firewall/
@@ -325,7 +325,7 @@ sha256 によって作成された文字列をファイル情報として添付�
 
 認証フォームがリクエストされたとき、サーバー側でワンタイムトークンを発行する。これを `Set-Cookie` ヘッダーの `csrftoken` パラメーター (フレームワークによっては、これに相当するパラメーター) や自前ヘッダーに割り当てて、レスポンスを返信する。
 
-![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf-token.png)
+![csrf-token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/csrf-token.png)
 
 > - [9.5. CSRF対策 — TERASOLUNA Server Framework for Java (5.x) Development Guideline 5.2.0.RELEASE documentation](https://terasolunaorg.github.io/guideline/5.2.0.RELEASE/ja/Security/CSRF.html#spring-securitycsrf)
 
@@ -431,7 +431,7 @@ DB の SQL クエリのパラメーターとなる入力では、『シングル
 
 異なるドメインクライアントからのリクエストを許可したい場合は、リクエストとレスポンスの両方で対応が必要である。
 
-![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cors.png)
+![cors](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/cors.png)
 
 > - [Origin (オリジン) - 用語集 \| MDN](https://developer.mozilla.org/ja/docs/Glossary/Origin)
 

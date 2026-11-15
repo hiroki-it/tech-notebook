@@ -29,7 +29,7 @@ tags:
 
 ## 02. 仕組み
 
-![route53_name-resolution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/route53_name-resolution.png)
+![route53_name-resolution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/route53_name-resolution.png)
 
 1. クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。キャッシュが無ければ、クライアント PC はドメイン名をキャッシュ DNS サーバーに問い合わせる。
 
@@ -188,7 +188,7 @@ DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 �
 
 ### AWS リソースの DNS 名、ドメイン名、エンドポイント名
 
-![url_email_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/url_email_structure.png)
+![url_email_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/url_email_structure.png)
 
 <table>
   <thead>
@@ -310,7 +310,7 @@ Amazon VPC 内のリソースからの DNS クエリに応答し、プライベ�
   </tbody>
 </table>
 
-![aws_route53_routing-policy_weighted-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_route53_routing-policy_weighted-routing.png)
+![aws_route53_routing-policy_weighted-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_route53_routing-policy_weighted-routing.png)
 
 > - [AWS Route53の加重ルーティング機能で本番インフラを無停止・段階的にECS環境に移行する - 弥生開発者ブログ](https://tech-blog.yayoi-kk.co.jp/entry/2021/12/06/000000)
 

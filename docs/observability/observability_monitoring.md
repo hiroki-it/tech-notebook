@@ -65,7 +65,7 @@ tags:
 
 メトリクスはプル型またはプッシュ型の収集ツールからなり、ログと分散トレースはプッシュ型の収集ツールのみからなる。
 
-![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monitoring_collecting_pull_push.png)
+![monitoring_collecting_pull_push](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/monitoring_collecting_pull_push.png)
 
 > - [Pull or Push: How to Select Monitoring Systems? - Alibaba Cloud Community](https://www.alibabacloud.com/blog/pull-or-push-how-to-select-monitoring-systems_599007)
 

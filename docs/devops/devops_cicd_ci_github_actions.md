@@ -50,7 +50,7 @@ GitHub Actions のパイプラインをサーバー (例：オンプレサーバ
 
 GitHub とは別の実行環境 (例：AWS Lambda) で稼働し、GitHub の API をコールする。
 
-![github_apps](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_apps.png)
+![github_apps](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/github_apps.png)
 
 > - [GitHub Appとは？ 作りながら仕組みを理解する](https://zenn.dev/takamin55/articles/569875e8346948)
 

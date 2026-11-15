@@ -25,7 +25,7 @@ Secret のデータとして注入する External Secrets Operator や helm-secr
 
 一方で、Pod 内コンテナに直接的にマウントするため、Kubernetes とプロバイダーがより密結合になってしまう。
 
-![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/secrets-store-csi-volume.png)
+![secrets-store-csi-volume](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/secrets-store-csi-volume.png)
 
 > - [Concepts - Secrets Store CSI Driver](https://secrets-store-csi-driver.sigs.k8s.io/concepts.html)
 > - [Clarity: secrets store CSI driver vs external secrets... what to use? · Issue #478 · external-secrets/external-secrets · GitHub](https://github.com/external-secrets/external-secrets/issues/478#issuecomment-964413129)

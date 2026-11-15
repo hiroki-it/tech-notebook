@@ -226,7 +226,7 @@ $ ./foo-bainary --version
 
 Git でソフトウェアを開発する場合、役割を持たせたブランチを作成し、ルールに沿ってコミットする。Git-flow を簡略化したものに、GitHub-flow や Gitlab-flow がある。
 
-![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/git-flow.png)
+![git-flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/git-flow.png)
 
 > - [GitHub - Voronenko/gitflow-release: Approach for implementing git-flow releasing model · GitHub](https://github.com/Voronenko/gitflow-release)
 > - [Git-flow GitHub-flow GitLab-flowという開発フローについてまとめる #Git - Qiita](https://qiita.com/pandama09396862/items/9f013fa7b60f4d12d1d8)
@@ -322,7 +322,7 @@ CI ツールや CD ツールを使用して、コミット (マージコミッ�
 
 リリースノートでは、リリースのタグを指定し、新規追加や修正などの見出しごとに、関連する Issue やプルリクエストを `#<番号>` で列挙する。
 
-![github_release-note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/github_release-note.png)
+![github_release-note](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/github_release-note.png)
 
 #### ▼ タグ
 

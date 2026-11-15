@@ -32,7 +32,7 @@ tags:
 
 ## 02. 戦略的設計の手順例
 
-![ddd_strategic_design_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_strategic_design_flow.png)
+![ddd_strategic_design_flow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd_strategic_design_flow.png)
 
 戦略的設計では、ドメイン全体から境界づけられたコンテキストを明確にする。
 

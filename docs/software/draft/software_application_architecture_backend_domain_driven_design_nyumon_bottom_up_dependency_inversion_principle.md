@@ -29,7 +29,7 @@ TypeScript の例では、インターフェースで依存先の契約を定義
 
 すると、上にあるブロック（依存するオブジェクト）は崩れてしまう。
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-01.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-01](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-01.png)
 
 <br>
 
@@ -71,7 +71,7 @@ TypeScript の例では、インターフェースで依存先の契約を定義
     }
     ```
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-02](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-02.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-02](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-02.png)
 
 次の例では、実装リポジトリはインターフェースリポジトリの実装である。
 
@@ -129,7 +129,7 @@ TypeScript の例では、インターフェースで依存先の契約を定義
     }
     ```
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-03](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-03.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-03](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-03.png)
 
 ### よくない依存関係
 
@@ -184,7 +184,7 @@ TypeScript の例では、インターフェースで依存先の契約を定義
     }
     ```
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-04](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-04.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-04](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-04.png)
 
 代わりに、IUserRepository（インターフェースリポジトリ）に依存させる。
 
@@ -291,7 +291,7 @@ TypeScript の例では、インターフェースで依存先の契約を定義
     }
     ```
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-05](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-05.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-05](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-05.png)
 
 ## 7.3 依存関係逆転の原則とは
 
@@ -303,7 +303,7 @@ B：抽象は、実装の詳細に依存してはならない。実装の詳細�
 
 ### 7.3.1 抽象に依存せよ
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-06](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-06.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-06](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-06.png)
 
 A を満たす。
 
@@ -594,7 +594,7 @@ ServiceLocator パターンによって、オブジェクトの呼び出しを�
     }
     ```
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-07](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-07.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-07](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-07.png)
 
 ServiceLocator パターンを実装した ServiceLocator オブジェクトには、呼び出しの紐づけを事前に登録しておく。
 
@@ -661,7 +661,7 @@ ServiceLocator パターンを実装した ServiceLocator オブジェクトに�
 
 これらの対応関係を実環境とテスト時で切り替えられるようにしておく。
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-08](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-08.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-08](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-08.png)
 
 <details><summary>🚨補足（クリックで開く）</summary><div>
 
@@ -1261,7 +1261,7 @@ ServiceLocator オブジェクトでは、オブジェクトの呼び出しを�
     $userApplicationService = $provider->getService(UserApplicationService::class);
     ```
 
-![domain_driven_design_nyumon_bottom_up_chapter_07-09](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_driven_design_nyumon_bottom_up_chapter_07-09.png)
+![domain_driven_design_nyumon_bottom_up_chapter_07-09](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/domain_driven_design_nyumon_bottom_up_chapter_07-09.png)
 
 <details><summary>🚨補足（クリックで開く）</summary><div>
 

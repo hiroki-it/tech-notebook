@@ -32,7 +32,7 @@ PrismaClient は、クエリエンジンに切断リクエストを送信する�
 
 このときに、送信されたリクエストは待機キューで解放を待つ。
 
-![architecture_prisma](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_prisma.png)
+![architecture_prisma](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/architecture_prisma.png)
 
 > - https://www.prisma.io/docs/orm/more/under-the-hood/engines
 > - [Prisma ORMを使いこなす ~歴史と対RDB運用の知見を添えて~](https://zenn.dev/cloudbase/articles/65b9f6e4f9ae05#%E3%82%A2%E3%83%BC%E3%82%AD%E3%83%86%E3%82%AF%E3%83%81%E3%83%A3)

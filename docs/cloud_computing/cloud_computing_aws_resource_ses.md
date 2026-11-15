@@ -166,7 +166,7 @@ Sandbox モードでは以下の制限がかかっており。
 
 ## 04. メールの送受信設定
 
-![ses](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ses.png)
+![ses](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/ses.png)
 
 <table>
   <thead>

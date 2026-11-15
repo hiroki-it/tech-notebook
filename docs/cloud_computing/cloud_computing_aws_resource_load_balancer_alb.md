@@ -22,7 +22,7 @@ tags:
 
 Amazon EC2 へのリクエストをバランスよく分配することで、サーバーへの負荷を緩和する。
 
-![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_alb.png)
+![aws_alb](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_alb.png)
 
 > - https://www.slideshare.net/AmazonWebServicesJapan/application-load-balancer#24
 
@@ -38,7 +38,7 @@ ALB の実体で、各 ALB インスタンスが異なるグローバル IP ア�
 
 複数の AZ にルーティングするように ALB を設定した場合、各 AZ に ALB インスタンスが 1 つずつ配置される。
 
-![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb-instance.png)
+![alb-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/alb-instance.png)
 
 > - [マルチAZ構成で単一AZの障害の影響を受けるのは何故か？ - プログラマでありたい](https://blog.takuros.net/entry/2019/08/27/075726)
 
@@ -435,7 +435,7 @@ SetEnvIf X-Forwarded-Proto https HTTPS=on
 
 ### アプリケーションにおける対処方法
 
-![alb_https-to-ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/alb_https-to-ec2.png)
+![alb_https-to-ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/alb_https-to-ec2.png)
 
 ALB を経由したリクエストには、リクエストヘッダーに `HTTP_X_FORWARDED_PROTO` ヘッダーが付与される。
 

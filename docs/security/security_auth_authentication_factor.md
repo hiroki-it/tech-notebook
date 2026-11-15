@@ -105,9 +105,9 @@ tags:
 
 指紋、顔、静脈、虹彩などの身体的な特徴を使用して、クライアントを照合する方法のこと。
 
-![biometric-authentication_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/biometric-authentication_1.png)
+![biometric-authentication_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/biometric-authentication_1.png)
 
-![biometric-authentication_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/biometric-authentication_2.png)
+![biometric-authentication_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/biometric-authentication_2.png)
 
 <br>
 

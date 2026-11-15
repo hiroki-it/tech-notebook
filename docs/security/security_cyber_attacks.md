@@ -86,7 +86,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 サーバーは、正しいフォームからのリクエストと誤認してしまい、攻撃を許容してしまう。
 
-![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csrf.png)
+![csrf](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/csrf.png)
 
 > - https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_6.html
 
@@ -98,7 +98,7 @@ RedHat 上の OSS の CVE は、RedHat CVEDB で検索できる。
 
 攻撃者が自身で取得したセッション ID をユーザーに使用させ、ユーザーがそのセッション ID のままログインした後に、同じセッション ID を使用してユーザーになりすます手法。
 
-![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-fixation.png)
+![session-fixation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/session-fixation.png)
 
 > - https://www.ipa.go.jp/security/vuln/websecurity-HTML-1_4.html
 
@@ -112,7 +112,7 @@ traversal は、横断する (ディレクトリを乗り越える) の意味。
 
 パス名を使用してファイルを指定し、管理者の意図していないファイルを不正に参照またはダウンロードする。
 
-![directory-traversal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/directory-traversal.jpg)
+![directory-traversal](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/directory-traversal.jpg)
 
 <br>
 
@@ -128,7 +128,7 @@ Dos 攻撃は IP アドレスを指定して防御できるが、DDos 攻撃は�
 
 そのため、同一 IP アドレスのリクエスト数制限や特定の国を指定した IP アドレス制限が必要になる。
 
-![dos-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dos-attack.png)
+![dos-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/dos-attack.png)
 
 > - https://ja.m.wikipedia.org/wiki/DoS 攻撃
 
@@ -148,7 +148,7 @@ DB のクエリのパラメーターとなる入力に、不正な文字列を�
 
 ただし、近年は減少傾向にある。
 
-![sql-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sql-injection.jpg)
+![sql-injection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/sql-injection.jpg)
 
 #### ▼ 攻撃例
 
@@ -183,7 +183,7 @@ Web アプリによる HTML 出力のエスケープ処理の欠陥を悪用し�
 
 悪意のある第三者が正常なサイトへ事前にスクリプトを埋め込む。これを実行してしまったユーザーの情報を盗む。
 
-![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cross-cite-scripting.png)
+![cross-cite-scripting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/cross-cite-scripting.png)
 
 #### ▼ 攻撃例
 
@@ -216,7 +216,7 @@ Web アプリによる HTML 出力のエスケープ処理の欠陥を悪用し�
 
 漏洩したパスワードを使用して、正面から正々堂々とアクセスする手法。
 
-![password-list-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/password-list-attack.png)
+![password-list-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/password-list-attack.png)
 
 <br>
 
@@ -230,13 +230,13 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 一方で、Reverse Brute-force は、パスワードを固定して、ID を総当たりで試す手法。
 
-![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/brute-force-attack_reverse-brute-force-attack.png)
+![brute-force-attack_reverse-brute-force-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/brute-force-attack_reverse-brute-force-attack.png)
 
 #### ▼ パスワードのパターン数
 
 パスワードに使用できる文字の種類数を `n`、パスワードの桁数を `m` とすると、パスワードのパターン数は `n` の `m` 乗通りになる。
 
-![password_pattern-count](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/password_pattern-count.png)
+![password_pattern-count](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/password_pattern-count.png)
 
 <br>
 
@@ -246,7 +246,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 レインボーテーブルの文字列とハッシュ値の対応関係を元にして、ハッシュ化された暗号からパスワードを推測する手法。
 
-![rainbow-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rainbow-attack.png)
+![rainbow-attack](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/rainbow-attack.png)
 
 <br>
 
@@ -256,7 +256,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 技術的な手法ではなく、物理的な手法 (例：盗み見、盗み聞き、なりすまし、詐欺など) によってパスワードを取得する。これによりアクセスする手法である。
 
-![social-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/social-engineering.png)
+![social-engineering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/social-engineering.png)
 
 <br>
 
@@ -274,7 +274,7 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 キャッシュ DNS サーバーが持つ IP アドレスを偽の IP アドレスに変え、偽のサイトに強制的に接続させる手法。
 
-![dns-cache-poisoning](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dns-cache-poisoning.gif)
+![dns-cache-poisoning](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/dns-cache-poisoning.gif)
 
 <br>
 
@@ -284,6 +284,6 @@ Brute-force は力ずくの意味。ID を固定して、パスワードを総�
 
 例えば、サイトのカード決済画面やサーバーに潜ませることによって、カード情報を第三者に送信する手法。
 
-![backdoor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/backdoor.png)
+![backdoor](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/backdoor.png)
 
 <br>

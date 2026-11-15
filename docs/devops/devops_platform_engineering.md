@@ -22,7 +22,7 @@ DevOps というインターフェースを実装したエンジニアリング�
 
 SREing とは異なり、開発者体験の向上から DevOps を実現する。
 
-![platform-engineering_ai](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/platform-engineering_ai.png)
+![platform-engineering_ai](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/platform-engineering_ai.png)
 
 > - [In-depth Analysis of CNCF's Cloud Native AI Whitepaper \| …](https://jimmysong.io/blog/cloud-native-ai-whitepaper/)
 

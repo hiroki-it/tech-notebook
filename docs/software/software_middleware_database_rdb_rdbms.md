@@ -48,7 +48,7 @@ tags:
 
 RDBMS は、リレーショナルエンジン、DB エンジン (ストレージエンジン) から構成される。
 
-![dbms_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dbms_architecture.png)
+![dbms_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/dbms_architecture.png)
 
 > - [基礎から理解するデータベースのしくみ（1） \| 日経クロステック（xTECH）](https://xtech.nikkei.com/it/article/COLUMN/20060111/227095/)
 > - [内部動作を知らずしてチューニングは語れない：真・Dr. K's SQL Serverチューニング研修（3）（1/3 ページ） - ＠IT](https://atmarkit.itmedia.co.jp/ait/articles/1007/26/news087.html)
@@ -433,7 +433,7 @@ TCP/IP プロトコルを使用する。
 
 一定回数再利用されたり、一定期間使用されていない接続は削除される。
 
-![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/db_connection-pool.png)
+![db_connection-pool](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/db_connection-pool.png)
 
 > - [コネクションプールとは何ですか？ – ASTERIA Warp サポートサイト-ADN](https://support.asteria.com/hc/ja/articles/228983127-%E3%82%B3%E3%83%8D%E3%82%AF%E3%82%B7%E3%83%A7%E3%83%B3%E3%83%97%E3%83%BC%E3%83%AB%E3%81%A8%E3%81%AF%E4%BD%95%E3%81%A7%E3%81%99%E3%81%8B)
 > - [最終回 治療としてのパフォーマンスチューニング―システムの病気はどう治す？（2） \| gihyo.jp](https://gihyo.jp/dev/serial/01/db-academy/000502)

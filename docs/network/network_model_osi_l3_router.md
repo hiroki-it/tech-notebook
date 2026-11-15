@@ -65,7 +65,7 @@ URL を基点としたパスに応じて、通信のルーティング先を決�
 
 インターネットサービスプロバイダーから貸出されるモデムでアナログ信号をデジタル信号に変換した後、これにルーターを接続し、自宅内/外のネットワークを繋ぐ。
 
-![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router.png)
+![router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/router.png)
 
 > - [異なるネットワークをつなぐ中継器、「ルーター」とは \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/01842/032200010/)
 > - [モデムとONU、ルーターの違い \| パソコン実践BLOG -道すがら講堂-](https://michisugara.jp/modem_router)
@@ -125,7 +125,7 @@ URL を基点としたパスに応じて、通信のルーティング先を決�
 
 ネットワーク内でルーターがルーターに通信をルーティングするとき、各ルーターが最適なルーティング先を選択すること。
 
-![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/router_hop-by-hop-routing.jpg)
+![router_hop-by-hop-routing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/router_hop-by-hop-routing.jpg)
 
 > - [ASCII.jp：ルーティングとレイヤ3スイッチの関係とは (3/8)](https://ascii.jp/elem/000/000/444/444681/3/)
 
@@ -170,7 +170,7 @@ NAT 処理を実行できるルーターのこと。
 
 `1` 個の通信で両方が必要である。
 
-![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat-router.png)
+![nat-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/nat-router.png)
 
 > - [MCU入門 第9回 NAT/FW トラバーサル 3. NAT/FW トラバーサルの仕組み “NATとは” ｜オンライン会議・Web会議のVTVジャパン](https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html)
 > - [NAT機能について質問です。NAT機能はグローバルIPとプライベ... - Yahoo!知恵袋](https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592)
@@ -181,7 +181,7 @@ NAT 処理のうち、宛先 IP アドレスを変換すること (`グローバ
 
 NAT ルーター自体を複数のプライベートネットワークで共有することがある。
 
-![nat_global-to-private](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat_global-to-private.png)
+![nat_global-to-private](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/nat_global-to-private.png)
 
 > - [DNATとSNATの違いやそれぞれの特徴について – Rainbow Engine](https://rainbow-engine.com/dnat-snat-difference/)
 
@@ -189,7 +189,7 @@ NAT ルーターは、プライベートネットワークに入るとき、パ�
 
 #### ▼ SNAT 処理：Source NAT
 
-![nat_private-to-global](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/nat_private-to-global.png)
+![nat_private-to-global](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/nat_private-to-global.png)
 
 NAT 処理のうち送信元 IP アドレスを変換すること (`プライベートIPアドレス` ➡️ `グローバルIPアドレス`、`プライベートIPアドレス` ➡️ `プライベートIPアドレス`) 。
 
@@ -314,7 +314,7 @@ NAPT の処理を持つルーターのこと。
 
 AWS や GCP などで使用されているような NAT ルーターはこちらであり、IP アドレスとポート番号の両方を指定することで、VPC 内のプライベート IP アドレスに単一のパブリック IP アドレスを割り当てるようになっている。
 
-![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt-router.png)
+![napt-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/napt-router.png)
 
 > - [MCU入門 第9回 NAT/FW トラバーサル 3. NAT/FW トラバーサルの仕組み “NATとは” ｜オンライン会議・Web会議のVTVジャパン](https://www.vtv.co.jp/intro/mcu/about_mcu9-3.html)
 > - [NAT機能について質問です。NAT機能はグローバルIPとプライベ... - Yahoo!知恵袋](https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q1282815592)
@@ -353,13 +353,13 @@ AWS や GCP などで使用されているような NAT ルーターはこちら
   </tbody>
 </table>
 
-![napt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt.png)
+![napt](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/napt.png)
 
 #### ▼ SNAT 処理の場合
 
 プライベートネットワークに入るとき、付け加えられたポート番号を基に、パケットのヘッダー情報にある『宛先』のグローバル IP アドレスを、異なるプライベート IP アドレスに変換し分ける。
 
-![napt_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/napt_2.png)
+![napt_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/napt_2.png)
 
 <br>
 

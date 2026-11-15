@@ -22,7 +22,7 @@ tags:
 
 スパンをトレース ID で紐付けると、`1` 個のリクエストで発生したマイクロサービスを横断する処理を一繋ぎで表現できるようになる。
 
-![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace.png)
+![distributed-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace.png)
 
 > - https://www.dynatrace.com/news/blog/open-observability-part-1-distributed-tracing-and-observability/
 > - [ディストリビューティッド（分散）トレーシング：マイクロサービス全体でリクエストを追跡 \| New Relic Documentation](https://docs.newrelic.com/jp/docs/distributed-tracing/concepts/introduction-distributed-tracing/)
@@ -43,7 +43,7 @@ tags:
 
 その送信元マイクロサービスのリクエストまたは宛先マイクロサービスのレスポンスについて、性能に問題がないかを調査する必要がある。
 
-![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_connection-time.png)
+![distributed-trace_connection-time](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace_connection-time.png)
 
 > - [How to Use SkyWalking for Distributed Tracing in Istio? \| …](https://jimmysong.io/blog/distributed-tracing-with-skywalking-in-istio/#bookinfo-tracing)
 
@@ -61,7 +61,7 @@ tags:
 
 下から上に読むと、宛先マイクロサービス (下位スパン) から送信元マイクロサービス (上位スパン) に結果を返却していることを確認できる。
 
-![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_reading.png)
+![distributed-trace_reading](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace_reading.png)
 
 > - https://cloud.google.com/architecture/using-distributed-tracing-to-observe-microservice-latency-with-opencensus-and-stackdriver-trace
 
@@ -87,7 +87,7 @@ tags:
 
 7. `a3`：アプリケーションがレスポンスをクライアントに返信する。
 
-    ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/monolith-trace.png)
+    ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/monolith-trace.png)
 
 <br>
 
@@ -110,7 +110,7 @@ tags:
 
 もし ID がなければ、スパンに ID を新しく割り当てる。
 
-![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-tracing.png)
+![distributed-tracing](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-tracing.png)
 
 > - [分散トレーシングの仕組み 「ログの対応付け」と「受け渡すHTTPヘッダー」を大体5分で理解する](https://zenn.dev/lempiji/articles/b752b644d22a59#%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6id%E3%82%92%E5%8F%97%E3%81%91%E6%B8%A1%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%8B)
 > - [Request tracing for your Application Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-request-tracing.html)
@@ -306,7 +306,7 @@ trace_id: 1-58406520-a006649127e371903a2de979
 
 伝播に使用する媒体 (例：HTTP ヘッダー、メッセージボディ、gRPC メタデータなど) を『Carrier』という。
 
-![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/distributed-trace_propagated.png)
+![distributed-trace_propagated](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/distributed-trace_propagated.png)
 
 #### ▼ 標準ヘッダー
 

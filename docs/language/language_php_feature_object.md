@@ -228,7 +228,7 @@ foo($state);
 
 オブジェクト内のデータにアクセスするには、直接的にデータは処理できず、オブジェクト内の関数をコールし、アクセスしなければならない。
 
-![encapsulation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encapsulation.gif)
+![encapsulation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/encapsulation.gif)
 
 <br>
 
@@ -279,7 +279,7 @@ class Foo
 
 #### ▼ Trait とは
 
-![trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/trait.png)
+![trait](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/trait.png)
 
 再利用したい関数や状態を部品化し、必要に応じてクラスに取り込む。
 

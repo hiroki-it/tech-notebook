@@ -52,7 +52,7 @@ Web サイトのクラウドインフラの実行環境ごとに作成したほ�
 
 そのため、特定のリージョンに依存せず、すべてのリージョンと連携できる。
 
-![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/edge-location.png)
+![edge-location](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/edge-location.png)
 
 ##### ▼ リージョン間ネットワーク遅延
 

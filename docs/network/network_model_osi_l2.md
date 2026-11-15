@@ -32,7 +32,7 @@ NIC、有線 LAN、無線 LAN、スマートフォンなどに紐づけられた
 
 同じ識別子は他に存在しない。
 
-![mac-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mac-address.png)
+![mac-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/mac-address.png)
 
 > - [【OSI 参照モデル L2 データリンク層】イーサネットとは \| ほげほげテクノロジー – IT 技術学習サイト](https://hogetech.info/network/osi/layer2#toc5)
 > - [MACアドレスとは？](https://www.cman.jp/network/term/mac/)

@@ -38,7 +38,7 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 また、両者が分離されていないエンジンタイプと比較して、再起動が早いため、再起動に伴うダウンタイムが短い。
 
-![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster.png)
+![aurora-db-cluster](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aurora-db-cluster.png)
 
 > - [High availability for Amazon Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html)
 
@@ -234,7 +234,7 @@ resource "aws_rds_cluster_instance" "foo" {
 
 ### エンドポイント
 
-![rds_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds_endpoint.png)
+![rds_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds_endpoint.png)
 
 <table>
   <thead>
@@ -519,7 +519,7 @@ ECS Exec を有効化した Amazon ECS Fargate のタスクを踏み台にして
     <tr>
       <td>VPC とサブネットグループ</td>
       <td>Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。</td>
-      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subnet_component-type.png" alt="subnet_component-type"></td>
+      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/subnet_component-type.png" alt="subnet_component-type"></td>
     </tr>
     <tr>
       <td>パブリックアクセス</td>
@@ -564,7 +564,7 @@ Amazon CloudWatch Logs の `/aws/rds/cluster/<Amazon AuroraのDBクラスター�
 
 ### ZDP (ゼロダウンタイムパッチ適用)
 
-![zero-downtime-patching](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/zero-downtime-patching.png)
+![zero-downtime-patching](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/zero-downtime-patching.png)
 
 Amazon Aurora をエンジンバージョンとして選択した場合に使用でき、パッチバージョンとマイナーバージョンの更新で、条件を満たせば適用される。
 
@@ -752,11 +752,11 @@ NOW()
 
 アップグレード時のプライマリーインスタンスの Amazon RDS イベントログは以下の通りで、ログによるダウンタイムは、再起動からシャットダウンまでの期間と一致することを確認する。
 
-![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_primary-instance.png)
+![rds-event-log_primary-instance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds-event-log_primary-instance.png)
 
 補足として、リードレプリカは再起動のみを実行していることがわかる。
 
-![rds-event-log_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/rds-event-log_read-replica.png)
+![rds-event-log_read-replica](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds-event-log_read-replica.png)
 
 <br>
 
@@ -998,7 +998,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 プライマリーインスタンスは、プライマリークラスターのみに存在している。
 
-![aurora-db-cluster_global](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster_global.png)
+![aurora-db-cluster_global](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aurora-db-cluster_global.png)
 
 <br>
 
@@ -1010,7 +1010,7 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 セカンダリーDB クラスターのリードレプリカを削除すると、ヘッドレスセカンダリーDB クラスターを作成できる。
 
-![aurora-db-cluster_global_secondary-headless](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aurora-db-cluster_global_secondary-headless.png)
+![aurora-db-cluster_global_secondary-headless](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aurora-db-cluster_global_secondary-headless.png)
 
 > - https://aws.amazon.com/blogs/database/achieve-cost-effective-multi-region-resiliency-with-amazon-aurora-global-database-headless-clusters/_
 > - [Getting started with Amazon Aurora Global Database - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-global-database-getting-started.html#aurora-global-database-attach.console.headless)

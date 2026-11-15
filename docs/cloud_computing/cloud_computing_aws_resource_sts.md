@@ -20,7 +20,7 @@ tags:
 
 認証済みの AWS IAM ユーザーに対して、特定の AWS アカウントの AWS リソースに認可スコープを持つ一時的な資格情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つ AWS IAM ユーザーを発行する。
 
-![sts](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts.jpg)
+![sts](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/sts.jpg)
 
 <br>
 
@@ -259,7 +259,7 @@ AssumeRole によるスイッチロールの仕組みでは、まず Trusted Ent
 
 Trusted Entity を使って、必要な AWS IAM ロールを STS から発行し、一時的な AWS IAM ユーザーを作成する。
 
-![sts_assume-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_assume-role.png)
+![sts_assume-role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/sts_assume-role.png)
 
 > - https://www.slideshare.net/tetsunorinishizawa/aws-cliassume-role#10
 > - [AssumeRole（スイッチロール）で複数AWSアカウント運用【ビギナー向け】 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/tech/2020/02/03/multipleawsaccount/)
@@ -280,7 +280,7 @@ STS で発行された AWS IAM ユーザーには、その AWS アカウント�
 
 AWS IAM ユーザーを一括で管理しておき、特定の AWS アカウントでは特定の認可スコープを委譲する。
 
-![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sts_multi-account.png)
+![sts_multi-account](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/sts_multi-account.png)
 
 > - [AWS で 複数アカウント を スイッチロール する方法 - galife](https://garafu.blogspot.com/2020/11/how-to-switch-role.html)
 
@@ -328,7 +328,7 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
 
 #### ▼ Amazon EKS を ID プロバイダーとする場合
 
-![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_oidc.png)
 
 Amazon EKS を ID プロバイダーとして使用するように、`Federated` キーで Amazon EKS Cluster の識別子を設定する。
 
@@ -404,7 +404,7 @@ SAML による認証／認可を使用する。
 
 AWS IAM ユーザー、AWS リソース、フェデレーテッドユーザー、に AWS IAM ロールを委譲できる。
 
-![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_sts_assumed-user.png)
+![aws_sts_assumed-user](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_sts_assumed-user.png)
 
 > - [AWS再入門ブログリレー2022 AWS IAM編 \| DevelopersIO](https://dev.classmethod.jp/articles/re-introduction-2022-aws-iam/)
 

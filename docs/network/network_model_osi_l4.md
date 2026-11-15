@@ -35,7 +35,7 @@ tags:
 
 このとき、各アプリケーションはプロセスとして稼働していることに留意する。
 
-![osi_l4-to-l7_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi_l4-to-l7_packet.png)
+![osi_l4-to-l7_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/osi_l4-to-l7_packet.png)
 
 #### ▼ クライアントからのリクエスト時 (図の 『➡️』 )
 
@@ -107,7 +107,7 @@ Unix で使用されるソケットのこと。
 
 ソケットファイルを経由して、同じ OS 上のプロセス間でパケットを送受信する。
 
-![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/unix-domain-socket.png)
+![unix-domain-socket](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/unix-domain-socket.png)
 
 > - [Unix domain socket - Wikipedia](https://en.wikipedia.org/wiki/Unix_domain_socket)
 > - [ASCII.jp：Unixドメインソケット (1/2)](https://ascii.jp/elem/000/001/415/1415088/)

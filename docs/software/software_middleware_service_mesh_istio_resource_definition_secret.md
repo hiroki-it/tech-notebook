@@ -44,7 +44,7 @@ Istio コントロールプレーンのログから、自己署名に使用す�
 
 ```
 
-![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_istio-ca-root-cert.png)
+![istio_istio-ca-root-cert](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_istio-ca-root-cert.png)
 
 <br>
 

@@ -25,7 +25,7 @@ tags:
 
 IP アドレスの例示では、`x` を使用しないようにする。
 
-![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address.png)
+![ip-address](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/ip-address.png)
 
 > - [IPアドレスの例示で xxx.xxx.xxx.xxx を使うな #SNS - Qiita](https://qiita.com/Targoyle/items/1c5454a41ea4519b0c5f)
 
@@ -88,7 +88,7 @@ LAN 内で使用される。
 
 補足として、`172` から始まる IP アドレスは、クラス B である。
 
-![ip-address_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_bit.png)
+![ip-address_bit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/ip-address_bit.png)
 
 <br>
 
@@ -100,7 +100,7 @@ LAN 内で使用される。
 
 IP アドレスのオクテットは、ネットワーク部とホスト部に分類できる。
 
-![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_portion.png)
+![ip-address_portion](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/ip-address_portion.png)
 
 > - https://qiita.com/mogulla3/items/efb4c9328d82d24d98e6
 
@@ -384,7 +384,7 @@ IP アドレスから、その IP アドレスがいずれの国のネットワ�
 
 URL は『`プロトコル + 完全修飾ドメイン名 + パス`』から、メールアドレスは『`ユーザー名 + 完全修飾ドメイン名`』から構成される。
 
-![url_email_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/url_email_structure.png)
+![url_email_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/url_email_structure.png)
 
 <br>
 
@@ -394,7 +394,7 @@ URL は『`プロトコル + 完全修飾ドメイン名 + パス`』から、�
 
 完全修飾ドメイン名は、ドメイン名、ホスト名からなる。
 
-![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/domain_namespace.png)
+![domain_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/domain_namespace.png)
 
 > - [ASCII.jp：インターネットで使うドメイン名と名前解決 (2/3)](https://ascii.jp/elem/000/000/419/419685/2/)
 
@@ -424,7 +424,7 @@ URL は『`プロトコル + 完全修飾ドメイン名 + パス`』から、�
 
 ホスト名 (以下では省略されている) と、ドメイン名の間につける。
 
-![subdomain-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/subdomain-name.png)
+![subdomain-name](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/subdomain-name.png)
 
 #### ▼ サブ-サブドメイン
 
@@ -468,7 +468,7 @@ GET https://example.com:80/users/777?text1=a&text2=b
 
 ### 名前解決、正引き、逆引きとは
 
-![ip-address_fqdn-mapping](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ip-address_fqdn-mapping.png)
+![ip-address_fqdn-mapping](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/ip-address_fqdn-mapping.png)
 
 URL やメールアドレスのドメイン名と IP アドレスを相互変換すること。
 
@@ -573,7 +573,7 @@ $ nslookup example # 実際には、example.fooとなる
 
 ### 名前解決の仕組み
 
-![name-resolution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/name-resolution.png)
+![name-resolution](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/name-resolution.png)
 
 1. クライアント PC は、`www.example.com` にマッピングされる IP アドレスのキャッシュを検索する。
 

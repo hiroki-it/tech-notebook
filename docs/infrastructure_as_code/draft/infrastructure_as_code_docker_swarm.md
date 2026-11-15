@@ -15,6 +15,6 @@ description: Docker Swarmの知見を記録しています。
 
 Docker Swarm は、docker コマンドから受け取った処理を各ノードの Docker Daemon に API 経由で通知し、複数のノードのコンテナをまとめて操作する。
 
-![docker-swarm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-swarm_architecture.png)
+![docker-swarm_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/docker-swarm_architecture.png)
 
 <br>

@@ -24,7 +24,7 @@ tags:
 
 アプリケーションから分散トレースを収集し、Datadog にフォワーディングする。
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on-server.png)
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -50,7 +50,7 @@ tags:
 
 datadog コンテナ内の datadog エージェントはこれを HTTPS プロトコルで Datadog にフォワーディングする。
 
-![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-tracer.png)
+![datadog-tracer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-tracer.png)
 
 > - https://docs.datadoghq.com/tracing/
 > - [Tracing API を PHP で使って少しずつ理解する Datadog APM - ようへいの日々精進XP](https://inokara.hateblo.jp/entry/2017/10/01/164446)

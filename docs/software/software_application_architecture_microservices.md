@@ -18,7 +18,7 @@ tags:
 
 ### アーキテクチャの歴史
 
-![architecture_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_history.png)
+![architecture_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/architecture_history.png)
 
 <table>
   <thead>
@@ -70,7 +70,7 @@ tags:
 
 ### 各アーキテクチャの粒度の比較
 
-![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/architecture_deployment_comparison.png)
+![architecture_deployment_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/architecture_deployment_comparison.png)
 
 <table>
   <thead>
@@ -116,7 +116,7 @@ tags:
 
 マイクロサービスでの段階では、さらにバックエンドが複数のアプリケーションに分離され、必要に応じて API アグリゲーション層を配置する。
 
-![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/presentation_domain_separation.png)
+![presentation_domain_separation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/presentation_domain_separation.png)
 
 > - https://cloud.google.com/architecture/devops/devops-tech-architecture
 > - https://docs.microsoft.com/ja-jp/azure/architecture/microservices/migrate-monolith
@@ -133,7 +133,7 @@ tags:
 
 これを解決するための関連パターンがたくさんある。
 
-![microservices_related-patterns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_related-patterns.jpg)
+![microservices_related-patterns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_related-patterns.jpg)
 
 > - [A pattern language for microservices](https://microservices.io/patterns/)
 
@@ -145,7 +145,7 @@ tags:
 
 優れたクラウドネイティブアプリケーションを作成するには、マイクロサービスアーキテクチャとクラウドネイティブ技術が必要である。
 
-![microservices_cloud-native](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_cloud-native.png)
+![microservices_cloud-native](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_cloud-native.png)
 
 マイクロサービスアーキテクチャの関連パターンは、クラウドネイティブ技術で代替できる。
 
@@ -301,7 +301,7 @@ tags:
   </tbody>
 </table>
 
-![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google.png)
+![service_google](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_google.png)
 
 > - [GitHub - GoogleCloudPlatform/microservices-demo: Sample cloud-first application with 10 microservices showcasing Kubernetes, Istio, and gRPC. · GitHub](https://github.com/GoogleCloudPlatform/microservices-demo)
 
@@ -346,7 +346,7 @@ tags:
   </tbody>
 </table>
 
-![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_mercari.png)
+![service_mercari](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_mercari.png)
 
 > - [GitHub - mercari/mercari-microservices-example · GitHub](https://github.com/mercari/mercari-microservices-example)
 
@@ -538,7 +538,7 @@ flowchart TB
   </tbody>
 </table>
 
-![service_amazon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_amazon.png)
+![service_amazon](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_amazon.png)
 
 > - [CodeKarle: Amazon System Design \| E Commerce System Design](https://www.codekarle.com/system-design/Amazon-system-design.html)
 
@@ -601,7 +601,7 @@ flowchart TB
   </tbody>
 </table>
 
-![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_twitter.png)
+![service_twitter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_twitter.png)
 
 > - [CodeKarle: Twitter System Design](https://www.codekarle.com/system-design/Twitter-system-design.html)
 
@@ -669,7 +669,7 @@ flowchart TB
   </tbody>
 </table>
 
-![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/service_google-map.png)
+![service_google-map](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/service_google-map.png)
 
 > - [CodeKarle: Google Maps System Design \| Apple Maps System Design](https://www.codekarle.com/system-design/Google_Maps-system-design.html)
 

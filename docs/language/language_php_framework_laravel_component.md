@@ -20,7 +20,7 @@ tags:
 
 ### ライフサイクル
 
-![laravel-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/laravel-lifecycle.png)
+![laravel-lifecycle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/laravel-lifecycle.png)
 
 大まかな処理フローは以下の通りである。
 
@@ -2836,7 +2836,7 @@ class UpdateCommentRequest extends FormRequest
 
 コントローラーの処理前に実行する BeforeMiddle と、コントローラーとビューの処理後に実行する AfterMiddleware がある。
 
-![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png)
+![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/design-pattern_middleware.png)
 
 > - [Laravelミドルウェアの基本入門（＆出力HTMLをminifyしWebサイト高速化） \| Ritolabo](https://www.ritolab.com/posts/69)
 > - [ASP.NET Core - Middleware](https://www.c-sharpcorner.com/article/asp-net-core-middleware/)

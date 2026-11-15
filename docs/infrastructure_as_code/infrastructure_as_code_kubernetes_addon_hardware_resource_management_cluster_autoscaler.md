@@ -47,7 +47,7 @@ cluster-autoscaler は、ハードウェアリソース不足が原因でスケ�
 
 そのため、Pod のスケジューリングの可否を条件とする場合には、metrics-server も採用する必要がある。
 
-![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-autoscaler.png)
+![kubernetes_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cluster-autoscaler.png)
 
 > - [EKSにおけるAutoScalingパターン — じゃあ、したためておきます](https://esakat.github.io/esakat-blog/posts/eks-advent-calender-2020/#pod%E3%81%AE%E8%B2%A0%E8%8D%B7%E9%87%8F%E3%81%AB%E5%90%88%E3%82%8F%E3%81%9B%E3%81%A6%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0hpametricsserverclusterautoscaler)
 > - [autoscaler/cluster-autoscaler/FAQ.md at master · kubernetes/autoscaler · GitHub](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#when-does-cluster-autoscaler-change-the-size-of-a-cluster)
@@ -66,7 +66,7 @@ Karpenter は、EC2 のグループ (例：Amazon EC2 フリート) に関する
 
 一方で cluster-autoscaler は、クラウドプロバイダーの Node グループ (例：Amazon EKS Node グループ) に関する API をコールする。
 
-![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/karpenter_vs_cluster-autoscaler.png)
+![karpenter_vs_cluster-autoscaler](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/karpenter_vs_cluster-autoscaler.png)
 
 > - [Karpenter - умное масштабирование Kubernetes кластера](https://www.linkedin.com/pulse/karpenter-%D1%83%D0%BC%D0%BD%D0%BE%D0%B5-%D0%BC%D0%B0%D1%81%D1%88%D1%82%D0%B0%D0%B1%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-kubernetes-%D0%BA%D0%BB%D0%B0%D1%81%D1%82%D0%B5%D1%80%D0%B0-victor-vedmich/?originalSubdomain=ru)
 

@@ -63,7 +63,7 @@ metadata:
 
 Gateway は、Istio Ingress Gateway の一部として、Node 外から受信した通信をフィルタリングする能力を担う。
 
-![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_gateway.png)
+![istio_gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_gateway.png)
 
 > - [Istio / Introducing the Istio v1alpha3 routing API](https://istio.io/latest/blog/2018/v1alpha3-routing/)
 > - [KubernetesとIstioを使ったDX改善 - 後ろを向いて後退します](https://micpsm.hatenablog.com/entry/k8s-istio-dx)
@@ -157,7 +157,7 @@ Kubernetes リソースの Ingress の代わりとして使用できる。
 
 ### Istio Ingress Gateway の仕組み
 
-![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_ingress-gateway.png)
+![istio_ingress-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_ingress-gateway.png)
 
 Istio Ingress Gateway は、以下から構成される。
 
@@ -256,7 +256,7 @@ spec:
 
 チャートのアップグレードの作業が増えるが、責務 (パブリック/プライベート、宛先) を切り分けるユースケースがあってもよい。
 
-![istio_multiple_istio-ingressgateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_multiple_istio-ingressgateway.png)
+![istio_multiple_istio-ingressgateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_multiple_istio-ingressgateway.png)
 
 > - https://alibaba-cloud.medium.com/traffic-management-with-istio-1-unified-management-of-tcp-ingress-traffic-routing-based-on-909d961a3893
 > - https://medium.com/@dinup24/expose-apps-on-private-network-through-istio-ingress-gateway-7dcb8a16d5bc
@@ -319,7 +319,7 @@ Istio Egress Gateway はアプリケーションデータを復号できるた�
 
 そのため、Istio のメトリクスでは HTTP として処理され、また Istio Egress Gateway ではスパンを作成できる。
 
-![istio-egressgateway_mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_mtls.png)
+![istio-egressgateway_mtls](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio-egressgateway_mtls.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
 > - [GKE クラスタで Cloud Service Mesh Egress ゲートウェイを使用する: チュートリアル \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#tls_origination_at_the_egress_gateway)
@@ -332,7 +332,7 @@ Istio Egress Gateway はアプリケーションデータを復号できない�
 
 そのため、Istio Egress Gateway 上を通過する TLS は Istio のメトリクスでは TCP として処理され、また Istio Egress Gateway ではスパンを作成できない。
 
-![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
+![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio-egressgateway_tls_passthrough.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
 > - [GKE クラスタで Cloud Service Mesh Egress ゲートウェイを使用する: チュートリアル \| Google Cloud Documentation](https://cloud.google.com/service-mesh/docs/security/egress-gateway-gke-tutorial?hl=ja#pass-through_of_httpstls_connections)
@@ -369,7 +369,7 @@ Istio Ingress Gateway (厳密に言うと Gateway) は、独自プロトコル (
 
 VirtualService は、Istio Ingress Gateway の一部として、受信した `L4`/`L7` 通信を DestinationRule に紐づく Pod へルーティングする。
 
-![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_virtual-service.png)
+![istio_virtual-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_virtual-service.png)
 
 > - [Kubernetes + Istioでblue-green deploymentを実現する - Uzabase for Engineers](https://tech.uzabase.com/entry/2018/11/26/110407)
 > - [マイクロサービスアーキテクチャ向けにサービスメッシュを提供する「Istio」の概要と環境構築、トラフィックルーティング設定 \| さくらのナレッジ](https://knowledge.sakura.ad.jp/20489/)
@@ -678,7 +678,7 @@ Istio Ingress Gateway の実体は Pod のため、ロードバランサーと�
 
 Pod の宛先情報は、Kubernetes の Service から取得する。
 
-![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
+![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_destination-rule_subset.png)
 
 > - [Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy)
 
@@ -866,7 +866,7 @@ Istio`v1.3` より前は、ConfigMap のデフォルトが `REGISTRY_ONLY` に�
 
 類似する ExternalName Service でも同じことを実現できるが、Istio の機能を使用できない。
 
-![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_service-entry.png)
+![istio_service-entry](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_service-entry.png)
 
 > - [Kubernetes + Istioでblue-green deploymentを実現する - Uzabase for Engineers](https://tech.uzabase.com/entry/2018/11/26/110407)
 > - [External Service Aliases: ExternalName vs ServiceEntry …](https://jimmysong.io/blog/externalname-and-serviceentry/)

@@ -308,7 +308,7 @@ spec:
 
 #### ▼ drainDuration
 
-![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/pod_terminating_process_istio-proxy.png)
+![pod_terminating_process_istio-proxy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/pod_terminating_process_istio-proxy.png)
 
 デフォルト値は `45s` (45 秒) である。
 

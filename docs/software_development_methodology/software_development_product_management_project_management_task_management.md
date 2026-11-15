@@ -217,13 +217,13 @@ issue や Epic issue を 1 つのタスクとみなし、大きく洗い出す�
 
 ガントチャートとタスク表を組み合わせると、スケジュールを管理しやすい。
 
-![gantt-chart_table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gantt-chart_table.png)
+![gantt-chart_table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/gantt-chart_table.png)
 
 <br>
 
 クリティカルパスでタスク間の関係を可視化すると、優先順位を見つけやすくなる
 
-![critical-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/critical-path.png)
+![critical-path](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software_development_methodology/critical-path.png)
 
 > - https://www.amazon.co.jp/dp/4798177415
 

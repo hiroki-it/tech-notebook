@@ -60,7 +60,7 @@ module "parameter" {
 EC2、RDS
 ```
 
-![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/sm-change-calender_scheduling.png)
+![sm-change-calender_scheduling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/sm-change-calender_scheduling.png)
 
 > - https://www.skyarch.net/blog/?p=22277
 
@@ -179,7 +179,7 @@ AWS KMS の暗号化キーを使用すると、パラメーターストアに永
 
 たとえ同じ文字列を暗号化する場合でも、そのときのタイムスタンプなどさまざまな要素で暗号化されるため、毎回異なるハッシュ値に暗号化される。
 
-![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/parameter-store_kms.png)
+![parameter-store_kms](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/parameter-store_kms.png)
 
 > - https://docs.aws.amazon.com/kms/latest/developerguide/services-parameter-store.html
 > - [AWS KMS SSMでセキュアに環境変数を扱う on Terraform｜ハマー](https://note.com/hamaa_affix_tech/n/n02eb412d0327)

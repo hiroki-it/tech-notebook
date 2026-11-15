@@ -20,7 +20,7 @@ tags:
 
 ### vue-router とは
 
-![vue-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue-router.png)
+![vue-router](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue-router.png)
 
 ルーティングパッケージの一種。コンポーネントへのルーティングを設定し、`/<ルート>/<パラメータ>` に応じて、コールするコンポーネントを動的に切り替えられる。
 

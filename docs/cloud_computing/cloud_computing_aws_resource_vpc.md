@@ -26,7 +26,7 @@ tags:
 
 EKS の場合、Amazon VPC (`L3`) 上に Amazon VPC CNI を配置することにより、クラスターネットワークを作成できる。
 
-![vpc_network-scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_network-scope.png)
+![vpc_network-scope](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc_network-scope.png)
 
 > - https://pages.awscloud.com/rs/112-TZM-766/images/AWS-08_AWS_Summit_Online_2020_NET01.pdf
 > - https://d1.awsstatic.com/webinars/jp/pdf/services/20180515_AWS-BlackBelt_Networking-for-RFP.pdf#page=51
@@ -156,7 +156,7 @@ LAN 内の内部ネットワークに相当する。
 
 ただし、サブネット内からサブネット外へのリクエストは許可しても問題なく、その場合はルートテーブルに AWS NAT Gateway を設定する必要がある。
 
-![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-subnet_private-subnet.png)
+![public-subnet_private-subnet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/public-subnet_private-subnet.png)
 
 <br>
 
@@ -170,7 +170,7 @@ LAN 内の内部ネットワークに相当する。
 
 双方向のインバウンドルールとアウトバウンドルールを決める。
 
-![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network-acl.png)
+![network-acl](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/network-acl.png)
 
 <br>
 
@@ -299,7 +299,7 @@ Gateway 型と Interface 型がある。
 
 Amazon VPC エンドポイントを使用しない場合、プライベートサブネット内からのリクエストには、Internet Gateway と AWS NAT Gateway を使用する必要がある。
 
-![vpc_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_endpoint.png)
+![vpc_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc_endpoint.png)
 
 <br>
 
@@ -351,7 +351,7 @@ NAT 処理 (DNAT、SNAT) を実行し、パブリック IP アドレス (Amazon 
 
 つまり、Amazon VPC 内の複数のインスタンスからのリクエストを、複数のパブリック IP アドレスで送信する。
 
-![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
+![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/internet-gateway_nat-gateway.png)
 
 > - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
 > - https://docs.aws.amazon.com/vpc/latest/userguide/Amazon VPC_Internet_Gateway.html
@@ -377,7 +377,7 @@ Internet Gateway の SNAT 処理では、Amazon VPC 内からリクエストを�
 
 一方で、宛先 IP アドレスや宛先ポート番号は変換しない。
 
-![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png)
+![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/internet-gateway_nat-gateway_snat.png)
 
 > - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
 
@@ -399,7 +399,7 @@ SNAT 処理 (SNAT 処理のみで、DNAT 処理は持たない) を実行し、�
 
 そのため、送信元はこのパブリック IP アドレスになる。
 
-![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway.png)
+![internet-gateway_nat-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/internet-gateway_nat-gateway.png)
 
 > - [NAT gateways - Amazon Virtual Private Cloud](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics)
 > - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
@@ -415,7 +415,7 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 一方で、宛先 IP アドレスや宛先ポート番号は変換しない。
 
-![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/internet-gateway_nat-gateway_snat.png)
+![internet-gateway_nat-gateway_snat](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/internet-gateway_nat-gateway_snat.png)
 
 > - [Attach multiple IPs to a NAT Gateway to scale your egress traffic pattern \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/attach-multiple-ips-to-a-nat-gateway-to-scale-your-egress-traffic-pattern/)
 
@@ -438,7 +438,7 @@ AWS NAT Gateway の SNAT 処理では、プライベートサブネットから�
 
 異なる Amazon VPC のネットワークを接続する。
 
-![vpc_peering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_peering.png)
+![vpc_peering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc_peering.png)
 
 #### ▼ Amazon VPC ピアリング接続とは
 
@@ -471,11 +471,11 @@ Amazon VPC に複数の IPv4 CIDR ブロック ブロックがあり、1 つで�
   </tbody>
 </table>
 
-![vpc_peering_unavailable_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_peering_unavailable_1.png)
+![vpc_peering_unavailable_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc_peering_unavailable_1.png)
 
 たとえ、IPv6 が異なっていても、同様である。
 
-![vpc_peering_unavailable_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc_peering_unavailable_2.png)
+![vpc_peering_unavailable_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc_peering_unavailable_2.png)
 
 <br>
 
@@ -491,7 +491,7 @@ Interface 型の Amazon VPC エンドポイント (プライベートリンク) 
 
 Amazon API Gateway の Amazon VPC リンクは、Amazon VPC エンドポイントサービスに相当する。
 
-![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-endpoint-service.png)
+![vpc-endpoint-service](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc-endpoint-service.png)
 
 <br>
 
@@ -505,7 +505,7 @@ Amazon API Gateway の Amazon VPC リンクは、Amazon VPC エンドポイン�
 
 Direct Connect がオンプレミスとの通信機能を持つため、Transit Gateway と Direct Connect を組み合わせれば、Amazon VPC とオンプレミスを接続できる。
 
-![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/transit-gateway.png)
+![transit-gateway](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/transit-gateway.png)
 
 > - [AWS Transit Gateway design best practices - Amazon VPC](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-best-design-practices.html)
 > - [AWS Transit Gatewayとは？特徴やユースケース、料金を解説 \| アシスト](https://www.ashisuto.co.jp/db_blog/article/aws-transitgateway.html)
@@ -522,7 +522,7 @@ AWS 間の通信の場合、アプリケーションデータを自動的に暗�
 
 Amazon EC2、Amazon ECS、Amazon EKS、AWS Lambda 間を接続する。
 
-![vpc-lattice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vpc-lattice.png)
+![vpc-lattice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/vpc-lattice.png)
 
 > - [Amazon VPC Latticeが一般提供されたので試してみた - yuj1osm's tech blog](https://yuj1osm.hatenablog.com/entry/2023/04/16/170124)
 > - [Amazon VPC Lattice が GA したので Lattice 経由で Lambda を呼んでみた #AWS - Qiita](https://qiita.com/k-sasaki-hisys-biz/items/28ba5762aa9544694021)

@@ -506,7 +506,7 @@ infra-manifest-repository/ # マニフェストリポジトリまたはチャー
 
 Application の `.resource` キー配下で、紐づく子 Application を管理している。
 
-![argocd_root-application](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_root-application.png)
+![argocd_root-application](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_root-application.png)
 
 > - [Cluster Bootstrapping - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern)
 > - [Medium](https://medium.com/dzerolabs/turbocharge-argocd-with-app-of-apps-pattern-and-kustomized-helm-ea4993190e7c)

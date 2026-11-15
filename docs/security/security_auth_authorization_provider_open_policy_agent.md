@@ -22,7 +22,7 @@ tags:
 
 Open Policy Agent は、Open Policy Agent、`rego` ファイル、DB、といったコンポーネントから構成される。
 
-![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent_architecture.png)
+![open-policy-agent_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/open-policy-agent_architecture.png)
 
 > - [OPA On Kubernetes: An Introduction For Beginners](https://www.velotio.com/engineering-blog/deploy-opa-on-kubernetes)
 > - [Open Policy Agentの活用事例 (AWS上での稼働) #Authorization - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728)
@@ -35,7 +35,7 @@ Open Policy Agent は、`rego` ファイルの認可スコープに基づいて�
 
 返却された boolean 値に基づいて、クライアント側 (例：アプリケーション、kube-apiserver) で認可結果を適用する。
 
-![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/open-policy-agent.png)
+![open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/open-policy-agent.png)
 
 > - [Open Policy Agentの活用事例 (AWS上での稼働) #Authorization - Qiita](https://qiita.com/Hiroyuki_OSAKI/items/e2ec9f2c2ce441483728)
 
@@ -180,7 +180,7 @@ kube-apiserver の validating-admission ステップ時に、Gatekeeper の webh
 
 そのため、GitOps の CD パイプライン上にバリデーションを実行できる。
 
-![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_open-policy-agent.png)
+![kubernetes_open-policy-agent](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/kubernetes_open-policy-agent.png)
 
 > - [Admission Webhookを作って遊んで、その仕組みを理解しよう（Gatekeeper編）](https://blog.mosuke.tech/entry/2022/06/07/admission-webhook-opa/)
 > - [Differences between OPA and Gatekeeper for Kubernetes Admission Control](https://www.infracloud.io/blogs/opa-and-gatekeeper/)

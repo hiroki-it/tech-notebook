@@ -39,7 +39,7 @@ Active Record パターンで実装されている。
 
 ビジネスロジックが複雑でないアプリケーションの開発に適している。
 
-![active-record](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/active-record.png)
+![active-record](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/active-record.png)
 
 <br>
 

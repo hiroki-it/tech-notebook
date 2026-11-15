@@ -35,7 +35,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 データ発生源、データの流れ、処理、データストアを基に、ソフトウェアの処理間でデータがどのように受け渡されるかを表す。
 
-![data-flow-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/data-flow-diagram.jpg)
+![data-flow-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/data-flow-diagram.jpg)
 
 <br>
 
@@ -57,7 +57,7 @@ DFD、ユースケース図、アクティビティ図などがある。
 
 ### 記法
 
-![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram.png)
+![usecase-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram.png)
 
 <table>
   <thead>
@@ -69,37 +69,37 @@ DFD、ユースケース図、アクティビティ図などがある。
   </thead>
   <tbody>
     <tr>
-      <td>アクター：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_actor.png" alt="usecase-diagram_actor"></td>
+      <td>アクター：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_actor.png" alt="usecase-diagram_actor"></td>
       <td>ソフトウェアを利用するユーザーや、連携するほかのソフトウェアを表す。</td>
       <td></td>
     </tr>
     <tr>
-      <td>ユースケース：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_usecase-name.png" alt="usecase-diagram_usecase-name"></td>
+      <td>ユースケース：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_usecase-name.png" alt="usecase-diagram_usecase-name"></td>
       <td>ソフトウェアの具体的な機能を表す。</td>
       <td></td>
     </tr>
     <tr>
-      <td>サブジェクト：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_subject.png" alt="usecase-diagram_subject"></td>
+      <td>サブジェクト：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_subject.png" alt="usecase-diagram_subject"></td>
       <td>アクターとソフトウェアの境界線を表す。</td>
       <td></td>
     </tr>
     <tr>
-      <td>パッケージ：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_package.png" alt="usecase-diagram_package"></td>
+      <td>パッケージ：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_package.png" alt="usecase-diagram_package"></td>
       <td>アクターによって提供する機能に違いがある場合、その境界線を表す。</td>
       <td></td>
     </tr>
     <tr>
-      <td>関連：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_association.png" alt="usecase-diagram_association"></td>
+      <td>関連：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_association.png" alt="usecase-diagram_association"></td>
       <td>アクターと機能を結ぶことにより、機能がアクターに提供されることを表す。</td>
       <td></td>
     </tr>
     <tr>
-      <td>汎化：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_genelization.png" alt="usecase-diagram_genelization"></td>
+      <td>汎化：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_genelization.png" alt="usecase-diagram_genelization"></td>
       <td>アクター間またはユースケース間に、is-a-kind-of な関係 (グループとメンバーの関係性) があることを表す。</td>
       <td></td>
     </tr>
     <tr>
-      <td>包含：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_include.png" alt="usecase-diagram_include"></td>
+      <td>包含：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_include.png" alt="usecase-diagram_include"></td>
       <td>矢印元の機能を細分化すると、矢印先の機能も含まれることを表す。</td>
       <td><code>&lt;&lt; invoke &gt;&gt;</code> も同じである。</td>
     </tr>
@@ -109,12 +109,12 @@ DFD、ユースケース図、アクティビティ図などがある。
       <td></td>
     </tr>
     <tr>
-      <td>拡張：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_extend.png" alt="usecase-diagram_extend"></td>
+      <td>拡張：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_extend.png" alt="usecase-diagram_extend"></td>
       <td>矢印元の機能は矢印先の機能の追加機能であり、場合によってはこれが使用されることを表す。</td>
       <td></td>
     </tr>
     <tr>
-      <td>ノート：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/usecase-diagram_note.png" alt="usecase-diagram_note"></td>
+      <td>ノート：<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/usecase-diagram_note.png" alt="usecase-diagram_note"></td>
       <td>機能の前提事項や考慮事項を記載する。認証／認可はすべてのユースケースに関係するため、ノートに記載する。<br>- <a href="https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent">https://stackoverflow.com/questions/49530596/suggested-way-of-creating-use-case-diagram-where-some-use-cases-requires-authent</a>&gt;</td>
       <td></td>
     </tr>
@@ -174,7 +174,7 @@ graph LR
 
 2. 要件定義を終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
-    ![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_usecase-diagram_example.png)
+    ![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_tooppoo_usecase-diagram_example.png)
 
 3. クラス図を作成する。ユースケースから以下のオブジェクトを抽出する。
 
@@ -205,7 +205,7 @@ graph LR
       </tbody>
     </table>
 
-    ![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ticket-modeling_tooppoo_domain-model-diagram_example.png)
+    ![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_tooppoo_domain-model-diagram_example.png)
 
 <br>
 
@@ -215,7 +215,7 @@ graph LR
 
 ビジネスロジックや業務フローを手続き的に表記する。
 
-![uml_activity-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_activity-diagram.png)
+![uml_activity-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_activity-diagram.png)
 
 ## 05. システムシーケンス図
 
@@ -225,7 +225,7 @@ graph LR
 
 オブジェクト間の関係性に基づくシーケンス図とは異なり、図式化の目的はユースケース図と似ている。
 
-![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/system-sequence-diagram.png)
+![system-sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/system-sequence-diagram.png)
 
 > - https://stackoverflow.com/questions/16889028/difference-between-sequence-diagram-sd-and-a-system-sequence-diagram-ssd>
 > - https://digitalgyan.org/difference-between-sequence-diagram-and-a-system-sequence-diagram/
@@ -270,11 +270,11 @@ stateDiagram-v2
 
 ストップウォッチのステートマシン図がある。
 
-![uml_state-machine-diagram_stopwatch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/uml_state-machine-diagram_stopwatch.jpg)
+![uml_state-machine-diagram_stopwatch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_state-machine-diagram_stopwatch.jpg)
 
 ステートマシン表を作成してみると、ステートマシン図では、9 つあるセルのうち `4` 個のセルしか表現できておらず、残り 5 つのセルは表現されていないことに気づける。
 
-![state-machine-table_stopwatch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/state-machine-table_stopwatch.jpg)
+![state-machine-table_stopwatch](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/state-machine-table_stopwatch.jpg)
 
 <br>
 
@@ -290,7 +290,7 @@ stateDiagram-v2
 
 ### 記法
 
-![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/object-diagram.png)
+![object-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/object-diagram.png)
 
 <table>
   <thead>

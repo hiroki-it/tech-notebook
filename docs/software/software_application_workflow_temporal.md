@@ -21,7 +21,7 @@ tags:
 
 Temporal は、Temporal クライアント、Temporal サーバー、ステート用 DB、Temporal ワーカーからなる。
 
-![temporal_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_architecture.png)
+![temporal_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/temporal_architecture.png)
 
 > - https://medium.com/safetycultureengineering/building-resilient-microservice-workflows-with-temporal-a-next-gen-workflow-engine-a9637a73572d
 > - https://michaelangelo.io/blog/temporal-sqs#temporal-components
@@ -125,7 +125,7 @@ temporal=# \dt
 4. Temporal ワーカーは、ワークフロー内のアクティビティを実行し、結果を Temporal サーバーのメッセージ中継システムに格納する。
 5. Temporal ワーカーは、ワークフローの現在のステートに応じて次のアクティビティを実行する。
 
-![temporal_worker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_worker_architecture.png)
+![temporal_worker_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/temporal_worker_architecture.png)
 
 > - [Background Check Application Design \| Learn Temporal](https://learn.temporal.io/examples/go/background-checks/application-design/#what-does-the-component-topology-look-like)
 > - [Inversion of Execution \| Temporal](https://temporal.io/blog/sergey-inversion-of-execution)
@@ -144,7 +144,7 @@ Temporal を Saga パターンのオーケストレーターとして使用す�
 
 そのため、タイムアウト処理、リトライ処理、キャンセル処理などの点で Temporal の外部にメッセージ中継システム (例：Amazon SQS) やメッセージブローカー (例：RebbitMQ) は不要である。
 
-![temporal_saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/temporal_saga-pattern.png)
+![temporal_saga-pattern](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/temporal_saga-pattern.png)
 
 > - https://learn.temporal.io/tutorials/php/booking_saga/#review-the-saga-architecture-pattern
 > - [Saga Design Pattern Explained for Distributed Systems \| Temporal](https://temporal.io/blog/saga-pattern-made-easy)

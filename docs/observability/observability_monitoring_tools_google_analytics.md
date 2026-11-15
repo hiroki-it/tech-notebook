@@ -197,7 +197,7 @@ Google アナリティクスでは、1 つのドメイン当たりのセッシ�
 
 ### 増加率
 
-![increase-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/increase-rate.png)
+![increase-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/increase-rate.png)
 
 増加率は、増加量が基準量全体の何倍 (何割分) であるかで表す。
 

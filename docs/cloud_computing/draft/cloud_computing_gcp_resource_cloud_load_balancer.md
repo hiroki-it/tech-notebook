@@ -24,7 +24,7 @@ Google Cloud が提供するマネージドなロードバランサーであり�
 - 外部 HTTPS 負荷分散プロキシ
 - 内部 HTTPS 負荷分散プロキシ
 
-![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_load_balancer.png)
+![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/google_cloud_load_balancer.png)
 
 > - https://www.topgate.co.jp/blog/google-service/20716
 
@@ -36,7 +36,7 @@ Google Cloud が提供するマネージドなロードバランサーであり�
 - TCP/UDP ネットワーク負荷分散パススルー
 - 内部 TCP/UDP 負荷分散パススルー
 
-![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/google_cloud_load_balancer.png)
+![google_cloud_load_balancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/google_cloud_load_balancer.png)
 
 > - https://www.topgate.co.jp/blog/google-service/20716
 

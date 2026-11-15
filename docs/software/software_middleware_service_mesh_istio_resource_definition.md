@@ -465,7 +465,7 @@ VirtualService を起点とした Pod のカナリアリリースで使用する
 
 `.spec.subsets[*].name` キーの値は、VirtualService で設定した `.spec.http[*].route[*].destination.subset` キーに合わせる必要がある。
 
-![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
+![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_destination-rule_subset.png)
 
 `subset` が `v1` に対するインバウンド通信では、`version` キーの値が `v1` である Pod にルーティングする。
 
@@ -3530,7 +3530,7 @@ spec:
 
 #### ▼ destination.subset
 
-![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio_destination-rule_subset.png)
+![istio_destination-rule_subset](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio_destination-rule_subset.png)
 
 VirtualService を起点とした Pod のカナリアリリースで使用する。
 
@@ -3771,7 +3771,7 @@ spec:
 
 そのため、Istio Egress Gateway 上を通過する TLS は Istio のメトリクスでは TCP として処理され、また Istio Egress Gateway ではスパンを作成できない。
 
-![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/istio-egressgateway_tls_passthrough.png)
+![istio-egressgateway_tls_passthrough](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/istio-egressgateway_tls_passthrough.png)
 
 > - https://istio.io/v1.16/blog/2018/egress-monitoring-access-control/#comparison-with-https-egress-traffic-control
 

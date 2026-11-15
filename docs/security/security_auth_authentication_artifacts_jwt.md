@@ -349,7 +349,7 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 4. ID プロバイダーは、JWT をレスポンスに含め、ユーザーに返信する。
 5. ブラウザは、JWT を LocalStorage や Cookie に保管する。
 
-![jwt_public_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_generate_token.png)
+![jwt_public_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/jwt_public_generate_token.png)
 
 > - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 
@@ -363,7 +363,7 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 4. アプリケーションは、ID プロバイダーから取得した公開鍵を使用して JWT の情報 (署名部分、有効期限、発行元など) から、JWT トークンの署名を検証する。
 5. JWT が有効であれば、アプリケーションの認証処理は成功とし、ユーザーにレスポンスを返信する
 
-![jwt_public_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_public_verify_token.png)
+![jwt_public_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/jwt_public_verify_token.png)
 
 > - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%AC%E9%96%8B%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 > - [JWTの署名とか検証って結局なんやねん！を簡単に解説！ #初心者 - Qiita](https://qiita.com/nokonoko_1203/items/966dc356c3763136c368#%E6%A4%9C%E8%A8%BC%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%E3%82%92%E3%81%A9%E3%81%86%E3%81%99%E3%82%8B%E3%81%AE)
@@ -390,7 +390,7 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 4. アプリケーションは、JWT をレスポンスに含め、ユーザーに返信する。
 5. ブラウザは、JWT を LocalStorage や Cookie に保管する。
 
-![jwt_common_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_generate_token.png)
+![jwt_common_generate_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/jwt_common_generate_token.png)
 
 > - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 
@@ -402,7 +402,7 @@ ID プロバイダー側に秘密鍵、クライアント側に公開鍵を配�
 2. アプリケーションは、秘密鍵を使用して JWT の署名を検証する。
 3. JWT が有効であれば、認証成功とし、ユーザーにレスポンスを返信する。
 
-![jwt_common_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/jwt_common_verify_token.png)
+![jwt_common_verify_token](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/jwt_common_verify_token.png)
 
 > - [JWT認証の流れを理解する #初学者向け - Qiita](https://qiita.com/asagohan2301/items/cef8bcb969fef9064a5c#%E5%85%B1%E9%80%9A%E9%8D%B5%E6%96%B9%E5%BC%8F%E3%81%AE%E5%A0%B4%E5%90%88)
 

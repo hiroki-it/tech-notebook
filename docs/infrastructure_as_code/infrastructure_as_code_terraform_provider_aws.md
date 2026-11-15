@@ -2567,7 +2567,7 @@ aws dynamodb create-table\
   --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
 ```
 
-![dymanodb_terraform_state-lock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dymanodb_terraform_state-lock.png)
+![dymanodb_terraform_state-lock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/dymanodb_terraform_state-lock.png)
 
 > - https://blog-benri-life.com/terraform-state-lock-s3/
 

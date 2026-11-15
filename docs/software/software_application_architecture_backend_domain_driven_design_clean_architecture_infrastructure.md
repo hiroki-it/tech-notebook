@@ -25,7 +25,7 @@ tags:
 
 リポジトリは、ドメイン層のエンティティの永続化をインフラストラクチャ層の実装に任せることにより、ドメイン層が RDBMS や外部システムなどの永続化先に依存しないようにする。
 
-![repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/repository.png)
+![repository](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/repository.png)
 
 ### リポジトリパターンとは
 
@@ -270,7 +270,7 @@ tags:
 
 ### DB に対する書き込み責務 (CREATE／UPDATE／DELETE)
 
-![ddd_repository_write](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_repository_write.png)
+![ddd_repository_write](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd_repository_write.png)
 
 DB に対する書き込み操作をする。
 
@@ -598,7 +598,7 @@ DB に対する書き込み操作をする。
 
 ### DB に対する読み出し責務 (Read)
 
-![ddd_repository_read](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ddd_repository_read.jpg)
+![ddd_repository_read](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd_repository_read.jpg)
 
 DB に対する読み出し操作をする。
 
@@ -1009,7 +1009,7 @@ DB に対する読み出し操作をする。
 
 コントローラーの処理前に実行する BeforeMiddleware と、コントローラーとビューの処理後に実行する AfterMiddleware がある。
 
-![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/design-pattern_middleware.png)
+![design-pattern_middleware](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/design-pattern_middleware.png)
 
 > - [Laravel ミドルウェアの設定について #middleware - Qiita](https://qiita.com/ktanoooo/items/a746a96b12489ae56553)
 

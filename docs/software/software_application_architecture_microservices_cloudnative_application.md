@@ -61,7 +61,7 @@ flowchart LR
 
 Docker やクラウドが広まって以降、プレゼンテーション・ドメイン分離や API Gateway 配置のアーキテクチャスタイルを採用することが、当然のようになってきた印象です。
 
-![ddd-cloudnative_related-architecture-styles](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_related-architecture-styles.png)
+![ddd-cloudnative_related-architecture-styles](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_related-architecture-styles.png)
 
 以下の表で、各アーキテクチャスタイルの責務と結合度を概説しました。
 
@@ -111,7 +111,7 @@ Docker やクラウドが広まって以降、プレゼンテーション・ド�
 - マイクロサービス領域
 - ストレージ領域 (DB)
 
-![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-overall-design.png)
 
 # 05. フロントエンドアプリケーションのアーキテクチャ
 
@@ -172,7 +172,7 @@ flowchart LR
 
 レスポンシブ機能を持つフレームワークとして、React や Vue.js があります。
 
-![2d7ce1d0-0d68-47ba-8c4e-ef74da9f2931](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/2d7ce1d0-0d68-47ba-8c4e-ef74da9f2931.png)
+![2d7ce1d0-0d68-47ba-8c4e-ef74da9f2931](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/2d7ce1d0-0d68-47ba-8c4e-ef74da9f2931.png)
 
 以下の表で、メリットデメリットを概説しました。
 
@@ -217,7 +217,7 @@ flowchart LR
 
 なお、本記事では、クライアント別パターンを採用します。
 
-![cfb559f3-5410-41bd-be3f-466e4bd9c553](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/cfb559f3-5410-41bd-be3f-466e4bd9c553.png)
+![cfb559f3-5410-41bd-be3f-466e4bd9c553](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cfb559f3-5410-41bd-be3f-466e4bd9c553.png)
 
 以下の表で、メリットデメリットを概説しました。
 
@@ -258,7 +258,7 @@ flowchart LR
 
 各フロントエンドアプリが作成した静的ファイルを結合し、レンダリングします。
 
-![microfrontends](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/microfrontends.png)
+![microfrontends](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microfrontends.png)
 
 [Micro Frontends](https://martinfowler.com/articles/micro-frontends.html)
 
@@ -268,7 +268,7 @@ flowchart LR
 
 静的ファイルをどの領域で結合するのかの観点で、パターンがあります。
 
-![microfrontends_composition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/microfrontends_composition.png)
+![microfrontends_composition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microfrontends_composition.png)
 
 [Building Micro-Frontends](https://www.oreilly.com/library/view/building-micro-frontends/9781492082989/ch03.html)
 
@@ -285,7 +285,7 @@ flowchart LR
 - PC ブラウザフロントエンド
 - スマホブラウザフロントエンド
 
-![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-overall-design.png)
 
 # 07. API Gateway 分割方法
 
@@ -327,7 +327,7 @@ API Gateway には、各クライアントからのすべてのリクエスト�
 
 そのため、共有の API Gateway には、すべてのクライアントに対応するエンドポイントが必要です。
 
-![caa6317a-5a68-4dfa-bfa1-bf9cf003af72](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/caa6317a-5a68-4dfa-bfa1-bf9cf003af72.png)
+![caa6317a-5a68-4dfa-bfa1-bf9cf003af72](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/caa6317a-5a68-4dfa-bfa1-bf9cf003af72.png)
 
 メリデメは以下の通りです。
 
@@ -372,7 +372,7 @@ API Gateway には、特定のクライアントからのリクエストを想�
 
 そのため、各 API Gateway には、特定のクライアントに対応するエンドポイントが必要です。
 
-![792b59b9-6eb6-4e86-816c-41dcc4c2f294](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/792b59b9-6eb6-4e86-816c-41dcc4c2f294.png)
+![792b59b9-6eb6-4e86-816c-41dcc4c2f294](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/792b59b9-6eb6-4e86-816c-41dcc4c2f294.png)
 
 メリデメは以下の通りです。
 
@@ -425,7 +425,7 @@ API Gateway には、特定のクライアントからのリクエストを想�
 - マイクロサービス領域
 - ストレージ領域 (DB)
 
-![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-overall-design.png)
 
 # 08. データ管理方法
 
@@ -443,7 +443,7 @@ flowchart LR
 
 ### AWS リソースと Kubernetes によるデータ管理
 
-![ddd-cloudnative_data-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_data-management.png)
+![ddd-cloudnative_data-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_data-management.png)
 
 <table>
   <thead>
@@ -500,7 +500,7 @@ flowchart LR
 - クライアントサイド暗号化のための S3 マネージド暗号化キー (図では省略)
 - Kubernetes リポジトリ内の SOPS (図では省略)
 
-![ddd-cloudnative_cloud-infrastructure-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cloud-infrastructure-design.png)
+![ddd-cloudnative_cloud-infrastructure-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cloud-infrastructure-design.png)
 
 # 08-02. 永続データ管理
 
@@ -518,7 +518,7 @@ flowchart LR
 
 これらのことから、様々なドメインモデルを同じテーブルに永続化し、それを各マイクロサービスが共有することになり、DB が肥大化していくことを想像できます。
 
-![aef2273c-e99c-43f8-9ba4-74b8e61275a3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aef2273c-e99c-43f8-9ba4-74b8e61275a3.png)
+![aef2273c-e99c-43f8-9ba4-74b8e61275a3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/aef2273c-e99c-43f8-9ba4-74b8e61275a3.png)
 
 [Microservices Pattern: Pattern: Shared database](https://microservices.io/patterns/data/shared-database.html)
 
@@ -532,7 +532,7 @@ flowchart LR
 
 本記事では、マイクロサービス占有 DB パターンを採用とします。
 
-![616a8dcc-109c-4b52-a29b-cdb510b5c2ac](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/616a8dcc-109c-4b52-a29b-cdb510b5c2ac.png)
+![616a8dcc-109c-4b52-a29b-cdb510b5c2ac](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/616a8dcc-109c-4b52-a29b-cdb510b5c2ac.png)
 
 [Microservices Pattern: Pattern: Database per service](https://microservices.io/patterns/data/database-per-service.html)
 
@@ -551,7 +551,7 @@ flowchart LR
 - マイクロサービス領域
 - ストレージ領域 (DB) (MySQL の占有 DB)
 
-![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-overall-design.png)
 
 # 09. マイクロサービス間通信方法
 
@@ -585,7 +585,7 @@ flowchart LR
 
 本記事では、リクエスト / レスポンス方式を採用とします。
 
-![3053a9ad-0b62-4a2e-93bf-6641a668b596](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/3053a9ad-0b62-4a2e-93bf-6641a668b596.png)
+![3053a9ad-0b62-4a2e-93bf-6641a668b596](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/3053a9ad-0b62-4a2e-93bf-6641a668b596.png)
 
 [Microservices Pattern: Pattern: Remote Procedure Invocation (RPI)](https://microservices.io/patterns/communication-style/rpi.html)
 
@@ -593,7 +593,7 @@ flowchart LR
 
 通信方式にリクエスト / レスポンス方式を採用する場合、アプリアーキテクチャ領域 (フロントエンド領域、API Gateway 領域、マイクロサービス領域、ストレージ領域 (DB)) 間にはクライアントと API の関係性があります。
 
-![ddd-cloudnative_request-response_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_request-response_detail.png)
+![ddd-cloudnative_request-response_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_request-response_detail.png)
 
 <table>
   <thead>
@@ -636,7 +636,7 @@ flowchart LR
 
 メッセージブローカーやメッセージキューによるプッシュ、または宛先マイクロサービスによるプルに基づいて、宛先マイクロサービスにメッセージをサブスクライブします。
 
-![91be5359-be48-458b-a311-979ec47bf07e](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/91be5359-be48-458b-a311-979ec47bf07e.png)
+![91be5359-be48-458b-a311-979ec47bf07e](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/91be5359-be48-458b-a311-979ec47bf07e.png)
 
 [Microservices Pattern: Pattern: Messaging](https://microservices.io/patterns/communication-style/messaging)
 
@@ -646,7 +646,7 @@ flowchart LR
 
 宛先マイクロサービスはストレージをポーリングし、新しいデータが追加され次第、ストレージからこれを読み込みます。
 
-![ddd-cloudnative_microservice-communication_shared-data](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_microservice-communication_shared-data.png)
+![ddd-cloudnative_microservice-communication_shared-data](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-communication_shared-data.png)
 
 ## 振り返り
 
@@ -661,7 +661,7 @@ flowchart LR
 - マイクロサービス領域 (境界づけられたコンテキスト、リクエスト / レスポンス方式)
 - ストレージ領域 (DB)
 
-![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-overall-design.png)
 
 # 10. マイクロサービス分割方法
 
@@ -684,7 +684,7 @@ flowchart LR
 
 マイクロサービスの適切な大きさは 1 つの集約から境界づけられたコンテキストまでの範囲であり、これより小さいと分散した大きな泥団子に、大きいと大きな泥団子になります。
 
-![ddd-cloudnative_microservice-right-size](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_microservice-right-size.png)
+![ddd-cloudnative_microservice-right-size](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-right-size.png)
 
 ### 境界づけられたコンテキスト
 
@@ -748,7 +748,7 @@ flowchart LR
 
 ステートソーシングで採用できるマイクロサービス間通信方式は、リクエスト / レスポンス方式とパブリッシュ / サブスクライブ方式です。
 
-![3f3ae949-d68a-4bfa-83f0-8bd859bc2244](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/3f3ae949-d68a-4bfa-83f0-8bd859bc2244.png)
+![3f3ae949-d68a-4bfa-83f0-8bd859bc2244](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/3f3ae949-d68a-4bfa-83f0-8bd859bc2244.png)
 
 ## イベントソーシングパターン
 
@@ -834,7 +834,7 @@ event_entity_id カラムを使えば、特定のドメインモデル (event_en
 
 イベントソーシングで採用できるマイクロサービス間通信方式は、パブリッシュサブスクライブ方式です。
 
-![a3b65d1d-ea20-4f90-b423-038934d38cb7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/a3b65d1d-ea20-4f90-b423-038934d38cb7.png)
+![a3b65d1d-ea20-4f90-b423-038934d38cb7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/a3b65d1d-ea20-4f90-b423-038934d38cb7.png)
 
 # 10-03. DDD の用語
 
@@ -936,7 +936,7 @@ flowchart LR
 
 例えば、Amazon のような小売業の EC 業務システムを考えます。
 
-![ddd-cloudnative_microservice-decomposition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_microservice-decomposition.png)
+![ddd-cloudnative_microservice-decomposition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-decomposition.png)
 
 1. 既存のモノリスアーキテクチャのシステム関連図 (受注管理業務システムを取り巻く周辺システムの様子) を作成する。これにより、ドメイン全体と既存システム全体の対応関係を理解できる。
 2. システムについて、ドメインエキスパート (受注管理業務のプロ) にドメインルールや振る舞いをヒアリングする。
@@ -951,7 +951,7 @@ flowchart LR
 
 各境界づけられたコンテキストを 1 つのマイクロサービスとして扱います。
 
-![ddd-cloudnative_microservice-decomposition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_microservice-decomposition.png)
+![ddd-cloudnative_microservice-decomposition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-decomposition.png)
 
 > 💡
 >
@@ -1009,7 +1009,7 @@ DDD ではいずれのアプリアーキテクチャを採用するかは重要�
 クリーンアーキテクチャは、４つのアプリアーキテクチャ層 (インフラストラクチャ層、インターフェース層、ユースケース層、ドメイン層)
 と、各層の固有デザインパターン、からなります。
 
-![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/clean-architecture.jpg)
+![clean-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/clean-architecture.jpg)
 
 以下で、マイクロサービスで DDD とクリーンアーキテクチャを採用した場合のデザインパターンを整理しました。
 
@@ -1055,7 +1055,7 @@ DDD でよく使用するデザインパターンと、クリーンアーキテ�
 
 そのため、マイクロサービスで、フロントエンドに関するデザインパターン (例：インターフェース層のプレゼンター、ユースケース層のアウトプットバウンダリー) は不要です。
 
-![clean-architecture_layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/clean-architecture_layer.png)
+![clean-architecture_layer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/clean-architecture_layer.png)
 
 [Clean Architecture 達人に学ぶソフトウェアの構造と設計](https://www.amazon.co.jp/dp/4048930656)
 
@@ -1069,13 +1069,13 @@ DDD でよく使用するデザインパターンと、クリーンアーキテ�
 
 各アプリアーキテクチャ層の主要なデザインパターンを抜粋し、依存関係を簡易的に表現しました。
 
-![ddd-cloudnative_app-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-architecture.png)
+![ddd-cloudnative_app-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-architecture.png)
 
 すべてのマイクロサービスで、同様にアーキテクチャを設計します。
 
 ここではクリーンアーキテクチャの各層に、DDD のデザインパターンを配置しています。
 
-![ddd-cloudnative_app-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-architecture.png)
+![ddd-cloudnative_app-architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-architecture.png)
 
 [DDD モデリング/実装ガイド](https://booth.pm/ja/items/1835632)
 
@@ -1158,7 +1158,7 @@ Saga オーケストレーター以外にも、Saga オーケストレーター�
 
 さらにその後、非同期リクエストで処理結果を取得し、クライアントに返却します。
 
-![ddd-cloudnative_orchestration-saga_overview](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_orchestration-saga_overview.png>)
+![ddd-cloudnative_orchestration-saga_overview](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_orchestration-saga_overview.png>)
 
 <table>
   <thead>
@@ -1193,7 +1193,7 @@ Saga オーケストレーター以外にも、Saga オーケストレーター�
 
 共通の説明として、Temporal SDK は Temporal サーバーの API をコールするクライアントに相当するため、ロジックをインフラストラクチャ層に実装するとよいでしょう。
 
-![ddd-cloudnative_orchestration-saga_detail](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_orchestration-saga_detail.png>)
+![ddd-cloudnative_orchestration-saga_detail](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_orchestration-saga_detail.png>)
 
 <table>
   <thead>
@@ -1255,7 +1255,7 @@ Saga オーケストレーター以外にも、Saga オーケストレーター�
 - マイクロサービス領域 (Saga オーケストレーターとしての Temporal)
 - ストレージ領域 (DB)
 
-![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-overall-design.png)
+![ddd-cloudnative_app-overall-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-overall-design.png)
 
 # 13. 認証
 
@@ -1297,7 +1297,7 @@ SSO で各マイクロサービスを認証します。
 
 ## Keycloak と Istio による SSO
 
-![ddd-cloudnative_sso_detail](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_sso_detail.png>)
+![ddd-cloudnative_sso_detail](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sso_detail.png>)
 
 1. ユーザーはログインする。ブラウザは、Amazon Route 53 にリクエストを送信する。
 2. ALB は、リクエストを Istio IngressGateway に L7 ロードバランシングする。
@@ -1424,7 +1424,7 @@ API Gateway として使用している Nginx のように、認証やアクセ�
 
 一方でアプリでは、任意の認証パッケージまたは Istio リソースのいずれの方法で、認証やアクセストークン検証の責務を実装してもよいです。
 
-![ddd-cloudnative_sso_overview](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_sso_overview.png>)
+![ddd-cloudnative_sso_overview](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sso_overview.png>)
 
 <table>
   <thead>

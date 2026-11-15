@@ -101,7 +101,7 @@ CSR では、ページ全体の静的ファイルをリクエストするのは�
 
 ２回目以降は、ページ部分的にリクエストを行い、サーバー側から JSON を受け取っていく。
 
-![spa_data-communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/spa_data-communication.png)
+![spa_data-communication](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/spa_data-communication.png)
 
 > - https://developers.google.com/analytics/devguides/collection/analyticsjs/single-page-applications
 > - [図解 CSR, SSR, SG(SSG), ISR](https://zenn.dev/bitarts/articles/37260ddb28ae5d)
@@ -123,7 +123,7 @@ CSR の仕組みで作成したアプリは SPA である (Ajax とは SPA 内�
 
 大きな javascript ファイルを最初に読み込むため、初回の読み込み時間が長くなる。
 
-![csr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png)
+![csr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/csr.png)
 
 > - [図解 CSR, SSR, SG(SSG), ISR](https://zenn.dev/bitarts/articles/37260ddb28ae5d)
 > - [今さら聞けないSPA（シングルページアプリケーション）とは #初心者 - Qiita](https://qiita.com/shinkai_/items/79e539b614ac52e48ca4)
@@ -136,7 +136,7 @@ CSR では、ブラウザ上の JavaScript がバックエンドからデータ�
 
 そのため SSR や SSG とは異なり、ブラウザ上でバックエンドアプリケーションと通信する。
 
-![csr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/csr.png)
+![csr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/csr.png)
 
 > - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#1-%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-csr)
 
@@ -206,7 +206,7 @@ function App() {
 
 MPA と比較して、データを非同期的に通信できるため、1 つの Web ページのなかで必要なデータのみを通信すればよく、クライアントレンダリングが速い。
 
-![web-app_spa_speed-comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/web-app_spa_speed-comparison.png)
+![web-app_spa_speed-comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/web-app_spa_speed-comparison.png)
 
 > - [SPAとは？メリット・デメリットや、SEO対策で重要なポイントも紹介 \| 東京SEOメーカーAIO戦略室｜AI検索最適化（LLMO/AIO/GEO/AEO/SEO）専門会社［国内・海外］アドマノ株式会社](https://www.switchitmaker2.com/seo/spa/)
 
@@ -279,7 +279,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 
 広義の SSR と異なる点は、ブラウザ側にサーバーレンダリングされた後、アイソモーフィック JavaScript という仕組みで CSR として動作する。
 
-![ssr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png)
+![ssr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssr.png)
 
 > - [Server-Side Renderingって何なのさ ～あるいは雑な用語定義に対するお気持ち表明～ #JavaScript - Qiita](https://qiita.com/rita0222/items/66fec6e7be5987bace3c)
 > - https://qiita.com/kyrieleison/items/4ac5bcc331aee6394440#%E3%82%AF%E3%83%A9%E3%82%A4%E3%82%A2%E3%83%B3%E3%83%88%E3%82%B5%E3%82%A4%E3%83%89%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%82%B5%E3%82%A4%E3%83%89%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E5%85%B1%E6%9C%89<br>
@@ -294,7 +294,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 
 そのため CSR とは異なり、フロントエンドアプリケーション上での静的ファイルのレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。
 
-![ssr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssr.png)
+![ssr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssr.png)
 
 > - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#2-%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%B5%E3%82%A4%E3%83%89%E3%83%AC%E3%83%B3%E3%83%80%E3%83%AA%E3%83%B3%E3%82%B0-ssr)
 
@@ -321,7 +321,7 @@ SSR では、フロントエンドアプリケーションへのリクエスト�
 
 > - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg)
 
-![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png)
+![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssg.png)
 
 <br>
 
@@ -331,7 +331,7 @@ SSG では、フロントエンドアプリケーションのビルド時にバ�
 
 そのため CSR とは異なり、フロントエンドアプリケーション上での静的ファイルのサーバーレンダリング時またはブラウザ操作時 (例：クリック操作によるデータ送信など) に、バックエンドアプリケーションと通信する。
 
-![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/ssg.png)
+![ssg](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ssg.png)
 
 > - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg)
 
@@ -356,7 +356,7 @@ SSG と同じで事前にビルドし、静的ファイル (例：`html` ファ�
 
 また、静的ファイルのキャッシュを作成しておき、静的ファイルを再作成することで定期的にキャッシュを更新する。
 
-![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png)
+![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/isr.png)
 
 > - https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration
 > - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#4-%E3%82%A4%E3%83%B3%E3%82%AF%E3%83%AA%E3%83%A1%E3%83%B3%E3%82%BF%E3%83%AB%E9%9D%99%E7%9A%84%E5%86%8D%E7%94%9F%E6%88%90-isr)
@@ -367,7 +367,7 @@ SSG と同じで事前にビルドし、静的ファイル (例：`html` ファ�
 
 ISR では、ブラウザは通常は CDN にキャッシュされた静的ファイルを受け取り、キャッシュが古いか存在しない場合にのみ、サーバーがページを再生成する。
 
-![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/isr.png)
+![isr](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/isr.png)
 
 > - [Next.jsのレンダリング方法「CSR/SSR/SSG/ISR」について図解する #JavaScript - Qiita](https://qiita.com/Dragon1208/items/feac42eb9668a5f75250#3-%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E7%94%9F%E6%88%90-ssg)
 

@@ -34,7 +34,7 @@ OSI 参照モデルは、次の `7` 階層から構成される。
 - プレゼンテーション層 (`L6`)
 - アプリケーション層 (`L7`)
 
-![osi-reference-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi-reference-model.png)
+![osi-reference-model](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/osi-reference-model.png)
 
 > - [OSI参照モデル - その1](https://www.infraexpert.com/study/networking3.html)
 
@@ -50,7 +50,7 @@ OSI 参照モデルは、次の `7` 階層から構成される。
 
 層名からとって、プロトコルを『アプリケーションプロトコル』『トランスポートプロトコル』『インターネットプロトコル』『ネットワークインターフェースプロトコル』ともいう。
 
-![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/encryption_protocol.png)
+![encryption_protocol](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/encryption_protocol.png)
 
 > - [Host Based Networks Vs. Client Server Networks \| Techwalla](https://www.techwalla.com/articles/host-based-networks-vs-client-server-networks)
 
@@ -58,7 +58,7 @@ OSI 参照モデルは、次の `7` 階層から構成される。
 
 ### 通信機器との対応関係
 
-![osi-reference-model_network-device](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi-reference-model_network-device.jpg)
+![osi-reference-model_network-device](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/osi-reference-model_network-device.jpg)
 
 OSI 参照モデルの各層と通信機器の間の対応関係は以下の通りである。
 
@@ -96,7 +96,7 @@ OSI 参照モデルの各層と通信機器の間の対応関係は以下の通�
 
 パケットペイロードは、IP ヘッダー、トランスポートヘッダー、アプリケーションデータからなる。
 
-![packet_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/packet_structure.jpg)
+![packet_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/packet_structure.jpg)
 
 > - https://www.network-engineer.info/network_beginner/%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ip%E3%83%91%E3%82%B1%E3%83%83%E3%83%88%E3%81%A8%E3%81%AF%E3%81%AA%E3%81%AB%E3%81%8B%EF%BC%9F/
 > - [ペイロードの意味や定義 わかりやすく解説 Weblio辞書](https://www.sophia-it.com/content/%E3%83%9A%E3%82%A4%E3%83%AD%E3%83%BC%E3%83%89)
@@ -112,7 +112,7 @@ OSI 参照モデルの各層と通信機器の間の対応関係は以下の通�
 
 パケットペイロードは、OSI の層を経るたびにヘッダーを追加していく。
 
-![osi-reference-model_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/osi-reference-model_packet.png)
+![osi-reference-model_packet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/osi-reference-model_packet.png)
 
 1. アプリケーション層 (`L7`) にて、アプリケーションの入力に応じてパケットパケットペイロードを作成する。さらに、`L7` ヘッダーを追加する。
 

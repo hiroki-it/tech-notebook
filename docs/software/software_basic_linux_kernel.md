@@ -32,7 +32,7 @@ tags:
 
 モノリシックカーネルアーキテクチャの Linux カーネルは、システムコール、各種管理コンポーネント、デバイスドライバー、といったコンポーネントから構成される。
 
-![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_architecture.png)
+![linux_kernel_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/linux_kernel_architecture.png)
 
 > - [第2章 組み込みLinuxシステムとは](https://manual.atmark-techno.com/armadillo-guide/armadillo-guide-1_ja-2.0.0/ch02.html)
 
@@ -57,7 +57,7 @@ tags:
 
 システムコールはパラメーターに応じてカーネルを操作し、上位のソフトウェアのプロセスにカーネルの処理結果を返却する。
 
-![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/linux_kernel_system-call.png)
+![linux_kernel_system-call](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/linux_kernel_system-call.png)
 
 > - [【図解】Windows/Linuxのカーネルとシェルの違いと役割~一般ユーザとシステムユーザ(サービスユーザ)からの見え方~ \| SEの道標](https://milestone-of-se.nesuke.com/sv-basic/architecture/windows-linux-kernel-and-shell/)
 

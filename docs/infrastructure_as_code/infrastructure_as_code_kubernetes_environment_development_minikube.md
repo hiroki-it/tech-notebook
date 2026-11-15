@@ -25,7 +25,7 @@ tags:
 
 この Minikube 仮想サーバー上に、Node を持つ Kubernetes Cluster を作成する。
 
-![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_virtual_machine_driver.png)
+![minikube_architecture_virtual_machine_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/minikube_architecture_virtual_machine_driver.png)
 
 > - [Commands \| minikube](https://minikube.sigs.k8s.io/docs/commands/)
 > - [Minikube – Creating a cluster – Richard Rose Blog](https://richardroseblog.wordpress.com/2017/11/01/minikube-creating-a-cluster/)
@@ -38,7 +38,7 @@ tags:
 
 なお、別のツールである Kind と同じ仕組みである。
 
-![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/minikube_architecture_docker_driver.png)
+![minikube_architecture_docker_driver](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/minikube_architecture_docker_driver.png)
 
 > - [ローカルKubernetes環境のネットワークを攻略する](https://zenn.dev/castaneai/articles/local-kubernetes-networking)
 

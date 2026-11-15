@@ -20,7 +20,7 @@ tags:
 
 Kubernetes は、コントロールコンポーネント、Node コンポーネントから構成される。
 
-![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_architecture.png)
+![kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_architecture.png)
 
 > - [Kubernetes Components \| Kubernetes](https://kubernetes.io/docs/concepts/overview/components/)
 
@@ -51,7 +51,7 @@ data:
 
 ### デフォルトのサーバー証明書
 
-![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_certificates.png)
+![kubernetes_certificates](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_certificates.png)
 
 コンポーネント間で HTTPS プロトコルを使用するためにはクライアント証明書やサーバー証明書が必須である。
 
@@ -337,7 +337,7 @@ Namespace に親子関係を定義し、各 Namespace をテナントとする�
 
 著名な書籍に一番多いテナントである。
 
-![namespace_teams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/namespace_teams.png)
+![namespace_teams](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/namespace_teams.png)
 
 > - https://www.amazon.co.jp/dp/1617293725
 > - [Kubernetes best practices: Specifying Namespaces in YAML \| Google Cloud Blog](https://cloud.google.com/blog/products/containers-kubernetes/kubernetes-best-practices-organizing-with-namespaces?hl=en)
@@ -419,7 +419,7 @@ capsule では、Tenant というカスタムリソースを作成し、テナ�
 
 Tenant には、複数の Namespace が所属できる。
 
-![capsule_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/capsule_architecture.png)
+![capsule_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/capsule_architecture.png)
 
 > - https://capsule.clastix.io/docs/
 

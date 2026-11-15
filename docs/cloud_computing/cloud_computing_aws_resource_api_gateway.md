@@ -22,7 +22,7 @@ tags:
 
 内部的には CloudFront を使用しているらしい。
 
-![api-gateway_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/api-gateway_architecture.png)
+![api-gateway_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/api-gateway_architecture.png)
 
 > - [API Gatewayで広がるAWSのエッジコンピューティングの可能性 \| DevelopersIO](https://dev.classmethod.jp/articles/edge-computing-by-api-gateway/)
 > - [Amazon CloudFrontでAPI Gatewayの痒いところに手を届ける \| DevelopersIO](https://dev.classmethod.jp/articles/cache-api-gateway-by-cloudfront/)
@@ -698,7 +698,7 @@ ID プロバイダーが別途必要である。
 
 これを使用する場合は AWS Lambda オーソライザーを使用できない。
 
-![aws_api-gateway_lambda_authorizer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/aws_api-gateway_lambda_authorizer.png)
+![aws_api-gateway_lambda_authorizer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/aws_api-gateway_lambda_authorizer.png)
 
 <table>
   <thead>

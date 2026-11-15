@@ -49,7 +49,7 @@ flowchart LR
 
 ### AWS リソースと Kubernetes による設定管理
 
-![ddd-cloudnative_configuration-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_configuration-management.png)
+![ddd-cloudnative_configuration-management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_configuration-management.png)
 
 <table>
   <thead>
@@ -120,7 +120,7 @@ flowchart LR
 
 そこで、ロギングツールは共有リポジトリで提供し、各リポジトリが使用 (例：Go なら import) できるようにします。
 
-![8d917ef9-f01b-4759-8568-5c85c0ac02e8](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/8d917ef9-f01b-4759-8568-5c85c0ac02e8.png)
+![8d917ef9-f01b-4759-8568-5c85c0ac02e8](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/8d917ef9-f01b-4759-8568-5c85c0ac02e8.png)
 
 ### 計装ツール
 
@@ -134,7 +134,7 @@ flowchart LR
 
 そこで、計装ツールは共有リポジトリで提供し、各リポジトリが使用 (例：Go なら import) できるようにします。
 
-![0bc69bd0-e7f1-4a5e-96e3-c59cb3154703](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/0bc69bd0-e7f1-4a5e-96e3-c59cb3154703.png)
+![0bc69bd0-e7f1-4a5e-96e3-c59cb3154703](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/0bc69bd0-e7f1-4a5e-96e3-c59cb3154703.png)
 
 ### CI 設定
 
@@ -144,7 +144,7 @@ CI の設定ファイルは、実装がマイクロサービスに依らない�
 
 各リポジトリが使用 (例：Go なら import) できるようにします。
 
-![ddd-cloudnative_ci-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_ci-setting.png)
+![ddd-cloudnative_ci-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_ci-setting.png)
 
 ### CD 設定
 
@@ -152,7 +152,7 @@ CD 設定のコードは、マイクロサービス間で統一するために�
 
 ArgoCD を採用している場合、ArgoCD のルート Application をプラットフォームリポジトリ、各チームの親 Application を共有リポジトに配置します。
 
-![ddd-cloudnative_cd-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cd-setting.png)
+![ddd-cloudnative_cd-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cd-setting.png)
 
 ### RPC-API 開発ツール
 
@@ -164,7 +164,7 @@ gRPC では、クライアントとサーバーの両方で、サービス定義
 
 そこで、サービス定義ファイルは共有リポジトリで提供し、またサービス定義ファイルから必要なものを自動的に作成できるようにします。
 
-![6b14a262-71fb-4252-b426-b771270bf369](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/6b14a262-71fb-4252-b426-b771270bf369.png)
+![6b14a262-71fb-4252-b426-b771270bf369](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/6b14a262-71fb-4252-b426-b771270bf369.png)
 
 [Protocol Buffers の一元管理方法 | MoT Lab (GO Inc. Engineering Blog)](https://lab.mo-t.com/blog/protocol-buffers)
 
@@ -172,7 +172,7 @@ gRPC では、クライアントとサーバーの両方で、サービス定義
 
 RESTful-API 開発ツールのコードは、マイクロサービス間で統一するために、共有リポジトリに配置しましょう。
 
-![655351ac-0c0e-4640-9bb2-69484d16728f](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/655351ac-0c0e-4640-9bb2-69484d16728f.png)
+![655351ac-0c0e-4640-9bb2-69484d16728f](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/655351ac-0c0e-4640-9bb2-69484d16728f.png)
 
 ### IaC
 
@@ -211,7 +211,7 @@ flowchart LR
 - BFF
 - 共有ロジック
 
-![c7700740-69e9-4cc4-b541-81214f186370](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/c7700740-69e9-4cc4-b541-81214f186370.png)
+![c7700740-69e9-4cc4-b541-81214f186370](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/c7700740-69e9-4cc4-b541-81214f186370.png)
 
 ### Kubernetes リポジトリ群
 
@@ -222,7 +222,7 @@ Kubernetes リソースのコードは占有リポジトリに配置しましょ
 - BFF
 - SRE ツール
 
-![e782458b-12ef-436f-a962-bfd740c342cf](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/e782458b-12ef-436f-a962-bfd740c342cf.png)
+![e782458b-12ef-436f-a962-bfd740c342cf](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/e782458b-12ef-436f-a962-bfd740c342cf.png)
 
 ### Terraform リポジトリ群
 
@@ -233,7 +233,7 @@ Terraform のコードは占有リポジトリに配置しましょう。
 - BFF
 - SRE ツール
 
-![2bb2b79a-8e43-4f82-942b-1a6572cebe0c](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/2bb2b79a-8e43-4f82-942b-1a6572cebe0c.png)
+![2bb2b79a-8e43-4f82-942b-1a6572cebe0c](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/2bb2b79a-8e43-4f82-942b-1a6572cebe0c.png)
 
 # 22. 組織構成
 
@@ -441,7 +441,7 @@ CDN を採用している場合は、デプロイ前後で必要な静的ファ�
 
 また、E2E ツール (例：Playwright) を使用して、実際のユーザーを模した一連の操作を実施し、すべてのコンポーネントを対象としたシステムテストを実施すべきです。
 
-![ddd-cloudnative_cicd-pipeline_frontend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cicd-pipeline_frontend.png)
+![ddd-cloudnative_cicd-pipeline_frontend](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cicd-pipeline_frontend.png)
 
 ### BFF
 
@@ -451,7 +451,7 @@ CDN を採用している場合は、デプロイ前後で必要な静的ファ�
 
 CI/CD パイプラインは、以下の要素からなります。
 
-![ddd-cloudnative_cicd-pipeline_bff](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cicd-pipeline_bff.png)
+![ddd-cloudnative_cicd-pipeline_bff](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cicd-pipeline_bff.png)
 
 ### マイクロサービス
 
@@ -467,7 +467,7 @@ CI/CD パイプラインは、以下の要素からなります。
 
 また、ロードテストツール (例：Gatling) を使用して、マイクロサービスアーキテクチャ全体のロードテスト / 回帰テスト、を実施すべきです。
 
-![ddd-cloudnative_cicd-pipeline_microservice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cicd-pipeline_microservice.png)
+![ddd-cloudnative_cicd-pipeline_microservice](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cicd-pipeline_microservice.png)
 
 ### SRE ツール
 
@@ -478,7 +478,7 @@ CI/CD パイプラインは、以下の要素からなります。
 - Kubernetes リポジトリの CI パイプライン (１行目)
 - CD パイプライン (２行目)
 
-![ddd-cloudnative_cicd-pipeline_bff](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_cicd-pipeline_bff.png)
+![ddd-cloudnative_cicd-pipeline_bff](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cicd-pipeline_bff.png)
 
 ## リポジトリ分割パターンに基づく GitOps パターン
 
@@ -602,7 +602,7 @@ GitOps パターンの CI/CD パイプラインのうちで、デプロイに着
 
 ただし、一部のツール (例：Istio) は運用のしやすさを考慮して、手動でデプロイします (例：Helmfile) 。
 
-![ddd-cloudnative_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_gitops.png)
+![ddd-cloudnative_gitops](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_gitops.png)
 
 <table>
   <thead>
@@ -689,7 +689,7 @@ PaaS や FaaS (例：AWS であれば、AWS Beanstalk や AWS Lambda) を使用�
 
 ### デプロイ
 
-![ddd-cloudnative_microservice-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_microservice-pod_deployment.png>)
+![ddd-cloudnative_microservice-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-pod_deployment.png>)
 
 <table>
   <thead>
@@ -714,19 +714,19 @@ PaaS や FaaS (例：AWS であれば、AWS Beanstalk や AWS Lambda) を使用�
 
 ### デプロイ
 
-![ddd-cloudnative_frontend-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_frontend-pod_deployment.png>)
+![ddd-cloudnative_frontend-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_frontend-pod_deployment.png>)
 
 ## BFF
 
 ### デプロイ
 
-![ddd-cloudnative_bff-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_bff-pod_deployment.png>)
+![ddd-cloudnative_bff-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_bff-pod_deployment.png>)
 
 ## SRE ツール
 
 ### デプロイ
 
-![ddd-cloudnative_sre-tool-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_sre-tool-pod_deployment.png>)
+![ddd-cloudnative_sre-tool-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sre-tool-pod_deployment.png>)
 
 # 24-03. コンテナの作成から削除まで
 
@@ -744,7 +744,7 @@ kubelet が Pod の開始プロセスを始めると、以下の一連のプロ�
 2. Workload (例：Deployment、StatefulSet など) が新しい Pod を管理下に追加する。
 3. Service と kube-proxy が古い Pod の宛先情報を追加する。
 
-![ddd-cloudnative_app-container_startup](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-container_startup.png>)
+![ddd-cloudnative_app-container_startup](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-container_startup.png>)
 
 <table>
   <thead>
@@ -820,7 +820,7 @@ Service と kube-proxy が Pod の宛先情報を削除する前に Pod が終�
 2. Service と kube-proxy が古い Pod の宛先情報を削除する。
 3. コンテナを削除する。
 
-![ddd-cloudnative_app-container_termination](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_app-container_termination.png>)
+![ddd-cloudnative_app-container_termination](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-container_termination.png>)
 
 <table>
   <thead>
@@ -859,7 +859,7 @@ Service instance per container パターンで、Amazon ECS を使用して、�
 
 この場合、マイクロサービスを Amazon ECS サービスに対応させ、Amazon ECS タスクでマイクロサービスを水平スケーリングすることになります。
 
-![aws-ecs_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aws-ecs_microservices.png)
+![aws-ecs_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/aws-ecs_microservices.png)
 
 [d1.awsstatic.com](https://d1.awsstatic.com/events/Summits/reinvent2022/CON311-R_Best-practices-for-deploying-microservices-on-Amazon-ECS.pdf#page=12)
 
@@ -885,7 +885,7 @@ Serverless platforms パターンで、AWS Lambda を使用して、マイクロ
 
 この場合、マイクロサービスは AWS Lambda へ対応することになる。
 
-![aws-lambda_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/aws-lambda_microservices.png)
+![aws-lambda_microservices](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/aws-lambda_microservices.png)
 
 [Using AWS Lambda as a Microservice](https://medium.com/aws-serverless-microservices-with-patterns-best/using-aws-lambda-as-a-microservice-dd7d7296c74a)
 
@@ -947,7 +947,7 @@ Node の作成には、マシンイメージとして AMI を採用します。
 
 ここでは、Karpenter の仕組みについて解説します。
 
-![ddd-cloudnative_karpenter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_karpenter.png)
+![ddd-cloudnative_karpenter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_karpenter.png)
 
 <table>
   <thead>
@@ -1000,7 +1000,7 @@ Karpenter と AWS マネージド Node グループ Node グループを採用�
 
 Karpenter と AWS マネージド Node グループ Node グループの間では、機能が異なります。
 
-![ddd-cloudnative_node-scaling](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_node-scaling.png>)
+![ddd-cloudnative_node-scaling](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_node-scaling.png>)
 
 <table>
   <thead>
@@ -1036,7 +1036,7 @@ Karpenter と AWS マネージド Node グループ Node グループの間で�
 
 # 25-03. Pod の垂直水平スケーリングと回復性管理
 
-![ddd-cloudnative_microservice-pod_operation](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/ddd-cloudnative_microservice-pod_operation.png>)
+![ddd-cloudnative_microservice-pod_operation](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-pod_operation.png>)
 
 <table>
   <thead>
@@ -1138,7 +1138,7 @@ flowchart LR
 
 Pact では、Pact Broker を契約サービスとして使用できます。
 
-![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloudnative_microservices/cdc-test.png)
+![cdc-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/cdc-test.png)
 
 ### E2E テスト
 

@@ -22,7 +22,7 @@ tags:
 
 Node ネットワークの作成は、Kubernetes の実行環境のネットワークが担う。
 
-![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node-network.png)
+![kubernetes_node-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_node-network.png)
 
 > - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=10)
 
@@ -38,7 +38,7 @@ Service のホスト名による名前解決は、CoreDNS などの権威 DNS �
 
 Service ネットワークの作成は、Kubernetes が担う。
 
-![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_service-network.png)
+![kubernetes_service-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_service-network.png)
 
 > - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=13)
 > - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=39)
@@ -53,7 +53,7 @@ Service ネットワークの作成は、Kubernetes が担う。
 
 Cluster ネットワークの作成は、CNI が担う。
 
-![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-network.png)
+![kubernetes_cluster-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cluster-network.png)
 
 > - [整理しながら理解するKubernetesネットワークの仕組み / Kubernetes Network Fundamentals - Speaker Deck](https://speakerdeck.com/hhiroshell/kubernetes-network-fundamentals-69d5c596-4b7d-43c0-aac8-8b0e5a633fc2?slide=11)
 
@@ -81,7 +81,7 @@ Pod のネットワークは複数の種類の名前空間から構成される�
 
 注意点として、Docker とは名前空間の種類が異なる。
 
-![kubernetes_pod-network_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_pod-network_namespace.png)
+![kubernetes_pod-network_namespace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_pod-network_namespace.png)
 
 > - [What are Kubernetes Pods Anyway? \| Ian Lewis](https://www.ianlewis.org/en/what-are-kubernetes-pods-anyway)
 
@@ -123,7 +123,7 @@ Ingress Controller による `L7` ロードバランサーは、受信した通�
 
 Service は `L4` ロードバランサーとして、インバウンド通信を Pod にルーティングする。
 
-![kubernetes_network_l4-l7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_network_l4-l7.png)
+![kubernetes_network_l4-l7](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_network_l4-l7.png)
 
 > - [Kubernetesネットワーク入門 \| ネットワンシステムズ](https://www.netone.co.jp/media/detail/20191226-1/)
 

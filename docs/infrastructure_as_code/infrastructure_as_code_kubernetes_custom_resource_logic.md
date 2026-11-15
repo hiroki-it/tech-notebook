@@ -497,7 +497,7 @@ func newDeployment(foo *samplev1alpha1.Foo) *appsv1.Deployment {
 
 #### ▼ main.go
 
-![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_custome-controller_architecture.png)
+![kubernetes_custome-controller_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_custome-controller_architecture.png)
 
 main.go の処理の流れは、custome-controller の仕組みとおおよそ一致している。
 

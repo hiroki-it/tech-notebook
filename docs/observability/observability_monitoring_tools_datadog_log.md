@@ -20,7 +20,7 @@ tags:
 
 ### バックエンド
 
-![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-collection.png)
+![datadog_log-collection](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_log-collection.png)
 
 1. サーバーの場合、稼働する datadog エージェントが、datadog-API にアプリケーションログを送信する。コンテナの場合、FluentBit が代わりにアプリケーションログを送信する。
 
@@ -52,7 +52,7 @@ tags:
 
 アプリケーションからログを収集し、Datadog にフォワーディングする。
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on-server.png)
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -96,7 +96,7 @@ Datadog の代わりにログを収集する。
 
 Cluster やワーカーNode からメトリクスを受信し、コントロールプレーン Node の kube-apiserver にフォワーディングする。
 
-![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
+![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on_kubernetes.png)
 
 > - [Datadog Cluster Agent のご紹介 \| Datadog](https://www.datadoghq.com/ja/blog/datadog-cluster-agent/)
 > - [KubernetesのDatadogAgentインストール手順 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/k8s-datadog)
@@ -105,7 +105,7 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 Node エージェントは、Kubernetes のメトリクスに加えて、istiod や istio-proxy が公開するメトリクスを収集し、Datadog に送信する。
 
-![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
+![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on_kubernetes_istio.png)
 
 > - [みんなの銀行に学ぶ、マイクロサービス時代のシステム監視 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/)
 > - https://docs.datadoghq.com/integrations/istio/
@@ -528,7 +528,7 @@ Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセ�
 
 判定ルールについては、以下のリンクを参考にせよ。
 
-![datadog_status-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_status-facet.png)
+![datadog_status-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_status-facet.png)
 
 > - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#log-status-remapper
 
@@ -536,7 +536,7 @@ Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセ�
 
 指定した属性/タグに割り当てられた値を、サービスファセットのサービス名として登録する。
 
-![datadog_service-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_service-facet.png)
+![datadog_service-facet](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_service-facet.png)
 
 > - https://docs.datadoghq.com/logs/log_configuration/processors/?tab=ui#service-remapper
 
@@ -1184,7 +1184,7 @@ log-pipeline
 
 そのため、リマッパーを使用するときは明示的にデータ型を設定する。
 
-![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_log-pipeline_data-type.png)
+![datadog_log-pipeline_data-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_log-pipeline_data-type.png)
 
 <br>
 
@@ -1288,7 +1288,7 @@ autoFilledRule3 ...
 
 『`service:foo`』をオートコンプリートで入力する。
 
-![log-query_auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_auto-complete.png)
+![log-query_auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/log-query_auto-complete.png)
 
 #### ▼ 非オートコンプリート
 
@@ -1298,7 +1298,7 @@ autoFilledRule3 ...
 
 『`service:foo`』を非オートコンプリートで入力する。
 
-![log-query_non-auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/log-query_non-auto-complete.png)
+![log-query_non-auto-complete](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/log-query_non-auto-complete.png)
 
 #### ▼ 文法
 
@@ -1339,12 +1339,12 @@ autoFilledRule3 ...
 
 Path の値に属性までのアクセスを『`@`』から入力すると、ログの属性がファセットの値に登録される。
 
-![datadog_facet_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_attribute.png)
+![datadog_facet_attribute](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_facet_attribute.png)
 
 #### ▼ タグのファセット化
 
 Path の値にタグ名をそのまま入力すると、タグがファセットの値に登録される。
 
-![datadog_facet_tag](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog_facet_tag.png)
+![datadog_facet_tag](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog_facet_tag.png)
 
 <br>

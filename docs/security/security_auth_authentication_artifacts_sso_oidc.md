@@ -201,7 +201,7 @@ OIDC では、OAuth とは異なり、アクセストークン (JWT 仕様かど
 
 また、OAuth の脆弱性に対処できる。
 
-![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_vs_oauth.png)
+![oidc_vs_oauth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/oidc_vs_oauth.png)
 
 > - [OAuth 2.0 とは何か、どのように役立つのか？ - Auth0](https://auth0.com/jp/intro-to-iam/what-is-oauth-2)
 > - [一番分かりやすい OpenID Connect の説明 #OAuth - Qiita](https://qiita.com/TakahikoKawasaki/items/498ca08bbfcc341691fe)
@@ -218,7 +218,7 @@ OAuth の認可コードフローと仕組みが似ており、アクセスト�
 
 短命な認可コードを送信すると、ID プロバイダーからリフレッシュトークンを含むアクセストークンと ID トークンを取得できる。
 
-![oidc_codeflow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oidc_codeflow.png)
+![oidc_codeflow](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/oidc_codeflow.png)
 
 > - https://wagby.com/wdn8/juser-oidc.html
 > - [OpenID Connect入門（Authorization Codeフローを画面遷移と共に説明します） #OIDC - Qiita](https://qiita.com/nabeatsu/items/380058915629c0ce795e#authorization-code-%E3%83%95%E3%83%AD%E3%83%BC)

@@ -21,7 +21,7 @@ tags:
 
 Kiali は、バックエンドコンポーネントとフロントエンドコンポーネントから構成されている。
 
-![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kiali_architecture.png)
+![kiali_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/kiali_architecture.png)
 
 > - [Architecture \| Kiali](https://kiali.io/docs/architecture/architecture/)
 

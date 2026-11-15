@@ -23,7 +23,7 @@ tags:
 
 データを保管できる揮発的な記憶装置のこと。
 
-![dynamic-ram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dynamic-ram.jpg)
+![dynamic-ram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/dynamic-ram.jpg)
 
 <br>
 
@@ -33,7 +33,7 @@ tags:
 
 製造時にデータを書き込み、以降は内容を書き換えられない読み出し専用のメモリのこと。
 
-![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-1.png)
+![p164-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/p164-1.png)
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
@@ -45,7 +45,7 @@ tags:
 
 ユーザーが内容を書き換えられる ROM のことで、データの消去方法によって EPROM、EEPROM、フラッシュメモリに分かれる。
 
-![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p164-2.png)
+![p164-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/p164-2.png)
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
@@ -65,11 +65,11 @@ tags:
 
 CPU とメインメモリの間に、キャッシュメモリを何段階か配置し、CPU とメインメモリの間の読み出しと書き込みの処理速度の差を緩和させる。
 
-![memory-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-cache.gif)
+![memory-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/memory-cache.gif)
 
 実際に、タスクマネージャのパフォーマンスタブで、`n` 次キャッシュメモリがどのくらい使われているのかを確認できる。
 
-![cache-memory_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cache-memory_example.png)
+![cache-memory_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/cache-memory_example.png)
 
 <br>
 
@@ -91,13 +91,13 @@ CPU とメインメモリの間に、キャッシュメモリを何段階か配�
 
 6. CPU は、命令する。
 
-    ![memory_cache-memory_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_cache-memory_1.jpg)
+    ![memory_cache-memory_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/memory_cache-memory_1.jpg)
 
 #### ▼ 二度目
 
 一次キャッシュメモリ ➔ 二次キャッシュメモリ ➔ メインメモリの順で命令を探すため、一度目よりも速く命令を実行できる。
 
-![memory_cache-memory_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_cache-memory_2.jpg)
+![memory_cache-memory_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/memory_cache-memory_2.jpg)
 
 <br>
 
@@ -109,7 +109,7 @@ CPU は、命令をメインメモリとキャッシュメモリの両方に書�
 
 常にメインメモリとキャッシュメモリの内容が一致している状態を確保できるが、メモリへの書き込みが頻繁に行われるので遅い。
 
-![cache_write-through](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cache_write-through.jpg)
+![cache_write-through](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/cache_write-through.jpg)
 
 #### ▼ Write-back 方式
 
@@ -119,7 +119,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 メインメモリとキャッシュメモリの内容が一致している状態を必ずしも確保できないが、メインメモリへの書き込み回数が少ないため速い
 
-![cache_write-back](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cache_write-back.jpg)
+![cache_write-back](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/cache_write-back.jpg)
 
 <br>
 
@@ -127,7 +127,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 キャッシュメモリに目的のデータが存在する確率をヒット率とし、存在せずにメインメモリを読み出しに行く確率を `1 - ヒット率` として、実効アクセス時間を求める。
 
-![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p171-1.png)
+![p171-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/p171-1.png)
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
@@ -139,7 +139,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 キャッシュメモリとして使用される。
 
-![static-ram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/static-ram.jpg)
+![static-ram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/static-ram.jpg)
 
 <br>
 
@@ -149,7 +149,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 キャッシュは、クライアント、CDN、ロードバランサー、API ゲートウェイ、アプリケーション、データベースなど、リクエストの経路上のさまざまな場所に保管できる。
 
-![what_and_where_to_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/what_and_where_to_cache.jpg)
+![what_and_where_to_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/what_and_where_to_cache.jpg)
 
 > - https://twitter.com/pvergadia/status/1633216210308595712/photo/1
 
@@ -161,7 +161,7 @@ CPU は、キャッシュメモリのみに書き込む。
 
 Chrome の場合は、CacheStorage に保管される。
 
-![client_side_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/client_side_cache.png)
+![client_side_cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/client_side_cache.png)
 
 > - [View cache data \| Chrome DevTools \| Chrome for Developers](https://developer.chrome.com/docs/devtools/storage/cache/)
 
@@ -238,7 +238,7 @@ DB サーバーの使用するメモリ上で、テーブルのデータやイ�
 
 ブラウザは、Etag 値を使用してキャッシュを実現する。
 
-![etag_if-none-match](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/etag_if-none-match.png)
+![etag_if-none-match](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/etag_if-none-match.png)
 
 #### `(1)` キャッシュの有効時間が切れるまで
 
@@ -342,7 +342,7 @@ Expires: Sat, 01 Jan 2000 00:00:00 GMT
 
 読み出しと書き込みの処理速度の差を緩和させる。
 
-![disk-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/disk-cache.gif)
+![disk-cache](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/disk-cache.gif)
 
 <br>
 
@@ -366,16 +366,16 @@ GPU が画像処理で使用する専用のメモリであり、描画する画�
 
 GPU と VRAM のサイズによって、扱うことのできる解像度と色数が決まる。
 
-![vram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vram.jpg)
+![vram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/vram.jpg)
 
 富士通 PC の GPU と VRAM のサイズは、以下の通り。
 
-![vram_spec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vram_spec.jpg)
+![vram_spec](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/vram_spec.jpg)
 
 色数によって、`1` ドット当たりに必要なビット数が異なる。
 
 > - [キタミ式イラストIT塾 基本情報技術者 令和04年 \| きたみ りゅうじ \|本 \| 通販 \| Amazon](https://www.amazon.co.jp/dp/4297124513)
 
-![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p204.jpg)
+![p204](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/p204.jpg)
 
 <br>

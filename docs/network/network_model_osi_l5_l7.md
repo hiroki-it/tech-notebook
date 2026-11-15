@@ -27,7 +27,7 @@ tags:
 
 ### アプリケーション層の仕組み
 
-![application_expose-port](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/application_expose-port.png)
+![application_expose-port](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/application_expose-port.png)
 
 1. 各アプリケーションがプロセスとして稼働しており、プロセスがパケットペイロードの元になるアプリケーションデータを作成する。
 
@@ -75,7 +75,7 @@ HTTP の通信を TLS で暗号化し、リクエストとレスポンスを安�
 
 #### ▼ 仕組み
 
-![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp_pop3_imap4.png)
+![smtp_pop3_imap4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/smtp_pop3_imap4.png)
 
 1. 送信元アプリ (例：任意のアプリ、Gmail など) は、メールを送信する。
 
@@ -117,7 +117,7 @@ SMTP に認証を組み込んだ仕組みのこと。
 
 クライアント (メール送信できるアプリ) からメールサーバーにメールデータを SMTP 送信するとき、メールサーバーがクライアントに対して認証する。
 
-![smtp-auth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/smtp-auth.png)
+![smtp-auth](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/smtp-auth.png)
 
 <br>
 
@@ -141,7 +141,7 @@ SMTP に認証を組み込んだ仕組みのこと。
 
 Gmail で POP か IMAP を設定できる。
 
-![gmail_pop-imap-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/gmail_pop-imap-setting.jpg)
+![gmail_pop-imap-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/gmail_pop-imap-setting.jpg)
 
 #### ▼ IMAP4 の仕組み
 

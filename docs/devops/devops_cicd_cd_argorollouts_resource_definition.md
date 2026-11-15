@@ -73,7 +73,7 @@ spec:
 
 #### ▼ blueGreen
 
-![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_blue-green-deployment.png)
+![argocd_blue-green-deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_blue-green-deployment.png)
 
 ブルー/グリーンデプロイメントを使用して、新しい Pod をデプロイする。
 
@@ -137,7 +137,7 @@ spec:
 
 #### ▼ canary
 
-![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_canary-release.png)
+![argocd_canary-release](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/argocd_canary-release.png)
 
 カナリアリリースを使用して、新しい Pod をデプロイする。
 

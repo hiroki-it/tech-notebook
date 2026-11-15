@@ -82,7 +82,7 @@ AWS IAM ユーザーをグループ化したもの。
 
 AWS IAM グループごとに AWS IAM ロールを紐付けすれば、AWS IAM ユーザーの AWS IAM ロールを管理しやすくなる。
 
-![iam_group](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_group.png)
+![iam_group](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/iam_group.png)
 
 <br>
 
@@ -92,7 +92,7 @@ AWS IAM グループに対して、AWS IAM ロールを紐付ける。
 
 その AWS IAM グループに対して、AWS IAM ロールを紐付けしたい AWS IAM ユーザーを追加していく。
 
-![iam_group_user_role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_group_user_role.png)
+![iam_group_user_role](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/iam_group_user_role.png)
 
 <br>
 
@@ -555,7 +555,7 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 
 AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM ユーザーは紐付けた AWS IAM ポリシーの認可スコープをもち、同じ AWS IAM ポリシーを複数の AWS IAM ユーザーで共有できる。
 
-![iam_user_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_user_policy.jpg)
+![iam_user_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/iam_user_policy.jpg)
 
 <br>
 
@@ -563,7 +563,7 @@ AWS IAM ユーザーに AWS IAM ポリシーを直接紐付けると、AWS IAM �
 
 AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グループに所属する AWS IAM ユーザーがまとめて同じ認可スコープをもつため、AWS IAM ユーザーごとに AWS IAM ポリシーを紐付けずに済む。
 
-![iam_group_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_group_policy.jpg)
+![iam_group_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/iam_group_policy.jpg)
 
 <br>
 
@@ -571,6 +571,6 @@ AWS IAM グループに AWS IAM ポリシーを紐付けると、AWS IAM グル�
 
 AWS IAM ロールに AWS IAM ポリシーを紐付けると、AWS IAM ロールを割り当てた EC2 などの AWS リソースが、AWS IAM ポリシーの認可スコープで他の AWS リソースを操作できる。
 
-![iam_role_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/iam_role_policy.jpg)
+![iam_role_policy](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/iam_role_policy.jpg)
 
 <br>

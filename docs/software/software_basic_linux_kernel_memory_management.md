@@ -18,7 +18,7 @@ tags:
 
 メモリ管理は、物理メモリと仮想メモリで管理方式がある。
 
-![address-space-management_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/address-space-management_types.png)
+![address-space-management_types](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/address-space-management_types.png)
 
 > - [メモリの実記憶管理の種類とメリット、デメリットを学ぼう！（スワッピング、オーバーレイとは？） - ITの学び](https://itmanabi.com/real-memory-mng/)
 
@@ -34,7 +34,7 @@ tags:
 
 単一のプロセスしか読み込めず、物理メモリの余ったアドレス空間は利用できない。
 
-![memory-partition_single](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-partition_single.png)
+![memory-partition_single](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory-partition_single.png)
 
 > - [記憶管理 \| ITの基礎知識｜ITパスポート・基本情報](https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/)
 
@@ -44,7 +44,7 @@ tags:
 
 複数のプロセスを読み込めるが、単一区画方式と同様に、物理メモリの余ったアドレス空間は利用できない。
 
-![memory-partition_multiple](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-partition_multiple.png)
+![memory-partition_multiple](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory-partition_multiple.png)
 
 > - [記憶管理 \| ITの基礎知識｜ITパスポート・基本情報](https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/)
 
@@ -58,7 +58,7 @@ tags:
 
 固定区画方式とは異なり、物理メモリのアドレス空間を有効に利用できる。
 
-![memory-partition_variable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-partition_variable.png)
+![memory-partition_variable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory-partition_variable.png)
 
 > - [記憶管理 \| ITの基礎知識｜ITパスポート・基本情報](https://basics.k-labo.work/2017/10/20/%E8%A8%98%E6%86%B6%E7%AE%A1%E7%90%86/)
 
@@ -72,7 +72,7 @@ tags:
 
 これにより、物理メモリのアドレス空間を確保できる。
 
-![memory_swapping](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_swapping.png)
+![memory_swapping](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_swapping.png)
 
 > - [メモリの実記憶管理の種類とメリット、デメリットを学ぼう！（スワッピング、オーバーレイとは？） - ITの学び](https://itmanabi.com/real-memory-mng/)
 > - [「スワップ」の意味や使い方 わかりやすく解説 Weblio辞書](https://www.sophia-it.com/content/%E3%82%B9%E3%83%AF%E3%83%83%E3%83%97)
@@ -131,7 +131,7 @@ Java では、JVM：Java Virtual Machine (Java 仮想マシン) が、メモリ�
 
 仮想メモリのアドレス空間を『固定長』の区画 (ページ) 、また物理メモリのアドレス空間を『固定長』の区画 (ページフレーム) に分割し、管理する。
 
-![memory_page_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page_structure.png)
+![memory_page_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_page_structure.png)
 
 > - [メモリ管理](http://uralowl.my.coocan.jp/unix/job/UNIX/kernel/memory.html)
 
@@ -143,7 +143,7 @@ Java では、JVM：Java Virtual Machine (Java 仮想マシン) が、メモリ�
 
 また、物理メモリのページフレームからストレージにページを追い出すことを『Page-out』という。
 
-![memory_page-in_page-out](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page-in_page-out.png)
+![memory_page-in_page-out](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_page-in_page-out.png)
 
 > - https://www.amazon.co.jp/dp/4297124513
 
@@ -153,11 +153,11 @@ Java では、JVM：Java Virtual Machine (Java 仮想マシン) が、メモリ�
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![virtual-memory_mapping_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_mapping_1.png)
+![virtual-memory_mapping_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/virtual-memory_mapping_1.png)
 
 補足として、富士通の仮想メモリのサイズは、以下の通り。
 
-![virtual-memory_address-space-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_address-space-setting.png)
+![virtual-memory_address-space-setting](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/virtual-memory_address-space-setting.png)
 
 <br>
 
@@ -181,19 +181,19 @@ MMU によって、仮想メモリのアドレスは、物理メモリのアド�
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![memory-management-unit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory-management-unit.png)
+![memory-management-unit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory-management-unit.png)
 
 #### ▼ アドレス変換の仕組み (ページング方式型/セグメント方式型)
 
 1. 仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。
 
-    ![memory_page_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page_structure.png)
+    ![memory_page_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_page_structure.png)
 
 2. ページテーブルを使用して、仮想アドレスのページ番号に対応する物理アドレスのページ番号を探す。
 
 3. 物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。
 
-    ![virtual-memory_mapping_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_mapping_3.png)
+    ![virtual-memory_mapping_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/virtual-memory_mapping_3.png)
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 
@@ -201,7 +201,7 @@ MMU によって、仮想メモリのアドレスは、物理メモリのアド�
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![virtual-memory_mapping_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/virtual-memory_mapping_4.png)
+![virtual-memory_mapping_4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/virtual-memory_mapping_4.png)
 
 <br>
 
@@ -213,7 +213,7 @@ MMU によって、仮想メモリのアドレスは、物理メモリのアド�
 
 CPU によって稼働したプロセスが、仮想メモリのアドレス空間のページにアクセスし、そのページが物理メモリのアドレス空間にマッピングされていなかった場合、ストレージから物理メモリのアドレス空間に『ページイン』が起こる。
 
-![memory_page-fault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/memory_page-fault.png)
+![memory_page-fault](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_page-fault.png)
 
 <br>
 
@@ -229,9 +229,9 @@ FIFO 方式は最初にページインしたページを、LIFO 方式は最後�
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-2.png)
+![p261-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p261-2.png)
 
-![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-3.png)
+![p261-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p261-3.png)
 
 #### ▼ 『LRU 方式：Least Recently Used』と『LFU 方式：Least Frequently Used』
 
@@ -239,9 +239,9 @@ LRU 方式は最も長い間参照されていないページを、LFU 方式は
 
 > - https://www.amazon.co.jp/dp/4297124513
 
-![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-1.png)
+![p261-1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p261-1.png)
 
-![p261-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p261-4.png)
+![p261-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/p261-4.png)
 
 <br>
 
@@ -251,7 +251,7 @@ LRU 方式は最も長い間参照されていないページを、LFU 方式は
 
 一度実行すれば、再び、ストレージから物理メモリにページインを行わずに、実行を繰り返せるプログラムのこと。
 
-![program_reusable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/program_reusable.gif)
+![program_reusable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/program_reusable.gif)
 
 <br>
 
@@ -259,7 +259,7 @@ LRU 方式は最も長い間参照されていないページを、LFU 方式は
 
 再使用可能の性質をもち、また複数のプログラムから呼び出されても、互いの呼び出しが干渉せず、同時に実行できるプログラムのこと。
 
-![program_reentrant](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/program_reentrant.gif)
+![program_reentrant](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/program_reentrant.gif)
 
 <br>
 
@@ -267,6 +267,6 @@ LRU 方式は最も長い間参照されていないページを、LFU 方式は
 
 ストレージから物理メモリにページインを行うときに、アドレス空間上のどこに配置されても実行できるプログラムのこと。
 
-![program_relocatable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/program_relocatable.gif)
+![program_relocatable](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/program_relocatable.gif)
 
 <br>

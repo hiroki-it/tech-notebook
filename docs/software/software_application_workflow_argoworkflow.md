@@ -64,7 +64,7 @@ application-controller を分離されている理由は、ArgoCD Workflow の�
 
 なお、フロントエンド部分として argocd-server が必要である。
 
-![argocd_argo-workflow_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/argocd_argo-workflow_architecture.png)
+![argocd_argo-workflow_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/argocd_argo-workflow_architecture.png)
 
 > - [Architecture - Argo Workflows - The workflow engine for Kubernetes](https://argoproj.github.io/argo-workflows/architecture/)
 > - [Argo Workflows: 推薦基盤向けワークフローエンジンを Kubernetes で運用して1年経ったので振り返る \| Wantedly Engineer Blog](https://www.wantedly.com/companies/wantedly/post_articles/302473)

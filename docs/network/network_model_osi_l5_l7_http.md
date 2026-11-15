@@ -69,7 +69,7 @@ HTTP リクエストのたびに、送信元と宛先間で TCP スリーウェ�
 
 そこで、宛先がレスポンスの `Connection` ヘッダーで `keep-alive` を送信元に返信し、1 つの TCP 接続中に複数の HTTP リクエストを送受信できるようにする。
 
-![http-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/http-keepalive.png)
+![http-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/http-keepalive.png)
 
 > - [nginx でKeepAliveを設定してみる \| レンタルサーバー・自宅サーバー設定・構築のヒント](https://server-setting.info/centos/nginx-keepalive-setting.html)
 > - [【図解】TCP Keep-Alive/http Keep-Aliveの仕組みと違い ～Client/Serverの挙動とメリット,設定～ \| SEの道標](https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc7)
@@ -726,7 +726,7 @@ Gateway Timeout (`504` ステータス) とやや似ている。
 
 しかし、`502` ステータスとは異なり、その先のシステムからレスポンスが全く返信されないことを表す。
 
-![status-code_504](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/status-code_504.png)
+![status-code_504](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/status-code_504.png)
 
 > - [Steps to Fix 504 Bad Gateway Timeout Error - ASP.NET Hosting Tips & Guides](https://dotnetblog.asphostportal.com/steps-to-fix-504-bad-gateway-timeout-error/)
 
@@ -959,7 +959,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
 #### ▼ 擬似ステートフル化の仕組み
 
-![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cookie.png)
+![cookie](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/cookie.png)
 
 1. 最初、ブラウザはリクエストを送信する。
 
@@ -1023,7 +1023,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
 ### セッションとは
 
-![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id_page-transition.png)
+![session-id_page-transition](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/session-id_page-transition.png)
 
 特定のサイトを訪問してから、離脱するまでの一連のユーザー操作を『セッション』という。
 
@@ -1160,7 +1160,7 @@ session.gc_divisor = 1
 
 ### セッションの仕組み
 
-![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/session-id.png)
+![session-id](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/session-id.png)
 
 1. 最初、ブラウザはリクエストを送信する。
 

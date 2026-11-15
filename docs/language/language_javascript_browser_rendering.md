@@ -32,7 +32,7 @@ tags:
 - Rasterize
 - Composite
 
-![browser-rendering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering.png)
+![browser-rendering](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/browser-rendering.png)
 
 <br>
 
@@ -50,7 +50,7 @@ Web ページをテキストによって構成するための言語をマーク�
 
 1970 年、IBM が、タグによって、テキスト文章に構造や意味を持たせる GML 言語を発表した。
 
-![markup-language-history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/markup-language-history.png)
+![markup-language-history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/markup-language-history.png)
 
 <br>
 
@@ -308,7 +308,7 @@ Intersection Observer の仕組みでは、特定の HTML 要素を指定し、�
 
 例えば、交差率の閾値を『`0.5`』と設定すると、ターゲットエレメントの交差率が『`0.5`』を超えた要素を随時読み込む。
 
-![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/intersection-observer.png)
+![intersection-observer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/intersection-observer.png)
 
 ```tsx
 import {useRef, useState, useEffect, type ReactNode} from "react";
@@ -462,7 +462,7 @@ Web ページの文字列から HTML タグが認識され、トークンに変�
 
 各トークンは、`1` 個のオブジェクトに変換される。
 
-![dom-tree_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree_process.png)
+![dom-tree_process](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/dom-tree_process.png)
 
 HTML パーサーは、オブジェクトをノードとして、DOM ツリーを作成する。
 
@@ -472,13 +472,13 @@ DOM のインターフェースについては、以下のリンクを参考に�
 
 > - [ドキュメントオブジェクトモデル (DOM) - Web API \| MDN](https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model)
 
-![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/dom-tree.png)
+![dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/dom-tree.png)
 
 同時に、CSS パーサーは、head タグにある link タグを基にサーバーへリクエストを送信する。
 
 レスポンスされた `.css` ファイルに対して Downloading 処理を行った後、オブジェクトをノードとして、CSSOM ツリーを作成する。
 
-![cssom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cssom-tree.png)
+![cssom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/cssom-tree.png)
 
 <br>
 
@@ -488,7 +488,7 @@ DOM のインターフェースについては、以下のリンクを参考に�
 
 レンダリングエンジンは、最初に出現するルート要素を根 (ルート) として扱う。さらに、すべての要素や属性を、そこから延びる枝葉として意味づける。これにより、レンダリングツリーを作成する。
 
-![browser-rendering_dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering_dom-tree.png)
+![browser-rendering_dom-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/browser-rendering_dom-tree.png)
 
 > - https://www.researchgate.net/publication/228930844_Real-time_Generalization_of_Geodata_in_the_WEB
 
@@ -520,7 +520,7 @@ JavaScript エンジンは、レンダリングエンジンから `html` ファ�
 
 JavaScript エンジンは、これを機械語に翻訳し、ハードウェアに対して命令する。
 
-![javascript-engine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/javascript-engine.png)
+![javascript-engine](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/javascript-engine.png)
 
 #### ▼ 機械語翻訳
 
@@ -647,7 +647,7 @@ CalculateStyle 処理と Layout 処理に分けられる。
 
 レンダリングエンジンは、DOM ツリーのルートのノードから順に CSSOS ツリーを適用し、Render ツリーを作成する。
 
-![browser-rendering_render-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering_render-tree.png)
+![browser-rendering_render-tree](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/browser-rendering_render-tree.png)
 
 <br>
 
@@ -661,7 +661,7 @@ CalculateStyle 処理と Layout 処理に分けられる。
 
 この親に含まれている 2 つ目 (子) の `div` より、その幅を親の 50%、つまりビューポートの幅の 25%になるようにレイアウトされる。
 
-![browser-rendering_layout](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/browser-rendering_layout.png)
+![browser-rendering_layout](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/browser-rendering_layout.png)
 
 <br>
 

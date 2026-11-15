@@ -17,7 +17,7 @@ tags:
 
 ### 可観測性とは
 
-![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observality_and_monitoring.png)
+![observality_and_monitoring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/observality_and_monitoring.png)
 
 『収集したデータから、システムの想定内 (既知) と想定外 (未知) の両方の不具合を、どれだけ正確に推測できるか』を表す程度のこと。
 

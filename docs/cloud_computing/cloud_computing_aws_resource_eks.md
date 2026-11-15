@@ -39,7 +39,7 @@ Kubernetes のコントロールプレーンを AWS が管理し、コンテナ�
 
 Amazon EKS のコントロールプレーンは、開発者や他の AWS リソースからのリクエストを待ち受ける API、接続を API にルーティングする NLB、データプレーンを管理するコンポーネントからなる。
 
-![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane.png)
+![eks_control-plane](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_control-plane.png)
 
 > - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
 
@@ -104,7 +104,7 @@ Amazon EKS コントロールプレーンでは、NLB が kube-apiserver の前�
 
 #### ▼ 対応関係
 
-![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks.png)
+![eks](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks.png)
 
 <table>
   <thead>
@@ -382,7 +382,7 @@ kube-apiserver のインターネットへの公開範囲を設定できる。
 
 #### ▼ aws-auth (ConfigMap) を経由した Kubernetes RBAC との連携
 
-![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_auth_architecture.png)
+![eks_auth_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_auth_architecture.png)
 
 ConfigMap を経由して Kubernetes の RBAC と連携することにより、Kubernetes Cluster 外部の kube-apiserver クライアント (例：開発者、GitOps CD ツール、監視ツールなど) の認可スコープを制御する。
 
@@ -597,7 +597,7 @@ resource "aws_iam_role" "access_entry_argocd" {
 
 #### ▼ IRSA とは
 
-![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_oidc.png)
+![eks_oidc](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_oidc.png)
 
 特に Kubernetes リソースの認可スコープを制御する仕組みのこと。
 
@@ -829,7 +829,7 @@ Pod をパブリックサブネットに配置した場合、パブリックネ�
 
 Pod をプライベートサブネットに配置した場合、プライベートサブネット外から内のデータプレーンへのリクエストを AWS Load Balancer Controller で受信し、AWS ALB を使用して Pod にルーティングする。
 
-![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_architecture.png)
+![eks_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_architecture.png)
 
 > - [Deploy a gRPC-based application on an Amazon EKS cluster and access it with an Application Load Balancer - AWS Prescriptive Guidance](https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-a-grpc-based-application-on-an-amazon-eks-cluster-and-access-it-with-an-application-load-balancer.html)
 
@@ -947,7 +947,7 @@ Amazon VPC 内にある AWS リソース (RDS など) の場合、その AWS 側
 
 Amazon VPC 外から NLB への `443` 番ポートに対するネットワークからのリクエストはデフォルトでは許可されているが、拒否するように設定できる。
 
-![eks_control-plane_worker_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network.png)
+![eks_control-plane_worker_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_control-plane_worker_network.png)
 
 > - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 
@@ -972,7 +972,7 @@ Amazon VPC 外から NLB への `443` 番ポートに対するネットワーク
 - AWS NAT Gateway を経由して、AWS NAT Gateway を経由して、パブリック制限を通過する
 - ENI (Interface 型の Amazon VPC エンドポイント) を経由して、プライベート制限を通過する
 
-![eks_control-plane_worker_network_public_private_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_control-plane_worker_network_public_private_endpoint.png)
+![eks_control-plane_worker_network_public_private_endpoint](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_control-plane_worker_network_public_private_endpoint.png)
 
 Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレーン、Amazon ECR、Amazon S3、AWS Systems Manager、Amazon CloudWatch Logs、DynamoDB など) にリクエストを送信する場合、専用の Amazon VPC エンドポイントを設ける必要がある。
 
@@ -1053,7 +1053,7 @@ Amazon VPC 外の AWS リソース (例：Amazon EKS コントロールプレー
 
 マルチワーカーNode を作成する場合、AZ ごとに Node を作成する。
 
-![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_multi-node.png)
+![eks_multi-node](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_multi-node.png)
 
 > - [Configure networking for Amazon EKS clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/eks-networking.html)
 
@@ -1081,7 +1081,7 @@ Fargate と比べてカスタマイズ性が高く、ワーカーNode 当たり�
 
 一方で、各 Amazon EC2 のハードウェアリソースの消費量をユーザーが管理しなければならないため、Kubernetes のホストの管理が大変である。
 
-![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_ec2.png)
+![eks_on_ec2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_on_ec2.png)
 
 > - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
 
@@ -1762,7 +1762,7 @@ Amazon EC2 ワーカーNode と比較して、使用できない機能につい�
 
 ##### ▼ Fargate ワーカーNode とは
 
-![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/eks_on_fargate.png)
+![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_on_fargate.png)
 
 Fargate 上で稼働する Kubernetes のホストのこと。
 

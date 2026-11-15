@@ -17,7 +17,7 @@ tags:
 
 既存機能/追加/変更を含むすべてのコンポーネントを組み合わせ、すべてのコンポーネント間の連携が正しく動作しているかを検証する。
 
-![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing_blackbox-test_unit_integration_system.png)
+![testing_blackbox-test_unit_integration_system](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/testing_blackbox-test_unit_integration_system.png)
 
 > - [単体テスト・結合テスト・総合テストの違い、観点や注意点を簡単に説明する \| 若手エンジニアの羅針盤](https://pm-rasinban.com/ut-it-st)
 
@@ -120,11 +120,11 @@ tags:
 
 それぞれの曲線の状態から、プロジェクトの進捗状況を読み取られる。
 
-![quality-control-chart](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/quality-control-chart.jpg)
+![quality-control-chart](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/quality-control-chart.jpg)
 
 不良摘出実績線 (信頼度成長曲線) は、プログラムの品質の状態を表し、S 字型でないものはプログラムの品質がよくないことを表す。
 
-![reliability-growth-curve_bad-example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/reliability-growth-curve_bad-example.jpg)
+![reliability-growth-curve_bad-example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/reliability-growth-curve_bad-example.jpg)
 
 <br>
 
@@ -192,7 +192,7 @@ tags:
 
 ### 性能テストとは
 
-![performance-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/performance-test.png)
+![performance-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/performance-test.png)
 
 一定時間内に、ユーザーが一連のリクエスト (例：ログイン、参照、登録、ログアウト) を行ったとき、あらかじめ定めた指標にどのような変化があるかを検証する。
 
@@ -296,7 +296,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 マイクロサービスアーキテクチャの場合、モックマイクロサービスを用意する。
 
-![microservices_blackbox-test_external-api-mock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/microservices_blackbox-test_external-api-mock.png)
+![microservices_blackbox-test_external-api-mock](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/microservices_blackbox-test_external-api-mock.png)
 
 > - [How to Test Microservices](https://semaphore.io/blog/test-microservices)
 
@@ -855,7 +855,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 株式会社 LAC によるペネトレーションテストサービス
 
-![penetration-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/penetration-test.png)
+![penetration-test](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/penetration-test.png)
 
 <br>
 
@@ -869,7 +869,7 @@ SLA (顧客との合意) に基づいた SLO とは区別したい。
 
 テスト環境からのレスポンスは破棄されるので、ユーザーに影響がない。
 
-![test_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/test_traffic-mirroring.png)
+![test_traffic-mirroring](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/testing/test_traffic-mirroring.png)
 
 > - [Mirror production traffic to test environment with VPC Traffic Mirroring \| Networking & Content Delivery](https://aws.amazon.com/blogs/networking-and-content-delivery/mirror-production-traffic-to-test-environment-with-vpc-traffic-mirroring/)
 > - [ポートミラーリング（ミラーポート）とは - IT用語辞典 e-Words](https://e-words.jp/w/%E3%83%9D%E3%83%BC%E3%83%88%E3%83%9F%E3%83%A9%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0.html)

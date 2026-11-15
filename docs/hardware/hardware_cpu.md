@@ -33,7 +33,7 @@ CPU の演算部分は、計算や演算処理を実行する。
 
 Intel と AMD における CPU の歴史を以下に示す。
 
-![cpu_intel-amd_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cpu_intel-amd_history.png)
+![cpu_intel-amd_history](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/cpu_intel-amd_history.png)
 
 <br>
 
@@ -59,7 +59,7 @@ CPU の回路が処理と歩調を合わせるために使用する信号を、�
 = 2.6×10^9 (クロック数/秒)
 ```
 
-![cpu_clock_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cpu_clock_comparison.png)
+![cpu_clock_comparison](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/cpu_clock_comparison.png)
 
 <br>
 
@@ -80,7 +80,7 @@ CPU が 1 秒間に何回命令するかを表す。
 = 100 (×10^6 命令数/秒)
 ```
 
-![cpu_mips_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cpu_mips_example.png)
+![cpu_mips_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/cpu_mips_example.png)
 
 1 命令当たりの実行時間 (秒/命令) の求め方は以下の通り。
 

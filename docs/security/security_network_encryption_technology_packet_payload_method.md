@@ -115,7 +115,7 @@ DES 暗号の後継として米国の NIST が標準化したブロック暗号�
 
 **短所**：鍵の配布が大変
 
-![p437](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/p437.png)
+![p437](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/p437.png)
 
 #### ▼ 共通鍵の再利用の可否
 
@@ -123,7 +123,7 @@ DES 暗号の後継として米国の NIST が標準化したブロック暗号�
 
 鍵の再利用をする必要はない。
 
-![common-key_reuse](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/common-key_reuse.png)
+![common-key_reuse](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/common-key_reuse.png)
 
 <br>
 
@@ -131,7 +131,7 @@ DES 暗号の後継として米国の NIST が標準化したブロック暗号�
 
 #### ▼ 公開鍵暗号方式とは
 
-![public-key-cryptography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-key-cryptography.png)
+![public-key-cryptography](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/public-key-cryptography.png)
 
 公開鍵暗号方式でも記載の通り、共通鍵暗号方式の鍵配送問題を解決すべく開発された。
 
@@ -157,7 +157,7 @@ DES 暗号の後継として米国の NIST が標準化したブロック暗号�
 
 ただし、サーバーごとに異なる秘密鍵と公開鍵を使用してもよい。
 
-![public-key_reuse](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/public-key_reuse.png)
+![public-key_reuse](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/public-key_reuse.png)
 
 <br>
 
@@ -167,7 +167,7 @@ DES 暗号の後継として米国の NIST が標準化したブロック暗号�
 
 両方の方式の長所と短所を補う。
 
-![hybrid-encryption](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hybrid-encryption.png)
+![hybrid-encryption](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/hybrid-encryption.png)
 
 <br>
 
@@ -177,7 +177,7 @@ DES 暗号の後継として米国の NIST が標準化したブロック暗号�
 
 何らかのアプリケーションデータを入力すると、規則性がなく桁数が一定の値を出力する演算手法。
 
-![hash-function](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hash-function.png)
+![hash-function](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/hash-function.png)
 
 <br>
 

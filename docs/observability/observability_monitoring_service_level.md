@@ -104,7 +104,7 @@ SLO だけがユーザーの満足度を決めるわけではなく、新機能�
 
 また、サイトの一部の機能が社内部署向け (例：マーケティング部) の場合は、社内向けの SLO となる。
 
-![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_user-happiness.png)
+![slo_user-happiness](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/slo_user-happiness.png)
 
 > - [Shrinking the impact of production incidents using SRE principles—CRE Life Lessons \| Google Cloud Blog](https://cloud.google.com/blog/products/devops-sre/shrinking-the-impact-of-production-incidents-using-sre-principles-cre-life-lessons?hl=en)
 
@@ -144,7 +144,7 @@ SLO だけがユーザーの満足度を決めるわけではなく、新機能�
 
 もし、バーンレートが `2` 倍の大きさになれば、半月で SLO を消費してしまうことになる。
 
-![burn-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/burn-rate.png)
+![burn-rate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/burn-rate.png)
 
 > - [Google SRE - Prometheus Alerting: Turn SLOs into Alerts](https://sre.google/workbook/alerting-on-slos/)
 > - [お客さま影響に基づく実践的なアラート方法 \| メルカリエンジニアリング](https://engineering.mercari.com/blog/entry/20211215-practical_alerting_methods_based_on_customer_impact/)
@@ -304,7 +304,7 @@ LT (ロングテール) の先にある見えない最大値は `120`ms であ�
 
 例えば、SLO を『`5`ms 未満のレイテンシー (≒レスポンスタイム) 』に設定したとして、ヒストグラムから `99.4597`%がこれを満たしていると結論付けられる。
 
-![slo_histogram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/slo_histogram.png)
+![slo_histogram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/slo_histogram.png)
 
 <br>
 

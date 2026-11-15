@@ -19,7 +19,7 @@ tags:
 
 ### アーキテクチャ
 
-![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_structure.png)
+![envoy_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_structure.png)
 
 Envoy は、データプレーンで通信を処理するプロキシツールである。コントロールプレーンの xDS サーバーから設定を取得する。
 
@@ -49,7 +49,7 @@ Envoy は、ブートストラップ構成の変更を読み込むために、�
 
 Istio 管理下では、pilot-agent が Envoy のホットリスタートを無効化している。ブートストラップ構成の変更を反映するには、Pod のロールアウトなどによる istio-proxy の再起動が必要である。
 
-![envoy_hot-reload](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_hot-reload.png)
+![envoy_hot-reload](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_hot-reload.png)
 
 > - [Hot restart — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/hot_restart)
 > - [Draining — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/arch_overview/operations/draining)
@@ -239,7 +239,7 @@ func (h *HTTPGateway) ServeHTTP(req *http.Request) ([]byte, int, error) {
 
 #### ▼ データプレーンの仕組み
 
-![envoy_data-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_data-plane_architecture.png)
+![envoy_data-plane_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_data-plane_architecture.png)
 
 データプレーンでは、Envoy が稼働し、通信を宛先にルーティングする。
 
@@ -1146,7 +1146,7 @@ Envoy はマルチスレッドでパケットを処理する。
 
 `--concurrency` オプションで並列処理数を設定できる。
 
-![envoy_thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_thread.png)
+![envoy_thread](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_thread.png)
 
 > - https://blog.envoyproxy.io/envoy-threading-model-a8d44b922310
 > - [Wasm extensions and Envoy extensibility explained – Part 1](https://tetrate.io/blog/wasm-modules-and-envoy-extensibility-explained-part-1/#h-wasm-and-wasm-extensions-in-envoy)
@@ -1173,7 +1173,7 @@ Envoy は、リバースプロキシとして、外部 (例：ロードバラン
 
 サービスメッシュ外や他の Pod からリクエストを受信するために使用する。
 
-![envoy_ingress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_ingress-listener.png)
+![envoy_ingress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_ingress-listener.png)
 
 > - [Service to service only — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-ingress-listener)
 > - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology)
@@ -1188,7 +1188,7 @@ Envoy は、リバースプロキシとして、ローカルホストにある�
 
 サービスメッシュ外や他の Pod にリクエストを送信するために使用する。
 
-![envoy_egress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_egress-listener.png)
+![envoy_egress-listener](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_egress-listener.png)
 
 > - [Service to service only — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/service_to_service#service-to-service-egress-listener)
 > - [Life of a Request — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/life_of_a_request#network-topology)
@@ -1235,7 +1235,7 @@ Envoy の文脈では、ロードバランサーとしての使い方を『フ�
 
 Istio Ingress Gateway で Envoy を使用するユースケースは、これに属する。
 
-![envoy_loadbalancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/envoy_loadbalancer.png)
+![envoy_loadbalancer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/envoy_loadbalancer.png)
 
 > - [Service to service plus front proxy — envoy 1.40.0-dev-e07c88 documentation](https://www.envoyproxy.io/docs/envoy/latest/intro/deployment_types/front_proxy)
 > - https://www.envoyproxy.io/docs/envoy/latest/start/sandboxes/front_proxy

@@ -25,7 +25,7 @@ GraphQL は、GraphQL-API の GraphQL サーバー、GraphQL クライアント�
 
 一方で、GraphQL-API を使用した場合、単一のエンドポイントを GraphQL で指定すれば、GraphQL-API が適切な宛先にルーティングしてくれる。
 
-![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/graphql-api.png)
+![graphql-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/graphql-api.png)
 
 > - [GraphQL vs. REST - Apollo GraphQL Blog](https://www.apollographql.com/blog/graphql/basics/graphql-vs-rest/)
 

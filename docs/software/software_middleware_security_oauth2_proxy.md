@@ -31,7 +31,7 @@ OAuth 2.0 をベースとした SSO (例：OAuth、OIDC など) のアクセス�
 
 OAuth2 Proxy は、Web アプリケーションの手前でリクエストを受信し、OAuth 2.0 の ID プロバイダーで認証した後に、リクエストを Web アプリケーションにプロキシする。
 
-![oauth2-proxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_architecture.png)
+![oauth2-proxy_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/oauth2-proxy_architecture.png)
 
 > - https://ibrahimhkoyuncu.medium.com/kubernetes-ingress-external-authentication-with-oauth2-proxy-and-keycloak-9924a3b2d34a
 > - [쿠버네티스 oauth-proxy로 구글 SSO 적용하기 \| 오토피디아 블로그](https://blog.doctor-cha.com/google-sso-with-kubernetes-oauth-proxy)
@@ -50,7 +50,7 @@ OAuth2 Proxy は、Web アプリケーションの手前でリクエストを受
 
 ### リバースプロキシからのアクセストークン署名検証リクエストの場合
 
-![oauth2-proxy_kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/oauth2-proxy_kubernetes_architecture.png)
+![oauth2-proxy_kubernetes_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/oauth2-proxy_kubernetes_architecture.png)
 
 リバースプロキシ (例：Nginx など) は、リクエストヘッダーの持つ情報 (例：認証系ヘッダー、Cookie など) から、ユーザーが認証済みであるかどうかを判定する。
 

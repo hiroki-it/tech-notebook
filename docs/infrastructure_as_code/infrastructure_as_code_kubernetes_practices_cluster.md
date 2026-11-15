@@ -182,7 +182,7 @@ GitOps を採用できないため、CIOps になる。
 
 #### ▼ セルフマネージドなローリング方式 (サージ方式、ライブ方式)
 
-![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_live-upgrade.png)
+![kubernetes_live-upgrade](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_live-upgrade.png)
 
 『サージ方式』『ライブ方式』ともいう。
 
@@ -214,7 +214,7 @@ GitOps を採用できないため、CIOps になる。
         --delete-emptydir-data
     ```
 
-    ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_node_scheduling-pod-status.png)
+    ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_node_scheduling-pod-status.png)
 
     > - [YasuBlog](https://dunkshoot.hatenablog.com/)
     > - [kubernetes – Nodeの削除 \| HYOUBLOG](https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/)
@@ -256,7 +256,7 @@ ip-*****.ap-northeast-1.compute.internal   NotReady,SchedulingDisabled   <none> 
 
 #### ▼ ブルー/グリーン方式 (マイグレーション方式)
 
-![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/kubernetes_cluster-migration.png)
+![kubernetes_cluster-migration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_cluster-migration.png)
 
 『マイグレーション方式』ともいう。
 

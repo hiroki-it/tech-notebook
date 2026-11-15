@@ -97,7 +97,7 @@ Fluent Bit v1.8.6
 
 ログのパイプラインへのインプット方法を設定する。
 
-![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_input.png)
+![fluent-bit_input](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_input.png)
 
 プラグインを使用して、ログのインプット方法を設定する。
 
@@ -389,7 +389,7 @@ $ fluent-bit \
 
 非構造化ログを構造化ログに変換する。
 
-![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_parser.png)
+![fluent-bit_parser](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_parser.png)
 
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/parser
 
@@ -466,7 +466,7 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 
 ログのキーや値を加工する。
 
-![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_filter.png)
+![fluent-bit_filter](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_filter.png)
 
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/filter
 > - [Key concepts \| Fluent Bit: Official Manual](https://docs.fluentbit.io/manual/concepts/key-concepts#filtering)
@@ -782,7 +782,7 @@ Fluent Bit v1.8.6
     Streams_File stream_processor.conf
 ```
 
-![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_stream-task.png)
+![fluent-bit_stream-task](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_stream-task.png)
 
 > - [Overview \| Fluent Bit: Official Manual](https://docs.fluentbit.io/manual/stream-processing/overview#stream-processor)
 
@@ -846,7 +846,7 @@ SELECT log FROM TAG:'*-foo-*' WHERE container_name = 'qux';
 
 ログを蓄え、これを順番に ROUTING へ渡す。
 
-![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_buffer.png)
+![fluent-bit_buffer](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_buffer.png)
 
 > - https://docs.fluentbit.io/manual/concepts/data-pipeline/buffer
 > - https://docs.fluentbit.io/manual/administration/buffering-and-storage
@@ -928,7 +928,7 @@ OUTPUT セクションの `storage.total_limit_size` キーで、アウトプッ
 
 コマンドの `-o` オプションで OUTPUT 名を指定し、実行もできる。
 
-![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/fluent-bit_output.png)
+![fluent-bit_output](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/fluent-bit_output.png)
 
 ```bash
 Outputs

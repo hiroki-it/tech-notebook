@@ -356,7 +356,7 @@ $snappy->generateFromHtml("foo.html", ".../foo.pdf");
 
 ボットサーバーにて、LINE プラットフォームに返信するためのレスポンスを作成する。
 
-![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/line_messaging-api.png)
+![line_messaging-api](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/line_messaging-api.png)
 
 > - [GitHub - line/line-bot-sdk-php: LINE Messaging API SDK for PHP · GitHub](https://github.com/line/line-bot-sdk-php)
 > - [Messaging APIの概要 \| LINE Developers](https://developers.line.biz/ja/docs/messaging-api/overview/)

@@ -24,7 +24,7 @@ tags:
 
 アプリケーションからメトリクスの元になるデータポイントを収集し、Datadog にフォワーディングする。
 
-![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on-server.png)
+![datadog-agent_on-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on-server.png)
 
 > - https://www.netone.co.jp/knowledge-center/netone-blog/20210716-1/
 
@@ -56,7 +56,7 @@ tags:
 
 Cluster やワーカーNode からメトリクスを受信し、コントロールプレーン Node の kube-apiserver にフォワーディングする。
 
-![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes.png)
+![datadog-agent_on_kubernetes](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on_kubernetes.png)
 
 > - [Datadog Cluster Agent のご紹介 \| Datadog](https://www.datadoghq.com/ja/blog/datadog-cluster-agent/)
 > - [KubernetesのDatadogAgentインストール手順 - サーバーワークスエンジニアブログ](https://blog.serverworks.co.jp/k8s-datadog)
@@ -65,7 +65,7 @@ Cluster やワーカーNode からメトリクスを受信し、コントロー�
 
 Node エージェントが、istio-proxy コンテナや Istiod が公開するエンドポイントからメトリクスを収集し、Datadog にフォワーディングする。
 
-![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/datadog-agent_on_kubernetes_istio.png)
+![datadog-agent_on_kubernetes_istio](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/datadog-agent_on_kubernetes_istio.png)
 
 > - [みんなの銀行に学ぶ、マイクロサービス時代のシステム監視 \| 日経クロステック（xTECH）](https://xtech.nikkei.com/atcl/nxt/column/18/01946/021500003/)
 > - https://docs.datadoghq.com/integrations/istio/

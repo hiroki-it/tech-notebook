@@ -27,7 +27,7 @@ tags:
 
 ## 02. インシデント管理とは
 
-![incident_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/incident_management.png)
+![incident_management](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/incident_management.png)
 
 一次オンコール担当は、エラーを解決するためのタスクを作成し、完了させる。
 
@@ -301,7 +301,7 @@ Slack をインシデント管理ツールとして、Slack に通知された�
 
 #### ▼ MTxx メトリクスとは
 
-![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mtxx.png)
+![mtxx](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/mtxx.png)
 
 <table>
   <thead>
@@ -375,11 +375,11 @@ Slack をインシデント管理ツールとして、Slack に通知された�
 1 - (1-0.81) × (1-0.64) = 0.9316
 ```
 
-![availability_calculation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/availability_calculation.jpg)
+![availability_calculation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/availability_calculation.jpg)
 
 #### ▼ MTxx メトリクスのインシデント管理への適用
 
-![mttx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics.png)
+![mttx-metrics](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/mttx-metrics.png)
 
 <table>
   <thead>
@@ -421,7 +421,7 @@ MTxx メトリクスをダッシュボード化する。
 
 DRI Hops (インシデントの直接的に責任者) の値を使用して人的コストを可視化することにより、エンジニアリングマネージャがインシデント管理を扱いやすくなる。
 
-![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/mttx-metrics_dash-board.png)
+![mttx-metrics_dash-board](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/mttx-metrics_dash-board.png)
 
 > - https://www.amazon.co.jp/dp/4873119618
 

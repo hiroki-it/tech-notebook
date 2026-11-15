@@ -21,7 +21,7 @@ tags:
 
 基本的に、認可の実装は認証に依存する。
 
-![authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/authorization.png)
+![authorization](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/authorization.png)
 
 > - [Authorization Academy - What is Authorization?](https://www.osohq.com/academy/what-is-authorization)
 > - [よくわかる認証と認可 \| DevelopersIO](https://dev.classmethod.jp/articles/authentication-and-authorization/#toc-2)

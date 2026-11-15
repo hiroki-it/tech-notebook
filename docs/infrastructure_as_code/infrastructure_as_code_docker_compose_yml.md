@@ -389,7 +389,7 @@ services:
 
 ### `networks`
 
-![docker-engine_virtual-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-engine_virtual-network.jpg)
+![docker-engine_virtual-network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/docker-engine_virtual-network.jpg)
 
 コンテナを接続するうち/外ネットワークのエイリアスを設定する。
 
@@ -717,7 +717,7 @@ $ docker network inspect foo-network
 
 #### ▼ `external` とは
 
-![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/docker-compose_external.png)
+![docker-compose_external](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/docker-compose_external.png)
 
 異なる `docker-compose.yml` ファイルから相互に通信できるネットワークを作成する。
 

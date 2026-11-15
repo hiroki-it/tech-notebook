@@ -26,7 +26,7 @@ Vue.js のパッケージの 1 つで、状態を管理する。
 
 ※Vuex からなるモデルでは、状態とその変更方法をストアに集約し、コンポーネントから直接的に状態を変更させないようにするとよい。
 
-![vue_component-tree_vuex](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/vue_component-tree_vuex.png)
+![vue_component-tree_vuex](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_component-tree_vuex.png)
 
 > - [「状態管理」って何？](https://zenn.dev/gagaga/articles/state-management)
 

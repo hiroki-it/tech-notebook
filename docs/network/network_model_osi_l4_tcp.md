@@ -35,7 +35,7 @@ TCP 接続のたびに、送信元と宛先間で TCP スリーウェイハン�
 
 そこで、宛先が TCP KeepAlive を定期的に送信し、送信元が ACK パケットを返信することにより、TCP スリーウェイハンドシェイクが切断されないようにする。
 
-![tcp-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/tcp-keepalive.png)
+![tcp-keepalive](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/network/tcp-keepalive.png)
 
 > - [【図解】TCP Keep-Alive/http Keep-Aliveの仕組みと違い ～Client/Serverの挙動とメリット,設定～ \| SEの道標](https://milestone-of-se.nesuke.com/nw-basic/as-nw-engineer/keepalive-tcp-http/#toc2)
 > - https://www.ibm.com/docs/ja/zos/2.4.0?topic=functions-tcp-keepalive
