@@ -36,11 +36,185 @@ title: 【IT技術の知見】はじめに
 
 3. ノートをクリックします。
 
-### 目次から
+### カテゴリから
 
-1. ページ上部のナビゲーションをクリックをクリックします。
+1. カテゴリのカードから、参照する必要があるカテゴリを判断します。
 
-2. 目次が表示されるため、ノートをクリックします。
+2. カードの「→ 目次を見る」をクリックすると、そのカテゴリの目次が表示されます。
+
+3. 目次からノートをクリックします。
+
+<div class="grid cards" markdown>
+
+- **🌳 システム**
+
+  ***
+
+  システム、アーキテクチャ特性
+
+  [→ 目次を見る](system/index.md)
+
+- **🧬 ソフトウェア**
+
+  ***
+
+  ソフトウェア、プラクティス集
+
+  [→ 目次を見る](software/index.md)
+
+- **🚀 アプリ**
+
+  ***
+
+  アーキテクチャ、CQRS、フロントエンド、マイクロサービスアーキテクチャ
+
+  [→ 目次を見る](software/application/index.md)
+
+- **🤝🏻 ミドルウェア**
+
+  ***
+
+  RDB、NoSQL DB、TSDB、RabbitMQ、Apache Kafka
+
+  [→ 目次を見る](software/middleware/index.md)
+
+- **🐧 OS**
+
+  ***
+
+  Linux カーネル、プロセス管理、メモリ管理、ユーティリティ
+
+  [→ 目次を見る](software/basic/index.md)
+
+- **🔠 言語**
+
+  ***
+
+  データ構造、Go、Java、PHP
+
+  [→ 目次を見る](language/index.md)
+
+- **🧪 テスト**
+
+  ***
+
+  ホワイトボックステスト、ブラックボックステスト
+
+  [→ 目次を見る](testing/index.md)
+
+- **💻 ハードウェア**
+
+  ***
+
+  CPU、メモリ、ストレージ、組み込み機器
+
+  [→ 目次を見る](hardware/index.md)
+
+- **🌏 ネットワーク**
+
+  ***
+
+  TCP 階層モデル、OSI 参照モデル
+
+  [→ 目次を見る](network/index.md)
+
+- **🔐 セキュリティ**
+
+  ***
+
+  サイバー攻撃、マルウェア、ネットワークセキュリティ
+
+  [→ 目次を見る](security/index.md)
+
+- **⛅️ 3大クラウド**
+
+  ***
+
+  AWS、Google Cloud
+
+  [→ 目次を見る](cloud_computing/index.md)
+
+- **📦 仮想化**
+
+  ***
+
+  仮想化、コンテナ
+
+  [→ 目次を見る](virtualization/index.md)
+
+- **⚙️ IaC**
+
+  ***
+
+  Ansible、Docker、Terraform、Packer
+
+  [→ 目次を見る](infrastructure_as_code/index.md)
+
+- **☸️ K8s**
+
+  ***
+
+  コントロールプレーン、Node、Kubernetes リソース、カスタムリソース
+
+  [→ 目次を見る](infrastructure_as_code/kubernetes/index.md)
+
+- **🌊 K8sアプリ**
+
+  ***
+
+  Minikube、Kind、Helm、Kustomize
+
+  [→ 目次を見る](infrastructure_as_code/development_tools/index.md)
+
+- **⏬ K8sアドオン**
+
+  ***
+
+  Ingress Controller、cluster-autoscaler、Cilium
+
+  [→ 目次を見る](infrastructure_as_code/kubernetes_addon/index.md)
+
+- **♾️ DevOps**
+
+  ***
+
+  DevOps、文化
+
+  [→ 目次を見る](devops/index.md)
+
+- **🔄 CI/CD**
+
+  ***
+
+  デプロイ手法、GitHub Actions、GitLab CI
+
+  [→ 目次を見る](devops/cicd/index.md)
+
+- **🔎 可観測性**
+
+  ***
+
+  ログ、メトリクス、分散トレース、監視ツール
+
+  [→ 目次を見る](observability/index.md)
+
+- **🤖 LLM**
+
+  ***
+
+  エージェンティックコーディング
+
+  [→ 目次を見る](llm/index.md)
+
+- **👥 開発手法**
+
+  ***
+
+  開発手法論、組織論、プロダクトマネジメント
+
+  [→ 目次を見る](software_development_methodology/index.md)
+
+</div>
 
 <br>
 
