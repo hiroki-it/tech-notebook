@@ -40,179 +40,137 @@ title: 【IT技術の知見】はじめに
 
 1. カテゴリのカードから、参照する必要があるカテゴリを判断します。
 
-2. カードの「→ 目次を見る」をクリックすると、そのカテゴリの目次が表示されます。
+2. カードのカテゴリ名をクリックすると、そのカテゴリの目次が表示されます。
 
 3. 目次からノートをクリックします。
 
 <div class="grid cards" markdown>
 
-- **🌳 システム**
+- 🌳 **[システム](system/index.md)**
 
   ***
 
-  システム、アーキテクチャ特性
+  システムの定義と、可用性や拡張性などのアーキテクチャ特性をまとめています。
 
-  [→ 目次を見る](system/index.md)
-
-- **🧬 ソフトウェア**
+- 🧬 **[ソフトウェア](software/index.md)**
 
   ***
 
-  ソフトウェア、プラクティス集
+  ソフトウェアの分類と、設計や開発に共通するプラクティスをまとめています。
 
-  [→ 目次を見る](software/index.md)
-
-- **🚀 アプリ**
+- 🚀 **[アプリ](software/application/index.md)**
 
   ***
 
-  アーキテクチャ、CQRS、フロントエンド、マイクロサービスアーキテクチャ
+  アプリケーションアーキテクチャ、フロントエンド設計、マイクロサービスアーキテクチャをまとめています。
 
-  [→ 目次を見る](software/application/index.md)
-
-- **🤝🏻 ミドルウェア**
+- 🤝🏻 **[ミドルウェア](software/middleware/index.md)**
 
   ***
 
-  RDB、NoSQL DB、TSDB、RabbitMQ、Apache Kafka
+  Web サーバー、RDB、NoSQL DB、サービスメッシュ、メッセージングなどのミドルウェアをまとめています。
 
-  [→ 目次を見る](software/middleware/index.md)
-
-- **🐧 OS**
+- 🐧 **[OS](software/basic/index.md)**
 
   ***
 
-  Linux カーネル、プロセス管理、メモリ管理、ユーティリティ
+  Linux カーネルによるプロセス、メモリ、ストレージ、I/O の管理と、ユーティリティをまとめています。
 
-  [→ 目次を見る](software/basic/index.md)
-
-- **🔠 言語**
+- 🔠 **[言語](language/index.md)**
 
   ***
 
-  データ構造、Go、Java、PHP
+  言語の種類や処理方式、データ構造と、Go、Java、PHP、Python、TypeScript などの言語ごとの知見をまとめています。
 
-  [→ 目次を見る](language/index.md)
-
-- **🧪 テスト**
+- 🧪 **[テスト](testing/index.md)**
 
   ***
 
-  ホワイトボックステスト、ブラックボックステスト
+  ホワイトボックステストとブラックボックステストの手法を、アプリとインフラの両面からまとめています。
 
-  [→ 目次を見る](testing/index.md)
-
-- **💻 ハードウェア**
+- 💻 **[ハードウェア](hardware/index.md)**
 
   ***
 
-  CPU、メモリ、ストレージ、組み込み機器
+  CPU、メモリ、ストレージ、組み込み機器など、コンピューターを構成するハードウェアをまとめています。
 
-  [→ 目次を見る](hardware/index.md)
-
-- **🌏 ネットワーク**
+- 🌏 **[ネットワーク](network/index.md)**
 
   ***
 
-  TCP 階層モデル、OSI 参照モデル
+  TCP/IP 階層モデルと OSI 参照モデルに沿って、各レイヤーのネットワーク技術をまとめています。
 
-  [→ 目次を見る](network/index.md)
-
-- **🔐 セキュリティ**
+- 🔐 **[セキュリティ](security/index.md)**
 
   ***
 
-  サイバー攻撃、マルウェア、ネットワークセキュリティ
+  サイバー攻撃とマルウェア、ネットワークセキュリティ、暗号化技術、認証と認可をまとめています。
 
-  [→ 目次を見る](security/index.md)
-
-- **⛅️ 3大クラウド**
+- ⛅️ **[3大クラウド](cloud_computing/index.md)**
 
   ***
 
-  AWS、Google Cloud
+  AWS と Google Cloud のリソース、CLI、ツール、プラクティスをまとめています。
 
-  [→ 目次を見る](cloud_computing/index.md)
-
-- **📦 仮想化**
+- 📦 **[仮想化](virtualization/index.md)**
 
   ***
 
-  仮想化、コンテナ
+  仮想化の方式と、Docker や Containerd などのコンテナ技術をまとめています。
 
-  [→ 目次を見る](virtualization/index.md)
-
-- **⚙️ IaC**
+- ⚙️ **[IaC](infrastructure_as_code/index.md)**
 
   ***
 
-  Ansible、Docker、Terraform、Packer
+  Terraform、Ansible、Docker などを使い、インフラをコードで管理する方法をまとめています。
 
-  [→ 目次を見る](infrastructure_as_code/index.md)
-
-- **☸️ K8s**
+- ☸️ **[K8s](infrastructure_as_code/kubernetes/index.md)**
 
   ***
 
-  コントロールプレーン、Node、Kubernetes リソース、カスタムリソース
+  Kubernetes のコントロールプレーンと Node のコンポーネント、ネットワーク、リソースをまとめています。
 
-  [→ 目次を見る](infrastructure_as_code/kubernetes/index.md)
-
-- **🌊 K8sアプリ**
+- 🌊 **[K8sアプリ](infrastructure_as_code/development_tools/index.md)**
 
   ***
 
-  Minikube、Kind、Helm、Kustomize
+  Minikube や Kind などの開発環境と、Helm や Kustomize などのマニフェスト管理ツールをまとめています。
 
-  [→ 目次を見る](infrastructure_as_code/development_tools/index.md)
-
-- **⏬ K8sアドオン**
+- ⏬ **[K8sアドオン](infrastructure_as_code/kubernetes_addon/index.md)**
 
   ***
 
-  Ingress Controller、cluster-autoscaler、Cilium
+  Ingress Controller、オートスケーラー、CNI など、Kubernetes に機能を追加するアドオンをまとめています。
 
-  [→ 目次を見る](infrastructure_as_code/kubernetes_addon/index.md)
-
-- **♾️ DevOps**
+- ♾️ **[DevOps](devops/index.md)**
 
   ***
 
-  DevOps、文化
+  DevOps、SRE、Platform Engineering の考え方と、それを支える技術や組織文化をまとめています。
 
-  [→ 目次を見る](devops/index.md)
-
-- **🔄 CI/CD**
+- 🔄 **[CI/CD](devops/cicd/index.md)**
 
   ***
 
-  デプロイ手法、GitHub Actions、GitLab CI
+  デプロイ手法と、GitHub Actions、GitLab CI、ArgoCD などの CI/CD ツールをまとめています。
 
-  [→ 目次を見る](devops/cicd/index.md)
-
-- **🔎 可観測性**
+- 🔎 **[可観測性](observability/index.md)**
 
   ***
 
-  ログ、メトリクス、分散トレース、監視ツール
+  ログ、メトリクス、分散トレースの収集と、監視ツールやインシデント管理をまとめています。
 
-  [→ 目次を見る](observability/index.md)
-
-- **🤖 LLM**
+- 🤖 **[LLM](llm/index.md)**
 
   ***
 
-  エージェンティックコーディング
+  エージェンティックコーディングなど、LLM を活用した開発をまとめています。
 
-  [→ 目次を見る](llm/index.md)
-
-- **👥 開発手法**
+- 👥 **[開発手法](software_development_methodology/index.md)**
 
   ***
 
-  開発手法論、組織論、プロダクトマネジメント
-
-  [→ 目次を見る](software_development_methodology/index.md)
+  開発手法論、組織論、プロダクトマネジメント、Git によるバージョン管理をまとめています。
 
 </div>
 
