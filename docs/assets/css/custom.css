@@ -532,6 +532,13 @@ blockquote {
 }
 
 /* 子ノートを持つグループのカードは、行全体に広げる */
-.md-typeset .grid.cards.compact > ul > li:has(> p + p) {
+.md-typeset .grid.cards.compact > ul > li:has(> p:nth-of-type(3)) {
     grid-column: 1 / -1;
+}
+
+/* カードの説明文は、見出しと区別するため小さく控えめに表示する */
+.md-typeset .grid.cards.compact > ul > li > p:nth-of-type(2) {
+    font-size: 0.68rem;
+    line-height: 1.4;
+    color: var(--md-default-fg-color--light);
 }

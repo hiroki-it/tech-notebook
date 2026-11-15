@@ -21,9 +21,13 @@ tags:
 
 - **Nginx**
 
+  Nginx の nginx.conf とモジュール
+
   [Nginx](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx.html) ・ [nginx.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_conf.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_command.html) ・ [ビルトインモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_builtin.html) ・ [ユーティリティモジュール](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_nginx_module_utility.html)
 
 - **Apache**
+
+  Apache の apache.conf とコマンド
 
   [Apache](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache.html) ・ [apache.conf](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_conf.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_web_apache_command.html)
 
@@ -37,13 +41,19 @@ tags:
 
 - **PHP-FPM**
 
+  PHP-FPM の仕組みと設定
+
   [PHP-FPM](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_fastcgi_php_fpm_conf.html)
 
 - **uWSGI**
 
+  uWSGI の仕組みと設定
+
   [uWSGI](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_wsgi_uwsgi_conf.html)
 
 - **Uvicorn**
+
+  Python の ASGI サーバー Uvicorn
 
   [Uvicorn](https://hiroki-it.github.io/tech-notebook/software/software_middleware_application_gi_asgi_uvicorn.html)
 
@@ -57,19 +67,29 @@ tags:
 
 - **RDBMS**
 
+  RDBMS の仕組み、ACID、プラクティス
+
   [RDBMS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_practices.html) ・ [ACID](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_rdbms_acid.html)
 
 - **MySQL**
+
+  MySQL の設定と DML、DCL、DDL
 
   [My︎SQL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_conf.html) ・ SQL（[DML](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dml.html)・[DCL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_dcl.html)・[DDL](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_mysql_sql_ddl.html)）
 
 - **PostgreSQL**
 
+  PostgreSQL の設定と Repmgr
+
   [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_conf.html) ・ [Repmgr](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_postgresql_repmgr.html)
 
 - **[アンチパターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_antipatterns.html)**
 
+  N+1 問題などの DB 操作のアンチパターン
+
 - **[ER 図](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_rdb_er.html)**
+
+  データモデルパターンと ER 図の事例
 
 </div>
 
@@ -80,6 +100,8 @@ tags:
 <div class="grid cards compact" markdown>
 
 - **PgBouncer**
+
+  PgBouncer による DB 接続のプーリング
 
   [PgBouncer](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_connection_pool_proxy_pgbouncer_conf.html)
 
@@ -93,7 +115,11 @@ tags:
 
 - **[NoSQL DB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb.html)**
 
+  NoSQL の仕組みとリーダー選出
+
 - **Redis**
+
+  Redis の仕組みとコマンド
 
   [Redis](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_nosqldb_redis_command.html)
 
@@ -107,7 +133,11 @@ tags:
 
 - **[TSDB](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb.html)**
 
+  時系列データを永続化する TSDB
+
 - **VictoriaMetrics**
+
+  VictoriaMetrics の仕組みとコマンド
 
   [VictoriaMetrics](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_database_tsdb_victoriametrics_command.html)
 
@@ -121,13 +151,19 @@ tags:
 
 - **サービスメッシュ**
 
+  サービスメッシュの仕組みと担う責務
+
   [サービスメッシュ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh.html) ・ [サービスメッシュの担う責務](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_responsibility.html)
 
 - **Envoy**
 
+  Envoy の envoy.yaml、API、テレメトリー
+
   [Envoy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy.html) ・ [envoy.yaml](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_envoy_yaml.html) ・ [テレメトリー](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_telemetry.html) ・ [API](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_api.html) ・ [プラクティス](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_envoy_practice.html)
 
 - **Istio**
+
+  Istio のコントロールプレーン、データプレーン、リソース
 
   [Istio](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio.html) ・ サイドカーモード（[コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_control_plane.html)・[データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_sidecar_data_plane.html)） ・ アンビエントモード（[コントロールプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_control_plane.html)・[データプレーン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_ambient_data_plane.html)） ・ [Istio を採用しない場合との比較](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_non.html) ・ [コマンド](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_command.html) ・ [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_practices.html) ・ [リソース](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource.html) ・ [設計パターン](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_patterns.html) ・ リソース定義（[リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition.html)・[共通項目](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_common.html)・[ConfigMap 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_configmap.html)・[Secret 系](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_resource_definition_secret.html)） ・ IstioOperator（[IstioOperator](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator.html)・[リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_service_mesh_istio_operator_resource_definition.html)）
 
@@ -141,6 +177,8 @@ tags:
 
 - **CoreDNS**
 
+  CoreDNS の仕組みと設定
+
   [CoreDNS](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_dns_coredns_conf.html)
 
 </div>
@@ -153,17 +191,25 @@ tags:
 
 - **Cert Manager**
 
+  Cert Manager による証明書の自動管理
+
   [Cert Manager](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager.html) ・ [リソース定義](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_cert_manager_resource_definition.html)
 
 - **Falco**
+
+  Falco によるランタイムの脅威検知
 
   [Falco](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_falco_conf.html)
 
 - **Keycloak**
 
+  Keycloak による認証と認可
+
   [Keycloak](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_conf.html) ・ クライアント（[JavaScript](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_keycloak_client_package_javascript.html)）
 
 - **OAuth2 Proxy**
+
+  OAuth2 Proxy による認証の前段処理
 
   [OAuth2 Proxy](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy.html) ・ [設定ファイル](https://hiroki-it.github.io/tech-notebook/software/software_middleware_security_oauth2_proxy_conf.html)
 
@@ -177,7 +223,11 @@ tags:
 
 - **[RabbitMQ](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_broker_rabbitmq.html)**
 
+  RabbitMQ によるメッセージのキューイングとルーティング
+
 - **[Apache Kafka](https://hiroki-it.github.io/tech-notebook/software/software_middleware_messaging_message_streamer_apache_kafka.html)**
+
+  Apache Kafka によるメッセージストリーム
 
 </div>
 
@@ -188,6 +238,8 @@ tags:
 <div class="grid cards compact" markdown>
 
 - **[データ分析](https://hiroki-it.github.io/tech-notebook/software/software_middleware_data_analysis.html)**
+
+  データレイク、データウェアハウス、データメッシュ
 
 </div>
 

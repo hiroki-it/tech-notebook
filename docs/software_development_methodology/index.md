@@ -15,6 +15,8 @@ tags:
 
 - **[開発手法論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_methodology.html)**
 
+  ウォーターフォールやアジャイルなどの開発手法
+
 </div>
 
 <br>
@@ -24,6 +26,8 @@ tags:
 <div class="grid cards compact" markdown>
 
 - **[組織論](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_organization.html)**
+
+  エンジニアチームの作り方とキャリアパス
 
 </div>
 
@@ -35,6 +39,8 @@ tags:
 
 - **[OSS コントリビューション](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_oss_contribution.html)**
 
+  OSS コントリビューションのコツ
+
 </div>
 
 <br>
@@ -45,7 +51,11 @@ tags:
 
 - **[プロダクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management.html)**
 
+  プロジェクトマネジメントとプロダクトグロース
+
 - **プロジェクトマネジメント**
+
+  タスク管理、見積もり、合意形成
 
   [プロジェクトマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management.html) ・ [タスク管理](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_task_management.html) ・ [見積もり](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_estimate.html) ・ [合意形成](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_product_management_project_management_negotiation.html)
 
@@ -59,6 +69,8 @@ tags:
 
 - **[テクノロジーマネジメント](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_technology_management.html)**
 
+  システムの設計から運用保守までのリード
+
 </div>
 
 <br>
@@ -68,6 +80,8 @@ tags:
 <div class="grid cards compact" markdown>
 
 - **Git**
+
+  Git のコマンドと GitHub
 
   [コマンド](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_command.html) ・ [GitHub](https://hiroki-it.github.io/tech-notebook/software_development_methodology/software_development_git_github.html)
 
