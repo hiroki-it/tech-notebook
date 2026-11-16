@@ -986,3 +986,171 @@ Prisma の `aggregate()` 関数を使用し、注文金額を合計する処理�
 SELECT SUM(amount)
 FROM orders;
 ```
+
+<br>
+
+## 10. 条件の確認と書き込みを別々の SQL で実行する
+
+### 問題
+
+条件確認と書き込みを別々の SQL で実行すると、その間に別の処理が DB を変更し、確認結果が古くなる TOCTOU (Time of Check to Time of Use) という競合が起こり得る。
+
+例えば、記事の物理削除の条件を『論理削除済み』かつ『コメントが存在しない』とする。
+
+条件の確認と削除を別々の SQL で実行すると、次のように確認していない記事まで削除されることがある。
+
+1. 記事 A は論理削除済みでコメントがなく、記事 B は未削除でコメントが残っている。
+2. ジョブが、論理削除済みの記事 A にコメントがないことを確認する。
+3. アプリが、記事 B を論理削除する。
+4. ジョブが、論理削除済みの記事をすべて物理削除すると、確認していない記事 B も削除対象になる。
+
+アプリとジョブが同じ DB に接続する構成を想定する。
+
+```mermaid
+flowchart LR
+    app("アプリ")
+    job("物理削除ジョブ")
+
+    subgraph database["共有 DB"]
+        articles@{ shape: procs, label: "記事テーブル" }
+        comments@{ shape: procs, label: "コメントテーブル" }
+        articles -->|ON DELETE CASCADE| comments
+    end
+
+    job -->|2. SELECT でコメントの有無を確認| database
+    app -->|3. UPDATE で記事 B を論理削除| articles
+    job -->|4. DELETE で論理削除済みの記事を物理削除| articles
+
+    style database rx:12,ry:12
+```
+
+外部キーに `ON DELETE CASCADE` が設定されていれば、記事 B のコメントも削除される。
+
+これは、確認した記事 ID だけを削除するのではなく、削除時に `deleted_at IS NOT NULL` で対象を選び直すために起こる。
+
+> - [Time-of-check to time-of-use - Wikipedia](https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use)
+
+<br>
+
+### 実装例
+
+#### ▼ 問題がある実装
+
+=== "Go"
+
+    ```go title="Go の場合の実装例"
+    func deleteSoftDeletedArticles() error {
+    	var count int64
+    	err := db.
+    		Model(&Comment{}).
+    		Joins("JOIN articles ON articles.id = comments.article_id").
+    		Where("articles.deleted_at IS NOT NULL").
+    		Count(&count).Error
+    	if err != nil {
+    		return err
+    	}
+
+    	if count > 0 {
+    		return nil
+    	}
+
+    	// 確認してからここまでの間に論理削除された記事も、コメントと一緒に削除されてしまう
+    	return db.
+    		Where("deleted_at IS NOT NULL").
+    		Delete(&Article{}).Error
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title="TypeScript の場合の実装例"
+    async function deleteSoftDeletedArticles() {
+      const count = await prisma.comment.count({
+        where: {
+          article: {deletedAt: {not: null}},
+        },
+      });
+
+      if (count > 0) {
+        return;
+      }
+
+      // 確認してからここまでの間に論理削除された記事も、コメントと一緒に削除されてしまう
+      await prisma.article.deleteMany({
+        where: {deletedAt: {not: null}},
+      });
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title="PHP の場合の実装例"
+    <?php
+
+    function deleteSoftDeletedArticles(): void
+    {
+        $count = Comment::whereHas("article", fn ($query) => $query->whereNotNull("deleted_at"))->count();
+
+        if ($count > 0) {
+            return;
+        }
+
+        // 確認してからここまでの間に論理削除された記事も、コメントと一緒に削除されてしまう
+        Article::whereNotNull("deleted_at")->delete();
+    }
+    ```
+
+#### ▼ 解決方法
+
+『コメントが残っていない』という条件を、物理削除する SQL の WHERE 句に含める。
+
+これにより、事前の確認結果に依存せず、削除対象を条件に合う記事に絞れる。
+
+内部的には、条件をサブクエリとして含む SQL が発行される。
+
+```sql
+DELETE FROM articles
+WHERE deleted_at IS NOT NULL
+  AND NOT EXISTS (
+    SELECT 1
+    FROM comments
+    WHERE comments.article_id = articles.id
+  );
+```
+
+=== "Go"
+
+    ```go title="Go の場合の実装例"
+    func deleteSoftDeletedArticles() error {
+    	return db.
+    		Where("deleted_at IS NOT NULL").
+    		Where("NOT EXISTS (SELECT 1 FROM comments WHERE comments.article_id = articles.id)").
+    		Delete(&Article{}).Error
+    }
+    ```
+
+=== "TypeScript"
+
+    ```typescript title="TypeScript の場合の実装例"
+    async function deleteSoftDeletedArticles() {
+      await prisma.article.deleteMany({
+        where: {
+          deletedAt: {not: null},
+          comments: {none: {}},
+        },
+      });
+    }
+    ```
+
+=== "PHP"
+
+    ```injectablephp title="PHP の場合の実装例"
+    <?php
+
+    function deleteSoftDeletedArticles(): void
+    {
+        Article::whereNotNull("deleted_at")->whereDoesntHave("comments")->delete();
+    }
+    ```
+
+<br>
