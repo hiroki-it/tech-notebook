@@ -165,11 +165,24 @@ blockquote {
   padding-left: 0.6rem;
 }
 
-/* Mermaidの図はコードブロックと同じ要素で描かれるため、濃い背景を付けない */
+/* Mermaidの図はコードブロックと同じ要素で描かれるため、背景を白にする */
 pre:has(svg),
 pre.mermaid,
 .mermaid,
 .mermaid pre {
-  background: transparent !important;
+  background: #fff !important;
   border: none;
+}
+
+/* SVGのボックスはbackgroundではなくfillで塗りつぶす */
+:is(.mermaid, pre:has(svg)) svg .node > :is(rect, circle, ellipse, polygon, path),
+:is(.mermaid, pre:has(svg)) svg .cluster > rect {
+  fill: #fff !important;
+  stroke: #313131 !important;
+}
+
+/* 白いボックス内でもラベルを読めるようにする */
+:is(.mermaid, pre:has(svg)) svg :is(.nodeLabel, .nodeLabel *, .cluster-label, .cluster-label *, .node text) {
+  color: #313131 !important;
+  fill: #313131 !important;
 }
