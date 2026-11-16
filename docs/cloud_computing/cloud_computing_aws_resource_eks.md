@@ -368,12 +368,66 @@ module "eks_foo" {
 
 ## 04. クラスターへのアクセス制御
 
+### クラスター API エンドポイントの多層防御
+
+クラスター外から Pod への管理アクセスにはネットワーク制限・認証・認可を組み合わせ、Pod から AWS リソースへのアクセスには EKS Pod Identity と AWS IAM ポリシーなどを使用する。
+
+パブリックアクセスの許可 CIDR が `0.0.0.0/0` でも認証・認可は必要だが、IPv4 の送信元制限は働かない。
+
+| 仕組み | 役割 |
+| --- | --- |
+| 許可 CIDR、プライベートアクセスとセキュリティグループ | API エンドポイントに接続できる送信元を制限する。 |
+| AWS IAM の資格情報に基づくトークン | リクエスト元の AWS IAM ユーザーやロールを識別する。 |
+| Kubernetes RBAC、Amazon EKS アクセスポリシー | 操作できる Kubernetes リソース、Namespace、操作の種類を制限する。 |
+| EKS Pod Identity | ServiceAccount に関連付けた IAM ロールの一時的な資格情報を Pod に提供する。 |
+| AWS IAM ポリシーなど | 操作できる AWS リソースと操作の種類を制限する。 |
+
+```mermaid
+flowchart TD
+    developer(["開発者の端末<br>クラスター外の kubectl"])
+
+    subgraph eks["EKS クラスター"]
+        subgraph controlPlane["AWS が管理するコントロールプレーン"]
+            endpoint("クラスター API エンドポイント<br>kube-apiserver")
+        end
+
+        subgraph worker["利用者の VPC 内のワーカーNode"]
+            subgraph targetPod["接続先の Pod"]
+                container["コンテナ"]
+            end
+            agent("EKS Pod Identity Agent")
+            agent -.->|一時的な資格情報の提供| container
+        end
+
+        endpoint <--> container
+    end
+
+    s3[("Amazon S3<br>バケット / オブジェクト")]
+
+    developer <-->|IP アドレス制限、認証・認可| endpoint
+    container -->|認証・認可| s3
+
+    style targetPod rx:12,ry:12
+```
+
+> - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+> - [Understand how EKS Pod Identity works - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-how-it-works.html)
+
+<br>
+
 ### パブリックアクセス/プライベートアクセス
 
 kube-apiserver のインターネットへの公開範囲を設定できる。
 
-プライベートアクセスの場合、Amazon VPC 内部からのみリクエストできるように制限でき、送信元 IP アドレスを指定してアクセスを許可できる。
+パブリックアクセスの場合、許可 CIDR によって、API エンドポイントに接続できる送信元 IP アドレスを制限できる。
 
+プライベートアクセスの場合、Amazon VPC 内部や接続されたネットワークからリクエストでき、クラスターセキュリティグループによってアクセスを制限する。
+
+パブリックアクセスの許可 CIDR は、プライベートエンドポイントには適用されない。
+
+両方を有効にできるため、API エンドポイントをインターネットからアクセスできない状態にするには、パブリックアクセスを無効にする必要がある。
+
+> - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 > - [\[アップデート\] EKSでパブリックエンドポイントへのIPアドレスによるアクセス制限が可能になりました \| DevelopersIO](https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/)
 
 <br>
