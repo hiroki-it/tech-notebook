@@ -9,24 +9,64 @@ tags:
 
 ## 🤖 LLM
 
-- #### <u>エージェンティックコーディング</u>
+!!! cards ":simple-claude: エージェンティックコーディング"
 
-  > - ##### <u>Claude Code</u>
-  >   > - ##### [Claude Code](https://hiroki-it.github.io/tech-notebook/llm/llm_claude_code.html)
-  >   > - ##### [Claude Code Actions](https://hiroki-it.github.io/tech-notebook/llm/llm_claude_code_actions.html)
-  > - ##### <u>Codex</u>
-  >   > - ##### [Codex](https://hiroki-it.github.io/tech-notebook/llm/llm_codex.html)
-  >   > - ##### [スキル](https://hiroki-it.github.io/tech-notebook/llm/llm_codex_skills.html)
-  > - ##### <u>PR Agent</u>
-  >   > - ##### [PR Agent](https://hiroki-it.github.io/tech-notebook/llm/llm_pr_agent.html)
-  > - ##### <u>AI ドキュメント</u>
-  >   > - ##### [AI ドキュメント (プロダクトコンテキスト) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_context.html)
-  >   > - ##### [AI ドキュメント (パッケージ選定) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_application_package_selection.html)
-  >   > - ##### [AI ドキュメント (API 定義書) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_api.html)
-  >   > - ##### [AI ドキュメント (DB 設計) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_database.html)
-  >   > - ##### [AI ドキュメント (ユニットテスト設計) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_testing.html)
-  >   > - ##### [AI ドキュメント (システムの調査と実装) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_investigation_and_implementation.html)
-  >   > - ##### [AI ドキュメント (巨大システムの調査) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_investigation_large_system.html)
-  >   > - ##### [AI ドキュメント (レビュー) ](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_review.html)
+    Claude Code や Codex などによる AI を活用した開発
+
+    <div class="grid cards compact" markdown>
+
+    - **[Claude Code (Claude Code)](https://hiroki-it.github.io/tech-notebook/llm/llm_claude_code.html)**
+
+      claude コマンドと setting.json
+
+    - **[Claude Code Actions (Claude Code)](https://hiroki-it.github.io/tech-notebook/llm/llm_claude_code_actions.html)**
+
+      GitHub 上で動く Claude Code Actions
+
+    - **[Codex (Codex)](https://hiroki-it.github.io/tech-notebook/llm/llm_codex.html)**
+
+      codex コマンド、config.toml、MCP サーバー
+
+    - **[スキル (Codex)](https://hiroki-it.github.io/tech-notebook/llm/llm_codex_skills.html)**
+
+      要件定義や設計を支援するスキル
+
+    - **[PR Agent (PR Agent)](https://hiroki-it.github.io/tech-notebook/llm/llm_pr_agent.html)**
+
+      PR Agent による自動レビュー
+
+    - **[AI ドキュメント (プロダクトコンテキスト) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_context.html)**
+
+      AI に渡すプロダクトのコンテキスト
+
+    - **[AI ドキュメント (パッケージ選定) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_application_package_selection.html)**
+
+      AI に渡すパッケージ選定の情報
+
+    - **[AI ドキュメント (API 定義書) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_api.html)**
+
+      AI に渡す API 定義書
+
+    - **[AI ドキュメント (DB 設計) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_database.html)**
+
+      AI に渡す DB 設計
+
+    - **[AI ドキュメント (ユニットテスト設計) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_testing.html)**
+
+      AI に渡すユニットテスト設計
+
+    - **[AI ドキュメント (システムの調査と実装) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_investigation_and_implementation.html)**
+
+      AI によるシステムの調査と実装の計画
+
+    - **[AI ドキュメント (巨大システムの調査) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_investigation_large_system.html)**
+
+      AI によるリポジトリ横断の調査
+
+    - **[AI ドキュメント (レビュー) (AI ドキュメント)](https://hiroki-it.github.io/tech-notebook/llm/llm_ai_document_review.html)**
+
+      AI による PR のレビュー
+
+    </div>
 
 <br>

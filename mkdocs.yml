@@ -136,6 +136,14 @@ markdown_extensions:
   # 定義リスト
   - def_list
   - mdx_truly_sane_lists
+  # アイコンの有効化 (目次のカードで技術のロゴを表示する)
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        # 同梱のアイコンにない技術のロゴ
+        custom_icons:
+          - docs/assets/templates/.icons
 
 # 外部プラグイン
 plugins:

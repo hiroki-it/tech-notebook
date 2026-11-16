@@ -10,27 +10,64 @@ tags:
 ## 🧬 ソフトウェア
 
 ### ソフトウェア
+!!! cards ":material-application-outline: ソフトウェア"
 
-- ##### [︎ソフトウェア](https://hiroki-it.github.io/tech-notebook/software/software.html)
+    <div class="grid cards compact" markdown>
 
-- ##### [プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_practices.html)
+    - **[ソフトウェア](https://hiroki-it.github.io/tech-notebook/software/software.html)**
+
+      アプリケーション、ミドルウェア、OS などのソフトウェアの分類
+
+    </div>
+
+!!! cards ":material-lightbulb-outline: プラクティス集"
+
+    <div class="grid cards compact" markdown>
+
+    - **[プラクティス集](https://hiroki-it.github.io/tech-notebook/software/software_practices.html)**
+
+      ソフトウェアのアップグレードなどのプラクティス
+
+    </div>
 
 <br>
 
 ### アプリケーションソフトウェア
 
-- ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/software/application/index.html)
+!!! cards ":material-application-brackets-outline: アプリケーションソフトウェア"
+
+    <div class="grid cards compact" markdown>
+
+    - **[アプリケーションソフトウェア](https://hiroki-it.github.io/tech-notebook/software/application/index.html)**
+
+      アプリのノート一覧
+
+    </div>
 
 <br>
 
 ### ミドルウェア
+!!! cards ":material-server-network: ミドルウェア"
 
-- ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/software/middleware/index.html)
+    <div class="grid cards compact" markdown>
+
+    - **[ミドルウェア](https://hiroki-it.github.io/tech-notebook/software/middleware/index.html)**
+
+      ミドルウェアのノート一覧
+
+    </div>
 
 <br>
 
 ### 基本ソフトウェア (OS)
+!!! cards ":simple-linux: 基本ソフトウェア (OS)"
 
-- ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/software/basic/index.html)
+    <div class="grid cards compact" markdown>
+
+    - **[基本ソフトウェア (OS)](https://hiroki-it.github.io/tech-notebook/software/basic/index.html)**
+
+      OS のノート一覧
+
+    </div>
 
 <br>

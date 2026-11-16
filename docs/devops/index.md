@@ -11,34 +11,80 @@ tags:
 
 ### DevOps
 
-- #### [︎DevOps](https://hiroki-it.github.io/tech-notebook/devops/devops.html)
+!!! cards ":material-infinity: DevOps"
 
-- #### <u>SREing</u>
+    <div class="grid cards compact" markdown>
 
-  > - ##### [︎SREing](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing.html)
-  > - ##### [︎アンチパターン](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing_antipattern.html)
+    - **[DevOps](https://hiroki-it.github.io/tech-notebook/devops/devops.html)**
 
-- #### <u>Platform Engineering</u>
+      開発者と運用者が協調してソフトウェアを改善する手法論
 
-  > - ##### [Platform Engineering](https://hiroki-it.github.io/tech-notebook/devops/devops_platform_engineering.html)
+    </div>
+
+!!! cards ":material-lifebuoy: SREing"
+
+    <div class="grid cards compact" markdown>
+
+    - **[SREing](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing.html)**
+
+      SRE の考え方とアンチパターン
+
+    - **[アンチパターン](https://hiroki-it.github.io/tech-notebook/devops/devops_sreing_antipattern.html)**
+
+      SRE のアンチパターン集
+
+    </div>
+
+!!! cards ":material-layers-triple-outline: Platform Engineering"
+
+    <div class="grid cards compact" markdown>
+
+    - **[Platform Engineering](https://hiroki-it.github.io/tech-notebook/devops/devops_platform_engineering.html)**
+
+      開発者の生産性を高める Platform Engineering
+
+    </div>
 
 <br>
 
 ### 技術的要素
 
-- #### <u>CI/CD</u>
+!!! cards ":material-pipe: CI/CD"
 
-  > - ##### [量が多いため、こちらのセクションに切り分けています](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html)
+    <div class="grid cards compact" markdown>
 
-- #### <u>︎ドキュメンテーション</u>
+    - **[CI/CD](https://hiroki-it.github.io/tech-notebook/devops/cicd/index.html)**
 
-  > - ##### [︎ドキュメンテーション](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation.html)
-  > - ##### [Mermaid](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation_mermaid.html)
+      量が多いため、CI/CD セクションに切り分け
+
+    </div>
+
+!!! cards ":material-file-document-outline: ドキュメンテーション"
+
+    <div class="grid cards compact" markdown>
+
+    - **[ドキュメンテーション](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation.html)**
+
+      ドキュメンテーションと Mermaid による図の記述
+
+    - **[Mermaid](https://hiroki-it.github.io/tech-notebook/devops/devops_documentation_mermaid.html)**
+
+      フローチャート、Git グラフ、ガントチャート
+
+    </div>
 
 <br>
 
 ### 組織文化的要素
 
-- #### [文化](https://hiroki-it.github.io/tech-notebook/devops/devops_culture.html)
+!!! cards ":material-account-group-outline: 文化"
+
+    <div class="grid cards compact" markdown>
+
+    - **[文化](https://hiroki-it.github.io/tech-notebook/devops/devops_culture.html)**
+
+      心理的安全性や失敗の許容などのチーム文化
+
+    </div>
 
 <br>

@@ -512,3 +512,61 @@ blockquote {
 .md-typeset p:has(> br:only-child) {
     margin: 0;
 }
+
+/***************
+ 目次のカード
+***************/
+/* 縦幅を抑えるため、余白を詰めて、1行に並ぶカードを増やす */
+.md-typeset .grid.cards.compact {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr));
+    grid-gap: 0.4rem;
+    margin: 0.6em 0;
+}
+
+.md-typeset .grid.cards.compact > ul > li {
+    padding: 0.4rem 0.7rem;
+}
+
+.md-typeset .grid.cards.compact > ul > li > p {
+    margin: 0.2em 0;
+}
+
+/* すべてのカードの見出しを、リンクと同じ色で統一する */
+.md-typeset .grid.cards.compact > ul > li > p:first-child strong {
+    color: var(--md-typeset-a-color);
+}
+
+/* 子ノートのリンクは、カードの幅に収まるように小さく表示する */
+.md-typeset .grid.cards.compact > ul > li > p:nth-of-type(3) {
+    font-size: 0.68rem;
+    line-height: 1.5;
+}
+
+/* カードの説明文は、見出しと区別するため小さく控えめに表示する */
+.md-typeset .grid.cards.compact > ul > li > p:nth-of-type(2) {
+    font-size: 0.68rem;
+    line-height: 1.4;
+    color: var(--md-default-fg-color--light);
+}
+
+/* カードをグループにまとめる囲みは、色を付けずに、帯を薄いグレーにする */
+.md-typeset .admonition.cards {
+    border-color: var(--md-default-fg-color--lightest);
+    box-shadow: none;
+}
+
+.md-typeset .admonition.cards > .admonition-title {
+    padding-left: 0.6rem;
+    background-color: var(--md-default-fg-color--lightest);
+}
+
+/* 囲みの種類を表すアイコンは表示せず、帯の技術のロゴだけを表示する */
+.md-typeset .admonition.cards > .admonition-title::before {
+    display: none;
+}
+
+/* 技術のロゴは、文字と同じ単色で表示する */
+.md-typeset .admonition.cards > .admonition-title .twemoji svg,
+.md-typeset .admonition.cards > .admonition-title .twemoji svg * {
+    fill: currentColor;
+}
