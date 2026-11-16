@@ -6560,6 +6560,73 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#10-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 条件の確認と書き込みを別々の SQL で実行する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 条件の確認と書き込みを別々の SQL で実行する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実装例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 問題がある実装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 解決方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -36699,6 +36766,73 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#10-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 条件の確認と書き込みを別々の SQL で実行する
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 条件の確認と書き込みを別々の SQL で実行する">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        問題
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        実装例
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="実装例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 問題がある実装
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ▼ 解決方法
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -36832,7 +36966,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月16日 19:15:19 JST">2026-11-16</span>
   </span>
 
     
@@ -37695,6 +37829,152 @@ model EventHourlySummary {
 <div class="highlight"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="k">SUM</span><span class="p">(</span><span class="n">amount</span><span class="p">)</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">orders</span><span class="p">;</span>
 </code></pre></div>
+<p><br></p>
+<h2 id="10-sql">10. 条件の確認と書き込みを別々の SQL で実行する<a class="headerlink" href="#10-sql" title="Permanent link">&para;</a></h2>
+<h3 id="_32">問題<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<p>条件確認と書き込みを別々の SQL で実行すると、その間に別の処理が DB を変更し、確認結果が古くなる TOCTOU (Time of Check to Time of Use) という競合が起こり得る。</p>
+<p>例えば、記事の物理削除の条件を『論理削除済み』かつ『コメントが存在しない』とする。</p>
+<p>条件の確認と削除を別々の SQL で実行すると、次のように確認していない記事まで削除されることがある。</p>
+<ol>
+<li>記事 A は論理削除済みでコメントがなく、記事 B は未削除でコメントが残っている。</li>
+<li>ジョブが、論理削除済みの記事 A にコメントがないことを確認する。</li>
+<li>アプリが、記事 B を論理削除する。</li>
+<li>ジョブが、論理削除済みの記事をすべて物理削除すると、確認していない記事 B も削除対象になる。</li>
+</ol>
+<p>アプリとジョブが同じ DB に接続する構成を想定する。</p>
+<pre class="mermaid"><code>flowchart LR
+    app("アプリ")
+    job("物理削除ジョブ")
+
+    subgraph database["共有 DB"]
+        articles@{ shape: procs, label: "記事テーブル" }
+        comments@{ shape: procs, label: "コメントテーブル" }
+        articles --&gt;|ON DELETE CASCADE| comments
+    end
+
+    job --&gt;|2. SELECT でコメントの有無を確認| database
+    app --&gt;|3. UPDATE で記事 B を論理削除| articles
+    job --&gt;|4. DELETE で論理削除済みの記事を物理削除| articles
+
+    style database rx:12,ry:12</code></pre>
+<p>外部キーに <code>ON DELETE CASCADE</code> が設定されていれば、記事 B のコメントも削除される。</p>
+<p>これは、確認した記事 ID だけを削除するのではなく、削除時に <code>deleted_at IS NOT NULL</code> で対象を選び直すために起こる。</p>
+<blockquote>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Time-of-check_to_time-of-use">Time-of-check to time-of-use - Wikipedia</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_33">実装例<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<h4 id="_34">▼ 問題がある実装<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h4>
+<div class="tabbed-set tabbed-alternate" data-tabs="18:3"><input checked="checked" id="__tabbed_18_1" name="__tabbed_18" type="radio" /><input id="__tabbed_18_2" name="__tabbed_18" type="radio" /><input id="__tabbed_18_3" name="__tabbed_18" type="radio" /><div class="tabbed-labels"><label for="__tabbed_18_1">Go</label><label for="__tabbed_18_2">TypeScript</label><label for="__tabbed_18_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">deleteSoftDeletedArticles</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="kt">int64</span>
+<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
+<span class="w">        </span><span class="nx">Model</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Comment</span><span class="p">{}).</span>
+<span class="w">        </span><span class="nx">Joins</span><span class="p">(</span><span class="s">"JOIN articles ON articles.id = comments.article_id"</span><span class="p">).</span>
+<span class="w">        </span><span class="nx">Where</span><span class="p">(</span><span class="s">"articles.deleted_at IS NOT NULL"</span><span class="p">).</span>
+<span class="w">        </span><span class="nx">Count</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">count</span><span class="p">).</span><span class="nx">Error</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="nx">err</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="c1">// 確認してからここまでの間に論理削除された記事も、コメントと一緒に削除されてしまう</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
+<span class="w">        </span><span class="nx">Where</span><span class="p">(</span><span class="s">"deleted_at IS NOT NULL"</span><span class="p">).</span>
+<span class="w">        </span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Article</span><span class="p">{}).</span><span class="nx">Error</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">deleteSoftDeletedArticles</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">comment</span><span class="p">.</span><span class="nx">count</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">article</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">deletedAt</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">not</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">}},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">count</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mf">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="w">  </span><span class="p">}</span>
+
+<span class="w">  </span><span class="c1">// 確認してからここまでの間に論理削除された記事も、コメントと一緒に削除されてしまう</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">article</span><span class="p">.</span><span class="nx">deleteMany</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">deletedAt</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">not</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">}},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">deleteSoftDeletedArticles</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="nv">$count</span> <span class="o">=</span> <span class="nx">Comment</span><span class="o">::</span><span class="na">whereHas</span><span class="p">(</span><span class="s2">"article"</span><span class="p">,</span> <span class="nx">fn</span> <span class="p">(</span><span class="nv">$query</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">whereNotNull</span><span class="p">(</span><span class="s2">"deleted_at"</span><span class="p">))</span><span class="o">-&gt;</span><span class="na">count</span><span class="p">();</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$count</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 確認してからここまでの間に論理削除された記事も、コメントと一緒に削除されてしまう</span>
+    <span class="nx">Article</span><span class="o">::</span><span class="na">whereNotNull</span><span class="p">(</span><span class="s2">"deleted_at"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h4 id="_35">▼ 解決方法<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h4>
+<p>『コメントが残っていない』という条件を、物理削除する SQL の WHERE 句に含める。</p>
+<p>これにより、事前の確認結果に依存せず、削除対象を条件に合う記事に絞れる。</p>
+<p>内部的には、条件をサブクエリとして含む SQL が発行される。</p>
+<div class="highlight"><pre><span></span><code><span class="k">DELETE</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">articles</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">deleted_at</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
+<span class="w">  </span><span class="k">AND</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="k">SELECT</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span><span class="k">FROM</span><span class="w"> </span><span class="n">comments</span>
+<span class="w">    </span><span class="k">WHERE</span><span class="w"> </span><span class="n">comments</span><span class="p">.</span><span class="n">article_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">articles</span><span class="p">.</span><span class="n">id</span>
+<span class="w">  </span><span class="p">);</span>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="19:3"><input checked="checked" id="__tabbed_19_1" name="__tabbed_19" type="radio" /><input id="__tabbed_19_2" name="__tabbed_19" type="radio" /><input id="__tabbed_19_3" name="__tabbed_19" type="radio" /><div class="tabbed-labels"><label for="__tabbed_19_1">Go</label><label for="__tabbed_19_2">TypeScript</label><label for="__tabbed_19_3">PHP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">Go の場合の実装例</span><pre><span></span><code><span class="kd">func</span><span class="w"> </span><span class="nx">deleteSoftDeletedArticles</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">db</span><span class="p">.</span>
+<span class="w">        </span><span class="nx">Where</span><span class="p">(</span><span class="s">"deleted_at IS NOT NULL"</span><span class="p">).</span>
+<span class="w">        </span><span class="nx">Where</span><span class="p">(</span><span class="s">"NOT EXISTS (SELECT 1 FROM comments WHERE comments.article_id = articles.id)"</span><span class="p">).</span>
+<span class="w">        </span><span class="nx">Delete</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">Article</span><span class="p">{}).</span><span class="nx">Error</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">TypeScript の場合の実装例</span><pre><span></span><code><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">deleteSoftDeletedArticles</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">prisma</span><span class="p">.</span><span class="nx">article</span><span class="p">.</span><span class="nx">deleteMany</span><span class="p">({</span>
+<span class="w">    </span><span class="nx">where</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">deletedAt</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">not</span><span class="o">:</span><span class="w"> </span><span class="kt">null</span><span class="p">},</span>
+<span class="w">      </span><span class="nx">comments</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="nx">none</span><span class="o">:</span><span class="w"> </span><span class="p">{}},</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><span class="filename">PHP の場合の実装例</span><pre><span></span><code><span class="o">&lt;?</span><span class="nx">php</span>
+
+<span class="k">function</span> <span class="nf">deleteSoftDeletedArticles</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span>
+<span class="p">{</span>
+    <span class="nx">Article</span><span class="o">::</span><span class="na">whereNotNull</span><span class="p">(</span><span class="s2">"deleted_at"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">whereDoesntHave</span><span class="p">(</span><span class="s2">"comments"</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p><br></p>
 
   
 
