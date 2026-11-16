@@ -21157,6 +21157,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クラスター API エンドポイントの多層防御
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -37213,6 +37224,17 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        クラスター API エンドポイントの多層防御
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -38443,7 +38465,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月16日 15:34:19 JST">2026-11-16</span>
   </span>
 
     
@@ -38795,11 +38817,80 @@
 </blockquote>
 <p><br></p>
 <h2 id="04">04. クラスターへのアクセス制御<a class="headerlink" href="#04" title="Permanent link">&para;</a></h2>
-<h3 id="_13">パブリックアクセス/プライベートアクセス<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
-<p>kube-apiserver のインターネットへの公開範囲を設定できる。</p>
-<p>プライベートアクセスの場合、Amazon VPC 内部からのみリクエストできるように制限でき、送信元 IP アドレスを指定してアクセスを許可できる。</p>
+<h3 id="api">クラスター API エンドポイントの多層防御<a class="headerlink" href="#api" title="Permanent link">&para;</a></h3>
+<p>クラスター外から Pod への管理アクセスにはネットワーク制限・認証・認可を組み合わせ、Pod から AWS リソースへのアクセスには EKS Pod Identity と AWS IAM ポリシーなどを使用する。</p>
+<p>パブリックアクセスの許可 CIDR が <code>0.0.0.0/0</code> でも認証・認可は必要だが、IPv4 の送信元制限は働かない。</p>
+<table>
+<thead>
+<tr>
+<th>仕組み</th>
+<th>役割</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>許可 CIDR、プライベートアクセスとセキュリティグループ</td>
+<td>API エンドポイントに接続できる送信元を制限する。</td>
+</tr>
+<tr>
+<td>AWS IAM の資格情報に基づくトークン</td>
+<td>リクエスト元の AWS IAM ユーザーやロールを識別する。</td>
+</tr>
+<tr>
+<td>Kubernetes RBAC、Amazon EKS アクセスポリシー</td>
+<td>操作できる Kubernetes リソース、Namespace、操作の種類を制限する。</td>
+</tr>
+<tr>
+<td>EKS Pod Identity</td>
+<td>ServiceAccount に関連付けた IAM ロールの一時的な資格情報を Pod に提供する。</td>
+</tr>
+<tr>
+<td>AWS IAM ポリシーなど</td>
+<td>操作できる AWS リソースと操作の種類を制限する。</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart TD
+    developer(["開発者の端末&lt;br&gt;クラスター外の kubectl"])
+
+    subgraph eks["EKS クラスター"]
+        subgraph controlPlane["AWS が管理するコントロールプレーン"]
+            endpoint("クラスター API エンドポイント&lt;br&gt;kube-apiserver")
+        end
+
+        subgraph worker["利用者の VPC 内のワーカーNode"]
+            subgraph targetPod["接続先の Pod"]
+                container["コンテナ"]
+            end
+            agent("EKS Pod Identity Agent")
+            agent -.-&gt;|一時的な資格情報の提供| container
+        end
+
+        endpoint &lt;--&gt; container
+    end
+
+    s3[("Amazon S3&lt;br&gt;バケット / オブジェクト")]
+
+    developer &lt;--&gt;|IP アドレス制限、認証・認可| endpoint
+    container --&gt;|認証・認可| s3
+
+    style targetPod rx:12,ry:12</code></pre>
 <blockquote>
 <ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Cluster API server endpoint - Amazon EKS</a></li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/pod-id-how-it-works.html">Understand how EKS Pod Identity works - Amazon EKS</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h3 id="_13">パブリックアクセス/プライベートアクセス<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>kube-apiserver のインターネットへの公開範囲を設定できる。</p>
+<p>パブリックアクセスの場合、許可 CIDR によって、API エンドポイントに接続できる送信元 IP アドレスを制限できる。</p>
+<p>プライベートアクセスの場合、Amazon VPC 内部や接続されたネットワークからリクエストでき、クラスターセキュリティグループによってアクセスを制限する。</p>
+<p>パブリックアクセスの許可 CIDR は、プライベートエンドポイントには適用されない。</p>
+<p>両方を有効にできるため、API エンドポイントをインターネットからアクセスできない状態にするには、パブリックアクセスを無効にする必要がある。</p>
+<blockquote>
+<ul>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html">Cluster API server endpoint - Amazon EKS</a></li>
 <li><a href="https://dev.classmethod.jp/articles/eks-public-endpoint-access-restriction/">[アップデート] EKSでパブリックエンドポイントへのIPアドレスによるアクセス制限が可能になりました | DevelopersIO</a></li>
 </ul>
 </blockquote>
