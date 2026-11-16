@@ -36267,7 +36267,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月16日 20:27:26 JST">2026-11-16</span>
   </span>
 
     
@@ -36304,6 +36304,7 @@
 <h2 id="02">02. 仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="terraform">Terraformによる構築<a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h3>
+<p>DKIM の設定と検証用レコードは SES モジュール、SPF と DMARC のレコードは Route 53 モジュールで作成する。SESv2 のドメイン検証も DKIM レコードで行う。</p>
 <div class="highlight"><pre><span></span><code><span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_sesv2_configuration_set"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 
@@ -36321,7 +36322,9 @@
 <span class="p">}</span>
 
 <span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_sesv2_configuration_set_event_destination"</span><span class="w"> </span><span class="nv">"cloudwatch_foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_configuration_set.foo.configuration_set_name</span>
+<span class="w">  </span><span class="na">depends_on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_sesv2_configuration_set.foo</span><span class="p">]</span>
+
+<span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 <span class="w">  </span><span class="na">event_destination_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 
 <span class="c1">  # SESのイベントをCloudWatchに送信する</span>
@@ -36345,60 +36348,52 @@
 <span class="p">}</span>
 
 <span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_sesv2_email_identity"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">email_identity</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ses_foo_domain_identity</span>
-<span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_configuration_set.foo.configuration_set_name</span>
+<span class="w">  </span><span class="na">depends_on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_sesv2_configuration_set.foo</span><span class="p">]</span>
+
+<span class="w">  </span><span class="na">email_identity</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"example.com"</span>
+<span class="w">  </span><span class="na">configuration_set_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
 <span class="p">}</span>
 
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_ses_domain_identity"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_email_identity.foo.email_identity</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"ses_dkim"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"genstackio/ses/aws//modules/global"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0.3.5"</span>
+
+<span class="w">  </span><span class="na">depends_on</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_sesv2_email_identity.foo</span><span class="p">]</span>
+
+<span class="w">  </span><span class="na">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"example.com"</span>
+<span class="w">  </span><span class="na">zone</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"Z0123456789EXAMPLE"</span>
 <span class="p">}</span>
 
-<span class="c1"># Amazon Route 53のDKIMレコードで使用するためのドメイン</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_ses_domain_dkim"</span><span class="w"> </span><span class="nv">"foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">domain</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_sesv2_email_identity.foo.email_identity</span>
-<span class="p">}</span>
+<span class="kr">module</span><span class="w"> </span><span class="nv">"ses_dns_policy"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/route53/aws"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"6.5.1"</span>
 
-<span class="c1"># TXTレコード</span>
-<span class="c1"># メールアドレスのドメインの所有者であることを証明する</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_verification_foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"_amazonses.${var.ses_foo_domain_identity}"</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
-<span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="nv">aws_ses_domain_identity.foo.verification_token</span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="c1"># DKIMレコード</span>
-<span class="c1"># 送信メールにDKIM署名を付与することで、受信側でドメインなりすましを防止し、またスパムとして誤判定されるリスクを減らす</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_dkim_foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">count</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ses_foo_domain_identity</span><span class="w"> </span><span class="p">!=</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">?</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="m">0</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}._domainkey.${var.ses_foo_domain_identity}"</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"CNAME"</span>
-<span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"${aws_ses_domain_dkim.foo.dkim_tokens[count.index]}.dkim.amazonses.com"</span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="c1"># SPFレコード</span>
-<span class="c1"># メールアドレスのドメインから送信されるメールがAmazon SESからの送信であることを受信側に示すことで、正当な送信元として識別させる</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_spf_foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="nv">var.ses_foo_domain_identity</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
-<span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"v=spf1 include:amazonses.com ~all"</span><span class="p">]</span>
-<span class="p">}</span>
-
-<span class="c1"># DMARCレコード</span>
-<span class="c1"># なりすましメールをどのように処理するかを受信側に伝えることで、ドメインを保護し、またスパムとして誤判定されるリスクを減らす</span>
-<span class="kr">resource</span><span class="w"> </span><span class="nc">"aws_route53_record"</span><span class="w"> </span><span class="nv">"ses_dmarc_foo"</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="na">zone_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"********"</span>
-<span class="w">  </span><span class="na">name</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"_dmarc.${var.ses_foo_domain_identity}"</span>
-<span class="w">  </span><span class="na">type</span><span class="w">    </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
-<span class="w">  </span><span class="na">ttl</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
-<span class="w">  </span><span class="na">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@${var.ses_foo_domain_identity}"</span><span class="p">]</span>
+<span class="w">  </span><span class="na">create_zone</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="no">false</span>
+<span class="w">  </span><span class="na">name</span><span class="w">        </span><span class="o">=</span><span class="w"> </span><span class="s2">"example.com"</span>
+<span class="w">  </span><span class="nb">records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="c1">    # 正当なメール送信元として Amazon SES を指定する</span>
+<span class="w">    </span><span class="nb">spf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">full_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"example.com"</span>
+<span class="w">      </span><span class="na">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
+<span class="w">      </span><span class="na">ttl</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
+<span class="w">      </span><span class="na">records</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"v=spf1 include:amazonses.com ~all"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="c1">    # なりすましメールの処理方法とレポートの送信先を指定する</span>
+<span class="w">    </span><span class="nb">dmarc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">full_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"_dmarc.example.com"</span>
+<span class="w">      </span><span class="na">type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="s2">"TXT"</span>
+<span class="w">      </span><span class="na">ttl</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
+<span class="w">      </span><span class="na">records</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"v=DMARC1; p=quarantine; rua=mailto:dmarc-reports@example.com"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://registry.terraform.io/modules/genstackio/ses/aws/0.3.5/submodules/global">genstackio/ses/aws//modules/global (0.3.5) - Terraform Registry</a></li>
+<li><a href="https://registry.terraform.io/modules/terraform-aws-modules/route53/aws/6.5.1">terraform-aws-modules/route53/aws (6.5.1) - Terraform Registry</a></li>
+</ul>
+</blockquote>
 <p><br></p>
 <h3 id="_2">リージョンの選択<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
 <p>Amazon SES は連携する AWS リソースと同じリージョンに作成しなければならない。</p>

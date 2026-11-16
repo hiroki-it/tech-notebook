@@ -37225,7 +37225,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月16日 20:27:26 JST">2026-11-16</span>
   </span>
 
     
@@ -37265,57 +37265,51 @@
 <h2 id="02">02. 仕組み<a class="headerlink" href="#02" title="Permanent link">&para;</a></h2>
 <h2 id="03">03. セットアップ<a class="headerlink" href="#03" title="Permanent link">&para;</a></h2>
 <h3 id="terraform-ses">Terraformによる構築 (SES 監視用アラーム)<a class="headerlink" href="#terraform-ses" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"cloudwatch_metric_alarm_ses_foo"</span><span class="w"> </span><span class="p">{</span>
+<div class="highlight"><pre><span></span><code><span class="kr">module</span><span class="w"> </span><span class="nv">"cloudwatch_metric_alarm_ses_foo_bounce"</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions"</span>
 <span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 5.3.0"</span>
 
-<span class="w">  </span><span class="nb">for_each</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="c1">    # SESから外部メールサーバーへのメール送信の失敗が5分間に1件以上起こった場合に通知する</span>
-<span class="w">    </span><span class="s2">"ses-foo-Bounce-"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"Bounce"</span>
-<span class="w">      </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GreaterThanOrEqualToThreshold"</span>
-<span class="w">      </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"1"</span>
-<span class="w">      </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS/SES"</span>
-<span class="w">      </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"300"</span>
-<span class="w">      </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sum"</span>
-<span class="w">      </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">1.0</span>
-<span class="w">      </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"SES ${aws_ses_configuration_set.foo.name} Bounce: SESから外部メールサーバーへのメール送信に失敗しました"</span>
-<span class="w">      </span><span class="nb">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">"ConfigurationSet"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="na">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ses_configuration_set.foo.name</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="c1">    # SESへのメール送信の失敗が5分間に1件以上起こった場合に通知する</span>
-<span class="w">    </span><span class="s2">"ses-foo-Reject-"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"Reject"</span>
-<span class="w">      </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GreaterThanOrEqualToThreshold"</span>
-<span class="w">      </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"1"</span>
-<span class="w">      </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS/SES"</span>
-<span class="w">      </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="s2">"300"</span>
-<span class="w">      </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sum"</span>
-<span class="w">      </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">1.0</span>
-<span class="w">      </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"SES ${aws_ses_configuration_set.foo.name} Reject: SESへのメール送信に失敗しました"</span>
-<span class="w">      </span><span class="nb">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="s2">"ConfigurationSet"</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="na">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">aws_ses_configuration_set.foo.name</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="na">alarm_name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"ses-foo-Bounce-"</span>
+<span class="w">  </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"Bounce"</span>
+<span class="w">  </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GreaterThanOrEqualToThreshold"</span>
+<span class="w">  </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS/SES"</span>
+<span class="w">  </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
+<span class="w">  </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sum"</span>
+<span class="w">  </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">1.0</span>
+<span class="w">  </span><span class="na">treat_missing_data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"notBreaching"</span>
+<span class="w">  </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"SES foo Bounce: SESから外部メールサーバーへのメール送信に失敗しました"</span>
+<span class="w">  </span><span class="na">alarm_actions</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"</span><span class="p">]</span>
+<span class="w">  </span><span class="nb">tags</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dev"</span><span class="w"> </span><span class="p">}</span>
 
-<span class="w">    </span><span class="na">alarm_name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nv">each.key</span>
-<span class="w">    </span><span class="na">tags</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="nv">local.tags</span>
-<span class="w">    </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.comparison_operator</span>
-<span class="w">    </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.evaluation_periods</span>
-<span class="w">    </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.metric_name</span>
-<span class="w">    </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.namespace</span>
-<span class="w">    </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.period</span>
-<span class="w">    </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.statistic</span>
-<span class="w">    </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.threshold</span>
-<span class="w">    </span><span class="na">treat_missing_data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"notBreaching"</span>
-<span class="w">    </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.alarm_description</span>
-<span class="w">    </span><span class="na">alarm_actions</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:sns:ap-northeast-1:123456789012:********"</span><span class="p">]</span>
-<span class="w">    </span><span class="na">dimensions</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="nv">each.value.dimensions</span>
+<span class="w">  </span><span class="nb">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kr">module</span><span class="w"> </span><span class="nv">"cloudwatch_metric_alarm_ses_foo_reject"</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="na">source</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions"</span>
+<span class="w">  </span><span class="na">version</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"= 5.3.0"</span>
+
+<span class="w">  </span><span class="na">alarm_name</span><span class="w">          </span><span class="o">=</span><span class="w"> </span><span class="s2">"ses-foo-Reject-"</span>
+<span class="w">  </span><span class="na">metric_name</span><span class="w">         </span><span class="o">=</span><span class="w"> </span><span class="s2">"Reject"</span>
+<span class="w">  </span><span class="na">comparison_operator</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"GreaterThanOrEqualToThreshold"</span>
+<span class="w">  </span><span class="na">evaluation_periods</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="w">  </span><span class="na">namespace</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"AWS/SES"</span>
+<span class="w">  </span><span class="na">period</span><span class="w">              </span><span class="o">=</span><span class="w"> </span><span class="m">300</span>
+<span class="w">  </span><span class="na">statistic</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="s2">"Sum"</span>
+<span class="w">  </span><span class="na">threshold</span><span class="w">           </span><span class="o">=</span><span class="w"> </span><span class="nv">1.0</span>
+<span class="w">  </span><span class="na">treat_missing_data</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s2">"notBreaching"</span>
+<span class="w">  </span><span class="na">alarm_description</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="s2">"SES foo Reject: SESへのメール送信に失敗しました"</span>
+<span class="w">  </span><span class="na">alarm_actions</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"</span><span class="p">]</span>
+<span class="w">  </span><span class="nb">tags</span><span class="w">                </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="na">Environment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"dev"</span><span class="w"> </span><span class="p">}</span>
+
+<span class="w">  </span><span class="nb">dimensions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nb">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="na">ConfigurationSet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"foo"</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
