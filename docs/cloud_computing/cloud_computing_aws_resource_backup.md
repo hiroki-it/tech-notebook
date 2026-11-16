@@ -27,38 +27,32 @@ tags:
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、既存リソースを毎日 18 時 UTC（日本時間 3 時）にバックアップし、30 日間保管する。
+Cloud Posse の Backup モジュールを使用し、既存リソースを毎日 18 時 UTC（日本時間 3 時）にバックアップし、30 日間保管する。
 
 AWS Backup が引き受けられ、対象リソースのバックアップ権限を持つ IAM ロールを指定する。
 
 ```terraform
-resource "aws_backup_vault" "this" {
-  name = "foo-backup"
-}
+module "backup" {
+  source  = "cloudposse/backup/aws"
+  version = "2.0.0"
 
-resource "aws_backup_plan" "this" {
-  name = "foo-daily"
-  rule {
-    rule_name         = "daily"
-    target_vault_name = aws_backup_vault.this.name
-    schedule          = "cron(0 18 * * ? *)"
-    lifecycle {
+  name             = "foo-daily"
+  vault_name       = "foo-backup"
+  iam_role_enabled = false
+  iam_role_name    = "foo-backup"
+  backup_resources = ["arn:aws:ec2:ap-northeast-1:123456789012:volume/vol-0123456789abcdef0"]
+
+  rules = [{
+    name     = "daily"
+    schedule = "cron(0 18 * * ? *)"
+    lifecycle = {
       delete_after = 30
     }
-  }
-}
-
-resource "aws_backup_selection" "this" {
-  name         = "foo-resources"
-  plan_id      = aws_backup_plan.this.id
-  iam_role_arn = "arn:aws:iam::123456789012:role/foo-backup"
-  resources    = ["arn:aws:ec2:ap-northeast-1:123456789012:volume/vol-0123456789abcdef0"]
+  }]
 }
 ```
 
-> - [backup_vault - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_vault)
-> - [backup_plan - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_plan)
-> - [backup_selection - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/backup_selection)
+> - [cloudposse/backup/aws (2.0.0) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/backup/aws/2.0.0)
 
 <br>
 

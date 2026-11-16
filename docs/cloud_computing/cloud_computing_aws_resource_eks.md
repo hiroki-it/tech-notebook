@@ -181,6 +181,22 @@ Kubernetes Cluster に相当する。
 
 ## 03. セットアップ
 
+### クラスターの基本設定
+
+クラスター名、Kubernetes バージョン、クラスター IAM ロールを指定する。
+
+| 設定 | 役割 |
+| --- | --- |
+| クラスター名 | Amazon EKS Cluster を識別する。 |
+| Kubernetes バージョン | コントロールプレーンで使用する、Amazon EKS がサポートするバージョンを指定する。 |
+| クラスター IAM ロール | Amazon EKS がクラスターの AWS リソースを管理するために引き受けるロールを指定する。サービスリンクロールとは異なる。 |
+
+> - [Create an Amazon EKS cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+> - [Amazon EKS cluster IAM role - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html)
+> - [View Amazon EKS platform versions for each Kubernetes version - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html)
+
+<br>
+
 ### Terraformによる構築
 
 ここでは、Terraform の公式モジュールを使用する。
@@ -191,7 +207,7 @@ module "eks_foo" {
 
   version = "<モジュールのバージョン>"
 
-  cluster_name    = foo-eks-cluster
+  cluster_name    = "foo-eks-cluster"
   cluster_version = "<Kubernetesのバージョン>"
 
   # kube-apiserverをプライベートアクセスにするか否か
@@ -256,80 +272,6 @@ module "eks_foo" {
 ```
 
 > - [Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/eks/aws/latest#usage)
-
-<br>
-
-
-### コンソールの場合
-
-#### ▼ 設定項目と説明
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>名前</td>
-      <td>クラスターの名前を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Kubernetes バージョン</td>
-      <td>Amazon EKS 上で稼働する Kubernetes のバージョンを設定する。</td>
-      <td>Amazon EKS が対応できる Kubernetes のバージョンは以下を参考にせよ。<br><a href="https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html">https://docs.aws.amazon.com/eks/latest/userguide/platform-versions.html</a></td>
-    </tr>
-    <tr>
-      <td>クラスターサービスロール</td>
-      <td>Amazon EKS Cluster のサービスリンクロールを設定する。</td>
-      <td>・<a href="https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html">https://docs.aws.amazon.com/eks/latest/userguide/service_IAM_role.html</a></td>
-    </tr>
-    <tr>
-      <td>シークレット</td>
-      <td>Secret に保管するデータを AWS KMS の暗号化キーで暗号化するか否かを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Amazon VPC、サブネット</td>
-      <td>ENI を配置するサブネットを設定する。</td>
-      <td>複数の AZ にまたがっている必要がある。</td>
-    </tr>
-    <tr>
-      <td>クラスターセキュリティグループ</td>
-      <td>Amazon EKS Cluster のセキュリティグループを設定する。</td>
-      <td>インバウンドとアウトバウンド通信の両方のルールで、すべての IP アドレスを許可する必要がある。このセキュリティグループは、追加のセキュリティグループとして設定され、別途、AWS によって <code>eks-cluster-sg-&lt;Amazon EKS Cluster名&gt;</code> というセキュリティグループも自動設定される。<br><a href="https://yuutookun.hatenablog.com/entry/fargate_for_eks">https://yuutookun.hatenablog.com/entry/fargate_for_eks</a></td>
-    </tr>
-    <tr>
-      <td>クラスターIP アドレスファミリー</td>
-      <td>Pod と Service に割り当てる ClusterIP の IP アドレスタイプ (IPv4、IPv6) を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>CIDR ブロック</td>
-      <td>ClusterIP Service に割り当てる IP アドレスの CIDR ブロックを設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>クラスターエンドポイントアクセス</td>
-      <td>kube-apiserver のリクエスト制限を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>ネットワークアドオン</td>
-      <td>ネットワークに関する Amazon EKS アドオンを設定する。</td>
-      <td>執筆時点 (2023/02/05) では、AWS kube-proxy、AWS CoreDNS、Amazon VPC CNI を使用できる。</td>
-    </tr>
-    <tr>
-      <td>コントロールプレーンのログ</td>
-      <td>コントロールプレーンコンポーネントのログを Amazon CloudWatch Logs に出力するかどうかを設定する。</td>
-      <td>執筆時点 (2023/02/05) では、kube-apiserver (処理ログと監査ログの両方) 、aws-iam-authenticator-server (処理ログ) 、kube-controller-manager (処理ログ) 、cloud-controller-manager (処理ログ) 、kube-scheduler (処理ログ) のログを出力できる。</td>
-    </tr>
-  </tbody>
-</table>
 
 <br>
 
@@ -645,6 +587,16 @@ resource "aws_iam_role" "access_entry_argocd" {
 
 <br>
 
+### Kubernetes API データの暗号化
+
+Kubernetes `1.28` 以降の Amazon EKS では、Secret を含む Kubernetes API データを、AWS 所有の KMS キーによるエンベロープ暗号化で保護する。
+
+独自にキーを管理する場合は、カスタマーマネージド KMS キーを指定できる。
+
+> - [Default envelope encryption for all Kubernetes API Data - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/envelope-encryption.html)
+
+<br>
+
 ## 05. Pod から AWS リソースへのアクセス
 
 ### IRSA：IAM Roles for Service Accounts
@@ -818,13 +770,37 @@ AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/to
 
 ## 06. ネットワーク通信
 
+### VPC とサブネット
+
+クラスターに VPC とサブネットを指定すると、Amazon EKS はコントロールプレーンとワーカーNode 間の通信用 ENI を、そのサブネットに作成する。
+
+サブネットは、少なくとも `2` つの異なる AZ から指定する。
+
+> - [View Amazon EKS networking requirements for VPC and subnets - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/network_reqs.html)
+
+<br>
+
 ### Cluster 内の IP アドレス
+
+#### ▼ IP アドレスファミリー
+
+クラスターの IP アドレスファミリーで、Pod と Service に割り当てる IP アドレスを IPv4 または IPv6 から選択する。
+
+Pod の IP アドレスと、Service に割り当てる ClusterIP は別のものである。
+
+> - [Create an Amazon EKS cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
+
+<br>
 
 #### ▼ Service のための IP アドレス
 
-Service に割り当てる IP アドレスは、Service IP 範囲によって決まる。
+Service に割り当てる ClusterIP は、Service IP 範囲によって決まる。
 
-`10.100.0.0/16` または `172.20.0.0/16` のいずれかになる。
+IPv4 の場合、クラスター作成時に Service 用の CIDR を指定できる。
+
+指定しない場合は通常、`10.100.0.0/16` または `172.20.0.0/16` が使用される。ハイブリッドノードを使用する構成では、ネットワークの重複を避けるために別の CIDR が選択される場合がある。
+
+> - [Create an Amazon EKS cluster - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html)
 
 ```bash
 $ kubectl get service -A jsonpath='{.spec.clusterIP}'
@@ -849,6 +825,16 @@ Amazon VPC CNI 内の L-IPAM デーモンは、ENI とセカンダリープラ�
 
 > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
 > - [CNCF CNI プラグイン #kubernetes - Qiita](https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
+
+<br>
+
+### ネットワークアドオン
+
+Amazon VPC CNI、CoreDNS、kube-proxy などを使用して、Pod のネットワーク、名前解決、Service の通信を構成する。
+
+Amazon EKS アドオンとして管理する場合は、クラスターの Kubernetes バージョンと互換性のあるアドオンのバージョンを使用する。
+
+> - [Amazon EKS add-ons - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/eks-add-ons.html)
 
 <br>
 
@@ -1003,6 +989,19 @@ Amazon VPC 外から NLB への `443` 番ポートに対するネットワーク
 
 ![eks_control-plane_worker_network](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_control-plane_worker_network.png)
 
+> - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
+
+<br>
+
+#### ▼ クラスターセキュリティグループ
+
+Amazon EKS は、`eks-cluster-sg-<クラスター名>-<識別子>` というクラスターセキュリティグループを作成し、コントロールプレーンの ENI などに関連付ける。
+
+追加のセキュリティグループも指定できるが、すべての送信元 IP アドレスを許可する必要はなく、API、kubelet、DNS などに必要な通信を許可する。
+
+クラスターセキュリティグループはプライベートエンドポイントへのアクセスに適用され、パブリックエンドポイントの接続元は許可 CIDR で制限する。
+
+> - [View Amazon EKS security group requirements for clusters - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/sec-group-reqs.html)
 > - [Cluster API server endpoint - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html)
 
 <br>
@@ -1193,8 +1192,11 @@ Amazon EKS のテスト環境の請求料金を節約するため、昼間に通
 
 マネージド Node グループは、あくまで Amazon EC2 Node のライフサイクルを管理するだけである。
 
-どのような Amazon EC2 Node を管理するのかは起動テンプレートと AWS Auto Scaling グループを使用して定義する必要がある。
+Amazon EC2 Node の構成には起動テンプレートを使用し、独自のテンプレートを指定しない場合は Amazon EKS が既定のテンプレートを作成する。
 
+独自の起動テンプレートでは、タグ付けを含む Amazon EC2 Node の設定を指定できる。
+
+> - [Customize managed nodes with launch templates - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html)
 > - [Introducing launch template and custom AMI support in Amazon EKS Managed Node Groups \| Containers](https://aws.amazon.com/jp/blogs/containers/introducing-launch-template-and-custom-ami-support-in-amazon-eks-managed-node-groups/)
 > - [\[AWS\] EKSマネージドノードグループでLaunch Templatesがサポートされたことで便利になったこと #kubernetes - Qiita](https://qiita.com/Uro3/items/d966b9bf77dc2b81e7f2)
 
@@ -1203,6 +1205,11 @@ Amazon EKS のテスト環境の請求料金を節約するため、昼間に通
 #### ▼ セルフマネージド
 
 ##### ▼ セルフマネージド Node グループ
+
+起動テンプレートと AWS Auto Scaling グループを使用して、Amazon EC2 ワーカーNode の構成と台数を管理する。
+
+> - [Maintain nodes yourself with self-managed nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
+> - [Create self-managed Amazon Linux nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 
 - Node グループ内の各 Amazon EC2 ワーカーNode の作成
 - Node グループに紐づく AWS Auto Scaling グループの作成
@@ -1274,33 +1281,12 @@ Node グループ (マネージド Node グループ、セルフマネージド 
     <tr>
       <td><code>kubernetes.io/cluster/&lt;Amazon EKS Cluster名&gt;</code></td>
       <td><code>owned</code></td>
-      <td>セルフマネージド型の Amazon EC2 ワーカーNode を使用する場合、ユーザーが作成した Amazon EC2 を Node グループに参加させるために、必要である。</td>
+      <td>セルフマネージド型の Amazon EC2 ワーカーNode が所属するクラスターを識別する。AWS Auto Scaling グループのタグをインスタンスへ伝播させて設定できる。</td>
     </tr>
   </tbody>
 </table>
 
 > - [Maintain nodes yourself with self-managed nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
-
-<br>
-
-### Amazon EC2 ワーカーNode のセットアップ (コンソールの場合)
-
-#### ▼ マネージド Node グループの場合
-
-起動テンプレートを使用し、Amazon EC2 ワーカーNode を作成する。
-
-起動テンプレートのタグ付け機能を使用して Amazon EC2 にタグ付けでき、これは任意である。
-
-#### ▼ セルフマネージド Node グループの場合
-
-任意の AWS Auto Scaling グループにて、起動テンプレートを使用して Amazon EC2 ワーカーNode を作成する。
-
-AWS Auto Scaling グループのタグ付け機能を使用して、`kubernetes.io/cluster/<Amazon EKS Cluster名>` タグ (値は `owned`) をつけ、Node グループに明示的に参加させる必要がある。
-
-なお、起動テンプレートも合わせて使用でき、これは任意である。
-
-> - [Maintain nodes yourself with self-managed nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/worker.html)
-> - [Create self-managed Amazon Linux nodes - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/launch-workers.html)
 
 <br>
 
@@ -1799,11 +1785,17 @@ $ timedatectl set-timezone America/Vancouver
 
 AWS が管理する Fargate 上の実行環境を Pod ごとにワーカーNode として起動し、ユーザーが Amazon EC2 ワーカーNode を管理せずに Pod を稼働させられる。
 
+![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_on_fargate.png)
+
+> - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
+
 <br>
 
 ### Fargate の選択条件
 
 #### ▼ Amazon EC2 ワーカーNode との比較
+
+Fargate は Amazon EC2 ワーカーNode よりカスタマイズ性が低いが、ホストの管理を AWS に任せられる。
 
 Amazon EC2 ワーカーNode と比較して、使用できない機能については、以下のリンクを参考にせよ。
 
@@ -1812,23 +1804,7 @@ Amazon EC2 ワーカーNode と比較して、使用できない機能につい�
 
 <br>
 
-#### ▼ Fargate ワーカーNode
-
-##### ▼ Fargate ワーカーNode とは
-
-![eks_on_fargate](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/eks_on_fargate.png)
-
-Fargate 上で稼働する Kubernetes のホストのこと。
-
-Kubernetes のワーカーNode に相当する。
-
-Amazon EC2 ワーカーNode と比べてカスタマイズ性が低く、ワーカーNode 当たりで稼働する Pod 数は AWS が管理する。
-
-一方で、各 Amazon EC2 のハードウェアリソースの消費量をユーザーが管理しなくてもよいため、Kubernetes のホストの管理が楽である。
-
-> - [EKS on Fargateの特徴、通常のEKSとの違いは何か？（第1回） \| SunnyCloud](https://www.sunnycloud.jp/column/20210315-01/)
-
-##### ▼ Fargate ワーカーNode を使用できない場合
+#### ▼ Fargate ワーカーNode を使用できない場合
 
 以下の場合は、Amazon EC2 ワーカーNode を使用する。
 
@@ -1888,6 +1864,22 @@ Fargate を設定する。
 ## 10. メトリクスとログの収集
 
 ### コントロールプレーンの監視
+
+#### ▼ ログ収集
+
+コントロールプレーンのログは、種類ごとに Amazon CloudWatch Logs への出力を有効化する。
+
+| ログの種類 | 内容 |
+| --- | --- |
+| `api` | kube-apiserver の処理ログ |
+| `audit` | Kubernetes API の監査ログ |
+| `authenticator` | AWS IAM の資格情報による認証のログ |
+| `controllerManager` | kube-controller-manager のログ |
+| `scheduler` | kube-scheduler のログ |
+
+> - [Enable or disable exporting control plane logs to CloudWatch Logs - Amazon EKS](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html)
+
+<br>
 
 #### ▼ Amazon EKS Upgrade insight
 

@@ -39,12 +39,18 @@ Amazon API Gateway は、メソッドリクエスト、統合リクエスト、�
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、`GET /health` に `200` を返すモック統合の REST API とステージを作成する。
+Cloud Posse の API Gateway モジュールを使用し、`GET /health` に `200` を返すモック統合の REST API とステージを作成する。
 
 ```terraform
-resource "aws_api_gateway_rest_api" "this" {
-  name = "foo-api"
-  body = jsonencode({
+module "api_gateway" {
+  source  = "cloudposse/api-gateway/aws"
+  version = "0.9.1"
+
+  name          = "foo-api"
+  stage_name    = "foo"
+  logging_level = "OFF"
+
+  openapi_config = {
     openapi = "3.0.1"
     info = {
       title   = "foo-api"
@@ -68,29 +74,11 @@ resource "aws_api_gateway_rest_api" "this" {
         }
       }
     }
-  })
-}
-
-resource "aws_api_gateway_deployment" "this" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  triggers = {
-    redeployment = sha1(aws_api_gateway_rest_api.this.body)
   }
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-resource "aws_api_gateway_stage" "this" {
-  rest_api_id   = aws_api_gateway_rest_api.this.id
-  deployment_id = aws_api_gateway_deployment.this.id
-  stage_name    = "foo"
 }
 ```
 
-> - [api_gateway_rest_api - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api)
-> - [api_gateway_deployment - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment)
-> - [api_gateway_stage - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_stage)
+> - [cloudposse/api-gateway/aws (0.9.1) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/api-gateway/aws/0.9.1)
 
 <br>
 

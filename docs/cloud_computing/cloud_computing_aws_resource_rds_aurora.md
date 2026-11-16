@@ -28,8 +28,6 @@ Amazon RDS をよりマネージドにした AWS リソースである。
 
 ### DB クラスター
 
-#### ▼ Amazon Aurora の DB クラスターとは
-
 DB エンジンに Amazon Aurora を選択した場合にのみ使用できる。
 
 Amazon Aurora の DB インスタンスとクラスターボリュームから構成されている。
@@ -45,8 +43,6 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 <br>
 
 ### DB インスタンス
-
-#### ▼ Amazon Aurora の DB インスタンスとは
 
 コンピューティング機能を持ち、クラスターボリュームを操作できる。
 
@@ -90,8 +86,6 @@ Amazon Aurora の DB インスタンスとクラスターボリュームから�
 
 ### OS の隠蔽
 
-#### ▼ OS の隠蔽とは
-
 Amazon Aurora は、EC2 内に DBMS が稼働したものであるが、このほとんどが隠蔽されている。
 
 そのため DB サーバーのようには操作できず、OS のバージョン確認や SSH 公開鍵認証を行えない。
@@ -127,110 +121,72 @@ SHOW VARIABLES LIKE '%version%';
 
 ## 03. セットアップ
 
+### DB エンジンと識別子
+
+DB エンジンには MySQL 互換または PostgreSQL 互換の Aurora を選択する。
+
+| 設定 | 役割 |
+| --- | --- |
+| DB エンジン | `aurora-mysql` または `aurora-postgresql` を指定する。 |
+| DB クラスター識別子 | DB クラスターの名前を指定する。 |
+| DB インスタンス識別子 | クラスターに所属する各 DB インスタンスの名前を、作成時に指定する。 |
+| 初期データベース名 | クラスター内に最初に作成するデータベース名を指定する。クラスター名やインスタンス名とは異なる。 |
+
+> - [CreateDBCluster - Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html)
+> - [CreateDBInstance - Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html)
+
+<br>
+
 ### Terraformによる構築
 
+`terraform-aws-modules/rds-aurora/aws` モジュールを使用し、既存の DB サブネットグループとセキュリティグループに、DB クラスターと `2` 台の DB インスタンスを配置する。
+
 ```terraform
-resource "aws_rds_cluster" "foo" {
-  cluster_identifier          = "foo-cluster"
+module "aurora" {
+  source  = "terraform-aws-modules/rds-aurora/aws"
+  version = "10.4.2"
+
+  name                        = "foo-cluster"
   engine                      = "aurora-mysql"
   engine_version              = "8.0.mysql_aurora.3.05.2"
+  cluster_instance_class      = "db.r6g.large"
   database_name               = "foo"
   master_username             = "admin"
   manage_master_user_password = true
-  db_subnet_group_name        = aws_db_subnet_group.foo.name
-  vpc_security_group_ids      = [aws_security_group.foo.id]
-}
+  db_subnet_group_name        = "foo-db-subnet-group"
+  create_security_group       = false
+  vpc_security_group_ids      = ["sg-0123456789abcdef0"]
 
-resource "aws_rds_cluster_instance" "foo" {
-  count              = 2
-  identifier         = "foo-instance-${count.index}"
-  cluster_identifier = aws_rds_cluster.foo.id
-  instance_class     = "db.r6g.large"
-  engine             = aws_rds_cluster.foo.engine
-  engine_version     = aws_rds_cluster.foo.engine_version
+  instances = {
+    one = {}
+    two = {}
+  }
 }
 ```
 
+> - [terraform-aws-modules/rds-aurora/aws - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/rds-aurora/aws/10.4.2)
 
-### コンソールの場合
-
-#### ▼ DB エンジンと DB クラスター・DB インスタンスの設定
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>エンジンタイプ</td>
-      <td>ミドルウェアの DBMS の種類を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>エディション</td>
-      <td>エンジンバージョンで Amazon Aurora を選択した場合の互換性を設定する。</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-##### ▼ Amazon Aurora の DB クラスター
-
-ベストプラクティスについては、以下のリンクを参考にせよ。
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Amazon Aurora の DB クラスター識別子</td>
-      <td>Amazon Aurora の DB クラスター名を設定する。</td>
-      <td>インスタンス名は、最初に設定できず、Amazon RDS の作成後に設定できる。</td>
-    </tr>
-  </tbody>
-</table>
-
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
-> - [Using SSL/TLS to encrypt a connection to a DB instance or cluster - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html)
-
-##### ▼ Amazon Aurora の DB インスタンス
-
-ベストプラクティスについては、以下のリンクを参考にせよ。
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>キャパシティタイプ</td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>最初の DB 名</td>
-      <td>Amazon Aurora の DB インスタンスに自動的に作成される DB 名を設定</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
-> - https://www.trendmicro.com/cloudoneconformity/knowledge-base/aws/Amazon RDS/
+<br>
 
 ## 04. DB への接続
+
+### VPC とサブネットグループ
+
+DB クラスターを配置する VPC と、DB インスタンスを配置するサブネットを DB サブネットグループで指定する。
+
+例えば、DB 用のプライベートサブネットを data store サブネットとして分け、アプリケーションと管理用の踏み台からの通信だけを許可する。
+
+![subnet_component-type](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/subnet_component-type.png)
+
+### パブリックアクセス
+
+DB インスタンスのパブリックアクセスを無効にすると、エンドポイントはプライベート IP アドレスを返す。
+
+有効にした場合は VPC 外からパブリック IP アドレスで接続できる構成になるが、接続にはセキュリティグループなどによる許可も必要である。
+
+> - [CreateDBInstance - Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBInstance.html)
+
+<br>
 
 ### エンドポイント
 
@@ -505,62 +461,49 @@ ECS Exec を有効化した Amazon ECS Fargate のタスクを踏み台にして
 
 <br>
 
-### コンソールの設定項目
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>VPC とサブネットグループ</td>
-      <td>Amazon Aurora の DB クラスターを配置する VPC とサブネットを設定する。</td>
-      <td>DB を配置するサブネットはプライベートサブネットとし、data store サブネットと名付ける。アプリケーション以外は、踏み台サーバー (Amazon EC2) 経由でしか DB にリクエストできないようにする。<br><img src="https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/subnet_component-type.png" alt="subnet_component-type"></td>
-    </tr>
-    <tr>
-      <td>パブリックアクセス</td>
-      <td>Amazon Aurora の DB インスタンスに IP アドレスを割り当てるか否かを設定する。</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
-
 ## 05. ログ出力
 
-### スロークエリログ
+### Amazon CloudWatch Logs へのエクスポート
 
-Amazon CloudWatch Logs の `/aws/rds/cluster/<Amazon AuroraのDBクラスター名>/slowquery` というロググループにスロークエリログが出力される。
+DB エンジンが対応するログの種類から、Amazon CloudWatch Logs に送信するログを選ぶ。
 
-### エラークエリログ
+Aurora MySQL では一般ログ、エラーログ、スロークエリログ、監査ログなどを出力でき、調査や監査で必要な種類を有効化する。
 
-Amazon CloudWatch Logs の `/aws/rds/cluster/<Amazon AuroraのDBクラスター名>/error` というロググループにエラーログが出力される。
+> - [Publishing Amazon Aurora MySQL logs to Amazon CloudWatch Logs - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.CloudWatch.html)
 
 <br>
 
-### コンソールの設定項目
+### スロークエリログ
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>ログのエクスポート</td>
-      <td>Amazon CloudWatch Logs に送信するデータエンジン (例：MySQL) のログを設定する。DB エンジンの一般ログ、エラーログ、スロークエリログ、監査ログなどを選択できる。</td>
-      <td>すべてのログを選択するとよい。</td>
-    </tr>
-  </tbody>
-</table>
+Aurora MySQL のスロークエリログをエクスポートすると、Amazon CloudWatch Logs の `/aws/rds/cluster/<Amazon AuroraのDBクラスター名>/slowquery` というロググループに出力される。
+
+### エラークエリログ
+
+Aurora MySQL のエラーログをエクスポートすると、Amazon CloudWatch Logs の `/aws/rds/cluster/<Amazon AuroraのDBクラスター名>/error` というロググループに出力される。
+
+<br>
 
 ## 06. アップグレード
+
+### DB エンジンのバージョン
+
+DB エンジンのバージョンは DB クラスター単位で指定し、所属する DB インスタンスに適用する。
+
+Aurora のバージョンは SQL で確認できる。
+
+```sql
+SELECT AURORA_VERSION();
+```
+
+### マイナーバージョンの自動アップグレード
+
+マイナーバージョンの自動アップグレードを有効にすると、AWS が自動更新の対象に指定したバージョンがメンテナンスウィンドウに適用される。
+
+例えば、開発環境で有効化し、ステージング環境と本番環境では無効化して、開発環境での確認後に順次適用する運用がある。
+
+> - [Maintaining an Amazon Aurora DB cluster - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html)
+
+<br>
 
 ### ZDP (ゼロダウンタイムパッチ適用)
 
@@ -609,8 +552,6 @@ $ mysqlsh util.checkForServerUpgrade()
 <br>
 
 ### ダウンタイム
-
-#### ▼ ダウンタイムとは
 
 Amazon Aurora では、設定値 (例：OS、エンジンバージョン、MySQL) のアップグレード時に、Amazon Aurora の DB インスタンスの再起動が必要である。
 
@@ -770,43 +711,25 @@ NOW()
 
 <br>
 
-### コンソールの設定項目
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>エンジンバージョン</td>
-      <td>DB エンジンのバージョンを設定する。DB クラスター内のすべての DB インスタンスに適用される。</td>
-      <td>・Amazon Aurora であれば、<code>SELECT AURORA_VERSION()</code> を使用して、エンジンバージョンを確認できる。</td>
-    </tr>
-    <tr>
-      <td>マイナーバージョンの自動アップグレード</td>
-      <td>Amazon Aurora の DB インスタンスの DB エンジンのバージョンを自動的に更新するかを設定する。</td>
-      <td>開発環境では有効化、本番環境とステージング環境では無効化しておく。開発環境で新バージョンに問題が起こらなければ、ステージング環境と本番環境にも適用する。</td>
-    </tr>
-  </tbody>
-</table>
-
 ## 07. フェイルオーバー
 
 ### Amazon Aurora のフェイルオーバーとは
 
-プライマリーインスタンスで障害が起こった場合に、リードレプリカをプライマリーインスタンスに自動的に昇格する。
+通常の Aurora DB クラスターは、書き込みを担当するプライマリーインスタンスと、読み取りを担当するリードレプリカで構成する。
 
-Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスが同じ AZ に配置されている場合、あらかじめ異なる AZ にリードレプリカを新しく作成する必要がある。
+プライマリーインスタンスに障害が発生した場合は、リードレプリカをプライマリーインスタンスに昇格する。
 
-また、フェイルオーバー時に、もし Amazon Aurora の DB クラスター内にリードレプリカが存在していない場合、異なる AZ に昇格後のプライマリーインスタンスが自動的に作成される。
+リードレプリカがない場合は、通常、同じ AZ にプライマリーインスタンスを再作成するため、リードレプリカの昇格より復旧に時間がかかる。
 
-リードレプリカが存在している場合、これがプライマリーインスタンスに昇格する。
+### リードレプリカのマルチ AZ 配置
 
-> - https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Amazon Aurora.Managing.FaultTolerance
+AZ 全体の障害に備え、プライマリーインスタンスとは異なる AZ にリードレプリカを配置する。
+
+リードレプリカはクラスター作成後にも追加できる。
+
+> - [High availability for Amazon Aurora - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html)
+
+<br>
 
 ### フェイルオーバーによるダウンタイムの最小化
 
@@ -849,30 +772,6 @@ Amazon Aurora の DB インスタンスごとにフェイルオーバーの優�
 エンジンバージョンのアップグレードは両方の Amazon Aurora の DB インスタンスで同時に実行する必要があるため、フェイルオーバーを使用できず、ダウンタイムを最小化できない。
 
 <br>
-
-### コンソールの設定項目
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>レプリケーション</td>
-      <td>単一のプライマリーインスタンス (シングルマスター) または複数のプライマリーインスタンス (マルチマスター) とするかを設定する。</td>
-      <td>フェイルオーバーを利用したダウンタイムの最小化時に、マルチマスターであれば変更の順番を気にしなくてよくなる。ただし、Amazon Aurora の DB クラスターをクローンできないなどのデメリットもある。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-multi-master.html#aurora-multi-master-terms</a></td>
-    </tr>
-    <tr>
-      <td>マルチ AZ 配置</td>
-      <td>プライマリーインスタンスとは別に、リードレプリカをマルチ AZ 配置で追加するか否かを設定する。</td>
-      <td>後からでもリードレプリカを追加できる。また、フェイルオーバー時にリードレプリカが存在していなければ、昇格後のプライマリーインスタンスが自動的に作成される。</td>
-    </tr>
-  </tbody>
-</table>
 
 ## 08. 負荷分散と性能改善
 
@@ -942,11 +841,15 @@ fields @timestamp, @message
 
 ### インスタンスタイプのスケールアップ
 
+DB インスタンスのキャパシティは、固定のインスタンスクラスを使う構成と、Aurora Serverless v2 で自動調整する構成から選ぶ。
+
+固定のインスタンスクラスにはメモリ最適化やバースト可能などがあり、バースト可能クラスは負荷が断続的な用途で検討する。
+
 インスタンスタイプをスケールアップさせることにより、接続過多のエラー (`ERROR 1040 (HY000): Too many connections`) に対処する。
 
 補足として現在の最大接続数はパラメーターグループの値から確認できる。
 
-コンソール画面からはおおよその値しかわからないため、SQL で確認したほうがよい。
+現在適用されている最大接続数は、SQL で確認する。
 
 ```mysql
 SHOW GLOBAL VARIABLES LIKE 'max_connections';
@@ -961,24 +864,13 @@ SHOW GLOBAL VARIABLES LIKE 'max_connections';
 
 <br>
 
-### コンソールの設定項目
+### クラスターボリュームの自動拡張
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>インスタンスクラス</td>
-      <td>Amazon Aurora の DB インスタンスのスペックを設定する。サーバーレス、メモリ最適化、バースト可能などを選択できる。</td>
-      <td>バースト可能クラスを選択するとよい。補足として、Amazon Aurora の DB サイズは自動的にスケーリングするため、設定する必要がない。</td>
-    </tr>
-  </tbody>
-</table>
+Aurora のクラスターボリュームは、データ量に応じて自動的に拡張される。
+
+DB インスタンスの CPU やメモリとは別に管理されるため、初期ストレージ容量を指定しておく必要はない。
+
+<br>
 
 ## 09. イベント
 
@@ -1082,129 +974,116 @@ Amazon Aurora Global DB では、リージョン間でデータをコピーし�
 
 ### 空の Amazon Aurora の DB クラスターとは
 
-コンソール画面で、Amazon Aurora の DB クラスター内のすべての Amazon Aurora の DB インスタンスを削除すると、Amazon Aurora の DB クラスターも自動的に削除される。
+DB インスタンスがなくても、DB クラスターとクラスターボリュームを保持できる。
 
-一方で、AWS-API をコールしてすべての Amazon Aurora の DB インスタンスを削除する場合、Amazon Aurora の DB クラスターは自動的に削除されずに、空の状態になる。
+例えば、Terraform で DB クラスターを作成した後に DB インスタンスの作成に失敗すると、DB クラスターだけが残ることがある。
 
-例えば、Terraform を使用して Amazon Aurora の DB クラスターを作成するときに、インスタンスの作成に失敗すると Amazon Aurora の DB クラスターが空になる。
+DB インスタンスを追加すれば、保持していたデータに再びアクセスできる。
 
-これは、Terraform が AWS-API をコールして作成しているためである。
+### 削除保護
 
-> - [Deleting Aurora DB clusters and DB instances - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeleteCluster.DeleteCluster)
+削除保護を有効にすると、DB クラスターと、そのデータを保存するクラスターボリュームの削除を防げる。
+
+削除保護を有効にしていても DB インスタンスは削除できるが、DB クラスターを残しておけば、インスタンスを再作成して元のデータにアクセスできる。
+
+> - [Deleting Aurora DB clusters and DB instances - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html)
 
 <br>
 
-### コンソールの設定項目
-
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>削除保護</td>
-      <td>Amazon Aurora の DB クラスターの削除を防ぐ。</td>
-      <td>Amazon Aurora の DB クラスターを削除するとクラスターボリュームも削除されるため、これを防ぐ。補足として、Amazon Aurora の DB クラスターの削除保護になっていても Amazon Aurora の DB インスタンスは削除できる。Amazon Aurora の DB インスタンスを削除しても、再作成すればクラスターボリュームに接続されて元のデータにリクエストを送信できる。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection">https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_DeleteCluster.html#USER_DeletionProtection</a></td>
-    </tr>
-  </tbody>
-</table>
-
 ## 12. DB 認証とアクセス制御
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>DB 認証</td>
-      <td>DB に接続するための認証方法を設定する。</td>
-      <td>Amazon Aurora の各 DB インスタンスに異なる DB 認証を設定できるが、すべての Amazon Aurora の DB インスタンスに同じ認証方法を設定すべきであるため、Amazon Aurora の DB クラスターでこれを設定すればよい。</td>
-    </tr>
-    <tr>
-      <td>マスタユーザー名</td>
-      <td>DB の root 権限の実行ユーザーを設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>マスターパスワード</td>
-      <td>DB の root 権限の実行ユーザーのパスワードを設定</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>セキュリティグループ</td>
-      <td>Amazon Aurora の DB クラスターのセキュリティグループを設定する。</td>
-      <td>コンピューティングからのリクエストのみを許可するように、これらのプライベート IP アドレス (<code>*.*.*.*/32</code>) を設定する。</td>
-    </tr>
-    <tr>
-      <td>認証機関</td>
-      <td>Amazon Aurora の DB クラスターに紐づけるサーバー証明書を署名するルート認証局を設定する。</td>
-      <td>アプリケーションが Amazon Aurora の DB クラスターに HTTPS で通信する場合に必要である。</td>
-    </tr>
-  </tbody>
-</table>
+### DB 認証
+
+DB に接続するための認証方法を設定する。
+
+例えば IAM DB 認証の有効化は DB クラスター単位で設定し、クラスター内で共通の認証方針を適用する。
+
+> - [CreateDBCluster - Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_CreateDBCluster.html)
+
+### マスターユーザー
+
+DB クラスターの管理用ユーザー名とパスワードを設定する。
+
+マスターユーザーに付与される権限は DB エンジンによって異なり、OS の root や制限のない DB スーパーユーザーとは異なる。
+
+> - [Master user account privileges - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.MasterAccounts.html)
+
+### セキュリティグループ
+
+DB クラスターに関連付けるセキュリティグループで、アプリケーションや踏み台からの接続だけを許可する。
+
+送信元には、接続元のセキュリティグループや、必要なプライベート IP アドレスの CIDR (例：`10.0.1.10/32`) を指定する。
+
+<br>
 
 ## 13. 暗号化
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>暗号化キー</td>
-      <td>AWS KMS を使用して、データを暗号化して保管する。</td>
-      <td></td>
-    </tr>
-  </tbody>
-</table>
+### 保存データの暗号化
+
+AWS KMS のキーを指定し、クラスターボリュームに保存するデータを暗号化する。
+
+### DB 接続の TLS 暗号化
+
+アプリケーションと DB 間の通信は、DB プロトコルに TLS を組み合わせて暗号化する。
+
+DB サーバー証明書を署名する認証局を選び、接続元で証明書を検証する場合は、その認証局の証明書を信頼できるように設定する。
+
+> - [Using SSL/TLS to encrypt a connection to a DB cluster - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html)
+
+<br>
 
 ## 14. バックアップ
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>バックアップ保管期間</td>
-      <td>Amazon Aurora の DB クラスター がバックアップを保管する期間を設定する。</td>
-      <td><code>7</code> 日間にしておく。</td>
-    </tr>
-  </tbody>
-</table>
+DB クラスターの自動バックアップ保管期間を `1`～`35` 日間から設定する。
+
+例えば `7` 日間を基準とし、必要な復元可能期間に合わせて調整する。
+
+> - [Backing up and restoring an Amazon Aurora DB cluster - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html)
+
+<br>
 
 ## 15. DB パラメーター設定
 
-<table>
-  <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>パラメーターグループ</td>
-      <td>グローバルオプションを設定する。</td>
-      <td>デフォルトを使用せずに自前定義する場合、事前に作成しておく必要がある。クラスターパラメーターグループとインスタンスパラメーターグループがあるが、すべてのインスタンスに同じパラメーターループを設定する必要があるため、クラスターパラメーターを使用すればよい。各パラメーターに適用タイプ (dynamic/static) があり、dynamic タイプは設定の適用に再起動が必要である。新しく作成したクラスタパラメーターグループにて以下の値を設定するとよい。<br>・<code>time_zone=Asia/Tokyo</code><br>・<code>character_set_client=utf8mb4</code><br>・<code>character_set_connection=utf8mb4</code><br>・<code>character_set_database=utf8mb4</code><br>・<code>character_set_results=utf8mb4</code><br>・<code>character_set_server=utf8mb4</code><br>・<code>server_audit_logging=1</code> (監査ログを Amazon CloudWatch に送信するか否か) <br>・<code>server_audit_logs_upload=1</code><br>・<code>general_log=1</code> (通常クエリログを Amazon CloudWatch に送信するか否か) <br>・<code>slow_query_log=1</code> (スロークエリログを Amazon CloudWatch に送信するか否か) <br>・<code>long_query_time=3</code> (スロークエリと見なす最短秒数)</td>
-    </tr>
-  </tbody>
-</table>
+### パラメーターグループの適用範囲
+
+既定値を変更する場合は、カスタムパラメーターグループを作成し、DB クラスターや DB インスタンスに関連付ける。
+
+| 種類 | 適用範囲 |
+| --- | --- |
+| DB クラスターパラメーターグループ | クラスター全体で共通にする設定と、インスタンス単位の設定の既定値を管理する。 |
+| DB パラメーターグループ | DB インスタンス単位で適用する設定を管理する。 |
+
+### パラメーターの適用タイミング
+
+動的パラメーター (`dynamic`) は通常、再起動せずに適用でき、静的パラメーター (`static`) は再起動時に適用される。
+
+新しいパラメーターグループへの切り替えでは再起動が必要になる場合があるため、値の変更とグループの切り替えを区別する。
+
+> - [Overview of parameter groups - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/parameter-groups-overview.html)
+
+### Aurora MySQL の設定例
+
+使用するエンジンバージョンが対応するパラメーターを確認し、タイムゾーン、文字コード、ログ出力を設定する。
+
+| パラメーター | 設定例 | 役割 |
+| --- | --- | --- |
+| `time_zone` | `Asia/Tokyo` | タイムゾーンを指定する。 |
+| `character_set_client` | `utf8mb4` | クライアントから送信する文字列の文字コードを指定する。 |
+| `character_set_connection` | `utf8mb4` | 接続で使用する文字コードを指定する。 |
+| `character_set_database` | `utf8mb4` | データベースの文字コードを指定する。 |
+| `character_set_results` | `utf8mb4` | クライアントへ返す結果の文字コードを指定する。 |
+| `character_set_server` | `utf8mb4` | サーバーの既定の文字コードを指定する。 |
+| `server_audit_logging` | `1` | 監査ログを有効化する。 |
+| `server_audit_logs_upload` | `1` | 監査ログを CloudWatch Logs に送信する従来の設定方法で使用する。 |
+| `general_log` | `1` | 一般ログを有効化する。 |
+| `slow_query_log` | `1` | スロークエリログを有効化する。 |
+| `long_query_time` | `3` | スロークエリとして記録する実行時間の閾値を秒単位で指定する。 |
+
+ログの有効化と CloudWatch Logs へのエクスポートは別に設定する。
+
+`server_audit_logs_upload` によるエクスポートには IAM ロールと `aws_default_logs_role` の設定も必要になるため、DB クラスターのログエクスポート設定を使う方法と区別する。
+
+> - [Aurora MySQL configuration parameters - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Reference.ParameterGroups.html)
+> - [Publishing Amazon Aurora MySQL logs to Amazon CloudWatch Logs - Amazon Aurora](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Integrating.CloudWatch.html)
+
+<br>

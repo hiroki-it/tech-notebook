@@ -54,6 +54,8 @@ ALB には HTTPS の 443 番ポートのリスナーを設定し、`/health` へ
 
 NLB は TCP のまま転送し、TLS は ALB で終端する。
 
+以下の ID・ARN は例示値のため、各リソースの作成後に実際の値を指定する。
+
 ```terraform
 module "nlb" {
   source  = "terraform-aws-modules/alb/aws"
@@ -114,16 +116,25 @@ module "nlb" {
   }
 }
 
-resource "aws_vpc_security_group_ingress_rule" "alb_from_nlb" {
-  security_group_id            = "sg-0123456789abcdef0"
-  referenced_security_group_id = module.nlb.security_group_id
-  from_port                    = 443
-  to_port                      = 443
-  ip_protocol                  = "tcp"
+module "alb_from_nlb" {
+  source  = "terraform-aws-modules/security-group/aws"
+  version = "5.3.0"
+
+  depends_on = [module.nlb]
+
+  create_sg         = false
+  security_group_id = "sg-0123456789abcdef0"
+  ingress_with_source_security_group_id = [{
+    from_port                = 443
+    to_port                  = 443
+    protocol                 = "tcp"
+    source_security_group_id = "sg-0123456789abcdef1" # NLB のセキュリティグループ
+  }]
 }
 ```
 
 > - [terraform-aws-modules/alb/aws (10.5.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/alb/aws/10.5.1)
+> - [terraform-aws-modules/security-group/aws (5.3.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/security-group/aws/5.3.0)
 > - [Use an Application Load Balancer as a target of a Network Load Balancer - Elastic Load Balancing](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/application-load-balancer-target.html)
 
 <br>

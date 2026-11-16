@@ -38,137 +38,74 @@ AWS ALB を使用して、起動テンプレートを基にした Amazon EC2 の
 
 #### ▼ スケーリンググループ
 
+terraform-aws-modules の Auto Scaling モジュールを使用し、起動テンプレートとスケーリンググループを作成する。
+
 ```terraform
-# オートスケーリンググループ
-resource "aws_autoscaling_group" "foo" {
+module "autoscaling" {
+  source  = "terraform-aws-modules/autoscaling/aws"
+  version = "9.3.2"
+
   name                      = "foo-group"
+  use_name_prefix           = false
   max_size                  = 5
   min_size                  = 2
+  desired_capacity          = 4
   health_check_grace_period = 300
   health_check_type         = "EC2"
-  desired_capacity          = 4
   force_delete              = true
-  vpc_zone_identifier       = ["subnet-*****", "subnet-*****"]
-
-  target_group_arns = [
-    aws_alb_target_group.foo.arn
-  ]
-
-  # Nodeグループの種類だけ、起動テンプレートを設定する
-  launch_template {
-    id      = aws_launch_template.foo1.id
-    version = "$Latest"
-  }
-
-  launch_template {
-    id      = aws_launch_template.foo2.id
-    version = "$Latest"
-  }
-
-  timeouts {
-    delete = "15m"
-  }
-
-  tag {
-    key                 = "Name"
-    value               = "foo-instance"
-    # オートスケーリングで起動したAmazon EC2にタグを伝搬する
-    propagate_at_launch = true
-  }
-
-  tag {
-    key                 = "Service"
-    value               = "foo"
-    # オートスケーリングで起動したAmazon EC2にタグを伝搬する
-    propagate_at_launch = true
-  }
-
-  tag {
-    key                 = "Env"
-    value               = "prd"
-    # オートスケーリングで起動したAmazon EC2にタグを伝搬する
-    propagate_at_launch = true
-  }
-}
-
-# AWS ALBターゲットグループ
-resource "aws_lb_target_group" "foo" {
-  ...
-}
-
-# 起動テンプレート
-resource "aws_launch_template" "foo" {
-  ...
-}
-```
-
-> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group)
-
-#### ▼ 起動テンプレート
-
-```terraform
-# 起動テンプレート
-resource "aws_launch_template" "foo" {
-
-  name = "foo-instance"
-
-  block_device_mappings {
-    device_name = "/dev/sdf"
-
-    ebs {
-      volume_size = 20
+  vpc_zone_identifier       = ["subnet-0123456789abcdef0", "subnet-0123456789abcdef1"]
+  traffic_source_attachments = {
+    alb = {
+      traffic_source_identifier = "arn:aws:elasticloadbalancing:ap-northeast-1:123456789012:targetgroup/foo/0123456789abcdef"
+      traffic_source_type       = "elbv2"
     }
   }
 
-  cpu_options {
+  launch_template_name            = "foo-instance"
+  launch_template_use_name_prefix = false
+  iam_instance_profile_name       = "foo-instance-profile"
+  # 使用する AMI の ID を指定し、バージョンを固定する
+  image_id          = "ami-0123456789abcdef0"
+  instance_type     = "m5.2xlarge"
+  ebs_optimized     = true
+  enable_monitoring = true
+  cpu_options = {
     core_count       = 4
     threads_per_core = 2
   }
-
-  ebs_optimized = true
-
-  iam_instance_profile {
-    name = aws_iam_role.instance_iam_role.name
-  }
-
-  # 最適化AMIを使用する
-  # AMIのバージョンを固定するために、SSMから取得したAMI IDを自前で管理する
-  image_id = data.aws_ami.eks_node.image_id
-
-  instance_market_options {
+  block_device_mappings = [{
+    device_name = "/dev/sdf"
+    ebs = {
+      volume_size = 20
+    }
+  }]
+  instance_market_options = {
     market_type = "spot"
   }
-
-  instance_type = "t2.micro"
-
-  metadata_options {
+  metadata_options = {
     http_endpoint               = "enabled"
     http_tokens                 = "required"
     http_put_response_hop_limit = 1
     instance_metadata_tags      = "enabled"
   }
-
-  monitoring {
-    enabled = true
-  }
-
-  network_interfaces {
+  network_interfaces = [{
     associate_public_ip_address = true
-    security_groups = [
-      "sg-*****",
-      "sg-*****",
-      "sg-*****",
-    ]
-  }
-
-  tag_specifications {
+    security_groups             = ["sg-0123456789abcdef0"]
+  }]
+  tag_specifications = [{
     resource_type = "instance"
-
     tags = {
-      Name = "test"
+      Name = "foo-instance"
     }
+  }]
+  instance_name = "foo-instance"
+  tags = {
+    Service = "foo"
+    Env     = "prd"
   }
-
+  timeouts = {
+    delete = "15m"
+  }
   user_data = base64encode(templatefile(
     "${path.module}/templates/userdata.sh.tpl",
     {}
@@ -176,17 +113,17 @@ resource "aws_launch_template" "foo" {
 }
 ```
 
-> - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template)
+> - [terraform-aws-modules/autoscaling/aws (9.3.2) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/autoscaling/aws/9.3.2)
 
-##### ▼ アクティビティ通知
+#### ▼ アクティビティ通知
 
 ```terraform
 # アクティビティ通知
 resource "aws_autoscaling_notification" "foo" {
 
   group_names = [
-    aws_autoscaling_group.bar.name,
-    aws_autoscaling_group.baz.name,
+    "bar-group",
+    "baz-group",
   ]
 
   # 通知したいイベントを設定する
@@ -197,25 +134,8 @@ resource "aws_autoscaling_notification" "foo" {
     "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
   ]
 
-  topic_arn = aws_sns_topic.foo.arn
+  topic_arn = "arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"
 }
-
-
-# オートスケーリンググループ
-resource "aws_autoscaling_group" "bar" {
-  ...
-}
-
-
-resource "aws_autoscaling_group" "baz" {
-  ...
-}
-
-# Amazon SNS
-resource "aws_sns_topic" "foo" {
-  ...
-}
-
 ```
 
 > - [Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_notification)

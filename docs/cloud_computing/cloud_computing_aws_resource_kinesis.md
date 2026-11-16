@@ -29,23 +29,24 @@ tags:
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、オンデマンドモードの Kinesis Data Streams を作成する。
+Cloud Posse の Kinesis Stream モジュールを使用し、オンデマンドモードの Kinesis Data Streams を作成する。
 
 AWS マネージドキーで暗号化し、データを 48 時間保管する。
 
 ```terraform
-resource "aws_kinesis_stream" "this" {
+module "kinesis" {
+  source  = "cloudposse/kinesis-stream/aws"
+  version = "0.4.0"
+
   name             = "foo-events"
+  stream_mode      = "ON_DEMAND"
   retention_period = 48
   encryption_type  = "KMS"
   kms_key_id       = "alias/aws/kinesis"
-  stream_mode_details {
-    stream_mode = "ON_DEMAND"
-  }
 }
 ```
 
-> - [kinesis_stream - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kinesis_stream)
+> - [cloudposse/kinesis-stream/aws (0.4.0) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/kinesis-stream/aws/0.4.0)
 
 <br>
 

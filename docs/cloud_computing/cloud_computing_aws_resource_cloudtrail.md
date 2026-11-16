@@ -32,21 +32,24 @@ Amazon CloudWatch と連携もできる。
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、全リージョンの管理イベントを記録する証跡を作成する。
+Cloud Posse の CloudTrail モジュールを使用し、全リージョンの管理イベントを記録する証跡を作成する。
 
 保存先には CloudTrail からの GetBucketAcl と PutObject を許可した既存バケットを指定する。
 
 ```terraform
-resource "aws_cloudtrail" "this" {
-  name                       = "foo-audit"
-  s3_bucket_name             = "foo-storage-123456789012"
-  is_multi_region_trail      = true
-  enable_log_file_validation = true
+module "cloudtrail" {
+  source  = "cloudposse/cloudtrail/aws"
+  version = "0.24.0"
 
+  name                          = "foo-audit"
+  s3_bucket_name                = "foo-storage-123456789012"
+  is_multi_region_trail         = true
+  include_global_service_events = true
+  enable_log_file_validation    = true
 }
 ```
 
-> - [cloudtrail - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudtrail)
+> - [cloudposse/cloudtrail/aws (0.24.0) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/cloudtrail/aws/0.24.0)
 
 <br>
 

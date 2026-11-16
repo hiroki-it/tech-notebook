@@ -94,7 +94,7 @@ module "sqs_foo" {
   version = "~> 4.0"
 
   name = "foo"
-  tags = local.tags
+  tags = { Environment = "dev" }
 
   visibility_timeout_seconds = 300
   message_retention_seconds  = 345600 # 4日
@@ -118,7 +118,7 @@ module "sqs_foo_deadletter" {
   version = "~> 4.0"
 
   name                      = "foo-deadletter"
-  tags                      = local.tags
+  tags                      = { Environment = "dev" }
   message_retention_seconds = 1209600 # 14日
 
   kms_master_key_id                 = "arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555"
@@ -132,7 +132,7 @@ module "kms_sqs_foo" {
   aliases                 = ["sqs-foo"]
   deletion_window_in_days = 30
   enable_key_rotation     = true
-  tags                    = local.tags
+  tags                    = { Environment = "dev" }
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -141,7 +141,7 @@ module "kms_sqs_foo" {
         Sid    = "Default"
         Effect = "Allow"
         Principal = {
-          AWS = "arn:aws:iam::${data.aws_caller_identity.current.id}:root"
+          AWS = "arn:aws:iam::123456789012:root"
         }
         Action   = "kms:*"
         Resource = "*"

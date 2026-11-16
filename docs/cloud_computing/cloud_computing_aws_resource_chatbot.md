@@ -30,23 +30,26 @@ SNS を経由して、Amazon CloudWatch からの通知をチャットアプリ�
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、既存の SNS トピックを Slack チャンネルに紐付ける。
+filonenkod の Chatbot Slack Configuration モジュールを使用し、既存の SNS トピックを Slack チャンネルに紐付ける。
 
 Slack ワークスペースは事前に AWS Chatbot（Amazon Q Developer in chat applications）で認可し、chatbot.amazonaws.com が引き受けられる IAM ロールを指定する。
 
 ```terraform
-resource "aws_chatbot_slack_channel_configuration" "this" {
-  configuration_name    = "foo-notifications"
-  slack_team_id         = "T01234567"
-  slack_channel_id      = "C01234567"
-  iam_role_arn          = "arn:aws:iam::123456789012:role/foo-chatbot"
-  sns_topic_arns        = ["arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"]
-  logging_level         = "ERROR"
-  guardrail_policy_arns = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
+module "chatbot" {
+  source  = "filonenkod/chatbot-slack-configuration/aws"
+  version = "1.1.0"
+
+  configuration_name = "foo-notifications"
+  slack_workspace_id = "T01234567"
+  slack_channel_id   = "C01234567"
+  iam_role_arn       = "arn:aws:iam::123456789012:role/foo-chatbot"
+  sns_topic_arns     = ["arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"]
+  logging_level      = "ERROR"
+  guardrail_policies = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
 }
 ```
 
-> - [chatbot_slack_channel_configuration - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/chatbot_slack_channel_configuration)
+> - [filonenkod/chatbot-slack-configuration/aws (1.1.0) - Terraform Registry](https://registry.terraform.io/modules/filonenkod/chatbot-slack-configuration/aws/1.1.0)
 
 <br>
 

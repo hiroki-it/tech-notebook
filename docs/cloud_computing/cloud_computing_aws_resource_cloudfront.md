@@ -103,10 +103,6 @@ terraform-aws-modules の CloudFront モジュールを使用し、既存の HTT
 オリジンの DNS 名を指定し、閲覧には CloudFront の標準ドメインと証明書を使用する。
 
 ```terraform
-data "aws_cloudfront_cache_policy" "this" {
-  name = "Managed-CachingOptimized"
-}
-
 module "cloudfront" {
   source  = "terraform-aws-modules/cloudfront/aws"
   version = "6.7.1"
@@ -125,7 +121,7 @@ module "cloudfront" {
   default_cache_behavior = {
     target_origin_id       = "app"
     viewer_protocol_policy = "redirect-to-https"
-    cache_policy_id        = data.aws_cloudfront_cache_policy.this.id
+    cache_policy_id        = "658327ea-f89d-4fab-a63d-7e88639e58f6" # Managed-CachingOptimized
   }
   viewer_certificate = { cloudfront_default_certificate = true }
 }

@@ -27,8 +27,6 @@ AWS が提供するマネージドな RDB であり、DB エンジンとして A
 
 ### OS の隠蔽
 
-#### ▼ OS の隠蔽とは
-
 Amazon RDS は、EC2 内に DBMS が稼働したものであるが、このほとんどが隠蔽されている。
 
 そのため DB サーバーのようには操作できず、OS のバージョン確認や SSH 公開鍵認証を行えない。
@@ -65,18 +63,31 @@ SHOW VARIABLES LIKE '%version%';
 
 ### Terraformによる構築
 
+`terraform-aws-modules/rds/aws` モジュールを使用し、既存の DB サブネットグループとセキュリティグループに DB インスタンスを配置する。
+
 ```terraform
-resource "aws_db_instance" "this" {
+module "rds" {
+  source  = "terraform-aws-modules/rds/aws"
+  version = "7.2.2"
+
   identifier                  = "foo-rds"
   engine                      = "mysql"
   engine_version              = "8.0"
+  family                      = "mysql8.0"
+  major_engine_version        = "8.0"
   instance_class              = "db.t3.micro"
   allocated_storage           = 20
   username                    = "admin"
   manage_master_user_password = true
+  db_subnet_group_name        = "foo-db-subnet-group"
+  vpc_security_group_ids      = ["sg-0123456789abcdef0"]
   skip_final_snapshot         = true
 }
 ```
+
+> - [terraform-aws-modules/rds/aws - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/rds/aws/7.2.2)
+
+<br>
 
 ## 04. DB エンジンの選択
 
@@ -126,9 +137,7 @@ RDB が Amazon Aurora か Amazon RDS かで機能に差があり、Amazon Aurora
 
 ## 05. メンテナンスウインドウ
 
-### メンテナンスウインドウ
-
-DB クラスター/DB インスタンスの設定変更をスケジュールする。
+DB クラスターや DB インスタンスのメンテナンスや、適用を保留した設定変更の時間帯を指定する。
 
 > - [Amazon RDS メンテナンスのよくある問い合わせを紹介してみる \| DevelopersIO](https://dev.classmethod.jp/articles/amazon-rds-maintenance-questions/)
 
@@ -146,13 +155,13 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 ![rds_pending-maintenance](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds_pending-maintenance.png)
 
-ユーザーが予定した設定変更は『保留中の変更』として表示される一方で、AWS が定期的に実施するハードウェア/OS/DB エンジンの強制バージョンアップは『保留中のメンテナンス』として表示される。
+ユーザーが適用を保留した設定変更は『保留中の変更』、AWS が提示するハードウェア・OS・DB エンジンなどの更新は『保留中のメンテナンス』として扱われる。
 
-『次のメンテナンスウィンドウ』を選択すれば、実行タイミングをメンテナンスウィンドウ内に設定できる。ただし、これを選択しない場合は『日付の適用』に表示された時間帯で強制実行される。
+保留中のメンテナンスは、次回のメンテナンスウィンドウでの適用や、即時適用を指定できる。適用期限がある更新は、その期限を超えて延期できない。
 
 > - [Maintaining a DB instance - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html)
 
-補足として保留中のメンテナンスは、アクションの『今すぐアップグレード』と『次のウィンドウでアップグレード』からも操作できる。
+次の画像は、保留中のメンテナンスに対して適用タイミングを指定する画面の例である。
 
 ![rds_pending-maintenance_action](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rds_pending-maintenance_action.png)
 
@@ -193,9 +202,9 @@ Amazon CloudWatch Metrics の `DatabaseConnections` メトリクスから、DB �
 
 ### 『次のウィンドウ』状態の取り消し
 
-設定の変更が『次のウィンドウ』状態にある場合、画面上からは『必須』や『利用可能』といった実行タイミングが未定の状態に戻せない。
+次回のメンテナンスウィンドウで適用する予約は、処理の開始前であれば、AWS CLI の `undo-opt-in` で取り消せる。
 
-しかし、CLI を使用すると戻せる。
+この操作は適用予約を取り消すものであり、必須のメンテナンス自体や適用期限をなくすものではない。
 
 ```bash
 $ aws rds describe-pending-maintenance-actions --output=table
@@ -242,9 +251,9 @@ $ aws rds apply-pending-maintenance-action \
 
 ### 『保留中の変更』の取り消し
 
-保留中の変更を画面上からは取り消せない。
+保留中の設定変更は、変更前の値を再指定して戻す。
 
-しかし、CLI を使用すると戻せる。
+`--apply-immediately` は他の保留中の変更も即時適用する場合があるため、実行前に保留内容を確認する。
 
 ```bash
 $ aws rds modify-db-instance \
@@ -298,8 +307,8 @@ $ aws rds modify-db-instance \
     </tr>
     <tr>
       <td>パラメーターグループ</td>
-      <td>なし</td>
-      <td>パラメーターグループ自体の変更ではダウンタイムは発生しない。また、静的パラメーターはパラメーターグループの変更に合わせて適用される。ただし、動的パラメーターを変更した場合は、これを DB インスタンスに反映させるために再起動が必要であり、ここでダウンタイムが発生する。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithParamGroups.html</a></td>
+      <td>再起動が必要な場合はあり</td>
+      <td>動的パラメーターは通常、再起動せずに適用できる。静的パラメーターの適用や新しいパラメーターグループへの切り替えには再起動が必要になり、その間はダウンタイムが発生する。<br><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/parameter-groups-overview.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/parameter-groups-overview.html</a></td>
     </tr>
     <tr>
       <td>セキュリティグループ</td>
@@ -357,7 +366,7 @@ DB インスタンスがマルチ AZ 構成の場合、以下の手順を使用�
 
 ## 08. イベント通知
 
-コンソール画面ではイベントが英語で表示されているため、リファレンスも英語でイベントを探したほうがよい。
+イベントメッセージは、AWS の英語リファレンスと照合して内容を確認する。
 
 > - [Amazon RDS event categories and event messages - Amazon Relational Database Service](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html)
 

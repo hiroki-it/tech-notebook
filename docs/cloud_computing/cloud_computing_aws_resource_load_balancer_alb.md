@@ -156,8 +156,8 @@ module "alb_eks" {
 
 # ターゲットグループとマネージドNodeグループを紐づける
 resource "aws_autoscaling_attachment" "alb_eks" {
-  autoscaling_group_name = aws_eks_node_group.foo.resources[0].autoscaling_groups[0].name
-  lb_target_group_arn = module.alb_eks.target_group_arns["eks"]
+  autoscaling_group_name = "eks-foo-node-group-01234567-89ab-cdef-0123-456789abcdef"
+  lb_target_group_arn = "arn:aws:elasticloadbalancing:ap-northeast-1:123456789012:targetgroup/foo-eks/0123456789abcdef"
 }
 ```
 

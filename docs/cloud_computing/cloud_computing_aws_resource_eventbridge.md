@@ -82,16 +82,22 @@ module "eventbridge" {
   }
 }
 
-resource "aws_lambda_permission" "eventbridge" {
+module "eventbridge_permission" {
+  source  = "Cloud-42/lambda-permission/aws"
+  version = "2.0.0"
+
+  depends_on = [module.eventbridge]
+
   statement_id  = "AllowEventBridge"
   action        = "lambda:InvokeFunction"
   function_name = "arn:aws:lambda:ap-northeast-1:123456789012:function:foo-function"
   principal     = "events.amazonaws.com"
-  source_arn    = module.eventbridge.eventbridge_rule_arns["order_created"]
+  source_arn    = "arn:aws:events:ap-northeast-1:123456789012:rule/foo-events/order-created-rule"
 }
 ```
 
 > - [terraform-aws-modules/eventbridge/aws (4.3.3) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/eventbridge/aws/4.3.3)
+> - [Cloud-42/lambda-permission/aws (2.0.0) - Terraform Registry](https://registry.terraform.io/modules/Cloud-42/lambda-permission/aws/2.0.0)
 
 <br>
 

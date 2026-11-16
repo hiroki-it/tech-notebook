@@ -48,32 +48,28 @@ CodeCommit は、他のコード管理サービスで代用できる。
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、GitHub のリポジトリにある buildspec.yml でビルドする CodeBuild プロジェクトを作成する。
+Cloud Posse の CodeBuild モジュールを使用し、GitHub のリポジトリにある buildspec.yml でビルドする CodeBuild プロジェクトを作成する。
 
-CodeBuild が引き受けられ、ログ出力やビルドに必要な権限を持つ既存の IAM ロールを指定する。
+CodeBuild が引き受ける IAM ロールとログ出力の権限もモジュールで作成する。
 
 ```terraform
-resource "aws_codebuild_project" "this" {
-  name         = "foo-build"
-  service_role = "arn:aws:iam::123456789012:role/foo-codebuild"
-  artifacts {
-    type = "NO_ARTIFACTS"
-  }
-  source {
-    type      = "GITHUB"
-    location  = "https://github.com/foo-org/foo-app.git"
-    buildspec = "buildspec.yml"
-  }
-  environment {
-    compute_type    = "BUILD_GENERAL1_SMALL"
-    image           = "aws/codebuild/standard:7.0"
-    type            = "LINUX_CONTAINER"
-    privileged_mode = true
-  }
+module "codebuild" {
+  source  = "cloudposse/codebuild/aws"
+  version = "2.0.2"
+
+  name               = "foo-build"
+  artifact_type      = "NO_ARTIFACTS"
+  source_type        = "GITHUB"
+  source_location    = "https://github.com/foo-org/foo-app.git"
+  buildspec          = "buildspec.yml"
+  build_compute_type = "BUILD_GENERAL1_SMALL"
+  build_image        = "aws/codebuild/standard:7.0"
+  build_type         = "LINUX_CONTAINER"
+  privileged_mode    = true
 }
 ```
 
-> - [codebuild_project - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/codebuild_project)
+> - [cloudposse/codebuild/aws (2.0.2) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/codebuild/aws/2.0.2)
 
 <br>
 

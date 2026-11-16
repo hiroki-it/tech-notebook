@@ -35,19 +35,20 @@ Kubernetes のシークレットの概念が取り入れられている。
 ### Terraformによる構築
 
 ```terraform
-resource "aws_secretsmanager_secret" "foo" {
-  name       = "foo-secret"
-  kms_key_id = aws_kms_key.foo.arn
-}
+module "secret" {
+  source  = "terraform-aws-modules/secrets-manager/aws"
+  version = "2.2.0"
 
-resource "aws_secretsmanager_secret_version" "foo" {
-  secret_id     = aws_secretsmanager_secret.foo.id
+  name       = "foo-secret"
+  kms_key_id = "arn:aws:kms:ap-northeast-1:123456789012:key/11111111-2222-3333-4444-555555555555"
   secret_string = jsonencode({
     username = "foo"
-    password = var.foo_password
+    password = "example-password" # 説明用のダミー値
   })
 }
 ```
+
+> - [terraform-aws-modules/secrets-manager/aws (2.2.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/secrets-manager/aws/2.2.0)
 
 ## 04. シークレットの管理とアクセス制御
 

@@ -36,18 +36,40 @@ tags:
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、Direct Connect ゲートウェイを作成する。
+BorisLabs の Direct Connect モジュールを使用し、Direct Connect ゲートウェイを作成する。
 
 専用線の開通、プライベート仮想インターフェースの作成、仮想プライベートゲートウェイとの関連付けは別途実施する。
 
 ```terraform
-resource "aws_dx_gateway" "this" {
-  name            = "foo-dx-gateway"
-  amazon_side_asn = "64512"
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+  }
+}
+
+provider "aws" {
+  region = "ap-northeast-1"
+}
+
+module "direct_connect" {
+  source  = "BorisLabs/directconnect/aws"
+  version = "0.3.0"
+
+  providers = {
+    aws          = aws
+    aws.accepter = aws
+  }
+
+  create_dx_gateway  = true
+  dx_gateway_name    = "foo-dx-gateway"
+  dx_gateway_bgp_asn = 64512
 }
 ```
 
-> - [dx_gateway - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/dx_gateway)
+> - [BorisLabs/directconnect/aws (0.3.0) - Terraform Registry](https://registry.terraform.io/modules/BorisLabs/directconnect/aws/0.3.0)
 
 <br>
 

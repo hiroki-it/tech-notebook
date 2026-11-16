@@ -36,18 +36,22 @@ Apache Spark を使用して、大きなサイズのデータを高速に並列�
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、S3 に配置済みの Python スクリプトを実行する Glue の Spark ジョブを作成する。
+Cloud Posse の Glue Job モジュールを使用し、S3 に配置済みの Python スクリプトを実行する Glue の Spark ジョブを作成する。
 
 Glue が引き受けられ、スクリプトと処理対象データへアクセスできる IAM ロールを指定する。
 
 ```terraform
-resource "aws_glue_job" "this" {
+module "glue_job" {
+  source  = "cloudposse/glue/aws//modules/glue-job"
+  version = "0.4.0"
+
   name              = "foo-etl"
   role_arn          = "arn:aws:iam::123456789012:role/foo-glue"
   glue_version      = "5.0"
   worker_type       = "G.1X"
   number_of_workers = 2
-  command {
+  command = {
+    name            = "glueetl"
     python_version  = "3"
     script_location = "s3://foo-scripts-123456789012/etl.py"
   }
@@ -57,7 +61,7 @@ resource "aws_glue_job" "this" {
 }
 ```
 
-> - [glue_job - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/glue_job)
+> - [cloudposse/glue/aws//modules/glue-job (0.4.0) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/glue/aws/0.4.0/submodules/glue-job)
 
 <br>
 

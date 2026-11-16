@@ -144,24 +144,28 @@ GitHub のブランチごとにアプリケーションの CI/CD パイプライ
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、手動デプロイ用の Amplify アプリケーションと本番ブランチを作成する。
+Cloud Posse の Amplify App モジュールを使用し、手動デプロイ用の Amplify アプリケーションと本番ブランチを作成する。
 
 ビルド済みの静的ファイルは、後述の手動デプロイ手順でアップロードする。
 
 ```terraform
-resource "aws_amplify_app" "this" {
-  name = "foo-app"
-}
+module "amplify" {
+  source  = "cloudposse/amplify-app/aws"
+  version = "1.2.0"
 
-resource "aws_amplify_branch" "main" {
-  app_id      = aws_amplify_app.this.id
-  branch_name = "main"
-  stage       = "PRODUCTION"
+  name                     = "foo-app"
+  enable_branch_auto_build = false
+  environments = {
+    main = {
+      branch_name       = "main"
+      stage             = "PRODUCTION"
+      enable_auto_build = false
+    }
+  }
 }
 ```
 
-> - [amplify_app - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/amplify_app)
-> - [amplify_branch - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/amplify_branch)
+> - [cloudposse/amplify-app/aws (1.2.0) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/amplify-app/aws/1.2.0)
 
 <br>
 

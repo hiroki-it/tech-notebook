@@ -29,13 +29,17 @@ tags:
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、S3 バケットを管理する CloudFormation スタックを作成する。
+BOLDLink の CloudFormation モジュールを使用し、S3 バケットを管理する CloudFormation スタックを作成する。
 
 バケット名には一意の名前を指定する。
 
 ```terraform
-resource "aws_cloudformation_stack" "this" {
-  name = "foo-storage"
+module "cloudformation" {
+  source  = "boldlink/cloudformation/aws"
+  version = "1.1.2"
+
+  stack_name   = "foo-storage"
+  capabilities = []
   template_body = yamlencode({
     AWSTemplateFormatVersion = "2010-09-09"
     Resources = {
@@ -50,7 +54,7 @@ resource "aws_cloudformation_stack" "this" {
 }
 ```
 
-> - [cloudformation_stack - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudformation_stack)
+> - [boldlink/cloudformation/aws (1.1.2) - Terraform Registry](https://registry.terraform.io/modules/boldlink/cloudformation/aws/1.1.2)
 
 <br>
 

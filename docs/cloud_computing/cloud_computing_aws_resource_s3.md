@@ -33,7 +33,7 @@ module "s3_foo" {
   version = "= 4.1.0"
 
   bucket                   = "foo"
-  tags                     = local.tags
+  tags                     = { Environment = "dev" }
   block_public_acls        = true
   block_public_policy      = true
   restrict_public_buckets  = true

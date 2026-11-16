@@ -30,57 +30,51 @@ tags:
 ### Terraformによる構築 (SES 監視用アラーム)
 
 ```terraform
-module "cloudwatch_metric_alarm_ses_foo" {
+module "cloudwatch_metric_alarm_ses_foo_bounce" {
   source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions"
   version = "= 5.3.0"
 
-  for_each = {
-    # SESから外部メールサーバーへのメール送信の失敗が5分間に1件以上起こった場合に通知する
-    "ses-foo-Bounce-" = {
-      metric_name         = "Bounce"
-      comparison_operator = "GreaterThanOrEqualToThreshold"
-      evaluation_periods  = "1"
-      namespace           = "AWS/SES"
-      period              = "300"
-      statistic           = "Sum"
-      threshold           = 1.0
-      alarm_description   = "SES ${aws_ses_configuration_set.foo.name} Bounce: SESから外部メールサーバーへのメール送信に失敗しました"
-      dimensions = {
-        "ConfigurationSet" = {
-          ConfigurationSet = aws_ses_configuration_set.foo.name
-        }
-      }
-    }
-    # SESへのメール送信の失敗が5分間に1件以上起こった場合に通知する
-    "ses-foo-Reject-" = {
-      metric_name         = "Reject"
-      comparison_operator = "GreaterThanOrEqualToThreshold"
-      evaluation_periods  = "1"
-      namespace           = "AWS/SES"
-      period              = "300"
-      statistic           = "Sum"
-      threshold           = 1.0
-      alarm_description   = "SES ${aws_ses_configuration_set.foo.name} Reject: SESへのメール送信に失敗しました"
-      dimensions = {
-        "ConfigurationSet" = {
-          ConfigurationSet = aws_ses_configuration_set.foo.name
-        }
-      }
-    }
+  alarm_name          = "ses-foo-Bounce-"
+  metric_name         = "Bounce"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  namespace           = "AWS/SES"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 1.0
+  treat_missing_data  = "notBreaching"
+  alarm_description   = "SES foo Bounce: SESから外部メールサーバーへのメール送信に失敗しました"
+  alarm_actions       = ["arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"]
+  tags                = { Environment = "dev" }
 
-    alarm_name          = each.key
-    tags                = local.tags
-    comparison_operator = each.value.comparison_operator
-    evaluation_periods  = each.value.evaluation_periods
-    metric_name         = each.value.metric_name
-    namespace           = each.value.namespace
-    period              = each.value.period
-    statistic           = each.value.statistic
-    threshold           = each.value.threshold
-    treat_missing_data  = "notBreaching"
-    alarm_description   = each.value.alarm_description
-    alarm_actions       = ["arn:aws:sns:ap-northeast-1:123456789012:********"]
-    dimensions          = each.value.dimensions
+  dimensions = {
+    ConfigurationSet = {
+      ConfigurationSet = "foo"
+    }
+  }
+}
+
+module "cloudwatch_metric_alarm_ses_foo_reject" {
+  source  = "terraform-aws-modules/cloudwatch/aws//modules/metric-alarms-by-multiple-dimensions"
+  version = "= 5.3.0"
+
+  alarm_name          = "ses-foo-Reject-"
+  metric_name         = "Reject"
+  comparison_operator = "GreaterThanOrEqualToThreshold"
+  evaluation_periods  = 1
+  namespace           = "AWS/SES"
+  period              = 300
+  statistic           = "Sum"
+  threshold           = 1.0
+  treat_missing_data  = "notBreaching"
+  alarm_description   = "SES foo Reject: SESへのメール送信に失敗しました"
+  alarm_actions       = ["arn:aws:sns:ap-northeast-1:123456789012:foo-notifications"]
+  tags                = { Environment = "dev" }
+
+  dimensions = {
+    ConfigurationSet = {
+      ConfigurationSet = "foo"
+    }
   }
 }
 ```

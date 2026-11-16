@@ -33,35 +33,24 @@ Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイ
 
 ### Terraformによる構築
 
-hashicorp/aws プロバイダーを使用し、OpenAPI 仕様のファイルを REST API にインポートする。
+Cloud Posse の API Gateway モジュールを使用し、OpenAPI 仕様のファイルを REST API にインポートする。
 
 後述の OpenAPI 仕様を `openapi.yml` として配置しておく。
 
 ```terraform
-resource "aws_api_gateway_rest_api" "this" {
-  name = "foo-imported-api"
-  body = file("${path.module}/openapi.yml")
-}
+module "api_gateway" {
+  source  = "cloudposse/api-gateway/aws"
+  version = "0.9.1"
 
-resource "aws_api_gateway_deployment" "this" {
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  triggers = {
-    redeployment = sha1(aws_api_gateway_rest_api.this.body)
-  }
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-
-resource "aws_api_gateway_stage" "this" {
-  rest_api_id   = aws_api_gateway_rest_api.this.id
-  deployment_id = aws_api_gateway_deployment.this.id
+  name          = "foo-imported-api"
   stage_name    = "foo"
+  logging_level = "OFF"
+
+  openapi_config = yamldecode(file("${path.module}/openapi.yml"))
 }
 ```
 
-> - [api_gateway_rest_api - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_rest_api)
-> - [api_gateway_deployment - Terraform Registry](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/api_gateway_deployment)
+> - [cloudposse/api-gateway/aws (0.9.1) - Terraform Registry](https://registry.terraform.io/modules/cloudposse/api-gateway/aws/0.9.1)
 
 <br>
 

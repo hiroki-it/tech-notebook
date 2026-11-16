@@ -102,12 +102,17 @@ terraform-aws-modules の ECS Service モジュールを使用し、Fluent Bit �
 AWS プロバイダーのリージョンは ap-northeast-1 とする。
 
 ```terraform
-resource "aws_cloudwatch_log_group" "application" {
+module "application_log_group" {
+  source  = "terraform-aws-modules/cloudwatch/aws//modules/log-group"
+  version = "6.0.0"
+
   name              = "/ecs/foo-firelens"
   retention_in_days = 30
 }
 
 module "firelens_task" {
+  depends_on = [module.application_log_group]
+
   source  = "terraform-aws-modules/ecs/aws//modules/service"
   version = "7.6.1"
 
@@ -134,7 +139,7 @@ module "firelens_task" {
         options = {
           Name              = "cloudwatch_logs"
           region            = "ap-northeast-1"
-          log_group_name    = aws_cloudwatch_log_group.application.name
+          log_group_name    = "/ecs/foo-firelens"
           log_stream_prefix = "app/"
         }
       }
@@ -142,10 +147,12 @@ module "firelens_task" {
   }
   tasks_iam_role_statements = [{
     actions   = ["logs:CreateLogStream", "logs:PutLogEvents"]
-    resources = ["${aws_cloudwatch_log_group.application.arn}:*"]
+    resources = ["arn:aws:logs:ap-northeast-1:123456789012:log-group:/ecs/foo-firelens:*"]
   }]
 }
 ```
+
+> - [terraform-aws-modules/cloudwatch/aws//modules/log-group (6.0.0) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/cloudwatch/aws/6.0.0/submodules/log-group)
 
 > - [terraform-aws-modules/ecs/aws//modules/service (7.6.1) - Terraform Registry](https://registry.terraform.io/modules/terraform-aws-modules/ecs/aws/7.6.1/submodules/service)
 
