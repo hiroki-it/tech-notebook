@@ -22,18 +22,21 @@ tags:
 
 #### ▼ 概要
 
-Terraform プロバイダーは、API にリクエストを送信してリソースを操作 (作成/読み取り/更新/削除) し、その結果を tfstate に記録する。
+Terraform プロバイダーは、API にリクエストを送信してリソースを操作 (作成/読み取り/更新/削除) し、その状態を Terraform CLI に返す。tfstate の読み書きは Terraform CLI が担当する。
 
-`terraform plan` コマンドでは、プロバイダーが API からリソースを読み取って tfstate を更新し、Terraform が `.tf` ファイルと比較して差分を出力する。
+`terraform plan` コマンドでは、プロバイダーが API からリソースの最新状態を取得し、Terraform CLI が `.tf` ファイルと比較して差分を出力する。
 
 ```mermaid
 flowchart LR
+    Terraform(["Terraform CLI"])
     Provider(["Terraform プロバイダー"])
-    API[["API"]]
+    API(("API"))
     State[("tfstate")]
 
     Provider -->|"リソースの操作<br/>(作成/読み取り/更新/削除)"| API
-    Provider -->|"状態の記録"| State
+    Terraform -->|"操作の依頼"| Provider
+    Provider -->|"状態を返す"| Terraform
+    Terraform <-->|"状態の読み書き"| State
 ```
 
 #### ▼ Terraform CLI とプロバイダーの関係
@@ -59,7 +62,7 @@ flowchart LR
         Resource(["プロバイダーの実装<br/>(Create/Read/Update/Delete)"])
     end
 
-    API[["API"]]
+    API(("API"))
     State[("tfstate")]
 
     Terraform -->|"gRPC"| Framework
@@ -93,15 +96,17 @@ sequenceDiagram
 
 #### ▼ `terraform plan` コマンド
 
-`terraform plan` コマンドを実行すると、Terraform CLI はプロバイダーの Read で最新の状態を取得し、`.tf` ファイルと比較して実行計画を作成する。
+`terraform plan` コマンドを実行すると、Terraform CLI はプロバイダーの Read で最新の状態を取得し、`.tf` ファイルと比較して実行計画を作成する。通常の `plan` では、取得した最新状態を tfstate に永続化しない。
 
 ```mermaid
 sequenceDiagram
     participant Terraform as Terraform CLI
+    participant State@{ "type": "database" } as tfstate
     participant Provider as プロバイダー
-    participant API as API
+    participant API@{ "type": "boundary" } as API
 
-    Terraform ->> Terraform: tfstate を読み込む
+    Terraform ->> State: 保存済みの状態を要求する
+    State -->> Terraform: 保存済みの状態
     Terraform ->> Provider: ReadResource (gRPC)
     Provider ->> API: GET リクエスト
     API -->> Provider: レスポンス
@@ -117,15 +122,18 @@ sequenceDiagram
 ```mermaid
 sequenceDiagram
     participant Terraform as Terraform CLI
+    participant State@{ "type": "database" } as tfstate
     participant Provider as プロバイダー
-    participant API as API
+    participant API@{ "type": "boundary" } as API
 
+    Terraform ->> State: 保存済みの状態を要求する
+    State -->> Terraform: 保存済みの状態
     Terraform ->> Terraform: 実行計画を作成する
     Terraform ->> Provider: ApplyResourceChange (gRPC)
     Provider ->> API: POST/PUT/DELETE リクエスト
     API -->> Provider: レスポンス
     Provider -->> Terraform: 適用後の状態
-    Terraform ->> Terraform: tfstate に記録する
+    Terraform ->> State: 適用後の状態を保存する
 ```
 
 <br>
