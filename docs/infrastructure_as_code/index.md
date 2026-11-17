@@ -175,9 +175,9 @@ tags:
 
       ルートモジュールとチャイルドモジュール
 
-    - **[独自プロバイダー (プロバイダー)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_self.html)**
+    - **[内製プロバイダー (プロバイダー)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_self.html)**
 
-      Terraform Plugin Framework による独自プロバイダー
+      Terraform Plugin Framework による内製プロバイダー
 
     - **[AWS プロバイダー (プロバイダー)](https://hiroki-it.github.io/tech-notebook/infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.html)**
 

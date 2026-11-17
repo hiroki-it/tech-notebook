@@ -1,6 +1,6 @@
 ---
-title: 【IT技術の知見】独自プロバイダー
-description: 独自プロバイダーの知見を記録しています。
+title: 【IT技術の知見】内製プロバイダー
+description: 内製プロバイダーの知見を記録しています。
 tags:
   - "IaC"
   - "宣言型"
@@ -8,7 +8,7 @@ tags:
   - "プロバイダー"
 ---
 
-# 独自プロバイダー
+# 内製プロバイダー
 
 ## はじめに
 
@@ -16,9 +16,123 @@ tags:
 
 <br>
 
+## 内製プロバイダーの仕組み
+
+### アーキテクチャ
+
+#### ▼ 概要
+
+Terraform プロバイダーは、API にリクエストを送信してリソースを操作 (作成/読み取り/更新/削除) し、その結果を tfstate に記録する。
+
+`terraform plan` コマンドでは、プロバイダーが API からリソースを読み取って tfstate を更新し、Terraform が `.tf` ファイルと比較して差分を出力する。
+
+```mermaid
+flowchart LR
+    Provider(["Terraform プロバイダー"])
+    API[["API"]]
+    State[("tfstate")]
+
+    Provider -->|"リソースの操作<br/>(作成/読み取り/更新/削除)"| API
+    Provider -->|"状態の記録"| State
+```
+
+#### ▼ Terraform CLI とプロバイダーの関係
+
+Terraform CLI (`terraform` コマンドのバイナリ) は、プロバイダーを別のプロセスとして起動し、gRPC でリソースの操作を依頼する。
+
+プロバイダーは、`terraform-plugin-framework` パッケージで gRPC の通信を受け、Create/Read/Update/Delete の各メソッドを実行する。
+
+| 担当                                    | 役割                                                                 |
+| --------------------------------------- | -------------------------------------------------------------------- |
+| Terraform CLI                           | `.tf` ファイルの解釈、tfstate の読み書き、実行計画の作成、差分の出力 |
+| `terraform-plugin-framework` パッケージ | Terraform CLI との gRPC の通信、各メソッドの呼び出し                 |
+| プロバイダーの実装                      | API へのリクエスト、レスポンスからリソースの状態への変換             |
+
+```mermaid
+flowchart LR
+    subgraph TerraformProcess["Terraform CLI のプロセス"]
+        Terraform(["terraform コマンド"])
+    end
+
+    subgraph ProviderProcess["プロバイダーのプロセス"]
+        Framework(["terraform-plugin-framework"])
+        Resource(["プロバイダーの実装<br/>(Create/Read/Update/Delete)"])
+    end
+
+    API[["API"]]
+    State[("tfstate")]
+
+    Terraform -->|"gRPC"| Framework
+    Framework -->|"メソッドの呼び出し"| Resource
+    Resource -->|"リクエスト"| API
+    Terraform -->|"状態の読み書き"| State
+```
+
+> - [Terraform Plugin Protocol | Terraform | HashiCorp Developer](https://developer.hashicorp.com/terraform/plugin/terraform-plugin-protocol)
+> - [Terraform Plugin Framework | Terraform | HashiCorp Developer](https://developer.hashicorp.com/terraform/plugin/framework)
+
+<br>
+
+### 処理の流れ
+
+#### ▼ `terraform init` コマンド
+
+`terraform init` コマンドを実行すると、Terraform CLI はレジストリからプロバイダーのバイナリをダウンロードし、`.terraform.lock.hcl` ファイルにバージョンを記録する。
+
+```mermaid
+sequenceDiagram
+    participant Terraform as Terraform CLI
+    participant Registry as レジストリ
+
+    Terraform ->> Terraform: .tf ファイルからプロバイダーのバージョンを読み込む
+    Terraform ->> Registry: プロバイダーのバイナリを要求する
+    Registry -->> Terraform: プロバイダーのバイナリ
+    Terraform ->> Terraform: .terraform ディレクトリに保存する
+    Terraform ->> Terraform: .terraform.lock.hcl ファイルに記録する
+```
+
+#### ▼ `terraform plan` コマンド
+
+`terraform plan` コマンドを実行すると、Terraform CLI はプロバイダーの Read で最新の状態を取得し、`.tf` ファイルと比較して実行計画を作成する。
+
+```mermaid
+sequenceDiagram
+    participant Terraform as Terraform CLI
+    participant Provider as プロバイダー
+    participant API as API
+
+    Terraform ->> Terraform: tfstate を読み込む
+    Terraform ->> Provider: ReadResource (gRPC)
+    Provider ->> API: GET リクエスト
+    API -->> Provider: レスポンス
+    Provider -->> Terraform: 最新の状態
+    Terraform ->> Terraform: .tf ファイルと最新の状態を比較する
+    Terraform ->> Terraform: 実行計画を出力する
+```
+
+#### ▼ `terraform apply` コマンド
+
+`terraform apply` コマンドを実行すると、Terraform CLI は実行計画にもとづいてプロバイダーの Create/Update/Delete を呼び出し、適用後の状態を tfstate に記録する。
+
+```mermaid
+sequenceDiagram
+    participant Terraform as Terraform CLI
+    participant Provider as プロバイダー
+    participant API as API
+
+    Terraform ->> Terraform: 実行計画を作成する
+    Terraform ->> Provider: ApplyResourceChange (gRPC)
+    Provider ->> API: POST/PUT/DELETE リクエスト
+    API -->> Provider: レスポンス
+    Provider -->> Terraform: 適用後の状態
+    Terraform ->> Terraform: tfstate に記録する
+```
+
+<br>
+
 ## 最小限のプロバイダー実装
 
-Terraform Plugin Framework を使用すると、Go で独自プロバイダーを実装できる。
+Terraform Plugin Framework を使用すると、Go で内製プロバイダーを実装できる。
 
 ```go
 package provider
