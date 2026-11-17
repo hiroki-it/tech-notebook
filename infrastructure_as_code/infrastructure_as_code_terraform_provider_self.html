@@ -36088,7 +36088,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月17日 17:01:17 JST">2026-11-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月17日 17:28:24 JST">2026-11-17</span>
   </span>
 
     
@@ -36120,15 +36120,18 @@
 <h2 id="_3">内製プロバイダーの仕組み<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
 <h3 id="_4">アーキテクチャ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <h4 id="_5">▼ 概要<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
-<p>Terraform プロバイダーは、API にリクエストを送信してリソースを操作 (作成/読み取り/更新/削除) し、その結果を tfstate に記録する。</p>
-<p><code>terraform plan</code> コマンドでは、プロバイダーが API からリソースを読み取って tfstate を更新し、Terraform が <code>.tf</code> ファイルと比較して差分を出力する。</p>
+<p>Terraform プロバイダーは、API にリクエストを送信してリソースを操作 (作成/読み取り/更新/削除) し、その状態を Terraform CLI に返す。tfstate の読み書きは Terraform CLI が担当する。</p>
+<p><code>terraform plan</code> コマンドでは、プロバイダーが API からリソースの最新状態を取得し、Terraform CLI が <code>.tf</code> ファイルと比較して差分を出力する。</p>
 <pre class="mermaid"><code>flowchart LR
+    Terraform(["Terraform CLI"])
     Provider(["Terraform プロバイダー"])
-    API[["API"]]
+    API(("API"))
     State[("tfstate")]
 
     Provider --&gt;|"リソースの操作&lt;br/&gt;(作成/読み取り/更新/削除)"| API
-    Provider --&gt;|"状態の記録"| State</code></pre>
+    Terraform --&gt;|"操作の依頼"| Provider
+    Provider --&gt;|"状態を返す"| Terraform
+    Terraform &lt;--&gt;|"状態の読み書き"| State</code></pre>
 <h4 id="terraform-cli">▼ Terraform CLI とプロバイダーの関係<a class="headerlink" href="#terraform-cli" title="Permanent link">&para;</a></h4>
 <p>Terraform CLI (<code>terraform</code> コマンドのバイナリ) は、プロバイダーを別のプロセスとして起動し、gRPC でリソースの操作を依頼する。</p>
 <p>プロバイダーは、<code>terraform-plugin-framework</code> パッケージで gRPC の通信を受け、Create/Read/Update/Delete の各メソッドを実行する。</p>
@@ -36164,7 +36167,7 @@
         Resource(["プロバイダーの実装&lt;br/&gt;(Create/Read/Update/Delete)"])
     end
 
-    API[["API"]]
+    API(("API"))
     State[("tfstate")]
 
     Terraform --&gt;|"gRPC"| Framework
@@ -36191,13 +36194,15 @@
     Terraform -&gt;&gt; Terraform: .terraform ディレクトリに保存する
     Terraform -&gt;&gt; Terraform: .terraform.lock.hcl ファイルに記録する</code></pre>
 <h4 id="terraform-plan">▼ <code>terraform plan</code> コマンド<a class="headerlink" href="#terraform-plan" title="Permanent link">&para;</a></h4>
-<p><code>terraform plan</code> コマンドを実行すると、Terraform CLI はプロバイダーの Read で最新の状態を取得し、<code>.tf</code> ファイルと比較して実行計画を作成する。</p>
+<p><code>terraform plan</code> コマンドを実行すると、Terraform CLI はプロバイダーの Read で最新の状態を取得し、<code>.tf</code> ファイルと比較して実行計画を作成する。通常の <code>plan</code> では、取得した最新状態を tfstate に永続化しない。</p>
 <pre class="mermaid"><code>sequenceDiagram
     participant Terraform as Terraform CLI
+    participant State@{ "type": "database" } as tfstate
     participant Provider as プロバイダー
-    participant API as API
+    participant API@{ "type": "boundary" } as API
 
-    Terraform -&gt;&gt; Terraform: tfstate を読み込む
+    Terraform -&gt;&gt; State: 保存済みの状態を要求する
+    State --&gt;&gt; Terraform: 保存済みの状態
     Terraform -&gt;&gt; Provider: ReadResource (gRPC)
     Provider -&gt;&gt; API: GET リクエスト
     API --&gt;&gt; Provider: レスポンス
@@ -36208,15 +36213,18 @@
 <p><code>terraform apply</code> コマンドを実行すると、Terraform CLI は実行計画にもとづいてプロバイダーの Create/Update/Delete を呼び出し、適用後の状態を tfstate に記録する。</p>
 <pre class="mermaid"><code>sequenceDiagram
     participant Terraform as Terraform CLI
+    participant State@{ "type": "database" } as tfstate
     participant Provider as プロバイダー
-    participant API as API
+    participant API@{ "type": "boundary" } as API
 
+    Terraform -&gt;&gt; State: 保存済みの状態を要求する
+    State --&gt;&gt; Terraform: 保存済みの状態
     Terraform -&gt;&gt; Terraform: 実行計画を作成する
     Terraform -&gt;&gt; Provider: ApplyResourceChange (gRPC)
     Provider -&gt;&gt; API: POST/PUT/DELETE リクエスト
     API --&gt;&gt; Provider: レスポンス
     Provider --&gt;&gt; Terraform: 適用後の状態
-    Terraform -&gt;&gt; Terraform: tfstate に記録する</code></pre>
+    Terraform -&gt;&gt; State: 適用後の状態を保存する</code></pre>
 <p><br></p>
 <h2 id="_7">最小限のプロバイダー実装<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
 <p>Terraform Plugin Framework を使用すると、Go で内製プロバイダーを実装できる。</p>
