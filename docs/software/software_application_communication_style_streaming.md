@@ -28,12 +28,33 @@ tags:
 
 ### プル型
 
+```mermaid
+flowchart LR
+  source["送信元"]
+  relay["メッセージ中継システム"]
+  destination["宛先"]
+
+  source ==>|メッセージを送信| relay
+  destination -->|繰り返しポーリング| relay
+  relay -->|取得できたメッセージを返す| destination
+```
+
 - Apache Kafka
 - AWS Kinesis (プル型だけでなく、プッシュ型も選べる)
 
 <br>
 
 ### プッシュ型
+
+```mermaid
+flowchart LR
+  source["送信元"]
+  relay["メッセージ中継システム"]
+  destination["宛先"]
+
+  source ==>|メッセージを送信| relay
+  relay ==>|メッセージを順次配信| destination
+```
 
 - AWS Kinesis (プッシュ型だけでなく、プル型も選べる)
 

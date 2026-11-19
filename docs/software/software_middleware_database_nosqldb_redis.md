@@ -55,6 +55,21 @@ DB に送信したクエリをキーとしてクエリの実行結果を保管�
 
 ### リーダー選出 (分散ロック)
 
+複数のレプリカが同じ処理を同時に実行しないように、各レプリカは Redis で同じロックの取得を試みる。取得できたレプリカだけが処理を実行し、完了後にロックを解放する。
+
+```mermaid
+flowchart LR
+  replicaA(レプリカ A)
+  replicaB(レプリカ B)
+  redis[(Redis)]
+  target(処理対象)
+
+  replicaA -->|"ロック取得成功<br>（処理ごとのキー）"| redis
+  replicaB -->|"ロック取得失敗<br>（処理ごとのキー）"| redis
+  replicaA -->|処理| target
+  replicaA -->|ロックを解放| redis
+```
+
 #### ▼ Python
 
 ```python

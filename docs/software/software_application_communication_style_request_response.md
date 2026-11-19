@@ -18,7 +18,7 @@ tags:
 
 ### リクエスト／レスポンス方式とは
 
-リクエスト／レスポンス方式では、クライアントがリクエストを送り、サーバーがレスポンスを返す。同期と非同期の違いは、クライアントがレスポンスを待たずに後続の処理を進められるかどうかにある。
+リクエスト／レスポンス方式では、送信元がリクエストを送り、宛先がレスポンスを返す。同期と非同期の違いは、送信元がレスポンスを待たずに後続の処理を進められるかどうかにある。
 
 <br>
 
@@ -32,12 +32,12 @@ tags:
 
 ```mermaid
 sequenceDiagram
-  participant Client as クライアント
-  participant Server as サーバー
+  participant Source as 送信元
+  participant Destination as 宛先
 
-  Client->>Server: リクエスト
-  Server-->>Client: レスポンス
-  Client->>Client: 後続の処理を開始
+  Source->>Destination: リクエスト
+  Destination-->>Source: レスポンス
+  Source->>Source: 後続の処理を開始
 ```
 
 #### ▼ 非同期通信
@@ -52,13 +52,13 @@ sequenceDiagram
 
 ```mermaid
 sequenceDiagram
-  participant Client as クライアント
-  participant Server as サーバー
+  participant Source as 送信元
+  participant Destination as 宛先
 
-  Client->>Server: リクエスト
-  Client->>Client: レスポンスに依存しない処理を開始
-  Server-->>Client: レスポンス
-  Client->>Client: レスポンスを使う処理を開始
+  Source->>Destination: リクエスト
+  Source->>Source: レスポンスに依存しない処理を開始
+  Destination-->>Source: レスポンス
+  Source->>Source: レスポンスを使う処理を開始
 ```
 
 <br>
@@ -75,11 +75,11 @@ sequenceDiagram
 
 ```mermaid
 flowchart LR
-  client["クライアント"]
-  server["サーバー"]
+  source["送信元"]
+  destination["宛先"]
 
-  client -->|リクエスト| server
-  server -->|レスポンス| client
+  source -->|リクエスト| destination
+  destination -->|レスポンス| source
 ```
 
 > - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
@@ -90,15 +90,15 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  client["クライアント"]
+  source["送信元"]
   requestQueue@{ shape: h-cyl, label: "メッセージキュー" }
   responseQueue@{ shape: h-cyl, label: "レスポンス用キュー" }
-  server["サーバー"]
+  destination["宛先"]
 
-  client -->|リクエスト| requestQueue
-  requestQueue -->|リクエスト| server
-  server -->|レスポンス| responseQueue
-  responseQueue -->|レスポンス| client
+  source -->|リクエスト| requestQueue
+  requestQueue -->|リクエスト| destination
+  destination -->|レスポンス| responseQueue
+  responseQueue -->|レスポンス| source
 ```
 
 #### ▼ メッセージブローカーを経由する場合
@@ -113,14 +113,14 @@ flowchart LR
 
 ```mermaid
 flowchart LR
-  client["クライアント"]
+  source["送信元"]
   broker@{ shape: h-cyl, label: "メッセージブローカー" }
-  server["サーバー"]
+  destination["宛先"]
 
-  client -->|リクエスト| broker
-  broker -->|リクエスト| server
-  server -->|レスポンス| broker
-  broker -->|レスポンス| client
+  source -->|リクエスト| broker
+  broker -->|リクエスト| destination
+  destination -->|レスポンス| broker
+  broker -->|レスポンス| source
 ```
 
 > - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
@@ -131,33 +131,33 @@ flowchart LR
 
 #### ▼ 単方向
 
-クライアントからサーバーにリクエストを送信する。
+送信元から宛先にリクエストを送信する。
 
-サーバーからクライアントにリクエストを送信することはない。
+宛先はレスポンスを返すが、送信元にリクエストを送ることはない。
 
 ```mermaid
 flowchart LR
-  client["クライアント"]
-  server["サーバー"]
+  source["送信元"]
+  destination["宛先"]
 
-  client -->|リクエスト| server
-  server -. レスポンス .-> client
+  source -->|リクエスト| destination
+  destination -. レスポンス .-> source
 ```
 
 #### ▼ 双方向
 
-クライアントとサーバー間が双方向でリクエストを送信し合う。
+送信元と宛先の双方からリクエストを送信できる。
 
 - gRPC の双方向ストリーミング RPC
 - Websocket
 
 ```mermaid
 flowchart LR
-  client["クライアント"]
-  server["サーバー"]
+  source["送信元"]
+  destination["宛先"]
 
-  client -->|リクエスト| server
-  server -->|リクエスト| client
+  source -->|リクエスト| destination
+  destination -->|リクエスト| source
 ```
 
 > - [HTTP/2における双方向通信とgRPCとこれから #http2 - Qiita](https://qiita.com/namusyaka/items/71cf27fd3242adbf348c)

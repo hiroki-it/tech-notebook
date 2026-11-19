@@ -46,7 +46,7 @@ flowchart LR
   broker@{ shape: h-cyl, label: "メッセージ中継システム" }
   subscriber["サブスクライバー"]
 
-  publisher -->|メッセージをパブリッシュ| broker
+  publisher ==>|メッセージをパブリッシュ| broker
   subscriber -->|ポーリング| broker
   broker -->|メッセージを返す| subscriber
 ```
@@ -102,8 +102,8 @@ flowchart LR
   broker@{ shape: h-cyl, label: "メッセージ中継システム" }
   subscriber["サブスクライバー"]
 
-  publisher -->|メッセージをパブリッシュ| broker
-  broker -->|メッセージを送信| subscriber
+  publisher ==>|メッセージをパブリッシュ| broker
+  broker ==>|メッセージを送信| subscriber
 ```
 
 > - [非同期に使われるPub/SubモデルのPush方式とPull方式ってどう違うの？ #sqs - Qiita](https://qiita.com/riita10069/items/40b1bcc36c25b197077c)
