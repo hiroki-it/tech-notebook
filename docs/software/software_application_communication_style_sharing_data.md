@@ -20,15 +20,15 @@ tags:
 
 ### データベースを介した共有
 
-分析サービスが処理結果をデータベースに保存し、ほかの業務サービスがクエリで取得する。
+バッチサービスが処理結果をデータベースに保存し、ほかの業務サービスがクエリで取得する。
 
 ```mermaid
 flowchart LR
-  analysis["分析サービス"]
+  batch["バッチサービス"]
   database[(データベース)]
   business["業務サービス"]
 
-  analysis -->|処理結果を書き込む| database
+  batch -->|処理結果を書き込む| database
   business -->|クエリで処理結果を読み取る| database
 ```
 
