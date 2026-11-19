@@ -141,3 +141,21 @@ Saga オーケストレーターの宛先マイクロサービスの間にメッ
 > - https://supunbhagya.medium.com/request-driven-vs-event-driven-microservices-7b1fe40dccde
 
 <br>
+
+## 03. データ共有方式
+
+マイクロサービス同士でリクエストやメッセージを直接やり取りする代わりに、一方が共有先にデータを保存し、もう一方が必要なときに読み取る。
+
+たとえば、バッチサービスが処理結果を公開用のテーブルやファイルに保存し、業務サービスが読み取る。書き込む側と読み取る側で、データの形式を取り決めておく。
+
+```mermaid
+flowchart LR
+  batch["バッチサービス"]
+  shared[("データベースまたはファイルストレージ")]
+  business["業務サービス"]
+
+  batch -->|処理結果を保存| shared
+  business -->|処理結果を読み取る| shared
+```
+
+<br>
