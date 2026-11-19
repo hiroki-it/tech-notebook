@@ -16,6 +16,12 @@ tags:
 
 ## 01. リクエスト／レスポンス方式
 
+### リクエスト／レスポンス方式とは
+
+リクエスト／レスポンス方式では、クライアントがリクエストを送り、サーバーがレスポンスを返す。同期と非同期の違いは、クライアントがレスポンスを待たずに後続の処理を進められるかどうかにある。
+
+<br>
+
 ### 処理の種類
 
 #### ▼ 同期通信
@@ -23,6 +29,16 @@ tags:
 アプリ間で同期的に双方向で通信する。
 
 リクエスト処理の完了 (レスポンス) を待ってから、後続の処理が開始する。
+
+```mermaid
+sequenceDiagram
+  participant Client as クライアント
+  participant Server as サーバー
+
+  Client->>Server: リクエスト
+  Server-->>Client: レスポンス
+  Client->>Client: 後続の処理を開始
+```
 
 #### ▼ 非同期通信
 
@@ -33,6 +49,17 @@ tags:
 後続の全処理が非同期通信と無関係であれば、そのままで問題は起こらない。
 
 しかし、後続の処理に非同期通信の結果を使用するものが含まれている場合、この処理だけは非同期通信の後に実行されるように定義する必要がある。
+
+```mermaid
+sequenceDiagram
+  participant Client as クライアント
+  participant Server as サーバー
+
+  Client->>Server: リクエスト
+  Client->>Client: レスポンスに依存しない処理を開始
+  Server-->>Client: レスポンス
+  Client->>Client: レスポンスを使う処理を開始
+```
 
 <br>
 
@@ -46,11 +73,33 @@ tags:
 
 送信元アプリケーションは、宛先のアプリケーションの障害を受けてしまう。
 
+```mermaid
+flowchart LR
+  client["クライアント"]
+  server["サーバー"]
+
+  client -->|リクエスト| server
+  server -->|レスポンス| client
+```
+
 > - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
 
 #### ▼ メッセージキューを経由する場合
 
 メッセージキュー (例：Amazon SQS など) を経由して、アプリ間で通信する。
+
+```mermaid
+flowchart LR
+  client["クライアント"]
+  requestQueue@{ shape: h-cyl, label: "メッセージキュー" }
+  responseQueue@{ shape: h-cyl, label: "レスポンス用キュー" }
+  server["サーバー"]
+
+  client -->|リクエスト| requestQueue
+  requestQueue -->|リクエスト| server
+  server -->|レスポンス| responseQueue
+  responseQueue -->|レスポンス| client
+```
 
 #### ▼ メッセージブローカーを経由する場合
 
@@ -61,6 +110,18 @@ tags:
 宛先のアプリケーションは、リクエストを非同期的に (任意のタイミングで) 受信する。
 
 送信元アプリケーションは、宛先のアプリケーションの障害を受けない。
+
+```mermaid
+flowchart LR
+  client["クライアント"]
+  broker@{ shape: h-cyl, label: "メッセージブローカー" }
+  server["サーバー"]
+
+  client -->|リクエスト| broker
+  broker -->|リクエスト| server
+  server -->|レスポンス| broker
+  broker -->|レスポンス| client
+```
 
 > - [Microservice Integration Patterns: Point-to-Point vs Message Broker](https://www.linkedin.com/pulse/microservice-integration-patterns-point-to-point-vs-message-rhodes-7sfoc/)
 
@@ -74,12 +135,30 @@ tags:
 
 サーバーからクライアントにリクエストを送信することはない。
 
+```mermaid
+flowchart LR
+  client["クライアント"]
+  server["サーバー"]
+
+  client -->|リクエスト| server
+  server -. レスポンス .-> client
+```
+
 #### ▼ 双方向
 
 クライアントとサーバー間が双方向でリクエストを送信し合う。
 
 - gRPC の双方向ストリーミング RPC
 - Websocket
+
+```mermaid
+flowchart LR
+  client["クライアント"]
+  server["サーバー"]
+
+  client -->|リクエスト| server
+  server -->|リクエスト| client
+```
 
 > - [HTTP/2における双方向通信とgRPCとこれから #http2 - Qiita](https://qiita.com/namusyaka/items/71cf27fd3242adbf348c)
 

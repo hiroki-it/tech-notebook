@@ -40,6 +40,17 @@ tags:
 
 宛先で障害が起こっていても、障害の回復後にメッセージを処理すればよいため、耐障害性が高い。
 
+```mermaid
+flowchart LR
+  publisher["パブリッシャー"]
+  broker@{ shape: h-cyl, label: "メッセージ中継システム" }
+  subscriber["サブスクライバー"]
+
+  publisher -->|メッセージをパブリッシュ| broker
+  subscriber -->|ポーリング| broker
+  broker -->|メッセージを返す| subscriber
+```
+
 #### ▼ 例
 
 RabbitMQ のプル型では、RabbitMQ にポーリング (HTTP、AMQP など) を実行し、メッセージの取得を待機する（購読予約はない）。
@@ -85,6 +96,16 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 
 これに対処するため、メッセージ中継システムでリトライやデッドレターキューが必要になる。
 
+```mermaid
+flowchart LR
+  publisher["パブリッシャー"]
+  broker@{ shape: h-cyl, label: "メッセージ中継システム" }
+  subscriber["サブスクライバー"]
+
+  publisher -->|メッセージをパブリッシュ| broker
+  broker -->|メッセージを送信| subscriber
+```
+
 > - [非同期に使われるPub/SubモデルのPush方式とPull方式ってどう違うの？ #sqs - Qiita](https://qiita.com/riita10069/items/40b1bcc36c25b197077c)
 
 #### ▼ 例
@@ -127,6 +148,16 @@ Apache Kafka のプル型では、サブスクライブによる購読予約を 
 ### プロデュース/コンシュームパターンとは
 
 送信元から単一の宛先に非同期的に単方向で通信する。
+
+```mermaid
+flowchart LR
+  producer["プロデューサー"]
+  queue@{ shape: h-cyl, label: "メッセージキュー" }
+  consumer["コンシューマー"]
+
+  producer -->|メッセージを送信| queue
+  queue -->|メッセージ| consumer
+```
 
 > - https://fourtheorem.com/what-can-you-do-with-eventbridge/
 
