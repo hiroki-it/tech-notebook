@@ -182,7 +182,20 @@ pre.mermaid,
 }
 
 /* 白いボックス内でもラベルを読めるようにする */
-:is(.mermaid, pre:has(svg)) svg :is(.nodeLabel, .nodeLabel *, .cluster-label, .cluster-label *, .node text) {
+:is(.mermaid, pre:has(svg)) svg :is(.nodeLabel, .nodeLabel *, .cluster-label, .cluster-label *, .node text, .edgeLabel, .edgeLabel *, .messageText, .messageText *) {
   color: #313131 !important;
   fill: #313131 !important;
+}
+
+:is(.mermaid, pre:has(svg)) svg :is(.flowchart-link, .messageLine0, .messageLine1, marker :is(path, polygon, polyline, circle)) {
+  stroke: #313131 !important;
+}
+
+:is(.mermaid, pre:has(svg)) svg marker :is(path, polygon, circle):not([fill="none"]) {
+  fill: #313131 !important;
+}
+
+:is(.mermaid, pre:has(svg)) svg :is(.edgeLabel, .edgeLabel p, .labelBkg, .edgeLabel rect) {
+  background-color: #fff !important;
+  fill: #fff !important;
 }
