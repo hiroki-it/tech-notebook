@@ -636,10 +636,10 @@ CSV ファイルダウンロード機能では、データを CSV ファイル�
       <td>エラーの種類がわかるステータスコードを割り当てる。</td>
     </tr>
     <tr>
-      <td>エラーコード (例外コード)</td>
+      <td>エラーコード</td>
       <td>任意</td>
       <td>string 型</td>
-      <td>API ドキュメントのエラーの識別子として、エラコード (例外コード) を割り当てる。</td>
+      <td>API ドキュメントのエラーの識別子として、エラーコードを割り当てる。</td>
     </tr>
     <tr>
       <td>API ドキュメントの URL</td>
@@ -659,5 +659,36 @@ CSV ファイルダウンロード機能では、データを CSV ファイル�
 ```
 
 > - [WebAPIでエラーをどう表現すべき？15のサービスを調査してみた #JSON - Qiita](https://qiita.com/suin/items/f7ac4de914e9f3f35884#%E3%82%A8%E3%83%A9%E3%83%BC%E3%83%AC%E3%82%B9%E3%83%9D%E3%83%B3%E3%82%B9%E3%81%A7%E8%80%83%E6%85%AE%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8)
+
+#### ▼ ステータスコードとエラーコードによる判定
+
+クライアントは、HTTP ステータスコードでエラーを大まかに分類し、エラーコードで API 固有の原因を判定する。
+例えば、`404` だけではリソースの不存在とルーティングミスを区別できない。API がリソースの不存在を `404` と `NOT_FOUND` で返す仕様なら、クライアントは両方を確認して処理を分ける。
+
+```typescript
+async function getFoo(fooId: string) {
+  const response = await fetch(`/api/foos/${encodeURIComponent(fooId)}`);
+
+  if (response.ok) {
+    return response.json();
+  }
+
+  // プロキシなどが返すエラー応答は、JSON とは限らない。
+  const body: { code?: string } | null = await response.json().catch(() => null);
+
+  // 404 だけでは、リソースの不存在とルーティングミスを区別できない。
+  if (response.status === 404 && body?.code === "NOT_FOUND") {
+    handleFooNotFound();
+    return;
+  }
+
+  // エラーコードがない場合や未知の場合は、ステータスコードだけで扱う。
+  handleHTTPError(response.status);
+}
+```
+
+> - [RFC 9457: Problem Details for HTTP APIs](https://www.rfc-editor.org/rfc/rfc9457.html)
+> - [AIP-193: Errors](https://google.aip.dev/193)
+> - [Error codes | Stripe Documentation](https://docs.stripe.com/error-codes)
 
 <br>
