@@ -786,7 +786,10 @@ nav:
                   - ブロック: infrastructure_as_code/infrastructure_as_code_terraform_tf_block.md
                   - モジュール: infrastructure_as_code/infrastructure_as_code_terraform_tf_module.md
               - ■ プロバイダー:
-                  - 内製プロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_self.md
+                  - ■ 内製プロバイダー:
+                      - 内製プロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_self.md
+                      - terraform plan: infrastructure_as_code/infrastructure_as_code_terraform_provider_self_plan.md
+                      - terraform apply: infrastructure_as_code/infrastructure_as_code_terraform_provider_self_apply.md
                   - AWSプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_aws.md
                   - Kubernetesプロバイダー: infrastructure_as_code/infrastructure_as_code_terraform_provider_kubernetes.md
               - CI/CDパイプライン: infrastructure_as_code/infrastructure_as_code_terraform_ci_cd_pipeline.md

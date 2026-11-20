@@ -25,6 +25,9 @@ tags:
 Terraform プロバイダーは、API にリクエストを送信してリソースを操作 (作成/読み取り/更新/削除) し、その状態を Terraform CLI に返す。tfstate の読み書きは Terraform CLI が担当する。
 
 `terraform plan` コマンドでは、プロバイダーが API からリソースの最新状態を取得し、Terraform CLI が `.tf` ファイルと比較して差分を出力する。
+リソースが Terraform の外で削除された場合の実装例は、[`terraform plan`](infrastructure_as_code_terraform_provider_self_plan.md) を参照する。
+
+削除処理で対象がすでに存在しない場合は、[`terraform apply`](infrastructure_as_code_terraform_provider_self_apply.md) を参照する。
 
 ```mermaid
 flowchart LR
@@ -196,6 +199,8 @@ func New() provider.Provider {
 }
 ```
 
+<br>
+
 ## 最小限のResource
 
 Resource は、Terraform で作成、読み取り、更新、削除する対象を表す。
@@ -278,6 +283,8 @@ func (r *fooResource) Delete(
 }
 ```
 
+<br>
+
 ## 最小限のData Source
 
 Data Source は、既存の情報を読み取って State に保存する。
@@ -337,6 +344,8 @@ func (d *barDataSource) Read(
 	})...)
 }
 ```
+
+<br>
 
 ## 受け入れテスト
 
