@@ -566,7 +566,7 @@ JSON の場合、階層構造にすると、データサイズが増えてしま
 {
   "name": "Taro Yamada",
   "age": 10,
-  "interest": {"sports": ["soccer", "baseball"], "subjects": "math"},
+  "interest": {"sports": ["soccer", "baseball"], "subjects": "math"}
 }
 ```
 
@@ -581,7 +581,7 @@ JSON の場合、階層構造にすると、データサイズが増えてしま
   "name": "Taro Yamada",
   "age": 10,
   "sports": ["soccer", "baseball"],
-  "subjects": "math",
+  "subjects": "math"
 }
 ```
 
@@ -654,7 +654,7 @@ CSV ファイルダウンロード機能では、データを CSV ファイル�
 {
   "code": 400,
   "errors": ["〇〇は必ず入力してください。", "□□は必ず入力してください。"],
-  "url": "https://foo-api-doc.co.jp",
+  "url": "https://foo-api-doc.co.jp"
 }
 ```
 
@@ -674,7 +674,7 @@ async function getFoo(fooId: string) {
   }
 
   // プロキシなどが返すエラー応答は、JSON とは限らない。
-  const body: { code?: string } | null = await response.json().catch(() => null);
+  const body: {code?: string} | null = await response.json().catch(() => null);
 
   // 404 だけでは、リソースの不存在とルーティングミスを区別できない。
   if (response.status === 404 && body?.code === "NOT_FOUND") {

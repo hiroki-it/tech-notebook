@@ -76,15 +76,14 @@ const foo = {
 ```javascript
 // リテラル表記
 const foo = {
-
- // ...
+  // ...
 
   alertValue(value) {
-      alert(value);
+    alert(value);
   },
 
   // ...
-}
+};
 ```
 
 <br>
@@ -164,7 +163,6 @@ const Foo = function (value) {
     return this._property;
   };
 };
-
 ```
 
 ```javascript
@@ -222,7 +220,6 @@ ES6 から、糖衣構文の `class` によって、オブジェクトを宣言�
 ```typescript
 // named exportによる出力
 export class Foo {
-
   private property;
 
   // classでしか使用できない。
@@ -254,7 +251,6 @@ foo.getValue();
 ```typescript
 // named exportによる出力
 export const Foo = class {
-
   private _property;
 
   // classでしか使用できない。

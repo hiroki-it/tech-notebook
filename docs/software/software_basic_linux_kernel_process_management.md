@@ -401,7 +401,7 @@ CPU のプロセスへの割り当ては、『20 秒』ごとに起こるとす�
 
 4. `40` 秒時点で、プロセス C は実行状態から待ち行列へ追加される。同時に、待ち行列の先頭にいるプロセス A へ CPU を割り当てる。
 
-    ![scheduling_priority_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/scheduling_priority_2.png)
+   ![scheduling_priority_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/scheduling_priority_2.png)
 
 <br>
 

@@ -69,4 +69,3 @@ let marker = if organization.current { '*' } else { ' ' };
 ```
 
 <br>
-

@@ -119,4 +119,3 @@ console.log(original.fullname.firstname); // "foo" となり、コピー前の�
 ```
 
 <br>
-

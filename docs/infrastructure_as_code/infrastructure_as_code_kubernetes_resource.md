@@ -600,11 +600,11 @@ Pod の終了プロセスが始まると、以下の一連のプロセスも開�
 
 7. 待機処理が終了したため、kubelet は、コンテナランタイムを経由して、Pod 内のコンテナに `SIGTERM` シグナルを送信する。
 
-    これにより、コンテナの停止処理が開始する。
+   これにより、コンテナの停止処理が開始する。
 
 8. `.spec.terminationGracePeriodSeconds` キーによる Pod の終了プロセス完了の待機時間が終了する。
 
-    この段階でもコンテナが停止していない場合は、コンテナに`SIGKILL`シグナルが送信され、コンテナを強制的に終了することになる。
+   この段階でもコンテナが停止していない場合は、コンテナに`SIGKILL`シグナルが送信され、コンテナを強制的に終了することになる。
 
 9. Pod が削除される。この段階で Deployment や、Service と kube-proxy の処理が完了していない場合は、接続を途中で強制的に切断することになる。
 
@@ -648,15 +648,13 @@ Pod の終了プロセスが始まると、以下の一連のプロセスも開�
 
 4. kubelet はリクエストを受信し、Node の `/var/log` ディレクトリの `log` ファイルを読み込む。
 
-    コンテナランタイムは、コンテナの標準出力または標準エラー出力に出力したログを`/var/log/container`ディレクトリ配下に保管する。
+   コンテナランタイムは、コンテナの標準出力または標準エラー出力に出力したログを`/var/log/container`ディレクトリ配下に保管する。
 
-    `/var/log/container`ディレクトリのログは、Pod全体のログを`/var/log/pods/<Namespace名>_<Pod名>_<UID>/<コンテナ名>/<数字>.log`ファイルのシンボリックになっている。
+   `/var/log/container`ディレクトリのログは、Pod全体のログを`/var/log/pods/<Namespace名>_<Pod名>_<UID>/<コンテナ名>/<数字>.log`ファイルのシンボリックになっている。
 
+   なお、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
 
-
-    なお、削除されたPodのログは、引き続き`/var/log/pods`ディレクトリ配下に保管されている。
-
-    ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_pod_logging.png)
+   ![kubernetes_pod_logging](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_pod_logging.png)
 
 > - https://www.creationline.com/lab/29281
 > - [Logging Architecture \| Kubernetes](https://kubernetes.io/docs/concepts/cluster-administration/logging/#log-location-node)
@@ -1234,84 +1232,84 @@ Service が Pod と紐づいたり、切り離したりした後、kube-procy �
 
 1. ここでは、ClusterIP Service を例に挙げる。
 
-    `10.0.0.10`というIPアドレスを持つClusterIP Serviceがいるとする。
+   `10.0.0.10`というIPアドレスを持つClusterIP Serviceがいるとする。
 
-    ```bash
-    $ kubectl get svc kube-dns -n kube-system
-    
-    NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
-    kube-dns   ClusterIP   10.0.0.10    <none>        53/UDP,53/TCP   12d
-    ```
+   ```bash
+   $ kubectl get svc kube-dns -n kube-system
+
+   NAME       TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)         AGE
+   kube-dns   ClusterIP   10.0.0.10    <none>        53/UDP,53/TCP   12d
+   ```
 
 2. kube-proxy で iptables を確認すると、受信したリクエストをパケットとして処理していく流れを確認できる。
 
-    `KUBE-SERVICES`ターゲット配下には`KUBE-SVC`ターゲットがいる。
+   `KUBE-SERVICES`ターゲット配下には`KUBE-SVC`ターゲットがいる。
 
-    `KUBE-SVC`ターゲットは、ClusterIP Serviceである。
+   `KUBE-SVC`ターゲットは、ClusterIP Serviceである。
 
-    ```bash
-    $ kubectl exec -it kube-proxy-wf7qw -n kube-system -- iptables -nL -t nat --line-numbers
-    
-    Chain KUBE-SERVICES (2 references)
-    num  target                     prot opt source               destination
-    
-    ...
-    
-    5    KUBE-MARK-MASQ             udp  --  !172.16.10.0/24      10.0.0.10            /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
-    # Serviceにルーティングするための設定
-    6    KUBE-SVC-TCOU7JCQXEZGVUNU  udp  --  0.0.0.0/0            10.0.0.10            /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
-    
-    ...
-    
-    ```
+   ```bash
+   $ kubectl exec -it kube-proxy-wf7qw -n kube-system -- iptables -nL -t nat --line-numbers
 
-2. `KUBE-SVC` ターゲット配下には `KUBE-SEP` ターゲットがいる。
+   Chain KUBE-SERVICES (2 references)
+   num  target                     prot opt source               destination
 
-    `statistic mode random probability`に応じて、パケットを`KUBE-SEP`のターゲットいずれかに振り分ける。
+   ...
 
-    ```bash
-    # KUBE-SVC
-    Chain KUBE-SVC-TCOU7JCQXEZGVUNU (1 references)
+   5    KUBE-MARK-MASQ             udp  --  !172.16.10.0/24      10.0.0.10            /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
+   # Serviceにルーティングするための設定
+   6    KUBE-SVC-TCOU7JCQXEZGVUNU  udp  --  0.0.0.0/0            10.0.0.10            /* kube-system/kube-dns:dns cluster IP */ udp dpt:53
 
-    num  target                     prot opt source               destination
-    1    KUBE-SEP-K7EZDDI5TWNJA7RX  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ statistic mode random probability 0.50000000000
-    2    KUBE-SEP-JTVLMQFBDVPXUWUS  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */
-    ```
+   ...
 
-3. `KUBE-SEP` のターゲットに応じて、異なる `DNAT` ターゲットを持つ。
+   ```
 
-    `DNAT`ターゲットは、Podである。
+3. `KUBE-SVC` ターゲット配下には `KUBE-SEP` ターゲットがいる。
 
-    kube-proxyはDNAT処理を実行し、パケットの宛先IPアドレス (ServiceのIPアドレス) をPodのIPアドレスに変換する。
+   `statistic mode random probability`に応じて、パケットを`KUBE-SEP`のターゲットいずれかに振り分ける。
 
-    ここでは、パケットの宛先IPアドレスを`172.16.10.9`と`172.16.10.42`に変換する。
+   ```bash
+   # KUBE-SVC
+   Chain KUBE-SVC-TCOU7JCQXEZGVUNU (1 references)
 
-    ```bash
-    Chain KUBE-SEP-K7EZDDI5TWNJA7RX (1 references)
+   num  target                     prot opt source               destination
+   1    KUBE-SEP-K7EZDDI5TWNJA7RX  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */ statistic mode random probability 0.50000000000
+   2    KUBE-SEP-JTVLMQFBDVPXUWUS  all  --  0.0.0.0/0            0.0.0.0/0            /* kube-system/kube-dns:dns */
+   ```
 
-    num  target          prot  opt  source           destination
-    1    KUBE-MARK-MASQ  all   --   172.16.10.42     0.0.0.0/0            /* kube-system/kube-dns:dns */
-    2    DNAT            udp   --   0.0.0.0/0        0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.42:53
+4. `KUBE-SEP` のターゲットに応じて、異なる `DNAT` ターゲットを持つ。
 
-    Chain KUBE-SEP-JTVLMQFBDVPXUWUS (1 references)
-    num  target          prot  opt  source           destination
-    1    KUBE-MARK-MASQ  all   --   172.16.10.9      0.0.0.0/0            /* kube-system/kube-dns:dns */
-    2    DNAT            udp   --    0.0.0.0/0       0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.9:53
-    ```
+   `DNAT`ターゲットは、Podである。
 
-4. 宛先の Pod の IP アドレスを確認すると、DNAT 処理の変換後の IP アドレスと一致している。
+   kube-proxyはDNAT処理を実行し、パケットの宛先IPアドレス (ServiceのIPアドレス) をPodのIPアドレスに変換する。
 
-    ```bash
-    $ kubectl get po -n kube-system -o wide -l k8s-app=kube-dns
+   ここでは、パケットの宛先IPアドレスを`172.16.10.9`と`172.16.10.42`に変換する。
 
-    NAME                     READY   STATUS    RESTARTS   AGE    IP             NODE                                NOMINATED NODE   READINESS GATES
-    coredns-69c47794-6xnlq   1/1     Running   0          18h    172.16.10.9    aks-nodepool1-19344272-vmss000000   <none>           <none>
-    coredns-69c47794-cgn9k   1/1     Running   0          7d9h   172.16.10.42   aks-nodepool1-19344272-vmss000001   <none>           <none>
-    ```
+   ```bash
+   Chain KUBE-SEP-K7EZDDI5TWNJA7RX (1 references)
 
-    > - [Kubernetes の Service (Cluster IP) がどう実装されてるか](https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented)
-    > - [kube-proxy入門 - Speaker Deck](https://speakerdeck.com/bells17/kube-proxyru-men?slide=36)
-    > - [KubernetesのPodを安全に終了する - Carpe Diem](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
+   num  target          prot  opt  source           destination
+   1    KUBE-MARK-MASQ  all   --   172.16.10.42     0.0.0.0/0            /* kube-system/kube-dns:dns */
+   2    DNAT            udp   --   0.0.0.0/0        0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.42:53
+
+   Chain KUBE-SEP-JTVLMQFBDVPXUWUS (1 references)
+   num  target          prot  opt  source           destination
+   1    KUBE-MARK-MASQ  all   --   172.16.10.9      0.0.0.0/0            /* kube-system/kube-dns:dns */
+   2    DNAT            udp   --    0.0.0.0/0       0.0.0.0/0            /* kube-system/kube-dns:dns */ udp to:172.16.10.9:53
+   ```
+
+5. 宛先の Pod の IP アドレスを確認すると、DNAT 処理の変換後の IP アドレスと一致している。
+
+   ```bash
+   $ kubectl get po -n kube-system -o wide -l k8s-app=kube-dns
+
+   NAME                     READY   STATUS    RESTARTS   AGE    IP             NODE                                NOMINATED NODE   READINESS GATES
+   coredns-69c47794-6xnlq   1/1     Running   0          18h    172.16.10.9    aks-nodepool1-19344272-vmss000000   <none>           <none>
+   coredns-69c47794-cgn9k   1/1     Running   0          7d9h   172.16.10.42   aks-nodepool1-19344272-vmss000001   <none>           <none>
+   ```
+
+   > - [Kubernetes の Service (Cluster IP) がどう実装されてるか](https://zenn.dev/microsoft/articles/how-cluster-ip-service-is-implemented)
+   > - [kube-proxy入門 - Speaker Deck](https://speakerdeck.com/bells17/kube-proxyru-men?slide=36)
+   > - [KubernetesのPodを安全に終了する - Carpe Diem](https://christina04.hatenablog.com/entry/kubernetes-pod-graceful-shutdown)
 
 <br>
 
@@ -1582,36 +1580,36 @@ $ kubectl exec -n prometheus foo-pod -- df -hT
 
 1. Prometheus の Pod に紐づく PersistentVolume は、最大 200Gi を要求していることがわかる。
 
-    ```bash
-    $ kubectl get pvc foo-prometheus-pvc -n prometheus
-    NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS    AGE
-    foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp3-encrypted   181d
-    ```
+   ```bash
+   $ kubectl get pvc foo-prometheus-pvc -n prometheus
+   NAME                 STATUS   VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS    AGE
+   foo-prometheus-pvc   Bound    pvc-*****   200Gi      RWO            gp3-encrypted   181d
+   ```
 
 2. Node 内 (Amazon EKS の EC2 ワーカーNode の場合) で、Pod に紐づく PersistentVolume がマウントされているディレクトリを確認する。
 
-    ```bash
-    $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/<リージョン>/vol-*****/prometheus-db/
-    
-    -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:07 00004931
-    -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:09 00004932
-    -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:12 00004933
-    
-    ...
-    
-    drwxrwsr-x  2 ec2-user 2000      4096 Jun 20 18:00 checkpoint.00002873.tmp
-    drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
-    drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
-    ```
+   ```bash
+   $ ls -la /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/<リージョン>/vol-*****/prometheus-db/
+
+   -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:07 00004931
+   -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:09 00004932
+   -rw-r--r--  1 ec2-user 2000         0 Jun 24 17:12 00004933
+
+   ...
+
+   drwxrwsr-x  2 ec2-user 2000      4096 Jun 20 18:00 checkpoint.00002873.tmp
+   drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 02:00 checkpoint.00002898
+   drwxrwsr-x  2 ec2-user 2000      4096 Jun 21 04:00 checkpoint.00002911.tmp
+   ```
 
 3. `df` コマンドでストレージの使用率を確認する。Node にマウントされているデータサイズを確認すると、197G となっている。PersistentVolume に対してデータサイズが大きすぎる。
 
-    ```bash
-    $ df -h /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
-    
-    Filesystem      Size  Used Avail Use% Mounted on
-    /dev/nvme8n1    197G  197G     0 100% /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****
-    ```
+   ```bash
+   $ df -h /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****/prometheus-db/
+
+   Filesystem      Size  Used Avail Use% Mounted on
+   /dev/nvme8n1    197G  197G     0 100% /var/lib/kubelet/plugins/kubernetes.io/aws-ebs/mounts/aws/ap-northeast-1a/vol-*****
+   ```
 
 #### ▼ HostPath (本番環境で非推奨)
 
@@ -1863,35 +1861,35 @@ AWS のスポットインスタンスで特定の AZ にしか Node が作成さ
 
 1. 起動できない Pod をいずれの Node でスケジューリングさせようとしているのか確認する。
 
-    ```bash
-    $ kubectl describe pod <Pod名> -o wide | grep Node:
-    ```
+   ```bash
+   $ kubectl describe pod <Pod名> -o wide | grep Node:
+   ```
 
 2. Node のあるゾーンを確認する。
 
-    ```bash
-    $ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
-    ```
+   ```bash
+   $ kubectl describe node <PodのあるNode名> | grep topology.kubernetes.io
+   ```
 
 3. PersistentVolumeClaim の `volume.kubernetes.io/selected-node` キーで、Pod がいずれの Node の PersistentVolume を指定しているかを確認する。
 
-    このNode名をメモしておく。
+   このNode名をメモしておく。
 
-    ```bash
-    $ kubectl describe pvc <PVC名> -n prometheus | grep selected-node
-    ```
+   ```bash
+   $ kubectl describe pvc <PVC名> -n prometheus | grep selected-node
+   ```
 
 4. Node のあるゾーンを確認する。
 
-    ```bash
-    $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
-    ```
+   ```bash
+   $ kubectl describe node ip-*-*-*-*.ap-northeast-1.compute.internal | grep zone
+   ```
 
 5. (1)と(4)の手順で確認した Node のゾーンが異なるゾーンであることを確認する。
 
 6. PersistentVolumeClaim を削除する。
 
-    この時PersistentVolumeは削除されないため、保管データは削除されない。
+   この時PersistentVolumeは削除されないため、保管データは削除されない。
 
 7. StatefulSet 自体を再作成する。
 

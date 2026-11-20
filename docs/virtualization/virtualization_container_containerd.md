@@ -108,9 +108,9 @@ Docker は、`json` 形式をログを作成する。
 
 ```json
 {
-　"log":"2021/12/17 08:03:23 [INFO] start worker processes",
-　"stream":"stdout",
-　"time":"2021-12-16T23:32:06.226055453Z"
+  "log": "2021/12/17 08:03:23 [INFO] start worker processes",
+  "stream": "stdout",
+  "time": "2021-12-16T23:32:06.226055453Z"
 }
 ```
 

@@ -506,7 +506,7 @@ Keycloak は、このセッション ID でログアウトすべきクライア�
   // アプリケーション間で共有しているクライアントのセッション ID
   "adapterSessionIds": ["FC60BED115518DFB043EDDB77F0E0A8E"],
   "notBefore": 0,
-  "keycloakSessionIds": ["ac04ef9d-7793-481c-a5c7-5750560e3c14"],
+  "keycloakSessionIds": ["ac04ef9d-7793-481c-a5c7-5750560e3c14"]
 }
 ```
 

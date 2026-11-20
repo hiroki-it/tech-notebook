@@ -46,7 +46,7 @@ JSON 型で表すが、拡張子が `json` であるというわけでないこ�
   "timestamp": "2021-01-01 12:00:00",
   "method": "GET",
   "url": "/foo/1",
-  "status_code": 200,
+  "status_code": 200
 }
 ```
 

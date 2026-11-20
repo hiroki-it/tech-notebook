@@ -889,4 +889,3 @@ func FooMiddleware() func(http.Handler) http.Handler {
 ```
 
 <br>
-

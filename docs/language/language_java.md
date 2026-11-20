@@ -36,15 +36,15 @@ Java では、コードの実行前と実行中の二段階で機械語を翻訳
 
 3. アプリケーションの実行中に、JVM 内のクラスローダーはクラスファイルを JVM 内に取得する。
 
-    クラスローダーの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
+   クラスローダーの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
 
-    ![java_class-loader](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/java_class-loader.png)
+   ![java_class-loader](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/java_class-loader.png)
 
 4. アプリケーションの実行中に、JVM 内の JIT コンパイラは実行中関数のみを機械語に翻訳する。
 
-    また、繰り返し実行される関数の翻訳を最適化する (例：不要な処理を省く) 。
+   また、繰り返し実行される関数の翻訳を最適化する (例：不要な処理を省く) 。
 
-    JITコンパイラの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
+   JITコンパイラの処理はCPUを大量に消費するため、ユーザーへの公開前にウォームアップを実施すると良い。
 
 5. 結果的に、OS (制御プログラム？) へ依存せず、命令できる (C 言語) 。
 
@@ -123,4 +123,3 @@ JVM は以下でメモリを消費するため、これらすべてを合計し�
 > - [KubernetesでJVMアプリを動かすための実践的ノウハウ集 / JVM on Kubernetes - Speaker Deck](https://speakerdeck.com/hhiroshell/jvm-on-kubernetes?slide=27)
 
 <br>
-

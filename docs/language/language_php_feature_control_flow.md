@@ -252,7 +252,7 @@ class Example
 
 3. 決定表を、流れ図で表す。
 
-    ![decision-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/decision-table.png)
+   ![decision-table](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/decision-table.png)
 
 #### ▼ if-elseif-else は使用しない
 

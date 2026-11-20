@@ -193,8 +193,8 @@ FROM data/agent:latest
 [
   {
     "name": "datadog",
-    "image": "<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****",
-  },
+    "image": "<AWSアカウントID>.dkr.ecr.ap-northeast-1.amazonaws.com/private-foo-datadog-repository:*****"
+  }
 ]
 ```
 
@@ -274,19 +274,17 @@ datadog コンテナがコンテナからメトリクスの元になるデータ
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Action":
-          [
-            "ecs:ListClusters",
-            "ecs:ListContainerInstances",
-            "ecs:DescribeContainerInstances",
-          ],
-        "Effect": "Allow",
-        "Resource": "*",
-      },
-    ],
+  "Statement": [
+    {
+      "Action": [
+        "ecs:ListClusters",
+        "ecs:ListContainerInstances",
+        "ecs:DescribeContainerInstances"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
 }
 ```
 

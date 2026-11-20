@@ -86,7 +86,7 @@ greet();
 ```typescript
 // トランスパイルされてJavaScriptになる
 // undefinedは型不一致であるが、コンパイルの型検証がないため、エラーにならない
-Hello, undefined!
+(Hello, undefined!);
 ```
 
 <br>

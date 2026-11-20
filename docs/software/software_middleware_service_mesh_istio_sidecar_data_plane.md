@@ -75,70 +75,70 @@ $ pilot-agent istio-iptables \
 
 1. `ps` コマンドを使用して、istio-proxy の `envoy` プロセスの ID (PID) を取得する。
 
-    ```bash
-    # PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。
-    $ ps aux | grep envoy | awk '{print $2}'
-    
-    1234567
-    2345678
-    3456789
-    ```
+   ```bash
+   # PIDが出力結果の2行目である。そのため、awkコマンドを使用して、2行目のみを取得している。
+   $ ps aux | grep envoy | awk '{print $2}'
+
+   1234567
+   2345678
+   3456789
+   ```
 
 2. `nsenter` コマンドを使用して、コンテナの稼働するユーザー空間を介し、コンテナに `iptables` コマンドを送信する。Istio によって管理されている Chain のルールを取得できる。
 
-    ```bash
-    $ nsenter -t <istio-proxyコンテナのPID> -n iptables -L -n -t nat --line-number
-    
-    
-    Chain PREROUTING (policy ACCEPT)
-    ...
-    
-    
-    Chain INPUT (policy ACCEPT)
-    ...
-    
-    
-    Chain OUTPUT (policy ACCEPT)
-    ...
-    
-    
-    Chain POSTROUTING (policy ACCEPT)
-    ...
-    
-    
-    # istio-proxyコンテナへのインバウンド通信時、NAPT処理を実行する。
-    Chain ISTIO_INBOUND (1 references)
-    num  target             prot  opt  source     destination
-    1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
-    2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # データポイント収集ツールからのリクエストを待ち受ける。
-    3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからのReadinessProbeヘルスチェックを待ち受ける。
-    4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020 # マイクロサービスへのヘルスチェックや統合メトリクスへのリクエストを待ち受ける。
-    5    ISTIO_IN_REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0
-    
-    
-    Chain ISTIO_IN_REDIRECT (3 references)
-    num  target    prot  opt  source     destination
-    1    REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15006 #
-    
-    
-    # istio-proxyコンテナからのアウトバウンド通信時、NAPT処理を実行する。
-    Chain ISTIO_OUTPUT (1 references)
-    num  target             prot  opt  source     destination
-    1    RETURN             all   --   127.0.0.6  0.0.0.0/0
-    2    ISTIO_IN_REDIRECT  all   --   0.0.0.0/0  !127.0.0.1   owner UID match 1337
-    3    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    ! owner UID match 1337
-    4    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    owner UID match 1337
-    5    ISTIO_IN_REDIRECT  all   --   0.0.0.0/0  !127.0.0.1   owner GID match 1337
-    6    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    ! owner GID match 1337
-    7    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    owner GID match 1337
-    8    RETURN             all   --   0.0.0.0/0  127.0.0.1
-    9    ISTIO_REDIRECT     all   --   0.0.0.0/0  0.0.0.0/0
-    
-    
-    Chain ISTIO_REDIRECT (1 references)
-    num  target     prot  opt  source     destination
-    1    REDIRECT   tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15001
-    ```
+   ```bash
+   $ nsenter -t <istio-proxyコンテナのPID> -n iptables -L -n -t nat --line-number
+
+
+   Chain PREROUTING (policy ACCEPT)
+   ...
+
+
+   Chain INPUT (policy ACCEPT)
+   ...
+
+
+   Chain OUTPUT (policy ACCEPT)
+   ...
+
+
+   Chain POSTROUTING (policy ACCEPT)
+   ...
+
+
+   # istio-proxyコンテナへのインバウンド通信時、NAPT処理を実行する。
+   Chain ISTIO_INBOUND (1 references)
+   num  target             prot  opt  source     destination
+   1    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15008
+   2    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15090 # データポイント収集ツールからのリクエストを待ち受ける。
+   3    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15021 # kubeletからのReadinessProbeヘルスチェックを待ち受ける。
+   4    RETURN             tcp   --   0.0.0.0/0  0.0.0.0/0    tcp dpt:15020 # マイクロサービスへのヘルスチェックや統合メトリクスへのリクエストを待ち受ける。
+   5    ISTIO_IN_REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0
+
+
+   Chain ISTIO_IN_REDIRECT (3 references)
+   num  target    prot  opt  source     destination
+   1    REDIRECT  tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15006 #
+
+
+   # istio-proxyコンテナからのアウトバウンド通信時、NAPT処理を実行する。
+   Chain ISTIO_OUTPUT (1 references)
+   num  target             prot  opt  source     destination
+   1    RETURN             all   --   127.0.0.6  0.0.0.0/0
+   2    ISTIO_IN_REDIRECT  all   --   0.0.0.0/0  !127.0.0.1   owner UID match 1337
+   3    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    ! owner UID match 1337
+   4    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    owner UID match 1337
+   5    ISTIO_IN_REDIRECT  all   --   0.0.0.0/0  !127.0.0.1   owner GID match 1337
+   6    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    ! owner GID match 1337
+   7    RETURN             all   --   0.0.0.0/0  0.0.0.0/0    owner GID match 1337
+   8    RETURN             all   --   0.0.0.0/0  127.0.0.1
+   9    ISTIO_REDIRECT     all   --   0.0.0.0/0  0.0.0.0/0
+
+
+   Chain ISTIO_REDIRECT (1 references)
+   num  target     prot  opt  source     destination
+   1    REDIRECT   tcp   --   0.0.0.0/0  0.0.0.0/0    redir ports 15001
+   ```
 
 > - https://jimmysong.io/en/blog/sidecar-injection-iptables-and-traffic-routing/
 > - https://www.mapion.co.jp/news/column/cobs2366068-1-all/

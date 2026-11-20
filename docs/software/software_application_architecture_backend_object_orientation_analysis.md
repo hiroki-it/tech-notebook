@@ -174,38 +174,38 @@ graph LR
 
 2. 要件定義を終えた想定で、ユースケース図を作成する。オブジェクト図は省略する。
 
-    ![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_tooppoo_usecase-diagram_example.png)
+   ![ticket-modeling_tooppoo_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_tooppoo_usecase-diagram_example.png)
 
 3. クラス図を作成する。ユースケースから以下のオブジェクトを抽出する。
 
-    <table>
-      <thead>
-    <tr>
-      <th>ユースケース</th>
-      <th>抽出されたオブジェクト</th>
-    </tr>
-      </thead>
-      <tbody>
-    <tr>
-      <td>映画を選択する</td>
-      <td>映画オブジェクト</td>
-    </tr>
-    <tr>
-      <td>タイトルを選択する</td>
-      <td>タイトルオブジェクト</td>
-    </tr>
-    <tr>
-      <td>映画の形式を選択する</td>
-      <td>映画形式オブジェクト、上映形態オブジェクト</td>
-    </tr>
-    <tr>
-      <td>上映回を選択する</td>
-      <td>上映回オブジェクト、上映日オブジェクト、上映開始時刻オブジェクト</td>
-    </tr>
-      </tbody>
-    </table>
+   <table>
+     <thead>
+   <tr>
+     <th>ユースケース</th>
+     <th>抽出されたオブジェクト</th>
+   </tr>
+     </thead>
+     <tbody>
+   <tr>
+     <td>映画を選択する</td>
+     <td>映画オブジェクト</td>
+   </tr>
+   <tr>
+     <td>タイトルを選択する</td>
+     <td>タイトルオブジェクト</td>
+   </tr>
+   <tr>
+     <td>映画の形式を選択する</td>
+     <td>映画形式オブジェクト、上映形態オブジェクト</td>
+   </tr>
+   <tr>
+     <td>上映回を選択する</td>
+     <td>上映回オブジェクト、上映日オブジェクト、上映開始時刻オブジェクト</td>
+   </tr>
+     </tbody>
+   </table>
 
-    ![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_tooppoo_domain-model-diagram_example.png)
+   ![ticket-modeling_tooppoo_domain-model-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_tooppoo_domain-model-diagram_example.png)
 
 <br>
 

@@ -147,7 +147,7 @@ Istio は、指定した Namespace に属する Pod へサービスメッシュ�
 
 istio-proxy は、Pod のアウトバウンド通信を L4 / L7 ロードバランシングします。
 
-![ddd-cloudnative_l4-l7-traffic-management_inside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_l4-l7-traffic-management_inside-service-mesh.png>)
+![ddd-cloudnative_l4-l7-traffic-management_inside-service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_l4-l7-traffic-management_inside-service-mesh.png)
 
 <table>
   <thead>
@@ -209,7 +209,7 @@ Istio IngressGateway がサービスメッシュ外からの通信をサービ�
   </tbody>
 </table>
 
-![ddd-cloudnative_traffic-management_north-south](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_traffic-management_north-south.png>)
+![ddd-cloudnative_traffic-management_north-south](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_traffic-management_north-south.png)
 
 Istio IngressGateway については、以下のブログで解説しているため、5000 兆回ブックマークしてくれると嬉しいです！
 
@@ -221,7 +221,7 @@ Istio は、指定した Namespace 以外に属する Pod にはサービスメ�
 
 サービスメッシュ外の Namespace では、CoreDNS で宛先を名前解決し、Service と kube-proxy でトラフィックを管理します。
 
-![ddd-cloudnative_l7-traffic-management_outside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_l7-traffic-management_outside-service-mesh.png>)
+![ddd-cloudnative_l7-traffic-management_outside-service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_l7-traffic-management_outside-service-mesh.png)
 
 <table>
   <thead>
@@ -305,7 +305,7 @@ Istio は、指定した Namespace に属する Pod へサービスメッシュ�
 
 そこで、社外公開用と社内公開用の AWS ALB を配置し、AWS WAF を紐づけるとよいです。
 
-![ddd-cloudnative_edge-security_inside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_edge-security_inside-service-mesh.png>)
+![ddd-cloudnative_edge-security_inside-service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_edge-security_inside-service-mesh.png)
 
 <table>
   <thead>
@@ -366,7 +366,7 @@ Istio は、指定した Namespace 以外に属する Pod にはサービスメ�
 
 そこで、社内公開用の AWS ALB を配置し、AWS WAF を紐づけるとよいです。
 
-![ddd-cloudnative_edge-security_outside-service-mesh](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_edge-security_outside-service-mesh.png>)
+![ddd-cloudnative_edge-security_outside-service-mesh](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_edge-security_outside-service-mesh.png)
 
 <table>
   <thead>
@@ -893,7 +893,7 @@ flowchart LR
 - Prometheus (Alertmanager を含む)
 - インシデント管理ツール
 
-![ddd-cloudnative_cloud-infrastructure-design](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cloud-infrastructure-design.png>)
+![ddd-cloudnative_cloud-infrastructure-design](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_cloud-infrastructure-design.png)
 
 # 20-26. 横断領域を参照
 

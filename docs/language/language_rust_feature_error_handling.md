@@ -70,4 +70,3 @@ if is_expired(token, now()) {
 ```
 
 <br>
-

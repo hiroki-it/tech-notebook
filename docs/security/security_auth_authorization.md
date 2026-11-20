@@ -48,7 +48,7 @@ tags:
 
 ```mermaid
 flowchart LR
-  UiClient[UIクライアント]    
+  UiClient[UIクライアント]
   ApiClient[APIクライアント]
 
   subgraph presentation[プレゼンテーション層]

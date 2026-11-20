@@ -18,7 +18,6 @@ tags:
 
 ## 01. 概要
 
-
 自身から起動することはなく、外部から要求されて実行される関数のこと。
 
 > - [ハンドラ \| は \| IT用語辞典](https://garop.com/36/)
@@ -526,7 +525,7 @@ AWS Amplify のイベントを Amazon EventBridge でキャッチし、これを
 
 const aws = require("aws-sdk");
 const https = require("https");
-const { format } = require("util");
+const {format} = require("util");
 
 /**
  * @param event
@@ -701,7 +700,7 @@ const postMessageToSlack = (message) => {
       //  data、error、endの間でawaitの効力は横断できない。
       // そのため、できるだけendで事後処理を実装し、awaitを使用する。
       response.on("end", async () => {
-         const body = JSON.parse(tmp);
+        const body = JSON.parse(tmp);
         const result = {
           statusCode: response.statusCode,
           body: body,
@@ -860,72 +859,62 @@ const getBacketBasedOnDeviceType = (headers) => {
 
 ```json
 {
-  "Records":
-    [
-      {
-        "cf":
-          {
-            "request":
-              {
-                "body":
-                  {
-                    "action": "read-only",
-                    "data": "",
-                    "encoding": "base64",
-                    "inputTruncated": "false",
-                  },
-                "clientIp": "*.*.*.*",
-                "headers":
-                  {
-                    "host":
-                      [
-                        {
-                          "key": "Host",
-                          "value": "sp-bucket.s3.ap-northeast-1.amazonaws.com",
-                        },
-                      ],
-                    "cloudfront-is-mobile-viewer":
-                      [{"key": "CloudFront-Is-Mobile-Viewer", "value": "true"}],
-                    "cloudfront-is-tablet-viewer":
-                      [{"key": "loudFront-Is-Tablet-Viewer", "value": "false"}],
-                    "cloudfront-is-smarttv-viewer":
-                      [
-                        {
-                          "key": "CloudFront-Is-SmartTV-Viewer",
-                          "value": "false",
-                        },
-                      ],
-                    "cloudfront-is-desktop-viewer":
-                      [
-                        {
-                          "key": "CloudFront-Is-Desktop-Viewer",
-                          "value": "false",
-                        },
-                      ],
-                    "user-agent":
-                      [{"key": "User-Agent", "value": "Amazon CloudFront"}],
-                  },
-                "method": "GET",
-                "origin":
-                  {
-                    "s3":
-                      {
-                        "authMethod": "origin-access-identity",
-                        "customHeaders":
-                          {"env": [{"key": "env", "value": "prd"}]},
-                        "domainName": "sp-bucket.s3.amazonaws.com",
-                        "path": "",
-                        "port": 443,
-                        "protocol": "https",
-                        "region": "ap-northeast-1",
-                      },
-                  },
-                "querystring": "",
-                "uri": "/images/12345",
-              },
+  "Records": [
+    {
+      "cf": {
+        "request": {
+          "body": {
+            "action": "read-only",
+            "data": "",
+            "encoding": "base64",
+            "inputTruncated": "false"
           },
-      },
-    ],
+          "clientIp": "*.*.*.*",
+          "headers": {
+            "host": [
+              {
+                "key": "Host",
+                "value": "sp-bucket.s3.ap-northeast-1.amazonaws.com"
+              }
+            ],
+            "cloudfront-is-mobile-viewer": [
+              {"key": "CloudFront-Is-Mobile-Viewer", "value": "true"}
+            ],
+            "cloudfront-is-tablet-viewer": [
+              {"key": "loudFront-Is-Tablet-Viewer", "value": "false"}
+            ],
+            "cloudfront-is-smarttv-viewer": [
+              {
+                "key": "CloudFront-Is-SmartTV-Viewer",
+                "value": "false"
+              }
+            ],
+            "cloudfront-is-desktop-viewer": [
+              {
+                "key": "CloudFront-Is-Desktop-Viewer",
+                "value": "false"
+              }
+            ],
+            "user-agent": [{"key": "User-Agent", "value": "Amazon CloudFront"}]
+          },
+          "method": "GET",
+          "origin": {
+            "s3": {
+              "authMethod": "origin-access-identity",
+              "customHeaders": {"env": [{"key": "env", "value": "prd"}]},
+              "domainName": "sp-bucket.s3.amazonaws.com",
+              "path": "",
+              "port": 443,
+              "protocol": "https",
+              "region": "ap-northeast-1"
+            }
+          },
+          "querystring": "",
+          "uri": "/images/12345"
+        }
+      }
+    }
+  ]
 }
 ```
 

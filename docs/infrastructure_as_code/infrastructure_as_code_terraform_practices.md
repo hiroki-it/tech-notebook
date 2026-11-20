@@ -883,31 +883,31 @@ CI ツールに長期間有効なクレデンシャルを保存せず、OIDC な
 
 1. 初期構築時にダミー値を割り当ててプロビジョニングする。
 
-    この時点で、`tfstate`ファイルにはダミー値が書き込まれる。
+   この時点で、`tfstate`ファイルにはダミー値が書き込まれる。
 
 2. 実際の値を AWS Secrets Manager や Amazon RDS のコンソール画面から設定する。
 
 3. `ignore_changes` 引数を設定する。
 
-    以降のプロビジョニングで、`tfstate`ファイル上はダミー値のままになる。
+   以降のプロビジョニングで、`tfstate`ファイル上はダミー値のままになる。
 
-    ```terraform
-    # Amazon RDSの場合
-    resource "aws_rds_cluster" "this" {
-    
-      # 実際の値はAWS Secrets Managerから参照する。
-      master_username = var.rds_db_master_username_ssm_parameter_value
-      master_password = var.rds_db_master_password_ssm_parameter_value
-    
-      lifecycle {
-        ignore_changes = [
-          # ユーザー名とパスワードがtfstateファイルに書き込まれなくなる。
-          master_username,
-          master_password
-        ]
-      }
-    }
-    ```
+   ```terraform
+   # Amazon RDSの場合
+   resource "aws_rds_cluster" "this" {
+
+     # 実際の値はAWS Secrets Managerから参照する。
+     master_username = var.rds_db_master_username_ssm_parameter_value
+     master_password = var.rds_db_master_password_ssm_parameter_value
+
+     lifecycle {
+       ignore_changes = [
+         # ユーザー名とパスワードがtfstateファイルに書き込まれなくなる。
+         master_username,
+         master_password
+       ]
+     }
+   }
+   ```
 
 #### ▼ `tfstate` ファイルへの平文を妥協する
 

@@ -699,14 +699,13 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action": ["logs:CreateLogStream", "logs:PutLogEvents"],
-        "Resource": ["arn:aws:logs:*:*:*"],
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": ["arn:aws:logs:*:*:*"]
+    }
+  ]
 }
 ```
 
@@ -715,8 +714,9 @@ Amazon ECS タスク内のコンテナのアプリケーションが、他の AW
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [{"Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*"}],
+  "Statement": [
+    {"Effect": "Allow", "Action": ["ssm:GetParameters"], "Resource": "*"}
+  ]
 }
 ```
 
@@ -735,22 +735,20 @@ Amazon ECS タスク内のコンテナがリソースにリクエストを送信
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action":
-          [
-            "ecr:GetAuthorizationToken",
-            "ecr:BatchCheckLayerAvailability",
-            "ecr:GetDownloadUrlForLayer",
-            "ecr:BatchGetImage",
-            "logs:CreateLogStream",
-            "logs:PutLogEvents",
-          ],
-        "Resource": "*",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ecr:GetAuthorizationToken",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:BatchGetImage",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
@@ -759,19 +757,17 @@ datadog エージェントが Amazon ECS クラスターやコンテナにリク
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Action":
-          [
-            "ecs:ListClusters",
-            "ecs:ListContainerInstances",
-            "ecs:DescribeContainerInstances",
-          ],
-        "Effect": "Allow",
-        "Resource": "*",
-      },
-    ],
+  "Statement": [
+    {
+      "Action": [
+        "ecs:ListClusters",
+        "ecs:ListContainerInstances",
+        "ecs:DescribeContainerInstances"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
@@ -1027,26 +1023,23 @@ exit ${EXIT_STATUS}
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action":
-          [
-            "iam:PassRole",
-            "ecs:RunTask",
-            "ecs:DescribeServices",
-            "ecs:DescribeTasks",
-          ],
-        "Resource":
-          [
-            "arn:aws:ecs:*:<AWSアカウントID>:service/*",
-            "arn:aws:ecs:*:<AWSアカウントID>:task/*",
-            "arn:aws:ecs:*:<AWSアカウントID>:task-definition/*",
-            "arn:aws:iam::<AWSアカウントID>:role/*",
-          ],
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "iam:PassRole",
+        "ecs:RunTask",
+        "ecs:DescribeServices",
+        "ecs:DescribeTasks"
+      ],
+      "Resource": [
+        "arn:aws:ecs:*:<AWSアカウントID>:service/*",
+        "arn:aws:ecs:*:<AWSアカウントID>:task/*",
+        "arn:aws:ecs:*:<AWSアカウントID>:task-definition/*",
+        "arn:aws:iam::<AWSアカウントID>:role/*"
+      ]
+    }
+  ]
 }
 ```
 
@@ -1068,7 +1061,7 @@ exit ${EXIT_STATUS}
 
 6. すべての既存タスクが新タスクに置き換わる。
 
-    ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rolling-update.png)
+   ![rolling-update](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/rolling-update.png)
 
 > - [Amazon ECS でのコンテナデプロイの高速化 \| トリの部屋](https://toris.io/2021/04/speeding-up-amazon-ecs-container-deployments/)
 
@@ -1157,86 +1150,82 @@ AWS Systems Manager を使用してコンテナに接続する場合、コンテ
 
 3. Amazon ECS タスク実行ロールに IAM ポリシーを付与する。
 
-    これにより、Amazon ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。
+   これにより、Amazon ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。
 
-    ```json
-    {
-      "Version": "2012-10-17",
-      "Statement":
-        [
-          {
-            "Effect": "Allow",
-            "Action":
-              [
-                "ssmmessages:CreateControlChannel",
-                "ssmmessages:CreateDataChannel",
-                "ssmmessages:OpenControlChannel",
-                "ssmmessages:OpenDataChannel",
-              ],
-            "Resource": "*",
-          },
-        ],
-    }
-    ```
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": [
+           "ssmmessages:CreateControlChannel",
+           "ssmmessages:CreateDataChannel",
+           "ssmmessages:OpenControlChannel",
+           "ssmmessages:OpenDataChannel"
+         ],
+         "Resource": "*"
+       }
+     ]
+   }
+   ```
 
 4. Amazon ECS Exec の実行ユーザーに、IAM ポリシーを付与する。
 
-    ```json
-    {
-      "Version": "2012-10-17",
-      "Statement":
-        [
-          {
-            "Effect": "Allow",
-            "Action": ["ecs:ExecuteCommand"],
-            "Resource":
-              [
-                "arn:aws:ecs:*:<AWSアカウントID>:cluster/*",
-                "arn:aws:ecs:*:<AWSアカウントID>:task/*",
-              ],
-          },
-        ],
-    }
-    ```
+   ```json
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Action": ["ecs:ExecuteCommand"],
+         "Resource": [
+           "arn:aws:ecs:*:<AWSアカウントID>:cluster/*",
+           "arn:aws:ecs:*:<AWSアカウントID>:task/*"
+         ]
+       }
+     ]
+   }
+   ```
 
 5. 事前の設定がなされているか否かを ecs-exec-checker スクリプトを実行して確認する。
 
-    > - [GitHub - aws-containers/amazon-ecs-exec-checker: 🚀 Pre-flight checks for ECS Exec · GitHub](https://github.com/aws-containers/amazon-ecs-exec-checker)
+   > - [GitHub - aws-containers/amazon-ecs-exec-checker: 🚀 Pre-flight checks for ECS Exec · GitHub](https://github.com/aws-containers/amazon-ecs-exec-checker)
 
-    ```bash
-    #!/bin/bash
-    
-    ECS_CLUSTER_NAME=prd-foo-ecs-cluster
-    ECS_TASK_ID=bar
-    
-    bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
-    ```
+   ```bash
+   #!/bin/bash
+
+   ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+   ECS_TASK_ID=bar
+
+   bash <(curl -Ls https://raw.githubusercontent.com/aws-containers/amazon-ecs-exec-checker/main/check-ecs-exec.sh) $ECS_CLUSTER_NAME $ECS_TASK_ID
+   ```
 
 6. Amazon ECS タスク内のコンテナに接続し、コンテナのログインシェルを起動する。bash を実行するときに、『`/bin/bash`』や『`/bin/sh`』で指定すると、bin より上のパスも Amazon ECS に送信されてしまう。
 
-    例えば、Windowsなら『```C:/Program Files/Git/usr/bin/bash```』を送信する。
+   例えば、Windowsなら『`C:/Program Files/Git/usr/bin/bash`』を送信する。
 
-    これはCloudTrailでExecuteCommandイベントとして確認できる。
+   これはCloudTrailでExecuteCommandイベントとして確認できる。
 
-    Amazon ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
+   Amazon ECSコンテナ内ではbashへのパスが異なるため、接続に失敗する。そのため、bashを直接的に指定する。
 
-    ```bash
-    #!/bin/bash
-    
-    set -xe
-    
-    ECS_CLUSTER_NAME=prd-foo-ecs-cluster
-    ECS_TASK_ID=bar
-    ECS_CONTAINER_NAME=laravel
-    
-    aws ecs execute-command \
-        --cluster $ECS_CLUSTER_NAME \
-        --task $ECS_TASK_ID \
-        --container $ECS_CONTAINER_NAME \
-        --interactive \
-        --debug \
-        --command "bash"
-    ```
+   ```bash
+   #!/bin/bash
+
+   set -xe
+
+   ECS_CLUSTER_NAME=prd-foo-ecs-cluster
+   ECS_TASK_ID=bar
+   ECS_CONTAINER_NAME=laravel
+
+   aws ecs execute-command \
+       --cluster $ECS_CLUSTER_NAME \
+       --task $ECS_TASK_ID \
+       --container $ECS_CONTAINER_NAME \
+       --interactive \
+       --debug \
+       --command "bash"
+   ```
 
 > - https://docs.aws.amazon.com/AmazonECS/latest/userguide/ecs-exec.html
 > - [Reference: ec2messages, ssmmessages, and other API operations - AWS Systems Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up-messageAPIs.html)

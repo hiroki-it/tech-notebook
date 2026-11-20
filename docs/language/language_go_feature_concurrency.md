@@ -494,4 +494,3 @@ WaitGroup を使用すると、`Add()` 関数、`Done()` 関数、`Wait()` 関�
 エラー処理を含む関数で Goroutine を宣言したいときに使用する。
 
 <br>
-

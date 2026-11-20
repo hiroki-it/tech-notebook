@@ -112,51 +112,48 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
 
 ```json
 {
-  "annotations":
-    {
-      "list":
-        [
-          {
-            "builtIn": 1,
-            "datasource": "-- Grafana --",
-            "enable": "true",
-            "hide": "true",
-            "iconColor": "rgba(0, 211, 255, 1)",
-            "name": "Annotations & Alerts",
-            "type": "dashboard",
-          },
-        ],
-    },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": "true",
+        "hide": "true",
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
   "editable": "true",
   "gnetId": null,
   "graphTooltip": 0,
   "id": null,
   "links": [],
   "panels": [
-      {
-        "datasource": null,
-        // 全体の横幅は 24
-        // パネルで分割する場合、w 値を割る
-        "gridPos": {"h": 36, "w": 24, "x": 0, "y": 0},
-        "id": 3,
-        "links": [],
-        "options":
-          {
-            "folderId": 0,
-            "maxItems": 100,
-            "query": "",
-            "showHeadings": "true",
-            "showRecentlyViewed": "false",
-            "showSearch": "true",
-            "showStarred": "false",
-            "tags": [],
-          },
-        "pluginVersion": "8.0.0",
-        "tags": [],
-        "title": "Dashboards",
-        "type": "dashlist",
+    {
+      "datasource": null,
+      // 全体の横幅は 24
+      // パネルで分割する場合、w 値を割る
+      "gridPos": {"h": 36, "w": 24, "x": 0, "y": 0},
+      "id": 3,
+      "links": [],
+      "options": {
+        "folderId": 0,
+        "maxItems": 100,
+        "query": "",
+        "showHeadings": "true",
+        "showRecentlyViewed": "false",
+        "showSearch": "true",
+        "showStarred": "false",
+        "tags": []
       },
-    ],
+      "pluginVersion": "8.0.0",
+      "tags": [],
+      "title": "Dashboards",
+      "type": "dashlist"
+    }
+  ],
   "refresh": "",
   "schemaVersion": 30,
   "style": "dark",
@@ -164,19 +161,27 @@ default_home_dashboard_path = /var/lib/grafana/dashboards/local/home.json
   "tags": ["<リポジトリ名>", "github.com/example"],
   "templating": {"list": []},
   "time": {"from": "now-6h", "to": "now"},
-  "timepicker":
-    {
-      "hidden": "true",
-      "refresh_intervals":
-        ["5s", "10s", "30s", "1m", "5m", "15m", "30m", "1h", "2h", "1d"],
-      "time_options":
-        ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
-      "type": "timepicker",
-    },
+  "timepicker": {
+    "hidden": "true",
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"],
+    "type": "timepicker"
+  },
   "timezone": "browser",
   "title": "Home",
   "uid": null,
-  "version": 0,
+  "version": 0
 }
 ```
 
@@ -882,71 +887,70 @@ PromQL を定義する。
 {
   // panels セクション
   "panels": [
-      {
-        // styles セクション
-        "styles": [
-            {
-              // 表の列名
-              "alias": "Namespace",
-              "colorMode": null,
-              "colors": [],
-              "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "decimals": 2,
-              "link": "true",
-              "linkTargetBlank": "false",
-              "linkTooltip": "Drill down to pods",
-              // 他のダッシュボードへのリンク
-              "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell",
-              "pattern": "namespace",
-              "thresholds": [],
-              "type": "number",
-              "unit": "short",
-            },
-            {
-              // 表の列名
-              "alias": "Workloads",
-              "colorMode": null,
-              "colors": [],
-              "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "decimals": 0,
-              "link": "true",
-              "linkTargetBlank": "false",
-              "linkTooltip": "Drill down to workloads",
-              // 他のダッシュボードへのリンク
-              "linkUrl": "/d/*****/k8s-resources-workloads-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
-              "pattern": "Value #B",
-              "thresholds": [],
-              "type": "number",
-              "unit": "short",
-            },
-            {
-              // 表の列名
-              "alias": "Pods",
-              "colorMode": null,
-              "colors": [],
-              "dateFormat": "YYYY-MM-DD HH:mm:ss",
-              "decimals": 0,
-              "link": "true",
-              "linkTargetBlank": "false",
-              "linkTooltip": "Drill down to pods",
-              // 他のダッシュボードへのリンク
-              "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
-              "pattern": "Value #A",
-              "thresholds": [],
-              "type": "number",
-              "unit": "short",
-            },
-          ],
-        "targets":
-          [
-            {
-              "expr": '<メトリクス名>{cluster="$cluster", namespace="$namespace", pod="$pod", instance=~"$instance"}',
-            },
-            {"expr": "..."},
-            {"expr": "..."},
-          ],
-      },
-    ],
+    {
+      // styles セクション
+      "styles": [
+        {
+          // 表の列名
+          "alias": "Namespace",
+          "colorMode": null,
+          "colors": [],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 2,
+          "link": "true",
+          "linkTargetBlank": "false",
+          "linkTooltip": "Drill down to pods",
+          // 他のダッシュボードへのリンク
+          "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell",
+          "pattern": "namespace",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          // 表の列名
+          "alias": "Workloads",
+          "colorMode": null,
+          "colors": [],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": "true",
+          "linkTargetBlank": "false",
+          "linkTooltip": "Drill down to workloads",
+          // 他のダッシュボードへのリンク
+          "linkUrl": "/d/*****/k8s-resources-workloads-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
+          "pattern": "Value #B",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        },
+        {
+          // 表の列名
+          "alias": "Pods",
+          "colorMode": null,
+          "colors": [],
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "decimals": 0,
+          "link": "true",
+          "linkTargetBlank": "false",
+          "linkTooltip": "Drill down to pods",
+          // 他のダッシュボードへのリンク
+          "linkUrl": "/d/*****/k8s-resources-namespace?var-datasource=$datasource&var-cluster=$cluster&var-namespace=$__cell_1",
+          "pattern": "Value #A",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "expr": "<メトリクス名>{cluster=\"$cluster\", namespace=\"$namespace\", pod=\"$pod\", instance=~\"$instance\"}"
+        },
+        {"expr": "..."},
+        {"expr": "..."}
+      ]
+    }
+  ]
 }
 ```
 
@@ -1006,354 +1010,354 @@ PromQL のラベル変数に値を挿入し、メトリクスをフィルタリ�
 {
   // templating セクション
   "templating": {
-      // list セクション
-      "list": [
-          // データソース値のプルダウン
-          {
-            // デフォルトのフィルタリング値
-            // プルダウンの値を変更すれば、current 値も動的に変わる
-            "current": {
-                // 固定できるように true としておく
-                "selected": "true",
-                // デフォルトのデータソースのフィルタリング値を Prometheus とする
-                "text": "Prometheus",
-                "value": "Prometheus",
-              },
-            "description": null,
-            "error": null,
-            // プルダウンを常に表示できるように 0 (false) とする
-            "hide": 0,
-            // multi オプションを無効化しているため、All のチェックボックスは無効化する
-            "includeAll": "false",
-            "label": null,
-            "multi": "false",
-            // データソース名。変数名としても使用できるようになる。
-            "name": "datasource",
-            "options": [],
-            // 最初のデータソースは Prometheus とする。
-            "query": "prometheus",
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": "false",
-            // 変数タイプを設定する。
-            "type": "datasource",
-          },
-          // cluster ラベル値のプルダウン
-          {
-            "allValue": null,
-            // プルダウンが選ばれていない時のデフォルト値を設定する
-            "current": {
-                // デフォルトの cluster ラベルのフィルタリング値を null とする
-                "isNone": "true",
-                // ラベルが選ばれない限り表示されないため、 false としておく
-                "selected": "false",
-                "text": "None",
-                "value": "",
-              },
-            // データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            // multi オプションを無効化しているため、All のチェックボックスは無効化する
-            "includeAll": "false",
-            "label": null,
-            // cluster は 1 つだけ選ぶようにする
-            "multi": "false",
-            // ラベル名。変数名としても使用できるようになる。
-            "name": "cluster",
-            "options": [],
-            "query": {
-                // メトリクスと、それから取得するラベルを設定する。
-                // 指定したデータソースの時に、kube_pod_info メトリクスが cluster ラベルを持っている必要がある。
-                "query": "label_values(kube_pod_info, cluster)",
-                // query<小文字から始まる任意の識別子>で事前定義しておくこともできる。
-                // query を採用する場合、query 以降の文字列は、"^[a-z][a-zA-Z0-9_]*$"の正規表現内の文字列にする必要がある。
-                "refId": "Prometheus-cluster-Variable-Query",
-              },
-            "refresh": 2,
-            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
-            "regex": "",
-            "skipUrlSync": "false",
-            // アルファベットの昇順にする。
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-          // namespace ラベル値のプルダウン
-          {
-            "allValue": null,
-            // プルダウンが選ばれていない時のデフォルト値を設定する
-            "current": {
-                // デフォルトでは全てのラベル値を選択する
-                // multi ラベルの場合は、配列とする
-                "selected": "true",
-                "text": ["All"],
-                "value": ["$__all"],
-              },
-            // データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
-            "includeAll": "true",
-            "label": null,
-            // 全ての値の中から複数選択して選べるようにする。
-            "multi": "true",
-            "name": "namespace",
-            "options": [],
-            "query": {
-                // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)',
-                "refId": "Prometheus-namespace-Variable-Query",
-              },
-            "refresh": 2,
-            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
-            "regex": "",
-            "skipUrlSync": "false",
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-          // deployment ラベル値のプルダウン
-          {
-            "allValue": null,
-            // プルダウンが選ばれていない時のデフォルト値を設定する
-            "current": {
-                // デフォルトでは全てのラベル値を選択する
-                // multi ラベルの場合は、配列とする
-                "selected": "true",
-                "text": ["All"],
-                "value": ["$__all"],
-              },
-            // データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
-            "includeAll": "true",
-            "label": null,
-            // 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": "true",
-            "name": "service",
-            "options": [],
-            "query": {
-                // 指定したデータソースの時に、kube_deployment_status_condition トリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_deployment_status_condition{cluster=\"$cluster\", namespace=\"$namespace\"}, deployment)',
-                "refId": "Prometheus-pod-Variable-Query",
-              },
-            "refresh": 2,
-            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
-            "regex": "",
-            "skipUrlSync": "false",
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-          // service ラベル値のプルダウン
-          {
-            "allValue": null,
-            // プルダウンが選ばれていない時のデフォルト値を設定する
-            "current": {
-                // デフォルトでは全てのラベル値を選択する
-                // multi ラベルの場合は、配列とする
-                "selected": "true",
-                "text": ["All"],
-                "value": ["$__all"],
-              },
-            // データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
-            "includeAll": "true",
-            "label": null,
-            // 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": "true",
-            "name": "service",
-            "options": [],
-            "query": {
-                // 指定したデータソースの時に、kube_service_info メトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_service_info{cluster=\"$cluster\", namespace=\"$namespace\"}, serviec)',
-                "refId": "Prometheus-pod-Variable-Query",
-              },
-            "refresh": 2,
-            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
-            "regex": "",
-            "skipUrlSync": "false",
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-          // pod ラベル値のプルダウン
-          {
-            "allValue": null,
-            // プルダウンが選ばれていない時のデフォルト値を設定する
-            "current": {
-                // デフォルトでは全てのラベル値を選択する
-                // multi ラベルの場合は、配列とする
-                "selected": "true",
-                "text": ["All"],
-                "value": ["$__all"],
-              },
-            // データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
-            "includeAll": "true",
-            "label": null,
-            // 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": "true",
-            "name": "pod",
-            "options": [],
-            "query": {
-                // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
-                "query": 'label_values(kube_pod_info{cluster=\"$cluster\", namespace=\"$namespace\"}, pod)',
-                "refId": "Prometheus-pod-Variable-Query",
-              },
-            "refresh": 2,
-            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
-            "regex": "",
-            "skipUrlSync": "false",
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-          // label_eks_amazonaws_com_nodegroup ラベル値のプルダウン
-          {
-            "allValue": null,
-            "current": {},
-            "datasource": "$datasource",
-            // kube-state-metrics で、--metric-labels-allowlist=nodes=[*] を設定しておく
-            "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
-            "hide": 0,
-            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
-            "includeAll": "true",
-            "label": null,
-            // 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": "true",
-            "name": "nodegroup",
-            "options": [],
-            "query": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
-            "refresh": 1,
-            "regex": "",
-            "skipUrlSync": "false",
-            "sort": 0,
-            "tagValuesQuery": "",
-            "tags": [],
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-          // node ラベル値のプルダウン
-          {
-            "allValue": null,
-            // プルダウンが選ばれていない時のデフォルト値を設定する
-            "current": {
-                // デフォルトでは全てのラベルを表示する
-                // multi ラベルの場合は、配列とする
-                "selected": "true",
-                "text": ["All"],
-                "value": ["$__all"],
-              },
-            // データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
-            "includeAll": "true",
-            "label": null,
-            // 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": "true",
-            "name": "namespace",
-            "options": [],
-            "query": {
-                // 指定したデータソースの時に、kube_node_labels メトリクスが各種ラベルを持っている必要がある。
-                // label_eks_amazonaws_com_nodegroup ラベルの値はプルダウンですでに取得しており、変数として使用する。
-                "query": 'label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\"$nodegroup\"}, node)',
-                "refId": "Prometheus-node-Variable-Query",
-              },
-            "refresh": 2,
-            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
-            "regex": "",
-            "skipUrlSync": "false",
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-          // container ラベル値のプルダウン
-          {
-            "allValue": null,
-            // プルダウンが選ばれていない時のデフォルト値を設定する
-            "current": {
-                // デフォルトでは全てのラベルを表示する
-                // multi ラベルの場合は、配列とする
-                "selected": "true",
-                "text": ["All"],
-                "value": ["$__all"],
-              },
-            // データソースの指定時に、それを変数として取得する
-            "datasource": "$datasource",
-            "definition": "",
-            "description": null,
-            "error": null,
-            "hide": 0,
-            // multi オプションを無効化しているため、All のチェックボックスは無効化する
-            "includeAll": "false",
-            "label": null,
-            // 全ての値の中から複数のラベル値を選択して選べるようにする。
-            "multi": "true",
-            "name": "container",
-            "options": [],
-            "query": {
-                // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
-                // node ラベルの値はプルダウンですでに取得しており、変数として使用する。
-                "query": 'label_values(kube_pod_container_info{cluster=\"$cluster\",instance=\"$node\",pod=\"$pod\"}, container)',
-                "refId": "Prometheus-container-Variable-Query",
-              },
-            "refresh": 2,
-            // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
-            // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
-            "regex": "",
-            "skipUrlSync": "false",
-            "sort": 1,
-            "tagValuesQuery": "",
-            "tagsQuery": "",
-            "type": "query",
-            "useTags": "false",
-          },
-        ],
-    },
+    // list セクション
+    "list": [
+      // データソース値のプルダウン
+      {
+        // デフォルトのフィルタリング値
+        // プルダウンの値を変更すれば、current 値も動的に変わる
+        "current": {
+          // 固定できるように true としておく
+          "selected": "true",
+          // デフォルトのデータソースのフィルタリング値を Prometheus とする
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "description": null,
+        "error": null,
+        // プルダウンを常に表示できるように 0 (false) とする
+        "hide": 0,
+        // multi オプションを無効化しているため、All のチェックボックスは無効化する
+        "includeAll": "false",
+        "label": null,
+        "multi": "false",
+        // データソース名。変数名としても使用できるようになる。
+        "name": "datasource",
+        "options": [],
+        // 最初のデータソースは Prometheus とする。
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": "false",
+        // 変数タイプを設定する。
+        "type": "datasource"
+      },
+      // cluster ラベル値のプルダウン
+      {
+        "allValue": null,
+        // プルダウンが選ばれていない時のデフォルト値を設定する
+        "current": {
+          // デフォルトの cluster ラベルのフィルタリング値を null とする
+          "isNone": "true",
+          // ラベルが選ばれない限り表示されないため、 false としておく
+          "selected": "false",
+          "text": "None",
+          "value": ""
+        },
+        // データソースの指定時に、それを変数として取得する
+        "datasource": "$datasource",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        // multi オプションを無効化しているため、All のチェックボックスは無効化する
+        "includeAll": "false",
+        "label": null,
+        // cluster は 1 つだけ選ぶようにする
+        "multi": "false",
+        // ラベル名。変数名としても使用できるようになる。
+        "name": "cluster",
+        "options": [],
+        "query": {
+          // メトリクスと、それから取得するラベルを設定する。
+          // 指定したデータソースの時に、kube_pod_info メトリクスが cluster ラベルを持っている必要がある。
+          "query": "label_values(kube_pod_info, cluster)",
+          // query<小文字から始まる任意の識別子>で事前定義しておくこともできる。
+          // query を採用する場合、query 以降の文字列は、"^[a-z][a-zA-Z0-9_]*$"の正規表現内の文字列にする必要がある。
+          "refId": "Prometheus-cluster-Variable-Query"
+        },
+        "refresh": 2,
+        // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+        // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+        "regex": "",
+        "skipUrlSync": "false",
+        // アルファベットの昇順にする。
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      },
+      // namespace ラベル値のプルダウン
+      {
+        "allValue": null,
+        // プルダウンが選ばれていない時のデフォルト値を設定する
+        "current": {
+          // デフォルトでは全てのラベル値を選択する
+          // multi ラベルの場合は、配列とする
+          "selected": "true",
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        // データソースの指定時に、それを変数として取得する
+        "datasource": "$datasource",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+        "includeAll": "true",
+        "label": null,
+        // 全ての値の中から複数選択して選べるようにする。
+        "multi": "true",
+        "name": "namespace",
+        "options": [],
+        "query": {
+          // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
+          "query": "label_values(kube_pod_info{cluster=\"$cluster\"}, namespace)",
+          "refId": "Prometheus-namespace-Variable-Query"
+        },
+        "refresh": 2,
+        // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+        // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+        "regex": "",
+        "skipUrlSync": "false",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      },
+      // deployment ラベル値のプルダウン
+      {
+        "allValue": null,
+        // プルダウンが選ばれていない時のデフォルト値を設定する
+        "current": {
+          // デフォルトでは全てのラベル値を選択する
+          // multi ラベルの場合は、配列とする
+          "selected": "true",
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        // データソースの指定時に、それを変数として取得する
+        "datasource": "$datasource",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+        "includeAll": "true",
+        "label": null,
+        // 全ての値の中から複数のラベル値を選択して選べるようにする。
+        "multi": "true",
+        "name": "service",
+        "options": [],
+        "query": {
+          // 指定したデータソースの時に、kube_deployment_status_condition トリクスが各種ラベルを持っている必要がある。
+          "query": "label_values(kube_deployment_status_condition{cluster=\"$cluster\", namespace=\"$namespace\"}, deployment)",
+          "refId": "Prometheus-pod-Variable-Query"
+        },
+        "refresh": 2,
+        // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+        // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+        "regex": "",
+        "skipUrlSync": "false",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      },
+      // service ラベル値のプルダウン
+      {
+        "allValue": null,
+        // プルダウンが選ばれていない時のデフォルト値を設定する
+        "current": {
+          // デフォルトでは全てのラベル値を選択する
+          // multi ラベルの場合は、配列とする
+          "selected": "true",
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        // データソースの指定時に、それを変数として取得する
+        "datasource": "$datasource",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+        "includeAll": "true",
+        "label": null,
+        // 全ての値の中から複数のラベル値を選択して選べるようにする。
+        "multi": "true",
+        "name": "service",
+        "options": [],
+        "query": {
+          // 指定したデータソースの時に、kube_service_info メトリクスが各種ラベルを持っている必要がある。
+          "query": "label_values(kube_service_info{cluster=\"$cluster\", namespace=\"$namespace\"}, serviec)",
+          "refId": "Prometheus-pod-Variable-Query"
+        },
+        "refresh": 2,
+        // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+        // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+        "regex": "",
+        "skipUrlSync": "false",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      },
+      // pod ラベル値のプルダウン
+      {
+        "allValue": null,
+        // プルダウンが選ばれていない時のデフォルト値を設定する
+        "current": {
+          // デフォルトでは全てのラベル値を選択する
+          // multi ラベルの場合は、配列とする
+          "selected": "true",
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        // データソースの指定時に、それを変数として取得する
+        "datasource": "$datasource",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+        "includeAll": "true",
+        "label": null,
+        // 全ての値の中から複数のラベル値を選択して選べるようにする。
+        "multi": "true",
+        "name": "pod",
+        "options": [],
+        "query": {
+          // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
+          "query": "label_values(kube_pod_info{cluster=\"$cluster\", namespace=\"$namespace\"}, pod)",
+          "refId": "Prometheus-pod-Variable-Query"
+        },
+        "refresh": 2,
+        // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+        // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+        "regex": "",
+        "skipUrlSync": "false",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      },
+      // label_eks_amazonaws_com_nodegroup ラベル値のプルダウン
+      {
+        "allValue": null,
+        "current": {},
+        "datasource": "$datasource",
+        // kube-state-metrics で、--metric-labels-allowlist=nodes=[*] を設定しておく
+        "definition": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
+        "hide": 0,
+        // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+        "includeAll": "true",
+        "label": null,
+        // 全ての値の中から複数のラベル値を選択して選べるようにする。
+        "multi": "true",
+        "name": "nodegroup",
+        "options": [],
+        "query": "label_values(kube_node_labels, label_eks_amazonaws_com_nodegroup)",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": "false",
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tags": [],
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      },
+      // node ラベル値のプルダウン
+      {
+        "allValue": null,
+        // プルダウンが選ばれていない時のデフォルト値を設定する
+        "current": {
+          // デフォルトでは全てのラベルを表示する
+          // multi ラベルの場合は、配列とする
+          "selected": "true",
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        // データソースの指定時に、それを変数として取得する
+        "datasource": "$datasource",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        // multi オプションを有効化しており、全てを選べるように All のチェックボックスも有効化する
+        "includeAll": "true",
+        "label": null,
+        // 全ての値の中から複数のラベル値を選択して選べるようにする。
+        "multi": "true",
+        "name": "namespace",
+        "options": [],
+        "query": {
+          // 指定したデータソースの時に、kube_node_labels メトリクスが各種ラベルを持っている必要がある。
+          // label_eks_amazonaws_com_nodegroup ラベルの値はプルダウンですでに取得しており、変数として使用する。
+          "query": "label_values(kube_node_labels{label_eks_amazonaws_com_nodegroup=\"$nodegroup\"}, node)",
+          "refId": "Prometheus-node-Variable-Query"
+        },
+        "refresh": 2,
+        // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+        // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+        "regex": "",
+        "skipUrlSync": "false",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      },
+      // container ラベル値のプルダウン
+      {
+        "allValue": null,
+        // プルダウンが選ばれていない時のデフォルト値を設定する
+        "current": {
+          // デフォルトでは全てのラベルを表示する
+          // multi ラベルの場合は、配列とする
+          "selected": "true",
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        // データソースの指定時に、それを変数として取得する
+        "datasource": "$datasource",
+        "definition": "",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        // multi オプションを無効化しているため、All のチェックボックスは無効化する
+        "includeAll": "false",
+        "label": null,
+        // 全ての値の中から複数のラベル値を選択して選べるようにする。
+        "multi": "true",
+        "name": "container",
+        "options": [],
+        "query": {
+          // 指定したデータソースの時に、kube_pod_info メトリクスが各種ラベルを持っている必要がある。
+          // node ラベルの値はプルダウンですでに取得しており、変数として使用する。
+          "query": "label_values(kube_pod_container_info{cluster=\"$cluster\",instance=\"$node\",pod=\"$pod\"}, container)",
+          "refId": "Prometheus-container-Variable-Query"
+        },
+        "refresh": 2,
+        // もし特定の label_values のみをフィルタリングする場合、正規表現を設定する。
+        // ただ、label_values 内で『=~』を使ったほうが良いかもしれない。
+        "regex": "",
+        "skipUrlSync": "false",
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": "false"
+      }
+    ]
+  }
 }
 ```
 

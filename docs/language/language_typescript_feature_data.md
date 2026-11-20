@@ -196,7 +196,7 @@ console.log(await asyncFn());
 const foo = <T>(value: T): T => {
   // ...
   return value;
-}
+};
 ```
 
 ```typescript
@@ -204,7 +204,7 @@ const foo = <T>(value: T): T => {
 // 変数名はなんでもよく、単語でもいい
 const foo = <T>(value: T): T => {
   return value;
-}
+};
 
 // 型変数に文字を代入すると、これを推論し、string型の引数型と返却値型を定義していたことになる
 foo("a");
@@ -783,4 +783,3 @@ interface Foo {
 ```
 
 <br>
-

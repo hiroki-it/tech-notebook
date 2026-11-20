@@ -61,15 +61,15 @@ root.render(
 ワンラインで実装する場合、以下となる。
 
 ```tsx
-import {StrictMode} from 'react'
-import {createRoot} from 'react-dom/client'
-import {App} from './App.tsx'
+import {StrictMode} from "react";
+import {createRoot} from "react-dom/client";
+import {App} from "./App.tsx";
 
-createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-      <App/>
-    </StrictMode>,
-)
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+);
 ```
 
 > - [Client React DOM APIs – React](https://react.dev/reference/react-dom/client)
@@ -235,7 +235,7 @@ type MyComponentProps = {
   label: string;
 };
 
-export const MyComponent = ({ initialCount = 0, label }: MyComponentProps) => {
+export const MyComponent = ({initialCount = 0, label}: MyComponentProps) => {
   const [count, setCount] = React.useState(initialCount);
 
   return (
@@ -267,9 +267,9 @@ export const MyComponent = ({ initialCount = 0, label }: MyComponentProps) => {
 ```tsx
 import React from "react";
 
-type Props = { value: number };
+type Props = {value: number};
 
-const Counter = React.memo(function Counter({ value }: Props) {
+const Counter = React.memo(function Counter({value}: Props) {
   return <div>{value}</div>;
 });
 ```
@@ -293,12 +293,11 @@ const [fooState, setFooState] = useState("<初期値>");
 useEffect(
   // 実行したい無名な非同期関数
   () => {
+    // state変数に値を設定する
+    setFooState(response.data);
 
-      // state変数に値を設定する
-      setFooState(response.data);
-
-      return () => {
-          // 事後処理
+    return () => {
+      // 事後処理
     };
   },
   // useEffectを再度実行したい場合に、[state]を設定する
@@ -312,19 +311,16 @@ useEffect(
 ```jsx
 const [fooState, setFooState] = useState("<初期値>");
 
-useEffect(
-    () => {
-        const data = response.data
-        if(data){
-            // state変数に値を設定する
-            setFooState(response.data);
-            return;
-        }
-        // state変数に値を設定する
-        setFooState(null);
-    },
-    [fooState],
-);
+useEffect(() => {
+  const data = response.data;
+  if (data) {
+    // state変数に値を設定する
+    setFooState(response.data);
+    return;
+  }
+  // state変数に値を設定する
+  setFooState(null);
+}, [fooState]);
 ```
 
 #### ▼ 第一引数
@@ -333,13 +329,13 @@ useEffect(
 import {useEffect, useState} from "react";
 
 export const MyComponent = () => {
-    // useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する
-    const [fooState, setFooState] = useState("");
+  // useEffect関数内でsetFooState関数を実行し、state変数を動的に変更する
+  const [fooState, setFooState] = useState("");
 
-    useEffect(
+  useEffect(
     // 実行したい無名な非同期関数
     () => {
-        const fetchData = async () => {
+      const fetchData = async () => {
         const response = await axios.get("https://example.com");
         // state変数に値を設定する
         setFooState(response.data);
@@ -398,33 +394,34 @@ export const App = () => {
 そのため、`useEffect()` 関数の後の関数が `useEffect()` 関数よりも先に実行される。
 
 ```jsx
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, {useState, useEffect} from "react";
+import "./App.css";
 
 export const App = () => {
   const [count, setCount] = useState(0);
 
   // 実行 (1)
-  console.log('useEffect実行前です');
+  console.log("useEffect実行前です");
 
   useEffect(
-      // 実行したい無名な非同期関数
-      () => {
-          // 実行 (3)
-          console.log('useEffectが実行されました');
-  });
+    // 実行したい無名な非同期関数
+    () => {
+      // 実行 (3)
+      console.log("useEffectが実行されました");
+    },
+  );
 
   // 実行 (2)
-  console.log('useEffect実行後です');
+  console.log("useEffect実行後です");
 
   return (
-    <div className='App'>
+    <div className="App">
       <h1>サンプル</h1>
       <h2>countの値: {count}</h2>
       <button onClick={() => setCount((prevCount) => prevCount + 1)}>+</button>
     </div>
   );
-}
+};
 ```
 
 > - [Reactの基本を学ぶ Hooks:useEffect偏](https://zenn.dev/kimura141899/articles/4f33b899cb0bca#useeffect%E3%81%A8%E3%82%8A%E3%81%82%E3%81%88%E3%81%9A%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F)
@@ -508,7 +505,6 @@ console.log(JSON.stringify(fooState));
 import React from "react";
 
 export const DateTimePicker = () => {
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     // input属性で表示される画面で選択した値がevent変数に入る
     console.log("event:", event);
@@ -518,10 +514,7 @@ export const DateTimePicker = () => {
 
   return (
     // クリックすると、handleChangeが発火する
-    <input
-      type="datetime-local"
-      onChange={handleChange}
-    />
+    <input type="datetime-local" onChange={handleChange} />
   );
 };
 ```

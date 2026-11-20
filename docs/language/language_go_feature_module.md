@@ -41,4 +41,3 @@ import _ "<パッケージ名>" // init関数のみを実行する
 > - [Go言語のブランクimport(\_ "パッケージ名")とは？ #Go - Qiita](https://qiita.com/atsutama/items/0444ad3fdb25f095b0d6#%E3%83%96%E3%83%A9%E3%83%B3%E3%82%AFimport%E3%81%A3%E3%81%A6)
 
 <br>
-

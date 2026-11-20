@@ -140,7 +140,7 @@ $ gcloud auth application-default login
   "client_secret": "***",
   "quota_project_id": "***",
   "refresh_token": "***",
-  "type": "authorized_user",
+  "type": "authorized_user"
 }
 ```
 

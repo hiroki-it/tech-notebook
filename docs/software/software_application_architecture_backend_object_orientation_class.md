@@ -638,17 +638,17 @@ Car クラスは Lock クラスを状態として保持する。
 
 1. 営業部社員オブジェクト、開発部社員オブジェクト、総務部社員オブジェクトを別々に実装
 
-    ⇒ メリット：ほかの部署のオブジェクトに影響を与えない。
+   ⇒ メリット：ほかの部署のオブジェクトに影響を与えない。
 
-    ⇒ デメリット：各社員オブジェクトで共通の処理を個別に実装しなければならない。
+   ⇒ デメリット：各社員オブジェクトで共通の処理を個別に実装しなければならない。
 
-    共通の処理が同じコードで書かれる保証がない。
+   共通の処理が同じコードで書かれる保証がない。
 
 2. `1` 個の社員オブジェクトのなかで、働く関数に部署ごとで変化する引数を設定
 
-    ⇒ メリット：全部署の社員を `1` 個のオブジェクトで呼び出せる。
+   ⇒ メリット：全部署の社員を `1` 個のオブジェクトで呼び出せる。
 
-    ⇒ デメリット：`1` 個の修正が、全部署の社員の処理に影響を与えてしまう。
+   ⇒ デメリット：`1` 個の修正が、全部署の社員の処理に影響を与えてしまう。
 
 抽象オブジェクトと抽象関数を使用すると、`2` 個のメリットを生かしつつ、デメリットを解決可能。
 
@@ -1078,9 +1078,9 @@ Car クラスは Lock クラスを状態として保持する。
 
 2. 各車は、エンジン機能を必ず持っていなければ、正常に働けない。
 
-    そこで、抽象関数によって、エンジン機能に最低限必要な関数の実装を強制する。
+   そこで、抽象関数によって、エンジン機能に最低限必要な関数の実装を強制する。
 
-    ![interface-class_abstract-class_usage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/interface-class_abstract-class_usage.png)
+   ![interface-class_abstract-class_usage](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/interface-class_abstract-class_usage.png)
 
 <br>
 
@@ -2076,7 +2076,7 @@ Service Locator パターンはアンチパターンである。
 
 4. 2 と 3 により、インフラストラクチャ層とユースケース層の両方は、ドメイン層のインターフェース (抽象クラス) に依存する。これは原則 1 を満たす。
 
-    ![ddd_dependency-inversion-principle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd_dependency-inversion-principle.jpg)
+   ![ddd_dependency-inversion-principle](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd_dependency-inversion-principle.jpg)
 
 <br>
 

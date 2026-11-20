@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 SNS を経由して、Amazon CloudWatch からの通知をチャットアプリケーションにフォワーディングする AWS リソース。
 
 ![chatbot_sns](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/chatbot_sns.png)

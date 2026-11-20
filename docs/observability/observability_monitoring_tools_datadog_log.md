@@ -188,21 +188,16 @@ DATADOG_VERSION=<バージョンタグ>
 
 ```typescript
 // nuxt.configファイル
-import { Configuration } from '@nuxt/types'
-import baseConfig from './nuxt.config'
+import {Configuration} from "@nuxt/types";
+import baseConfig from "./nuxt.config";
 
 // .env.datadogファイルの読み込む
-dotenv.config({ path: resolve(process.cwd(), '.env.datadog') })
+dotenv.config({path: resolve(process.cwd(), ".env.datadog")});
 
-const {
-  DATADOG_CLIENT_TOKEN,
-  DATADOG_ENV,
-  DATADOG_SERVICE,
-  DATADOG_VERSION,
-} = process.env
+const {DATADOG_CLIENT_TOKEN, DATADOG_ENV, DATADOG_SERVICE, DATADOG_VERSION} =
+  process.env;
 
 const nuxtConfig: Configuration = {
-
   publicRuntimeConfig: {
     datadog: {
       // SSGで参照するためpublicに定義する
@@ -219,14 +214,13 @@ const nuxtConfig: Configuration = {
     ...(baseConfig.plugins || []),
     // SSGのみで使用するため、clientモードとする。
     {
-      src: '@/plugins/datadog/browserLogsForSsg',
-      mode: 'client'
+      src: "@/plugins/datadog/browserLogsForSsg",
+      mode: "client",
     },
   ],
 
   // ...
-
-}
+};
 ```
 
 ```typescript
@@ -418,49 +412,44 @@ Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセ�
 
 ```json
 {
-  "content":
-    {
-      "attributes":
-        {
-          "aws":
-            {
-              "awslogs":
-                {
-                  "logGroup": "prd-foo-api-access-log",
-                  "logStream": "be4fcfca38da39f3ad4190e2f325e5d8",
-                  "owner": "123456789",
-                },
-              "function_version": "$LATEST",
-              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
-            },
-          "caller": "-",
-          "host": "prd-foo-api-access-log",
-          "httpMethod": "GET",
-          "id": "36472822677180929652719686832176844832038235205288853504",
-          "ip": "*.*.*.*",
-          "protocol": "HTTP/1.1",
-          "requestId": "4d0c0105-7c89-4384-8b3b-fcc63f701652",
-          "requestTime": "01/Jan/2021:12:00:00 +0000",
-          "resourcePath": "/users/{userId}",
-          "responseLength": "26",
-          "service": "apigateway",
-          "status": 200,
-          "timestamp": 1635497933028,
-          "user": "-",
+  "content": {
+    "attributes": {
+      "aws": {
+        "awslogs": {
+          "logGroup": "prd-foo-api-access-log",
+          "logStream": "be4fcfca38da39f3ad4190e2f325e5d8",
+          "owner": "123456789"
         },
+        "function_version": "$LATEST",
+        "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
+      },
+      "caller": "-",
       "host": "prd-foo-api-access-log",
+      "httpMethod": "GET",
+      "id": "36472822677180929652719686832176844832038235205288853504",
+      "ip": "*.*.*.*",
+      "protocol": "HTTP/1.1",
+      "requestId": "4d0c0105-7c89-4384-8b3b-fcc63f701652",
+      "requestTime": "01/Jan/2021:12:00:00 +0000",
+      "resourcePath": "/users/{userId}",
+      "responseLength": "26",
       "service": "apigateway",
-      "tags":
-        [
-          "forwardername:datadog-forwarderstack-*****-forwarder-*****",
-          "source:apigateway",
-          "sourcecategory:aws",
-          "forwarder_memorysize:1024",
-          "forwarder_version:3.39.0",
-        ],
-      "timestamp": "2021-01-01T12:00:00.000Z",
+      "status": 200,
+      "timestamp": 1635497933028,
+      "user": "-"
     },
-  "id": "AQAAAXzLRfjkXhzqsgAAAABBWHpMUmxPM0FBQTFWVnRrNTVXbkx3QUE",
+    "host": "prd-foo-api-access-log",
+    "service": "apigateway",
+    "tags": [
+      "forwardername:datadog-forwarderstack-*****-forwarder-*****",
+      "source:apigateway",
+      "sourcecategory:aws",
+      "forwarder_memorysize:1024",
+      "forwarder_version:3.39.0"
+    ],
+    "timestamp": "2021-01-01T12:00:00.000Z"
+  },
+  "id": "AQAAAXzLRfjkXhzqsgAAAABBWHpMUmxPM0FBQTFWVnRrNTVXbkx3QUE"
 }
 ```
 
@@ -470,53 +459,47 @@ Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセ�
 
 ```json
 {
-  "content":
-    {
-      "attributes":
-        {
-          "aws":
-            {
-              "awslogs":
-                {
-                  "logGroup": "prd-foo-api-access-log",
-                  "logStream": "be4fcfca38da39f3ad4190e2f325e5d8",
-                  "owner": "123456789",
-                },
-              "function_version": "$LATEST",
-              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
-            },
-          "date_access": "01/Jan/2021:12:00:00 +0000",
-          "host": "prd-foo-api-access-log",
-          "http":
-            {
-              "auth": "-",
-              "ident": "-",
-              "method": "GET",
-              "request_id": "4d0c0105-7c89-4384-8b3b-fcc63f701652",
-              "status_category": "OK",
-              "status_code": 200,
-              "url": "/users/{userId}",
-              "url_details": {"path": "/users/{userId}"},
-              "version": "HTTP/1.1",
-            },
-          "id": "36472822677180929652719686832176844832038235205288853504",
-          "network": {"bytes_written": "26", "client": {"ip": "*.*.*.*"}},
-          "service": "apigateway",
-          "timestamp": 1635497933028,
+  "content": {
+    "attributes": {
+      "aws": {
+        "awslogs": {
+          "logGroup": "prd-foo-api-access-log",
+          "logStream": "be4fcfca38da39f3ad4190e2f325e5d8",
+          "owner": "123456789"
         },
+        "function_version": "$LATEST",
+        "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
+      },
+      "date_access": "01/Jan/2021:12:00:00 +0000",
       "host": "prd-foo-api-access-log",
+      "http": {
+        "auth": "-",
+        "ident": "-",
+        "method": "GET",
+        "request_id": "4d0c0105-7c89-4384-8b3b-fcc63f701652",
+        "status_category": "OK",
+        "status_code": 200,
+        "url": "/users/{userId}",
+        "url_details": {"path": "/users/{userId}"},
+        "version": "HTTP/1.1"
+      },
+      "id": "36472822677180929652719686832176844832038235205288853504",
+      "network": {"bytes_written": "26", "client": {"ip": "*.*.*.*"}},
       "service": "apigateway",
-      "tags":
-        [
-          "forwardername:datadog-forwarderstack-*****-forwarder-*****",
-          "source:apigateway",
-          "sourcecategory:aws",
-          "forwarder_memorysize:1024",
-          "forwarder_version:3.39.0",
-        ],
-      "timestamp": "2021-01-01T12:00:00.000Z",
+      "timestamp": 1635497933028
     },
-  "id": "AQAAAXzLRfjkXhzqsgAAAABBWHpMUmxPM0FBQTFWVnRrNTVXbkx3QUE",
+    "host": "prd-foo-api-access-log",
+    "service": "apigateway",
+    "tags": [
+      "forwardername:datadog-forwarderstack-*****-forwarder-*****",
+      "source:apigateway",
+      "sourcecategory:aws",
+      "forwarder_memorysize:1024",
+      "forwarder_version:3.39.0"
+    ],
+    "timestamp": "2021-01-01T12:00:00.000Z"
+  },
+  "id": "AQAAAXzLRfjkXhzqsgAAAABBWHpMUmxPM0FBQTFWVnRrNTVXbkx3QUE"
 }
 ```
 
@@ -569,16 +552,15 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 ```json
 {
   "date_access": 12345,
-  "http":
-    {
-      "method": "GET",
-      "referer": "-",
-      "status_code": 200,
-      "url": "/healthcheck",
-      "useragent": "ELB-HealthChecker/2.0",
-      "version": "1.1",
-    },
-  "network": {"bytes_written": 17, "client": {"ip": "*.*.*.*"}},
+  "http": {
+    "method": "GET",
+    "referer": "-",
+    "status_code": 200,
+    "url": "/healthcheck",
+    "useragent": "ELB-HealthChecker/2.0",
+    "version": "1.1"
+  },
+  "network": {"bytes_written": 17, "client": {"ip": "*.*.*.*"}}
 }
 ```
 
@@ -696,7 +678,7 @@ FooRule \[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+(production|staging).%{word:lo
 ```json
 {
   "date": 1630454400000, // エポック形式 (UNIX 時間)
-  "log_status": "INFO",
+  "log_status": "INFO"
 }
 ```
 
@@ -711,43 +693,41 @@ AWS WAF から以下のような構造化ログを受信する例を考える。
   "webaclId": "arn:aws:wafv2:ap-northeast-1:<AWSアカウントID>:regional/webacl/prd-foo-alb-waf/123456789",
   "terminatingRuleId": "block-according-to-core-rule-set",
   "action": "ALLOW",
-  "ruleGroupList":
-    [
-      {
-        "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
-        "terminatingRule": null,
-        "nonTerminatingMatchingRules": [],
-        "excludedRules":
-          [
-            {
-              "exclusionType": "EXCLUDED_AS_COUNT",
-              "ruleId": "NoUserAgent_HEADER",
-            },
-          ],
-      },
-      {
-        "ruleGroupId": "AWS#AWSManagedRulesSQLiRuleSet#Version_1.1",
-        "terminatingRule": null,
-        "nonTerminatingMatchingRules": [],
-        "excludedRules": null,
-      },
-      {
-        "ruleGroupId": "AWS#AWSManagedRulesPHPRuleSet#Version_1.1",
-        "terminatingRule": null,
-        "nonTerminatingMatchingRules": [],
-        "excludedRules": null,
-      },
-      {
-        "ruleGroupId": "AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1",
-        "terminatingRule": null,
-        "nonTerminatingMatchingRules": [],
-        "excludedRules": null,
-      },
-    ],
+  "ruleGroupList": [
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesCommonRuleSet#Version_1.2",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": [
+        {
+          "exclusionType": "EXCLUDED_AS_COUNT",
+          "ruleId": "NoUserAgent_HEADER"
+        }
+      ]
+    },
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesSQLiRuleSet#Version_1.1",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": null
+    },
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesPHPRuleSet#Version_1.1",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": null
+    },
+    {
+      "ruleGroupId": "AWS#AWSManagedRulesKnownBadInputsRuleSet#Version_1.1",
+      "terminatingRule": null,
+      "nonTerminatingMatchingRules": [],
+      "excludedRules": null
+    }
+  ],
   "uri": "/foo",
   "args": "",
   "httpVersion": "HTTP/1.1",
-  "httpMethod": "GET",
+  "httpMethod": "GET"
 }
 ```
 
@@ -815,9 +795,12 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 ```json
 {
   "date": 1609502400000,
-  "http":
-    {"method": "GET", "status_code": 200, "url": "/users?paginate=10&fooId=1"},
-  "network": {"client": {"ip": "192.168.0.1"}},
+  "http": {
+    "method": "GET",
+    "status_code": 200,
+    "url": "/users?paginate=10&fooId=1"
+  },
+  "network": {"client": {"ip": "192.168.0.1"}}
 }
 ```
 
@@ -828,15 +811,16 @@ FooRule %{ipv4:network.client.ip}\s+\[%{date("yyyy-MM-dd HH:mm:ss"):date}\]\s+%{
 ```json
 {
   "date": 1609502400000,
-  "http":
-    {
-      "method": "GET",
-      "status_code": 200,
-      "url": "/users?paginate=10&fooId=1",
-      "url_details":
-        {"path": "/users", "queryString": {"fooId": 1, "paginate": 10}},
-    },
-  "network": {"client": {"ip": "192.168.0.1"}},
+  "http": {
+    "method": "GET",
+    "status_code": 200,
+    "url": "/users?paginate=10&fooId=1",
+    "url_details": {
+      "path": "/users",
+      "queryString": {"fooId": 1, "paginate": 10}
+    }
+  },
+  "network": {"client": {"ip": "192.168.0.1"}}
 }
 ```
 
@@ -846,49 +830,44 @@ Amazon CloudWatch Logs から、以下のような Amazon API Gateway アクセ�
 
 ```json
 {
-  "content":
-    {
-      "attributes":
-        {
-          "aws":
-            {
-              "awslogs":
-                {
-                  "logGroup": "prd-foo-api-access-log",
-                  "logStream": "*****",
-                  "owner": "123456789",
-                },
-              "function_version": "$LATEST",
-              "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****",
-            },
-          "caller": "-",
-          "host": "prd-foo-api-access-log",
-          "httpMethod": "GET",
-          "id": "*****",
-          "ip": "*.*.*.*",
-          "protocol": "HTTP/1.1",
-          "requestId": "*****",
-          "requestTime": "01/Jan/2021:12:00:00 +0000",
-          "resourcePath": "/users/{userId}",
-          "responseLength": "26",
-          "service": "apigateway",
-          "status": 200,
-          "timestamp": 1635497933028,
-          "user": "-",
+  "content": {
+    "attributes": {
+      "aws": {
+        "awslogs": {
+          "logGroup": "prd-foo-api-access-log",
+          "logStream": "*****",
+          "owner": "123456789"
         },
+        "function_version": "$LATEST",
+        "invoked_function_arn": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:datadog-ForwarderStack-*****-Forwarder-*****"
+      },
+      "caller": "-",
       "host": "prd-foo-api-access-log",
+      "httpMethod": "GET",
+      "id": "*****",
+      "ip": "*.*.*.*",
+      "protocol": "HTTP/1.1",
+      "requestId": "*****",
+      "requestTime": "01/Jan/2021:12:00:00 +0000",
+      "resourcePath": "/users/{userId}",
+      "responseLength": "26",
       "service": "apigateway",
-      "tags":
-        [
-          "forwardername:datadog-forwarderstack-*****-forwarder-*****",
-          "source:apigateway",
-          "sourcecategory:aws",
-          "forwarder_memorysize:1024",
-          "forwarder_version:3.39.0",
-        ],
-      "timestamp": "2021-01-01T12:00:00.000Z",
+      "status": 200,
+      "timestamp": 1635497933028,
+      "user": "-"
     },
-  "id": "*****",
+    "host": "prd-foo-api-access-log",
+    "service": "apigateway",
+    "tags": [
+      "forwardername:datadog-forwarderstack-*****-forwarder-*****",
+      "source:apigateway",
+      "sourcecategory:aws",
+      "forwarder_memorysize:1024",
+      "forwarder_version:3.39.0"
+    ],
+    "timestamp": "2021-01-01T12:00:00.000Z"
+  },
+  "id": "*****"
 }
 ```
 
@@ -952,16 +931,15 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 ```json
 {
   "date_access": 12345,
-  "http":
-    {
-      "method": "GET",
-      "referer": "-",
-      "status_code": 200,
-      "url": "/healthcheck",
-      "useragent": "ELB-HealthChecker/2.0",
-      "version": "1.1",
-    },
-  "network": {"bytes_written": 17, "client": {"ip": "*.*.*.*"}},
+  "http": {
+    "method": "GET",
+    "referer": "-",
+    "status_code": 200,
+    "url": "/healthcheck",
+    "useragent": "ELB-HealthChecker/2.0",
+    "version": "1.1"
+  },
+  "network": {"bytes_written": 17, "client": {"ip": "*.*.*.*"}}
 }
 ```
 
@@ -1013,15 +991,16 @@ error.format %{date("yyyy/MM/dd HH:mm:ss"):date_access} \[%{word:level}\] %{data
 ```json
 {
   "date": 1609502400000,
-  "http":
-    {
-      "method": "GET",
-      "status_code": 200,
-      "url": "/users?paginate=10&fooId=1",
-      "url_details":
-        {"path": "/users", "queryString": {"fooId": 1, "paginate": 10}},
-    },
-  "network": {"client": {"ip": "192.168.0.1"}},
+  "http": {
+    "method": "GET",
+    "status_code": 200,
+    "url": "/users?paginate=10&fooId=1",
+    "url_details": {
+      "path": "/users",
+      "queryString": {"fooId": 1, "paginate": 10}
+    }
+  },
+  "network": {"client": {"ip": "192.168.0.1"}}
 }
 ```
 

@@ -33,7 +33,7 @@ CircleCI では、VCS からコードを取得した Services Cluster がビル�
 
 5. 結果を通知することも可能。
 
-    ![continuous-integration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/continuous-integration.png)
+   ![continuous-integration](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/devops/continuous-integration.png)
 
 <br>
 
@@ -113,21 +113,21 @@ $ circleci local execute -c .circleci/process.yml --job <job名>
 
 1. CircleCI 用に鍵を作成してもよいが、ここでは GitHub の鍵をそのまま使用することとする。
 
-    GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。
+   GitHubの秘密鍵の中身をコピーし、CircleCIのプロジェクト設定に登録する。
 
-    この時、他の連携サービスと区別しやすいように、ホスト名を`github`とする。
+   この時、他の連携サービスと区別しやすいように、ホスト名を`github`とする。
 
-    ```bash
-    $ pbcopy < ~/.ssh/github/<秘密鍵名>
-    ```
+   ```bash
+   $ pbcopy < ~/.ssh/github/<秘密鍵名>
+   ```
 
-3. CircleCI の `Enable SSH` ステップに表示された `ssh` コマンドをコピーし、CircleCI コンテナに SSH 公開鍵認証する。
+2. CircleCI の `Enable SSH` ステップに表示された `ssh` コマンドをコピーし、CircleCI コンテナに SSH 公開鍵認証する。
 
-    ```bash
-    $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
-    ```
+   ```bash
+   $ <CircleCIから提示されたコマンドをコピペ> -i ~/.ssh/github/<秘密鍵名>
+   ```
 
-    > - https://circleci.com/docs/ja/2.0/add-ssh-key/
+   > - https://circleci.com/docs/ja/2.0/add-ssh-key/
 
 #### ▼ Test Insights
 

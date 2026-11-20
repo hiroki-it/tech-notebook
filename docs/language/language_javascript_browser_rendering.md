@@ -314,7 +314,6 @@ Intersection Observer の仕組みでは、特定の HTML 要素を指定し、�
 import {useRef, useState, useEffect, type ReactNode} from "react";
 
 type LazyRenderWithIntersectionObserverProps = {
-
   /**
    * レンダリングを遅延させたい要素
    */
@@ -332,7 +331,7 @@ type LazyRenderWithIntersectionObserverProps = {
    *
    * スクロールによって ref.current 要素が rootMargin 内に入ると、遅延させていたレンダリングが始まる
    */
-  rootMargin? : string;
+  rootMargin?: string;
 };
 
 /**
@@ -344,8 +343,7 @@ export const LazyRenderWithIntersectionObserver = ({
   minHeight,
   rootMargin = "200px",
 }: LazyRenderWithIntersectionObserverProps): JSX.Element => {
-
-  const ref = useRef < HTMLDivElement > (null);
+  const ref = useRef<HTMLDivElement>(null);
   const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
@@ -368,7 +366,7 @@ export const LazyRenderWithIntersectionObserver = ({
           intersectionObserver.disconnect();
         }
       },
-      {rootMargin}
+      {rootMargin},
     );
 
     intersectionObserver.observe(targetElement);
@@ -376,12 +374,9 @@ export const LazyRenderWithIntersectionObserver = ({
   }, [rootMargin, shouldRender]);
 
   return (
-    <div ref={ref}>
-      {shouldRender ? children : <div style={{minHeight}}/>}
-    </div>
+    <div ref={ref}>{shouldRender ? children : <div style={{minHeight}} />}</div>
   );
-}
-;
+};
 ```
 
 ```jsx

@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 AWS ALB を使用して、起動テンプレートを基にした Amazon EC2 の自動水平スケーリングを実行する。
 
 注意点として、オートスケーリングに紐付ける AWS ALB では、ターゲットを登録する必要はなく、起動テンプレートに応じたインスタンスが自動的に登録される。
@@ -257,47 +256,47 @@ Amazon ECS サービスの CPU 平均使用率やメモリ平均使用率に段�
 
 6. Amazon ECS タスク数が `2` 個にスケールインし、CPU 使用率 `40`%に維持される。
 
-    <table>
-      <thead>
-    <tr>
-      <th>設定項目</th>
-      <th>説明</th>
-      <th>補足</th>
-    </tr>
-      </thead>
-      <tbody>
-    <tr>
-      <td>ターゲット追跡スケーリングポリシー</td>
-      <td>監視対象のメトリクスがターゲット値を超過しているか否かを基に、Amazon ECS タスク数のスケーリングが実行される。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Amazon ECS サービスメトリクス</td>
-      <td>監視対象のメトリクスを設定する。</td>
-      <td>『平均 CPU』、『平均メモリ』、『Amazon ECS タスク当たりの AWS ALB からのリクエスト数』を監視できる。SLI に対応する Amazon CloudWatch Metrics も参考にせよ。</td>
-    </tr>
-    <tr>
-      <td>ターゲット値</td>
-      <td>Amazon ECS タスク数のスケーリングが実行される収束値を設定する。</td>
-      <td>ターゲット値を超過している場合、Amazon ECS タスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の <code>90</code>%未満) の場合、Amazon ECS タスク数がスケールインされる。</td>
-    </tr>
-    <tr>
-      <td>スケールアウトクールダウン期間</td>
-      <td>スケールアウトを完了してから、次回のスケールアウトを発動できるまでの時間を設定する。</td>
-      <td>・期間を短くし過ぎると、ターゲット値を超過する状態が断続的に続いた場合、余分なスケールアウトが連続して実行されてしまうため注意する。<br>・期間を長く過ぎると、スケールアウトが不十分になり、Amazon ECS の負荷が緩和されないため注意する。</td>
-    </tr>
-    <tr>
-      <td>スケールインクールダウン期間</td>
-      <td>スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>スケールインの無効化</td>
-      <td></td>
-      <td></td>
-    </tr>
-      </tbody>
-    </table>
+<table>
+  <thead>
+<tr>
+  <th>設定項目</th>
+  <th>説明</th>
+  <th>補足</th>
+</tr>
+  </thead>
+  <tbody>
+<tr>
+  <td>ターゲット追跡スケーリングポリシー</td>
+  <td>監視対象のメトリクスがターゲット値を超過しているか否かを基に、Amazon ECS タスク数のスケーリングが実行される。</td>
+  <td></td>
+</tr>
+<tr>
+  <td>Amazon ECS サービスメトリクス</td>
+  <td>監視対象のメトリクスを設定する。</td>
+  <td>『平均 CPU』、『平均メモリ』、『Amazon ECS タスク当たりの AWS ALB からのリクエスト数』を監視できる。SLI に対応する Amazon CloudWatch Metrics も参考にせよ。</td>
+</tr>
+<tr>
+  <td>ターゲット値</td>
+  <td>Amazon ECS タスク数のスケーリングが実行される収束値を設定する。</td>
+  <td>ターゲット値を超過している場合、Amazon ECS タスク数がスケールアウトされる。反対に、ターゲット値未満 (正確にはターゲット値の <code>90</code>%未満) の場合、Amazon ECS タスク数がスケールインされる。</td>
+</tr>
+<tr>
+  <td>スケールアウトクールダウン期間</td>
+  <td>スケールアウトを完了してから、次回のスケールアウトを発動できるまでの時間を設定する。</td>
+  <td>・期間を短くし過ぎると、ターゲット値を超過する状態が断続的に続いた場合、余分なスケールアウトが連続して実行されてしまうため注意する。<br>・期間を長く過ぎると、スケールアウトが不十分になり、Amazon ECS の負荷が緩和されないため注意する。</td>
+</tr>
+<tr>
+  <td>スケールインクールダウン期間</td>
+  <td>スケールインを完了してから、次回のスケールインを発動できるまでの時間を設定する。</td>
+  <td></td>
+</tr>
+<tr>
+  <td>スケールインの無効化</td>
+  <td></td>
+  <td></td>
+</tr>
+  </tbody>
+</table>
 
 > - [Use a target metric to scale Amazon ECS services - Amazon Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html)
 

@@ -43,7 +43,7 @@ $ brew install jq
 [
   {"foo": "FOO", "bar": "BAR", "baz": "BAZ"},
   {"foo": "BAR", "bar": "BAZ", "baz": "FOO"},
-  {"foo": "BAZ", "bar": "FOO", "baz": "BAR"},
+  {"foo": "BAZ", "bar": "FOO", "baz": "BAR"}
 ]
 ```
 

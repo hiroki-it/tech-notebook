@@ -101,8 +101,6 @@ module "eventbridge_permission" {
 
 <br>
 
-
-
 ## 04. イベントの受信とフィルタリング
 
 ### イベント受信対象の AWS リソース
@@ -130,7 +128,7 @@ module "eventbridge_permission" {
   "region": "us-west-1",
   "resources": ["<イベントを起こしたリソースのARN>"],
   // その時々のイベントごとに異なるデータ
-  "detail": {},
+  "detail": {}
 }
 // Amazon SNS のデータ
 ```
@@ -141,7 +139,7 @@ AWS Amplify の指定した ID のアプリケーションが `AWS Amplify Deplo
 {
   "detail": {"appId": ["foo", "bar"], "jobStatus": ["SUCCEED", "FAILED"]},
   "detail-type": ["AWS Amplify Deployment Status Change"],
-  "source": "aws.amplify",
+  "source": "aws.amplify"
 }
 ```
 
@@ -192,24 +190,22 @@ AWS リソースで意図的にイベントを起こし、AWS Lambda のログ�
 
 ```json
 {
-  "event":
-    {
-      "version": "0",
-      "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
-      "detail-type": "AWS Amplify Deployment Status Change",
-      "source": "aws.amplify",
-      "account": "<AWSアカウントID>",
-      "time": "<イベントの発生時間>",
-      "region": "ap-northeast-1",
-      "resources": ["<AWS AmplifyのアプリケーションのARN>"],
-      "detail":
-        {
-          "appId": "<アプリケーションID>",
-          "branchName": "<ブランチ名>",
-          "jobId": "<ジョブID>",
-          "jobStatus": "<CI/CDパイプラインのステータス>",
-        },
-    },
+  "event": {
+    "version": "0",
+    "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
+    "detail-type": "AWS Amplify Deployment Status Change",
+    "source": "aws.amplify",
+    "account": "<AWSアカウントID>",
+    "time": "<イベントの発生時間>",
+    "region": "ap-northeast-1",
+    "resources": ["<AWS AmplifyのアプリケーションのARN>"],
+    "detail": {
+      "appId": "<アプリケーションID>",
+      "branchName": "<ブランチ名>",
+      "jobId": "<ジョブID>",
+      "jobStatus": "<CI/CDパイプラインのステータス>"
+    }
+  }
 }
 ```
 
@@ -233,24 +229,22 @@ AWS Amplify で発生したイベントの JSON を変数として取り出す�
 
 ```json
 {
-  "event":
-    {
-      "version": "0",
-      "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
-      "detail-type": "AWS Amplify Deployment Status Change",
-      "source": "aws.amplify",
-      "account": "<AWSアカウントID>",
-      "time": "<イベントの発生時間>",
-      "region": "ap-northeast-1",
-      "resources": ["<AWS AmplifyのアプリケーションのARN>"],
-      "detail":
-        {
-          "appId": "<アプリケーションID>",
-          "branchName": "<ブランチ名>",
-          "jobId": "<ジョブID>",
-          "jobStatus": "<CI/CDパイプラインのステータス>",
-        },
-    },
+  "event": {
+    "version": "0",
+    "id": "b4a07570-eda1-9fe1-da5e-b672a1705c39",
+    "detail-type": "AWS Amplify Deployment Status Change",
+    "source": "aws.amplify",
+    "account": "<AWSアカウントID>",
+    "time": "<イベントの発生時間>",
+    "region": "ap-northeast-1",
+    "resources": ["<AWS AmplifyのアプリケーションのARN>"],
+    "detail": {
+      "appId": "<アプリケーションID>",
+      "branchName": "<ブランチ名>",
+      "jobId": "<ジョブID>",
+      "jobStatus": "<CI/CDパイプラインのステータス>"
+    }
+  }
 }
 ```
 
@@ -266,7 +260,7 @@ JSON のキー名が変数名として動作する。
   "branchName": "$.detail.branchName",
   "jobId": "$.detail.jobId",
   "jobStatus": "$.detail.jobStatus",
-  "region": "$.region",
+  "region": "$.region"
 }
 ```
 

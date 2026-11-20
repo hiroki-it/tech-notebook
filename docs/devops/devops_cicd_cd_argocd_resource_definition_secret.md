@@ -665,66 +665,66 @@ ArgoCD が Cluster をポーリングするためには、ArgoCD に Cluster の
 
 1. ArgoCD の稼働する Cluster をコンテキストとする。
 
-    ```bash
-    $ kubectl config use-context <ArgoCDの稼働するClusterのARN>
-    ```
+   ```bash
+   $ kubectl config use-context <ArgoCDの稼働するClusterのARN>
+   ```
 
 2. ArgoCD のパスワードを確認する。
 
-    ```bash
-    $ kubectl get secret argocd-initial-admin-secret \
-        -n foo \
-        -o jsonpath="{.data.password}" | base64 -d; echo
-    ```
+   ```bash
+   $ kubectl get secret argocd-initial-admin-secret \
+       -n foo \
+       -o jsonpath="{.data.password}" | base64 -d; echo
+   ```
 
 3. ArgoCD にログインする。
 
-    この時、ユーザー名は`admin`でパスワードは前の手順で取得したものとする。
+   この時、ユーザー名は`admin`でパスワードは前の手順で取得したものとする。
 
-    ```bash
-    # Bearer認証の場合
-    $ argocd login <ArgoCDのドメイン名> \
-        --grpc-web \
-        --skip-test-tls \
-        --username admin \
-        --password <前の手順で取得した文字列>
-    
-    # SSOの場合
-    $ argocd login <ArgoCDのドメイン名> \
-        --grpc-web \
-        --skip-test-tls \
-        --sso
-    ```
+   ```bash
+   # Bearer認証の場合
+   $ argocd login <ArgoCDのドメイン名> \
+       --grpc-web \
+       --skip-test-tls \
+       --username admin \
+       --password <前の手順で取得した文字列>
 
-    > - [argocd login just hangs on 2.4.0 · Issue #9679 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366)
+   # SSOの場合
+   $ argocd login <ArgoCDのドメイン名> \
+       --grpc-web \
+       --skip-test-tls \
+       --sso
+   ```
+
+   > - [argocd login just hangs on 2.4.0 · Issue #9679 · argoproj/argo-cd · GitHub](https://github.com/argoproj/argo-cd/issues/9679#issuecomment-1254222366)
 
 4. ArgoCD にポーリングさせたい Cluster をコンテキストとする。
 
-    ```bash
-    $ kubectl config use-context <デプロイ先のClusterのARN>
-    ```
+   ```bash
+   $ kubectl config use-context <デプロイ先のClusterのARN>
+   ```
 
 5. `argocd cluster add <デプロイ先のClusterのARN>` コマンドを実行することで、デプロイ先の Cluster に ArgoCD のエージェントを作成する。
 
-    Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) を作成できる。
+   Secret、ServiceAccount (`argocd-manager`) 、ClusterRole (`argocd-manager-role`) 、ClusterRoleBinding (`argocd-manager-role-binding`) を作成できる。
 
-    ```bash
-    # デフォルトでkube-systemに作成するため、nオプションは不要である
-    $ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名> -n kube-system
-    
-    INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system"
-    INFO[0011] ClusterRole "argocd-manager-role" updated
-    INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
-    Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
-    ```
+   ```bash
+   # デフォルトでkube-systemに作成するため、nオプションは不要である
+   $ argocd cluster add <デプロイ先のClusterのARN> --name <ダッシュボード上でのClusterの表示名> -n kube-system
 
-    > - [argocd cluster add Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/)
+   INFO[0011] ServiceAccount "argocd-manager" already exists in namespace "kube-system"
+   INFO[0011] ClusterRole "argocd-manager-role" updated
+   INFO[0011] ClusterRoleBinding "argocd-manager-role-binding" updated
+   Cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' added
+   ```
+
+   > - [argocd cluster add Command Reference - Argo CD - Declarative GitOps CD for Kubernetes](https://argo-cd.readthedocs.io/en/stable/user-guide/commands/argocd_cluster_add/)
 
 6. もし手順がうまく行っていない場合、Application で指定する Cluster の URL が ArgoCD に登録されていないとして、以下のようなエラーになってしまう。
 
-    ```bash
-    cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured
-    ```
+   ```bash
+   cluster 'https://*****.gr7.ap-northeast-1.eks.amazonaws.com' has not been configured
+   ```
 
 執筆時点 (2022/01/30) では、`argocd cluster add` コマンドをマニフェストとして定義する方法はない。
 

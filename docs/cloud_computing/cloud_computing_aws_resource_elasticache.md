@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 アプリケーションの代わりに、セッション、クエリキャッシュ、分散ロックなどを管理する。
 
 Redis と Memcached がある。
@@ -232,9 +231,9 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 1. アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
 
-    ```mysql
-    SELECT * FROM users;
-    ```
+   ```mysql
+   SELECT * FROM users;
+   ```
 
 2. 初めて実行された SQL の場合、Redis は SQL をキーとして保管し、キャッシュがないことをアプリケーションへ返却する。
 
@@ -244,47 +243,47 @@ DB 側でのクエリキャッシュはパフォーマンス上の問題から�
 
 5. アプリケーションは Redis にデータを登録する。
 
-    ```bash
-    # Amazon ElastiCacheには、SQLの実行結果がまだ保管されていない
-    
-    *** no cache ***
-    {"id"=>"1", "name"=>"alice"}
-    {"id"=>"2", "name"=>"bob"}
-    {"id"=>"3", "name"=>"charles"}
-    {"id"=>"4", "name"=>"donny"}
-    {"id"=>"5", "name"=>"elie"}
-    {"id"=>"6", "name"=>"fabian"}
-    {"id"=>"7", "name"=>"gabriel"}
-    {"id"=>"8", "name"=>"harold"}
-    {"id"=>"9", "name"=>"Ignatius"}
-    {"id"=>"10", "name"=>"jonny"}
-    ```
+   ```bash
+   # Amazon ElastiCacheには、SQLの実行結果がまだ保管されていない
 
-    ![elasticache_query-cache_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/elasticache_query-cache_2.png)
+   *** no cache ***
+   {"id"=>"1", "name"=>"alice"}
+   {"id"=>"2", "name"=>"bob"}
+   {"id"=>"3", "name"=>"charles"}
+   {"id"=>"4", "name"=>"donny"}
+   {"id"=>"5", "name"=>"elie"}
+   {"id"=>"6", "name"=>"fabian"}
+   {"id"=>"7", "name"=>"gabriel"}
+   {"id"=>"8", "name"=>"harold"}
+   {"id"=>"9", "name"=>"Ignatius"}
+   {"id"=>"10", "name"=>"jonny"}
+   ```
+
+   ![elasticache_query-cache_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/elasticache_query-cache_2.png)
 
 6. 次回、アプリケーションは、Amazon RDS の前に、Redis に対して Read 処理を実行する。
 
-    ```mysql
-    SELECT * FROM users;
-    ```
+   ```mysql
+   SELECT * FROM users;
+   ```
 
 7. Redis は、SQL をキーにしてデータを特定し、アプリケーションに返却する。
 
-    ```bash
-    # Amazon ElastiCacheには、SQLの実行結果が既に保管されている
-    
-    *** cache hit ***
-    {"id"=>"1", "name"=>"alice"}
-    {"id"=>"2", "name"=>"bob"}
-    {"id"=>"3", "name"=>"charles"}
-    {"id"=>"4", "name"=>"donny"}
-    {"id"=>"5", "name"=>"elie"}
-    {"id"=>"6", "name"=>"fabian"}
-    {"id"=>"7", "name"=>"gabriel"}
-    {"id"=>"8", "name"=>"harold"}
-    {"id"=>"9", "name"=>"Ignatius"}
-    {"id"=>"10", "name"=>"jonny"}
-    ```
+   ```bash
+   # Amazon ElastiCacheには、SQLの実行結果が既に保管されている
+
+   *** cache hit ***
+   {"id"=>"1", "name"=>"alice"}
+   {"id"=>"2", "name"=>"bob"}
+   {"id"=>"3", "name"=>"charles"}
+   {"id"=>"4", "name"=>"donny"}
+   {"id"=>"5", "name"=>"elie"}
+   {"id"=>"6", "name"=>"fabian"}
+   {"id"=>"7", "name"=>"gabriel"}
+   {"id"=>"8", "name"=>"harold"}
+   {"id"=>"9", "name"=>"Ignatius"}
+   {"id"=>"10", "name"=>"jonny"}
+   ```
 
 <br>
 

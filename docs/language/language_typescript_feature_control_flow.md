@@ -43,4 +43,3 @@ const fooOrBar = foo == "foo" ? foo : "bar";
 ```
 
 <br>
-

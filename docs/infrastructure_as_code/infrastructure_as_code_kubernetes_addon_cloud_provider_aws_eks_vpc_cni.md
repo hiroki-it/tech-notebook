@@ -623,33 +623,33 @@ L-IPAM デーモンは、元からあるこの機能を利用し、Node の AWS 
 
 1. L-IPAM デーモンは、ENI とセカンダリープライベート IP アドレスの情報を、CNI バイナリにプールする。
 
-    プールのENIとセカンダリープライベートIPアドレスの数は、`MINIMUM_IP_TARGET`と`WARM_IP_TARGET` (または`WARM_ENI_TARGET`) の合計数で決まる。
+   プールのENIとセカンダリープライベートIPアドレスの数は、`MINIMUM_IP_TARGET`と`WARM_IP_TARGET` (または`WARM_ENI_TARGET`) の合計数で決まる。
 
 2. kubelet は、kube-apiserver から Pod の `ADD`/`DEL` リクエストを受信する。
 
-    Podの`ADD`/`DEL`リクエストをCNIバイナリに送信する。
+   Podの`ADD`/`DEL`リクエストをCNIバイナリに送信する。
 
 3. L-IPAM デーモンは CNI バイナリを参照する。
 
-    また、CNIバイナリ上の情報に応じてEC2-APIをコールし、ENIをNodeに割り当てる。
+   また、CNIバイナリ上の情報に応じてEC2-APIをコールし、ENIをNodeに割り当てる。
 
-    反対に、NodeのENIを解放し、ENIのプールに戻す。
+   反対に、NodeのENIを解放し、ENIのプールに戻す。
 
-    ![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
+   ![aws-eks-vpc-cni-addon_standard-mode_architecture_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni-addon_standard-mode_architecture_1.png)
 
-3. kubelet は、セカンダリープライベート IP アドレスの `ADD`/`DEL` リクエストを、CNI バイナリに送信する。
+4. kubelet は、セカンダリープライベート IP アドレスの `ADD`/`DEL` リクエストを、CNI バイナリに送信する。
 
-4. CNI バイナリは、L-IPAM デーモンのプールから IP アドレスを取得し、Pod にこれを割り当てる。
+5. CNI バイナリは、L-IPAM デーモンのプールから IP アドレスを取得し、Pod にこれを割り当てる。
 
-    反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
+   反対に、PodからIPアドレスを解放し、L-IPAMデーモンのプールに戻す。
 
-    必要に応じて、
+   必要に応じて、
 
-    ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
+   ![aws-eks-vpc-cni-addon_standard-mode_architecture_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/aws-eks-vpc-cni-addon_standard-mode_architecture_2.png)
 
-    > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
-    > - [amazon-vpc-cni-k8s/docs/cni-proposal.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam)
-    > - [CNCF CNI プラグイン #kubernetes - Qiita](https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
+   > - [Amazon VPC CNI - EKS Best Practices Guides](https://aws.github.io/aws-eks-best-practices/networking/vpc-cni/)
+   > - [amazon-vpc-cni-k8s/docs/cni-proposal.md at master · aws/amazon-vpc-cni-k8s · GitHub](https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md#local-ip-address-manager-l-ipam)
+   > - [CNCF CNI プラグイン #kubernetes - Qiita](https://qiita.com/hichihara/items/54ff9aeff476bf463509#cni-%E3%82%AA%E3%83%9A%E3%83%AC%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
 
 <br>
 
@@ -677,9 +677,9 @@ Pod の上限数を上げる場合、Amazon EKS が属する Amazon VPC サブ�
 
 2. Node 当たり `12` 個のセカンダリープライベート IP アドレスを確保する。
 
-    さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
+   さらに追加で、常に`2`個のセカンダリープライベートIPアドレスをウォーム状態にしておくようになる。
 
-    結果、最初`12`個のPodをスケジューリングできる。
+   結果、最初`12`個のPodをスケジューリングできる。
 
 3. Pod が `12` 個を超えた段階で、合計のセカンダリープライベート IP アドレス数は `2` 個のウォーム状態数を維持しながら増えていく。
 

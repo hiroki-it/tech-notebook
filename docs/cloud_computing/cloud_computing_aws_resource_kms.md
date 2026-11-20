@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 暗号化キーを管理する。
 
 暗号化キーは、パラメーターストアや暗号化ツール (例：SOPS、kubesec) で使用できる。
@@ -92,29 +91,25 @@ AWS KMS のリクエスト制限を設定する。
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Sid": "Allow an external account to use this AWS KMS key",
-        "Effect": "Allow",
-        "Principal":
-          {
-            "AWS":
-              [
-                "<ここで、他のAWSアカウントのIAMユーザーが利用できるように、IAMユーザーやIAMロールのARNを設定する>",
-              ],
-          },
-        "Action":
-          [
-            "kms:Encrypt",
-            "kms:Decrypt",
-            "kms:ReEncrypt*",
-            "kms:GenerateDataKey*",
-            "kms:DescribeKey",
-          ],
-        "Resource": "*",
+  "Statement": [
+    {
+      "Sid": "Allow an external account to use this AWS KMS key",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "<ここで、他のAWSアカウントのIAMユーザーが利用できるように、IAMユーザーやIAMロールのARNを設定する>"
+        ]
       },
-    ],
+      "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKey*",
+        "kms:DescribeKey"
+      ],
+      "Resource": "*"
+    }
+  ]
 }
 ```
 

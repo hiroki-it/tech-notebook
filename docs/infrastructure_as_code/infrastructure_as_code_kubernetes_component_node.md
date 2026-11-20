@@ -364,17 +364,15 @@ kubelet を設定する。
   "kind": "KubeletConfiguration",
   "apiVersion": "kubelet.config.k8s.io/v1beta1",
   "address": "0.0.0.0",
-  "authentication":
-    {
-      "anonymous": {"enabled": "false"},
-      "webhook": {"cacheTTL": "2m0s", "enabled": "true"},
-      "x509": {"clientCAFile": "/etc/kubernetes/pki/ca.crt"},
-    },
-  "authorization":
-    {
-      "mode": "Webhook",
-      "webhook": {"cacheAuthorizedTTL": "5m0s", "cacheUnauthorizedTTL": "30s"},
-    },
+  "authentication": {
+    "anonymous": {"enabled": "false"},
+    "webhook": {"cacheTTL": "2m0s", "enabled": "true"},
+    "x509": {"clientCAFile": "/etc/kubernetes/pki/ca.crt"}
+  },
+  "authorization": {
+    "mode": "Webhook",
+    "webhook": {"cacheAuthorizedTTL": "5m0s", "cacheUnauthorizedTTL": "30s"}
+  },
   "clusterDomain": "cluster.local",
   "hairpinMode": "hairpin-veth",
   "readOnlyPort": 0,
@@ -385,21 +383,20 @@ kubelet を設定する。
   "serializeImagePulls": "false",
   "serverTLSBootstrap": "true",
   // 暗号スイート
-  "tlsCipherSuites":
-    [
-      "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
-      "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
-      "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
-      "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
-      "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305",
-      "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
-      "TLS_RSA_WITH_AES_256_GCM_SHA384",
-      "TLS_RSA_WITH_AES_128_GCM_SHA256",
-    ],
+  "tlsCipherSuites": [
+    "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+    "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+    "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305",
+    "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305",
+    "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+    "TLS_RSA_WITH_AES_256_GCM_SHA384",
+    "TLS_RSA_WITH_AES_128_GCM_SHA256"
+  ],
   // コンテナのログローテーションの閾値
   "containerLogMaxSize": "100Mi",
   // コンテナのログの最大世代数
-  "containerLogMaxFiles": 2,
+  "containerLogMaxFiles": 2
 }
 ```
 
@@ -511,69 +508,69 @@ MemoryAccounting=true
 
 1. `/etc/modules-load.d/containerd.conf` ファイルに、カーネルモジュールを設定する。
 
-    > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0)
+   > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#%E5%BF%85%E8%A6%81%E3%81%AA%E8%A8%AD%E5%AE%9A%E3%81%AE%E8%BF%BD%E5%8A%A0)
 
-    ```bash
-    overlay
-    br_netfilter
-    ```
+   ```bash
+   overlay
+   br_netfilter
+   ```
 
 2. カーネルモジュールを読み込む。
 
-    ```bash
-    $ modprobe overlay
-    $ modprobe br_netfilter
-    ```
+   ```bash
+   $ modprobe overlay
+   $ modprobe br_netfilter
+   ```
 
 3. `/etc/sysctl.d/99-kubernetes-cri.conf` ファイルに、カーネルオプションを設定する。
 
-    ```bash
-    net.bridge.bridge-nf-call-iptables=1
-    net.ipv4.ip_forward=1
-    net.bridge.bridge-nf-call-ip6tables=1
-    ```
+   ```bash
+   net.bridge.bridge-nf-call-iptables=1
+   net.ipv4.ip_forward=1
+   net.bridge.bridge-nf-call-ip6tables=1
+   ```
 
-    > - [Kubernetesのインストール方法の解説 （Ubuntu20.04.3＋containerd＋flannel） \| めもたんす](https://www.memotansu.jp/kubernetes/3790/#toc2)
+   > - [Kubernetesのインストール方法の解説 （Ubuntu20.04.3＋containerd＋flannel） \| めもたんす](https://www.memotansu.jp/kubernetes/3790/#toc2)
 
 4. カーネルに設定を反映する。
 
-    ```bash
-    $ sysctl --system
-    ```
+   ```bash
+   $ sysctl --system
+   ```
 
 #### ▼ Containerd のインストール
 
 1. 要件のパッケージをインストールする。
 
-    ```bash
-    $ apt-get update -y \
-      && apt-get install -y \
-        apt-transport-https \
-        ca-certificates \
-        curl \
-        software-properties-common
-    ```
+   ```bash
+   $ apt-get update -y \
+     && apt-get install -y \
+       apt-transport-https \
+       ca-certificates \
+       curl \
+       software-properties-common
+   ```
 
 2. Docker 公式の提供する GPG キーを追加する。
 
-    ```bash
-    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    ```
+   ```bash
+   $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+   ```
 
 3. リポジトリを追加する。
 
-    ```bash
-    $ add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-        $(lsb_release -cs) \
-        stable"
-    ```
+   ```bash
+   $ add-apt-repository \
+       "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+       $(lsb_release -cs) \
+       stable"
+   ```
 
 4. Containerd をインストールする。
 
-    ```bash
-    $ apt-get update && apt-get install containerd.io
-    ```
+   ```bash
+   $ apt-get update && apt-get install containerd.io
+   ```
 
 > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
@@ -581,18 +578,18 @@ MemoryAccounting=true
 
 1. 設定ファイルとして、`/etc/containerd/config.toml` ファイルを作成する。
 
-    > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
+   > - [コンテナランタイム \| Kubernetes](https://kubernetes.io/ja/docs/setup/production-environment/container-runtimes/#containerd%E3%81%AE%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB)
 
-    ```bash
-    $ mkdir -p /etc/containerd
-    $ containerd config default | sudo tee /etc/containerd/config.toml
-    ```
+   ```bash
+   $ mkdir -p /etc/containerd
+   $ containerd config default | sudo tee /etc/containerd/config.toml
+   ```
 
 2. Containerd に設定を反映する。
 
-    ```bash
-    $ systemctl restart containerd
-    ```
+   ```bash
+   $ systemctl restart containerd
+   ```
 
 #### ▼ kubelet による Containerd の指定
 

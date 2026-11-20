@@ -484,62 +484,62 @@ $D = objB()->objC()->objD();
 
 4. ソートを繰り返し実行する。
 
-    ```injectablephp
-    <?php
-    
-    class Foo
-    {
-    
-        public function quickSort(array $array): array
-        {
-            // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
-            if (count($array) <= 1) {
-                return $array;
-            }
-    
-            // 一番最初の値をPivotとする。
-            $pivot = array_shift($array);
-    
-            // グループを定義
-            $left = $right = [];
-    
-            foreach ($array as $value) {
-    
-                if ($value < $pivot) {
-    
-                    // Pivotより小さい数は左グループに格納
-                    $left[] = $value;
-                } else {
-    
-                    // Pivotより大きい数は右グループに格納
-                    $right[] = $value;
-                }
-    
-            }
-    
-            // 処理の周回ごとに、結果の配列を結合。
-            return array_merge
-            (
-            // 左のグループを再帰的にクイックソート。
-                $this->quickSort($left),
-    
-                // Pivotを結果に組み込む。
-                [$pivot],
-    
-                // 右のグループを再帰的にクイックソート。
-                $this->quickSort($right)
-            );
-        }
-    }
-    
-    // 実際に使用してみる。
-    $array = [6, 4, 3, 7, 8, 5, 2, 9, 1];
-    $result = (new Foo())->quickSort($array);
-    var_dump($result);
-    
-    // 昇順に並び替えられている。
-    // 1, 2, 3, 4, 5, 6, 7, 8
-    ```
+   ```injectablephp
+   <?php
+
+   class Foo
+   {
+
+       public function quickSort(array $array): array
+       {
+           // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
+           if (count($array) <= 1) {
+               return $array;
+           }
+
+           // 一番最初の値をPivotとする。
+           $pivot = array_shift($array);
+
+           // グループを定義
+           $left = $right = [];
+
+           foreach ($array as $value) {
+
+               if ($value < $pivot) {
+
+                   // Pivotより小さい数は左グループに格納
+                   $left[] = $value;
+               } else {
+
+                   // Pivotより大きい数は右グループに格納
+                   $right[] = $value;
+               }
+
+           }
+
+           // 処理の周回ごとに、結果の配列を結合。
+           return array_merge
+           (
+           // 左のグループを再帰的にクイックソート。
+               $this->quickSort($left),
+
+               // Pivotを結果に組み込む。
+               [$pivot],
+
+               // 右のグループを再帰的にクイックソート。
+               $this->quickSort($right)
+           );
+       }
+   }
+
+   // 実際に使用してみる。
+   $array = [6, 4, 3, 7, 8, 5, 2, 9, 1];
+   $result = (new Foo())->quickSort($array);
+   var_dump($result);
+
+   // 昇順に並び替えられている。
+   // 1, 2, 3, 4, 5, 6, 7, 8
+   ```
 
 <br>
 
@@ -1025,4 +1025,3 @@ class Foo
 ```
 
 <br>
-

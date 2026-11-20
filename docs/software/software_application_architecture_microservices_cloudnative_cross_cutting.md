@@ -689,7 +689,7 @@ PaaS や FaaS (例：AWS であれば、AWS Beanstalk や AWS Lambda) を使用�
 
 ### デプロイ
 
-![ddd-cloudnative_microservice-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-pod_deployment.png>)
+![ddd-cloudnative_microservice-pod_deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-pod_deployment.png)
 
 <table>
   <thead>
@@ -714,19 +714,19 @@ PaaS や FaaS (例：AWS であれば、AWS Beanstalk や AWS Lambda) を使用�
 
 ### デプロイ
 
-![ddd-cloudnative_frontend-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_frontend-pod_deployment.png>)
+![ddd-cloudnative_frontend-pod_deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_frontend-pod_deployment.png)
 
 ## BFF
 
 ### デプロイ
 
-![ddd-cloudnative_bff-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_bff-pod_deployment.png>)
+![ddd-cloudnative_bff-pod_deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_bff-pod_deployment.png)
 
 ## SRE ツール
 
 ### デプロイ
 
-![ddd-cloudnative_sre-tool-pod_deployment](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sre-tool-pod_deployment.png>)
+![ddd-cloudnative_sre-tool-pod_deployment](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sre-tool-pod_deployment.png)
 
 # 24-03. コンテナの作成から削除まで
 
@@ -744,7 +744,7 @@ kubelet が Pod の開始プロセスを始めると、以下の一連のプロ�
 2. Workload (例：Deployment、StatefulSet など) が新しい Pod を管理下に追加する。
 3. Service と kube-proxy が古い Pod の宛先情報を追加する。
 
-![ddd-cloudnative_app-container_startup](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-container_startup.png>)
+![ddd-cloudnative_app-container_startup](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-container_startup.png)
 
 <table>
   <thead>
@@ -820,7 +820,7 @@ Service と kube-proxy が Pod の宛先情報を削除する前に Pod が終�
 2. Service と kube-proxy が古い Pod の宛先情報を削除する。
 3. コンテナを削除する。
 
-![ddd-cloudnative_app-container_termination](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-container_termination.png>)
+![ddd-cloudnative_app-container_termination](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_app-container_termination.png)
 
 <table>
   <thead>
@@ -1000,7 +1000,7 @@ Karpenter と AWS マネージド Node グループ Node グループを採用�
 
 Karpenter と AWS マネージド Node グループ Node グループの間では、機能が異なります。
 
-![ddd-cloudnative_node-scaling](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_node-scaling.png>)
+![ddd-cloudnative_node-scaling](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_node-scaling.png)
 
 <table>
   <thead>
@@ -1036,7 +1036,7 @@ Karpenter と AWS マネージド Node グループ Node グループの間で�
 
 # 25-03. Pod の垂直水平スケーリングと回復性管理
 
-![ddd-cloudnative_microservice-pod_operation](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-pod_operation.png>)
+![ddd-cloudnative_microservice-pod_operation](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_microservice-pod_operation.png)
 
 <table>
   <thead>

@@ -128,13 +128,12 @@ for (const property in object) {
 const array = ["foo", "bar", "baz"];
 
 for (const [key, value] of array.entries()) {
+  // キー名が偶数の組をスキップする。
+  if (!(key % 2 == 0)) {
+    continue;
+  }
 
-    // キー名が偶数の組をスキップする。
-    if(!(key % 2 == 0)){
-        continue;
-    }
-
-    console.log(value);
+  console.log(value);
 }
 
 // foo

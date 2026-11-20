@@ -179,9 +179,9 @@ DB からフロント出力までに至る実装をコミットする場合、�
 
 2. どういった入力がされたときに `true` として判断しているのかを確認する。
 
-    例えば、受注済区分値が設定されているとき、失注区分値へ変わった場合に値を返却しているとする。
+   例えば、受注済区分値が設定されているとき、失注区分値へ変わった場合に値を返却しているとする。
 
-    この場合、そこから『失注』のドメインルールが垣間見える。
+   この場合、そこから『失注』のドメインルールが垣間見える。
 
 3. 定数に添えられたコメントから、仕様を理解。
 
@@ -396,54 +396,54 @@ CI ツールや CD ツールを使用して、コミット (マージコミッ�
 
 1. `git status` を行い、特定のファイルでのコンフリクトが表示される。
 
-    ```bash
-    Unmerged paths:
-      (use "git restore --staged <file>..." to unstage)
-      (use "git add <file>..." to mark resolution)
-            both modified:   foo/bar.twig
-    ```
+   ```bash
+   Unmerged paths:
+     (use "git restore --staged <file>..." to unstage)
+     (use "git add <file>..." to mark resolution)
+           both modified:   foo/bar.twig
+   ```
 
 2. コンフリクトしていたコード行を取捨選択する。
 
-    ```injectablephp
-    <?php
-    /// Phpstromにて、コンフリクトしていたコード行を取捨選択する。
-    ```
+   ```injectablephp
+   <?php
+   /// Phpstromにて、コンフリクトしていたコード行を取捨選択する。
+   ```
 
 3. 一度 `add` を行い、コンフリクトの修正を Git に認識させる。
 
-    ```bash
-    $ git add foo/bar.twig
-    ```
+   ```bash
+   $ git add foo/bar.twig
+   ```
 
 4. `git status` を行い、以下が表示される。
 
-    コンフリクトが解決されたが、マージされていないと出力される。
+   コンフリクトが解決されたが、マージされていないと出力される。
 
-    差分のファイルがたくさん表示される場合でも問題ない。
+   差分のファイルがたくさん表示される場合でも問題ない。
 
-    ```bash
-    All conflicts fixed but you are still merging.
-    
-    Changes to be committed:
-            modified:   foo.twig
-            modified:   foo.php
-    ```
+   ```bash
+   All conflicts fixed but you are still merging.
+
+   Changes to be committed:
+           modified:   foo.twig
+           modified:   foo.php
+   ```
 
 5. `git commit` (`-m` はつけてはいけない) を行い、vim エディタが表示される。
 
-    ```bash
-     Merge branch "ブランチ名" into ブランチ名
-    ```
+   ```bash
+    Merge branch "ブランチ名" into ブランチ名
+   ```
 
 6. `:wq` でエディタを終了すれば、コンフリクトを解決したマージコミットが作成される。
 
 7. `git status` を実行する。場合によっては、差分のコミット数が表示されるが問題ない。
 
-    ```bash
-    Your branch is ahead of "origin/feature/update_foo" by 10 commits.
-    
-    ```
+   ```bash
+   Your branch is ahead of "origin/feature/update_foo" by 10 commits.
+
+   ```
 
 8. プッシュする。このとき、マージコミットを作成するとき、基点ブランチ以外からマージしていると、差分のコミットが 1 つにまとまらない。
 

@@ -258,11 +258,11 @@ $ docker run -d -it --log-driver <ロギングドライバー名> --name  <コ�
   "log-driver": "json-file",
   // ドライバーのオプション
   "log-opts": {
-      "max-size": "10m",
-      "max-file": "3",
-      // JSON に付与する属性キー
-      "labels": "app,env",
-    },
+    "max-size": "10m",
+    "max-file": "3",
+    // JSON に付与する属性キー
+    "labels": "app,env"
+  }
 }
 ```
 
@@ -301,7 +301,7 @@ Amazon ECS コンテナの awsfirelens ドライバーは、fluentd ドライバ
 {
   "log-driver": "awslogs",
   // ドライバーのオプション
-  "log-opts": {"awslogs-region": "us-east-1"},
+  "log-opts": {"awslogs-region": "us-east-1"}
 }
 ```
 
@@ -315,7 +315,7 @@ Amazon ECS コンテナの awsfirelens ドライバーは、fluentd ドライバ
 {
   "log-driver": "gcplogs",
   // ドライバーのオプション
-  "log-opts": {"gcp-meta-name": "example-instance-12345"},
+  "log-opts": {"gcp-meta-name": "example-instance-12345"}
 }
 ```
 

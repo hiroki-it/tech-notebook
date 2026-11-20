@@ -490,48 +490,48 @@ foo:
 
 1. パッケージをインストールする。
 
-    ```bash
-    # パッケージを公式からインストールと解凍
-    $ wget <パッケージのリンク>
-    $ tar <パッケージのディレクトリ名>
-    
-    
-    # ビルド用ディレクトリの作成。
-    $ mkdir build
-    $ cd build
-    ```
+   ```bash
+   # パッケージを公式からインストールと解凍
+   $ wget <パッケージのリンク>
+   $ tar <パッケージのディレクトリ名>
+
+
+   # ビルド用ディレクトリの作成。
+   $ mkdir build
+   $ cd build
+   ```
 
 2. ルールが定義した Makefile を `configure` ファイルを元に作成する。
 
-    ```bash
-    # configureへのパスに注意。
-    $ ../configure --prefix="<コードのインストール先のパス>"
-    ```
+   ```bash
+   # configureへのパスに注意。
+   $ ../configure --prefix="<コードのインストール先のパス>"
+   ```
 
 3. パッケージのコードから `exe` ファイルをビルドする。
 
-    ```bash
-    # -j で使用するコア数を宣言し、処理速度を上げられる。
-    $ make -j4
-    ```
+   ```bash
+   # -j で使用するコア数を宣言し、処理速度を上げられる。
+   $ make -j4
+   ```
 
 4. 任意で、`exe` ファイルを検証する。
 
-    ```bash
-    $ make check
-    ```
+   ```bash
+   $ make check
+   ```
 
 5. 作成されたコードのファイルを、指定したディレクトリ配下にコピーする。
 
-    ```bash
-    # installと命令するが、実際はコピー。
-    $ make install
-    ```
+   ```bash
+   # installと命令するが、実際はコピー。
+   $ make install
+   ```
 
 6. 元となったコードやバイナリ形式のコードを削除。
 
-    ```bash
-    $ make clean
-    ```
+   ```bash
+   $ make clean
+   ```
 
 <br>

@@ -197,42 +197,41 @@ resource.type = "k8s_container"
 ```json
 {
   "insertId": "42",
-  "jsonPayload":
-    {
-      "message": "There was an error in the application",
-      "foo": "FOO",
-      "bar": "BAR",
-      "baz": "BAZ",
-    },
+  "jsonPayload": {
+    "message": "There was an error in the application",
+    "foo": "FOO",
+    "bar": "BAR",
+    "baz": "BAZ"
+  },
   "httpRequest": {"requestMethod": "GET"},
-  "resource":
-    {
-      "type": "k8s_container",
-      "labels":
-        {
-          "container_name": "hello-app",
-          "pod_name": "helloworld-gke-6cfd6f4599-9wff8",
-          "project_id": "stackdriver-sandbox-92334288",
-          "namespace_name": "default",
-          "location": "us-west4",
-          "cluster_name": "helloworld-gke",
-        },
-    },
+  "resource": {
+    "type": "k8s_container",
+    "labels": {
+      "container_name": "hello-app",
+      "pod_name": "helloworld-gke-6cfd6f4599-9wff8",
+      "project_id": "stackdriver-sandbox-92334288",
+      "namespace_name": "default",
+      "location": "us-west4",
+      "cluster_name": "helloworld-gke"
+    }
+  },
   "timestamp": "2020-11-07T15:57:35.945508391Z",
   "severity": "ERROR",
   "labels": {"user_label_2": "value_2", "user_label_1": "value_1"},
   "logName": "projects/stackdriver-sandbox-92334288/logs/stdout",
-  "operation":
-    {
-      "id": "get_data",
-      "producer": "github.com/MyProject/MyApplication",
-      "first": "true",
-    },
+  "operation": {
+    "id": "get_data",
+    "producer": "github.com/MyProject/MyApplication",
+    "first": "true"
+  },
   "trace": "projects/my-projectid/traces/06796866738c859f2f19b7cfb3214824",
-  "sourceLocation":
-    {"file": "get_data.py", "line": "142", "function": "getData"},
+  "sourceLocation": {
+    "file": "get_data.py",
+    "line": "142",
+    "function": "getData"
+  },
   "receiveTimestamp": "2020-11-07T15:57:42.411414059Z",
-  "spanId": "000000000000004a",
+  "spanId": "000000000000004a"
 }
 ```
 

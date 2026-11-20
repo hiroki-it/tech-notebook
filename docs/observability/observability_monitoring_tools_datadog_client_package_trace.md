@@ -216,8 +216,8 @@ export default datadogTracer;
 ```javascript
 // nuxt.config.tsファイル
 // 先頭で読み込む
-import './datadogTracer'
-import { Configuration } from '@nuxt/types'
+import "./datadogTracer";
+import {Configuration} from "@nuxt/types";
 
 // ...
 ```

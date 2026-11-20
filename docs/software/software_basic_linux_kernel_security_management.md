@@ -43,31 +43,31 @@ Linux にデフォルトで導入されているミドルウェアで、セキ�
 
 1. SELinux の状態を確認
 
-    ```bash
-    $ getenforce
-    
-    # 有効の場合
-    Enforcing
-    ```
+   ```bash
+   $ getenforce
+
+   # 有効の場合
+   Enforcing
+   ```
 
 2. `/etc/selinux/config` を修正する。
 
-    ```ini
-    # This file controls the state of SELinux on the system.
-    # SELINUX= can take one of these three values:
-    #     enforcing - SELinux security policy is enforced.
-    #     permissive - SELinux prints warnings instead of enforcing.
-    #     disabled - No SELinux policy is loaded.
-    
-    # disabledに変更する。
-    SELINUX=disabled
-    
-    # SELINUXTYPE= can take one of these three values:
-    #     targeted - Targeted processes are protected,
-    #     minimum - Modification of targeted policy. Only selected processes are protected.
-    #     mls - Multi Level Security protection.
-    SELINUXTYPE=targeted
-    ```
+   ```ini
+   # This file controls the state of SELinux on the system.
+   # SELINUX= can take one of these three values:
+   #     enforcing - SELinux security policy is enforced.
+   #     permissive - SELinux prints warnings instead of enforcing.
+   #     disabled - No SELinux policy is loaded.
+
+   # disabledに変更する。
+   SELINUX=disabled
+
+   # SELINUXTYPE= can take one of these three values:
+   #     targeted - Targeted processes are protected,
+   #     minimum - Modification of targeted policy. Only selected processes are protected.
+   #     mls - Multi Level Security protection.
+   SELINUXTYPE=targeted
+   ```
 
 3. OS を再起動
 

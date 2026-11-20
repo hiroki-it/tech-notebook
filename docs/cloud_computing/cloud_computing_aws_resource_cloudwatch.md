@@ -79,8 +79,6 @@ module "cloudwatch_metric_alarm_ses_foo_reject" {
 }
 ```
 
-
-
 ## 04. メトリクスの収集と集約
 
 ### Amazon CloudWatch Metrics とは
@@ -691,54 +689,53 @@ AWS リソースが標準で収集しないカスタムメトリクスの元に�
   "agent": {"run_as_user": "cwagent"},
   // メトリクス
   "metrics": {
-      // メトリクスの集約とする名前空間のユーザー定義名
-      // デフォルトで CWAgent になる。
-      "namespace": "CWAgent",
-      // メトリクスの集約とするディメンション
-      "aggregation_dimensions": [
-          [
-            // インスタンス ID
-            "InstanceId",
-            // パーティションに紐づくファイルシステムのパス
-            "path",
-          ],
-        ],
-      // ディメンションのユーザー定義名
-      "append_dimensions":
-        {
-          "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
-          "ImageId": "${aws:ImageId}",
-          "InstanceId": "${aws:InstanceId}",
-          "InstanceType": "${aws:InstanceType}",
-        },
-      // メモリ上のバッファーの保管時間
-      "force_flush_interval": 60,
-      // 収集対象のカスタムメトリクスの一覧 (collectd パッケージまたは StatsD パッケージを使用する場合)
-      "metrics_collected": {
-          // collectd パッケージの使用を宣言する。必ず設定する必要がある。
-          "collectd": {"metrics_aggregation_interval": 60},
-          // ストレージ系
-          "disk": {
-              "measurement": [
-                  // ディスク使用率メトリクス
-                  "used_percent",
-                ],
-              "metrics_collection_interval": 60,
-              // マウントポイントを設定する。
-              "resources": ["*"],
-            },
-          // メモリ系
-          "mem": {
-              // 計測
-              "measurement": [
-                  // メモリ使用率メトリクス
-                  "mem_used_percent",
-                ],
-              // 計測間隔
-              "metrics_collection_interval": 60,
-            },
-        },
+    // メトリクスの集約とする名前空間のユーザー定義名
+    // デフォルトで CWAgent になる。
+    "namespace": "CWAgent",
+    // メトリクスの集約とするディメンション
+    "aggregation_dimensions": [
+      [
+        // インスタンス ID
+        "InstanceId",
+        // パーティションに紐づくファイルシステムのパス
+        "path"
+      ]
+    ],
+    // ディメンションのユーザー定義名
+    "append_dimensions": {
+      "AutoScalingGroupName": "${aws:AutoScalingGroupName}",
+      "ImageId": "${aws:ImageId}",
+      "InstanceId": "${aws:InstanceId}",
+      "InstanceType": "${aws:InstanceType}"
     },
+    // メモリ上のバッファーの保管時間
+    "force_flush_interval": 60,
+    // 収集対象のカスタムメトリクスの一覧 (collectd パッケージまたは StatsD パッケージを使用する場合)
+    "metrics_collected": {
+      // collectd パッケージの使用を宣言する。必ず設定する必要がある。
+      "collectd": {"metrics_aggregation_interval": 60},
+      // ストレージ系
+      "disk": {
+        "measurement": [
+          // ディスク使用率メトリクス
+          "used_percent"
+        ],
+        "metrics_collection_interval": 60,
+        // マウントポイントを設定する。
+        "resources": ["*"]
+      },
+      // メモリ系
+      "mem": {
+        // 計測
+        "measurement": [
+          // メモリ使用率メトリクス
+          "mem_used_percent"
+        ],
+        // 計測間隔
+        "metrics_collection_interval": 60
+      }
+    }
+  }
 }
 ```
 
@@ -754,27 +751,29 @@ AWS リソースが標準で収集しないカスタムメトリクスの元に�
   "agent": {"run_as_user": "cwagent"},
   // ログ
   "logs": {
-      // メモリ上のバッファーの保管時間
-      "force_flush_interval": 60,
-      "logs_collected": {"files": {
-              // 収集対象のログの一覧
-              "collect_list": [
-                  {
-                    // 収集対象のログのディレクトリ
-                    "file_path": "/var/log/nginx/error.log",
-                    // Amazon CloudWatch Logs 上でのロググループ名
-                    "log_group_name": "/foo-www/var/log/nginx/error_log",
-                    // Amazon CloudWatch Logs 上でのログストリーム名
-                    "log_stream_name": "{instance_id}",
-                  },
-                  {
-                    "file_path": "/var/log/php-fpm/error.log",
-                    "log_group_name": "/foo-www/var/log/php-fpm/error_log",
-                    "log_stream_name": "{instance_id}",
-                  },
-                ],
-            }},
-    },
+    // メモリ上のバッファーの保管時間
+    "force_flush_interval": 60,
+    "logs_collected": {
+      "files": {
+        // 収集対象のログの一覧
+        "collect_list": [
+          {
+            // 収集対象のログのディレクトリ
+            "file_path": "/var/log/nginx/error.log",
+            // Amazon CloudWatch Logs 上でのロググループ名
+            "log_group_name": "/foo-www/var/log/nginx/error_log",
+            // Amazon CloudWatch Logs 上でのログストリーム名
+            "log_stream_name": "{instance_id}"
+          },
+          {
+            "file_path": "/var/log/php-fpm/error.log",
+            "log_group_name": "/foo-www/var/log/php-fpm/error_log",
+            "log_stream_name": "{instance_id}"
+          }
+        ]
+      }
+    }
+  }
 }
 ```
 

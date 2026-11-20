@@ -101,26 +101,24 @@ log.info("<メッセージ>")
 ```json
 {
   "text": "Do something successfully",
-  "record":
-    {
-      "elapsed": {"repr": "2:59:13.507632", "seconds": 10753.507632},
-      "exception": null,
-      "extra": {"trace_id": "6e42ca5d6b7fa1dad79cec9ef860102a"},
-      "file": {"name": "foo.py", "path": "foo.py"},
-      "function": "home",
-      "level": {"icon": "ℹ️", "name": "INFO", "no": 20},
-      "line": 308,
-      "message": "Do something successfully",
-      "module": "foo",
-      "name": "foo",
-      "process": {"id": 9, "name": "MainProcess"},
-      "thread": {"id": 281473384371584, "name": "Dummy-53"},
-      "time":
-        {
-          "repr": "2025-04-15 13:59:39.014135+00:00",
-          "timestamp": 1744725579.014135,
-        },
-    },
+  "record": {
+    "elapsed": {"repr": "2:59:13.507632", "seconds": 10753.507632},
+    "exception": null,
+    "extra": {"trace_id": "6e42ca5d6b7fa1dad79cec9ef860102a"},
+    "file": {"name": "foo.py", "path": "foo.py"},
+    "function": "home",
+    "level": {"icon": "ℹ️", "name": "INFO", "no": 20},
+    "line": 308,
+    "message": "Do something successfully",
+    "module": "foo",
+    "name": "foo",
+    "process": {"id": 9, "name": "MainProcess"},
+    "thread": {"id": 281473384371584, "name": "Dummy-53"},
+    "time": {
+      "repr": "2025-04-15 13:59:39.014135+00:00",
+      "timestamp": 1744725579.014135
+    }
+  }
 }
 ```
 

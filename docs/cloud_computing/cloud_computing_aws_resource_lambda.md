@@ -98,8 +98,6 @@ module "lambda" {
 
 <br>
 
-
-
 ## 04. 関数の設定
 
 ### 実行時の設定値
@@ -303,14 +301,13 @@ AWS Lambda を実行するためには、デプロイされた関数を使用す
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action": "lambda:InvokeFunction",
-        "Resource": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:<関数名>*",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "lambda:InvokeFunction",
+      "Resource": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:<関数名>*"
+    }
+  ]
 }
 ```
 
@@ -444,24 +441,23 @@ AWS Lambda@Edge を実行するためには、最低限、以下の認可スコ�
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action": ["iam:CreateServiceLinkedRole"],
-        "Resource": "*",
-      },
-      {
-        "Effect": "Allow",
-        "Action": ["lambda:GetFunction", "lambda:EnableReplication*"],
-        "Resource": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:<関数名>:<バージョン>",
-      },
-      {
-        "Effect": "Allow",
-        "Action": ["cloudfront:UpdateDistribution"],
-        "Resource": "arn:aws:cloudfront::<AWSアカウントID>:distribution/<DistributionID>",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["iam:CreateServiceLinkedRole"],
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["lambda:GetFunction", "lambda:EnableReplication*"],
+      "Resource": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:function:<関数名>:<バージョン>"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["cloudfront:UpdateDistribution"],
+      "Resource": "arn:aws:cloudfront::<AWSアカウントID>:distribution/<DistributionID>"
+    }
+  ]
 }
 ```
 

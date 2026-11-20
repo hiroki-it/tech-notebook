@@ -25,11 +25,11 @@ Amazon CloudWatch アラームのアラートを、Incident Manager にインシ
 
 2. Incident Manager は、エラーイベントからインシデントを作成する。
 
-    Automationが、インシデントの自動回復を試みる。
+   Automationが、インシデントの自動回復を試みる。
 
 3. Automation がインシデントを解決できなかったとする。
 
-      Incident Managerは、インシデントを責任者 (インシデントコマンダー) にオンコールする。
+   Incident Managerは、インシデントを責任者 (インシデントコマンダー) にオンコールする。
 
 4. インシデントの通知を受けたオンコール担当者は、Incident Manager を確認する。
 

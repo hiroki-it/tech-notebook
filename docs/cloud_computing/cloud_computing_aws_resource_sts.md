@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 認証済みの AWS IAM ユーザーに対して、特定の AWS アカウントの AWS リソースに認可スコープを持つ一時的な資格情報 (アクセスキーID、シークレットアクセスキー、セッショントークン) を持つ AWS IAM ユーザーを発行する。
 
 ![sts](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/sts.jpg)
@@ -47,19 +46,17 @@ AssumeRole (権限委譲) によって、ユーザーの AWS IAM ロールを動
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            // 完全一致
-            "StringEquals": {"sts:ExternalId": "<適当な文字列>"},
-          },
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        // 完全一致
+        "StringEquals": {"sts:ExternalId": "<適当な文字列>"}
+      }
+    }
+  ]
 }
 ```
 
@@ -131,31 +128,27 @@ STS のエンドポイントから一時的な資格情報が発行される。
 
 ```json
 {
-  "Credentials":
-    {
-      "AccessKeyId": "<アクセスキーID>",
-      "SecretAccessKey": "<シークレットアクセスキー>",
-      "SessionToken": "<セッショントークン文字列>",
-      "Expiration": "<セッションデータの有効期限>",
+  "Credentials": {
+    "AccessKeyId": "<アクセスキーID>",
+    "SecretAccessKey": "<シークレットアクセスキー>",
+    "SessionToken": "<セッショントークン文字列>",
+    "Expiration": "<セッションデータの有効期限>"
+  },
+  "AssumeRoleUser": {
+    "AssumedRoleId": "<セッションID>:<セッション名>",
+    "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<AWS IAMロール名>/<セッション名>"
+  },
+  "ResponseMetadata": {
+    "RequestId": "*****",
+    "HTTPStatusCode": 200,
+    "HTTPHeaders": {
+      "x-amzn-requestid": "*****",
+      "content-type": "text/xml",
+      "content-length": "1472",
+      "date": "Fri, 01 Jul 2022 13:00:00 GMT"
     },
-  "AssumeRoleUser":
-    {
-      "AssumedRoleId": "<セッションID>:<セッション名>",
-      "Arn": "arn:aws:sts:<新しいアカウントID>:assumed-role/<AWS IAMロール名>/<セッション名>",
-    },
-  "ResponseMetadata":
-    {
-      "RequestId": "*****",
-      "HTTPStatusCode": 200,
-      "HTTPHeaders":
-        {
-          "x-amzn-requestid": "*****",
-          "content-type": "text/xml",
-          "content-length": "1472",
-          "date": "Fri, 01 Jul 2022 13:00:00 GMT",
-        },
-      "RetryAttempts": 0,
-    },
+    "RetryAttempts": 0
+  }
 }
 ```
 
@@ -311,18 +304,18 @@ Cognito を ID プロバイダーとして使用するように、信頼され�
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    {
-      "Effect": "Allow",
-      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-          // 完全一致
-          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
-          "ForAnyValue:StringLike":
-            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
-        },
-    },
+  "Statement": {
+    "Effect": "Allow",
+    "Principal": {"Federated": "cognito-identity.amazonaws.com"},
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      // 完全一致
+      "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
+      "ForAnyValue:StringLike": {
+        "cognito-identity.amazonaws.com:amr": "unauthenticated"
+      }
+    }
+  }
 }
 ```
 
@@ -339,26 +332,24 @@ Amazon EKS を ID プロバイダーとして使用するように、`Federated`
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Sid": "",
-        "Effect": "Allow",
-        "Principal":
-          {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<Amazon EKS ClusterのOpenID ConnectプロバイダーURL>",
-          },
-        "Action": "sts:AssumeRoleWithWebIdentity",
-        "Condition": {
-            // 完全一致
-            "StringEquals":
-              {
-                "<Amazon EKS ClusterのOpenID ConnectプロバイダーURL>:sub":
-                  ["system:serviceaccount:<Namespace名>:<ServiceAccount名>"],
-              },
-          },
+  "Statement": [
+    {
+      "Sid": "",
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::<AWSアカウントID>:oidc-provider/<Amazon EKS ClusterのOpenID ConnectプロバイダーURL>"
       },
-    ],
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        // 完全一致
+        "StringEquals": {
+          "<Amazon EKS ClusterのOpenID ConnectプロバイダーURL>:sub": [
+            "system:serviceaccount:<Namespace名>:<ServiceAccount名>"
+          ]
+        }
+      }
+    }
+  ]
 }
 ```
 
@@ -450,18 +441,18 @@ AWS IAM ロールの信頼されたエンティティに、AWS OIDC で発行さ
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    {
-      "Effect": "Allow",
-      "Principal": {"Federated": "cognito-identity.amazonaws.com"},
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-          // 完全一致
-          "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
-          "ForAnyValue:StringLike":
-            {"cognito-identity.amazonaws.com:amr": "unauthenticated"},
-        },
-    },
+  "Statement": {
+    "Effect": "Allow",
+    "Principal": {"Federated": "cognito-identity.amazonaws.com"},
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      // 完全一致
+      "StringEquals": {"cognito-identity.amazonaws.com:aud": "*****"},
+      "ForAnyValue:StringLike": {
+        "cognito-identity.amazonaws.com:amr": "unauthenticated"
+      }
+    }
+  }
 }
 ```
 
@@ -474,18 +465,16 @@ AWS IAM ロールの信頼されたエンティティに、外部 OIDC サービ
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    {
-      "Effect": "Allow",
-      "Principal": {"Federated": "accounts.google.com"},
-      "Action": "sts:AssumeRoleWithWebIdentity",
-      "Condition": {
-          // 完全一致
-          "StringEquals": {"accounts.google.com:aud": "*****"},
-          "ForAnyValue:StringLike":
-            {"accounts.google.com:amr": "unauthenticated"},
-        },
-    },
+  "Statement": {
+    "Effect": "Allow",
+    "Principal": {"Federated": "accounts.google.com"},
+    "Action": "sts:AssumeRoleWithWebIdentity",
+    "Condition": {
+      // 完全一致
+      "StringEquals": {"accounts.google.com:aud": "*****"},
+      "ForAnyValue:StringLike": {"accounts.google.com:amr": "unauthenticated"}
+    }
+  }
 }
 ```
 
@@ -498,21 +487,19 @@ AWS IAM ロールの信頼されたエンティティに、AWS SAML で発行さ
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {
-            "Federated": "arn:aws:iam::<AWSアカウントID>:saml-provider/<プロバイダー名>",
-          },
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            // 完全一致
-            "StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"},
-          },
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::<AWSアカウントID>:saml-provider/<プロバイダー名>"
       },
-    ],
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        // 完全一致
+        "StringEquals": {"SAML:aud": "https://signin.aws.amazon.com/saml"}
+      }
+    }
+  ]
 }
 ```
 

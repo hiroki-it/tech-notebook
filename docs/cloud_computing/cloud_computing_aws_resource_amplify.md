@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 サーバーレスアプリケーションを作成するためのクラウドインフラのフレームワーク。
 
 > - https://d1.awsstatic.com/webinars/jp/pdf/services/20200520_AWSBlackBelt_AWS Amplify_A.pdf
@@ -25,7 +24,6 @@ tags:
 <br>
 
 ## 02. 仕組み
-
 
 ### アーキテクチャ
 

@@ -113,15 +113,14 @@ terraform {
 ```json
 {
   "Version": "2008-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Deny",
-        "Principal": "*",
-        "Action": "s3:DeleteObject",
-        "Resource": "arn:aws:s3:::prd-foo-tfstate-bucket/*",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:DeleteObject",
+      "Resource": "arn:aws:s3:::prd-foo-tfstate-bucket/*"
+    }
+  ]
 }
 ```
 

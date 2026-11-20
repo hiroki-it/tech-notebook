@@ -108,39 +108,39 @@ master テーブルと transaction テーブルがわかるように命名する
 
 1. エクセルで表を作成する。 エクセルで作られた以下の表があると仮定する。
 
-    ![rdb_unnormalized-form](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_unnormalized-form.png)
+   ![rdb_unnormalized-form](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_unnormalized-form.png)
 
 2. 第一正規化 (繰り返し要素の排除) を実施する。レコードを 1 つずつに分割する。
 
-    ![rdb_first-normal-form](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_first-normal-form.png)
+   ![rdb_first-normal-form](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_first-normal-form.png)
 
 3. 第二正規化 (主キーの関数従属性を排除) を実施する。主キーと特定のカラムは連動することがある (関数従属性あり) 。その場合は、カラムを左表として独立させる。今回、主キーは 2 つあるため、まず受注 No から関数従属性を排除していく。受注 No と他 3 カラムは連動しており、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。最後に、主キーの重複行を削除する。
 
-    ![rdb_second-normal-form_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_1.png)
+   ![rdb_second-normal-form_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_1.png)
 
 4. 商品 ID の関数従属性を排除していく。商品 ID と他 2 カラムに関数従属性があり、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。また、主キーが重複するローを削除する。これで、主キーの関数従属性の排除は終了。
 
-    ![rdb_second-normal-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_2.png)
+   ![rdb_second-normal-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_2.png)
 
-    ![rdb_second-normal-form_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_3.png)
+   ![rdb_second-normal-form_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_second-normal-form_3.png)
 
 5. 第三正規化 (主キー以外のカラムの関数従属性を排除) を実施する。 主キー以外のカラムの関数従属性を排除していく。上記で独立させた `3` 個の表のうち、一番左の表で、顧客 ID と顧客名に関数従属性があるため、顧客 ID を新しい主キーに設定し、左表として独立させる。主キーと連動していたカラムを除いたものを右表とする。
 
-    ![rdb_third-normal-form_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_third-normal-form_1.png)
+   ![rdb_third-normal-form_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_third-normal-form_1.png)
 
-    ![rdb_third-normal-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_third-normal-form_2.png)
+   ![rdb_third-normal-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_third-normal-form_2.png)
 
 6. 主キーの関数従属性の排除によって、受注表、商品表、数量表に分割できた。また、主キー以外の関数従属性の排除によって、顧客 ID を新しい主キーとした顧客表に分割できた。
 
-    ![rdb_normalization_result](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_normalization_result.png)
+   ![rdb_normalization_result](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_normalization_result.png)
 
-1. エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。
+7. エクセルで表を作成する。以下のような表の場合、行を分割し、異なる表と見なす。
 
-    ![rdb_unnormalized-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_unnormalized-form_2.png)
+   ![rdb_unnormalized-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_unnormalized-form_2.png)
 
-2. 第一正規化 (繰り返し要素の排除) を実施する。
+8. 第一正規化 (繰り返し要素の排除) を実施する。
 
-    ![rdb_first-normal-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_first-normal-form_2.png)
+   ![rdb_first-normal-form_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_first-normal-form_2.png)
 
 <br>
 
@@ -196,6 +196,6 @@ DB データを作成するあるいは削除する場合、カラムではな�
 
 5. 最終的に、変更後マスタテーブルは以下の通りになる。
 
-    ![rdb_matching_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_matching_3.png)
+   ![rdb_matching_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/rdb_matching_3.png)
 
 <br>

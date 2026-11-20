@@ -446,13 +446,12 @@ cri プラグインは、`<timeキー> <streamキー> <logtagキー> <messageキ
 ```json
 {
   "time": "2021-12-17T08:03:23.918838346+09:00",
-  "record":
-    {
-      "stream": "stderr",
-      "logtag": "F",
-      "message": "2021/12/17 08:03:23 [INFO] start worker processes",
-      "time": "2021-12-17T08:03:23.918838346+09:00",
-    },
+  "record": {
+    "stream": "stderr",
+    "logtag": "F",
+    "message": "2021/12/17 08:03:23 [INFO] start worker processes",
+    "time": "2021-12-17T08:03:23.918838346+09:00"
+  }
 }
 ```
 
@@ -1063,7 +1062,7 @@ Amazon CloudWatch Logs に送信されるデータは JSON 型である。
   "ecs_task_definition": "prd-foo-ecs-task-definition:1",
   "log": "<ログ>",
   "source": "stdout",
-  "ver": "1.5",
+  "ver": "1.5"
 }
 ```
 

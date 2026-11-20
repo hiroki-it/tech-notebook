@@ -179,7 +179,7 @@ SSH の能力をより拡張したプロトコルである。
 
 2. サーバーは、Shell を使用して SCP プログラムを起動し、クライアントにファイルを送信する。
 
-    ![scp_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/scp_architecture.png)
+   ![scp_architecture](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/security/scp_architecture.png)
 
 #### ▼ ファイルを要求する側に必要なソフトウェア
 

@@ -1158,7 +1158,7 @@ Saga オーケストレーター以外にも、Saga オーケストレーター�
 
 さらにその後、非同期リクエストで処理結果を取得し、クライアントに返却します。
 
-![ddd-cloudnative_orchestration-saga_overview](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_orchestration-saga_overview.png>)
+![ddd-cloudnative_orchestration-saga_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_orchestration-saga_overview.png)
 
 <table>
   <thead>
@@ -1193,7 +1193,7 @@ Saga オーケストレーター以外にも、Saga オーケストレーター�
 
 共通の説明として、Temporal SDK は Temporal サーバーの API をコールするクライアントに相当するため、ロジックをインフラストラクチャ層に実装するとよいでしょう。
 
-![ddd-cloudnative_orchestration-saga_detail](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_orchestration-saga_detail.png>)
+![ddd-cloudnative_orchestration-saga_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_orchestration-saga_detail.png)
 
 <table>
   <thead>
@@ -1297,7 +1297,7 @@ SSO で各マイクロサービスを認証します。
 
 ## Keycloak と Istio による SSO
 
-![ddd-cloudnative_sso_detail](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sso_detail.png>)
+![ddd-cloudnative_sso_detail](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sso_detail.png)
 
 1. ユーザーはログインする。ブラウザは、Amazon Route 53 にリクエストを送信する。
 2. ALB は、リクエストを Istio IngressGateway に L7 ロードバランシングする。
@@ -1424,7 +1424,7 @@ API Gateway として使用している Nginx のように、認証やアクセ�
 
 一方でアプリでは、任意の認証パッケージまたは Istio リソースのいずれの方法で、認証やアクセストークン検証の責務を実装してもよいです。
 
-![ddd-cloudnative_sso_overview](<https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sso_overview.png>)
+![ddd-cloudnative_sso_overview](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ddd-cloudnative_sso_overview.png)
 
 <table>
   <thead>

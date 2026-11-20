@@ -28,17 +28,17 @@ tags:
 
 1. View (`foo.html`、`/foo.twig`、`foo-component.vue` の `template` タグ部分)
 
-    ViewModelから渡されたデータを出力するだけ。
+   ViewModelから渡されたデータを出力するだけ。
 
 2. ViewModel (`index.js`、`foo-component.vue` の `script` タグ部分)
 
-    プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
+   プレゼンテーションロジック (フォーマット整形、バリデーション、Webページのローディング、エラーハンドリング、イベント発火など) や、ビジネスロジック (※控えめに) を記述する。
 
-    scriptタグによって、JavaScriptが組み込まれている。
+   scriptタグによって、JavaScriptが組み込まれている。
 
 3. Model (`store.js` または `foo.js`)
 
-    ビジネスロジックや、ajax関数によるデータ送受信を記述する。
+   ビジネスロジックや、ajax関数によるデータ送受信を記述する。
 
 #### ▼ Vue を使用した MVVM アーキテクチャ、双方向データバインディング
 
@@ -52,7 +52,7 @@ Vue は、アプリケーションの設計に MVVM アーキテクチャを使�
 
 4. この仕組みのもと、双方向データバインディングが実現される。View でイベントが起こると、ViewModel でこれにバインディングされたイベントハンドラ関数がコールされる。
 
-    ![vue_mvvm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_mvvm.png)
+   ![vue_mvvm](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/vue_mvvm.png)
 
 ### 親子コンポーネント間のデータ渡し
 
@@ -371,28 +371,28 @@ var vm = new Vue({
 
 2. イベントハンドラ関数内の `emit()` 関数が、親コンポーネントの `search` イベントを発火させる。これに紐付くイベントハンドラ関数 (`result()` 関数) がコールされる。
 
-    ```html
-    <template>
-      <!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる -->
-      <form v-on:submit.prevent="search()">
-        <!-- submitイベントを発火させるbuttonタグ。submitの場合は省略可能 -->
-        <button type="submit">検索する</button>
-      </form>
-    </template>
-    
-    <script>
-      // 変数に対する格納を省略しても良い
-      var vm = new Vue({
-        // イベントハンドラ関数を定義
-        methods: {
-          search() {
-            // 親コンポーネントのsearchイベントを発火させる。
-            this.$emit("search");
-          },
-        },
-      });
-    </script>
-    ```
+   ```html
+   <template>
+     <!-- submitイベントが発火すると、紐付くイベントハンドラ関数がコールされる -->
+     <form v-on:submit.prevent="search()">
+       <!-- submitイベントを発火させるbuttonタグ。submitの場合は省略可能 -->
+       <button type="submit">検索する</button>
+     </form>
+   </template>
+
+   <script>
+     // 変数に対する格納を省略しても良い
+     var vm = new Vue({
+       // イベントハンドラ関数を定義
+       methods: {
+         search() {
+           // 親コンポーネントのsearchイベントを発火させる。
+           this.$emit("search");
+         },
+       },
+     });
+   </script>
+   ```
 
 #### ▼ `v-on:click="<イベントハンドラ関数>"`
 

@@ -188,7 +188,7 @@ Nuxt がデフォルトで用意している設定をプロパティの設定値
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-    // プロパティ
+  // プロパティ
 };
 ```
 
@@ -279,9 +279,9 @@ services:
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-    build: {
-        hardSource: "true",
-    },
+  build: {
+    hardSource: "true",
+  },
 };
 ```
 
@@ -307,9 +307,9 @@ import {Configuration} from "@nuxt/types";
 const {API_KEY} = process.env;
 
 const nuxtConfig: Configuration = {
-    privateRuntimeConfig: {
-        apiKey: API_KEY,
-    },
+  privateRuntimeConfig: {
+    apiKey: API_KEY,
+  },
 };
 ```
 
@@ -347,9 +347,9 @@ import {Configuration} from "@nuxt/types";
 const {API_URL} = process.env;
 
 const nuxtConfig: Configuration = {
-    publicRuntimeConfig: {
-        apiUrl: API_URL,
-    },
+  publicRuntimeConfig: {
+    apiUrl: API_URL,
+  },
 };
 ```
 
@@ -380,9 +380,9 @@ CI ツールでログが確認できなくなるため、無効化しておい�
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-    build: {
-        quiet: "false",
-    },
+  build: {
+    quiet: "false",
+  },
 };
 ```
 
@@ -396,12 +396,12 @@ const nuxtConfig: Configuration = {
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-    serverMiddleware: [
-        {
-            path: "/foo",
-            handler: "~/foo/index.js",
-        },
-    ],
+  serverMiddleware: [
+    {
+      path: "/foo",
+      handler: "~/foo/index.js",
+    },
+  ],
 };
 ```
 
@@ -417,7 +417,7 @@ SSG/SSR モードの `yarn dev` (開発用コマンド) 、また SSR モード�
 import {Configuration} from "@nuxt/types";
 
 const nuxtConfig: Configuration = {
-    buildModules: ["@nuxt/typescript-build", "@nuxtjs/composition-api"],
+  buildModules: ["@nuxt/typescript-build", "@nuxtjs/composition-api"],
 };
 ```
 

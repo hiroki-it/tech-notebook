@@ -82,13 +82,11 @@ module "api_gateway" {
 
 <br>
 
-
 ### OpenAPI 仕様のインポート
 
 以下のリンクを参考にせよ。
 
 > - [【IT技術の知見】Amazon API Gatewayへのymlインポート＠AWS - 俺の技術ノート](https://hiroki-it.github.io/tech-notebook/cloud_computing/cloud_computing_aws_resource_api_gateway_import.html)
-
 
 ## 04. API の機能と設定項目
 

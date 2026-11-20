@@ -6138,8 +6138,8 @@ spec:
 
 ```json
 {
-  "alg":"RS256",
-  "kid":"*****"
+  "alg": "RS256",
+  "kid": "*****"
 }
 ```
 
@@ -6150,10 +6150,9 @@ spec:
 
 ```json
 {
-  "alg":"RS256",
-  "kid":"*****"
+  "alg": "RS256",
+  "kid": "*****"
 }
-
 ```
 
 > - [Secret の自動マウントをオプトアウトするかどうか : automountServiceAccountToken フィールド - kakakakakku blog](https://kakakakakku.hatenablog.com/entry/2021/07/12/095208)

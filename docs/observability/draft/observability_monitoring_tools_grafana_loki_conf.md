@@ -176,7 +176,7 @@ groups:
   "level": "error",
   "message": "ERROR: Failed to connect to database",
   "app": "foo",
-  "env": "production",
+  "env": "production"
 }
 ```
 

@@ -44,4 +44,3 @@ let (_, token) = saved_token(url.as_deref(), &creds)?;
 ```
 
 <br>
-

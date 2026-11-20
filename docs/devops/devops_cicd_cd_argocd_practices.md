@@ -812,15 +812,15 @@ Prune による Kubernetes リソースの削除を有効化し、フォアグ�
 
 2. フォアグラウンドで削除すると、Application の `.metadata.finalizers` キーの値に削除中のリソースが設定される。
 
-    この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl patch`コマンドを使用する必要がある。
+   この配列を空配列に変更する。ArgoCDのUIからは変更できず、`kubectl patch`コマンドを使用する必要がある。
 
-    ```bash
-    $ kubectl patch crd applications.argoproj.io \
-        -p '{"metadata":{"finalizers":[]}}' \
-        --type=merge
-    ```
+   ```bash
+   $ kubectl patch crd applications.argoproj.io \
+       -p '{"metadata":{"finalizers":[]}}' \
+       --type=merge
+   ```
 
-    > - [kubernetes – カスケード削除(連鎖削除) \| HYOUBLOG](https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/)
+   > - [kubernetes – カスケード削除(連鎖削除) \| HYOUBLOG](https://hyoublog.com/2020/06/09/kubernetes-%E3%82%AB%E3%82%B9%E3%82%B1%E3%83%BC%E3%83%89%E5%89%8A%E9%99%A4%E9%80%A3%E9%8E%96%E5%89%8A%E9%99%A4/)
 
 3. 1 つ目の `.spec.syncPolicy.allowEmpty` キーの変更を元に戻す。
 

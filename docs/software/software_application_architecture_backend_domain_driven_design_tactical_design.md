@@ -106,15 +106,15 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 1. 映画チケット購入者の受注管理システムを開発する例を考える。
 
 2. ドメインエキスパートへの要件定義を終えた想定で、ユースケース図を作成する。
-    オブジェクト図は省略する。
+   オブジェクト図は省略する。
 
-    ![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_usecase-diagram_example.jpg)
+   ![ticket-modeling_little-hands_usecase-diagram_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_usecase-diagram_example.jpg)
 
 3. 暫定的なドメインモデル図を作成する。
-`little_hands_s` さんは、ID のみを使用する関係であれば『実線矢印』とし、加えてオブジェクト全体を使用する関係であれば『黒塗りの菱形』としている。
-ユースケースから以下のオブジェクトを抽出する。
-このとき、実装パターンをおおまかに予想しておく。
-また、矢印と菱形の関係性から、集約の境界を設定する。
+   `little_hands_s` さんは、ID のみを使用する関係であれば『実線矢印』とし、加えてオブジェクト全体を使用する関係であれば『黒塗りの菱形』としている。
+   ユースケースから以下のオブジェクトを抽出する。
+   このとき、実装パターンをおおまかに予想しておく。
+   また、矢印と菱形の関係性から、集約の境界を設定する。
 
 <table>
   <thead>
@@ -139,146 +139,146 @@ Model の肥大化は、Model が持つビジネスロジックをドメイン�
 
 3. ドメインモデル図を更新する。
 
-    <table>
-      <thead>
-        <tr>
-          <th>ユースケース</th>
-          <th>抽出されたオブジェクト例</th>
-          <th>実装パターン</th>
-          <th>抽出された集約</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan="2">映画、上映日時、枚数を選択する</td>
-          <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
-          <td>エンティティ、値オブジェクト</td>
-          <td>上映集約、映画集約</td>
-        </tr>
-        <tr>
-          <td>予約オブジェクト</td>
-          <td>エンティティ</td>
-          <td>予約集約</td>
-        </tr>
-        <tr>
-          <td>割引を選択する</td>
-          <td>適用割引オブジェクト</td>
-          <td>値オブジェクト</td>
-          <td>予約集約</td>
-        </tr>
-        <tr>
-          <td>支払い金額を確認する</td>
-          <td>支払料金オブジェクト</td>
-          <td>値オブジェクト</td>
-          <td>支払い料金集約</td>
-        </tr>
-      </tbody>
-    </table>
+   <table>
+     <thead>
+       <tr>
+         <th>ユースケース</th>
+         <th>抽出されたオブジェクト例</th>
+         <th>実装パターン</th>
+         <th>抽出された集約</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td rowspan="2">映画、上映日時、枚数を選択する</td>
+         <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
+         <td>エンティティ、値オブジェクト</td>
+         <td>上映集約、映画集約</td>
+       </tr>
+       <tr>
+         <td>予約オブジェクト</td>
+         <td>エンティティ</td>
+         <td>予約集約</td>
+       </tr>
+       <tr>
+         <td>割引を選択する</td>
+         <td>適用割引オブジェクト</td>
+         <td>値オブジェクト</td>
+         <td>予約集約</td>
+       </tr>
+       <tr>
+         <td>支払い金額を確認する</td>
+         <td>支払料金オブジェクト</td>
+         <td>値オブジェクト</td>
+         <td>支払い料金集約</td>
+       </tr>
+     </tbody>
+   </table>
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
+   ![ticket-modeling_little-hands_domain-model-diagram_example-2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-2.jpg)
 
 4. ドメインモデル図を更新する。
 
-    <table>
-      <thead>
-        <tr>
-          <th>ユースケース</th>
-          <th>抽出されたオブジェクト例</th>
-          <th>実装パターン</th>
-          <th>抽出された集約</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan="2">映画、上映日時、枚数を選択する</td>
-          <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
-          <td>エンティティ、値オブジェクト</td>
-          <td>上映集約、映画集約</td>
-        </tr>
-        <tr>
-          <td>予約オブジェクト</td>
-          <td>エンティティ</td>
-          <td>予約集約</td>
-        </tr>
-        <tr>
-          <td>割引を選択する</td>
-          <td>適用割引オブジェクト</td>
-          <td>値オブジェクト</td>
-          <td>予約集約</td>
-        </tr>
-        <tr>
-          <td rowspan="2">支払い金額を確認する</td>
-          <td>支払料金オブジェクト</td>
-          <td>値オブジェクト</td>
-          <td>支払い料金集約</td>
-        </tr>
-        <tr>
-          <td>料金区分オブジェクト</td>
-          <td>区分オブジェクト (Enum)</td>
-          <td>料金設定集約</td>
-        </tr>
-      </tbody>
-    </table>
+   <table>
+     <thead>
+       <tr>
+         <th>ユースケース</th>
+         <th>抽出されたオブジェクト例</th>
+         <th>実装パターン</th>
+         <th>抽出された集約</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td rowspan="2">映画、上映日時、枚数を選択する</td>
+         <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
+         <td>エンティティ、値オブジェクト</td>
+         <td>上映集約、映画集約</td>
+       </tr>
+       <tr>
+         <td>予約オブジェクト</td>
+         <td>エンティティ</td>
+         <td>予約集約</td>
+       </tr>
+       <tr>
+         <td>割引を選択する</td>
+         <td>適用割引オブジェクト</td>
+         <td>値オブジェクト</td>
+         <td>予約集約</td>
+       </tr>
+       <tr>
+         <td rowspan="2">支払い金額を確認する</td>
+         <td>支払料金オブジェクト</td>
+         <td>値オブジェクト</td>
+         <td>支払い料金集約</td>
+       </tr>
+       <tr>
+         <td>料金区分オブジェクト</td>
+         <td>区分オブジェクト (Enum)</td>
+         <td>料金設定集約</td>
+       </tr>
+     </tbody>
+   </table>
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
+   ![ticket-modeling_little-hands_domain-model-diagram_example-3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-3.jpg)
 
-    実装フェーズに入ってからの話になるが、料金区分オブジェクトは enum 型として実装することになり、以下のようになる。
+   実装フェーズに入ってからの話になるが、料金区分オブジェクトは enum 型として実装することになり、以下のようになる。
 
-    ![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_enum_example.jpg)
+   ![ticket-modeling_little-hands_enum_example](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_enum_example.jpg)
 
 5. ドメインモデル図を更新する。
 
-    <table>
-      <thead>
-        <tr>
-          <th>ユースケース</th>
-          <th>抽出されたオブジェクト例</th>
-          <th>実装パターン</th>
-          <th>抽出された集約</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td rowspan="2">映画、上映日時、枚数を選択する</td>
-          <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
-          <td>エンティティ、値オブジェクト</td>
-          <td>上映集約、映画集約</td>
-        </tr>
-        <tr>
-          <td>予約オブジェクト</td>
-          <td>エンティティ</td>
-          <td>予約集約</td>
-        </tr>
-        <tr>
-          <td>割引を選択する</td>
-          <td>適用割引オブジェクト</td>
-          <td>値オブジェクト</td>
-          <td>予約集約</td>
-        </tr>
-        <tr>
-          <td rowspan="3">支払い金額を確認する</td>
-          <td>支払料金オブジェクト</td>
-          <td>値オブジェクト</td>
-          <td>支払い料金集約</td>
-        </tr>
-        <tr>
-          <td>料金区分オブジェクト</td>
-          <td>区分オブジェクト (Enum)</td>
-          <td>料金設定集約</td>
-        </tr>
-        <tr>
-          <td>料金区分計算オブジェクト</td>
-          <td>値オブジェクト</td>
-          <td>料金区分計算集約</td>
-        </tr>
-      </tbody>
-    </table>
+   <table>
+     <thead>
+       <tr>
+         <th>ユースケース</th>
+         <th>抽出されたオブジェクト例</th>
+         <th>実装パターン</th>
+         <th>抽出された集約</th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+         <td rowspan="2">映画、上映日時、枚数を選択する</td>
+         <td>上映時間帯オブジェクト、上映オブジェクト、映画オブジェクト</td>
+         <td>エンティティ、値オブジェクト</td>
+         <td>上映集約、映画集約</td>
+       </tr>
+       <tr>
+         <td>予約オブジェクト</td>
+         <td>エンティティ</td>
+         <td>予約集約</td>
+       </tr>
+       <tr>
+         <td>割引を選択する</td>
+         <td>適用割引オブジェクト</td>
+         <td>値オブジェクト</td>
+         <td>予約集約</td>
+       </tr>
+       <tr>
+         <td rowspan="3">支払い金額を確認する</td>
+         <td>支払料金オブジェクト</td>
+         <td>値オブジェクト</td>
+         <td>支払い料金集約</td>
+       </tr>
+       <tr>
+         <td>料金区分オブジェクト</td>
+         <td>区分オブジェクト (Enum)</td>
+         <td>料金設定集約</td>
+       </tr>
+       <tr>
+         <td>料金区分計算オブジェクト</td>
+         <td>値オブジェクト</td>
+         <td>料金区分計算集約</td>
+       </tr>
+     </tbody>
+   </table>
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
+   ![ticket-modeling_little-hands_domain-model-diagram_example-4](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-4.jpg)
 
 6. 集約間の関係性のみに着目すると、オブジェクト間の関係性は複雑であるが、集約間は単純であることがわかる。
 
-    ![ticket-modeling_little-hands_domain-model-diagram_example-5](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
+   ![ticket-modeling_little-hands_domain-model-diagram_example-5](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/ticket-modeling_little-hands_domain-model-diagram_example-5.png)
 
 <br>
 

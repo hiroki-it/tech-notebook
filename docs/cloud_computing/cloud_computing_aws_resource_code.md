@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 ### Code 兄弟サービス
 
 #### ▼ CodePipeline
@@ -207,8 +206,8 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 [
   {
     "imageUri": "<イメージリポジトリURL>", // <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
-    "name": "<コンテナ名>",
-  },
+    "name": "<コンテナ名>"
+  }
 ]
 ```
 
@@ -233,7 +232,7 @@ CodeDeploy と CodeDeploy エージェントは通信し、CodeDeploy エージ�
 
 4. AWS CodeDeploy によって、Amazon ECS タスク定義を基に、現環境 (Prod ブルー) の Amazon ECS タスクとは別に、新環境 (Test グリーン) が作成される。
 
-    ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。
+   ロードバランサーの接続先を、現環境 (Prodブルー) のターゲットグループ (Primaryターゲットグループ) に加えて、新環境 (Testグリーン) にも向ける。
 
 5. 社内から新環境 (Test グリーン) の ALB に、特定のポート番号でアクセスし、動作を確認する。
 
@@ -296,45 +295,44 @@ CodeDeploy は、CodeBuild から渡された `imageDetail.json` ファイルを
   "executionRoleArn": "<タスク実行ロールのARN>",
   "cpu": "512",
   "memory": "1024",
-  "containerDefinitions":
-    [
-      {
-        "name": "<コンテナ名>",
-        "image": "<IMAGE1_NAME>",
-        "essential": "true",
-        "portMappings": [
-            {
-              // コンテナポート
-              "containerPort": 80,
-              // Amazon ECS のホストのポート
-              "hostPort": 80,
-              "protocol": "tcp",
-            },
-          ],
-        "secrets": [
-            // データ永続化用の DB の接続情報
-            {"name": "DB_HOST", "valueFrom": "/ecs/DB_HOST"},
-            {"name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE"},
-            {"name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD"},
-            {"name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME"},
-            // セッションキャッシュ用のインメモリ DB の接続情報
-            {"name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST"},
-            {"name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD"},
-            {"name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT"},
-          ],
-        "logConfiguration": {
-            // ログドライバー
-            "logDriver": "awslogs",
-            "options": {
-                "awslogs-group": "<ログストリーム名>",
-                // スタックトレースのログを紐付けられるように、日付で区切るようにする。
-                "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
-                "awslogs-region": "ap-northeast-1",
-                "awslogs-stream-prefix": "<ログストリーム名の接頭辞>",
-              },
-          },
-      },
-    ],
+  "containerDefinitions": [
+    {
+      "name": "<コンテナ名>",
+      "image": "<IMAGE1_NAME>",
+      "essential": "true",
+      "portMappings": [
+        {
+          // コンテナポート
+          "containerPort": 80,
+          // Amazon ECS のホストのポート
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ],
+      "secrets": [
+        // データ永続化用の DB の接続情報
+        {"name": "DB_HOST", "valueFrom": "/ecs/DB_HOST"},
+        {"name": "DB_DATABASE", "valueFrom": "/ecs/DB_DATABASE"},
+        {"name": "DB_PASSWORD", "valueFrom": "/ecs/DB_PASSWORD"},
+        {"name": "DB_USERNAME", "valueFrom": "/ecs/DB_USERNAME"},
+        // セッションキャッシュ用のインメモリ DB の接続情報
+        {"name": "REDIS_HOST", "valueFrom": "/ecs/REDIS_HOST"},
+        {"name": "REDIS_PASSWORD", "valueFrom": "/ecs/REDIS_PASSWORD"},
+        {"name": "REDIS_PORT", "valueFrom": "/ecs/REDIS_PORT"}
+      ],
+      "logConfiguration": {
+        // ログドライバー
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "<ログストリーム名>",
+          // スタックトレースのログを紐付けられるように、日付で区切るようにする。
+          "awslogs-datetime-format": "\\[%Y-%m-%d %H:%M:%S\\]",
+          "awslogs-region": "ap-northeast-1",
+          "awslogs-stream-prefix": "<ログストリーム名の接頭辞>"
+        }
+      }
+    }
+  ]
 }
 ```
 

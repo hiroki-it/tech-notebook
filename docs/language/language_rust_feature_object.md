@@ -54,4 +54,3 @@ pub struct Organization {
 ```
 
 <br>
-

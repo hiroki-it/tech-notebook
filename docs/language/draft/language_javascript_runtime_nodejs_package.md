@@ -30,7 +30,7 @@ Node.js のロガーは通常バックエンドでしか使用できないが、
   "pid": 1,
   "hostname": "foo-65d4ffdcfc-6sf99",
   "trace_id": "514bc006c3350c34be840a0dfe289492",
-  "msg": "Do something successfully",
+  "msg": "Do something successfully"
 }
 ```
 
@@ -261,7 +261,7 @@ export const logger = winston.createLogger({
 子の node.js プロセスを実行する。
 
 ```javascript
-import { spawn } from "child_process";
+import {spawn} from "child_process";
 
 const script = `
   process.stdin.on('data', (data) => {
@@ -271,47 +271,50 @@ const script = `
 
 // 実行する子プロセスを設定する
 const child = spawn(
-    // Nodeコマンドを実行する
-    "node",
-    // eオプションでスクリプトを実行する
-    ["-e", script],
-    {
-      stdio: ["pipe", "pipe", "pipe"],
-      detached: true,
-    }
+  // Nodeコマンドを実行する
+  "node",
+  // eオプションでスクリプトを実行する
+  ["-e", script],
+  {
+    stdio: ["pipe", "pipe", "pipe"],
+    detached: true,
+  },
 );
 
 await new Promise((resolve, reject) => {
+  child.unref();
 
-  child.unref()
-
-  let stdout = ''
-  let stderr = ''
+  let stdout = "";
+  let stderr = "";
 
   // 子プロセスの標準出力からデータを取得する
-  child.stdout.on('data', (data) => {
-    stdout += data.toString()
-  })
+  child.stdout.on("data", (data) => {
+    stdout += data.toString();
+  });
 
   // 子プロセスの標準エラー出力からデータを取得する
-  child.stderr.on('data', (data) => {
-    stderr += data.toString()
-  })
+  child.stderr.on("data", (data) => {
+    stderr += data.toString();
+  });
 
   // 子プロセスが終了した時の処理
   // 後処理は非同期化にする
-  child.on('close', async (code, signal) => {
+  child.on("close", async (code, signal) => {
     if (code === 0) {
       resolve(stdout);
     } else {
-      reject(new Error(stderr || `Process exited with code ${code}, signal ${signal}`));
+      reject(
+        new Error(
+          stderr || `Process exited with code ${code}, signal ${signal}`,
+        ),
+      );
     }
-  })
+  });
 
   // 子プロセスの作成中や実行中にエラーが発生した時の処理
-  child.on('error', (err) => {
+  child.on("error", (err) => {
     reject(err);
-  })
+  });
 
   child.stdin.end("hello");
 });

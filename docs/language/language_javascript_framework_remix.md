@@ -214,7 +214,6 @@ import {useLoaderData} from "@remix-run/react";
 
 // ローダーでレンダリング前にバックエンドでデータを処理する
 export const loader = async () => {
-
   // バックエンドでデータを処理する
   // ローダーの段階でデータを用意しておき、フロントエンドではデータ表示ロジックだけを実装すると、ブラウザの描画の性能が上がる
   const data = {
@@ -228,7 +227,7 @@ export const loader = async () => {
         title: "A Mixtape I Made Just For You",
       },
     ],
-  }
+  };
 
   return json(data);
 };
@@ -264,7 +263,6 @@ import {useLoaderData} from "@remix-run/react";
 
 // ローダー
 export const loader = async () => {
-
   // バックエンドでデータを処理する
   // ローダーの段階でデータを用意しておき、フロントエンドではデータ表示ロジックだけを実装すると、ブラウザの描画の性能が上がる
   const data = {
@@ -278,7 +276,7 @@ export const loader = async () => {
         title: "A Mixtape I Made Just For You",
       },
     ],
-  }
+  };
 
   return json(data);
 };
@@ -379,25 +377,23 @@ const PostList = ({posts}) => {
 component を同じファイルへ実装する以外に、`.server` ディレクトリへ切り分ける方法もある。
 
 ```tsx
-import type { ActionFunctionArgs } from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
-import { Form } from "@remix-run/react";
+import type {ActionFunctionArgs} from "@remix-run/node";
+import {json, redirect} from "@remix-run/node";
+import {Form} from "@remix-run/react";
 
-import { TodoList } from "~/components/TodoList";
-import { fakeCreateTodo, fakeGetTodos } from "~/utils/db";
+import {TodoList} from "~/components/TodoList";
+import {fakeCreateTodo, fakeGetTodos} from "~/utils/db";
 
 // レンダリング後のブラウザ操作でactionが実行され、actionの結果を取得する
 export async function loader() {
-
   // ローダーでレンダリング前にバックエンドでデータを処理する
-  const data = await fakeGetTodos()
+  const data = await fakeGetTodos();
 
   return json(data);
 }
 
 // remixコンポーネントで、レンダリング処理を実行する
 export default function Todos() {
-
   // useLoaderDataでloaderによる取得データを出力する
   const data = useLoaderData<typeof loader>();
 
@@ -419,23 +415,20 @@ export default function Todos() {
 
 // アクションで、受信したリクエストに応じたレスポンス処理を実行する
 export async function action({request}: ActionFunctionArgs) {
-
   const body = await request.formData();
 
   try {
-
     const todo = await fakeCreateTodo({
       title: body.get("title"),
     });
 
     return redirect(`/todos/${todo.id}`);
   } catch (error) {
-
     // さまざまな型のerrorを処理できるように対処する
     const errorMessage = error instanceof Error ? error.message : String(error);
-    console.error(errorMessage, body.get("title"))
+    console.error(errorMessage, body.get("title"));
     // error.statusが未定義の場合、一律で500ステータスとして扱う
-    return json({ error: errorMessage }, { status: error.status ?? 500});
+    return json({error: errorMessage}, {status: error.status ?? 500});
   }
 }
 ```
@@ -676,12 +669,13 @@ Remix の内部で実行され、JSON データを作成し、Remix のフロン
 `useLoaderData()` 関数や `useFetcher().data` 関数で取得できる。
 
 ```tsx
-export function handleDataRequest(response: Response, {request, params, context}: LoaderFunctionArgs | ActionFunctionArgs
+export function handleDataRequest(
+  response: Response,
+  {request, params, context}: LoaderFunctionArgs | ActionFunctionArgs,
 ) {
   response.headers.set("X-Custom-Header", "value");
   return response;
 }
-
 ```
 
 > - https://remix.run/docs/en/main/file-conventions/entry.server
@@ -1095,7 +1089,6 @@ export function PageLink({page, children, resetKeys = []}: PageLinkProps) {
 ```tsx
 // RemixのローダーがURLの変更を検知する
 export async function loader({request}: LoaderFunctionArgs) {
-
   // 新しいクエリストリングをURLから取得する
   const url = new URL(request.url);
   const page = Number(url.searchParams.get("page") ?? "1");
@@ -1418,9 +1411,9 @@ export async function deleteUser({
 import {
   ExclamationTriangleIcon,
   LockClosedIcon,
-  MagnifyingGlassIcon
+  MagnifyingGlassIcon,
 } from "@heroicons/react/20/solid";
-import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
+import {isRouteErrorResponse, useRouteError} from "@remix-run/react";
 import React from "react";
 
 export function ErrorBoundary() {
@@ -1482,7 +1475,6 @@ export function ErrorBoundary() {
     </div>
   );
 }
-
 ```
 
 ```tsx

@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 Control Tower は、AWS Organizations、IdentityCenter (AWS SSO の後継)、Account Factory、AWS Config、AWS CloudTrail を一括で作成する。
 
 > - [How AWS Control Tower works with roles to create and manage accounts - AWS Control Tower](https://docs.aws.amazon.com/controltower/latest/userguide/roles-how.html)
@@ -28,7 +27,6 @@ Control Tower は、AWS Organizations、IdentityCenter (AWS SSO の後継)、Acc
 <br>
 
 ## 02. 仕組み
-
 
 ### AWS Organizations
 

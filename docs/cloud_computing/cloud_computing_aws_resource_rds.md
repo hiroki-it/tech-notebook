@@ -18,7 +18,6 @@ tags:
 
 ## 01. 概要
 
-
 AWS が提供するマネージドな RDB であり、DB エンジンとして Aurora、MySQL、MariaDB、PostgreSQL、Oracle、SQL Server、Db2 を選べる。
 
 <br>

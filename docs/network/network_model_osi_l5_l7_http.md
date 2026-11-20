@@ -965,7 +965,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
 2. サーバーは、レスポンスヘッダーの `Set-Cookie` ヘッダーに Cookie 情報を埋め込んで送信する。
 
-  === "Go"
+=== "Go"
 
       ```go title="Go の場合の実装例"
       http.SetCookie(w, &http.Cookie{
@@ -979,7 +979,7 @@ $_COOKIE = ["Cookie名" => "値"];
       })
       ```
 
-  === "TypeScript"
+=== "TypeScript"
 
       ```typescript title="TypeScript の場合の実装例"
       res.setHeader(
@@ -995,7 +995,7 @@ $_COOKIE = ["Cookie名" => "値"];
       );
       ```
 
-  === "PHP"
+=== "PHP"
 
       ```injectablephp title="PHP の場合の実装例"
       <?php
@@ -1015,7 +1015,7 @@ $_COOKIE = ["Cookie名" => "値"];
 
 4. 2 回目以降のリクエストでは、ブラウザは、リクエストヘッダーの `Cookie` ヘッダーに Cookie 情報を埋め込んでサーバーに送信する。
 
-    サーバーは、Cookie情報に紐付くクライアントのデータのRead処理を実行する。
+   サーバーは、Cookie情報に紐付くクライアントのデータのRead処理を実行する。
 
 <br>
 
@@ -1164,7 +1164,7 @@ session.gc_divisor = 1
 
 1. 最初、ブラウザはリクエストを送信する。
 
-    セッションIDを発行し、セッションIDごとに`sess_*****`ファイルを作成。
+   セッションIDを発行し、セッションIDごとに`sess_*****`ファイルを作成。
 
 2. サーバーは、レスポンスヘッダー情報の `Cookie` ヘッダーにセッション ID を割り当て送信する。
 
@@ -1172,7 +1172,7 @@ session.gc_divisor = 1
 
 4. 2 回目以降のリクエストでは、ブラウザは、リクエストヘッダー情報の `Cookie` ヘッダーにセッション ID を割り当て、サーバーに送信する。
 
-    サーバーは、セッションIDに紐付くクライアントのデータのRead処理を実行する。
+   サーバーは、セッションIDに紐付くクライアントのデータのRead処理を実行する。
 
 <br>
 

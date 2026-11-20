@@ -314,36 +314,36 @@ GitHub と SSH 公開鍵認証するために、秘密鍵と公開鍵は次の�
 
 1. `ssh-keygen` コマンドで、秘密鍵と公開鍵のセットを作成する。
 
-    ```bash
-    # 鍵を保管するディレクトリに移動
-    $ cd ~/.ssh/github
-    
-    $ ssh-keygen -t rsa
-    
-    # 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい
-    Enter file in which to save the key: hiroki-it
-    # 鍵の使用時にパスワードの入力を要求するか否かは任意である。
-    Enter passphrase (empty for no passphrase):
-    Enter same passphrase again:
-    ```
+   ```bash
+   # 鍵を保管するディレクトリに移動
+   $ cd ~/.ssh/github
+
+   $ ssh-keygen -t rsa
+
+   # 秘密鍵と公開鍵の名前はGitHubのユーザー名にしておくとわかりやすい
+   Enter file in which to save the key: hiroki-it
+   # 鍵の使用時にパスワードの入力を要求するか否かは任意である。
+   Enter passphrase (empty for no passphrase):
+   Enter same passphrase again:
+   ```
 
 2. このうち、公開鍵をクリップボードにコピーする。
 
-    ```bash
-    # Mac
-    $ pbcopy < ~/.ssh/github/<鍵名>.pub
-    
-    # Windows
-    $ clip < ~/.ssh/github/<鍵名>.pub
-    ```
+   ```bash
+   # Mac
+   $ pbcopy < ~/.ssh/github/<鍵名>.pub
+
+   # Windows
+   $ clip < ~/.ssh/github/<鍵名>.pub
+   ```
 
 3. コピーした公開鍵を、GitHub アカウント設定画面の SSH の項目 ( https://github.com/settings/ssh ) にペーストする。`ssh` コマンドで接続を確認する。
 
-    ```bash
-    $ ssh -T <接続名>
-    
-    Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provide shell access.
-    ```
+   ```bash
+   $ ssh -T <接続名>
+
+   Hi hiroki.hasegawa! You've successfully authenticated, but GitHub does not provide shell access.
+   ```
 
 <br>
 
@@ -587,29 +587,29 @@ $ git branch --delete --remote origin/<ローカルブランチ名>
 
 1. まず、`branch --all` で作業中のローカルブランチとリモート追跡ブランチを取得する。
 
-    ```bash
-    $ git branch --all
-    
-    * main
-      remotes/origin/2019/Symfony_Nyumon/main
-      remotes/origin/main
-    ```
+   ```bash
+   $ git branch --all
+
+   * main
+     remotes/origin/2019/Symfony_Nyumon/main
+     remotes/origin/main
+   ```
 
 2. `remotes/origin/2019/Symfony_Nyumon/main` を削除する。
 
-    ```bash
-    $ git branch -d -r origin/2019/Symfony_Nyumon/main
-    
-    Deleted remote-tracking branch origin/2019/Symfony_Nyumon/main (was 18a31b5).
-    ```
+   ```bash
+   $ git branch -d -r origin/2019/Symfony_Nyumon/main
+
+   Deleted remote-tracking branch origin/2019/Symfony_Nyumon/main (was 18a31b5).
+   ```
 
 3. 再び、`branch --all` で削除されたことを確認。
 
-    ```bash
-    $ git branch --all
-    * main
-      remotes/origin/main
-    ```
+   ```bash
+   $ git branch --all
+   * main
+     remotes/origin/main
+   ```
 
 <br>
 
@@ -1029,57 +1029,57 @@ $ git reset --hard <ブランチ名>
 
 1. まず、`log ` コマンドで、作業中のローカルブランチにおけるコミット ID を確認。
 
-    ```bash
-    $ git log
-    
-    commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> main, 2019/foo-repository/main)
-    Merge: 41cc21b f81c813
-    Author: hiroki.hasegawa <example@gmail.com>
-    Date:   Wed Mar 20 22:56:32 2019 +0900
-    
-        Merge remote-tracking branch "refs/remotes/origin/main"
-    
-    commit 41cc21bb53a8597270b5deae3259751df18bce81
-    Author: hiroki.hasegawa <example@gmail.com>
-    Date:   Wed Mar 20 20:54:34 2019 +0900
-    
-        add #0 fooさんのREADME_2を追加
-    
-    commit f81c813a1ead9a968c109671e6d83934debcab2e
-    Author: hiroki.hasegawa <example@gmail.com>
-    Date:   Wed Mar 20 20:54:34 2019 +0900
-    
-        add #0 fooさんのREADME_1を追加
-    ```
+   ```bash
+   $ git log
+
+   commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> main, 2019/foo-repository/main)
+   Merge: 41cc21b f81c813
+   Author: hiroki.hasegawa <example@gmail.com>
+   Date:   Wed Mar 20 22:56:32 2019 +0900
+
+       Merge remote-tracking branch "refs/remotes/origin/main"
+
+   commit 41cc21bb53a8597270b5deae3259751df18bce81
+   Author: hiroki.hasegawa <example@gmail.com>
+   Date:   Wed Mar 20 20:54:34 2019 +0900
+
+       add #0 fooさんのREADME_2を追加
+
+   commit f81c813a1ead9a968c109671e6d83934debcab2e
+   Author: hiroki.hasegawa <example@gmail.com>
+   Date:   Wed Mar 20 20:54:34 2019 +0900
+
+       add #0 fooさんのREADME_1を追加
+   ```
 
 2. 指定のコミットまで履歴を戻す。
 
-    ```bash
-    $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
-    ```
+   ```bash
+   $ git reset --soft f81c813a1ead9a968c109671e6d83934debcab2e
+   ```
 
 3. `log ` コマンドで、正しく変更されているか確認。
 
-    ```bash
-    $ git log
-    
-    commit f81c813a1ead9a968c109671e6d83934debcab2e (HEAD -> main)
-    Author: Hiroki Hasegawa <example@gmail.com>
-    Date:   Wed Mar 20 20:54:34 2019 +0900
-    
-        add 新しいREADMEを追加
-    ```
+   ```bash
+   $ git log
+
+   commit f81c813a1ead9a968c109671e6d83934debcab2e (HEAD -> main)
+   Author: Hiroki Hasegawa <example@gmail.com>
+   Date:   Wed Mar 20 20:54:34 2019 +0900
+
+       add 新しいREADMEを追加
+   ```
 
 4. `push --force` でローカルリポジトリの変更をリモートリポジトリに強制的に反映する。
-    <font color="red">**『強制的にプッシュした』というログも、リモート側には残らない。**</font>
+   <font color="red">**『強制的にプッシュした』というログも、リモート側には残らない。**</font>
 
-    ```bash
-    $ git push --force
-    
-    Total 0 (delta 0), reused 0 (delta 0)
-    To github.com:hiroki-hasegawa/foo-repository.git
-     + f0d8b1a...f81c813 main -> main (forced update)
-    ```
+   ```bash
+   $ git push --force
+
+   Total 0 (delta 0), reused 0 (delta 0)
+   To github.com:hiroki-hasegawa/foo-repository.git
+    + f0d8b1a...f81c813 main -> main (forced update)
+   ```
 
 <br>
 
@@ -1116,78 +1116,78 @@ $ git reset --hard origin/<ブランチ名>
 
 1. まず、`log ` コマンドで、作業中のローカルブランチにおけるコミット ID を確認。
 
-    ```bash
-    $ git log
-    
-    commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> main, 2019/foo-repository/main)
-    Merge: 41cc21b f81c813
-    Author: Hiroki Hasegawa <example@gmail.com>
-    Date:   Wed Mar 20 22:56:32 2019 +0900
-    
-        Merge remote-tracking branch "refs/remotes/origin/main"
-    
-    commit 41cc21bb53a8597270b5deae3259751df18bce81
-    Author: Hiroki Hasegawa <example@gmail.com>
-    Date:   Wed Mar 20 20:54:34 2019 +0900
-    
-        add #0 fooさんのREADME_2を追加
-    
-    commit f81c813a1ead9a968c109671e6d83934debcab2e
-    Author: Hiroki Hasegawa <example@gmail.com>
-    Date:   Wed Mar 20 20:54:34 2019 +0900
-    
-        add #0 fooさんのREADME_1を追加
-    ```
+   ```bash
+   $ git log
+
+   commit f17f68e287b7d84318b4c49e133b2d1819f6c3db (HEAD -> main, 2019/foo-repository/main)
+   Merge: 41cc21b f81c813
+   Author: Hiroki Hasegawa <example@gmail.com>
+   Date:   Wed Mar 20 22:56:32 2019 +0900
+
+       Merge remote-tracking branch "refs/remotes/origin/main"
+
+   commit 41cc21bb53a8597270b5deae3259751df18bce81
+   Author: Hiroki Hasegawa <example@gmail.com>
+   Date:   Wed Mar 20 20:54:34 2019 +0900
+
+       add #0 fooさんのREADME_2を追加
+
+   commit f81c813a1ead9a968c109671e6d83934debcab2e
+   Author: Hiroki Hasegawa <example@gmail.com>
+   Date:   Wed Mar 20 20:54:34 2019 +0900
+
+       add #0 fooさんのREADME_1を追加
+   ```
 
 2. 指定した履歴の削除
 
-    ```bash
-    $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
-    ```
+   ```bash
+   $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
+   ```
 
-    とすると、タブが表示され、指定のコミット ID の履歴が表示される
+   とすると、タブが表示され、指定のコミット ID の履歴が表示される
 
-    ```bash
-    pick b1b5c0f add #0 *****
-    ```
+   ```bash
+   pick b1b5c0f add #0 *****
+   ```
 
-    『挿入モード』に変更し、この１行の `pick` を `edit` に変更。
+   『挿入モード』に変更し、この１行の `pick` を `edit` に変更。
 
-    その後、次のコマンドで保存する。
+   その後、次のコマンドで保存する。
 
-    ```bash
-    :w
-    ```
+   ```bash
+   :w
+   ```
 
-    として保管。
+   として保管。
 
-    その後、エディタ上で『Ctrl+C』を押して、次のコマンドで終了する。
+   その後、エディタ上で『Ctrl+C』を押して、次のコマンドで終了する。
 
-    ```bash
-    :qa!
-    ```
+   ```bash
+   :qa!
+   ```
 
-    で終了。
+   で終了。
 
 3. `git commit --amend` に `-m` オプションを付けて、メッセージを変更する。
 
-    ```bash
-    $ git commit --amend -m="<変更後のメッセージ>"
-    ```
+   ```bash
+   $ git commit --amend -m="<変更後のメッセージ>"
+   ```
 
 4. `git rebase --continue` コマンドを実行することで、変更を反映させる。
 
-    ```bash
-    $ git rebase --continue
-    
-    Successfully rebased and updated refs/heads/develop.
-    ```
+   ```bash
+   $ git rebase --continue
+
+   Successfully rebased and updated refs/heads/develop.
+   ```
 
 5. プッシュしようとすると、`![rejected] develop -> develop (non-fast-forward)` とエラーが出るため、次のコマンドを実行する。
 
-    ```bash
-    $ git merge <ブランチ名> --allow-unrelated-histories
-    ```
+   ```bash
+   $ git merge <ブランチ名> --allow-unrelated-histories
+   ```
 
 で解決し、プッシュする。
 
@@ -1195,22 +1195,22 @@ $ git reset --hard origin/<ブランチ名>
 
 1. ハッシュ値を指定して、`git rebase` コマンドを実行する。
 
-    ```bash
-    $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
-    ```
+   ```bash
+   $ git rebase --interactive 41cc21bb53a8597270b5deae3259751df18bce81
+   ```
 
 2. `git commit --amend` コマンドに `--reset-author` オプションを付けて、config で設定した名前を Author 名と Committer 名に適用する。
 
-    ```bash
-    $ git commit --amend --reset-author
-    ```
+   ```bash
+   $ git commit --amend --reset-author
+   ```
 
 3. `git rebase --continue` コマンドを実行し、変更を反映させる。
 
-    ```bash
-    $ git rebase --continue
-    Successfully rebased and updated refs/heads/develop.
-    ```
+   ```bash
+   $ git rebase --continue
+   Successfully rebased and updated refs/heads/develop.
+   ```
 
 過去のすべてのコミットに対して、Author 名と Committer 名を適用するコマンドもある。
 
@@ -1247,21 +1247,21 @@ $ git rebase --onto <派生元にしたいローカルブランチ名> <誤っ�
 
 1. 変更タブの表示
 
-    ```bash
-    $ git rebase --interactive --root
-    ```
+   ```bash
+   $ git rebase --interactive --root
+   ```
 
-    そうすると、最初の履歴が記述されたタブを表示する。
+   そうすると、最初の履歴が記述されたタブを表示する。
 
-    ```bash
-    pick b1b5c0f add #0 *****
-    ```
+   ```bash
+   pick b1b5c0f add #0 *****
+   ```
 
 2. `pick b1b5c0f add #0 *****` の行を削除して保管し、タブを閉じ、エディタ上で『Ctrl+C』を押す。
 
-    ```bash
-    :qa!
-    ```
+   ```bash
+   :qa!
+   ```
 
 ここで未知のエラー
 

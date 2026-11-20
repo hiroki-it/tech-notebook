@@ -42,19 +42,17 @@ $ notation policy import aws/signer_policy.json
 ```json
 {
   "version": "1.0",
-  "trustPolicies":
-    [
-      {
-        "name": "aws-signer-tp",
-        "registryScopes": ["*"],
-        "signatureVerification": {"level": "strict"},
-        "trustStores": ["signingAuthority:aws-signer-ts"],
-        "trustedIdentities":
-          [
-            "arn:aws:signer:<リージョン>:<AWSアカウントID>:/signing-profiles/<署名プロファイル名>",
-          ],
-      },
-    ],
+  "trustPolicies": [
+    {
+      "name": "aws-signer-tp",
+      "registryScopes": ["*"],
+      "signatureVerification": {"level": "strict"},
+      "trustStores": ["signingAuthority:aws-signer-ts"],
+      "trustedIdentities": [
+        "arn:aws:signer:<リージョン>:<AWSアカウントID>:/signing-profiles/<署名プロファイル名>"
+      ]
+    }
+  ]
 }
 ```
 

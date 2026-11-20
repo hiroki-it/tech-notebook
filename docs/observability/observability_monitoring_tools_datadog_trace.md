@@ -142,11 +142,11 @@ Datadog で、スパンは JSON 型データとして定義される。アプリ
       "duration": 123, // 処理の所要時間
       "error": 0, // エラーの有無
       "meta": {
-          "env": "prd", // タグ
-        },
+        "env": "prd" // タグ
+      },
       "metrics": {
-          "baz-sum": 123, // マイクロサービスのメトリクス
-        },
+        "baz-sum": 123 // マイクロサービスのメトリクス
+      },
       "name": "laravel.request", // スパン名
       "parent_id": 123, // 親スパン ID
       "resource": "/foo", // アクセスされたリソース
@@ -154,9 +154,9 @@ Datadog で、スパンは JSON 型データとして定義される。アプリ
       "span_id": 123456789, // スパン ID
       "start": 0, // 処理開始時間
       "trace_id": 123456789, // トレース ID
-      "type": "web", // マイクロサービスのタイプ
-    },
-  ],
+      "type": "web" // マイクロサービスのタイプ
+    }
+  ]
 ]
 ```
 
@@ -172,26 +172,26 @@ PHP 用のクライアントパッケージで laravel 内からタグを収集�
 
 ```json
 {
-    "env": "prd",
-    "http": {
-        "host": "example.com",
-        "method": "GET",
-        "path_group": "/foo",
-        "status_code": 200,
-        "url": "https://example.com/foo/1"
-    },
-    "laravel": {
-        "route": {
-            "action": "App\Http\Controllers\Foo\FooController@get",
-            "name": "foos.get"
-        }
-    },
-    "php" : {
-        "compilation": {
-            "total_time_ms": 123.45
-        }
-    },
-    "process_id": 100
+  "env": "prd",
+  "http": {
+    "host": "example.com",
+    "method": "GET",
+    "path_group": "/foo",
+    "status_code": 200,
+    "url": "https://example.com/foo/1"
+  },
+  "laravel": {
+    "route": {
+      "action": "App\Http\Controllers\Foo\FooController@get",
+      "name": "foos.get"
+    }
+  },
+  "php": {
+    "compilation": {
+      "total_time_ms": 123.45
+    }
+  },
+  "process_id": 100
 }
 ```
 

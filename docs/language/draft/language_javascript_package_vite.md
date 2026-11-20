@@ -77,13 +77,12 @@ export default defineConfig({
 
 ```json
 {
-  "scripts":
-    {
-      "dev": "vite --host",
-      "build": "tsc -b && vite build",
-      "lint": "eslint .",
-      "preview": "vite preview",
-    },
+  "scripts": {
+    "dev": "vite --host",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  }
 }
 ```
 

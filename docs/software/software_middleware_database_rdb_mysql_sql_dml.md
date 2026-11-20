@@ -740,7 +740,6 @@ EXEC SelectContact
 
 ### 削除方式
 
-
 #### ▼ 物理削除
 
 `DELETE`文でDB テーブルからレコード自体を削除する。

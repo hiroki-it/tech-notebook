@@ -1520,7 +1520,6 @@ flowchart LR
   settlementMerchant -.->|メールテンプレート取得・送信登録を依頼| notice
 ```
 
-
 ### QR 決済ドメイン
 
 QR 決済業務の担当者が変わる境目を見つけ、それを境界づけられたコンテキストにする。
@@ -1681,7 +1680,6 @@ flowchart LR
 
 決済利用者と管理者のユーザー管理は別に扱い、API 認証への呼び出しは API 受付層で行う。
 精算取引の照会は実装されているが、日次精算ファイル作成バッチは未実装のため、精算の依存関係は図に含めない。
-
 
 <br>
 
@@ -1859,4 +1857,3 @@ flowchart LR
 > - [Pattern: Database per service](https://microservices.io/patterns/data/database-per-service.html)
 
 <br>
-

@@ -58,8 +58,6 @@ module "ec2_role" {
 
 <br>
 
-
-
 ## 04. ユーザー管理
 
 ### ルートユーザーとは
@@ -201,8 +199,9 @@ AWS IAM ロールにインラインポリシーを紐付ける。
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [{"Effect": "Allow", "Action": "acm:ListCertificates", "Resource": "*"}],
+  "Statement": [
+    {"Effect": "Allow", "Action": "acm:ListCertificates", "Resource": "*"}
+  ]
 }
 ```
 
@@ -213,7 +212,7 @@ AWS IAM ロールにインラインポリシーを紐付ける。
 ```json
 {
   "Version": "2012-10-17",
-  "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}],
+  "Statement": [{"Effect": "Allow", "Action": "*", "Resource": "*"}]
 }
 ```
 
@@ -234,26 +233,24 @@ AWS IAM ロールにインラインポリシーを紐付ける。
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {"Effect": "Allow", "Action": "ec2:Describe*", "Resource": "*"},
-      {
-        "Effect": "Allow",
-        "Action": "elasticloadbalancing:Describe*",
-        "Resource": "*",
-      },
-      {
-        "Effect": "Allow",
-        "Action":
-          [
-            "cloudwatch:ListMetrics",
-            "cloudwatch:GetMetricStatistics",
-            "cloudwatch:Describe*",
-          ],
-        "Resource": "*",
-      },
-      {"Effect": "Allow", "Action": "autoscaling:Describe*", "Resource": "*"},
-    ],
+  "Statement": [
+    {"Effect": "Allow", "Action": "ec2:Describe*", "Resource": "*"},
+    {
+      "Effect": "Allow",
+      "Action": "elasticloadbalancing:Describe*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudwatch:ListMetrics",
+        "cloudwatch:GetMetricStatistics",
+        "cloudwatch:Describe*"
+      ],
+      "Resource": "*"
+    },
+    {"Effect": "Allow", "Action": "autoscaling:Describe*", "Resource": "*"}
+  ]
 }
 ```
 
@@ -269,31 +266,28 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 
 ```json
 {
-  "rules":
-    [
-      {
-        "rulePriority": 1,
-        "description": "Keep last 10 images untagged",
-        "selection":
-          {
-            "tagStatus": "untagged",
-            "countType": "imageCountMoreThan",
-            "countNumber": 10,
-          },
-        "action": {"type": "expire"},
+  "rules": [
+    {
+      "rulePriority": 1,
+      "description": "Keep last 10 images untagged",
+      "selection": {
+        "tagStatus": "untagged",
+        "countType": "imageCountMoreThan",
+        "countNumber": 10
       },
-      {
-        "rulePriority": 2,
-        "description": "Keep last 10 images any",
-        "selection":
-          {
-            "tagStatus": "any",
-            "countType": "imageCountMoreThan",
-            "countNumber": 10,
-          },
-        "action": {"type": "expire"},
+      "action": {"type": "expire"}
+    },
+    {
+      "rulePriority": 2,
+      "description": "Keep last 10 images any",
+      "selection": {
+        "tagStatus": "any",
+        "countType": "imageCountMoreThan",
+        "countNumber": 10
       },
-    ],
+      "action": {"type": "expire"}
+    }
+  ]
 }
 ```
 
@@ -306,14 +300,13 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal": {"Service": "ecs-tasks.amazonaws.com"},
-        "Action": "sts:AssumeRole",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"Service": "ecs-tasks.amazonaws.com"},
+      "Action": "sts:AssumeRole"
+    }
+  ]
 }
 ```
 
@@ -326,19 +319,17 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            // 完全一致
-            "StringEquals": {"sts:ExternalId": "<適当な文字列>"},
-          },
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        // 完全一致
+        "StringEquals": {"sts:ExternalId": "<適当な文字列>"}
+      }
+    }
+  ]
 }
 ```
 
@@ -362,15 +353,15 @@ Amazon ECR に紐付けられる、コンテナイメージの有効期間を定
   "Version": "2012-10-17",
   // Statement (AWS IAM ステートメント)
   "Statement": [
-      {
-        // 許可する
-        "Effect": "Allow",
-        // SSM の API への GetParameters のコールを指定する
-        "Action": ["ssm:GetParameters"],
-        // 任意の AWS ソースを対象とする
-        "Resource": "*",
-      },
-    ],
+    {
+      // 許可する
+      "Effect": "Allow",
+      // SSM の API への GetParameters のコールを指定する
+      "Action": ["ssm:GetParameters"],
+      // 任意の AWS ソースを対象とする
+      "Resource": "*"
+    }
+  ]
 }
 ```
 
@@ -448,12 +439,11 @@ ARN で AWS リソースの識別子を設定する。
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Resource": "arn:<リージョンのグループ>:<AWSリソース>:ap-northeast-1:<AWSアカウントID>:<AWSリソースID>",
-      },
-    ],
+  "Statement": [
+    {
+      "Resource": "arn:<リージョンのグループ>:<AWSリソース>:ap-northeast-1:<AWSアカウントID>:<AWSリソースID>"
+    }
+  ]
 }
 ```
 
@@ -468,60 +458,54 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            // 完全一致
-            "StringEqual": {"sts:ExternalId": "foo"},
-          },
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        // 完全一致
+        "StringEqual": {"sts:ExternalId": "foo"}
+      }
+    }
+  ]
 }
 ```
 
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            // OR 条件
-            "StringEqual": {
-                // リスト型にすることで OR 上限になる
-                "sts:ExternalId": ["foo", "bar"],
-              },
-          },
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        // OR 条件
+        "StringEqual": {
+          // リスト型にすることで OR 上限になる
+          "sts:ExternalId": ["foo", "bar"]
+        }
+      }
+    }
+  ]
 }
 ```
 
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
-        "Action": "sts:AssumeRole",
-        "Condition": {
-            // 部分一致 (ワイルドカードを使用できる)
-            "StringLike": {"sts:ExternalId": "foo-*"},
-          },
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::<AWSアカウントID>:user/<ユーザー名>"},
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        // 部分一致 (ワイルドカードを使用できる)
+        "StringLike": {"sts:ExternalId": "foo-*"}
+      }
+    }
+  ]
 }
 ```
 
@@ -531,18 +515,21 @@ AWS IAM ポリシーの取得に使用する文字列の条件の厳格さを設
 タグを条件として使用できる。
 
 ```json
-{"Version": "2012-10-17", "Statement": [
-      {
-        "Effect": "Allow",
-        // EC2 を起動する
-        "Action": "ec2:RunInstances",
-        "Resource": "arn:aws:ec2:*:account-id:launch-template/*",
-        "Condition": {
-            // 特定のタグを持つ起動テンプレートのみを指定できる
-            "StringEquals": {"ec2:ResourceTag/foo": "foo"},
-          },
-      },
-    ]}
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      // EC2 を起動する
+      "Action": "ec2:RunInstances",
+      "Resource": "arn:aws:ec2:*:account-id:launch-template/*",
+      "Condition": {
+        // 特定のタグを持つ起動テンプレートのみを指定できる
+        "StringEquals": {"ec2:ResourceTag/foo": "foo"}
+      }
+    }
+  ]
+}
 ```
 
 > - [Control Amazon EC2 launch template usage in Auto Scaling groups - Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-launch-template-permissions.html#policy-example-launch-template-ex1)

@@ -18,7 +18,6 @@ tags:
 
 ## 01. 概要
 
-
 ### OpenAPI の拡張キー
 
 Amazon API Gateway のインポートに当たり、OpenAPI の `yaml` ファイルにキーを新たに実装する必要がある。

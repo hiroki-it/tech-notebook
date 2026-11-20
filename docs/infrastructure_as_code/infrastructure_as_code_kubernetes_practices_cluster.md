@@ -194,30 +194,30 @@ GitOps を採用できないため、CIOps になる。
 
 1. 旧 Node グループ (Prod ブルー) を残したまま、新 Node グループ (Test グリーン) を作成する。
 
-    このとき、新 Node グループ内ワーカーNode 上には Pod が存在していないため、アクセスが新 Node グループにルーティングされることはない。
+   このとき、新 Node グループ内ワーカーNode 上には Pod が存在していないため、アクセスが新 Node グループにルーティングされることはない。
 
 2. `kubectl drain` コマンドを実行することで、旧 Node グループ内のワーカーNode でドレイン処理を開始させる。
 
-    この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
+   この時、DaemonSetのPodを退避させられるように、`--ignore-daemonsets`オプションを有効化する。
 
-    また、EmptyDir Volumeを持つPodを退避させられるように `--delete-emptydir-data`オプションも有効化する。
+   また、EmptyDir Volumeを持つPodを退避させられるように `--delete-emptydir-data`オプションも有効化する。
 
-    ドレイン処理によって、旧Nodeグループ内のワーカーNodeが`SchedulingDisabled`状態になり、加えてこのワーカーNodeからPodが退避していく。
+   ドレイン処理によって、旧Nodeグループ内のワーカーNodeが`SchedulingDisabled`状態になり、加えてこのワーカーNodeからPodが退避していく。
 
-    その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングさせる。
+   その後、新Nodeグループ内のSchedulingEnabled状態のワーカーNode上で、Podを再スケジューリングさせる。
 
-    この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
+   この時、旧Nodeグループ内ワーカーNode上にはPodが存在していないため、アクセスが旧Nodeグループにルーティングされることはない。
 
-    ```bash
-    $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
-        --ignore-daemonsets \
-        --delete-emptydir-data
-    ```
+   ```bash
+   $ kubectl drain <旧Nodeグループ内のワーカーNode名> \
+       --ignore-daemonsets \
+       --delete-emptydir-data
+   ```
 
-    ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_node_scheduling-pod-status.png)
+   ![kubernetes_node_scheduling-pod-status](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_node_scheduling-pod-status.png)
 
-    > - [YasuBlog](https://dunkshoot.hatenablog.com/)
-    > - [kubernetes – Nodeの削除 \| HYOUBLOG](https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/)
+   > - [YasuBlog](https://dunkshoot.hatenablog.com/)
+   > - [kubernetes – Nodeの削除 \| HYOUBLOG](https://hyoublog.com/2020/06/10/kubernetes-node%E3%81%AE%E5%89%8A%E9%99%A4/)
 
 3. ドレイン処理が完了した後、新 Node グループ内ワーカーNode 上で Pod が正常に稼働していることを確認する。
 

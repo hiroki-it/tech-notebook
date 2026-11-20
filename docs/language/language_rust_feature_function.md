@@ -105,4 +105,3 @@ pub fn format(organizations: &[Organization]) -> String {
 ```
 
 <br>
-

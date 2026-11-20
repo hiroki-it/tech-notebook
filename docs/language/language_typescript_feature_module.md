@@ -30,14 +30,7 @@ import {logger} from "./logger";
 型と関数が混在する場合、いくつかの記法（型と関数で `import` を分けるなど）があるが、次の実装方法が一番よい。
 
 ```typescript
-import {
-  foo1,
-  foo2,
-  foo3,
-  type foo4,
-  type foo5,
-  type foo6,
-} from "./foo";
+import {foo1, foo2, foo3, type foo4, type foo5, type foo6} from "./foo";
 ```
 
 #### ▼ 動的 import

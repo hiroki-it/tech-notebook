@@ -36,7 +36,7 @@ Kubernetes の Node と Pod (それ以外の Kubernetes リソースは対象外
 
 4. APIService は、クライアントにメトリクスを返信する。
 
-    ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_metrics-server.png)
+   ![kubernetes_metrics-server](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/infrastructure_as_code/kubernetes_metrics-server.png)
 
 > - [Metrics Server - Speaker Deck](https://speakerdeck.com/bells17/metrics-server?slide=20)
 > - [metrics-server/manifests/base at master · kubernetes-sigs/metrics-server · GitHub](https://github.com/kubernetes-sigs/metrics-server/tree/master/manifests/base)

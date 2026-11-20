@@ -61,13 +61,13 @@ Roleは複数のPolicyを持つ。
 
 以下は、Roleに割り当てるPolicyの例である。
 
-| Role                | 割り当てられているPolicy                                  |
-| ------------------- | -------------------------------------------------------- |
-| SystemAdministrator | FullAccess                                               |
-| Administrator       | FullAccess、DenyAdmin                                    |
-| Operator            | FooFullAccess、BarFullAccess、StandardAccess、DenyAdmin  |
-| Reporter            | BarFullAccess、StandardAccess、DenyAdmin                 |
-| DenyAll             | DenyAll                                                  |
+| Role                | 割り当てられているPolicy                                |
+| ------------------- | ------------------------------------------------------- |
+| SystemAdministrator | FullAccess                                              |
+| Administrator       | FullAccess、DenyAdmin                                   |
+| Operator            | FooFullAccess、BarFullAccess、StandardAccess、DenyAdmin |
+| Reporter            | BarFullAccess、StandardAccess、DenyAdmin                |
+| DenyAll             | DenyAll                                                 |
 
 ```mermaid
 flowchart LR
@@ -211,13 +211,13 @@ flowchart LR
 
 例のPolicyはすべてのHTTPメソッドを対象にしているため、パスごとの可否を示す。
 
-| パス ＼ Role         | SystemAdministrator | Administrator | Operator | Reporter | DenyAll |
-| -------------------- | ------------------- | ------------- | -------- | -------- | ------- |
-| `/`、`/signout`      | 許可                | 許可          | 許可     | 許可     |         |
-| `/foos`、`/foos/*`   | 許可                | 許可          | 許可     |          |         |
-| `/bars`、`/bars/*`   | 許可                | 許可          | 許可     | 許可     |         |
-| `/users`、`/users/*` | 許可                | 許可          |          |          |         |
-| `/admin`、`/admin/*` | 許可                |               |          |          |         |
-| そのほかのすべてのパス | 許可              | 許可          |          |          |         |
+| パス ＼ Role           | SystemAdministrator | Administrator | Operator | Reporter | DenyAll |
+| ---------------------- | ------------------- | ------------- | -------- | -------- | ------- |
+| `/`、`/signout`        | 許可                | 許可          | 許可     | 許可     |         |
+| `/foos`、`/foos/*`     | 許可                | 許可          | 許可     |          |         |
+| `/bars`、`/bars/*`     | 許可                | 許可          | 許可     | 許可     |         |
+| `/users`、`/users/*`   | 許可                | 許可          |          |          |         |
+| `/admin`、`/admin/*`   | 許可                |               |          |          |         |
+| そのほかのすべてのパス | 許可                | 許可          |          |          |         |
 
 <br>

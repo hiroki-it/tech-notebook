@@ -50,11 +50,8 @@ $ npx vitest run user.test.ts
 
 ```typescript
 describe("<パブリックな関数名>", async () => {
-
   describe("<テストスイートの種別>", async () => {
-
-    test("<テストケース名>", async () => {
-    });
+    test("<テストケース名>", async () => {});
   });
 });
 ```
@@ -67,39 +64,23 @@ describe("<パブリックな関数名>", async () => {
 
 ```typescript
 describe("<パブリックな関数名>", async () => {
-
   describe("<テストスイートの種別>", async () => {
-
     // 正常系
-    test("<テストケース名>", async () => {
-
-    });
+    test("<テストケース名>", async () => {});
     // 異常系
-    test("<テストケース名>", async () => {
-
-    });
+    test("<テストケース名>", async () => {});
     // 境界値
-    test("<テストケース名>", async () => {
-
-    });
+    test("<テストケース名>", async () => {});
   });
 });
 ```
 
 ```typescript
 describe("<パブリックな関数名>", async () => {
-
   describe("<テストスイートの種別>", async () => {
-
-    test("正常系：<テストケース名>", async () => {
-
-    });
-    test("異常系：<テストケース名>", async () => {
-
-    });
-    test("境界値：<テストケース名>", async () => {
-
-    });
+    test("正常系：<テストケース名>", async () => {});
+    test("異常系：<テストケース名>", async () => {});
+    test("境界値：<テストケース名>", async () => {});
   });
 });
 ```
@@ -507,34 +488,30 @@ describe("fetchUser", async () => {
 #### ▼ テスト対象の関数
 
 ```typescript
-import { validationError } from "remix-validated-form";
-import { getUser} from "~/models/user.server";
+import {validationError} from "remix-validated-form";
+import {getUser} from "~/models/user.server";
 
-export const validateForm = async ({
-  formData,
-}: {
-  formData: FormData;
-}) => {
-    const accountId = formData.get("accountId") as string;
+export const validateForm = async ({formData}: {formData: FormData}) => {
+  const accountId = formData.get("accountId") as string;
 
-    const sameAccountIdUser = await getUser({
-      accountId: accountId
-    });
+  const sameAccountIdUser = await getUser({
+    accountId: accountId,
+  });
 
-    // 作成したいアカウントIDがすでに存在する場合、バリデーションエラーとする
-    if (sameAccountIdUser) {
-      return {
-        error: validationError({
-          formId: formData.get("formId") as string,
-          fieldErrors: {
-            accountId: "An account id already exists",
-          },
-        }),
-      };
-    }
+  // 作成したいアカウントIDがすでに存在する場合、バリデーションエラーとする
+  if (sameAccountIdUser) {
+    return {
+      error: validationError({
+        formId: formData.get("formId") as string,
+        fieldErrors: {
+          accountId: "An account id already exists",
+        },
+      }),
+    };
+  }
 
-    // 作成したいアカウントIDが存在しない場合、フォーム入力値を返却する
-    return { formData: formData };
+  // 作成したいアカウントIDが存在しない場合、フォーム入力値を返却する
+  return {formData: formData};
 };
 ```
 

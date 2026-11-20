@@ -25,7 +25,6 @@ Fluent Bit や Fluentd を使用し、Amazon ECS のコンテナログを AWS �
 
 ## 02. 仕組み
 
-
 ### アーキテクチャ
 
 ![fluent-bit_aws-firelens](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/cloud_computing/fluent-bit_aws-firelens.png)
@@ -36,19 +35,19 @@ Fluent Bit や Fluentd を使用し、Amazon ECS のコンテナログを AWS �
 
 3. コンテナ内で稼働する FluentBit のログパイプラインの INPUT に渡され、FluentBit はログを処理する。FireLens コンテナのパイプラインでは、ログは『`<コンテナ名>-firelens-<Amazon ECSタスクID>`』というタグ名で処理されている。
 
-    ```yaml
-    # 本来、改行はないが、わかりやすいように改行している。
-    # <コンテナ名>-firelens-<Amazon ECS タスク ID>
-    [0] foo-firelens-*****: [
-        *****,
-        {
-            "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
-            "container_id"=>"*****",
-            "container_name"=>"foo",
-            "source"=>"stderr"
-        }
-    ]
-    ```
+   ```yaml
+   # 本来、改行はないが、わかりやすいように改行している。
+   # <コンテナ名>-firelens-<Amazon ECS タスク ID>
+   [0] foo-firelens-*****: [
+       *****,
+       {
+           "log"=>"127.0.0.1 -  01/01/2022:0:00:00 +0000 "GET /index.php" 200",
+           "container_id"=>"*****",
+           "container_name"=>"foo",
+           "source"=>"stderr"
+       }
+   ]
+   ```
 
 4. OUTPUT に渡され、FluentBit は指定した外部にログをルーティングする。
 
@@ -203,9 +202,9 @@ log_router という名前以外を設定できないことに注意する。
     "image": "<イメージリポジトリURL>:<バージョンタグ>", // <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": "false",
     "logConfiguration": {
-        // FluentBit の設定は conf ファイルで実行するため、options キーは何も設定しない。
-        "logDriver": "awsfirelens",
-      },
+      // FluentBit の設定は conf ファイルで実行するため、options キーは何も設定しない。
+      "logDriver": "awsfirelens"
+    }
   },
   {
     // log_router 以外の名前を設定できない
@@ -213,36 +212,35 @@ log_router という名前以外を設定できないことに注意する。
     "image": "<イメージリポジトリURL>:<バージョンタグ>", // <AWS アカウント ID>.dkr.ecr.ap-northeast-1.amazonaws.com/<イメージリポジトリ名>:latest
     "essential": "false",
     "logConfiguration": {
-        // ログドライバー
-        "logDriver": "awslogs",
-        "options": {
-            // FireLens コンテナ自体が Amazon CloudWatch Logs にログアウトプット
-            "awslogs-group": "<ログストリーム名>",
-            "awslogs-region": "ap-northeast-1",
-            "awslogs-stream-prefix": "<ログストリームの接頭辞>",
-          },
-      },
+      // ログドライバー
+      "logDriver": "awslogs",
+      "options": {
+        // FireLens コンテナ自体が Amazon CloudWatch Logs にログアウトプット
+        "awslogs-group": "<ログストリーム名>",
+        "awslogs-region": "ap-northeast-1",
+        "awslogs-stream-prefix": "<ログストリームの接頭辞>"
+      }
+    },
     "firelensConfiguration": {
-        // FireLens コンテナで FluentBit を稼働させる
-        "type": "fluentbit",
-        "options": {
-            "config-file-type": "file",
-            // 設定上書きのため読み出し
-            "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf",
-            // Amazon ECS の情報を FireLens コンテナに送信するか否か
-            "enable-ecs-log-metadata": "true",
-          },
-      },
+      // FireLens コンテナで FluentBit を稼働させる
+      "type": "fluentbit",
+      "options": {
+        "config-file-type": "file",
+        // 設定上書きのため読み出し
+        "config-file-value": "/fluent-bit/etc/fluent-bit_custom.conf",
+        // Amazon ECS の情報を FireLens コンテナに送信するか否か
+        "enable-ecs-log-metadata": "true"
+      }
+    },
     "portMappings": [],
     "memoryReservation": 50,
-    "environment":
-      [
-        {"name": "DD_ENV", "value": "prd"},
-        {"name": "DD_SERVICE", "value": "foo"},
-        {"name": "REGION", "value": "ap-northeast-1"},
-      ],
-    "secrets": [{"name": "DD_API_KEY", "valueFrom": "DD_API_KEY"}],
-  },
+    "environment": [
+      {"name": "DD_ENV", "value": "prd"},
+      {"name": "DD_SERVICE", "value": "foo"},
+      {"name": "REGION", "value": "ap-northeast-1"}
+    ],
+    "secrets": [{"name": "DD_API_KEY", "valueFrom": "DD_API_KEY"}]
+  }
 ]
 ```
 

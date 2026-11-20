@@ -87,7 +87,7 @@ tags:
 
 7. `a3`：アプリケーションがレスポンスをクライアントに返信する。
 
-    ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/monolith-trace.png)
+   ![monolith-trace](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/observability/monolith-trace.png)
 
 <br>
 

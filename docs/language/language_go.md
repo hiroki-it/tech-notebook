@@ -132,45 +132,45 @@ CMD ["/go/bin/cmd"]
 
 1. 最新のバイナリをインストールする。
 
-    ```bash
-    $ go install golang.org/dl/go<新しいバージョン>@HEAD
-    
-    $ go<新しいバージョン> download
-    ```
+   ```bash
+   $ go install golang.org/dl/go<新しいバージョン>@HEAD
+
+   $ go<新しいバージョン> download
+   ```
 
 2. 新しいバージョンに切り替える。
 
-    ```bash
-    # GOROOTの場所を見つける
-    $ go<新しいバージョン> env GOROOT
-    
-    /home/hiroki-hasegawa/sdk/go1.22.1
-    
-    $ export GOROOT=$(go1.22.1 env GOROOT)
-    $ export PATH=$GOROOT/bin:$PATH
-    $ source ~/.zshrc
-    ```
+   ```bash
+   # GOROOTの場所を見つける
+   $ go<新しいバージョン> env GOROOT
+
+   /home/hiroki-hasegawa/sdk/go1.22.1
+
+   $ export GOROOT=$(go1.22.1 env GOROOT)
+   $ export PATH=$GOROOT/bin:$PATH
+   $ source ~/.zshrc
+   ```
 
 3. `go.mod` ファイルの Go のバージョン定義や、Go パッケージをアップグレードする。
 
-    `-go`オプションがあるが、基本的にはgoのバイナリのバージョンをアップグレードする。
+   `-go`オプションがあるが、基本的にはgoのバイナリのバージョンをアップグレードする。
 
-    ```bash
-    # 新しいバージョンになっていることを確認する
-    $ go version
-    
-    $ go mod tidy
-    ```
+   ```bash
+   # 新しいバージョンになっていることを確認する
+   $ go version
+
+   $ go mod tidy
+   ```
 
 4. 古いバージョンの Go バイナリをアンインストールする。
 
-    ```bash
-    # which goでバイナリの場所を確認する
-    $ rm -rf /usr/local/go
-    
-    # もし、asdfでGoをインストールしている場合
-    $ asdf uninstall go <古いバージョン>
-    ```
+   ```bash
+   # which goでバイナリの場所を確認する
+   $ rm -rf /usr/local/go
+
+   # もし、asdfでGoをインストールしている場合
+   $ asdf uninstall go <古いバージョン>
+   ```
 
 > - [【初心者向け】丁寧な Go のバージョンアップ手順](https://zenn.dev/wasuwa/articles/3d2e65516b760e)
 > - [既にGo言語がインストール済みの場合に新しいバージョンに切り替える #バージョン管理 - Qiita](https://qiita.com/snyt45/items/2425a849db8947001587)
@@ -179,16 +179,16 @@ CMD ["/go/bin/cmd"]
 
 1. PPA リポジトリを登録する。
 
-    ```bash
-    $ add-apt-repository ppa:longsleep/golang-backports
-    ```
+   ```bash
+   $ add-apt-repository ppa:longsleep/golang-backports
+   ```
 
 2. 新しいバイナリをインストールする。
 
-    ```bash
-    $ apt update
-    $ apt install golang-go
-    ```
+   ```bash
+   $ apt update
+   $ apt install golang-go
+   ```
 
 > - [めんどくないGoのバージョンアップ](https://zenn.dev/tamagram/articles/fd744d10e2e680)
 

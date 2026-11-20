@@ -197,44 +197,44 @@ NAT ルーター自体を複数のプライベートネットワークで共有�
 
 1. NAT ルーターは、プライベートネットワークから出るとき、パケットのヘッダー情報における『送信元』のプライベート IP アドレスをグローバル IP アドレスに変換する。
 
-    例えば、GoogleでWebページを見ながら、Gmailアプリケーションを稼働している場合、リクエストにおけるパケット情報として…
+   例えば、GoogleでWebページを見ながら、Gmailアプリケーションを稼働している場合、リクエストにおけるパケット情報として…
 
-    <table>
-      <thead>
-    <tr>
-      <th style="text-align:center">送信元プライベート IP アドレス</th>
-      <th style="text-align:center">SNAT 処理による変換</th>
-      <th style="text-align:center">送信元グローバル IP アドレス</th>
-    </tr>
-      </thead>
-      <tbody>
-    <tr>
-      <td style="text-align:center"><code>192.168.1.1</code></td>
-      <td style="text-align:center">⇄</td>
-      <td style="text-align:center"><code>200.1.1.1</code></td>
-    </tr>
-      </tbody>
-    </table>
+   <table>
+     <thead>
+   <tr>
+     <th style="text-align:center">送信元プライベート IP アドレス</th>
+     <th style="text-align:center">SNAT 処理による変換</th>
+     <th style="text-align:center">送信元グローバル IP アドレス</th>
+   </tr>
+     </thead>
+     <tbody>
+   <tr>
+     <td style="text-align:center"><code>192.168.1.1</code></td>
+     <td style="text-align:center">⇄</td>
+     <td style="text-align:center"><code>200.1.1.1</code></td>
+   </tr>
+     </tbody>
+   </table>
 
 2. 『送信元プライベート IP アドレス』『宛先グローバル IP アドレス』『メールサーバーで POP3 プロトコルを受信する `110` 番ポート』を指定して、メールサーバーにリクエストを送信する。
 
-    ```yaml
-    GET https://example.com:110
-    ```
+   ```yaml
+   GET https://example.com:110
+   ```
 
 3. 『送信元プライベート IP アドレス』『宛先グローバル IP アドレス』『Web サーバーで HTTP リクエストを受信する `80` 番ポート』を指定して、Web サーバーにリクエストを送信する。
 
-    ただし、`80`番ポートは省略可能。
+   ただし、`80`番ポートは省略可能。
 
-    ```yaml
-    GET https://example.com:80
-    ```
+   ```yaml
+   GET https://example.com:80
+   ```
 
 4. 『送信元プライベート IP アドレス』『宛先グローバル IP アドレス』『DNS サーバーで TCP スリーウェイハンドシェイクを受信する `53` 番ポート』を指定して、DNS サーバーにリクエストを送信する。
 
-    ```yaml
-    GET https://example.com:53
-    ```
+   ```yaml
+   GET https://example.com:53
+   ```
 
 5. これらの『送信元プライベート IP アドレス』が、NAT ルーターで、グローバル IP アドレスに変換される。
 

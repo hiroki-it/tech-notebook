@@ -276,13 +276,13 @@ Dependency (依存) が使用される。
 
 2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-    ![uml_sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_sequence-diagram.png)
+   ![uml_sequence-diagram](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_sequence-diagram.png)
 
-1. `3` 個のライフラインを設定する。
+3. `3` 個のライフラインを設定する。
 
-2. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
+4. 各ライフラインで実行される実行仕様間の命令内容を、メッセージや複合フラグメントで示す。
 
-    ![uml_sequence-diagram_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_sequence-diagram_2.png)
+   ![uml_sequence-diagram_2](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/uml_sequence-diagram_2.png)
 
 <br>
 

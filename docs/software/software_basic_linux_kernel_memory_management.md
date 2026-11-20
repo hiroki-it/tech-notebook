@@ -187,13 +187,13 @@ MMU によって、仮想メモリのアドレスは、物理メモリのアド�
 
 1. 仮想メモリにおけるページの仮想アドレスを、ページ番号とページオフセットに分割する。
 
-    ![memory_page_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_page_structure.png)
+   ![memory_page_structure](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/memory_page_structure.png)
 
 2. ページテーブルを使用して、仮想アドレスのページ番号に対応する物理アドレスのページ番号を探す。
 
 3. 物理ページ番号にページオフセットを再結合し、物理メモリのページフレームの物理アドレスとする。
 
-    ![virtual-memory_mapping_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/virtual-memory_mapping_3.png)
+   ![virtual-memory_mapping_3](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/software/virtual-memory_mapping_3.png)
 
 #### ▼ ページテーブルにおける仮想ページ番号と物理ページ番号の対応づけ
 

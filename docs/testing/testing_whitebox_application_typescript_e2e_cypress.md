@@ -100,11 +100,8 @@ E2EテストスイートA（ほかのテストスイートとは独立）
 
 ```typescript
 describe("<パブリックな関数名>", async () => {
-
   describe("<テストスイートの種別>", async () => {
-
-    test("<テストケース名>", async () => {
-    });
+    test("<テストケース名>", async () => {});
   });
 });
 ```
@@ -119,50 +116,33 @@ describe("<パブリックな関数名>", async () => {
 
 ```typescript
 describe("<パブリックな関数名>", async () => {
-
   describe("<テストスイートの種別>", async () => {
-
     // 正常系
-    test("<テストケース名>", async () => {
-
-    });
+    test("<テストケース名>", async () => {});
     // 異常系
-    test("<テストケース名>", async () => {
-
-    });
+    test("<テストケース名>", async () => {});
     // 境界値
-    test("<テストケース名>", async () => {
-
-    });
+    test("<テストケース名>", async () => {});
   });
 });
 ```
 
 ```typescript
 describe("<パブリックな関数名>", async () => {
-
   describe("<テストスイートの種別>", async () => {
-
-    test("正常系：<テストケース名>", async () => {
-
-    });
-    test("異常系：<テストケース名>", async () => {
-
-    });
-    test("境界値：<テストケース名>", async () => {
-
-    });
+    test("正常系：<テストケース名>", async () => {});
+    test("異常系：<テストケース名>", async () => {});
+    test("境界値：<テストケース名>", async () => {});
   });
 });
 ```
 
 #### ▼ ファイルの命名
 
-
-| ファイル名パターン | 用途 |
-|---|---|
-| `<リソース名>.cy.ts`（単数形） | 単一リソースの詳細表示・作成・編集・削除 |
-| `<リソース名>s.cy.ts`（複数形） | 一覧表示・検索・フィルタリング |
+| ファイル名パターン              | 用途                                     |
+| ------------------------------- | ---------------------------------------- |
+| `<リソース名>.cy.ts`（単数形）  | 単一リソースの詳細表示・作成・編集・削除 |
+| `<リソース名>s.cy.ts`（複数形） | 一覧表示・検索・フィルタリング           |
 
 ```text
 cypress/
@@ -212,11 +192,10 @@ describe("画面名", () => {
     // 画面操作
     // ログイン
     cy.login();
-    
-    
+
     // data-cy を使用して要素を見つけ、画面を操作する
     cy.get("[data-cy=projects]").click();
-    
+
     // 閲覧系：
     // 閲覧画面に遷移 -> 閲覧操作 -> 画面結果と期待値の照合
     //
@@ -225,7 +204,7 @@ describe("画面名", () => {
     //
     // 更新系：
     // 更新画面に遷移 -> 更新操作 -> 更新確定/更新しない -> 画面結果と期待値の照合
-    // 
+    //
     // 削除系：
     // 削除画面に遷移 -> 削除操作 -> 削除確定/削除しない -> 画面結果と期待値の照合
   });
@@ -243,7 +222,7 @@ describe("画面名", () => {
 ```typescript
 // テストデータを投入する前に、全テーブルの行を削除する
 async function deleteAllRows() {
-  const tables = await prisma.$queryRaw<{ TABLE_NAME: string }[]>`
+  const tables = await prisma.$queryRaw<{TABLE_NAME: string}[]>`
     SELECT TABLE_NAME FROM information_schema.tables WHERE TABLE_SCHEMA = DATABASE() AND TABLE_NAME != '_prisma_migrations'
   `;
 
@@ -251,8 +230,8 @@ async function deleteAllRows() {
   await prisma.$transaction([
     prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 0`,
     // TRUNCATE ではなく DELETE で行を削除する
-    ...tables.map(({ TABLE_NAME }) =>
-      prisma.$executeRawUnsafe(`DELETE FROM \`${TABLE_NAME}\``)
+    ...tables.map(({TABLE_NAME}) =>
+      prisma.$executeRawUnsafe(`DELETE FROM \`${TABLE_NAME}\``),
     ),
     prisma.$executeRaw`SET FOREIGN_KEY_CHECKS = 1`,
   ]);
@@ -264,7 +243,7 @@ export async function resetTestDb() {
 }
 
 // cypress.config.ts
-setupNodeEvents: (on, config) => {
+setupNodeEvents: ((on, config) => {
   on("task", {
     resetTestDb: async () => {
       await resetTestDb();
@@ -272,12 +251,11 @@ setupNodeEvents: (on, config) => {
     },
   });
 },
-
-// テストスイート
-beforeEach(() => {
-  // テストケースごとにデータベースを初期化する
-  cy.task("resetTestDb");
-});
+  // テストスイート
+  beforeEach(() => {
+    // テストケースごとにデータベースを初期化する
+    cy.task("resetTestDb");
+  }));
 ```
 
 #### ▼ 初期データのパスワードハッシュをキャッシュする
@@ -327,7 +305,7 @@ Cypress.Commands.add("login", () => {
       method: "POST",
       url: "/signin",
       form: true,
-      body: { email: user.email, password: user.password },
+      body: {email: user.email, password: user.password},
     });
     cy.getCookie("__session").should("exist");
   });
@@ -336,25 +314,52 @@ Cypress.Commands.add("login", () => {
 
 #### ▼ ハイドレーションの完了を検知して待つ
 
-固定時間の `cy.wait` ではなく、ハイドレーションの完了時にアプリケーションが付与する目印を待つ。
+ハイドレーションの完了時にアプリケーションが付与する目印を待つ。
+
+各テストが同じ画面から始まるなら、`beforeEach` の `cy.visit()` 直後で待つ。テスト中にエラー画面を開く場合も、その画面に同じ目印が付くなら、遷移先で待ってから表示を検証する。
 
 ```typescript
 // アプリケーション側（ルートコンポーネント）
-useEffect(() => {
-  // ハイドレーションが完了したら、目印を付ける
-  document.documentElement.dataset.hydrated = "true";
-}, []);
+import {useEffect} from "react";
 
+function HydrationMarker() {
+  useEffect(() => {
+    // ハイドレーションが完了したら、目印を付ける
+    document.documentElement.dataset.hydrated = "true";
+  }, []);
+
+  return null;
+}
+```
+
+アプリケーションのルートコンポーネントで `HydrationMarker` をレンダリングする。
+
+```typescript
 // Cypress 側
+declare namespace Cypress {
+  interface Chainable {
+    waitForHydration(): Chainable<JQuery<HTMLElement>>;
+  }
+}
+
 Cypress.Commands.add("waitForHydration", () => {
   // 目印が付くまで待つ
-  cy.get("html[data-hydrated=true]");
+  return cy.get("html[data-hydrated=true]");
+});
+```
+
+```typescript
+// テストスイート
+beforeEach(() => {
+  cy.visit("/users");
+  cy.waitForHydration();
 });
 
-// テストスイート
-cy.visit("/");
-// 固定時間の cy.wait の代わりに使う
-cy.waitForHydration();
+it("存在しないユーザーのエラー画面を表示できる", () => {
+  cy.visit("/users/missing", {failOnStatusCode: false});
+  cy.waitForHydration();
+  cy.get("[data-cy=not-found-error]").should("be.visible");
+});
 ```
 
 #### ▼ タイムアウトを短くする
@@ -467,77 +472,60 @@ jobs:
 
 <br>
 
-
 ## 04. 事前処理
 
-### cypress.config.ts
+### 初期データ
+
+#### ▼ 読み込み
+
+固定の JSON フィクスチャは `import` で読み込む。
+
+`resolveJsonModule` を有効にすると、型推論でプロパティ名の誤りを検出できる。
 
 ```typescript
 // 初期データの事前セットを読み込む
-import seed from "fixtures/seed.json";
-
-setupNodeEvents: (on, config) => {
-
-  on("task", {
-    dbSeed: async () => {
-      const { user1, user2 } = seed.user;
-
-      // 初期データをデータベースに挿入する
-      await prisma.user.create({
-        data: {
-          id: user1.id,
-          email: user1.email,
-          name: user1.name,
-        },
-      });
-
-      // 初期データをデータベースに挿入する
-      await prisma.user.create({
-        data: {
-          id: user2.id,
-          email: user2.email,
-          name: user2.name,
-        },
-      });
-    },
-    // ...
-  });
-}
+import seed from "../fixtures/foo/data.json";
 ```
 
-<br>
+#### ▼ fixtures/foo/data.json
 
-### fixtures/foo/data.json
-
-テストに使用する初期データ（例；DB 値、リクエストパラメーターなど）を設定する。
+テストに使用する初期データ (例：DB 値、リクエストパラメーターなど) を設定する。
 
 `fixtures/expected/foo.json` ファイル（期待値データ）の値と同じになる可能性がある。
 
 ```json
-// 初期データ
 {
-  "users":
-    {
-      "user1":
-        {
-          "email": "user1@gmail.com",
-          "name": "testUser1",
-          "password": "password",
-        },
-      "user2":
-        {
-          "email": "user2@gmail.com",
-          "name": "testUser2",
-          "password": "password",
-        },
-      ...,
+  "users": {
+    "user1": {
+      "email": "user1@gmail.com",
+      "name": "testUser1",
+      "password": "password"
     },
+    "user2": {
+      "email": "user2@gmail.com",
+      "name": "testUser2",
+      "password": "password"
+    }
+  }
 }
 ```
 
 <br>
 
-### fixtures/expected/foo.json
+### 期待値
+
+#### ▼ 読み込み
+
+固定の JSON フィクスチャは `import` で読み込む。
+
+`resolveJsonModule` を有効にすると、型推論でプロパティ名の誤りを検出できる。
+
+```typescript
+// 期待値データの事前セットを読み込む
+import expected from "../fixtures/expected/foo.json";
+```
+
+#### ▼ fixtures/expected/foo.json
 
 テストに使用する期待値データを設定する。
 
@@ -545,23 +533,64 @@ setupNodeEvents: (on, config) => {
 
 ```json
 {
-  "users":
-    {
-      "user1":
-        {
-          "email": "user1@gmail.com",
-          "name": "testUser1",
-          "password": "password",
-        },
-      "user2":
-        {
-          "email": "user2@gmail.com",
-          "name": "testUser2",
-          "password": "password",
-        },
-      ...,
+  "users": {
+    "user1": {
+      "email": "user1@gmail.com",
+      "name": "testUser1",
+      "password": "password"
     },
+    "user2": {
+      "email": "user2@gmail.com",
+      "name": "testUser2",
+      "password": "password"
+    }
+  }
 }
+```
+
+<br>
+
+### 事前処理
+
+#### ▼ cypress.config.ts
+
+```typescript
+import {defineConfig} from "cypress";
+
+// 初期データの事前セットを読み込む
+import seed from "./cypress/fixtures/seed.json";
+
+export default defineConfig({
+  e2e: {
+    setupNodeEvents(on) {
+      on("task", {
+        dbSeed: async () => {
+          const {user1, user2} = seed.user;
+
+          // 初期データをデータベースに挿入する
+          await prisma.user.create({
+            data: {
+              id: user1.id,
+              email: user1.email,
+              name: user1.name,
+            },
+          });
+
+          // 初期データをデータベースに挿入する
+          await prisma.user.create({
+            data: {
+              id: user2.id,
+              email: user2.email,
+              name: user2.name,
+            },
+          });
+
+          return null;
+        },
+      });
+    },
+  },
+});
 ```
 
 <br>
@@ -569,37 +598,37 @@ setupNodeEvents: (on, config) => {
 ### ヘルパー
 
 ```typescript
+import seed from "../fixtures/foo/data.json";
+
 Cypress.Commands.add("login", () => {
-  // fixture/users/data.jsonファイルを使用する
-  cy.fixture("users/data").then((seed) => {
-    cy.visit("/");
-    // 待機することで、Cypressがハイドレーション前に画面をロードし、エラーが発生することを避ける
-    cy.wait(1000);
-    // アサーションを実行し、実際値と期待値と一致するかを検証する
-    cy.url().should("eq", Cypress.config().baseUrl + "/signup");
+  const {user1} = seed.users;
 
-    // data-cy="signin" 要素をクリックする
-    cy.get("[data-cy=signin]").click();
-    // URLの実際値を取得し、期待値と一致するかを検証する
-    cy.url().should("eq", Cypress.config().baseUrl + "/signin");
+  cy.visit("/");
+  cy.waitForHydration();
+  // アサーションを実行し、実際値と期待値と一致するかを検証する
+  cy.url().should("eq", Cypress.config().baseUrl + "/signup");
 
-    // 初期データをフォームに入力する
-    // データベースに挿入したユーザー情報を使用する
-    cy.get("[data-cy=email]").type(seed.user.user1.email);
-    cy.get("[data-cy=password]").type(seed.user.user1.password);
-    // data-cy="submit" 要素をクリックし、送信する
-    cy.get("[data-cy=submit]").click();
-    // URLの実際値を取得し、期待値と一致するかを検証する
-    cy.url().should("eq", Cypress.config().baseUrl + "/");
+  // data-cy="signin" 要素をクリックする
+  cy.get("[data-cy=signin]").click();
+  // URLの実際値を取得し、期待値と一致するかを検証する
+  cy.url().should("eq", Cypress.config().baseUrl + "/signin");
 
-    // data-cy="profileEmail" 要素をクリックする
-    cy.get("[data-cy=profile]").click();
+  // 初期データをフォームに入力する
+  // データベースに挿入したユーザー情報を使用する
+  cy.get("[data-cy=email]").type(user1.email);
+  cy.get("[data-cy=password]").type(user1.password);
+  // data-cy="submit" 要素をクリックし、送信する
+  cy.get("[data-cy=submit]").click();
+  // URLの実際値を取得し、期待値と一致するかを検証する
+  cy.url().should("eq", Cypress.config().baseUrl + "/");
 
-    // data-cy="profileName" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
-    cy.get("[data-cy=profileName]").should("have.text", seed.user.user1.name);
-    // data-cy="profileEmail" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
-    cy.get("[data-cy=profileEmail]").should("have.text", seed.user.user1.email);
-  });
+  // data-cy="profileEmail" 要素をクリックする
+  cy.get("[data-cy=profile]").click();
+
+  // data-cy="profileName" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
+  cy.get("[data-cy=profileName]").should("have.text", user1.name);
+  // data-cy="profileEmail" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
+  cy.get("[data-cy=profileEmail]").should("have.text", user1.email);
 });
 ```
 
@@ -610,6 +639,10 @@ Cypress.Commands.add("login", () => {
 テストスイートはテストケース (テスト関数) に分類できる。
 
 ```typescript
+import expected from "../fixtures/expected/foo.json";
+
+const {user1, user2} = expected.users;
+
 // テストスイート
 describe("ユーザーの一覧を表示するテスト", () => {
   // 各テストケースに共通する処理をテスト
@@ -636,51 +669,32 @@ describe("ユーザーの一覧を表示するテスト", () => {
   });
 
   // 正常系テストケース
-  test("ユーザーの一覧を表示できる", () => {
-    // テストケース固有の初期データ
-    // fixture/expected/users.jsonファイルを使用する
-    cy.fixture("users/data").then((expected) => {
-      // URLの実際値を取得し、期待値と一致するかを検証する
-      cy.url().should("eq", Cypress.config().baseUrl + "/users");
+  it("ユーザーの一覧を表示できる", () => {
+    // URLの実際値を取得し、期待値と一致するかを検証する
+    cy.url().should("eq", Cypress.config().baseUrl + "/users");
 
-      // data-cy="userName" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
-      cy.get("[data-cy=userName]")
-        .its(0)
-        .should("contain.text", expected.user1.name);
-      // data-cy="userEmail" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
-      cy.get("[data-cy=userEmail]")
-        .its(0)
-        .should("contain.text", expected.user1.email);
-    });
+    // data-cy="userName" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
+    cy.get("[data-cy=userName]").its(0).should("contain.text", user1.name);
+    // data-cy="userEmail" 要素から実際値を取得し、実際値と期待値と一致するかを検証する
+    cy.get("[data-cy=userEmail]").its(0).should("contain.text", user1.email);
   });
 
   // 正常系テストケース
-  test("ページネーションを実行できる", () => {
-    // 汎用的な初期データ
-    cy.fixture("dbSeed").then((expected) => {
-      // テストケース固有の初期データ
-      // fixture/expected/users.jsonファイルを使用する
-      cy.fixture("users/data").then((expected) => {
-        const {user2} = expected.user;
-        cy.wait(1000);
+  it("ページネーションを実行できる", () => {
+    cy.wait(1000);
 
-        cy.get("[data-cy=next]").click();
-        // URLの実際値を取得し、期待値と一致するかを検証する
-        cy.url().should("eq", Cypress.config().baseUrl + "/users/?page=2");
-        // data-cy="previous" 要素から実際値を取得し、期待値と一致するかを検証する
-        cy.get("[data-cy=userName]").its(0).should("contain.text", user2.name);
+    cy.get("[data-cy=next]").click();
+    // URLの実際値を取得し、期待値と一致するかを検証する
+    cy.url().should("eq", Cypress.config().baseUrl + "/users/?page=2");
+    cy.get("[data-cy=userName]").its(0).should("contain.text", user2.name);
 
-        // data-cy="previous" 要素をクリックする
-        cy.get("[data-cy=previous]").click();
-        // アサーションを実行し、実際値と期待値と一致するかを検証する
-        cy.url().should("eq", Cypress.config().baseUrl + "/users/?page=1");
+    // data-cy="previous" 要素をクリックする
+    cy.get("[data-cy=previous]").click();
+    // アサーションを実行し、実際値と期待値と一致するかを検証する
+    cy.url().should("eq", Cypress.config().baseUrl + "/users/?page=1");
 
-        // data-cy="userName" 要素から実際値を取得し、期待値と一致するかを検証する
-        cy.get("[data-cy=userName]")
-          .its(0)
-          .should("contain.text", expected.user1.name);
-      });
-    });
+    // data-cy="userName" 要素から実際値を取得し、期待値と一致するかを検証する
+    cy.get("[data-cy=userName]").its(0).should("contain.text", user1.name);
   });
 });
 ```

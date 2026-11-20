@@ -91,7 +91,7 @@ CPU とメインメモリの間に、キャッシュメモリを何段階か配�
 
 6. CPU は、命令する。
 
-    ![memory_cache-memory_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/memory_cache-memory_1.jpg)
+   ![memory_cache-memory_1](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/hardware/memory_cache-memory_1.jpg)
 
 #### ▼ 二度目
 
@@ -258,7 +258,7 @@ DB サーバーの使用するメモリ上で、テーブルのデータやイ�
 
 2. クライアントのブラウザは、リクエストをサーバーに送信する。
 
-    この時、If-None-MatchヘッダーにキャッシュしておいたETag値を設定する。
+   この時、If-None-MatchヘッダーにキャッシュしておいたETag値を設定する。
 
 3. サーバーは、送信された ETag 値とコンテンツの ETag 値を比較検証する。
 

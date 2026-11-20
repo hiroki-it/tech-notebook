@@ -285,7 +285,7 @@ main();
 #### ▼ オプション
 
 ```typescript
-import {PrismaClient, Prisma} from '@prisma/client'
+import {PrismaClient, Prisma} from "@prisma/client";
 
 // トランザクションのオプションはトランザクション全体で統一する
 let prismaClientOption = {
@@ -297,36 +297,31 @@ let prismaClientOption = {
     timeout: 10000,
     // トランザクションの分離レベル
     isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
-  }
-}
+  },
+};
 
 // Prismaクライアントに設定する
-const prisma = new PrismaClient(prismaClientOption)
+const prisma = new PrismaClient(prismaClientOption);
 
 function transfer(/* 引数は省略 */) {
-
-  return prisma.$transaction(
-      async (tx) => {
-        // CRUD処理
-      })
+  return prisma.$transaction(async (tx) => {
+    // CRUD処理
+  });
 }
 
 async function main() {
-
   try {
-    await transfer(/* 引数は省略 */)
-  } catch (err) {
-
-  }
+    await transfer(/* 引数は省略 */);
+  } catch (err) {}
 }
 
-main()
+main();
 ```
 
 ```javascript
-import {PrismaClient, Prisma} from '@prisma/client'
+import {PrismaClient, Prisma} from "@prisma/client";
 
-const prisma = new PrismaClient()
+const prisma = new PrismaClient();
 
 let prismaClientOption = {
   // データを取得するまでのタイムアウト時間 (デフォルトは2000ms)
@@ -337,30 +332,26 @@ let prismaClientOption = {
     timeout: 10000,
     // トランザクションの分離レベル
     isolationLevel: Prisma.TransactionIsolationLevel.Serializable,
-  }
-}
+  },
+};
 
 function transfer(/* 引数は省略 */) {
-
   return prisma.$transaction(
-      async (tx) => {
-        // CRUD処理
-      },
-      // トランザクションに個別に設定する
-      prismaClientOption
-  )
+    async (tx) => {
+      // CRUD処理
+    },
+    // トランザクションに個別に設定する
+    prismaClientOption,
+  );
 }
 
 async function main() {
-
   try {
-    await transfer(/* 引数は省略 */)
-  } catch (err) {
-
-  }
+    await transfer(/* 引数は省略 */);
+  } catch (err) {}
 }
 
-main()
+main();
 ```
 
 > - https://www.prisma.io/docs/orm/prisma-client/queries/transactions#transaction-options
@@ -617,7 +608,6 @@ class UserUseCase {
 import {PrismaClient, Prisma} from "@prisma/client";
 
 class UserRepository {
-
   public prisma: PrismaClient;
 
   constructor(prismaClient: PrismaClient) {
@@ -626,7 +616,6 @@ class UserRepository {
 
   // ユーザーを作成する
   async createUser(email: string, name: string) {
-
     const user = await this.prisma.user.create({
       data: {
         email: email,

@@ -164,4 +164,3 @@ console.log(...array);
 ```
 
 <br>
-

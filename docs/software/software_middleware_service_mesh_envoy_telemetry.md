@@ -65,7 +65,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
   "upstream_remote_port": "%UPSTREAM_REMOTE_PORT%",
   "upstream_transport_failure_reason": "%UPSTREAM_TRANSPORT_FAILURE_REASON%",
   "user_agent": "%REQ(USER-AGENT)%",
-  "x_forwarded_for": "%REQ(X-FORWARDED-FOR)%",
+  "x_forwarded_for": "%REQ(X-FORWARDED-FOR)%"
 }
 ```
 
@@ -94,7 +94,7 @@ Envoy は、マイクロサービスへのアクセスログ (インバウンド
   "upstream_transport_failure_reason": null,
   "user_agent": "curl/8.7.1",
   "virtual_cluster_name": null,
-  "x_forwarded_for": null,
+  "x_forwarded_for": null
 }
 ```
 
@@ -438,18 +438,15 @@ Envoy はスパンを記録し、設定した収集エージェントに送信�
 
 ```json
 {
-  "route_config":
-    {
-      "routes":
-        [
-          {
-            "decorator":
-              {
-                "operation": "<foo>.<foo-namespace>.svc.cluster.local:<ポート番号>/*",
-              },
-          },
-        ],
-    },
+  "route_config": {
+    "routes": [
+      {
+        "decorator": {
+          "operation": "<foo>.<foo-namespace>.svc.cluster.local:<ポート番号>/*"
+        }
+      }
+    ]
+  }
 }
 ```
 

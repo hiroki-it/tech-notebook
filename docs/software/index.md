@@ -10,6 +10,7 @@ tags:
 ## 🧬 ソフトウェア
 
 ### ソフトウェア
+
 !!! cards ":material-application-outline: ソフトウェア"
 
     <div class="grid cards compact" markdown>
@@ -47,6 +48,7 @@ tags:
 <br>
 
 ### ミドルウェア
+
 !!! cards ":material-server-network: ミドルウェア"
 
     <div class="grid cards compact" markdown>
@@ -60,6 +62,7 @@ tags:
 <br>
 
 ### 基本ソフトウェア (OS)
+
 !!! cards ":simple-linux: 基本ソフトウェア (OS)"
 
     <div class="grid cards compact" markdown>

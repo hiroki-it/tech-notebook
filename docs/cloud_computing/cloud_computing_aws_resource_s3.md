@@ -73,8 +73,6 @@ module "s3_foo" {
 }
 ```
 
-
-
 ## 04. バケットの管理
 
 <table>
@@ -220,15 +218,14 @@ module "s3_foo" {
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal": {"AWS": "arn:aws:iam::582318560864:root"},
-        "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::<バケット名>/*",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::582318560864:root"},
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::<バケット名>/*"
+    }
+  ]
 }
 ```
 
@@ -244,18 +241,16 @@ module "s3_foo" {
 {
   "Version": "2008-10-17",
   "Id": "PolicyForCloudFrontPrivateContent",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal":
-          {
-            "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity <オリジンアクセスアイデンティティのID番号>",
-          },
-        "Action": "s3:GetObject",
-        "Resource": "arn:aws:s3:::<バケット名>/*",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity <オリジンアクセスアイデンティティのID番号>"
       },
-    ],
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::<バケット名>/*"
+    }
+  ]
 }
 ```
 
@@ -282,19 +277,18 @@ module "s3_foo" {
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action": ["logs:*"],
-        "Resource": "arn:aws:logs:*:*:*",
-      },
-      {
-        "Effect": "Allow",
-        "Action": ["s3:GetObject", "s3:PutObject"],
-        "Resource": "arn:aws:s3:::*",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["logs:*"],
+      "Resource": "arn:aws:logs:*:*:*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::*"
+    }
+  ]
 }
 ```
 
@@ -306,16 +300,15 @@ module "s3_foo" {
 {
   "Version": "2012-10-17",
   "Id": "S3PolicyId1",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal": "*",
-        "Action": "s3:GetObject",
-        "Resource": "arn:aws:s3:::<バケット名>/*",
-        "Condition": {"IpAddress": {"aws:SourceIp": "*.*.*.*/32"}},
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::<バケット名>/*",
+      "Condition": {"IpAddress": {"aws:SourceIp": "*.*.*.*/32"}}
+    }
+  ]
 }
 ```
 

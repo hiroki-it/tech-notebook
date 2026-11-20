@@ -292,7 +292,7 @@ JWT のサイトでデコードすると、中身を確認できる。
   "sub": "*****",
   "typ": "Serialized-ID",
   "sid": "*****",
-  "state_checker": "*****",
+  "state_checker": "*****"
 }
 ```
 

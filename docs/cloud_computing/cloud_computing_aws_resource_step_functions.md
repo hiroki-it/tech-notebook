@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 AWS サービスを組み合わせて、ワークフローエンジンを作成できる。
 
 <br>
@@ -73,27 +72,23 @@ module "state_machine" {
 ```json
 {
   "StartAt": "Call AWS Lambda",
-  "States":
-    {
-      "Call AWS Lambda":
+  "States": {
+    "Call AWS Lambda": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
+      "Parameters": {
+        "FunctionName": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:foo-function:1"
+      },
+      "Retry": [
         {
-          "Type": "Task",
-          "Resource": "arn:aws:states:::lambda:invoke.waitForTaskToken",
-          "Parameters":
-            {
-              "FunctionName": "arn:aws:lambda:ap-northeast-1:<AWSアカウントID>:foo-function:1",
-            },
-          "Retry":
-            [
-              {
-                "ErrorEquals": ["<リトライの対象とするエラー>"],
-                "MaxAttempts": 0,
-              },
-            ],
-          "End": "true",
-          "Comment": "The state that call AWS Lambda",
-        },
-    },
+          "ErrorEquals": ["<リトライの対象とするエラー>"],
+          "MaxAttempts": 0
+        }
+      ],
+      "End": "true",
+      "Comment": "The state that call AWS Lambda"
+    }
+  }
 }
 ```
 
@@ -135,14 +130,13 @@ module "state_machine" {
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Action": "states:StartExecution",
-        "Resource": "arn:aws:states:*:<AWSアカウントID>:stateMachine:*",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "states:StartExecution",
+      "Resource": "arn:aws:states:*:<AWSアカウントID>:stateMachine:*"
+    }
+  ]
 }
 ```
 
@@ -153,7 +147,7 @@ module "state_machine" {
 ```json
 {
   "executionArn": "arn:aws:states:ap-northeast-1:<AWSアカウントID>:execution:prd-foo-doing-state-machine:*****",
-  "startDate": 1.638244285498E9,
+  "startDate": 1.638244285498e9
 }
 ```
 

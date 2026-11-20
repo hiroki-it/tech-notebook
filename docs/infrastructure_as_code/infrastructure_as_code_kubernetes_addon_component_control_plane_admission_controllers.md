@@ -240,7 +240,7 @@ admission-controller アドオンと webhook サーバーの間で送受信す�
   // AdmissionRequest
   "request": {},
   // AdmissionResponse
-  "response": {},
+  "response": {}
 }
 ```
 
@@ -317,14 +317,14 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
   "kind": "AdmissionReview",
   // AdmissionResponse
   "response": {
-      "uid": "<value from request.uid>",
-      // 宛先の webhook サーバーが受信したか否かを表す。
-      "allowed": "true",
-      // Path による Patch 処理を行う。
-      "patchType": "JSONPatch",
-      // Patch 処理の対象となる Kubernetes リソースと処理内容を表す。base64 方式でエンコードされている。
-      "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0=",
-    },
+    "uid": "<value from request.uid>",
+    // 宛先の webhook サーバーが受信したか否かを表す。
+    "allowed": "true",
+    // Path による Patch 処理を行う。
+    "patchType": "JSONPatch",
+    // Patch 処理の対象となる Kubernetes リソースと処理内容を表す。base64 方式でエンコードされている。
+    "patch": "W3sib3AiOiAiYWRkIiwgInBhdGgiOiAiL3NwZWMvcmVwbGljYXMiLCAidmFsdWUiOiAzfV0="
+  }
 }
 ```
 
@@ -337,8 +337,8 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse に patch 処
     // .spec.replicas キーをターゲットとする。
     "path": "/spec/replicas",
     // 値は 3 とする。
-    "value": 3,
-  },
+    "value": 3
+  }
 ]
 ```
 
@@ -367,15 +367,14 @@ webhook サーバーは、AdmissionReview 内の AdmissionResponse にバリデ�
   "kind": "AdmissionReview",
   // AdmissionResponse
   "response": {
-      "uid": "<value from request.uid>",
-      // 宛先の webhook サーバーが受信したか否かを表す。
-      "allowed": "true",
-      "status":
-        {
-          "code": 403,
-          "message": "You cannot do this because it is Tuesday and your name starts with A",
-        },
-    },
+    "uid": "<value from request.uid>",
+    // 宛先の webhook サーバーが受信したか否かを表す。
+    "allowed": "true",
+    "status": {
+      "code": 403,
+      "message": "You cannot do this because it is Tuesday and your name starts with A"
+    }
+  }
 }
 ```
 

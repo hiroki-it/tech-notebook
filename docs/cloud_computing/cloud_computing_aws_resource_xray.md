@@ -17,7 +17,6 @@ tags:
 
 ## 01. 概要
 
-
 分散トレースの監視バックエンドかつ監視フロントエンドとして機能する。
 
 計装したアプリから X-Ray デーモン (EC2、Amazon ECS) または OpenTelemetry Collector (Amazon EKS) にスパンを送信し、X-Ray で分散トレースを監視できるようになる。
@@ -374,26 +373,23 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 ```json
 {
-  "subsegments":
-    [
-      {
-        "id": "53995c3f42cd8ad8",
-        "name": "api.example.com",
-        "start_time": 1461096053.37769,
-        "end_time": 1461096053.40379,
-        "namespace": "remote",
-        "http":
-          {
-            "request":
-              {
-                "url": "https://api.example.com/health",
-                "method": "POST",
-                "traced": true,
-              },
-            "response": {"status": 200, "content_length": 861},
-          },
-      },
-    ],
+  "subsegments": [
+    {
+      "id": "53995c3f42cd8ad8",
+      "name": "api.example.com",
+      "start_time": 1461096053.37769,
+      "end_time": 1461096053.40379,
+      "namespace": "remote",
+      "http": {
+        "request": {
+          "url": "https://api.example.com/health",
+          "method": "POST",
+          "traced": true
+        },
+        "response": {"status": 200, "content_length": 861}
+      }
+    }
+  ]
 }
 ```
 
@@ -409,11 +405,10 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 ```json
 {
-  "http":
-    {
-      "request": {"method": "GET", "url": "https://names.example.com/"},
-      "response": {"content_length": -1, "status": 200},
-    },
+  "http": {
+    "request": {"method": "GET", "url": "https://names.example.com/"},
+    "response": {"content_length": -1, "status": 200}
+  }
 }
 ```
 
@@ -431,33 +426,29 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 {
   // AWS リソース情報
   "aws": {
-      "elastic_beanstalk":
-        {
-          "version_label": "app-5a56-170119_190650-stage-170119_190650",
-          "deployment_id": 32,
-          "environment_name": "scorekeep",
-        },
-      "ec2":
-        {
-          "availability_zone": "us-west-2c",
-          "instance_id": "i-075ad396f12bc325a",
-          "ami_id": "*****",
-        },
-      "cloudwatch_logs":
-        [
-          {
-            "log_group": "my-cw-log-group",
-            "arn": "arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group",
-          },
-        ],
-      // X-Ray のクライアントパッケージ情報
-      "xray":
-        {
-          "auto_instrumentation": false,
-          "sdk": "X-Ray for Java",
-          "sdk_version": "2.8.0",
-        },
+    "elastic_beanstalk": {
+      "version_label": "app-5a56-170119_190650-stage-170119_190650",
+      "deployment_id": 32,
+      "environment_name": "scorekeep"
     },
+    "ec2": {
+      "availability_zone": "us-west-2c",
+      "instance_id": "i-075ad396f12bc325a",
+      "ami_id": "*****"
+    },
+    "cloudwatch_logs": [
+      {
+        "log_group": "my-cw-log-group",
+        "arn": "arn:aws:logs:us-west-2:012345678912:log-group:my-cw-log-group"
+      }
+    ],
+    // X-Ray のクライアントパッケージ情報
+    "xray": {
+      "auto_instrumentation": false,
+      "sdk": "X-Ray for Java",
+      "sdk_version": "2.8.0"
+    }
+  }
 }
 ```
 
@@ -472,7 +463,7 @@ W3C Trace Context 仕様のスパンの ID に相当する。
   // 500 系ステータスの場合,
   "fault": true,
   // 429 ステータスの場合
-  "throttle": false,
+  "throttle": false
 }
 ```
 
@@ -486,16 +477,15 @@ W3C Trace Context 仕様のスパンの ID に相当する。
 
 ```json
 {
-  "sql":
-    {
-      "url": "jdbc:postgresql://<ホスト名>:5432/<DB名>",
-      "preparation": "statement",
-      "database_type": "PostgreSQL",
-      "database_version": "9.5.4",
-      "driver_version": "PostgreSQL 9.4.1211.jre7",
-      "user": "dbuser",
-      "sanitized_query": "SELECT  *  FROM  customers  WHERE  customer_id=?;",
-    },
+  "sql": {
+    "url": "jdbc:postgresql://<ホスト名>:5432/<DB名>",
+    "preparation": "statement",
+    "database_type": "PostgreSQL",
+    "database_version": "9.5.4",
+    "driver_version": "PostgreSQL 9.4.1211.jre7",
+    "user": "dbuser",
+    "sanitized_query": "SELECT  *  FROM  customers  WHERE  customer_id=?;"
+  }
 }
 ```
 

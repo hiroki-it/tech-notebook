@@ -640,25 +640,24 @@ $ aws s3 sync s3://<コピー元S3バケット名>/<ディレクトリ名> s3://
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    [
-      {
-        "Effect": "Allow",
-        "Principal": {"AWS": "<AWS IAMユーザーのARN>"},
-        "Action": "s3:PutObject",
-        "Resource": "arn:aws:s3:::foo-bucket/*",
-        "Condition": {
-            // 完全一致
-            "StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"},
-          },
-      },
-      {
-        "Effect": "Allow",
-        "Principal": {"AWS": "<AWS IAMユーザーのARN>"},
-        "Action": "s3:ListBucket",
-        "Resource": "arn:aws:s3:::bar-bucket",
-      },
-    ],
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "<AWS IAMユーザーのARN>"},
+      "Action": "s3:PutObject",
+      "Resource": "arn:aws:s3:::foo-bucket/*",
+      "Condition": {
+        // 完全一致
+        "StringEquals": {"s3:x-amz-acl": "bucket-owner-full-control"}
+      }
+    },
+    {
+      "Effect": "Allow",
+      "Principal": {"AWS": "<AWS IAMユーザーのARN>"},
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::bar-bucket"
+    }
+  ]
 }
 ```
 
@@ -696,15 +695,14 @@ $ aws sqs receive-message --queue-url ${SQS_QUEUE_URL} > receiveOutput.json
 
 ```json
 {
-  "Messages":
-    [
-      {
-        "Body": "<メッセージの内容>",
-        "ReceiptHandle": "AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=",
-        "MD5OfBody": "6699d5711c044a109a6aff9fc193aada",
-        "MessageId": "*****",
-      },
-    ],
+  "Messages": [
+    {
+      "Body": "<メッセージの内容>",
+      "ReceiptHandle": "AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4=",
+      "MD5OfBody": "6699d5711c044a109a6aff9fc193aada",
+      "MessageId": "*****"
+    }
+  ]
 }
 ```
 
@@ -935,13 +933,12 @@ Note that it will expire at 2022-01-01 12:00:00 +0900 JST
 ```json
 {
   "Version": "2012-10-17",
-  "Statement":
-    {
-      "Effect": "Deny",
-      "Action": "*",
-      "Resource": "*",
-      "Condition": {"NotIpAddress": {"aws:SourceIp": ["*.*.*.*/32"]}},
-    },
+  "Statement": {
+    "Effect": "Deny",
+    "Action": "*",
+    "Resource": "*",
+    "Condition": {"NotIpAddress": {"aws:SourceIp": ["*.*.*.*/32"]}}
+  }
 }
 ```
 

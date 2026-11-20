@@ -37,22 +37,22 @@ tags:
 
 3. Amazon Route 53 は、IP アドレスのキャッシュを検索する。キャッシュが無ければ、Amazon Route 53 は IP アドレスを検索する。また、キャッシュ DNS サーバーにこれを返却する。
 
-    <table>
-      <thead>
-    <tr>
-      <th style="text-align:center">ドメイン名</th>
-      <th style="text-align:center">Amazon Route 53 による変換</th>
-      <th style="text-align:center">IP アドレス</th>
-    </tr>
-      </thead>
-      <tbody>
-    <tr>
-      <td style="text-align:center"><code>http://www.example.com</code></td>
-      <td style="text-align:center">⇄</td>
-      <td style="text-align:center"><code>203.142.205.139</code></td>
-    </tr>
-      </tbody>
-    </table>
+<table>
+  <thead>
+<tr>
+  <th style="text-align:center">ドメイン名</th>
+  <th style="text-align:center">Amazon Route 53 による変換</th>
+  <th style="text-align:center">IP アドレス</th>
+</tr>
+  </thead>
+  <tbody>
+<tr>
+  <td style="text-align:center"><code>http://www.example.com</code></td>
+  <td style="text-align:center">⇄</td>
+  <td style="text-align:center"><code>203.142.205.139</code></td>
+</tr>
+  </tbody>
+</table>
 
 4. キャッシュ DNS サーバーは、IP アドレスを NAT に返却する。このとき、IP アドレスのネットワーク間変換が起こる。
 
@@ -90,7 +90,6 @@ module "zone" {
 
 <br>
 
-
 ### 外部ドメインの初期設定
 
 ドメインを購入したドメインレジストラが、ドメイン名を名前解決する。
@@ -102,7 +101,6 @@ module "zone" {
 DNS サーバーが Amazon Route 53 に問い合わせると、Amazon Route 53 は DNS サーバーとして動作し、アプリケーションの IP アドレスをレスポンスする。
 
 一方で逆も同様で、AWS 以外のシステムのドメインを Amazon Route 53 で購入した場合、そのシステムの NS レコードを Amazon Route 53 へ登録することになる。
-
 
 ## 04. ホストゾーンと DNS レコードの設定
 

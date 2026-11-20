@@ -38,12 +38,11 @@ $ yum install -y nodejs
 
 ```json
 {
-  "author":
-    {
-      "name": "Hiroki Hasegawa",
-      "email": "example@gmail.com",
-      "url": "https://github.com/hiroki-hasegawa",
-    },
+  "author": {
+    "name": "Hiroki Hasegawa",
+    "email": "example@gmail.com",
+    "url": "https://github.com/hiroki-hasegawa"
+  }
 }
 ```
 
@@ -69,12 +68,11 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 ```json
 {
-  "dependencies":
-    {
-      "foo": "^1.1.1",
-      "bar": "^1.0.0",
-      "baz": "git+https://github.com/baz/baz-package.git",
-    },
+  "dependencies": {
+    "foo": "^1.1.1",
+    "bar": "^1.0.0",
+    "baz": "git+https://github.com/baz/baz-package.git"
+  }
 }
 ```
 
@@ -96,12 +94,11 @@ NPM に登録されていないパッケージは、『`git+<GitHubリポジト�
 
 ```json
 {
-  "devDependencies":
-    {
-      "foo": "^1.1.1",
-      "bar": "^1.0.0",
-      "baz": "git+https://github.com/baz/baz-package.git",
-    },
+  "devDependencies": {
+    "foo": "^1.1.1",
+    "bar": "^1.0.0",
+    "baz": "git+https://github.com/baz/baz-package.git"
+  }
 }
 ```
 
@@ -167,8 +164,10 @@ npm パッケージ名を設定する。
 
 ```json
 {
-  "repository":
-    {"type": "git", "url": "https://github.com/hiroki-hasegawa/foo.git"},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hiroki-hasegawa/foo.git"
+  }
 }
 ```
 
@@ -308,15 +307,15 @@ $ npm run <エイリアス>
 {
   // コマンド
   "scripts": {
-      // "<エイリアス>": "<実行するコマンド>",
-      "dev": "npm run development",
-      "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-      "watch": "npm run development -- --watch",
-      "watch-poll": "npm run watch -- --watch-poll",
-      "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
-      "prod": "npm run production",
-      "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    },
+    // "<エイリアス>": "<実行するコマンド>",
+    "dev": "npm run development",
+    "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "npm run development -- --watch",
+    "watch-poll": "npm run watch -- --watch-poll",
+    "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "prod": "npm run production",
+    "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+  }
 }
 ```
 

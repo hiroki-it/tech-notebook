@@ -48,10 +48,12 @@ const CsrPage = () => {
   };
 
   useEffect(
-      // 実行したい無名な非同期関数
-      () => {
-        fetchData();
-  }, []);
+    // 実行したい無名な非同期関数
+    () => {
+      fetchData();
+    },
+    [],
+  );
 
   return (
     <>
@@ -327,7 +329,7 @@ JavaScript または TypeScript をエッジ（例：Cloudflare、Amazon CloudFr
 Next.js では、`export const runtime = 'edge'` を宣言すると、Edge ランタイムで動かせる。
 
 ```typescript
-export const runtime = 'edge'
+export const runtime = "edge";
 
 // ...
 ```

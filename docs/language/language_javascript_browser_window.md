@@ -31,10 +31,7 @@ tags:
 `setInterval()` 関数によって定期実行中の関数を停止する関数を返却する。
 
 ```typescript
-function setIntervalFunction(
-  func: () => void,
-  interval: number
-): () => void {
+function setIntervalFunction(func: () => void, interval: number): () => void {
   const intervalId = setInterval(func, interval);
 
   // 停止するための関数を返す
@@ -84,10 +81,7 @@ await new Promise((resolve) => {
 `clearInterval()` 関数の返り値の関数で処理を停止できる。
 
 ```typescript
-function setIntervalFunction(
-    func: () => void,
-    interval: number
-): () => void {
+function setIntervalFunction(func: () => void, interval: number): () => void {
   const intervalId = setInterval(func, interval);
 
   // 停止するための関数を返す

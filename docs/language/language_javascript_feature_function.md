@@ -122,4 +122,3 @@ asyncFunc(testParam, (err, data) => {
   console.info(data);
 });
 ```
-

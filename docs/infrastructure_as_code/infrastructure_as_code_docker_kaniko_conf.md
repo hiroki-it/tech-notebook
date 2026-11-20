@@ -35,10 +35,10 @@ Kaniko のオプションを設定する。
 {
   // 使用する認証ヘルパーを設定する
   "credHelpers": {
-      // amazon-ecr-credential-helper に設定を渡す
-      "<AWSアカウントID (1つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login",
-      "<AWSアカウントID (2つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login",
-    },
+    // amazon-ecr-credential-helper に設定を渡す
+    "<AWSアカウントID (1つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login",
+    "<AWSアカウントID (2つ目)>.dkr.ecr.ap-northeast-1.amazonaws.com": "ecr-login"
+  }
 }
 ```
 

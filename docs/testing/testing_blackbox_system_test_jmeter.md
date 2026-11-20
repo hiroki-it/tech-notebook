@@ -80,30 +80,30 @@ JMeter が送信するリクエストの総数はスレッド数とループ数�
 
 2. JMeter の GUI 版にて、シナリオ (`jmx` ファイル) を作成する。スループットコントローラーで URL リスト (`csv` ファイル) を JMeter のビルトイン関数で読み込むようにする。
 
-    csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
+   csvファイルのリストからランダムに読み出したい場合は、Random関数が適している。スレッド数が例えば`10000`個といった高負荷であると、ローカルマシンがフリーズするため注意すること。
 
-    > - [Apache JMeter - User's Manual: Functions and Variables](https://jmeter.apache.org/usermanual/functions.html#__Random)
+   > - [Apache JMeter - User's Manual: Functions and Variables](https://jmeter.apache.org/usermanual/functions.html#__Random)
 
 3. AWS リソースのスペック、VPN など、ロードテストの周辺準備が整っていることを確認する。
 
 4. JMeter の CUI 版のバイナリファイルに、`jmx` ファイルをドラッグ＆ドロップし、テストを実施する。
 
-    または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。
+   または、バイナリファイルへのパスを通した上で、以下のコマンドでも実行できる。
 
-    ```bash
-    $ jmeter -n \
-        -t <JMXファイルへのパス> \
-        -l <Resultファイルへのパス> \
-        -e \
-        -o <レポートファイルへのパス>
-    ```
+   ```bash
+   $ jmeter -n \
+       -t <JMXファイルへのパス> \
+       -l <Resultファイルへのパス> \
+       -e \
+       -o <レポートファイルへのパス>
+   ```
 
-    ここで、GUI 版を使用しない理由は、コマンドの結果に表示される説明より、GUI 版では正しい結果を得られないとのことのためである。
+   ここで、GUI 版を使用しない理由は、コマンドの結果に表示される説明より、GUI 版では正しい結果を得られないとのことのためである。
 
-    ```bash
-    # コマンドの結果
-    Don't use GUI mode for load testing !, only for Test creation and Test debugging.For load testing, use CLI Mode (was NON GUI):
-    ```
+   ```bash
+   # コマンドの結果
+   Don't use GUI mode for load testing !, only for Test creation and Test debugging.For load testing, use CLI Mode (was NON GUI):
+   ```
 
 5. テストを開始後に、結果 (`jtl` ファイル) とログ (`log` ファイル) が作成され、テストが終了するまで追記されていく。
 
@@ -115,7 +115,7 @@ JMeter が送信するリクエストの総数はスレッド数とループ数�
 
 7. JMeter の GUI 版にて、スレッドグループに、結果をツリーで表示、結果を表で表示のリスナーを追加する。
 
-    これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルに基づく集計データを得られる。
+   これらの画面で、`jtl`ファイルを読み込むと、`jtl`ファイルに基づく集計データを得られる。
 
 8. 各種の Amazon CloudWatch Metrics にて、テスト時間帯に着目し、プロットから、数値を読み取る。
 

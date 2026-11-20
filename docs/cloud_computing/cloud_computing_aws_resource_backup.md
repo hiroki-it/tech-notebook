@@ -56,8 +56,6 @@ module "backup" {
 
 <br>
 
-
-
 ## 04. リソースのバックアップ
 
 > - [What is AWS Backup? - AWS Backup](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#supported-resources)

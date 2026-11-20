@@ -106,7 +106,7 @@ const asyncFunc = async () => {
 
 ```javascript
 import axios from "axios";
-import https from 'https';
+import https from "https";
 
 const asyncFunc = async () => {
   axios
@@ -118,7 +118,7 @@ const asyncFunc = async () => {
         cert: "<クライアント証明書のファイル>",
         key: "<クライアント証明書とペアになる秘密鍵のファイル>",
         rejectUnauthorized: false,
-        keepAlive: true
+        keepAlive: true,
       }),
     })
     .then((response) => {

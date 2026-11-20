@@ -37,7 +37,7 @@ gem "semantic_logger", "~> 4.16.1"
   "thread": "3440",
   "name": "Details",
   "message": "Do something successfully",
-  "payload": {"trace_id": "340f39b78a31c1f999195198c436f158"},
+  "payload": {"trace_id": "340f39b78a31c1f999195198c436f158"}
 }
 ```
 

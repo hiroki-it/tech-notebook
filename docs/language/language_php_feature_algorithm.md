@@ -35,55 +35,55 @@ tags:
 
 4. この処理を `n-1` 回繰り返す。
 
-    ```injectablephp
-    <?php
-    function minSelectSort(array $array): array
-    {
-    
-        // 比較基準値を固定し、それ以外の数値と比べていく。
-        for($i = 0; $i < count($array)-1; $i++){
-    
-            // 比較基準値を仮の最小値として定義。
-            $min = $array[$i];
-    
-            // 比較基準値の位置を定義
-            $position = $i;
-    
-            // 比較基準値の位置以降で、数値を固定し、順番に評価していく。
-            for($j = $position + 1; $j < count($array); $j++){
-    
-                // 比較基準値の位置以降に小さい数値があれば、比較基準値と最小値を更新。
-                if($min > $array[$j]){
-                    $position = $j;
-                    $min = $array[$j];
-                }
-            }
-    
-            // 比較基準値の位置が更新されていなかった場合、次の比較基準値に進む。
-            if($i == $position){
-                continue;
-            }
-    
-            // 親のfor文の最小値を更新。
-            $array[$position] = $array[$i];
-            $array[$i] = $min;
-    
-            // 次に2番目を比較基準値とし、同じ処理を繰り返していく。
-        }
-        return $array;
-    }
-    ```
+   ```injectablephp
+   <?php
+   function minSelectSort(array $array): array
+   {
 
-    ```injectablephp
-    <?php
-    // 実際に使用してみる。
-    $array = array(10,2,12,7,16,8,13);
-    $result = minSelectSort($array);
-    var_dump($result);
-    
-    // 昇順に並び替えられている。
-    // 2, 7, 8, 10, 12, 13, 16
-    ```
+       // 比較基準値を固定し、それ以外の数値と比べていく。
+       for($i = 0; $i < count($array)-1; $i++){
+
+           // 比較基準値を仮の最小値として定義。
+           $min = $array[$i];
+
+           // 比較基準値の位置を定義
+           $position = $i;
+
+           // 比較基準値の位置以降で、数値を固定し、順番に評価していく。
+           for($j = $position + 1; $j < count($array); $j++){
+
+               // 比較基準値の位置以降に小さい数値があれば、比較基準値と最小値を更新。
+               if($min > $array[$j]){
+                   $position = $j;
+                   $min = $array[$j];
+               }
+           }
+
+           // 比較基準値の位置が更新されていなかった場合、次の比較基準値に進む。
+           if($i == $position){
+               continue;
+           }
+
+           // 親のfor文の最小値を更新。
+           $array[$position] = $array[$i];
+           $array[$i] = $min;
+
+           // 次に2番目を比較基準値とし、同じ処理を繰り返していく。
+       }
+       return $array;
+   }
+   ```
+
+   ```injectablephp
+   <?php
+   // 実際に使用してみる。
+   $array = array(10,2,12,7,16,8,13);
+   $result = minSelectSort($array);
+   var_dump($result);
+
+   // 昇順に並び替えられている。
+   // 2, 7, 8, 10, 12, 13, 16
+   ```
 
 **＊アルゴリズム解説＊**
 
@@ -117,63 +117,63 @@ tags:
 
 4. ソートを繰り返し実行する。
 
-    ```injectablephp
-    <?php
-    function quickSort(array $array): array
-    {
-        // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
-        if (count($array) <= 1) {
-            return $array;
-        }
-    
-        // 一番最初の値をPivotとする。
-        $pivot = array_shift($array);
-    
-        // グループを定義
-        $left = $right = [];
-    
-        foreach ($array as $value) {
-    
-            if ($value < $pivot) {
-    
-                // Pivotより小さい数は左グループに格納
-                $left[] = $value;
-    
-            } else {
-    
-                // Pivotより大きい数は右グループに格納
-                $right[] = $value;
-    
-                }
-    
-        }
-    
-        // 処理の周回ごとに、結果の配列を結合。
-        return array_merge
-        (
-            // 左のグループを再帰的にクイックソート。
-            quickSort($left),
-    
-            // Pivotを結果に組み込む。
-            array($pivot),
-    
-            // 左のグループを再帰的にクイックソート。
-            quickSort($right)
-        );
-    
-    }
-    ```
+   ```injectablephp
+   <?php
+   function quickSort(array $array): array
+   {
+       // 配列の要素数が1つしかない場合、クイックソートする必要がないため、返却する。
+       if (count($array) <= 1) {
+           return $array;
+       }
 
-    ```injectablephp
-    <?php
-    // 実際に使用してみる。
-    $array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
-    $result = quickSort($array);
-    var_dump($result);
-    
-    // 昇順に並び替えられている。
-    // 1, 2, 3, 4, 5, 6, 7, 8
-    ```
+       // 一番最初の値をPivotとする。
+       $pivot = array_shift($array);
+
+       // グループを定義
+       $left = $right = [];
+
+       foreach ($array as $value) {
+
+           if ($value < $pivot) {
+
+               // Pivotより小さい数は左グループに格納
+               $left[] = $value;
+
+           } else {
+
+               // Pivotより大きい数は右グループに格納
+               $right[] = $value;
+
+               }
+
+       }
+
+       // 処理の周回ごとに、結果の配列を結合。
+       return array_merge
+       (
+           // 左のグループを再帰的にクイックソート。
+           quickSort($left),
+
+           // Pivotを結果に組み込む。
+           array($pivot),
+
+           // 左のグループを再帰的にクイックソート。
+           quickSort($right)
+       );
+
+   }
+   ```
+
+   ```injectablephp
+   <?php
+   // 実際に使用してみる。
+   $array = array(6, 4, 3, 7, 8, 5, 2, 9, 1);
+   $result = quickSort($array);
+   var_dump($result);
+
+   // 昇順に並び替えられている。
+   // 1, 2, 3, 4, 5, 6, 7, 8
+   ```
 
 **＊アルゴリズム解説＊**
 
@@ -512,7 +512,7 @@ $goalPoint = 6
 
 2. 算出された Check Digit が正しいかを検証する。
 
-    ![check-digit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/check-digit.gif)
+   ![check-digit](https://raw.githubusercontent.com/hiroki-it/tech-notebook-images/master/images/language/check-digit.gif)
 
 <br>
 

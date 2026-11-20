@@ -92,50 +92,50 @@ HTTP/2 では、ヘッダー名は小文字にする必要があります。
 
 2. 最初、ユーザー作成の段階で、クライアントが資格情報をサーバーに送信する。サーバーは、資格情報を DB に保管する。
 
-    ```yaml
-    POST https://example.com/users
-    ---
-    # ボディ
-    {"email_address": "foo@gmail.com", "password": "foo"}
-    ```
+   ```yaml
+   POST https://example.com/users
+   ---
+   # ボディ
+   {"email_address": "foo@gmail.com", "password": "foo"}
+   ```
 
 3. 次回の認証時に、再びユーザーが資格情報を送信する。
 
-    ```yaml
-    POST https://example.com/foo-form
-    ---
-    # ボディ
-    {"email_address": "foo@gmail.com", "password": "foo"}
-    ```
+   ```yaml
+   POST https://example.com/foo-form
+   ---
+   # ボディ
+   {"email_address": "foo@gmail.com", "password": "foo"}
+   ```
 
 4. サーバーは、DB の資格情報を照合し、ログインを許可する。サーバーは、セッション ID を作成し、セッション ID に書き込む。
 
-    ```yaml
-    # セッション ID
-    { sessionid: ***** }
-    ```
+   ```yaml
+   # セッション ID
+   { sessionid: ***** }
+   ```
 
 5. レスポンスの `Set-Cookie` ヘッダーにセッション ID を割り当て、クライアントに送信する。`Set-Cookie` ヘッダーにより、クライアントは `Cookie` ヘッダーを設定しなければいけなくなる。
 
-    ```yaml
-    200 OK
-    ---
-    Set-Cookie: sessionid=<セッションID>
-    ```
+   ```yaml
+   200 OK
+   ---
+   Set-Cookie: sessionid=<セッションID>
+   ```
 
 6. サーバーは、セッション ID とユーザーID を紐付けてサーバー内に保管する。
 
-    加えて次回のログイン時、クライアントは、リクエストの`Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
+   加えて次回のログイン時、クライアントは、リクエストの`Cookie`ヘッダーにセッションIDを割り当て、クライアントに送信する。
 
-    サーバーは、保管したセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。
+   サーバーは、保管したセッションIDに紐付くユーザーIDから、ユーザーを特定し、ログインを許可する。
 
-    これにより、改めて資格情報を送信せずに、素早くログインできるようになる。
+   これにより、改めて資格情報を送信せずに、素早くログインできるようになる。
 
-    ```yaml
-    POST https://example.com/foo-form
-    ---
-    cookie: sessionid=<セッションID>
-    ```
+   ```yaml
+   POST https://example.com/foo-form
+   ---
+   cookie: sessionid=<セッションID>
+   ```
 
 7. 認証解除時、サーバーでセッション ID を削除する。
 
