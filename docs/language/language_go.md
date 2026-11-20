@@ -235,7 +235,26 @@ go-repository/
     └── template
 ```
 
+> - [Organizing a Go module - The Go Programming Language](https://go.dev/doc/modules/layout#server-project)
 > - [GitHub - golang-standards/project-layout: Standard Go Project Layout · GitHub](https://github.com/golang-standards/project-layout)
+
+#### ▼ `cmd`
+
+実行コマンドごとの `main` パッケージを置く。
+
+#### ▼ `internal`
+
+アプリケーションの処理を実装するパッケージを置く。
+
+`internal` に入れたパッケージは、`internal` と同じ階層にある `cmd` などからは使えるが、`internal` の親ディレクトリの外からは使えない。
+
+```yaml
+.
+├── my-app/
+│   ├── cmd/       # my-app の internal をインポートできる
+│   └── internal/  # アプリケーションの内部実装
+└── other-app/     # my-app の internal をインポートできない
+```
 
 #### ▼ `bin`
 
