@@ -39022,7 +39022,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月20日 20:57:14 JST">2026-11-20</span>
   </span>
 
     
@@ -39452,31 +39452,28 @@
 <p>ECR に紐付けられる、コンテナイメージの有効期間を定義するポリシー。</p>
 <p>コンソール画面から入力できるため、基本的にポリシーの実装は不要であるが、Terraform などの IaC ツールでは必要になる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"rules"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"rulePriority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Keep last 10 images untagged"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"selection"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"tagStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"untagged"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"countType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imageCountMoreThan"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"countNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expire"</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"rulePriority"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Keep last 10 images untagged"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"selection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"tagStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"untagged"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"countType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imageCountMoreThan"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"countNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"rulePriority"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Keep last 10 images any"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"selection"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"tagStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"countType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imageCountMoreThan"</span><span class="p">,</span>
-<span class="w">            </span><span class="nt">"countNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expire"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expire"</span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"rulePriority"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Keep last 10 images any"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"selection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"tagStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"any"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"countType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"imageCountMoreThan"</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">"countNumber"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"expire"</span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -39778,14 +39775,13 @@
 <p>事前に、ECS タスクのための信頼ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecs-tasks.amazonaws.com"</span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sts:AssumeRole"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ecs-tasks.amazonaws.com"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sts:AssumeRole"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ECS タスクロールと ECS タスク実行ロールに信頼ポリシー紐付ける。</p>
@@ -39816,16 +39812,16 @@
 <p>事前に、Lambda@Edge のための信頼ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Principal"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">{</span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"lambda.amazonaws.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"edgelambda.amazonaws.com"</span><span class="p">]},</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sts:AssumeRole"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"lambda.amazonaws.com"</span><span class="p">,</span><span class="w"> </span><span class="s2">"edgelambda.amazonaws.com"</span><span class="p">]</span>
 <span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sts:AssumeRole"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>Lambda 実行ロールに信頼ポリシー紐付ける。</p>
@@ -39848,8 +39844,9 @@
 <p>事前に、ECS タスクに必要最低限の権限を与えるインラインポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[{</span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ssm:GetParameters"</span><span class="p">],</span><span class="w"> </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ssm:GetParameters"</span><span class="p">],</span><span class="w"> </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ECS タスクロールと ECS タスク実行ロールにインラインポリシー紐付ける。</p>
@@ -39884,14 +39881,13 @@
 <p>事前に、ECS タスクに必要最低限の権限を与えるカスタマー管理ポリシーを定義する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span><span class="w"> </span><span class="s2">"logs:PutLogEvents"</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:logs:*:*:*"</span><span class="p">],</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span><span class="w"> </span><span class="s2">"logs:PutLogEvents"</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:logs:*:*:*"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ECS タスクロールにカスタマー管理ポリシー紐付ける。</p>
@@ -40412,15 +40408,14 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 </blockquote>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::582318560864:root"</span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::&lt;バケット名&gt;/*"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:iam::582318560864:root"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::&lt;バケット名&gt;/*"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="nlb">▼ NLB アクセスログ<a class="headerlink" href="#nlb" title="Permanent link">&para;</a></h4>
@@ -40442,27 +40437,26 @@ status<span class="w"> </span>code:<span class="w"> </span><span class="m">400</
 <p>そのため、『<code>arn:aws:s3:::&lt;バケット名&gt;/*</code>』の部分を最小権限として、『<code>arn:aws:s3:::&lt;バケット名&gt;/AWSLogs/&lt;AWSアカウントID&gt;/;*</code>』にしてもよい。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWSLogDeliveryWrite"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery.logs.amazonaws.com"</span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::&lt;バケット名&gt;/*"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 完全一致</span>
-<span class="w">            </span><span class="nt">"StringEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"s3:x-amz-acl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bucket-owner-full-control"</span><span class="p">},</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWSLogDeliveryAclCheck"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery.logs.amazonaws.com"</span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetBucketAcl"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::&lt;バケット名&gt;"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWSLogDeliveryWrite"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery.logs.amazonaws.com"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::&lt;バケット名&gt;/*"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 完全一致</span>
+<span class="w">        </span><span class="nt">"StringEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"s3:x-amz-acl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bucket-owner-full-control"</span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Sid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWSLogDeliveryAclCheck"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"Service"</span><span class="p">:</span><span class="w"> </span><span class="s2">"delivery.logs.amazonaws.com"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:GetBucketAcl"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::&lt;バケット名&gt;"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

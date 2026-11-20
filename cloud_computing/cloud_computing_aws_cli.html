@@ -38172,7 +38172,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月14日 19:00:22 JST">2026-11-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月20日 20:57:14 JST">2026-11-20</span>
   </span>
 
     
@@ -38619,25 +38619,24 @@ $<span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>d
 <p>コピーされる側のバケットのバケットポリシーでアクセスを許可すれば、異なるアカウント間でもコピーできる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS IAMユーザーのARN&gt;"</span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::foo-bucket/*"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="c1">// 完全一致</span>
-<span class="w">            </span><span class="nt">"StringEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"s3:x-amz-acl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bucket-owner-full-control"</span><span class="p">},</span>
-<span class="w">          </span><span class="p">},</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS IAMユーザーのARN&gt;"</span><span class="p">},</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::bar-bucket"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS IAMユーザーのARN&gt;"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:PutObject"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::foo-bucket/*"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// 完全一致</span>
+<span class="w">        </span><span class="nt">"StringEquals"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"s3:x-amz-acl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bucket-owner-full-control"</span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Principal"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"AWS"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWS IAMユーザーのARN&gt;"</span><span class="p">},</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"s3:ListBucket"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"arn:aws:s3:::bar-bucket"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -38659,15 +38658,14 @@ $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>r
 $<span class="w"> </span>aws<span class="w"> </span>sqs<span class="w"> </span>receive-message<span class="w"> </span>--queue-url<span class="w"> </span><span class="si">${</span><span class="nv">SQS_QUEUE_URL</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span>receiveOutput.json
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"Messages"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;メッセージの内容&gt;"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"ReceiptHandle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4="</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"MD5OfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6699d5711c044a109a6aff9fc193aada"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"MessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*****"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Messages"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;メッセージの内容&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"ReceiptHandle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AQEBUo4y+XVuRSe4jMv0QM6Ob1viUnPbZ64WI01+Kmj6erhv192m80m+wgyob+zBgL4OMT+bps4KR/q5WK+W3tnno6cCFuwKGRM4OQGM9omMkK1F+ZwBC49hbl7UlzqAqcSrHfxyDo5x+xEyrEyL+sFK2MxNV6d0mF+7WxXTboyAu7JxIiKLG6cUlkhWfk3W4/Kghagy5erwRhwTaKtmF+7hw3Y99b55JLFTrZjW+/Jrq9awLCedce0kBQ3d2+7pnlpEcoY42+7T1dRI2s7um+nj5TIUpx2oSd9BWBHCjd8UQjmyye645asrWMAl1VCvHZrHRIG/v3vgq776e1mmi9pGxN96IW1aDZCQ1CSeqTFASe4="</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"MD5OfBody"</span><span class="p">:</span><span class="w"> </span><span class="s2">"6699d5711c044a109a6aff9fc193aada"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"MessageId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*****"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -38850,13 +38848,12 @@ Note<span class="w"> </span>that<span class="w"> </span>it<span class="w"> </spa
 <p>特定の送信元 IP アドレスを制限するポリシーを AWS IAM ユーザーに紐付けることにより、その AWS IAM ユーザーが AWS CLI の実行するときに、社外から実行できないように制限をかけられる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deny"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"NotIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"aws:SourceIp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"*.*.*.*/32"</span><span class="p">]}},</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deny"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"Condition"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"NotIpAddress"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"aws:SourceIp"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"*.*.*.*/32"</span><span class="p">]}}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>ポリシーの Deny ステートメントによってアクセスが拒否された場合、エラーメッセージの最後に『<code>with an explicit deny</code>』という文言がつく。</p>

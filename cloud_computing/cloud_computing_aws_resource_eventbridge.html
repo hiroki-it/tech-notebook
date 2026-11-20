@@ -36213,7 +36213,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月16日 20:27:26 JST">2026-11-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月20日 20:57:14 JST">2026-11-20</span>
   </span>
 
     
@@ -36342,7 +36342,7 @@
 <span class="w">  </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"us-west-1"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;イベントを起こしたリソースのARN&gt;"</span><span class="p">],</span>
 <span class="w">  </span><span class="c1">// その時々のイベントごとに異なるデータ</span>
-<span class="w">  </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{},</span>
+<span class="w">  </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
 <span class="p">}</span>
 <span class="c1">// Amazon SNS のデータ</span>
 </code></pre></div>
@@ -36350,7 +36350,7 @@
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"appId"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"foo"</span><span class="p">,</span><span class="w"> </span><span class="s2">"bar"</span><span class="p">],</span><span class="w"> </span><span class="nt">"jobStatus"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"SUCCEED"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FAILED"</span><span class="p">]},</span>
 <span class="w">  </span><span class="nt">"detail-type"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"AWS Amplify Deployment Status Change"</span><span class="p">],</span>
-<span class="w">  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aws.amplify"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aws.amplify"</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -36390,24 +36390,22 @@
 <p>AWS リソースで意図的にイベントを起こし、AWS Lambda のロググループから内容を確認する。</p>
 <p><code>detail</code> キーにイベントが割り当てられている。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b4a07570-eda1-9fe1-da5e-b672a1705c39"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"detail-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Amplify Deployment Status Change"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aws.amplify"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWSアカウントID&gt;"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;イベントの発生時間&gt;"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;AWS AmplifyのアプリケーションのARN&gt;"</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">"detail"</span><span class="p">:</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;アプリケーションID&gt;"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ブランチ名&gt;"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"jobId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ジョブID&gt;"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"jobStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;CI/CDパイプラインのステータス&gt;"</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b4a07570-eda1-9fe1-da5e-b672a1705c39"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"detail-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Amplify Deployment Status Change"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aws.amplify"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWSアカウントID&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;イベントの発生時間&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;AWS AmplifyのアプリケーションのARN&gt;"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;アプリケーションID&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ブランチ名&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"jobId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ジョブID&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"jobStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;CI/CDパイプラインのステータス&gt;"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -36420,24 +36418,22 @@
 <p>AWS Amplify で発生したイベントの JSON を変数として取り出す。</p>
 <p>ここでは、以下の AWS Amplify のイベントを受信したとする。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b4a07570-eda1-9fe1-da5e-b672a1705c39"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"detail-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Amplify Deployment Status Change"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aws.amplify"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWSアカウントID&gt;"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;イベントの発生時間&gt;"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;AWS AmplifyのアプリケーションのARN&gt;"</span><span class="p">],</span>
-<span class="w">      </span><span class="nt">"detail"</span><span class="p">:</span>
-<span class="w">        </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;アプリケーションID&gt;"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ブランチ名&gt;"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"jobId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ジョブID&gt;"</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">"jobStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;CI/CDパイプラインのステータス&gt;"</span><span class="p">,</span>
-<span class="w">        </span><span class="p">},</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"event"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"b4a07570-eda1-9fe1-da5e-b672a1705c39"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"detail-type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"AWS Amplify Deployment Status Change"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"source"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aws.amplify"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"account"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;AWSアカウントID&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"time"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;イベントの発生時間&gt;"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"resources"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"&lt;AWS AmplifyのアプリケーションのARN&gt;"</span><span class="p">],</span>
+<span class="w">    </span><span class="nt">"detail"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"appId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;アプリケーションID&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ブランチ名&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"jobId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ジョブID&gt;"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"jobStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;CI/CDパイプラインのステータス&gt;"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>JSON のキー名が変数名として動作する。</p>
@@ -36448,7 +36444,7 @@
 <span class="w">  </span><span class="nt">"branchName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.detail.branchName"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"jobId"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.detail.jobId"</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">"jobStatus"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.detail.jobStatus"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.region"</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"$.region"</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>その後、入力テンプレートにて送信する JSON を定義する。例えばここでは、Slack に送信する JSON を出力する。</p>

@@ -37455,7 +37455,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月11日 04:55:13 JST">2026-11-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月20日 20:57:14 JST">2026-11-20</span>
   </span>
 
     
@@ -37498,12 +37498,11 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <h4 id="author">▼ author<a class="headerlink" href="#author" title="Permanent link">&para;</a></h4>
 <p>パッケージの作成者名を設定する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"author"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hiroki Hasegawa"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example@gmail.com"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/hiroki-hasegawa"</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Hiroki Hasegawa"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example@gmail.com"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/hiroki-hasegawa"</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37525,12 +37524,11 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>NPM に登録されていないパッケージは、『<code>git+&lt;GitHubリポジトリURL&gt;</code>』を指定する。</p>
 <p><code>npm install</code> コマンドの実行時に <code>--production</code> オプションを有効化すると、<code>dependencies</code> キーが使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.1.1"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"bar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"baz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git+https://github.com/baz/baz-package.git"</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.1.1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"baz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git+https://github.com/baz/baz-package.git"</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37550,12 +37548,11 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <p>開発環境のみ依存するパッケージ名を設定する。</p>
 <p><code>npm install</code> コマンドの実行時に <code>--production</code> オプションを有効化しないと、<code>devDependencies</code> キーが使用される。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.1.1"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"bar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"baz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git+https://github.com/baz/baz-package.git"</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"devDependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"foo"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.1.1"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"bar"</span><span class="p">:</span><span class="w"> </span><span class="s2">"^1.0.0"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"baz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git+https://github.com/baz/baz-package.git"</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37613,8 +37610,10 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 </blockquote>
 <h4 id="repository">▼ repository<a class="headerlink" href="#repository" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"repository"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">{</span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="p">,</span><span class="w"> </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/hiroki-hasegawa/foo.git"</span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"repository"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"git"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://github.com/hiroki-hasegawa/foo.git"</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -37706,15 +37705,15 @@ $<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </sp
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="c1">// コマンド</span>
 <span class="w">  </span><span class="nt">"scripts"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="c1">// "&lt;エイリアス&gt;": "&lt;実行するコマンド&gt;",</span>
-<span class="w">      </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run development"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"development"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"watch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run development -- --watch"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"watch-poll"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run watch -- --watch-poll"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"prod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run production"</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">"production"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p">,</span>
-<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="c1">// "&lt;エイリアス&gt;": "&lt;実行するコマンド&gt;",</span>
+<span class="w">    </span><span class="nt">"dev"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run development"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"development"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"watch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run development -- --watch"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"watch-poll"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run watch -- --watch-poll"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"hot"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"prod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"npm run production"</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">"production"</span><span class="p">:</span><span class="w"> </span><span class="s2">"cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"</span>
+<span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>

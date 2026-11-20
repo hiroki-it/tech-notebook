@@ -37339,7 +37339,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月20日 20:57:14 JST">2026-11-20</span>
   </span>
 
     
@@ -37984,21 +37984,21 @@
 <p>アプリケーションから Amazon CloudWatch Logs にログを送信するために、Amazon ECS タスクロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span><span class="w"> </span><span class="s2">"logs:PutLogEvents"</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:logs:*:*:*"</span><span class="p">],</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span><span class="w"> </span><span class="s2">"logs:PutLogEvents"</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"arn:aws:logs:*:*:*"</span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>パラメーターストアから変数を取得するために、Amazon ECS タスクロールにインラインポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[{</span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ssm:GetParameters"</span><span class="p">],</span><span class="w"> </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">}],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span><span class="w"> </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ssm:GetParameters"</span><span class="p">],</span><span class="w"> </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <h4 id="_15">▼ タスク実行ロール<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
@@ -38009,40 +38009,36 @@
 <p>Amazon ECS タスク内のコンテナがリソースにリクエストを送信するために必要なタスクロールとは区別すること。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">"ecr:GetAuthorizationToken"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecr:BatchCheckLayerAvailability"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecr:GetDownloadUrlForLayer"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecr:BatchGetImage"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"logs:PutLogEvents"</span><span class="p">,</span>
-<span class="w">          </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"ecr:GetAuthorizationToken"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecr:BatchCheckLayerAvailability"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecr:GetDownloadUrlForLayer"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecr:BatchGetImage"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"logs:CreateLogStream"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"logs:PutLogEvents"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>datadog エージェントが Amazon ECS クラスターやコンテナにリクエストを送信できるように、Amazon ECS タスク実行ロールにカスタマー管理ポリシーを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">"ecs:ListClusters"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecs:ListContainerInstances"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecs:DescribeContainerInstances"</span><span class="p">,</span>
-<span class="w">          </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"ecs:ListClusters"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecs:ListContainerInstances"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecs:DescribeContainerInstances"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <blockquote>
@@ -38262,26 +38258,23 @@
 <p>注意点として、実行 IAM ユーザーを作成し、Amazon ECS タスクを起動できる必要最低限の認可スコープを紐付ける。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">"iam:PassRole"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecs:RunTask"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecs:DescribeServices"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ecs:DescribeTasks"</span><span class="p">,</span>
-<span class="w">          </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:service/*"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task-definition/*"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"arn:aws:iam::&lt;AWSアカウントID&gt;:role/*"</span><span class="p">,</span>
-<span class="w">          </span><span class="p">],</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"iam:PassRole"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecs:RunTask"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecs:DescribeServices"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ecs:DescribeTasks"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:service/*"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task-definition/*"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:iam::&lt;AWSアカウントID&gt;:role/*"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
@@ -38391,20 +38384,18 @@
 <p>これにより、Amazon ECSタスクがAWS SSM Session Managerにリクエストを送信できるようになる。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">"ssmmessages:CreateControlChannel"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ssmmessages:CreateDataChannel"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ssmmessages:OpenControlChannel"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"ssmmessages:OpenDataChannel"</span><span class="p">,</span>
-<span class="w">          </span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span><span class="p">,</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"ssmmessages:CreateControlChannel"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ssmmessages:CreateDataChannel"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ssmmessages:OpenControlChannel"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"ssmmessages:OpenDataChannel"</span>
+<span class="w">      </span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*"</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 </li>
@@ -38412,18 +38403,16 @@
 <p>Amazon ECS Exec の実行ユーザーに、IAM ポリシーを付与する。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"Version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-10-17"</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ecs:ExecuteCommand"</span><span class="p">],</span>
-<span class="w">        </span><span class="nt">"Resource"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">[</span>
-<span class="w">            </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:cluster/*"</span><span class="p">,</span>
-<span class="w">            </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*"</span><span class="p">,</span>
-<span class="w">          </span><span class="p">],</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">"Statement"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"Effect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Allow"</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">"Action"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"ecs:ExecuteCommand"</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">"Resource"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:cluster/*"</span><span class="p">,</span>
+<span class="w">        </span><span class="s2">"arn:aws:ecs:*:&lt;AWSアカウントID&gt;:task/*"</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 </li>

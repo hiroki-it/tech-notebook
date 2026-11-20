@@ -36918,7 +36918,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月15日 19:54:55 JST">2026-11-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月20日 20:57:14 JST">2026-11-20</span>
   </span>
 
     
@@ -37398,7 +37398,7 @@
 
 <span class="kd">const</span><span class="w"> </span><span class="nx">aws</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"aws-sdk"</span><span class="p">);</span>
 <span class="kd">const</span><span class="w"> </span><span class="nx">https</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"https"</span><span class="p">);</span>
-<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">format</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"util"</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">format</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s2">"util"</span><span class="p">);</span>
 
 <span class="cm">/**</span>
 <span class="cm"> * @param event</span>
@@ -37573,7 +37573,7 @@
 <span class="w">      </span><span class="c1">//  data、error、endの間でawaitの効力は横断できない。</span>
 <span class="w">      </span><span class="c1">// そのため、できるだけendで事後処理を実装し、awaitを使用する。</span>
 <span class="w">      </span><span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s2">"end"</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">         </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
+<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">body</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">tmp</span><span class="p">);</span>
 <span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
 <span class="w">          </span><span class="nx">statusCode</span><span class="o">:</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span><span class="p">,</span>
 <span class="w">          </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="nx">body</span><span class="p">,</span>
@@ -37717,72 +37717,62 @@
 <p>オリジンリクエストは、以下の event オブジェクトの JSON 型データにマッピングされている。</p>
 <p>注意点として、一部のキーは省略している。</p>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">"Records"</span><span class="p">:</span>
-<span class="w">    </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">"cf"</span><span class="p">:</span>
-<span class="w">          </span><span class="p">{</span>
-<span class="w">            </span><span class="nt">"request"</span><span class="p">:</span>
-<span class="w">              </span><span class="p">{</span>
-<span class="w">                </span><span class="nt">"body"</span><span class="p">:</span>
-<span class="w">                  </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read-only"</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span>
-<span class="w">                    </span><span class="nt">"inputTruncated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
-<span class="w">                  </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">"clientIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*.*.*.*"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"headers"</span><span class="p">:</span>
-<span class="w">                  </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"host"</span><span class="p">:</span>
-<span class="w">                      </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Host"</span><span class="p">,</span>
-<span class="w">                          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp-bucket.s3.ap-northeast-1.amazonaws.com"</span><span class="p">,</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                      </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">"cloudfront-is-mobile-viewer"</span><span class="p">:</span>
-<span class="w">                      </span><span class="p">[{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudFront-Is-Mobile-Viewer"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">}],</span>
-<span class="w">                    </span><span class="nt">"cloudfront-is-tablet-viewer"</span><span class="p">:</span>
-<span class="w">                      </span><span class="p">[{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loudFront-Is-Tablet-Viewer"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">}],</span>
-<span class="w">                    </span><span class="nt">"cloudfront-is-smarttv-viewer"</span><span class="p">:</span>
-<span class="w">                      </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudFront-Is-SmartTV-Viewer"</span><span class="p">,</span>
-<span class="w">                          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                      </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">"cloudfront-is-desktop-viewer"</span><span class="p">:</span>
-<span class="w">                      </span><span class="p">[</span>
-<span class="w">                        </span><span class="p">{</span>
-<span class="w">                          </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudFront-Is-Desktop-Viewer"</span><span class="p">,</span>
-<span class="w">                          </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">,</span>
-<span class="w">                        </span><span class="p">},</span>
-<span class="w">                      </span><span class="p">],</span>
-<span class="w">                    </span><span class="nt">"user-agent"</span><span class="p">:</span>
-<span class="w">                      </span><span class="p">[{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User-Agent"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon CloudFront"</span><span class="p">}],</span>
-<span class="w">                  </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"origin"</span><span class="p">:</span>
-<span class="w">                  </span><span class="p">{</span>
-<span class="w">                    </span><span class="nt">"s3"</span><span class="p">:</span>
-<span class="w">                      </span><span class="p">{</span>
-<span class="w">                        </span><span class="nt">"authMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"origin-access-identity"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"customHeaders"</span><span class="p">:</span>
-<span class="w">                          </span><span class="p">{</span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prd"</span><span class="p">}]},</span>
-<span class="w">                        </span><span class="nt">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp-bucket.s3.amazonaws.com"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https"</span><span class="p">,</span>
-<span class="w">                        </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span><span class="p">,</span>
-<span class="w">                      </span><span class="p">},</span>
-<span class="w">                  </span><span class="p">},</span>
-<span class="w">                </span><span class="nt">"querystring"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
-<span class="w">                </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/images/12345"</span><span class="p">,</span>
-<span class="w">              </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">"Records"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">"cf"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">"request"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">"body"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"action"</span><span class="p">:</span><span class="w"> </span><span class="s2">"read-only"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"encoding"</span><span class="p">:</span><span class="w"> </span><span class="s2">"base64"</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">"inputTruncated"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span>
 <span class="w">          </span><span class="p">},</span>
-<span class="w">      </span><span class="p">},</span>
-<span class="w">    </span><span class="p">],</span>
+<span class="w">          </span><span class="nt">"clientIp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"*.*.*.*"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"headers"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"host"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Host"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp-bucket.s3.ap-northeast-1.amazonaws.com"</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"cloudfront-is-mobile-viewer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudFront-Is-Mobile-Viewer"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"true"</span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"cloudfront-is-tablet-viewer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"loudFront-Is-Tablet-Viewer"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"cloudfront-is-smarttv-viewer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudFront-Is-SmartTV-Viewer"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"cloudfront-is-desktop-viewer"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">              </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CloudFront-Is-Desktop-Viewer"</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"false"</span>
+<span class="w">              </span><span class="p">}</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">"user-agent"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"User-Agent"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Amazon CloudFront"</span><span class="p">}]</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"GET"</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"origin"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">"s3"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">              </span><span class="nt">"authMethod"</span><span class="p">:</span><span class="w"> </span><span class="s2">"origin-access-identity"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"customHeaders"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="nt">"key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"env"</span><span class="p">,</span><span class="w"> </span><span class="nt">"value"</span><span class="p">:</span><span class="w"> </span><span class="s2">"prd"</span><span class="p">}]},</span>
+<span class="w">              </span><span class="nt">"domainName"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sp-bucket.s3.amazonaws.com"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"path"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">443</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https"</span><span class="p">,</span>
+<span class="w">              </span><span class="nt">"region"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ap-northeast-1"</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">          </span><span class="p">},</span>
+<span class="w">          </span><span class="nt">"querystring"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/images/12345"</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><br></p>
