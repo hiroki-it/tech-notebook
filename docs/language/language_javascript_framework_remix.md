@@ -1000,6 +1000,60 @@ export const loader = async () => {
 
 ## 08. 状態管理
 
+### 状態を直接書き換えない
+
+例えば、ToDo リストの追加ボタンを押したときに、状態の配列に `push` で要素を足してから `setItems(items)` を呼ぶとする。
+
+React は、前と同じ配列かどうかだけを見て状態が変わったかを判断するため、中身が増えても同じ配列のままなら画面を描き直さない。
+
+すると、ユーザーがTODOリストに『牛乳を買う』と入力して追加ボタンを押しても、その後に画面の ToDo リストに出てこない。
+
+そのため、状態を更新するときは、新しい配列やオブジェクトを作って渡す。
+
+```tsx
+const [items, setItems] = useState<string[]>([]);
+
+const addItem = (item: string) => {
+  // NG：同じ配列を書き換えているため、再描画されない
+  // items.push(item);
+  // setItems(items);
+
+  // OK：新しい配列を作って渡す
+  setItems([...items, item]);
+};
+```
+
+<br>
+
+### 入力欄の制御方法を混ぜない
+
+例えば、検索欄の状態の初期値を `undefined` にして `value` に渡し、クリアボタンで状態を `undefined` に戻すとする。
+
+すると、ユーザーが検索欄に『東京』と入力したあと、消そうとしてクリアボタンを押しても、検索欄には『東京』が残ったままになる。
+
+一方で、状態は空に戻っているため、検索結果だけが絞り込みなしの状態に戻ってしまう。
+
+そのため、`value` で管理する場合は初期値を空文字にし、ブラウザに任せる場合は `defaultValue` を使う。
+
+```tsx
+// NG：初期値が undefined のため、非制御から制御に変わる
+// const [keyword, setKeyword] = useState<string>();
+// const clear = () => setKeyword(undefined);
+
+// OK：初期値を空文字にし、クリアするときも空文字に戻す
+const [keyword, setKeyword] = useState<string>("");
+const clear = () => setKeyword("");
+
+return (
+  <>
+    <input value={keyword} onChange={(e) => setKeyword(e.target.value)} />
+    <button onClick={clear}>クリア</button>
+  </>
+);
+```
+
+<br>
+
 ### 不要な状態を作らない
 
 - 特定の値を二重管理していないか
