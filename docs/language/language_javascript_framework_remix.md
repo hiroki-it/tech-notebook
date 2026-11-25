@@ -1013,7 +1013,7 @@ export const loader = async () => {
 
 例えば、結果待ちの間に確認モーダルを閉じても、確認モーダルの状態はページのコンポーネントが持つため、見えないところで『結果を待っている』状態が残ってしまう。
 
-すると、次に確認モーダルを開いたときに、結果待ちの表示が出たままになり、実行ボタンを押せなくなる。
+すると、ユーザーが次に確認モーダルを開くと、まだ何も実行していないのに結果待ちの表示が出ていて実行ボタンを押しても何も起きず、ページを再読み込みするまで実行できなくなってしまう。
 
 そのため、閉じるときはモーダル用の状態も初期値に戻し、閉じる操作が複数ある場合は 1 つの関数にまとめる。
 
@@ -1033,6 +1033,85 @@ return (
     onClickNoButton={closeModal}
   />
 );
+```
+
+<br>
+
+#### ▼ フォームに関する状態の初期化
+
+例えば、`useFetcher` でフォームを送信すると、ページを移動しないため、入力欄は送信前のまま表示され続ける。
+
+すると、入力欄に送信した値が見えたままになり、送信できたのかがわかりにくく、そのまま登録ボタンを押すと同じ内容を二重に登録してしまう。
+
+そのため、送信が成功したら、入力欄を初期値に戻す。
+
+```tsx
+import {useFetcher} from "@remix-run/react";
+import React, {useEffect, useRef} from "react";
+
+export default () => {
+  const fetcher = useFetcher<typeof action>();
+  const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    // 送信が完了し、成功した場合に入力欄を初期値に戻す
+    if (fetcher.state === "idle" && fetcher.data?.ok) {
+      formRef.current?.reset();
+    }
+  }, [fetcher.state, fetcher.data]);
+
+  return (
+    <fetcher.Form method="post" ref={formRef}>
+      <input name="name" />
+      <button type="submit">登録</button>
+    </fetcher.Form>
+  );
+};
+```
+
+<br>
+
+#### ▼ 編集に関する状態の初期化
+
+例えば、編集をキャンセルしても、入力欄には編集途中の値が残ったままになる。
+
+すると、ユーザーが次に編集ボタンを押すと、キャンセルしたはずの値が入力欄に表示されていて、保存されたのかキャンセルされたのか判断できなくなってしまう。
+
+そのため、キャンセルしたら、入力欄を保存されている値に戻す。
+
+```tsx
+const [name, setName] = useState<string>(project.name);
+const [isEditing, setIsEditing] = useState<boolean>(false);
+
+const cancelEdit = () => {
+  // 保存されている値に戻す
+  setName(project.name);
+  setIsEditing(false);
+};
+```
+
+<br>
+
+#### ▼ エラーに関する状態の初期化
+
+例えば、処理に失敗するとエラーメッセージを状態に保存するが、再実行してもこの状態は自動では消えない。
+
+すると、ユーザーが再実行して成功しても、画面には前回の失敗のエラーメッセージが表示されたままになり、また失敗したと思って何度も実行してしまう。
+
+そのため、再実行する前に、エラーを初期値に戻す。
+
+```tsx
+const [error, setError] = useState<string | undefined>();
+
+const run = async () => {
+  // 前回のエラーを消してから実行する
+  setError(undefined);
+  try {
+    await execute();
+  } catch (e) {
+    setError("実行に失敗しました");
+  }
+};
 ```
 
 <br>
