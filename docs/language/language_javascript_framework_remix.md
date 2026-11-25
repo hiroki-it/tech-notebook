@@ -1000,8 +1000,40 @@ export const loader = async () => {
 
 ## 08. 状態管理
 
+### 不要な状態を作らない
+
 - 特定の値を二重管理していないか
 - コンポーネントにそのまま出力すればいい値を状態としてわざわざ管理していないか
+
+<br>
+
+### 状態を初期値に戻す
+
+#### ▼ モーダルに関する状態の初期化
+
+例えば、結果待ちの間に確認モーダルを閉じても、確認モーダルの状態はページのコンポーネントが持つため、見えないところで『結果を待っている』状態が残ってしまう。
+
+すると、次に確認モーダルを開いたときに、結果待ちの表示が出たままになり、実行ボタンを押せなくなる。
+
+そのため、閉じるときはモーダル用の状態も初期値に戻し、閉じる操作が複数ある場合は 1 つの関数にまとめる。
+
+```tsx
+const closeModal = () => {
+  setIsWaitingForResult(false);
+  setModalError(undefined);
+  setIsModalOpen(false);
+};
+
+return (
+  <ConfirmationModal
+    isOpen={isModalOpen}
+    // 閉じるボタン
+    onClickClose={closeModal}
+    // キャンセルボタン
+    onClickNoButton={closeModal}
+  />
+);
+```
 
 <br>
 
