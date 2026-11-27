@@ -788,7 +788,7 @@ AI エージェントのデータポイント、ログ、スパンを監視す�
 
 <br>
 
-### 構成例
+### ローカルAIエージェントの場合
 
 #### ▼ データポイントの場合
 
@@ -796,31 +796,86 @@ CLI がデータポイントを記録する場合、次のような構成にな�
 
 ```mermaid
 flowchart LR
-    record["Claude Code CLI / Codex CLI<br/>（記録）"] --> collect["OpenTelemetry Collector<br/>（収集）"] --> store["Prometheus<br/>（監視）"] --> view["Grafana<br/>（監視）"]
+    claude("Claude Code CLI<br/>（記録）")
+    codex("Codex CLI<br/>（記録）")
+    collect("OpenTelemetry Collector<br/>（収集）")
+    store("Prometheus<br/>（監視）")
+    view("Grafana<br/>（監視）")
+    claude --> collect
+    codex --> collect
+    collect --> store --> view
 ```
 
 プロバイダーの API からデータポイントを収集する場合、次のような構成になる。
 
 ```mermaid
 flowchart LR
-    collect["Anthropic SDK / OpenAI SDK<br/>（収集）"] -->|利用状況を問い合わせる| api["プロバイダーの Usage API<br/>（利用状況を提供）"]
-    api -->|利用状況を返す| collect
-    collect --> store["Prometheus<br/>（監視）"] --> view["Grafana<br/>（監視）"]
+    anthropicSdk("Anthropic SDK<br/>（収集）")
+    openaiSdk("OpenAI SDK<br/>（収集）")
+    anthropicApi("Anthropic Usage API<br/>（利用状況を提供）")
+    openaiApi("OpenAI Usage API<br/>（利用状況を提供）")
+    store("Prometheus<br/>（監視）")
+    view("Grafana<br/>（監視）")
+    anthropicSdk -->|利用状況を問い合わせる| anthropicApi
+    anthropicApi -->|利用状況を返す| anthropicSdk
+    openaiSdk -->|利用状況を問い合わせる| openaiApi
+    openaiApi -->|利用状況を返す| openaiSdk
+    anthropicSdk --> store
+    openaiSdk --> store
+    store --> view
 ```
 
 #### ▼ ログの場合
 
 ```mermaid
 flowchart LR
-    record["Claude Code CLI / Codex CLI<br/>（記録）"] --> collect["OpenTelemetry Collector<br/>（収集）"] --> store["Grafana Loki<br/>（監視）"] --> view["Grafana<br/>（監視）"]
+    claude("Claude Code CLI<br/>（記録）")
+    codex("Codex CLI<br/>（記録）")
+    collect("OpenTelemetry Collector<br/>（収集）")
+    store("Grafana Loki<br/>（監視）")
+    view("Grafana<br/>（監視）")
+    claude --> collect
+    codex --> collect
+    collect --> store --> view
 ```
 
 #### ▼ スパンの場合
 
 ```mermaid
 flowchart LR
-    record["Claude Code CLI / Codex CLI<br/>（記録）"] --> collect["OpenTelemetry Collector<br/>（収集）"] --> store["Jaeger<br/>（監視）"]
+    claude("Claude Code CLI<br/>（記録）")
+    codex("Codex CLI<br/>（記録）")
+    collect("OpenTelemetry Collector<br/>（収集）")
+    store("Jaeger<br/>（監視）")
+    claude --> collect
+    codex --> collect
+    collect --> store
 ```
 
 
 <br>
+
+### 自律型AIエージェントの場合
+
+AI エージェントアプリで実行状況を記録し、OpenTelemetry Collector を経由して監視ツールへ送信する。
+
+#### ▼ データポイントの場合
+
+```mermaid
+flowchart LR
+    record("AI エージェントアプリ<br/>（記録）") --> collect("OpenTelemetry Collector<br/>（収集）") --> store("Prometheus<br/>（監視）") --> view("Grafana<br/>（監視）")
+```
+
+#### ▼ ログの場合
+
+```mermaid
+flowchart LR
+    record("AI エージェントアプリ<br/>（記録）") --> collect("OpenTelemetry Collector<br/>（収集）") --> store("Grafana Loki<br/>（監視）") --> view("Grafana<br/>（監視）")
+```
+
+#### ▼ スパンの場合
+
+```mermaid
+flowchart LR
+    record("AI エージェントアプリ<br/>（記録）") --> collect("OpenTelemetry Collector<br/>（収集）") --> store("Jaeger<br/>（監視）")
+```

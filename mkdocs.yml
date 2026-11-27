@@ -80,6 +80,11 @@ extra_css:
   - assets/css/custom.css
   - "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
 
+# Mermaid の図を描画する
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js
+  - javascripts/mermaid.js
+
 # highlight.jsを使用する場合は、以下のコメントアウトを外す。
 #  # VSCodeのダークテーマを使用する
 #  - "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/vs2015.min.css"
