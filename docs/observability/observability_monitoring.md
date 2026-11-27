@@ -353,6 +353,7 @@ Amazon の自社調査では、ローディング時間が 100ms 短くなるご
   </tbody>
 </table>
 
+
 <br>
 
 ## 03. バックエンドの監視
@@ -784,5 +785,42 @@ AI エージェントのデータポイント、ログ、スパンを監視す�
     </tr>
   </tbody>
 </table>
+
+<br>
+
+### 構成例
+
+#### ▼ データポイントの場合
+
+CLI がデータポイントを記録する場合、次のような構成になる。
+
+```mermaid
+flowchart LR
+    record["Claude Code CLI / Codex CLI<br/>（記録）"] --> collect["OpenTelemetry Collector<br/>（収集）"] --> store["Prometheus<br/>（監視）"] --> view["Grafana<br/>（監視）"]
+```
+
+プロバイダーの API からデータポイントを収集する場合、次のような構成になる。
+
+```mermaid
+flowchart LR
+    collect["Anthropic SDK / OpenAI SDK<br/>（収集）"] -->|利用状況を問い合わせる| api["プロバイダーの Usage API<br/>（利用状況を提供）"]
+    api -->|利用状況を返す| collect
+    collect --> store["Prometheus<br/>（監視）"] --> view["Grafana<br/>（監視）"]
+```
+
+#### ▼ ログの場合
+
+```mermaid
+flowchart LR
+    record["Claude Code CLI / Codex CLI<br/>（記録）"] --> collect["OpenTelemetry Collector<br/>（収集）"] --> store["Grafana Loki<br/>（監視）"] --> view["Grafana<br/>（監視）"]
+```
+
+#### ▼ スパンの場合
+
+```mermaid
+flowchart LR
+    record["Claude Code CLI / Codex CLI<br/>（記録）"] --> collect["OpenTelemetry Collector<br/>（収集）"] --> store["Jaeger<br/>（監視）"]
+```
+
 
 <br>
