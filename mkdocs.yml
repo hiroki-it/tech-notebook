@@ -1044,6 +1044,7 @@ nav:
       - ■ Codex:
           - Codex: llm/llm_codex.md
           - スキル: llm/llm_codex_skills.md
+      - トークン節約ツール: llm/llm_token_saver.md
       - ■ PR Agent:
           - PR Agent: llm/llm_pr_agent.md
       - ■ AIドキュメント:

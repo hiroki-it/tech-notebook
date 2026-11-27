@@ -31,6 +31,10 @@ tags:
 
       要件定義や設計を支援するスキル
 
+    - **[トークン節約ツール](https://hiroki-it.github.io/tech-notebook/llm/llm_token_saver.html)**
+
+      AI エージェントのトークン使用量を抑えるツール
+
     - **[PR Agent (PR Agent)](https://hiroki-it.github.io/tech-notebook/llm/llm_pr_agent.html)**
 
       PR Agent による自動レビュー
