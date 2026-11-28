@@ -10,7 +10,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="AIエージェントのトークン使用量を抑えるツールの知見を記録しています。">
+        <meta name="description" content="AIエージェントのトークン量を節約し、利用料を抑えるツールの知見を記録しています。">
       
       
         <meta name="author" content="Hiroki Hasegawa">
@@ -34723,6 +34723,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#03-headroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03. Headroom
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Headroom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headroomとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セットアップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -35959,6 +35998,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#03-headroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03. Headroom
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03. Headroom">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#headroom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Headroomとは
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        セットアップ
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -36059,7 +36137,7 @@
     <span class="md-icon" title="最終更新日">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月28日 04:54:40 JST">2026-11-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2026年11月28日 18:18:33 JST">2026-11-28</span>
   </span>
 
     
@@ -36090,8 +36168,16 @@
 <p><br></p>
 <h2 id="01-rtk">01. RTK<a class="headerlink" href="#01-rtk" title="Permanent link">&para;</a></h2>
 <h3 id="rtk">RTKとは<a class="headerlink" href="#rtk" title="Permanent link">&para;</a></h3>
-<p>RTK は、対応するコマンドの出力を短縮し、AI エージェントに渡す入力トークンを抑えるツールである。</p>
+<p>RTK は、対応するコマンドの出力を短縮し、AI エージェントに渡す入力トークン量を節約して、利用料を抑えるツールである。</p>
 <p>MCP サーバーではなく、フックを通じて対応するコマンドを RTK 経由に書き換える。</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant PC as PC（AIエージェント）
+    participant RTK
+    participant LLM as LLM API
+    PC-&gt;&gt;RTK: コマンドを実行する
+    RTK--&gt;&gt;PC: 出力を短縮して返す
+    PC-&gt;&gt;LLM: 短縮した出力を送信する
+    LLM--&gt;&gt;PC: 応答を返す</code></pre>
 <blockquote>
 <ul>
 <li><a href="https://github.com/rtk-ai/rtk">GitHub - rtk-ai/rtk: CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies · GitHub</a></li>
@@ -36109,11 +36195,11 @@ $<span class="w"> </span>rtk<span class="w"> </span>init<span class="w"> </span>
 </code></pre></div>
 <p>設定後は各エージェントを再起動する。</p>
 <p><code>rtk init --global</code> は Claude Code の設定である。</p>
-<p>導入状況や削減量は次のコマンドで確認できる。</p>
+<p>導入状況や節約量は次のコマンドで確認できる。</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>rtk<span class="w"> </span>init<span class="w"> </span>--show
 $<span class="w"> </span>rtk<span class="w"> </span>gain
 </code></pre></div>
-<p><code>rtk gain</code> の削減量は推定値であり、対象外のコマンドや画像の確認には適用されない。</p>
+<p><code>rtk gain</code> の節約量は推定値であり、対象外のコマンドや画像の確認には適用されない。</p>
 <h3 id="_4">設定ファイル<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
 <p>macOS では <code>~/Library/Application Support/rtk/config.toml</code> を使用する。</p>
 <p>ファイルがなくてもデフォルト設定で動作する。</p>
@@ -36123,7 +36209,7 @@ $<span class="w"> </span>rtk<span class="w"> </span>config
 </code></pre></div>
 <p>代表的な設定例を次に示す。</p>
 <div class="highlight"><pre><span></span><code><span class="k">[tracking]</span>
-<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1"># 削減量の記録を有効にする</span>
+<span class="n">enabled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c1"># 節約量の記録を有効にする</span>
 <span class="n">history_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">90</span><span class="w"> </span><span class="c1"># 記録を保持する日数</span>
 
 <span class="k">[retriever]</span>
@@ -36140,7 +36226,6 @@ $<span class="w"> </span>rtk<span class="w"> </span>config
 <span class="n">grep_max_results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">200</span><span class="w"> </span><span class="c1"># 検索結果の表示件数の上限</span>
 <span class="n">status_max_files</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">15</span><span class="w"> </span><span class="c1"># git statusのファイル表示件数の上限</span>
 </code></pre></div>
-<p>短縮前の出力を確認する方法などは、次のドキュメントを参照する。</p>
 <blockquote>
 <ul>
 <li><a href="https://www.rtk-ai.app/docs/getting-started/configuration/">Configuration | RTK</a></li>
@@ -36149,8 +36234,15 @@ $<span class="w"> </span>rtk<span class="w"> </span>config
 <p><br></p>
 <h2 id="02-serena">02. Serena<a class="headerlink" href="#02-serena" title="Permanent link">&para;</a></h2>
 <h3 id="serena">Serenaとは<a class="headerlink" href="#serena" title="Permanent link">&para;</a></h3>
-<p>Serena は、MCP を介して関数やシンボル、参照先を検索できるツールである。</p>
-<p>必要なコードを絞って取得することで、AI エージェントに渡す入力トークン量の抑制に役立つ。</p>
+<p>Serena は、MCP を介して必要なコードを検索することで、AI エージェントに渡す入力トークン量を節約し、利用料を抑えるツールである。</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant PC as PC（AIエージェント）
+    participant Serena
+    participant LLM as LLM API
+    PC-&gt;&gt;Serena: コードの検索を依頼する
+    Serena--&gt;&gt;PC: 関連するコードを返す
+    PC-&gt;&gt;LLM: 取得したコードを送信する
+    LLM--&gt;&gt;PC: 応答を返す</code></pre>
 <blockquote>
 <ul>
 <li><a href="https://github.com/oraios/serena">GitHub - oraios/serena: A powerful MCP toolkit for coding, providing semantic retrieval and editing capabilities - the IDE for your agent · GitHub</a></li>
@@ -36199,12 +36291,61 @@ $<span class="w"> </span>serena<span class="w"> </span>setup<span class="w"> </s
 <span class="c1"># プロジェクトごとの設定、キャッシュ、メモリーをホームディレクトリに置く</span>
 <span class="nt">project_serena_folder_location</span><span class="p">:</span><span class="w"> </span><span class="s">"/Users/hiroki.hasegawa/.serena/projects$projectDir/.serena"</span>
 </code></pre></div>
-<p><code>$projectDir</code> はプロジェクトの絶対パスに置き換えられる。</p>
-<p>既存のプロジェクト内に <code>.serena</code> があり、中央の保存先がまだ存在しない場合は、既存の <code>.serena</code> が優先される。</p>
-<p>詳細は次のドキュメントを参照する。</p>
 <blockquote>
 <ul>
 <li><a href="https://oraios.github.io/serena/02-usage/050_configuration.html">Configuration — Serena Documentation</a></li>
+</ul>
+</blockquote>
+<p><br></p>
+<h2 id="03-headroom">03. Headroom<a class="headerlink" href="#03-headroom" title="Permanent link">&para;</a></h2>
+<h3 id="headroom">Headroomとは<a class="headerlink" href="#headroom" title="Permanent link">&para;</a></h3>
+<p>Headroom は、AI エージェントと LLM の間で動作し、ツールの実行結果やログなどを圧縮して入力トークン量を節約し、利用料を抑えるツールである。</p>
+<p>ローカルプロキシを介してリクエストを転送し、必要に応じて圧縮前の内容を MCP ツールから取得できる。</p>
+<pre class="mermaid"><code>sequenceDiagram
+    participant PC as PC（AIエージェント）
+    participant Headroom
+    participant LLM as LLM API
+    PC-&gt;&gt;Headroom: リクエストを送信する
+    Headroom-&gt;&gt;LLM: 内容を圧縮して転送する
+    LLM--&gt;&gt;Headroom: 応答を返す
+    Headroom--&gt;&gt;PC: 応答を転送する</code></pre>
+<blockquote>
+<ul>
+<li><a href="https://github.com/headroomlabs-ai/headroom">GitHub - headroomlabs-ai/headroom</a></li>
+</ul>
+</blockquote>
+<h3 id="_7">セットアップ<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>uv をインストールしたうえで、次のコマンドを実行する。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>uv<span class="w"> </span>tool<span class="w"> </span>install<span class="w"> </span>--python<span class="w"> </span><span class="m">3</span>.13<span class="w"> </span><span class="s2">"headroom-ai[all]"</span>
+</code></pre></div>
+<p>常駐プロキシを設定し、エージェントの接続先をローカルプロキシに変更する。</p>
+<p>Claude Code と Codex で使用する常駐プロキシを、次のように設定する。</p>
+<p>LiteLLM の URL は実際の接続先に置き換える。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>headroom<span class="w"> </span>install<span class="w"> </span>apply<span class="w"> </span>--providers<span class="w"> </span>manual<span class="w"> </span>--target<span class="w"> </span>claude<span class="w"> </span>--target<span class="w"> </span>codex<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--runtime<span class="w"> </span>python<span class="w"> </span>--no-rate-limit<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--env<span class="w"> </span><span class="nv">ANTHROPIC_TARGET_API_URL</span><span class="o">=</span>https://litellm.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--env<span class="w"> </span><span class="nv">OPENAI_TARGET_API_URL</span><span class="o">=</span>https://litellm.example.com
+</code></pre></div>
+<p>Claude Code の <code>~/.claude/settings.json</code> の既存の <code>env</code> に <code>ANTHROPIC_BASE_URL</code> を設定する。</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">"env"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">"ANTHROPIC_BASE_URL"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://127.0.0.1:8787"</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Codex の <code>~/.codex/config.toml</code> で使用中のプロバイダーの <code>base_url</code> を設定する。</p>
+<p>次はプロバイダー名が <code>lite_llm</code> の例である。</p>
+<div class="highlight"><pre><span></span><code><span class="k">[model_providers.lite_llm]</span>
+<span class="n">base_url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"http://127.0.0.1:8787/v1"</span>
+</code></pre></div>
+<p>初回設定後は各エージェントを再起動する。</p>
+<p>稼働状況と接続先は次のコマンドで確認できる。</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>headroom<span class="w"> </span>install<span class="w"> </span>status
+$<span class="w"> </span>headroom<span class="w"> </span>doctor
+</code></pre></div>
+<blockquote>
+<ul>
+<li><a href="https://docs.headroomlabs.ai/docs/persistent-installs">Persistent installs | Headroom</a></li>
 </ul>
 </blockquote>
 
