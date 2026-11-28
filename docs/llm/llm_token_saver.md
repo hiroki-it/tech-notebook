@@ -1,6 +1,6 @@
 ---
 title: 【IT技術の知見】トークン節約ツール
-description: AIエージェントのトークン使用量を抑えるツールの知見を記録しています。
+description: AIエージェントのトークン量を節約し、利用料を抑えるツールの知見を記録しています。
 tags:
   - "LLM"
 ---
@@ -17,9 +17,20 @@ tags:
 
 ### RTKとは
 
-RTK は、対応するコマンドの出力を短縮し、AI エージェントに渡す入力トークンを抑えるツールである。
+RTK は、対応するコマンドの出力を短縮し、AI エージェントに渡す入力トークン量を節約して、利用料を抑えるツールである。
 
 MCP サーバーではなく、フックを通じて対応するコマンドを RTK 経由に書き換える。
+
+```mermaid
+sequenceDiagram
+    participant PC as PC（AIエージェント）
+    participant RTK
+    participant LLM as LLM API
+    PC->>RTK: コマンドを実行する
+    RTK-->>PC: 出力を短縮して返す
+    PC->>LLM: 短縮した出力を送信する
+    LLM-->>PC: 応答を返す
+```
 
 > - [GitHub - rtk-ai/rtk: CLI proxy that reduces LLM token consumption by 60-90% on common dev commands. Single Rust binary, zero dependencies · GitHub](https://github.com/rtk-ai/rtk)
 
@@ -41,14 +52,14 @@ $ rtk init --global
 
 `rtk init --global` は Claude Code の設定である。
 
-導入状況や削減量は次のコマンドで確認できる。
+導入状況や節約量は次のコマンドで確認できる。
 
 ```bash
 $ rtk init --show
 $ rtk gain
 ```
 
-`rtk gain` の削減量は推定値であり、対象外のコマンドや画像の確認には適用されない。
+`rtk gain` の節約量は推定値であり、対象外のコマンドや画像の確認には適用されない。
 
 ### 設定ファイル
 
@@ -67,7 +78,7 @@ $ rtk config
 
 ```toml
 [tracking]
-enabled = true # 削減量の記録を有効にする
+enabled = true # 節約量の記録を有効にする
 history_days = 90 # 記録を保持する日数
 
 [retriever]
@@ -85,8 +96,6 @@ grep_max_results = 200 # 検索結果の表示件数の上限
 status_max_files = 15 # git statusのファイル表示件数の上限
 ```
 
-短縮前の出力を確認する方法などは、次のドキュメントを参照する。
-
 > - [Configuration \| RTK](https://www.rtk-ai.app/docs/getting-started/configuration/)
 
 <br>
@@ -95,9 +104,18 @@ status_max_files = 15 # git statusのファイル表示件数の上限
 
 ### Serenaとは
 
-Serena は、MCP を介して関数やシンボル、参照先を検索できるツールである。
+Serena は、MCP を介して必要なコードを検索することで、AI エージェントに渡す入力トークン量を節約し、利用料を抑えるツールである。
 
-必要なコードを絞って取得することで、AI エージェントに渡す入力トークン量の抑制に役立つ。
+```mermaid
+sequenceDiagram
+    participant PC as PC（AIエージェント）
+    participant Serena
+    participant LLM as LLM API
+    PC->>Serena: コードの検索を依頼する
+    Serena-->>PC: 関連するコードを返す
+    PC->>LLM: 取得したコードを送信する
+    LLM-->>PC: 応答を返す
+```
 
 > - [GitHub - oraios/serena: A powerful MCP toolkit for coding, providing semantic retrieval and editing capabilities - the IDE for your agent · GitHub](https://github.com/oraios/serena)
 
@@ -153,10 +171,78 @@ ignored_paths: []
 project_serena_folder_location: "/Users/hiroki.hasegawa/.serena/projects$projectDir/.serena"
 ```
 
-`$projectDir` はプロジェクトの絶対パスに置き換えられる。
-
-既存のプロジェクト内に `.serena` があり、中央の保存先がまだ存在しない場合は、既存の `.serena` が優先される。
-
-詳細は次のドキュメントを参照する。
-
 > - [Configuration — Serena Documentation](https://oraios.github.io/serena/02-usage/050_configuration.html)
+
+<br>
+
+## 03. Headroom
+
+### Headroomとは
+
+Headroom は、AI エージェントと LLM の間で動作し、ツールの実行結果やログなどを圧縮して入力トークン量を節約し、利用料を抑えるツールである。
+
+ローカルプロキシを介してリクエストを転送し、必要に応じて圧縮前の内容を MCP ツールから取得できる。
+
+```mermaid
+sequenceDiagram
+    participant PC as PC（AIエージェント）
+    participant Headroom
+    participant LLM as LLM API
+    PC->>Headroom: リクエストを送信する
+    Headroom->>LLM: 内容を圧縮して転送する
+    LLM-->>Headroom: 応答を返す
+    Headroom-->>PC: 応答を転送する
+```
+
+> - [GitHub - headroomlabs-ai/headroom](https://github.com/headroomlabs-ai/headroom)
+
+### セットアップ
+
+uv をインストールしたうえで、次のコマンドを実行する。
+
+```bash
+$ uv tool install --python 3.13 "headroom-ai[all]"
+```
+
+常駐プロキシを設定し、エージェントの接続先をローカルプロキシに変更する。
+
+Claude Code と Codex で使用する常駐プロキシを、次のように設定する。
+
+LiteLLM の URL は実際の接続先に置き換える。
+
+```bash
+$ headroom install apply --providers manual --target claude --target codex \
+    --runtime python --no-rate-limit \
+    --env ANTHROPIC_TARGET_API_URL=https://litellm.example.com \
+    --env OPENAI_TARGET_API_URL=https://litellm.example.com
+```
+
+Claude Code の `~/.claude/settings.json` の既存の `env` に `ANTHROPIC_BASE_URL` を設定する。
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:8787"
+  }
+}
+```
+
+Codex の `~/.codex/config.toml` で使用中のプロバイダーの `base_url` を設定する。
+
+次はプロバイダー名が `lite_llm` の例である。
+
+```toml
+[model_providers.lite_llm]
+base_url = "http://127.0.0.1:8787/v1"
+```
+
+初回設定後は各エージェントを再起動する。
+
+稼働状況と接続先は次のコマンドで確認できる。
+
+```bash
+$ headroom install status
+$ headroom doctor
+```
+
+> - [Persistent installs | Headroom](https://docs.headroomlabs.ai/docs/persistent-installs)

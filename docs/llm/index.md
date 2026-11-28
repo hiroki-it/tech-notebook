@@ -33,7 +33,7 @@ tags:
 
     - **[トークン節約ツール](https://hiroki-it.github.io/tech-notebook/llm/llm_token_saver.html)**
 
-      AI エージェントのトークン使用量を抑えるツール
+      AI エージェントのトークン量を節約し、利用料を抑えるツール
 
     - **[PR Agent (PR Agent)](https://hiroki-it.github.io/tech-notebook/llm/llm_pr_agent.html)**
 
